@@ -1,10 +1,10 @@
 # Created by: Dirk Froemberg <dirk@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/security/openssl/Makefile 350548 2014-04-07 21:46:40Z bdrewery $
 
 PORTNAME=	openssl
 PORTVERSION=	1.0.1
-DISTVERSIONSUFFIX=	f
-PORTREVISION=	9
+DISTVERSIONSUFFIX=	g
+PORTREVISION=	10
 CATEGORIES=	security devel
 MASTER_SITES=	http://www.openssl.org/%SUBDIR%/ \
 		ftp://ftp.openssl.org/%SUBDIR%/ \
@@ -45,6 +45,8 @@ RFC3779_DESC?=	RFC3779 support
 GMP_DESC?=	gmp support (LGPLv3)
 EC_DESC?=	Optimize NIST elliptic curves
 
+GMP_LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp
+
 MAKE_JOBS_UNSAFE=	yes
 NOPRECIOUSMAKEVARS=	Too many _MLINKS for fetch
 NOPRECIOUSSOFTMAKEVARS=	Too many _MLINKS for fetch
@@ -52,7 +54,7 @@ NOPRECIOUSSOFTMAKEVARS=	Too many _MLINKS for fetch
 USES=		perl5
 USE_PERL5=	build
 MAKE_ARGS+=	WHOLE_ARCHIVE_FLAG=--whole-archive
-MAKE_ENV+=	LIBRPATH="${PREFIX}/lib"
+MAKE_ENV+=	LIBRPATH="${PREFIX}/lib" GREP_OPTIONS=
 SUB_FILES=	pkg-message
 OPENSSLDIR=	${PREFIX}/openssl
 
