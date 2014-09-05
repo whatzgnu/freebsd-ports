@@ -192,6 +192,7 @@
     SUBDIR += listres
     SUBDIR += lsw
     SUBDIR += luit
+    SUBDIR += lumina
     SUBDIR += lupe
     SUBDIR += lxde-meta
     SUBDIR += lxmenu-data
