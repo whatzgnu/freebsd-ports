@@ -3,6 +3,7 @@
 
 PORTNAME=	qt47-x11
 PORTVERSION=	4.7.2
+PORTREVISION=	1
 CATEGORIES=	x11-toolkits linux
 MASTER_SITES=	${MASTER_SITE_LOCAL}
 MASTER_SITE_SUBDIR=	xmj
@@ -29,9 +30,9 @@ LINUX_RPM_ARCH=	i386
 
 .include <bsd.port.options.mk>
 
-.if ! ${PORT_OPTIONS:MNVIDIA_GL}
-USE_LINUX_APPS+=	dri
-.endif
+#.if ! ${PORT_OPTIONS:MNVIDIA_GL}
+#USE_LINUX_APPS+=	dri
+#.endif
 
 
 DESCR=	${.CURDIR}/../../devel/qt4/pkg-descr
