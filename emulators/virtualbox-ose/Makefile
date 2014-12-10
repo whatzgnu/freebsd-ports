@@ -1,8 +1,9 @@
 # Created by: Bernhard Froehlich <decke@bluelife.at>
-# $FreeBSD: head/emulators/virtualbox-ose/Makefile 354896 2014-05-22 23:10:51Z jkim $
+# $FreeBSD$
 
 PORTNAME=	virtualbox-ose
-DISTVERSION=	4.3.16
+DISTVERSION=	4.3.20
+PORTREVISION=	1
 CATEGORIES=	emulators
 MASTER_SITES=	http://download.virtualbox.org/virtualbox/${DISTVERSION}/ \
 		http://tmp.chruetertee.ch/ \
@@ -128,7 +129,7 @@ RESTRICTED_FILES=	${GUESTADDITIONS}
 .endif
 
 .if ${PORT_OPTIONS:MMANUAL}
-USE_TEX=	dvipsk:build formats:build texlive
+USE_TEX=	dvipsk:build formats:build
 .endif
 
 .if ${PORT_OPTIONS:MPYTHON}
