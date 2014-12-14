@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# $FreeBSD$
+# $FreeBSD: head/emulators/virtualbox-ose/files/vboxwatchdog.in 336107 2013-12-10 20:42:40Z decke $
 #
 # PROVIDE: vboxwatchdog
 # REQUIRE: LOGIN
