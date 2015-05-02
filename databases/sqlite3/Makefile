@@ -2,10 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	sqlite3
-PORTVERSION=	3.8.8.2
+PORTVERSION=	3.8.9
+PORTREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://www.sqlite.org/2015/ http://www2.sqlite.org/2015/ http://www3.sqlite.org/2015/
-DISTNAME=	sqlite-autoconf-${PORTVERSION:S|.|0|g}
+DISTNAME=	sqlite-autoconf-${PORTVERSION:S|.|0|g}00
 
 MAINTAINER=	pavelivolkov@gmail.com
 COMMENT=	SQL database engine in a C library
@@ -125,7 +126,7 @@ STMT_CPPFLAGS=	-DSQLITE_ENABLE_STMT_SCANSTATUS=1
 EXTENSION_CONFIGURE_ENABLE=	dynamic-extensions
 
 THREADS_CONFIGURE_ENABLE=	threadsafe
-THREADS_LDFLAGS=	${PTHREAD_LIBS}
+THREADS_LDFLAGS=		-lpthread
 
 ICU_BUILD_DEPENDS=	${LOCALBASE}/bin/icu-config:${PORTSDIR}/devel/icu
 ICU_LIB_DEPENDS=	libicudata.so:${PORTSDIR}/devel/icu
