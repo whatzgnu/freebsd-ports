@@ -1,8 +1,8 @@
 # Created by: Neil Blakey-Milner <nbm@rucus.ru.ac.za>
-# $FreeBSD$
+# $FreeBSD: head/ftp/curl/Makefile 389953 2015-06-17 17:24:57Z sunpoet $
 
 PORTNAME=	curl
-PORTVERSION=	7.42.1
+PORTVERSION=	7.43.0
 CATEGORIES=	ftp www
 MASTER_SITES=	http://curl.haxx.se/download/ \
 		LOCAL/sunpoet
@@ -51,12 +51,11 @@ PORTEXAMPLES=	*
 CPE_VENDOR=	haxx
 
 DOCS=		BINDINGS BUGS CONTRIBUTE DISTRO-DILEMMA FAQ FEATURES HISTORY \
-		HTTP-COOKIES INSTALL INSTALL.devcpp INTERNALS KNOWN_BUGS \
-		LIBCURL-STRUCTS LICENSE-MIXING MAIL-ETIQUETTE MANUAL \
-		README.netware README.win32 RELEASE-PROCEDURE RESOURCES \
-		SECURITY SSL-PROBLEMS SSLCERTS THANKS TODO \
-		TheArtOfHttpScripting VERSIONS curl-config.html \
-		curl-config.pdf curl.html curl.pdf index.html \
+		HTTP-COOKIES HTTP2.md INSTALL INSTALL.devcpp INTERNALS \
+		KNOWN_BUGS LICENSE-MIXING MAIL-ETIQUETTE MANUAL \
+		RELEASE-PROCEDURE RESOURCES ROADMAP.md SECURITY SSL-PROBLEMS \
+		SSLCERTS THANKS TODO TheArtOfHttpScripting VERSIONS \
+		curl-config.html curl-config.pdf curl.html curl.pdf index.html \
 		mk-ca-bundle.html mk-ca-bundle.pdf
 .endif
 
@@ -93,11 +92,11 @@ GSSAPI_MIT_LDFLAGS=	${GSSAPILDFLAGS}
 GSSAPI_MIT_LIBS=	${GSSAPILIBS}
 GSSAPI_MIT_USES=	gssapi:mit
 GSSAPI_NONE_CONFIGURE_ON=	--without-gssapi
-HTTP2_BUILD_DEPENDS=	nghttp2>=0.6.0:${PORTSDIR}/www/nghttp2
+HTTP2_BUILD_DEPENDS=	nghttp2>=1.0.0:${PORTSDIR}/www/nghttp2
 HTTP2_CONFIGURE_OFF=	--without-nghttp2
 HTTP2_CONFIGURE_ON=	--with-nghttp2=${LOCALBASE}
 HTTP2_LIB_DEPENDS=	libnghttp2.so:${PORTSDIR}/www/nghttp2
-HTTP2_RUN_DEPENDS=	nghttp2>=0.6.0:${PORTSDIR}/www/nghttp2
+HTTP2_RUN_DEPENDS=	nghttp2>=1.0.0:${PORTSDIR}/www/nghttp2
 HTTP2_USES=		pkgconfig
 IDN_CONFIGURE_OFF=	--without-libidn
 IDN_CONFIGURE_ON=	--with-libidn=${LOCALBASE}
@@ -126,7 +125,7 @@ OPENSSL_LDFLAGS=	-L${OPENSSLLIB}
 OPENSSL_USE=		OPENSSL=yes
 POLARSSL_CONFIGURE_OFF=	--without-polarssl
 POLARSSL_CONFIGURE_ON=	--with-polarssl=${LOCALBASE}
-POLARSSL_LIB_DEPENDS=	libpolarssl.so.8:${PORTSDIR}/security/polarssl13
+POLARSSL_LIB_DEPENDS=	libmbedtls.so.9:${PORTSDIR}/security/polarssl13
 PROXY_CONFIGURE_OFF=	--disable-proxy
 PROXY_CONFIGURE_ON=	--enable-proxy
 RTMP_CONFIGURE_OFF=	--without-librtmp
@@ -136,8 +135,8 @@ THREADED_RESOLVER_CONFIGURE_OFF=--disable-threaded-resolver
 THREADED_RESOLVER_CONFIGURE_ON=	--enable-threaded-resolver
 TLS_SRP_CONFIGURE_OFF=	--disable-tls-srp
 TLS_SRP_CONFIGURE_ON=	--enable-tls-srp
-WOLFSSL_CONFIGURE_OFF=	--without-cyassl	 
-WOLFSSL_CONFIGURE_ON=	--with-cyassl=${LOCALBASE}	 
+WOLFSSL_CONFIGURE_OFF=	--without-cyassl
+WOLFSSL_CONFIGURE_ON=	--with-cyassl=${LOCALBASE}
 WOLFSSL_LIB_DEPENDS=	libwolfssl.so:${PORTSDIR}/security/wolfssl
 
 .include <bsd.port.options.mk>
