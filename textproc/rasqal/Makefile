@@ -1,5 +1,5 @@
 # Created by: ijliao
-# $FreeBSD$
+# $FreeBSD: ports/textproc/rasqal/Makefile,v 1.44 2012/05/14 22:17:34 rakuco Exp $
 
 PORTNAME=	rasqal
 PORTVERSION=	0.9.33

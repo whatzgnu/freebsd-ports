@@ -11,5 +11,5 @@ USE_GL=		glu
 USE_XORG=	xrandr
 
 KIPI_PLUGIN=	advancedslideshow
-.include "${.CURDIR}/../digikam-kde4/Makefile.common"
+.include "${.CURDIR}/../digikam/Makefile.common"
 .include <bsd.port.mk>

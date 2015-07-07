@@ -10,5 +10,5 @@ COMMENT=	${${KIPI_PLUGIN}_DESC}
 LIB_DEPENDS=	libmediawiki.so:${PORTSDIR}/net/libmediawiki
 
 KIPI_PLUGIN=	mediawiki
-.include "${.CURDIR}/../digikam-kde4/Makefile.common"
+.include "${.CURDIR}/../digikam/Makefile.common"
 .include <bsd.port.mk>

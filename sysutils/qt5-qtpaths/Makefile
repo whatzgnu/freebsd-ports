@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/QT/sysutils/qt5-qtpaths/Makefile 10630 2015-03-06 22:15:16Z rakuco $
 
 PORTNAME=	qtpaths
 DISTVERSION=	${QT5_VERSION}

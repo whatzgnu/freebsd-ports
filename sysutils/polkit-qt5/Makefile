@@ -1,4 +1,5 @@
-# $FreeBSD$
+# Created by: Dima Panov <fluffy@Fluffy.Khv.RU>
+# $FreeBSD: branches/plasma5/KDE/sysutils/polkit-qt5/Makefile 10672 2015-04-25 19:17:13Z tcberner $
 
 PORTNAME=	polkit-qt5
 DISTNAME=	polkit-qt-1-${PORTVERSION}
@@ -20,7 +21,7 @@ CMAKE_ARGS=	-DBUILD_EXAMPLES:BOOL=OFF \
 		-DUSE_QT5:BOOL=ON
 
 USE_GNOME=	glib20
-USE_QT5=	core dbus gui widgets buildtools_build qmake_build
+USE_QT5=	core dbus gui buildtools_build qmake_build widgets
 USES=		cmake:outsource tar:bzip2
 USE_LDCONFIG=	yes
 

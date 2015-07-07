@@ -1,5 +1,5 @@
 # Created by: Tobias Berner <tcberner@gmail.com>
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/PORTS/devel/libdbusmenu-qt5/Makefile 10813 2015-06-25 12:07:22Z rakuco $
 
 PORTNAME=	libdbusmenu-qt5
 PORTVERSION=	${MAJOR_VER}.${SNAPSHOT_VER:S/.//g}

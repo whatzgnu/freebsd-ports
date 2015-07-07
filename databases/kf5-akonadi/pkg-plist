@@ -1,0 +1,17 @@
+include/KF5/akonadi/abstractsearchplugin.h
+include/KF5/akonadi/private/akonadiprivate_export.h
+include/KF5/akonadi/private/capabilities_p.h
+include/KF5/akonadi/private/imapparser_p.h
+include/KF5/akonadi/private/imapset_p.h
+include/KF5/akonadi/private/notificationmessage_p.h
+include/KF5/akonadi/private/notificationmessagev2_p.h
+include/KF5/akonadi/private/notificationmessagev3_p.h
+include/KF5/akonadi/private/protocol_p.h
+include/KF5/akonadi/private/xdgbasedirs_p.h
+lib/cmake/KF5AkonadiServer/KF5AkonadiServerConfig.cmake
+lib/cmake/KF5AkonadiServer/KF5AkonadiServerConfigVersion.cmake
+lib/cmake/KF5AkonadiServer/KF5AkonadiServerTargets-%%CMAKE_BUILD_TYPE%%.cmake
+lib/cmake/KF5AkonadiServer/KF5AkonadiServerTargets.cmake
+lib/libKF5AkonadiPrivate.so
+lib/libKF5AkonadiPrivate.so.5
+lib/libKF5AkonadiPrivate.so.5.0.41

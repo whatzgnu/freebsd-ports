@@ -1,9 +1,8 @@
 # Created by: Raphael Kubo da Costa <rakuco@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/PORTS/devel/xsd/Makefile 10222 2014-07-29 20:26:15Z rakuco $
 
 PORTNAME=	xsd
 PORTVERSION=	3.3.0
-PORTREVISION=	1
 DISTVERSIONSUFFIX=	-2+dep
 CATEGORIES=	devel
 MASTER_SITES=	http://www.codesynthesis.com/download/${PORTNAME}/${PORTVERSION:R}/

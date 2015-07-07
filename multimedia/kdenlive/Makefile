@@ -1,9 +1,9 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/KDE/multimedia/kdenlive/Makefile 10672 2015-04-25 19:17:13Z tcberner $
 
 PORTNAME=	kdenlive
-PORTVERSION=	0.9.10
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	multimedia kde
-MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}/src/
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 
 MAINTAINER=	avilla@FreeBSD.org
 COMMENT=	KDE professional quality non-linear video editing suite
@@ -14,11 +14,18 @@ LIB_DEPENDS=	libmlt.so:${PORTSDIR}/multimedia/mlt \
 		libqjson.so:${PORTSDIR}/devel/qjson
 RUN_DEPENDS=	ffmpeg${FFMPEG_SUFX}:${PORTSDIR}/multimedia/ffmpeg${FFMPEG_SUFX}
 
-USE_KDE4=	automoc4 kdelibs kdeprefix nepomuk-core
-USE_QT4=	corelib dbus gui opengl script svg xml \
-		moc_build qmake_build rcc_build uic_build
+BUILD_DEPENDS=	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:${PORTSDIR}/textproc/docbook-xsl \
+		docbook-xml>0:${PORTSDIR}/textproc/docbook-xml
+		
+USE_KDE5=	archive bookmarks config configwidgets \
+		coreaddons dbusaddons doctools ecm \
+		guiaddons iconthemes kio newstuff \
+		notifications notifyconfig plotting \
+		widgetsaddons xmlgui
+USE_QT5=	core dbus gui opengl script svg xml \
+		qmake_build buildtools_build
 USE_XORG=	x11
-USES=		cmake pkgconfig shared-mime-info tar:bzip2
+USES=		cmake pkgconfig shared-mime-info tar:xz
 CMAKE_ARGS=	-DFFMPEG_SUFFIX:STRING="${FFMPEG_SUFX}"
 
 # Keep in sync with multimedia/mlt, possibly.

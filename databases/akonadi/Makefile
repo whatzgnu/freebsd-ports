@@ -1,8 +1,9 @@
 # Created by: miwi
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/KDE/databases/akonadi/Makefile 10768 2015-06-04 21:17:24Z tcberner $
 
 PORTNAME=	akonadi
 PORTVERSION=	1.13.0
+PORTREVISION=	1 # reinstate complete pkg-plist
 CATEGORIES=	databases kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/src
 DIST_SUBDIR=	KDE

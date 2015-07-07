@@ -1,12 +1,7 @@
 bin/katomic
-share/applications/kde4/katomic.desktop
-share/apps/katomic/katomicui.rc
-share/apps/katomic/levels/default_levels.dat
-share/apps/katomic/pics/default_theme.svgz
-share/apps/kconf_update/katomic-levelset-upd.pl
-share/apps/kconf_update/katomic-levelset.upd
-share/config/katomic.knsrc
-share/doc/HTML/en/katomic/common
+etc/xdg/katomic.knsrc
+share/appdata/katomic.appdata.xml
+share/applications/org.kde.katomic.desktop
 share/doc/HTML/en/katomic/index.cache.bz2
 share/doc/HTML/en/katomic/index.docbook
 share/icons/hicolor/128x128/apps/katomic.png
@@ -15,3 +10,8 @@ share/icons/hicolor/22x22/apps/katomic.png
 share/icons/hicolor/32x32/apps/katomic.png
 share/icons/hicolor/48x48/apps/katomic.png
 share/icons/hicolor/64x64/apps/katomic.png
+%%DATADIR%%/levels/default_levels.dat
+%%DATADIR%%/pics/default_theme.svgz
+share/kconf_update/katomic-levelset-upd.pl
+share/kconf_update/katomic-levelset.upd
+share/kxmlgui5/katomic/katomicui.rc

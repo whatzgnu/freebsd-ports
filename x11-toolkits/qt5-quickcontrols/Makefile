@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/QT/x11-toolkits/qt5-quickcontrols/Makefile 10213 2014-07-28 20:50:36Z rakuco $
 
 PORTNAME=	quickcontrols
 DISTVERSION=	${QT5_VERSION}

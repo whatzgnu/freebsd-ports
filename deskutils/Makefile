@@ -155,11 +155,14 @@
     SUBDIR += multisync-syncml
     SUBDIR += myitcrm
     SUBDIR += nagaina
+    SUBDIR += nautilus-actions
+    SUBDIR += nautilus-sendto
     SUBDIR += nemo-extensions
     SUBDIR += note
     SUBDIR += notecase
     SUBDIR += notification-daemon
     SUBDIR += notify-osd
+    SUBDIR += ontv
     SUBDIR += openproj
     SUBDIR += orage
     SUBDIR += osmo
@@ -188,10 +191,11 @@
     SUBDIR += plasma-applet-simpleweatherforecast
     SUBDIR += plasma-applet-teacooker
     SUBDIR += plasma-applet-yawp
+    SUBDIR += plasma5-milou
     SUBDIR += plopfolio
     SUBDIR += preferences
-    SUBDIR += py-khal
     SUBDIR += py-bugwarrior
+    SUBDIR += py-khal
     SUBDIR += py-pycarddav
     SUBDIR += py-pystash
     SUBDIR += py-send2trash

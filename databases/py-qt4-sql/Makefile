@@ -1,5 +1,5 @@
 # Created by: Danny Pansters <danny@ricin.com>
-# $FreeBSD$
+# $FreeBSD: head/databases/py-qt4-sql/Makefile 339634 2014-01-13 21:00:02Z rene $
 
 PORTNAME=	sql
 PORTEPOCH=	1

@@ -1,0 +1,11 @@
+--- libgraphtheory/fileformats/dot/CMakeLists.txt.orig	2015-06-24 12:17:48 UTC
++++ libgraphtheory/fileformats/dot/CMakeLists.txt
+@@ -38,6 +38,8 @@ target_link_libraries(dotfileformat
+         rocsgraphtheory
+ )
+ 
++kde_target_enable_exceptions(dotfileformat PRIVATE)
++
+ kcoreaddons_desktop_to_json(dotfileformat dotfileformat.desktop)
+ install(TARGETS dotfileformat DESTINATION ${PLUGIN_INSTALL_DIR}/rocs/fileformats)
+ 

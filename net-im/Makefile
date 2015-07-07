@@ -40,8 +40,11 @@
     SUBDIR += jarl
     SUBDIR += jggtrans
     SUBDIR += jitsi
+    SUBDIR += kaccounts-integration
+    SUBDIR += kaccounts-providers
     SUBDIR += kde-telepathy
     SUBDIR += kmess-kde4
+    SUBDIR += kopete
     SUBDIR += kopete-kde4
     SUBDIR += ktp-accounts-kcm
     SUBDIR += ktp-approver
@@ -52,6 +55,7 @@
     SUBDIR += ktp-desktop-applets
     SUBDIR += ktp-filetransfer-handler
     SUBDIR += ktp-kded-integration-module
+    SUBDIR += ktp-kded-module
     SUBDIR += ktp-send-file
     SUBDIR += ktp-text-ui
     SUBDIR += libaccounts-glib
@@ -165,9 +169,11 @@
     SUBDIR += telepathy-idle
     SUBDIR += telepathy-logger
     SUBDIR += telepathy-logger-qt4
+    SUBDIR += telepathy-logger-qt5
     SUBDIR += telepathy-mission-control
     SUBDIR += telepathy-python
     SUBDIR += telepathy-qt4
+    SUBDIR += telepathy-qt5
     SUBDIR += telepathy-rakia
     SUBDIR += telepathy-salut
     SUBDIR += telepathy-sofiasip

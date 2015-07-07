@@ -1,20 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	kate-plugin-pate
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	editors kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DISTNAME=	kate-${PORTVERSION}
 DIST_SUBDIR=	KDE/${PORTVERSION}
+
+IGNORE=		Not ready for KF5 yet
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Support for Python plugins in Kate
 
 USES=		cmake:outsource python tar:xz
-USE_KDE4=	kdelibs kdeprefix automoc4 kate \
-		pykde4_build pykde4_run
-USE_QT4=	gui webkit \
-		moc_build qmake_build rcc_build uic_build
+USE_KDE5=	ecm
+USE_QT5=	buildtools_build
 
 DISTINFO_FILE=	${PORTSDIR}/editors/kate/distinfo
 

@@ -7,6 +7,7 @@ lib/libkdeinit4_cvsaskpass.so
 lib/libkdeinit4_cvsservice.so
 man/man1/cervisia.1.gz
 share/applications/kde4/cervisia.desktop
+share/apps/appdata/cervisia.appdata.xml
 share/apps/cervisia/cervisia.notifyrc
 share/apps/cervisia/cervisiashellui.rc
 share/apps/cervisiapart/cervisiaui.rc

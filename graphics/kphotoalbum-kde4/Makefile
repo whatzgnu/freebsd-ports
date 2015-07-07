@@ -3,7 +3,7 @@
 
 PORTNAME=	kphotoalbum
 PORTVERSION=	4.4
-PORTREVISION=	7
+PORTREVISION=	3
 CATEGORIES=	graphics kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}/src
 DIST_SUBDIR=	KDE
@@ -11,10 +11,10 @@ DIST_SUBDIR=	KDE
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Image viewer and organizer for KDE
 
-LIB_DEPENDS=	libexiv2.so:${PORTSDIR}/graphics/exiv2
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libexiv2.so:${PORTSDIR}/graphics/exiv2
 
-USES=		cmake:outsource jpeg pkgconfig shebangfix tar:bzip2
-SHEBANG_FILES=	script/open-raw.pl script/kpa-backup.sh
+USES=		cmake:outsource pkgconfig tar:bzip2
 USE_KDE4=	kdelibs kdeprefix libkdcraw libkipi automoc4
 USE_QT4=	phonon sql \
 		qmake_build moc_build rcc_build uic_build

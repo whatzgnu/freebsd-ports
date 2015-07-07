@@ -1,8 +1,6 @@
 bin/kshisen
-share/applications/kde4/kshisen.desktop
-share/apps/kshisen/kshisenui.rc
+share/applications/org.kde.kshisen.desktop
 share/config.kcfg/kshisen.kcfg
-share/doc/HTML/en/kshisen/common
 share/doc/HTML/en/kshisen/index.cache.bz2
 share/doc/HTML/en/kshisen/index.docbook
 share/doc/HTML/en/kshisen/kshisen-configuration.png
@@ -12,5 +10,6 @@ share/icons/hicolor/22x22/apps/kshisen.png
 share/icons/hicolor/32x32/apps/kshisen.png
 share/icons/hicolor/48x48/apps/kshisen.png
 share/icons/hicolor/64x64/apps/kshisen.png
+share/kxmlgui5/kshisen/kshisenui.rc
 share/sounds/kshisen/tile-fall-tile.ogg
 share/sounds/kshisen/tile-touch.ogg

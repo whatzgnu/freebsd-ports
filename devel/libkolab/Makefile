@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/PORTS/devel/libkolab/Makefile 10344 2014-10-04 08:39:25Z makc $
 
 PORTNAME=	libkolab
 PORTVERSION=	0.5.3

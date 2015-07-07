@@ -8,8 +8,8 @@ MAINTAINER=	kde@FreeBSD.org
 COMMENT=	${${KIPI_PLUGIN}_DESC}
 
 LIB_DEPENDS=	libMagickCore-6.so:${PORTSDIR}/graphics/ImageMagick \
-		libQtGStreamer-0.10.so:${PORTSDIR}/multimedia/gstreamer-qt4
+		libQtGLib-2.0.so:${PORTSDIR}/multimedia/gstreamer1-qt4
 
 KIPI_PLUGIN=	videoslideshow
-.include "${.CURDIR}/../digikam-kde4/Makefile.common"
+.include "${.CURDIR}/../digikam/Makefile.common"
 .include <bsd.port.mk>

@@ -1,5 +1,5 @@
 # Created by: Dima Panov <fluffy@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/multimedia/py-qt4-multimedia/Makefile 300896 2012-07-14 13:54:48Z beat $
 
 PORTNAME=	multimedia
 CATEGORIES=	multimedia devel python

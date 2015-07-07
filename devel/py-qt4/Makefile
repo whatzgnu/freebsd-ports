@@ -1,5 +1,5 @@
 # Created by: Dima Panov <fluffy@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/devel/py-qt4/Makefile 300896 2012-07-14 13:54:48Z beat $
 
 PORTNAME=	qt4
 PORTVERSION=	${PYQT4_VERSION}

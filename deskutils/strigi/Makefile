@@ -15,7 +15,7 @@ USES=		metaport
 OPTIONS_DEFINE=	CLIENT DAEMON UTILITIES
 OPTIONS_DEFAULT=	${OPTIONS_DEFINE}
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.pre.options.mk>
 .include <${.CURDIR}/Makefile.common>
 
 .if ${PORT_OPTIONS:MCLIENT}

@@ -1,11 +1,11 @@
 # Created by: Dima Panov <fluffy@Fluffy.Khv.RU>
-# $FreeBSD$
+# $FreeBSD: ports/sysutils/polkit-kde/Makefile,v 1.8 2012/06/06 06:44:25 miwi Exp $
 
 PORTNAME=	polkit-kde
 PORTVERSION=	0.99.1
-PORTREVISION=	3
 CATEGORIES=	sysutils kde
-MASTER_SITES=	KDE/stable/apps/KDE4.x/admin/
+MASTER_SITES=	${MASTER_SITE_KDE}
+MASTER_SITE_SUBDIR=	stable/apps/KDE4.x/admin/
 DISTNAME=	${PORTNAME}-agent-1-${PORTVERSION:C/1$/0/}
 
 MAINTAINER=	kde@FreeBSD.org

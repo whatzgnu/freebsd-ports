@@ -19,7 +19,7 @@ lib/kde4/plasma_kget_barapplet.so
 lib/kde4/plasma_kget_piechart.so
 lib/libkgetcore.so
 lib/libkgetcore.so.4
-lib/libkgetcore.so.%%KDE4_GENERIC_LIB_VERSION%%
+lib/libkgetcore.so.%%KDE4_KDELIBS_VERSION%%
 share/applications/kde4/kget.desktop
 share/apps/dolphinpart/kpartplugins/kget_plug_in.desktop
 share/apps/dolphinpart/kpartplugins/kget_plug_in.rc
@@ -98,5 +98,3 @@ share/kde4/services/kgetpiechartapplet-default.desktop
 share/kde4/services/plasma-engine-kget.desktop
 share/kde4/services/plasma-runner-kget.desktop
 share/kde4/servicetypes/kget_plugin.desktop
-share/ontology/kde/kget_history.ontology
-share/ontology/kde/kget_history.trig

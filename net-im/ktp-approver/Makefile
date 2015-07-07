@@ -1,19 +1,19 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/KDE/net-im/ktp-approver/Makefile 10672 2015-04-25 19:17:13Z tcberner $
 
 PORTNAME=	ktp-approver
-PORTVERSION=	${KTP_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	net-im kde
-MASTER_SITES=	KDE/${KTP_BRANCH}/kde-telepathy/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE instant messaging notifier
 
-LIB_DEPENDS=	libtelepathy-qt4.so:${PORTSDIR}/net-im/telepathy-qt4 \
-		libktpcommoninternalsprivate.so:${PORTSDIR}/net-im/ktp-common-internals
-RUN_DEPENDS=	${KDE4_PREFIX}/bin/ktp-contactlist:${PORTSDIR}/net-im/ktp-contact-list
+LIB_DEPENDS=	libtelepathy-qt5.so:${PORTSDIR}/net-im/telepathy-qt5 \
+		libKTpCommonInternals.so:${PORTSDIR}/net-im/ktp-common-internals
+RUN_DEPENDS=	${KDE_PREFIX}/bin/ktp-contactlist:${PORTSDIR}/net-im/ktp-contact-list
 
-USE_KDE4=	kdeprefix kdelibs automoc4
-USE_QT4=	corelib moc_build qmake_build rcc_build uic_build
-USES=		cmake gettext tar:bzip2
+USE_KDE5=	ecm dbusaddons service i18n notifications
+USE_QT5=	buildtools_build core qmake_build
+USES=		cmake gettext tar:xz
 
 .include <bsd.port.mk>

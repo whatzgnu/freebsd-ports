@@ -1,0 +1,5 @@
+etc/signon-ui/webkit-options.d/accounts.google.com.conf
+etc/signon-ui/webkit-options.d/api.twitter.com.conf
+etc/signon-ui/webkit-options.d/identi.ca.conf
+etc/signon-ui/webkit-options.d/www.facebook.com.conf
+share/accounts/providers/google.provider

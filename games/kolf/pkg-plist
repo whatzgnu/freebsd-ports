@@ -1,7 +1,6 @@
 bin/kolf
-lib/libkolfprivate.so
 lib/libkolfprivate.so.4
-lib/libkolfprivate.so.%%KDE4_GENERIC_LIB_VERSION%%
+lib/libkolfprivate.so.%%KDE4_KDELIBS_VERSION%%
 share/applications/kde4/kolf.desktop
 share/apps/kolf/courses/Classic.kolf
 share/apps/kolf/courses/Easy.kolf

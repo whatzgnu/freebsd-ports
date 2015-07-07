@@ -1,15 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	okular
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	graphics kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	KDE 4 universal document viewer
+COMMENT=	KDE universal document viewer
 
 LIB_DEPENDS=	libdjvulibre.so:${PORTSDIR}/graphics/djvulibre \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libkscreen.so:${PORTSDIR}/graphics/libkscreen \
 		libqca.so:${PORTSDIR}/devel/qca \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
@@ -18,13 +19,13 @@ LIB_DEPENDS=	libdjvulibre.so:${PORTSDIR}/graphics/djvulibre \
 		libchm.so:${PORTSDIR}/misc/chmlib \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libepub.so:${PORTSDIR}/textproc/ebook-tools \
-		libqmobipocket.so:${PORTSDIR}/graphics/kdegraphics4-mobipocket
+		libqmobipocket.so:${PORTSDIR}/graphics/kdegraphics-mobipocket
 
 USE_KDE4=	kdelibs kdeprefix automoc4 qimageblitz kactivities \
 		libkexiv2
 USE_QT4=	corelib declarative gui opengl xml \
 		qmake_build moc_build uic_build rcc_build
-USES=		cmake:outsource jpeg pkgconfig tar:xz
+USES=		cmake:outsource pkgconfig tar:xz
 USE_LDCONFIG=	yes
 
 OPTIONS_DEFINE=	DVI

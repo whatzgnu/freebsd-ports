@@ -1,5 +1,5 @@
 # Created by: Dima Panov <fluffy@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/textproc/py-qt4-xmlpatterns/Makefile 300897 2012-07-14 14:29:18Z beat $
 
 PORTNAME=	xmlpatterns
 CATEGORIES=	textproc devel python

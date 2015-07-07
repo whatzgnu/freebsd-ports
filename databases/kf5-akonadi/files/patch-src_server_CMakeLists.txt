@@ -1,0 +1,25 @@
+--- src/server/CMakeLists.txt.orig	2015-06-04 20:21:05 UTC
++++ src/server/CMakeLists.txt
+@@ -186,22 +186,7 @@ target_link_libraries(akonadiserver
+     libakonadiserver
+ )
+ 
+-install(TARGETS akonadiserver
+-        ${KF5_INSTALL_TARGETS_DEFAULT_ARGS}
+-)
+-
+-install(FILES
+-  storage/mysql-global.conf
+-  storage/mysql-global-mobile.conf
+-  DESTINATION ${CONFIG_INSTALL_DIR}/akonadi
+-)
+-
+ install(FILES
+   search/abstractsearchplugin.h
+   DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/akonadi
+ )
+-
+-## DBus XML files
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.freedesktop.Akonadi.DebugInterface.xml
+-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
+-)

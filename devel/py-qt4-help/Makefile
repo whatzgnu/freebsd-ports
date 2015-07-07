@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/devel/py-qt4-help/Makefile 300896 2012-07-14 13:54:48Z beat $
 
 PORTNAME=	help
 CATEGORIES=	devel python

@@ -1,7 +1,6 @@
 bin/kcharselect
-share/applications/kde4/KCharSelect.desktop
-share/apps/kcharselect/kcharselectui.rc
-share/doc/HTML/en/kcharselect/common
+share/applications/org.kde.KCharSelect.desktop
 share/doc/HTML/en/kcharselect/index.cache.bz2
 share/doc/HTML/en/kcharselect/index.docbook
 share/doc/HTML/en/kcharselect/kcharselect.png
+share/kxmlgui5/kcharselect/kcharselectui.rc

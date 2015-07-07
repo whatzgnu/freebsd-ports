@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/QT/x11/qt5-x11extras/Makefile 10459 2014-11-03 10:46:24Z makc $
 
 PORTNAME=	x11extras
 DISTVERSION=	${QT5_VERSION}

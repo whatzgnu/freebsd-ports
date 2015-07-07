@@ -1,0 +1,3 @@
+lib/plugins/kded_kwrited.so
+share/knotifications5/kwrited.notifyrc
+share/kservices5/kded/kwrited.desktop

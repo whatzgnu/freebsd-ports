@@ -1,5 +1,5 @@
 # Created by: Tobias C. Berner <tcberner@gmail.com>
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/PORTS/net-im/libaccounts-qt5/Makefile 10845 2015-07-03 20:40:37Z rakuco $
 
 PORTNAME=	libaccounts-qt5
 PORTVERSION=	1.13

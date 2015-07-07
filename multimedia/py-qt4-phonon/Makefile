@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/multimedia/py-qt4-phonon/Makefile 300896 2012-07-14 13:54:48Z beat $
 
 PORTNAME=	phonon
 CATEGORIES=	multimedia devel python

@@ -1,5 +1,5 @@
 # Created by: Danny Pansters <danny@ricin.com>
-# $FreeBSD$
+# $FreeBSD: head/x11-toolkits/py-qt4-gui/Makefile 300897 2012-07-14 14:29:18Z beat $
 
 PORTNAME=	gui
 PORTEPOCH=	1

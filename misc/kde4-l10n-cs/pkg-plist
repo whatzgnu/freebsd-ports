@@ -7,7 +7,7 @@ share/apps/klettres/cs/alpha/a-11.ogg
 share/apps/klettres/cs/alpha/a-12.ogg
 share/apps/klettres/cs/alpha/a-13.ogg
 share/apps/klettres/cs/alpha/a-14.ogg
-share/apps/klettres/cs/alpha/a-15.ogg
+share/apps/klettres/cs/alpha/a-%%KDE_APPLICATIONS_VERSION_MAJOR%%.ogg
 share/apps/klettres/cs/alpha/a-16.ogg
 share/apps/klettres/cs/alpha/a-17.ogg
 share/apps/klettres/cs/alpha/a-18.ogg
@@ -40,7 +40,7 @@ share/apps/klettres/cs/syllab/ad-11.ogg
 share/apps/klettres/cs/syllab/ad-12.ogg
 share/apps/klettres/cs/syllab/ad-13.ogg
 share/apps/klettres/cs/syllab/ad-14.ogg
-share/apps/klettres/cs/syllab/ad-15.ogg
+share/apps/klettres/cs/syllab/ad-14.ogg
 share/apps/klettres/cs/syllab/ad-16.ogg
 share/apps/klettres/cs/syllab/ad-17.ogg
 share/apps/klettres/cs/syllab/ad-2.ogg

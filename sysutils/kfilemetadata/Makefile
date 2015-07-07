@@ -3,8 +3,9 @@
 PORTNAME=	kfilemetadata
 PORTVERSION=	${KDE4_VERSION}
 CATEGORIES=	sysutils kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=   KDE/${KDE4_BRANCH}/${PORTVERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
+PORTREVISION=	1
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Library for extracting file metadata
@@ -14,7 +15,7 @@ LIB_DEPENDS=	libpoppler-qt4.so:${PORTSDIR}/graphics/poppler-qt4 \
 		libexiv2.so:${PORTSDIR}/graphics/exiv2 \
 		libswscale.so:${PORTSDIR}/multimedia/ffmpeg \
 		libepub.so:${PORTSDIR}/textproc/ebook-tools \
-		libqmobipocket.so:${PORTSDIR}/graphics/kdegraphics4-mobipocket
+		libqmobipocket.so:${PORTSDIR}/graphics/kdegraphics-mobipocket
 
 USE_KDE4=	kdeprefix automoc4 kdelibs
 USES=		cmake:outsource tar:xz

@@ -10,6 +10,8 @@ PKGNAMESUFFIX=	-browser
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Browser based on Qt 5
 
+CONFLICTS=	otter-browser-2015*
+
 USE_QT5=	concurrent core gui multimedia network printsupport \
 		script sql webkit widgets \
 		buildtools_build qmake_build

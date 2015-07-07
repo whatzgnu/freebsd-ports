@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	kdelibs
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE4_KDELIBS_VERSION}
 CATEGORIES=	x11 kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
-DIST_SUBDIR=	KDE/${PORTVERSION}
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
+DIST_SUBDIR=    KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Base set of libraries needed by KDE programs
@@ -17,6 +17,7 @@ LIB_DEPENDS=	libIlmImf.so:${PORTSDIR}/graphics/OpenEXR \
 		libenchant.so:${PORTSDIR}/textproc/enchant \
 		libgif.so:${PORTSDIR}/graphics/giflib \
 		libpng.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libhal.so:${PORTSDIR}/sysutils/hal \
 		libqca.so:${PORTSDIR}/devel/qca \
 		libHUpnp.so:${PORTSDIR}/net/hupnp \
@@ -33,9 +34,9 @@ RUN_DEPENDS=	${LOCALBASE}/share/icons/hicolor/index.theme:${PORTSDIR}/misc/hicol
 		${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:${PORTSDIR}/textproc/docbook-xsl
 
 USE_GNOME=	libxml2 libxslt
-USE_KDE4=	kdeprefix oxygen \
+USE_KDE4=	kdeprefix icons-oxygen \
 		attica automoc4 ontologies soprano strigi
-USES=		cmake:outsource fam gettext jpeg perl5 shared-mime-info shebangfix tar:xz
+USES=		cmake:outsource fam gettext perl5 pkgconfig shared-mime-info shebangfix tar:xz
 USE_OPENSSL=	yes
 USE_QT4=	corelib dbus declarative designer_build gui \
 		network opengl phonon qt3support \
@@ -53,7 +54,8 @@ CMAKE_ARGS+=	-DWITH_ACL:BOOL=Off \
 		-DWITH_UDev:BOOL=Off \
 		-DHUPNP_ENABLED:BOOL=On \
 		-DKDE_DISTRIBUTION_TEXT:STRING="${OPSYS}" \
-		-DKDE_DEFAULT_HOME:STRING=".kde4"
+		-DKDE_DEFAULT_HOME:STRING=".kde4" \
+		-DINCLUDE_INSTALL_DIR:PATH="${KDE4_PREFIX}/include/${KDE4_HEADER_PREFIX}"
 
 SHEBANG_FILES=	kdecore/kconfig_compiler/checkkcfg.pl \
 		kdeui/preparetips \
@@ -104,7 +106,7 @@ pre-configure:
 	${REINPLACE_CMD} -e '/macro_bool_to_01/ s|^.*X11_Xscreensaver.*$$|set(HAVE_XSCREENSAVER 0)|' \
 		${PATCH_WRKSRC}/CMakeLists.txt
 
-post-install:
+#post-install:
 # workaround for non-standard mime files and directories
 	${MKDIR} ${STAGEDIR}/${PREFIX}/share/mime/all \
 		${STAGEDIR}/${PREFIX}/share/mime/uri

@@ -1,5 +1,5 @@
 # Created by: Dima Panov <fluffy@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/www/py-qt4-webkit/Makefile 300897 2012-07-14 14:29:18Z beat $
 
 PORTNAME=	webkit
 CATEGORIES=	www devel python

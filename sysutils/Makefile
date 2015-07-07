@@ -250,6 +250,7 @@
     SUBDIR += ffs2recov
     SUBDIR += file
     SUBDIR += filedupe
+    SUBDIR += filelight
     SUBDIR += filelight-kde4
     SUBDIR += fileprune
     SUBDIR += fileschanged
@@ -439,6 +440,7 @@
     SUBDIR += kdf
     SUBDIR += kdirstat
     SUBDIR += keyboard-daemon
+    SUBDIR += kf5-kwallet
     SUBDIR += kfilemetadata
     SUBDIR += kfloppy
     SUBDIR += kiconvtool
@@ -709,6 +711,18 @@
     SUBDIR += pidof
     SUBDIR += pipemeter
     SUBDIR += plasma-applet-apcups
+    SUBDIR += plasma5-baloo
+    SUBDIR += plasma5-bluedevil
+    SUBDIR += plasma5-bluez-qt
+    SUBDIR += plasma5-kde-cli-tools
+    SUBDIR += plasma5-khelpcenter
+    SUBDIR += plasma5-kinfocenter
+    SUBDIR += plasma5-kmenuedit
+    SUBDIR += plasma5-ksysguard
+    SUBDIR += plasma5-libksysguard
+    SUBDIR += plasma5-muon
+    SUBDIR += plasma5-powerdevil
+    SUBDIR += plasma5-systemsettings
     SUBDIR += plconfig
     SUBDIR += pmt
     SUBDIR += policykit
@@ -734,10 +748,10 @@
     SUBDIR += pstacku
     SUBDIR += pstree
     SUBDIR += ptools
-    SUBDIR += puppet37
     SUBDIR += puppet
     SUBDIR += puppet-lint
     SUBDIR += puppet-mode.el
+    SUBDIR += puppet37
     SUBDIR += pv
     SUBDIR += pwd_unmkdb
     SUBDIR += pwgen
@@ -914,6 +928,7 @@
     SUBDIR += shlock
     SUBDIR += shmcat
     SUBDIR += sievelog
+    SUBDIR += signon-qt5
     SUBDIR += skill
     SUBDIR += slack
     SUBDIR += sleuthkit

@@ -6,6 +6,7 @@ PORTVERSION=	${KDE4_VERSION}
 CATEGORIES=	sysutils kde
 MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
+PORTREVISION=	1
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Core Nepomuk system libraries and services for KDE
@@ -15,7 +16,7 @@ LIB_DEPENDS=	libpoppler-qt4.so:${PORTSDIR}/graphics/poppler-qt4 \
 		libexiv2.so:${PORTSDIR}/graphics/exiv2 \
 		libswscale.so:${PORTSDIR}/multimedia/ffmpeg \
 		libepub.so:${PORTSDIR}/textproc/ebook-tools \
-		libqmobipocket.so:${PORTSDIR}/graphics/kdegraphics4-mobipocket
+		libqmobipocket.so:${PORTSDIR}/graphics/kdegraphics-mobipocket
 
 USE_KDE4=	kdeprefix automoc4 baloo kdelibs kfilemetadata \
 		ontologies soprano

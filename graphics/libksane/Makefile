@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	libksane
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	graphics kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
@@ -18,6 +18,6 @@ USE_LDCONFIG=	yes
 
 pre-configure:
 	${REINPLACE_CMD} -e '/pkgconfig/ s/$${LIB_INSTALL_DIR}/libdata/' \
-		${WRKSRC}/CMakeLists.txt
+		${WRKSRC}/libksane/CMakeLists.txt
 
 .include <bsd.port.mk>

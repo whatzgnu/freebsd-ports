@@ -1,0 +1,20 @@
+--- CMakeLists.txt.orig	2015-06-04 20:23:26 UTC
++++ CMakeLists.txt
+@@ -43,7 +43,6 @@ option(AKONADI_BUILD_QSQLITE "Build the 
+ option(ENABLE_ASAN "Build Akonadi with AddressSanitzer - https://code.google.com/p/address-sanitizer/" FALSE)
+ 
+ set(SMI_MIN_VERSION "0.20")
+-find_package(SharedMimeInfo ${SMI_MIN_VERSION} REQUIRED)
+ 
+ find_program(XSLTPROC_EXECUTABLE xsltproc)
+ if(NOT XSLTPROC_EXECUTABLE)
+@@ -239,9 +238,6 @@ add_subdirectory(autotests)
+ 
+ ############### install stuff ###############
+ 
+-install(FILES akonadi-mime.xml DESTINATION ${XDG_MIME_INSTALL_DIR})
+-update_xdg_mimetypes(${XDG_MIME_INSTALL_DIR})
+-
+ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ 
+ ############### CMake Config Files ###############

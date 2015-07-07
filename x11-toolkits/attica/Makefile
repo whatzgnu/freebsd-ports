@@ -1,11 +1,13 @@
 # Created by: Dima Panov <fluffy@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/x11-toolkits/attica/Makefile 363371 2014-07-29 18:41:15Z adamw $
 
 PORTNAME=	attica
 PORTVERSION=	0.4.2
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	x11-toolkits
-MASTER_SITES=	KDE/stable/${PORTNAME}
+MASTER_SITES=	${MASTER_SITE_KDE}
+MASTER_SITE_SUBDIR=	stable/${PORTNAME}
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Open Collaboration Services API library
@@ -21,6 +23,7 @@ post-patch:
 	${REINPLACE_CMD} \
 		-e 's,$${LIB_DESTINATION}/pkgconfig,libdata/pkgconfig,' \
 		-e 's,.$${CMAKE_LIBATTICA_VERSION_MINOR},,' \
+		-e 's,include/attica,include/attica4/attica,' \
 		${WRKSRC}/lib/CMakeLists.txt
 
 .include <bsd.port.mk>

@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/QT/www/qt5-webchannel/Makefile 10711 2015-05-31 12:53:54Z tcberner $
 
 PORTNAME=	webchannel
 DISTVERSION=	${QT5_VERSION}

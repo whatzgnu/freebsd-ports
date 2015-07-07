@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: ports/devel/xdg-user-dirs/Makefile,v 1.7 2011/09/23 22:22:15 amdmi3 Exp $
 
 PORTNAME=	xdg-user-dirs
 PORTVERSION=	0.15

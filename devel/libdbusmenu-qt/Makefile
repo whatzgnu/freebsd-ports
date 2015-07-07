@@ -1,5 +1,5 @@
 # Created by: Dima Panov <fluffy@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: ports/devel/libdbusmenu-qt/Makefile,v 1.8 2012/06/06 06:43:33 miwi Exp $
 
 PORTNAME=	libdbusmenu-qt
 PORTVERSION=	${MAJOR_VER}.${SNAPSHOT_VER:S/.//g}
@@ -31,7 +31,7 @@ DOXYGEN_CMAKE_OFF=	-DWITH_DOC:BOOL=FALSE
 DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
 .if defined(PACKAGE_BUILDING)
-OPTIONS_DEFAULT+=      DOXYGEN
+OPTIONS_DEFAULT+=	DOXYGEN
 .endif
 
 post-patch:

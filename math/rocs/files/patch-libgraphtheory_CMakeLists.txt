@@ -1,0 +1,12 @@
+--- libgraphtheory/CMakeLists.txt.orig	2015-06-24 12:17:48 UTC
++++ libgraphtheory/CMakeLists.txt
+@@ -115,7 +115,8 @@ install(TARGETS rocsgraphtheory  ${INSTA
+ install(FILES ${rocscore_LIB_HDRS}  DESTINATION ${INCLUDE_INSTALL_DIR}/rocs  COMPONENT Devel)
+ 
+ # Boost requires exceptions
+-kde_source_files_enable_exceptions(modifiers/topology.cpp)
++
++kde_source_files_enable_exceptions(modifiers/topology.cpp modifiers/valueassign.cpp)
+ 
+ ecm_optional_add_subdirectory(fileformats)
+ ecm_optional_add_subdirectory(editorplugins)

@@ -1,9 +1,11 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/KDE/devel/libkgapi/Makefile 10714 2015-05-31 13:01:36Z tcberner $
 
 PORTNAME=	libkgapi
 PORTVERSION=	2.2.0
+PORTREVISION=	5
 CATEGORIES=	devel kde
-MASTER_SITES=	KDE/stable/libkgapi/${PORTVERSION}/src
+MASTER_SITES=	${MASTER_SITE_KDE}
+MASTER_SITE_SUBDIR=	stable/libkgapi/${PORTVERSION}/src
 DIST_SUBDIR=	KDE
 
 MAINTAINER=	kde@FreeBSD.org

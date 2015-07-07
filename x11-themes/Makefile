@@ -90,6 +90,7 @@
     SUBDIR += icons-tango
     SUBDIR += icons-tango-extras
     SUBDIR += irssi-themes
+    SUBDIR += kde-base-artwork
     SUBDIR += kde-gtk-config
     SUBDIR += kde-icons-black-and-white
     SUBDIR += kde-icons-cezanne
@@ -104,9 +105,12 @@
     SUBDIR += kde-icons-noia
     SUBDIR += kde-icons-nuovext2
     SUBDIR += kde-icons-nuvola
+    SUBDIR += kde-icons-oxygen
     SUBDIR += kde-icons-sky
     SUBDIR += kde-icons-umicons
+    SUBDIR += kde-wallpapers
     SUBDIR += kde4-base-artwork
+    SUBDIR += kde4-breeze
     SUBDIR += kde4-icons-oxygen
     SUBDIR += kde4-style-bespin
     SUBDIR += kde4-style-nitrogen
@@ -118,6 +122,8 @@
     SUBDIR += kde4-windeco-crystal
     SUBDIR += kde4-windeco-dekorator
     SUBDIR += kdeartwork4
+    SUBDIR += kf5-kemoticons
+    SUBDIR += kf5-kiconthemes
     SUBDIR += linux-c6-hicolor-icon-theme
     SUBDIR += linux-f10-hicolor-icon-theme
     SUBDIR += linux-f10-qtcurve-gtk2
@@ -145,6 +151,10 @@
     SUBDIR += numix-theme
     SUBDIR += openbox-themes
     SUBDIR += plank-theme-moka
+    SUBDIR += plasma5-breeze
+    SUBDIR += plasma5-gtk-config
+    SUBDIR += plasma5-oxygen
+    SUBDIR += plasma5-plasma-workspace-wallpapers
     SUBDIR += qt4-style-float
     SUBDIR += qt4-style-phase
     SUBDIR += qt4-style-quantumstyle

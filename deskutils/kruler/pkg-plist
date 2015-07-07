@@ -1,8 +1,5 @@
 bin/kruler
-share/applications/kde4/kruler.desktop
-share/apps/kruler/kruler.notifyrc
-share/apps/kruler/sounds/move.wav
-share/doc/HTML/en/kruler/common
+share/applications/org.kde.kruler.desktop
 share/doc/HTML/en/kruler/index.cache.bz2
 share/doc/HTML/en/kruler/index.docbook
 share/doc/HTML/en/kruler/kruler-settings.png
@@ -21,4 +18,5 @@ share/icons/hicolor/22x22/apps/kruler.png
 share/icons/hicolor/32x32/apps/kruler.png
 share/icons/hicolor/48x48/apps/kruler.png
 share/icons/hicolor/64x64/apps/kruler.png
-share/icons/hicolor/scalable/apps/kruler.svgz
+share/knotifications5/kruler.notifyrc
+%%DATADIR%%/sounds/move.wav

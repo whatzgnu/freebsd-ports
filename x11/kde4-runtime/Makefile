@@ -1,15 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	kde-runtime
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	x11 kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Runtime components for KDE Plasma Desktop
 
 LIB_DEPENDS=	libIlmImf.so:${PORTSDIR}/graphics/OpenEXR \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libexiv2.so:${PORTSDIR}/graphics/exiv2 \
 		libwebp.so:${PORTSDIR}/graphics/webp \
 		libslp.so:${PORTSDIR}/net/openslp \
@@ -21,9 +22,9 @@ LIB_DEPENDS=	libIlmImf.so:${PORTSDIR}/graphics/OpenEXR \
 BUILD_DEPENDS=	${LOCALBASE}/lib/libssh.so:${PORTSDIR}/security/libssh
 RUN_DEPENDS=	cagibid:${PORTSDIR}/net/cagibi
 
-USE_KDE4=	kactivities kdelibs kdeprefix oxygen \
+USE_KDE4=	kactivities kdelibs kdeprefix icons-oxygen \
 		attica automoc4 pimlibs strigi nepomuk-core
-USES=		cmake:outsource gettext gmake jpeg shared-mime-info shebangfix tar:xz
+USES=		cmake:outsource gettext gmake shared-mime-info shebangfix tar:xz
 USE_QT4=	corelib dbus declarative designer_build gui phonon \
 		network qtestlib script svg webkit xml \
 		moc_build qmake_build rcc_build uic_build
@@ -34,7 +35,8 @@ SHEBANG_FILES=	khelpcenter/searchhandlers/*.pl \
 		khelpcenter/searchhandlers/*.pl.cmake \
 		kioslave/info/kde-info2html
 
-OPTIONS_DEFINE=	PULSEAUDIO ZEITGEIST
+OPTIONS_DEFINE=	PULSEAUDIO ZEITGEIST HELPCENTER
+OPTIONS_SUB=	YES
 
 PULSEAUDIO_DESC=Audio configuration via PulseAudio
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:${PORTSDIR}/audio/pulseaudio \
@@ -45,9 +47,19 @@ PULSEAUDIO_CMAKE_OFF=	-DWITH_PulseAudio:BOOL=OFF
 ZEITGEIST_DESC=	Event logging via Zeitgeist
 ZEITGEIST_RUN_DEPENDS=	zeitgeist-daemon:${PORTSDIR}/sysutils/zeitgeist
 
+# TODO everything that installs to share/doc and share/man2html
+#      was dropped from plist as it conflicts with plasma5-stuff
+#
+HELPCENTER_DESC=KDE4 helpcenter -- conflicts with plasmsa5-khelpcenter
+HELPCENTER_CONFLICTS=sysutils/plasma5-khelpcenter
+HELPCENTER_EXTRA_PATCHES_OFF=${FILESDIR}/extrapatch-no_helpcenter
+
 # Explicitly disable ALSA, see for details:
 # http://mail.kde.org/pipermail/kde-freebsd/2010-March/008015.html
 CMAKE_ARGS+=	-DWITH_ALSA:BOOL=OFF
+
+# Disable Doc build for now (conflicts with kf5)
+CMAKE_ARGS+=	-DBUILD_doc:BOOL=OFF
 
 post-extract:
 # Don't install share/icons/hicolor/index.theme to avoid conflcit with

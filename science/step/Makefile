@@ -1,21 +1,24 @@
 # $FreeBSD$
 
 PORTNAME=	step
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	science kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	KDE 4 interactive physics simulator
+COMMENT=	KDE interactive physics simulator
 
-BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/eigen2.pc:${PORTSDIR}/math/eigen2
+BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/eigen3.pc:${PORTSDIR}/math/eigen3
 LIB_DEPENDS=	libqalculate.so:${PORTSDIR}/math/libqalculate \
 		libgsl.so:${PORTSDIR}/math/gsl
 
-USE_KDE4=	kdelibs kdeprefix automoc4
-USES=		cmake:outsource pkgconfig tar:xz
-USE_QT4=	opengl moc_build qmake_build rcc_build uic_build
+USE_KDE5=	config doctools ecm emoticons init itemmodels \
+		kdelibs4support khtml newstuff plotting
+USES=		cmake:outsource gettext pkgconfig tar:xz
+USE_QT5=	buildtools_build core gui network opengl \
+		printsupport qmake_build qml quick svg \
+		widgets xml
 
 pre-configure:
 # Avoid building translations, should the user pass

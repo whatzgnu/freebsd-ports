@@ -1,10 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	kstars
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	2
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	astro kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
@@ -16,9 +15,14 @@ BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/eigen3.pc:${PORTSDIR}/math/eigen3 
 		xplanet:${PORTSDIR}/astro/xplanet
 RUN_DEPENDS=	xplanet:${PORTSDIR}/astro/xplanet
 
-USE_KDE4=	kdelibs kdeprefix automoc4
-USES=		cmake:outsource compiler:c++11-lib tar:xz
-USE_QT4=	opengl qmake_build moc_build rcc_build uic_build
+USE_KDE5=	config dbusaddons doctools ecm guiaddons \
+		i18n iconthemes init jobwidgets kio \
+		newstuff plotting texteditor \
+		widgetsaddons windowsystem xmlgui
+USES=		cmake:outsource gettext compiler:c++11-lib tar:xz
+USE_QT5=	buildtools_build core gui multimedia \
+		network opengl printsupport qmake_build \
+		qml quick sql svg widgets xml
 
 OPTIONS_DEFINE=	PYKDE
 

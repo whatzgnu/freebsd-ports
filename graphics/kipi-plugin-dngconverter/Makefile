@@ -10,5 +10,5 @@ COMMENT=	${${KIPI_PLUGIN}_DESC}
 LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2
 
 KIPI_PLUGIN=	dngconverter
-.include "${.CURDIR}/../digikam-kde4/Makefile.common"
+.include "${.CURDIR}/../digikam/Makefile.common"
 .include <bsd.port.mk>

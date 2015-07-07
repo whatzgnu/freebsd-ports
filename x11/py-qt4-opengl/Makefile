@@ -1,5 +1,5 @@
 # Created by: Danny Pansters <danny@ricin.com>
-# $FreeBSD$
+# $FreeBSD: head/x11/py-qt4-opengl/Makefile 300897 2012-07-14 14:29:18Z beat $
 
 PORTNAME=	opengl
 PORTEPOCH=	1
