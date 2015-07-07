@@ -1,0 +1,237 @@
+20141019:
+  AFFECTS: users of x11/kde4-runtime
+  AUTHOR: kde@FreeBSD.org
+
+  KDE SC ports have been updated to 4.14.2. Several files have been
+  moved between packages, therefore the following action is required
+  before running any pkg/port upgrade utility:
+
+  # pkg delete -f kde-runtime-4\*
+
+20140218:
+  AFFECTS: users of KDE SC 4
+  AUTHOR: kde@FreeBSD.org
+
+  KDE SC ports have been updated to 4.12.2. kdeadmin, kdenetwork, kdesdk,
+  and kdetoys ports have been split due to upstream changes.
+
+  KDE Workspace port has been updated to 4.11.6. It requires modern
+  Mesa libraries, provided by WITH_NEW_XORG knob. To update Xorg ports
+  to newer version follow instructions at https://wiki.freebsd.org/Graphics
+
+20140218:
+  AFFECTS: users of misc/kdehier4
+  AUTHOR: kde@FreeBSD.org
+
+  KDE4_PREFIX has been changed from /usr/local/kde4 to /usr/local.
+  All ports that depends on kdehier4 must be reinstalled.
+  PORTREVISION for affected ports has been increased, upgrading tools
+  (portmaster, pkg) should handle this update without manual intervention.
+  Please check /usr/local/kde4 for leftovers after upgrade. If you don't
+  have locally modified files, e.g. under /usr/local/kde4/etc, you may
+  safely remove /usr/local/kde4.
+
+20130318:
+  AFFECTS: users of KDE SC 4
+  AUTHOR: kde@FreeBSD.org
+  KDE SC ports have been updated to 4.10.1. kdelibs4 does no longer
+  directly use aspell or hspell, to regain their functionallity enable
+  the corresponding option in textproc/enchant.
+  A number of ports have been split and must be deinstalled before
+  upgrading:
+
+  # pkg_delete -f kdegames-4\* kde-workspace-4\* kde-wallpapers-4\*
+
+20130128:
+  AFFECTS: users of KDE SC 4
+  AUTHOR: kde@FreeBSD.org
+  KDE SC ports have been updated to 4.9.5. kdemultimedia4, kdenetwork4,
+  kde-runtime and kde-workspace ports have been split, they must be
+  deinstalled before running any port upgrade tool:
+
+  # pkg_delete -f kdemultimedia-4\* kdenetwork-4\* \
+    kde-workspace-4\* kde-runtime-4\*
+
+20120419:
+  AFFECTS: users of x11-toolkits/qt4-gui
+  AUTHOR: kde@FreeBSD.org
+
+  Qt started using the raster graphics system engine, which relies on
+  shared memory. Be sure to check pkg-message.
+
+20120405:
+  AFFECTS: users of deskutils/kdepim4, deskutils/kdepim4-runtime
+  AUTHOR: kde@FreeBSD.org
+
+  kdepim4 has been updated to 4.8.2. For those who prefer old
+  kdepim-4.4.11.1 deskutils/kdepim44* ports have been added.
+  To stay with kdepim-4.4.11.1 run the following commands:
+
+  # portmaster -o deskutils/kdepim44-runtime kdepim-runtime-4\*
+  # portmaster -o deskutils/kdepim44 kdepim-4\*
+
+20120405:
+  AFFECTS: users of KDE SC 4
+  AUTHOR: kde@FreeBSD.org
+
+  KDE SC ports have been updated to 4.8.2. Several ports were split,
+  thus manual intervention into update procedure is required:
+
+  # pkg_delete -f kde-runtime-\* ruby\*-kdebindings-korundum\* \
+    kalgebra-4\* kdeaccessibility-4\* kdeutils-4\* kde-baseapps-\* \
+    plasma-applet-icontasks\*
+  # portmaster -a
+
+20110915:
+  AFFECTS: users of KDE SC 4
+  AUTHOR: kde@FreeBSD.org
+
+  KDE SC has been updated to 4.7.2. A number of files were moved between
+  packages and several ports were split, thus manual intervention into
+  update procedure is required:
+
+  # pkg_delete -f raptor-1\* kdelibs-4\* kdebase-\*4\* \
+    kdeaccessibility-4\* kdeedu-4\* kdegames-4\* kdegraphics-4\* \
+    kdesdk-4\* kdeutils-4\* konq-plugins-4\* ktts\* nepomukcontroller\* \
+    ruby\*-kdebindings\* kdebindings-smoke\*
+  # pkg_delete -f kdehier4\*
+  # mv /usr/local/kde4/etc/pam.d/* \
+    /usr/local/etc/pam.d/
+  # mv /usr/local/kde4/etc/rc.d/* \
+    /usr/local/etc/rc.d/
+  # mv /usr/local/kde4/share/dbus-1/services/* \
+    /usr/local/share/dbus-1/services/
+  # mv /usr/local/kde4/share/dbus-1/system-services/* \
+    /usr/local/share/dbus-1/system-services/
+  # rmdir /usr/local/kde4/etc/pam.d /usr/local/kde4/etc/rc.d \
+    /usr/local/kde4/share/dbus-1/*services
+  # rm -r /var/tmp/kdecache-*
+  # portmaster misc/kdehier4
+
+  If you have - or plan to install - net/kdenetwork4, also run:
+
+  # portmaster -o net/linphone-base ortp
+
+  Finally:
+
+  # portmaster -a
+
+  Also, remove /usr/local/kde4/etc/rc.d from local_startup in rc.conf(5).
+  Failure to do this will cause all enabled scripts in /usr/local/etc/rc.d
+  to be started twice.
+
+  Remember to check for missing ports, bearing in mind that x11/kdebase4*
+  ports were replaced by x11/kde4-* ones, ktts was replaced by jovie, while
+  konq-plugins-kde4 and nepomukcontroller were removed. Then:
+
+  # portmaster --check-depends
+
+  You're also encouraged to run `pkg_cutleaves` or similar to check for
+  orphaned ports.
+
+  Please, note that `pkg_add -r kde4` will not install Plasma scriptengines
+  and printer utilities by default anymore, and `pkg_add -r kdegames4` will
+  not install Kajongg. This was made to avoid depending by default on
+  kdebindings.
+
+20110324:
+  AFFECTS: users of KDE SC 4
+  AUTHOR: kde@FreeBSD.org
+
+  KDE SC ports have been updated to 4.6.1. As usual a number of files were
+  moved between packages, manual intervention into update procedure is
+  required:
+
+  # pkg_delete -f kdehier4\* kdebase-runtime-4\* kdebase-workspace-4\*
+  # pkg_delete -f kdeedu-4\* kdeutils-4\*
+  # portmaster -a
+
+20100901:
+  AFFECTS: users of KDE4
+  AUTHOR: kde@FreeBSD.org
+
+  KDE SC ports has been updated to 4.5.1. A number of files were moved
+  between packages, manual intervention into update procedure is required:
+
+  # pkg_delete -f kdehier4\* kdelibs-4\* kdebase-4\* kdebase-runtime-4\* kdebase-workspace-4\*
+  # rm -rf /usr/local/kde4/share/PolicyKit/policy
+  # cd /usr/ports/misc/kdehier4 && make install clean
+  # portmaster -a
+
+20100331
+  AFFECTS: users of multimedia/qt4-phonon, multimedia/qt4-phonon-gst,
+  multimedia/phonon and multimedia/phonon-gstreamer
+  AUTHOR: kde@FreeBSD.org
+
+  multimedia/phonon* ports are installed by default now.
+  WITH_KDE_PHONON was removed in favour of WITH_QT_PHONON.
+
+20100220:
+  AFFECTS: users of KDE4
+  AUTHOR: kde@FreeBSD.org
+
+  KDE SC 4.4.0 require x11/kdelibs4-experimental should be removed first,
+  libknotificationitem was integrated to kdelibs4
+
+20100209:
+  AFFECTS: users of KDE4
+  AUTHOR: kde@FreeBSD.org
+
+  KDE SC 4.4.0 require databases/virtuoso installed (not running) to have
+  Nepomuk semantic desktop search enabled
+
+20100209:
+  AFFECTS: users of KDE4
+  AUTHOR: kde@FreeBSD.org
+
+  In KDE SC 4.4.0 many libraries was moved between packages.
+  The recommended update procedure is to delete kdebase-*4*, kdepim-4*,
+  then update ports as usual and install desirable  KDE4 ports:
+
+  # pkg_delete -f kdebase-\*4\* kdepim-\*4\*
+  # portmaster -a (or portupgrade -aR)
+
+20100209:
+  AFFECTS: users of textproc/redland RDF engine
+  AUTHOR: kde@FreeBSD.org
+
+  Redland RDF engine was split into redland itself and rasqal engine
+  and update to new version, with shared libs bump.
+  The recommended update procedure is to delete redland,
+  then update ports as usual and install desirable rdf ports:
+
+  # pkg_delete -f redland-\*
+  # portmaster raptor (or portupgrade -r raptor)
+
+20100108
+  AFFECTS: users of multimedia/qt4-phonon, multimedia/qt4-phonon-gst,
+  multimedia/phonon and multimedia/phonon-gstreamer
+  AUTHOR: kde@FreeBSD.org
+
+  Upcoming KDE 4.4.0 requires newer phonon than shipped with Qt 4.6.1.
+  To override Qt4 phonon set WITH_KDE_PHONON=yes in your /etc/make.conf
+  and replace Qt4 ports:
+
+  If you use portmaster:
+
+  portmaster -o multimedia/phonon multimedia/qt4-phonon
+  portmaster -o multimedia/phonon-gstreamer multimedia/qt4-phonon-gst
+
+  If you use portupgrade:
+
+  portupgrade -f -o multimedia/phonon multimedia/qt4-phonon
+  portupgrade -f -o multimedia/phonon-gstreamer multimedia/qt4-phonon-gst
+
+20091210:
+  AFFECTS: users of unixODBC and QT4
+  AUTHOR: kde@FreeBSD.org
+
+  trunk/area51 is now required libiodbc as ODBC provider instead of unixODBC
+  It needs to get a virtuoso/iodbc backends for nepomuk (desktop search system)
+
+20091003:
+  AFFECTS:
+  AUTHOR: kde@FreeBSD.org
+
+  trunk/area51 is now split into area51/QT and area51/KDE
+
