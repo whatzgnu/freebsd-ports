@@ -114,6 +114,7 @@
     SUBDIR += kactivitymanagerd
     SUBDIR += kb2mb2
     SUBDIR += kbproto
+    SUBDIR += kde-baseapps
     SUBDIR += kde4
     SUBDIR += kde4-baseapps
     SUBDIR += kde4-runtime
@@ -124,6 +125,16 @@
     SUBDIR += keyboardcast
     SUBDIR += keylaunch
     SUBDIR += keynav
+    SUBDIR += kf5-frameworkintegration
+    SUBDIR += kf5-frameworks
+    SUBDIR += kf5-kactivities
+    SUBDIR += kf5-kded
+    SUBDIR += kf5-kdelibs4support
+    SUBDIR += kf5-kglobalaccel
+    SUBDIR += kf5-kinit
+    SUBDIR += kf5-krunner
+    SUBDIR += kf5-kwindowsystem
+    SUBDIR += kf5-plasma-framework
     SUBDIR += kgamma
     SUBDIR += konsole
     SUBDIR += leechcraft
@@ -231,6 +242,11 @@
     SUBDIR += pixman
     SUBDIR += plasma-scriptengine-python
     SUBDIR += plasma-scriptengine-ruby
+    SUBDIR += plasma5-kwayland
+    SUBDIR += plasma5-libkscreen
+    SUBDIR += plasma5-plasma
+    SUBDIR += plasma5-plasma-desktop
+    SUBDIR += plasma5-plasma-workspace
     SUBDIR += presentproto
     SUBDIR += printproto
     SUBDIR += printscreen
@@ -298,6 +314,7 @@
     SUBDIR += videoproto
     SUBDIR += viewres
     SUBDIR += virtualgl
+    SUBDIR += wayland
     SUBDIR += wbar
     SUBDIR += wbarconf
     SUBDIR += wdm

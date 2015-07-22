@@ -334,6 +334,8 @@
     SUBDIR += jshon
     SUBDIR += kdiff3
     SUBDIR += kenlm
+    SUBDIR += kf5-kcodecs
+    SUBDIR += kf5-sonnet
     SUBDIR += kibana
     SUBDIR += kmfl-european-latin
     SUBDIR += kmfl-khmer

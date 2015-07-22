@@ -456,6 +456,7 @@
     SUBDIR += kbounce
     SUBDIR += kbreakout
     SUBDIR += kcheckers
+    SUBDIR += kdegames
     SUBDIR += kdegames4
     SUBDIR += kdiamond
     SUBDIR += kevedit
@@ -511,7 +512,9 @@
     SUBDIR += libfov
     SUBDIR += libggz
     SUBDIR += libkdegames
+    SUBDIR += libkdegames4
     SUBDIR += libkmahjongg
+    SUBDIR += libkmahjongg4
     SUBDIR += libmaitretarot
     SUBDIR += libmt_client
     SUBDIR += libshhcards

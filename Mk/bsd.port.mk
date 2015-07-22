@@ -396,7 +396,7 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 ##
 # USE_KDE4		- A list of the KDE 4 dependencies the port has (e.g.,
 #				  kdelibs, kdebase).  Implies that the port needs KDE.
-#				  Implies inclusion of bsd.kde4.mk.  See bsd.kde4.mk
+#				  Implies inclusion of bsd.kde.mk.  See bsd.kde.mk
 #				  for more details.
 #
 # USE_QT4		- A list of the Qt 4 dependencies the port has (e.g,
@@ -1416,8 +1416,8 @@ PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 .include "${PORTSDIR}/Mk/bsd.sdl.mk"
 .endif
 
-.if defined(USE_KDE4) || defined(KDE4_BUILDENV)
-.include "${PORTSDIR}/Mk/bsd.kde4.mk"
+.if defined(USE_KDE4) || defined(KDE4_BUILDENV) || defined(USE_KDE5) || defined(KDE5_BUILDENV)
+.include "${PORTSDIR}/Mk/bsd.kde.mk"
 .endif
 
 .if !defined(UID)
@@ -1879,8 +1879,8 @@ _FORCE_POST_PATTERNS=	rmdir kldxref mkfontscale mkfontdir fc-cache \
 .include "${PORTSDIR}/Mk/bsd.mate.mk"
 .endif
 
-.if defined(USE_KDE4)
-.include "${PORTSDIR}/Mk/bsd.kde4.mk"
+.if defined(USE_KDE4) || defined(USE_KDE5)
+.include "${PORTSDIR}/Mk/bsd.kde.mk"
 .endif
 
 .if exists(${PORTSDIR}/Makefile.inc)

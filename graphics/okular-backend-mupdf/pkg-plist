@@ -1,0 +1,4 @@
+lib/kde4/okularGenerator_mupdf.so
+share/applications/kde4/okularApplication_mupdf.desktop
+share/kde4/services/libokularGenerator_mupdf.desktop
+share/kde4/services/okularMupdf.desktop

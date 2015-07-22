@@ -1,5 +1,5 @@
 # Created by: lofi@FreeBSD.org, mi@aldan.algebra.com
-# $FreeBSD$
+# $FreeBSD: head/devel/qmake4/Makefile 312209 2013-02-14 09:42:12Z gahr $
 
 PORTNAME=	qmake
 DISTVERSION=	${QT4_VERSION}

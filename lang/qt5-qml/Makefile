@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/QT/lang/qt5-qml/Makefile 10442 2014-10-23 15:47:31Z rakuco $
 
 PORTNAME=	qml
 DISTVERSION=	${QT5_VERSION}

@@ -1,0 +1,21 @@
+--- CMakeLists.txt.orig	2015-04-22 00:17:12 UTC
++++ CMakeLists.txt
+@@ -5,7 +5,8 @@ cmake_minimum_required(VERSION 2.6)
+ 
+ find_package(PkgConfig REQUIRED)
+ pkg_check_modules(OPENJPEG2 REQUIRED libopenjp2)
+-pkg_check_modules(OPENSSL REQUIRED openssl)
++# pkg_check_modules(OPENSSL REQUIRED openssl)
++
+ 
+ find_package(KDE4 REQUIRED)
+ find_package(Okular REQUIRED)
+@@ -32,7 +33,7 @@ kde4_add_plugin(okularGenerator_mupdf ${
+ 
+ target_link_libraries(okularGenerator_mupdf
+ 	${OKULAR_LIBRARIES} ${KDE4_KDEUI_LIBS} ${QT_QTXML_LIBRARY}
+-	mupdf mujs
++	mupdf_pic
+ 	${ZLIB_LIBRARIES} ${FREETYPE_LIBRARIES} ${JBIG2DEC_LIBRARIES}
+ 	${JPEG_LIBRARIES} ${OPENJPEG2_LIBRARIES} ${OPENSSL_LIBRARIES}
+ )

@@ -1,0 +1,10 @@
+lib/kde4/kipiplugin_dlnaexport.so
+share/apps/kipi/kipiplugin_dlnaexportui.rc
+share/apps/kipiplugin_dlnaexport/xml/dlnaexport_connectionmanager_source_scpd.xml
+share/apps/kipiplugin_dlnaexport/xml/dlnaexport_contentdirectory_scpd.xml
+share/apps/kipiplugin_dlnaexport/xml/dlnaexport_mediaserver_description.xml
+share/icons/hicolor/16x16/apps/kipi-dlna.png
+share/icons/hicolor/32x32/apps/kipi-dlna.png
+share/icons/hicolor/48x48/apps/kipi-dlna.png
+share/icons/hicolor/64x64/apps/kipi-dlna.png
+share/kde4/services/kipiplugin_dlnaexport.desktop

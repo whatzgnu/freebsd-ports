@@ -1,18 +1,32 @@
+# Created by: Tobias Berner <tcberner@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	konsole
-PORTVERSION=	${KDE4_VERSION}
-CATEGORIES=	x11 kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	x11 kde # kde-applications
+COMMENT=	konsole
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
-MAINTAINER=	kde@FreeBSD.org
-COMMENT=	KDE terminal emulator
+USES=           tar:xz cmake gettext pkgconfig
+USE_QT5=	buildtools_build core dbus gui qmake_build script scripttools sql widgets
+USE_KDE5=	ecm emoticons i18n iconthemes init itemmodels \
+		kdelibs4support kdeprefix kio notifications \
+		notifyconfig parts pty service textwidgets \
+		widgetsaddons windowsystem xmlgui
 
-USE_KDE4=	kdelibs kdeprefix automoc4 libkonq
-USES=		cmake:outsource tar:xz
-USE_QT4=	xml moc_build qmake_build rcc_build uic_build
-USE_XORG=	x11 xrender
-CMAKE_ARGS+=	-DCMAKE_REQUIRED_FLAGS:STRING="-L${LOCALBASE}/lib"
+# TODO: kinfog_getfile
+LDFLAGS+=	-lutil
+
+OPTIONS_DEFINE=	DOCS
+OPTIONS_SUB=	YES
+
+# Handle DOCS & NLS option and add dependencies
+.include <bsd.port.options.mk>
+.if ${PORT_OPTIONS:MDOCS}
+BUILD_DEPENDS=	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:${PORTSDIR}/textproc/docbook-xsl \
+		docbook-xml>0:${PORTSDIR}/textproc/docbook-xml
+.endif
 
 .include <bsd.port.mk>
+

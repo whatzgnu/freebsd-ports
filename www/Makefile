@@ -369,6 +369,10 @@
     SUBDIR += kannel-sqlbox
     SUBDIR += kcgi
     SUBDIR += kdewebdev4
+    SUBDIR += kf5-kdewebkit
+    SUBDIR += kf5-khtml
+    SUBDIR += kf5-kjs
+    SUBDIR += kf5-kjsembed
     SUBDIR += kpartsplugin
     SUBDIR += kplaylist
     SUBDIR += kwebkitpart
@@ -580,6 +584,7 @@
     SUBDIR += oscommerce
     SUBDIR += otrs
     SUBDIR += otter-browser
+    SUBDIR += otter-browser-devel
     SUBDIR += owncloud
     SUBDIR += p5-AMF-Perl
     SUBDIR += p5-Acme-Monta
@@ -1553,12 +1558,12 @@
     SUBDIR += py-django-tagging
     SUBDIR += py-django-taggit
     SUBDIR += py-django-tastypie
-    SUBDIR += py-django16-tastypie
     SUBDIR += py-django-threaded-multihost
     SUBDIR += py-django-tinymce
     SUBDIR += py-django-voting
     SUBDIR += py-django14
     SUBDIR += py-django16
+    SUBDIR += py-django16-tastypie
     SUBDIR += py-django17
     SUBDIR += py-django_compressor
     SUBDIR += py-djangotoolbox

@@ -1,5 +1,5 @@
 # Created by: Tobias C. Berner <tcberner@gmail.com>
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/PORTS/net-im/libaccounts-glib/Makefile 10845 2015-07-03 20:40:37Z rakuco $
 
 PORTNAME=	libaccounts-glib
 PORTVERSION=	1.18

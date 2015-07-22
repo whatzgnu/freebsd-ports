@@ -1,6 +1,5 @@
 bin/ktimer
-share/applications/kde4/ktimer.desktop
-share/doc/HTML/en/ktimer/common
+share/applications/org.kde.ktimer.desktop
 share/doc/HTML/en/ktimer/first.png
 share/doc/HTML/en/ktimer/index.cache.bz2
 share/doc/HTML/en/ktimer/index.docbook

@@ -1,8 +1,8 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/KDE/net-p2p/libktorrent/Makefile 10672 2015-04-25 19:17:13Z tcberner $
 
 PORTNAME=	libktorrent
 DISTVERSION=	1.3.1
-PORTREVISION=	7
+PORTREVISION=	8	
 CATEGORIES=	net-p2p kde
 MASTER_SITES=	http://ktorrent.org/downloads/${DISTVERSION:C,^1,4,:C,-.*,,}/
 

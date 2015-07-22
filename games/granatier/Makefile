@@ -1,18 +1,19 @@
 # $FreeBSD$
 
 PORTNAME=	granatier
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	games kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	${${PORTNAME}_DESC}
 
-USE_KDE4=	kdelibs kdeprefix libkdegames automoc4
-USES=		cmake:outsource tar:xz
-USE_QT4=	corelib gui xml \
-		moc_build qmake_build rcc_build uic_build
+USE_KDE5=	config coreaddons dbusaddons ecm guiaddons i18n iconthemes \
+		itemviews kio libkdegames newstuff notifyconfig widgetsaddons \
+		xmlgui
+USES=		cmake:outsource gettext tar:xz
+USE_QT5=	core gui xml buildtools_build qmake_build widgets svg qml quick
 
-.include <${.CURDIR}/../kdegames4/Makefile.common>
+.include <${.CURDIR}/../kdegames/Makefile.common>
 .include <bsd.port.mk>

@@ -1,0 +1,43 @@
+We do have x11-wm/plasma5-kwayland -- but we do not have enough wayland bits
+to actually build and run kwin with wayland. So we have to patch it out (or else
+updates of kwin will fail, as wayland is picked up, and not supported paths are
+tried to be built).
+
+
+--- CMakeLists.txt.orig	2015-04-23 10:08:00 UTC
++++ CMakeLists.txt
+@@ -223,7 +223,6 @@ endif()
+ # Binary name of KWin
+ set(KWIN_NAME "kwin")
+ set(KWIN_INTERNAL_NAME_X11 "kwin_x11")
+-set(KWIN_INTERNAL_NAME_WAYLAND "kwin_wayland")
+ set(KWIN_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ if(KWIN_PLASMA_ACTIVE)
+@@ -265,23 +264,9 @@ include_directories(${epoxy_INCLUDE_DIR}
+ # for things that are also used by kwin libraries
+ configure_file(libkwineffects/kwinconfig.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/libkwineffects/kwinconfig.h )
+ # for kwin internal things
+-if(XKB_FOUND AND KF5Wayland_FOUND)
+-    set(HAVE_WAYLAND TRUE)
+-    set(HAVE_XKB ${XKB_FOUND})
+-    if (KWIN_HAVE_EGL)
+-        set(HAVE_WAYLAND_EGL ${Wayland_Egl_FOUND})
+-    else()
+-        set(HAVE_WAYLAND_EGL FALSE)
+-    endif()
+-    set(HAVE_WAYLAND_CURSOR ${Wayland_Cursor_FOUND})
+-    set(HAVE_X11_XCB ${X11_XCB_FOUND})
+-else()
+-    set(HAVE_WAYLAND FALSE)
+-    set(HAVE_XKB FALSE)
+-    set(HAVE_WAYLAND_EGL FALSE)
+-    set(HAVE_WAYLAND_CURSOR FALSE)
+-    set(HAVE_X11_XCB FALSE)
+-endif()
++set(HAVE_WAYLAND FALSE)
++set(HAVE_WAYLAND_EGL FALSE)
++set(HAVE_WAYLAND_CURSOR FALSE)
+ 
+ if(XCB_CURSOR_FOUND)
+     set(HAVE_XCB_CURSOR ${XCB_CURSOR_FOUND})

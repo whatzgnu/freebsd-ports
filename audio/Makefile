@@ -679,6 +679,7 @@
     SUBDIR += sidplay
     SUBDIR += sidplay2
     SUBDIR += sidplayer
+    SUBDIR += simon
     SUBDIR += simplemod
     SUBDIR += siren
     SUBDIR += skype-call-recorder

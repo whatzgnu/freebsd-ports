@@ -1,5 +1,5 @@
 # Created by: Danny Pansters <danny@ricin.com>
-# $FreeBSD$
+# $FreeBSD: head/textproc/py-qt4-xml/Makefile 300897 2012-07-14 14:29:18Z beat $
 
 PORTNAME=	xml
 PORTEPOCH=	1

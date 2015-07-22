@@ -1,10 +1,11 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/KDE/net/libkfbapi/Makefile 10672 2015-04-25 19:17:13Z tcberner $
 
 PORTNAME=	libkfbapi
 PORTVERSION=	1.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	net kde
-MASTER_SITES=	KDE/stable/libkfbapi/${PORTVERSION}/src
+MASTER_SITES=	${MASTER_SITE_KDE}
+MASTER_SITE_SUBDIR=	stable/libkfbapi/${PORTVERSION}/src
 DIST_SUBDIR=	KDE
 
 MAINTAINER=	kde@FreeBSD.org

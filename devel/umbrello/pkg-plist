@@ -1,4 +1,6 @@
+bin/po2xmi
 bin/umbrello
+bin/xmi2pot
 share/applications/kde4/umbrello.desktop
 share/apps/umbrello/common.ent
 share/apps/umbrello/docbook2xhtml.xsl
@@ -206,10 +208,10 @@ share/doc/HTML/en/umbrello/authors.docbook
 share/doc/HTML/en/umbrello/category.png
 share/doc/HTML/en/umbrello/class-diagram.png
 share/doc/HTML/en/umbrello/class.png
-share/doc/HTML/en/umbrello/common
 share/doc/HTML/en/umbrello/code-import.png
 share/doc/HTML/en/umbrello/code_import_and_generation.docbook
 share/doc/HTML/en/umbrello/collaboration-diagram.png
+share/doc/HTML/en/umbrello/common
 share/doc/HTML/en/umbrello/composition.png
 share/doc/HTML/en/umbrello/credits.docbook
 share/doc/HTML/en/umbrello/disjoint-specialization.png

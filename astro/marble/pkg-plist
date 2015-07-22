@@ -16,6 +16,7 @@ include/marble/AbstractFloatItem.h
 include/marble/AbstractMarbleGraphicsLayout.h
 include/marble/AbstractProjection.h
 include/marble/AbstractWorkerThread.h
+include/marble/AddLinkDialog.h
 include/marble/AlternativeRoutesModel.h
 include/marble/AutoNavigation.h
 include/marble/BillboardGraphicsItem.h
@@ -25,8 +26,10 @@ include/marble/CurrentLocationWidget.h
 include/marble/DialogConfigurationInterface.h
 include/marble/DownloadRegion.h
 include/marble/DownloadRegionDialog.h
+include/marble/EditPlacemarkDialog.h
 include/marble/ElevationModel.h
 include/marble/FileViewWidget.h
+include/marble/FlyToEditWidget.h
 include/marble/FrameGraphicsItem.h
 include/marble/GeoDataAbstractView.h
 include/marble/GeoDataAccuracy.h
@@ -105,7 +108,9 @@ include/marble/NavigationWidget.h
 include/marble/ParseRunnerPlugin.h
 include/marble/ParsingRunner.h
 include/marble/ParsingRunnerManager.h
+include/marble/PlacemarkEditHeader.h
 include/marble/Planet.h
+include/marble/PlanetFactory.h
 include/marble/PluginAboutDialog.h
 include/marble/PluginInterface.h
 include/marble/PluginManager.h
@@ -114,6 +119,7 @@ include/marble/PositionProviderPluginInterface.h
 include/marble/PositionTracking.h
 include/marble/QtMarbleConfigDialog.h
 include/marble/Quaternion.h
+include/marble/RemoveItemEditWidget.h
 include/marble/RenderPlugin.h
 include/marble/RenderPluginInterface.h
 include/marble/RenderState.h
@@ -135,6 +141,7 @@ include/marble/SearchRunner.h
 include/marble/SearchRunnerManager.h
 include/marble/SearchRunnerPlugin.h
 include/marble/Serializable.h
+include/marble/SoundCueEditWidget.h
 include/marble/SunLocator.h
 include/marble/TileCoordsPyramid.h
 include/marble/TileCreator.h
@@ -142,9 +149,12 @@ include/marble/TileCreatorDialog.h
 include/marble/TileId.h
 include/marble/TileLevelRangeWidget.h
 include/marble/TinyWebBrowser.h
+include/marble/TourControlEditWidget.h
+include/marble/TourItemDelegate.h
 include/marble/TourPlayback.h
 include/marble/TourWidget.h
 include/marble/ViewportParams.h
+include/marble/WaitEditWidget.h
 include/marble/WidgetGraphicsItem.h
 include/marble/geodata_export.h
 include/marble/global.h
@@ -198,13 +208,11 @@ lib/kde4/plugins/marble/OpenRouteServicePlugin.so
 lib/kde4/plugins/marble/OsmPlugin.so
 lib/kde4/plugins/marble/OverviewMap.so
 lib/kde4/plugins/marble/Photo.so
-lib/kde4/plugins/marble/PlacemarkPositionProviderPlugin.so
 lib/kde4/plugins/marble/Pn2Plugin.so
 lib/kde4/plugins/marble/PntPlugin.so
 lib/kde4/plugins/marble/PositionMarker.so
 lib/kde4/plugins/marble/PostalCode.so
 lib/kde4/plugins/marble/ProgressFloatItem.so
-lib/kde4/plugins/marble/RouteSimulationPositionProviderPlugin.so
 lib/kde4/plugins/marble/RoutingPlugin.so
 lib/kde4/plugins/marble/RoutinoPlugin.so
 lib/kde4/plugins/marble/SatellitesPlugin.so
@@ -218,8 +226,8 @@ lib/libastro.so
 lib/libastro.so.0.17.20
 lib/libastro.so.1
 lib/libmarblewidget.so
-lib/libmarblewidget.so.0.19.2
-lib/libmarblewidget.so.19
+lib/libmarblewidget.so.0.21.3
+lib/libmarblewidget.so.21
 %%QT_IMPORTDIR%%/org/kde/edu/marble/MarbleSettings.qml
 %%QT_IMPORTDIR%%/org/kde/edu/marble/libMarbleDeclarativePlugin.so
 %%QT_IMPORTDIR%%/org/kde/edu/marble/qmldir
@@ -357,6 +365,8 @@ share/apps/marble/data/bitmaps/poi/transport_train_station.p.16.png
 share/apps/marble/data/bitmaps/poi/transport_tram_stop.p.16.png
 share/apps/marble/data/bitmaps/pole_1.png
 share/apps/marble/data/bitmaps/pole_2.png
+share/apps/marble/data/bitmaps/redflag_22.png
+share/apps/marble/data/bitmaps/redflag_32.png
 share/apps/marble/data/bitmaps/river.png
 share/apps/marble/data/bitmaps/robotic_rover.png
 share/apps/marble/data/bitmaps/routing_pick.png
@@ -669,6 +679,35 @@ share/apps/marble/data/maps/earth/clouds/0/000000/000000_000000.jpg
 share/apps/marble/data/maps/earth/clouds/0/000000/000000_000001.jpg
 share/apps/marble/data/maps/earth/hillshading/0/0/0.png
 share/apps/marble/data/maps/earth/openstreetmap/0/0/0.png
+share/apps/marble/data/maps/earth/openstreetmap/Alcatraz.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Brasilia.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Church of the Holy Sepulchre.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Death Valley.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Desert breath.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Disneyland.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Dunnottar Castle.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Eiffel Tower.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Kheops Pyramid.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Klyuchevskaya Sopka.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Maree Man.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Moscow Kremlin.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Nazca Lines.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Palace Het Loo.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Palm Jebel Ali.png
+share/apps/marble/data/maps/earth/openstreetmap/Palm Jumeirah.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Russell Square.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Santorini.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Shuttle Landing Facility.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Sofievka.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Spiral Jetty.png
+share/apps/marble/data/maps/earth/openstreetmap/St Peter's Basilica.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Stonehenge.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Sydney Opera House.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Taj Mahal.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Taranaki.jpg
+share/apps/marble/data/maps/earth/openstreetmap/The Great Wall of China.jpg
+share/apps/marble/data/maps/earth/openstreetmap/The World.jpg
+share/apps/marble/data/maps/earth/openstreetmap/Vesuvius.jpg
 share/apps/marble/data/maps/earth/openstreetmap/legend.html
 share/apps/marble/data/maps/earth/openstreetmap/legend/airportapron.png
 share/apps/marble/data/maps/earth/openstreetmap/legend/airportrunway.png
@@ -738,6 +777,7 @@ share/apps/marble/data/maps/earth/openstreetmap/legend/unclassifiedroad.png
 share/apps/marble/data/maps/earth/openstreetmap/legend/unsurfacedroad.png
 share/apps/marble/data/maps/earth/openstreetmap/openstreetmap-preview.png
 share/apps/marble/data/maps/earth/openstreetmap/openstreetmap.dgml
+share/apps/marble/data/maps/earth/openstreetmap/tour.kml
 share/apps/marble/data/maps/earth/plain/plain-preview.png
 share/apps/marble/data/maps/earth/plain/plain.dgml
 share/apps/marble/data/maps/earth/political/political-preview.png

@@ -1,5 +1,5 @@
 # Created by: Danny Pansters <danny@ricin.com>
-# $FreeBSD$
+# $FreeBSD: head/devel/py-qt4-designerplugin/Makefile 300896 2012-07-14 13:54:48Z beat $
 
 PORTNAME=	designerplugin
 PORTEPOCH=	1

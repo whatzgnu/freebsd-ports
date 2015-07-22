@@ -10,5 +10,5 @@ COMMENT=	${${KIPI_PLUGIN}_DESC}
 LIB_DEPENDS=	libqjson.so:${PORTSDIR}/devel/qjson
 
 KIPI_PLUGIN=	facebook
-.include "${.CURDIR}/../digikam-kde4/Makefile.common"
+.include "${.CURDIR}/../digikam/Makefile.common"
 .include <bsd.port.mk>

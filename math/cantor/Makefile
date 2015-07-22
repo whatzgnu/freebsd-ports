@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	cantor
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	math kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
@@ -11,12 +11,14 @@ COMMENT=	KDE 4 frontend to mathematical software
 
 LIB_DEPENDS=	libspectre.so:${PORTSDIR}/print/libspectre \
 		libqalculate.so:${PORTSDIR}/math/libqalculate \
-		libanalitza.so:${PORTSDIR}/math/analitza
+		libAnalitza.so:${PORTSDIR}/math/analitza
 
-USE_KDE4=	kdelibs kdeprefix automoc4
-USES=		cmake:outsource pkgconfig python:2 tar:xz
-USE_QT4=	corelib qtestlib_build xml xmlpatterns \
-		moc_build qmake_build rcc_build uic_build
+BUILD_DEPENDS=	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:${PORTSDIR}/textproc/docbook-xsl \
+		docbook-xml>0:${PORTSDIR}/textproc/docbook-xml
+		
+USE_KDE5=	ecm config emoticons itemmodels itemviews init newstuff texteditor coreaddons archive parts pty kdelibs4support
+USES=		cmake:outsource gettext pkgconfig python:2 tar:xz
+USE_QT5=	core buildtools_build qmake_build xml xmlpatterns
 USE_LDCONFIG=	yes
 
 OPTIONS_DEFINE=	LUAJIT MAXIMA OCTAVE R SAGE SCILAB

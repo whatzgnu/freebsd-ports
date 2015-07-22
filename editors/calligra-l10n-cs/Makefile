@@ -1,8 +1,7 @@
-# $FreeBSD$
+# $FreeBSD: head/editors/calligra-l10n-cs/Makefile 303149 2012-08-25 16:46:35Z avilla $
 
 PORTNAME=	calligra-l10n
 PORTVERSION=	${CALLIGRA_VERSION}
-PORTREVISION=	3
 CATEGORIES=	editors kde
 
 MAINTAINER=	kde@FreeBSD.org

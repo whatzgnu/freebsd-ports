@@ -6,6 +6,7 @@ lib/kde4/kcm_kttsd.so
 lib/libkttsd.so
 lib/libkttsd.so.4
 lib/libkttsd.so.%%KDE4_GENERIC_LIB_VERSION%%
+share/appdata/jovie.appdata.xml
 share/applications/kde4/jovieapp.desktop
 share/apps/jovie/kcmkttsd_testmessage.desktop
 share/apps/jovie/stringreplacer/abbreviations.xml

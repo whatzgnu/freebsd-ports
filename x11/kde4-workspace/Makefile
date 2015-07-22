@@ -2,13 +2,25 @@
 
 PORTNAME=	kde-workspace
 PORTVERSION=	${KDE4_WORKSPACE_VERSION}
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	x11 kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${KDE4_VERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE Plasma Desktop
+
+CONFLICTS=      plasma5-khotkeys-* \
+		plasma5-kinfocenter-* \
+		plasma5-kmenuedit-* \
+		plasma5-ksysguard-* \
+		plasma5-libksysguard-* \
+		plasma5-powerdevil-* \
+		plasma5-systemsettings-* \
+		plasma5-oxygen-* \
+		plasma5-kwin-* \
+		plasma5-plasma-desktop-* \
+		plasma5-plasma-workspace-*
 
 LIB_DEPENDS=	libdbus-1.so:${PORTSDIR}/devel/dbus \
 		libck-connector.so:${PORTSDIR}/sysutils/consolekit \
@@ -21,6 +33,7 @@ LIB_DEPENDS=	libdbus-1.so:${PORTSDIR}/devel/dbus \
 		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libpng.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libxcb-render-util.so:${PORTSDIR}/x11/xcb-util-renderutil \
 		libxcb-image.so:${PORTSDIR}/x11/xcb-util-image \
 		libxcb-keysyms.so:${PORTSDIR}/x11/xcb-util-keysyms
@@ -42,9 +55,9 @@ RUN_DEPENDS=	${KDE4_PREFIX}/env/xdg-env.sh:${PORTSDIR}/misc/kde4-xdg-env \
 
 USE_GL=		glu
 USE_GNOME=	glib20
-USE_KDE4=	kactivities kdelibs kdeprefix nepomuk-core oxygen \
+USE_KDE4=	kactivities kdelibs kdeprefix nepomuk-core icons-oxygen \
 		pimlibs akonadi automoc4 ontologies qimageblitz soprano strigi
-USES=		cmake:outsource compiler:c++11-lib gettext gmake iconv jpeg \
+USES=		cmake:outsource compiler:c++11-lib gettext gmake iconv \
 		pkgconfig tar:xz
 USE_QT4=	corelib dbus declarative designer_build gui network \
 		opengl phonon qtestlib script sql webkit xml \
@@ -132,5 +145,6 @@ post-install:
 	@${CAT} ${FILESDIR}/pkg-message.gstreamer >> ${PKGMESSAGE}
 .endif
 	@${HEAD} -1 ${PKGMESSAGE} >> ${PKGMESSAGE}
+	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.mk>

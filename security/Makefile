@@ -251,6 +251,8 @@
     SUBDIR += keychain
     SUBDIR += keynote
     SUBDIR += keyprint
+    SUBDIR += kf5-kdesu
+    SUBDIR += kgpg
     SUBDIR += kgpg-kde4
     SUBDIR += knock
     SUBDIR += knocker
@@ -753,6 +755,7 @@
     SUBDIR += pkesh
     SUBDIR += pks
     SUBDIR += pktsuckers
+    SUBDIR += plasma5-ksshaskpass
     SUBDIR += please
     SUBDIR += polarssl
     SUBDIR += polarssl13

@@ -2,16 +2,19 @@
 # $FreeBSD$
 
 PORTNAME=	kcharselect
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	deskutils kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Character selector for KDE
 
-USE_KDE4=	kdeprefix automoc4 kdelibs
-USES=		cmake:outsource tar:xz
-USE_QT4=	qmake_build moc_build rcc_build uic_build
+BUILD_DEPENDS=	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:${PORTSDIR}/textproc/docbook-xsl \
+		docbook-xml>0:${PORTSDIR}/textproc/docbook-xml
+
+USES=		cmake:outsource gettext tar:xz
+USE_KDE5=	ecm doctools i18n widgetsaddons xmlgui
+USE_QT5=	buildtools_build qmake_build widgets
 
 .include <bsd.port.mk>

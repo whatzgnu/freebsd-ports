@@ -1,5 +1,5 @@
 # Created by: Dima Panov <fluffy@Fluffy.Khv.RU>
-# $FreeBSD$
+# $FreeBSD: ports/sysutils/polkit-qt/Makefile,v 1.8 2012/06/06 06:44:25 miwi Exp $
 
 PORTNAME=	polkit-qt
 PORTVERSION=	0.112.0
@@ -23,7 +23,7 @@ USE_GNOME=	glib20
 USE_KDE4=	automoc4
 USE_QT4=	corelib dbus gui \
 		qmake_build moc_build rcc_build uic_build
-USES=		cmake:outsource tar:bzip2
+USES=		cmake:outsource pkgconfig tar:bzip2
 USE_LDCONFIG=	yes
 
 post-patch:

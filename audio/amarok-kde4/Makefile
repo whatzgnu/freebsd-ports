@@ -3,9 +3,9 @@
 
 PORTNAME=	amarok
 PORTVERSION=	2.8.0
-PORTREVISION=	6
 CATEGORIES=	audio kde
-MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}/src
+MASTER_SITES=	${MASTER_SITE_KDE}
+MASTER_SITE_SUBDIR=	stable/${PORTNAME}/${PORTVERSION}/src
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE music player
@@ -31,14 +31,13 @@ USE_QT4=	corelib dbus designer gui network opengl \
 		phonon script sql svg webkit xml \
 		qmake_build moc_build rcc_build uic_build
 USE_XORG=	x11
-USES=		cmake pkgconfig shared-mime-info shebangfix tar:bzip2
-SHEBANG_FILES=	src/kconf_update/amarok-2.4.1-tokens_syntax_update.pl
+USES=		cmake pkgconfig shared-mime-info tar:bzip2
 USE_LDCONFIG=	yes
 
 BROKEN_sparc64=	does not build (GCC-related error)
 
 OPTIONS_DEFINE=	AMAZON IPOD MP3TUNES MTP NLS
-OPTIONS_DEFAULT=AMAZON IPOD MP3TUNES MTP
+OPTIONS_DEFAULT=IPOD MP3TUNES MTP
 OPTIONS_SUB=	yes
 
 AMAZON_DESC=		Amazon MP3 store support via clamz

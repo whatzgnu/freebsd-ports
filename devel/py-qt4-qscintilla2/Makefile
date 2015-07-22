@@ -1,5 +1,5 @@
 # Created by: Danny Pansters <danny@ricin.com>
-# $FreeBSD$
+# $FreeBSD: head/devel/py-qt4-qscintilla2/Makefile 300896 2012-07-14 13:54:48Z beat $
 
 PORTNAME=	qscintilla2
 PORTVERSION=	${QSCI2_VERSION}

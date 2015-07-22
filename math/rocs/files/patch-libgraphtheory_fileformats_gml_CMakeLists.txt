@@ -1,0 +1,11 @@
+--- libgraphtheory/fileformats/gml/CMakeLists.txt.orig	2015-06-24 12:17:48 UTC
++++ libgraphtheory/fileformats/gml/CMakeLists.txt
+@@ -38,6 +38,8 @@ target_link_libraries(gmlfileformat
+         rocsgraphtheory
+ )
+ 
++kde_target_enable_exceptions(gmlfileformat PRIVATE)
++ 
+ kcoreaddons_desktop_to_json(gmlfileformat gmlfileformat.desktop)
+ install(TARGETS gmlfileformat DESTINATION ${PLUGIN_INSTALL_DIR}/rocs/fileformats)
+ 

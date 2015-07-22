@@ -35,10 +35,10 @@ KDEGAMES_DESC=		Collection of games
 KDEGAMES_RUN_DEPENDS=	kdegames>=${KDE4_VERSION}:${PORTSDIR}/games/kdegames4
 
 KDEGRAPHICS_DESC=	Graphics utilities
-KDEGRAPHICS_RUN_DEPENDS=	kdegraphics>=${KDE4_VERSION}:${PORTSDIR}/graphics/kdegraphics4
+KDEGRAPHICS_RUN_DEPENDS=	kdegraphics>=${KDE4_VERSION}:${PORTSDIR}/graphics/kdegraphics
 
 KDEMULTIMEDIA_DESC=	Multimedia applications
-KDEMULTIMEDIA_RUN_DEPENDS=	kdemultimedia>=${KDE4_VERSION}:${PORTSDIR}/multimedia/kdemultimedia4
+KDEMULTIMEDIA_RUN_DEPENDS=	kdemultimedia>=${KDE4_VERSION}:${PORTSDIR}/multimedia/kdemultimedia
 
 KDENETWORK_DESC=	Network-related programs
 KDENETWORK_RUN_DEPENDS=	kdenetwork>=${KDE4_VERSION}:${PORTSDIR}/net/kdenetwork4

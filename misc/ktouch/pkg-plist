@@ -24,8 +24,8 @@ share/apps/ktouch/courses/fr.dvarok.xml
 share/apps/ktouch/courses/fr.xml
 share/apps/ktouch/courses/gb.xml
 share/apps/ktouch/courses/gr.xml
-share/apps/ktouch/courses/it.xml
 share/apps/ktouch/courses/ir.xml
+share/apps/ktouch/courses/it.xml
 share/apps/ktouch/courses/lt.std.xml
 share/apps/ktouch/courses/nl1.xml
 share/apps/ktouch/courses/nl2.xml
@@ -76,8 +76,8 @@ share/apps/ktouch/keyboardlayouts/hu.xml
 share/apps/ktouch/keyboardlayouts/il.xml
 share/apps/ktouch/keyboardlayouts/in.kan.xml
 share/apps/ktouch/keyboardlayouts/in.tam_unicode.xml
-share/apps/ktouch/keyboardlayouts/it.xml
 share/apps/ktouch/keyboardlayouts/ir.xml
+share/apps/ktouch/keyboardlayouts/it.xml
 share/apps/ktouch/keyboardlayouts/latam.xml
 share/apps/ktouch/keyboardlayouts/lt.std.xml
 share/apps/ktouch/keyboardlayouts/nl.xml

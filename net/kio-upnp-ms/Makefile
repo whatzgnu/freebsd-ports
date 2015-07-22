@@ -1,12 +1,14 @@
 # Created by: Dima Panov <fluffy@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: ports/net/kio-upnp-ms/Makefile,v 1.7 2012/06/06 06:44:12 miwi Exp $
 
 PORTNAME=	kio-upnp-ms
 DISTVERSION=	1.0.0.git20110808
-PORTREVISION=	5
+PORTREVISION=	2
 CATEGORIES=	net devel
-#MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}/src
-MASTER_SITES=	LOCAL/fluffy
+#MASTER_SITES=	${MASTER_SITE_KDE}
+#MASTER_SITE_SUBDIR=	stable/${PORTNAME}/${PORTVERSION}/src
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	fluffy
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KIO slave to access UPnP MediaServers

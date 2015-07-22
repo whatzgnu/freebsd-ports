@@ -1,0 +1,5 @@
+KWayland provides a Qt-only client library which wraps a limited subset of the
+Wayland client API.
+
+WWW: http://www.kde.org/
+

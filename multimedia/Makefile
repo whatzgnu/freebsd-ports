@@ -152,6 +152,9 @@
     SUBDIR += jmref
     SUBDIR += k9copy-kde4
     SUBDIR += kaffeine
+    SUBDIR += kdemultimedia
+    SUBDIR += kdemultimedia-ffmpegthumbs
+    SUBDIR += kdemultimedia-mplayerthumbs
     SUBDIR += kdemultimedia4
     SUBDIR += kdemultimedia4-ffmpegthumbs
     SUBDIR += kdemultimedia4-mplayerthumbs

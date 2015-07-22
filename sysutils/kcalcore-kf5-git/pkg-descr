@@ -1,0 +1,5 @@
+This library provides access to and handling of calendar data.
+It supports the standard formats iCalendar and vCalendar and
+the group scheduling standard iTIP.
+
+WWW: https://projects.kde.org/projects/kde/pim/kcalcore

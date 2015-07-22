@@ -2,7 +2,6 @@ bin/kmix
 bin/kmixctrl
 bin/kmixremote
 lib/kde4/kded_kmixd.so
-lib/kde4/plasma_engine_mixer.so
 lib/libkdeinit4_kmix.so
 lib/libkdeinit4_kmixctrl.so
 share/applications/kde4/kmix.desktop
@@ -29,8 +28,10 @@ share/apps/kmix/profiles/ALSA.TerraTec_DMX6Fire.1.default.xml
 share/apps/kmix/profiles/ALSA.capture.xml
 share/apps/kmix/profiles/ALSA.default.xml
 share/apps/kmix/profiles/ALSA.playback.xml
+share/apps/kmix/profiles/MPRIS2.default.xml
 share/apps/kmix/profiles/OSS.default.xml
-share/apps/plasma/services/mixer.operations
+share/apps/kmix/profiles/PulseAudio.default.xml
+share/apps/kmix/profiles/SUNAudio.default.xml
 share/autostart/kmix_autostart.desktop
 share/autostart/restore_kmix_volumes.desktop
 share/dbus-1/interfaces/org.kde.kmix.control.xml
@@ -53,4 +54,3 @@ share/icons/hicolor/48x48/apps/kmix.png
 share/icons/hicolor/64x64/apps/kmix.png
 share/kde4/services/kded/kmixd.desktop
 share/kde4/services/kmixctrl_restore.desktop
-share/kde4/services/plasma-engine-mixer.desktop

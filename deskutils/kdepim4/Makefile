@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	kdepim
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	2
+PORTVERSION=	${KDEPIM_VERSION}
 CATEGORIES=	deskutils kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=   KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
@@ -25,10 +24,7 @@ CONFLICTS_INSTALL=	kdepim44-4.*
 USE_GNOME=	libxml2 libxslt:build
 USE_KDE4=	kdelibs kdeprefix pimlibs kactivities \
 		akonadi automoc4 soprano nepomuk-widgets baloo
-USES=		cmake:outsource gmake iconv shebangfix tar:xz
-SHEBANG_FILES=	agents/mailfilteragent/kconf_update/migrate-kmail-filters.pl \
-		kalarm/*.pl kmail/kconf_update/*.pl \
-		libkpgp/kconf_update/kpgp-3.1-upgrade-address-data.pl
+USES=		cmake:outsource gmake iconv tar:xz
 USE_OPENLDAP=	yes
 USE_QT4=	corelib dbus declarative designer_build gui network opengl \
 		qt3support script sql webkit xml \

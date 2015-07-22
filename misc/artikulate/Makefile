@@ -1,19 +1,19 @@
 # $FreeBSD$
 
 PORTNAME=	artikulate
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	misc kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Pronunciation trainer for KDE
 
-LIB_DEPENDS=	libQtGStreamer-1.0.so:${PORTSDIR}/multimedia/gstreamer1-qt4 \
-		libboost_thread.so:${PORTSDIR}/devel/boost-libs
+LIB_DEPENDS=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
+		libQtGStreamer-1.0.so:${PORTSDIR}/multimedia/gstreamer1-qt4
 RUN_DEPENDS=	${LOCALBASE}/lib/kde4/imports/org/kde/charts/qmldir:${PORTSDIR}/graphics/kqtquickcharts
 
-IGNORE=		not usable, links to both GStreamer 0.10.x and 1.x
+# IGNORE=		not usable, links to both GStreamer 0.10.x and 1.x
 
 USE_KDE4=	automoc4 kdelibs kdeprefix libkdeedu runtime_run
 USES=		cmake:outsource tar:xz

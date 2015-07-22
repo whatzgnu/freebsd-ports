@@ -1,5 +1,5 @@
 # Created by: Danny Pansters <danny@ricin.com>
-# $FreeBSD$
+# $FreeBSD: head/graphics/py-qt4-svg/Makefile 300896 2012-07-14 13:54:48Z beat $
 
 PORTNAME=	svg
 PORTEPOCH=	1

@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/QT/Mk/Uses/qmake.mk 10442 2014-10-23 15:47:31Z rakuco $
 #
 # Provide support for qmake-based projects
 #

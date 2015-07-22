@@ -43,14 +43,12 @@ share/py-sip/Qsci/qscilexervhdl.sip
 share/py-sip/Qsci/qscilexerxml.sip
 share/py-sip/Qsci/qscilexeryaml.sip
 share/py-sip/Qsci/qscimacro.sip
-share/py-sip/Qsci/qscimod3.sip
 share/py-sip/Qsci/qscimod4.sip
 share/py-sip/Qsci/qscimod5.sip
 share/py-sip/Qsci/qscimodcommon.sip
 share/py-sip/Qsci/qsciprinter.sip
 share/py-sip/Qsci/qsciscintilla.sip
-share/py-sip/Qsci/qsciscintillabase3.sip
-share/py-sip/Qsci/qsciscintillabase4.sip
+share/py-sip/Qsci/qsciscintillabase.sip
 share/py-sip/Qsci/qscistyle.sip
 share/py-sip/Qsci/qscistyledtext.sip
 share/qt4/qsci/api/python/QScintilla2.api

@@ -1,9 +1,8 @@
 # Created by: Martin Wilke <miwi@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/PORTS/textproc/ebook-tools/Makefile 9831 2014-01-05 17:39:59Z rakuco $
 
 PORTNAME=	ebook-tools
 PORTVERSION=	0.2.2
-PORTREVISION=	2
 CATEGORIES=	textproc kde
 MASTER_SITES=	SF
 

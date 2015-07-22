@@ -48,6 +48,7 @@
     SUBDIR += javatar
     SUBDIR += jzip.org
     SUBDIR += jzlib
+    SUBDIR += kf5-karchive
     SUBDIR += kzip
     SUBDIR += laszip
     SUBDIR += lbrate

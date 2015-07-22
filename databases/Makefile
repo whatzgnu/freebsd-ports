@@ -14,6 +14,7 @@
     SUBDIR += adodb5
     SUBDIR += akonadi
     SUBDIR += akonadi-googledata
+    SUBDIR += akonadi-kf5-git
     SUBDIR += animenfo-client
     SUBDIR += animenfo-client-gtk
     SUBDIR += apq

@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: ports/devel/qmake4/files/Makefile.bsd,v 1.11 2010/06/09 19:41:19 makc Exp $
 
 _OBJS!=	${MAKE} -f Makefile.unix -V OBJS -V QOBJS
 # We'd like to avoid using qconfig.cpp, but can't -- see the comment

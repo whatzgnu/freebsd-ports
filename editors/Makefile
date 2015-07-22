@@ -28,6 +28,7 @@
     SUBDIR += calligra-l10n-en_GB
     SUBDIR += calligra-l10n-es
     SUBDIR += calligra-l10n-et
+    SUBDIR += calligra-l10n-eu
     SUBDIR += calligra-l10n-fi
     SUBDIR += calligra-l10n-gl
     SUBDIR += calligra-l10n-ia
@@ -40,6 +41,7 @@
     SUBDIR += calligra-l10n-sl
     SUBDIR += calligra-l10n-sv
     SUBDIR += calligra-l10n-tr
+    SUBDIR += calligra-l10n-wa
     SUBDIR += chexedit
     SUBDIR += codelite
     SUBDIR += conglomerate

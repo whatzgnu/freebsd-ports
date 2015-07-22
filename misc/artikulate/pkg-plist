@@ -1,13 +1,13 @@
 bin/artikulate
 lib/libartikulatecore.so
 lib/libartikulatecore.so.4
-lib/libartikulatecore.so.%%KDE4_VERSION%%
+lib/libartikulatecore.so.%%KDE4_GENERIC_LIB_VERSION%%
 lib/libartikulatelearnerprofile.so
 lib/libartikulatelearnerprofile.so.4
-lib/libartikulatelearnerprofile.so.%%KDE4_VERSION%%
+lib/libartikulatelearnerprofile.so.%%KDE4_GENERIC_LIB_VERSION%%
 lib/libartikulatesound.so
 lib/libartikulatesound.so.4
-lib/libartikulatesound.so.%%KDE4_VERSION%%
+lib/libartikulatesound.so.%%KDE4_GENERIC_LIB_VERSION%%
 share/appdata/artikulate.appdata.xml
 share/applications/kde4/artikulate.desktop
 share/apps/artikulate/icons/hicolor/128x128/actions/artikulate-media-playback-start.png

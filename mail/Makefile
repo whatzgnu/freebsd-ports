@@ -116,6 +116,7 @@
     SUBDIR += esmtp
     SUBDIR += evolution
     SUBDIR += evolution-ews
+    SUBDIR += evolution-exchange
     SUBDIR += evolution-mapi
     SUBDIR += exact
     SUBDIR += exilog

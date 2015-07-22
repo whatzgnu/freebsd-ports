@@ -10,5 +10,5 @@ COMMENT=	${${KIPI_PLUGIN}_DESC}
 LIB_DEPENDS=	libqca.so:${PORTSDIR}/devel/qca
 
 KIPI_PLUGIN=	yandexfotki
-.include "${.CURDIR}/../digikam-kde4/Makefile.common"
+.include "${.CURDIR}/../digikam/Makefile.common"
 .include <bsd.port.mk>

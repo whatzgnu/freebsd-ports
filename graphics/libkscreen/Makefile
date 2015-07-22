@@ -1,9 +1,9 @@
 # Created by: alonso@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/KDE/graphics/libkscreen/Makefile 10672 2015-04-25 19:17:13Z tcberner $
 
 PORTNAME=	libkscreen
 PORTVERSION=	1.0.5
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	graphics kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}/src
 

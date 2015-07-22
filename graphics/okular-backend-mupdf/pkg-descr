@@ -1,0 +1,4 @@
+This is a PDF backend for Okular using MuPDF.
+MuPDF shows much better performance than default backend.
+
+WWW: https://github.com/xylosper/okular-backend-mupdf

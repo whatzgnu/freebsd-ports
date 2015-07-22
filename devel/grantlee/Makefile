@@ -1,5 +1,5 @@
 # Created by: Dima Panov <fluffy@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/KDE/devel/grantlee/Makefile 10672 2015-04-25 19:17:13Z tcberner $
 
 # Some ports install files into versioned grantlee directory (GRANTLEE_VER)
 # they must be fixed whenever grantlee gets version bump
@@ -10,7 +10,8 @@
 #
 
 PORTNAME=	grantlee
-DISTVERSION=	0.5.1
+PORTVERSION=	0.5.1
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://downloads.${PORTNAME}.org/ \
 		http://www.loegria.net/${PORTNAME}/

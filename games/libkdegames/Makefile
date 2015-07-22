@@ -1,17 +1,22 @@
 # $FreeBSD$
 
 PORTNAME=	libkdegames
-PORTVERSION=	${KDE4_VERSION}
+PORTVERSION=	${KDE_APPLICATIONS_VERSION}
 CATEGORIES=	games kde
-MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
+MASTER_SITES=	KDE/${KDE_APPLICATIONS_BRANCH}/applications/${KDE_APPLICATIONS_VERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	Libraries used by KDE 4 games
+COMMENT=	Libraries used by KDE games
 
-USE_KDE4=	kdelibs kdeprefix automoc4
-USES=		cmake:outsource tar:xz
-USE_QT4=	network phonon xml moc_build qmake_build rcc_build uic_build
+USE_KDE5=	archive bookmarks codecs completion config \
+		configwidgets coreaddons crash dbusaddons \
+		dnssd ecm emoticons globalaccel guiaddons i18n \
+		iconthemes init itemmodels itemviews jobwidgets \
+		kdeclarative kdelibs4support kio newstuff service \
+		textwidgets widgetsaddons xmlgui
+USES=		cmake:outsource tar:xz gettext
+USE_QT5=	buildtools_build core qmake_build qml quick svg widgets
 USE_LDCONFIG=	yes
 
 OPTIONS_DEFINE=		LOWLATENCY

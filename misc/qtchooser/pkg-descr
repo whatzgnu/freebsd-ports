@@ -1,0 +1,4 @@
+The Qt tool chooser wraps the execution of all Qt tools, to allow for
+different Qt versions coexistence.
+
+WWW: http://qt.gitorious.org/qt/qtchooser

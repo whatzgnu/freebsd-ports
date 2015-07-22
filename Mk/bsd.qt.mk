@@ -26,7 +26,7 @@ Qt_Pre_Include=	bsd.qt.mk
 
 # Qt versions currently supported by the framework.
 _QT_SUPPORTED?=	4 5
-QT4_VERSION?=	4.8.6
+QT4_VERSION?=	4.8.7
 QT5_VERSION?=	5.4.1
 
 QT_PREFIX?=		${LOCALBASE}
@@ -146,9 +146,6 @@ CONFIGURE_ARGS+=-nomake examples -nomake tests \
 				-qmldir ${PREFIX}/${QT_QMLDIR_REL} \
 				-examplesdir ${PREFIX}/${QT_EXAMPLEDIR_REL} \
 				-testsdir ${PREFIX}/${QT_TESTDIR_REL}
-.  if ${ARCH} == i386 && empty(MACHINE_CPU:Msse2)
-CONFIGURE_ARGS+=-no-sse2
-.  endif
 . endif
 
 . if defined(WANT_QT_DEBUG) || defined(WITH_DEBUG)

@@ -1,7 +1,6 @@
 lib/kde4/kpythonpluginfactory.so
 %%PYTHON_SITELIBDIR%%/PyKDE4/__init__.py
-%%PYTHON_SITELIBDIR%%/PyKDE4/%%PYCACHE%%__init__.%%PYC_SUFFIX%%
-%%PYTHON_SITELIBDIR%%/PyKDE4/%%PYCACHE%%__init__.%%PYO_SUFFIX%%
+%%PYTHON_SITELIBDIR%%/PyKDE4/__init__.%%PYC_SUFFIX%%
 %%PYTHON_SITELIBDIR%%/PyKDE4/akonadi.so
 %%PYTHON_SITELIBDIR%%/PyKDE4/dnssd.so
 %%PYTHON_SITELIBDIR%%/PyKDE4/kdecore.so
@@ -17,10 +16,10 @@ lib/kde4/kpythonpluginfactory.so
 %%PYTHON_SITELIBDIR%%/PyKDE4/phonon.so
 %%PYTHON_SITELIBDIR%%/PyKDE4/plasma.so
 %%PYTHON_SITELIBDIR%%/PyKDE4/pykdeconfig.py
-%%PYTHON_SITELIBDIR%%/PyKDE4/%%PYCACHE%%pykdeconfig.%%PYC_SUFFIX%%
-%%PYTHON_SITELIBDIR%%/PyKDE4/%%PYCACHE%%pykdeconfig.%%PYO_SUFFIX%%
+%%PYTHON_SITELIBDIR%%/PyKDE4/pykdeconfig.%%PYC_SUFFIX%%
 %%PYTHON_SITELIBDIR%%/PyKDE4/solid.so
 %%PYTHON_SITELIBDIR%%/PyKDE4/soprano.so
+%%PYTHON_SITELIBDIR%%/kdebindings4.pth
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/__init__.py
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/default.py
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/kdecoreExamples/__init__.py
@@ -986,4 +985,3 @@ lib/kde4/kpythonpluginfactory.so
 %%SIPDIR%%/PyKDE4/soprano/tcpclient.sip
 %%SIPDIR%%/PyKDE4/soprano/xesam.sip
 %%SIPDIR%%/PyKDE4/soprano/xsd.sip
-%%LOCALBASE%%/%%PYTHON_SITELIBDIR%%/kdebindings4.pth

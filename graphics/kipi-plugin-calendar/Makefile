@@ -10,5 +10,5 @@ COMMENT=	${${KIPI_PLUGIN}_DESC}
 USE_KDE4=	pimlibs
 
 KIPI_PLUGIN=	calendar
-.include "${.CURDIR}/../digikam-kde4/Makefile.common"
+.include "${.CURDIR}/../digikam/Makefile.common"
 .include <bsd.port.mk>

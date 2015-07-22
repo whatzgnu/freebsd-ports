@@ -15,6 +15,7 @@ share/locale/nds/LC_MESSAGES/SpellCheckPlugin.mo
 share/locale/nds/LC_MESSAGES/TableShape.mo
 share/locale/nds/LC_MESSAGES/TemplateShape.mo
 share/locale/nds/LC_MESSAGES/TextShape.mo
+share/locale/nds/LC_MESSAGES/ThreedShape.mo
 share/locale/nds/LC_MESSAGES/VariablesPlugin.mo
 share/locale/nds/LC_MESSAGES/VectorShape.mo
 share/locale/nds/LC_MESSAGES/VideoShape.mo
@@ -23,7 +24,12 @@ share/locale/nds/LC_MESSAGES/calligra-defaulttools.mo
 share/locale/nds/LC_MESSAGES/calligra-dockers.mo
 share/locale/nds/LC_MESSAGES/calligra-opener.mo
 share/locale/nds/LC_MESSAGES/calligra.mo
+share/locale/nds/LC_MESSAGES/calligra_semanticitem_contact.mo
+share/locale/nds/LC_MESSAGES/calligra_semanticitem_event.mo
+share/locale/nds/LC_MESSAGES/calligra_semanticitem_location.mo
+share/locale/nds/LC_MESSAGES/calligraactive.mo
 share/locale/nds/LC_MESSAGES/calligrafilters.mo
+share/locale/nds/LC_MESSAGES/crashhandler.mo
 share/locale/nds/LC_MESSAGES/desktop_calligra.mo
 share/locale/nds/LC_MESSAGES/flow.mo
 share/locale/nds/LC_MESSAGES/googledocs_plugin.mo
@@ -49,6 +55,7 @@ share/locale/nds/LC_MESSAGES/planrcpsplugin.mo
 share/locale/nds/LC_MESSAGES/plantjplugin.mo
 share/locale/nds/LC_MESSAGES/planwork.mo
 share/locale/nds/LC_MESSAGES/sheets.mo
+share/locale/nds/LC_MESSAGES/sheetspivottables_plugin.mo
 share/locale/nds/LC_MESSAGES/sheetssolver.mo
 share/locale/nds/LC_MESSAGES/stage.mo
 share/locale/nds/LC_MESSAGES/thesaurus_tool.mo

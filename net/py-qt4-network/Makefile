@@ -1,5 +1,5 @@
 # Created by: Danny Pansters <danny@ricin.com>
-# $FreeBSD$
+# $FreeBSD: head/net/py-qt4-network/Makefile 300897 2012-07-14 14:29:18Z beat $
 
 PORTNAME=	network
 PORTEPOCH=	1

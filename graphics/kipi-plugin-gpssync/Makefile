@@ -11,5 +11,5 @@ BUILD_DEPENDS=	${LOCALBASE}/include/boost/graph/buffer_concepts.hpp:${PORTSDIR}/
 LIB_DEPENDS=	libkgeomap.so:${PORTSDIR}/astro/libkgeomap
 
 KIPI_PLUGIN=	gpssync
-.include "${.CURDIR}/../digikam-kde4/Makefile.common"
+.include "${.CURDIR}/../digikam/Makefile.common"
 .include <bsd.port.mk>

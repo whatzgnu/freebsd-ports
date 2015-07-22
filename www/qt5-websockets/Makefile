@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: branches/plasma5/QT/www/qt5-websockets/Makefile 10781 2015-06-11 04:12:29Z tcberner $
 
 PORTNAME=	websockets
 DISTVERSION=	${QT5_VERSION}
