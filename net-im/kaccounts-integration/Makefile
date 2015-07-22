@@ -13,7 +13,7 @@ COMMENT=	TODO
 LIB_DEPENDS=	libaccounts-glib.so:${PORTSDIR}/net-im/libaccounts-glib \
 		libaccounts-qt5.so:${PORTSDIR}/net-im/libaccounts-qt5 \
 		libsignon-qt5.so:${PORTSDIR}/sysutils/signon-qt5 \
-		libKF5AkonadiPrivate.so:${PORTSDIR}/databases/kf5-akonadi
+		libKF5AkonadiPrivate.so:${PORTSDIR}/databases/akonadi-kf5-git
 
 USES=		cmake:outsource gettext tar:xz
 USE_KDE5=	config coreaddons dbusaddons ecm i18n iconthemes kcmutils kio wallet widgetsaddons

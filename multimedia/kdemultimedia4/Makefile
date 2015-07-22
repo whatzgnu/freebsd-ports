@@ -1,7 +1,7 @@
 # Created by: Martin Wilke <miwi@FreeBSD.org>
 # $FreeBSD$
 
-PORTNAME=	kdemultimedia
+PORTNAME=	kdemultimedia4
 PORTVERSION=	${KDE4_VERSION}
 CATEGORIES=	multimedia kde
 

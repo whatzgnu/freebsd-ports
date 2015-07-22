@@ -12,7 +12,7 @@ COMMENT=	KDE instant messaging account management module
 LIB_DEPENDS=	libtelepathy-qt5.so:${PORTSDIR}/net-im/telepathy-qt5 \
 		libtelepathy-logger-qt.so:${PORTSDIR}/net-im/telepathy-logger-qt5 \
 		libKTpCommonInternals.so:${PORTSDIR}/net-im/ktp-common-internals \
-		libKF5AkonadiPrivate.so:${PORTSDIR}/databases/kf5-akonadi \
+		libKF5AkonadiPrivate.so:${PORTSDIR}/databases/akonadi-kf5-git \
 		libsignon-qt5.so:${PORTSDIR}/sysutils/signon-qt5
 
 RUN_DEPENDS=	${KDE4_PREFIX}/bin/ktp-contactlist:${PORTSDIR}/net-im/ktp-contact-list
