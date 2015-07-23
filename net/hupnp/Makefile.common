@@ -1,0 +1,19 @@
+# Created by: Tobias Berner <tcberner@gmail.com>
+# $FreeBSD: branches/plasma5/PORTS/net/hupnp/Makefile.common 10892 2015-07-12 13:18:43Z tcberner $
+
+PORTVERSION=	${SVN_REV}
+DISTNAME=       herqq-${PORTVERSION}
+DISTINFO_FILE=  ${.CURDIR}/../../net/hupnp/distinfo
+
+SVN_URL=	https://svn.code.sf.net/p/hupnp/code/trunk/herqq/
+SVN_REV=	147
+
+# To fetch/create the distfile execute
+# make -DSVN_BOOTSTRAP makesum
+.if defined(SVN_BOOTSTRAP)
+FETCH_DEPENDS=	svn:${PORTSDIR}/devel/subversion
+do-fetch:
+	${MKDIR} ${WRKDIR}
+	svn export -r ${SVN_REV} ${SVN_URL} ${WRKSRC}
+	cd ${WRKDIR}; tar cfJ ${DISTDIR}/${DISTNAME}.tar.xz ${DISTNAME}
+.endif
