@@ -1,6 +1,3 @@
-include/qmobipocket/mobipocket.h
-include/qmobipocket/qfilestream.h
-include/qmobipocket/qmobipocket_export.h
 lib/cmake/QMobipocket/QMobipocketConfig.cmake
 lib/kde4/mobithumbnail.so
 lib/libqmobipocket.so
