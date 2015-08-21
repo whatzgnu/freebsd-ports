@@ -1,8 +1,8 @@
 # Created by: Alex Dupre <ale@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/lang/php55/Makefile 394508 2015-08-17 14:20:40Z mat $
 
 PORTNAME=	php55
-PORTVERSION=	5.5.27
+PORTVERSION=	5.5.28
 PORTREVISION?=	0
 CATEGORIES?=	lang devel www
 MASTER_SITES=	PHP/distributions
@@ -12,8 +12,6 @@ MAINTAINER=	ale@FreeBSD.org
 COMMENT=	PHP Scripting Language
 
 LICENSE=	PHP301
-
-LATEST_LINK=	${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 
 USES=		tar:bzip2 cpe
 CPE_PRODUCT=	php
