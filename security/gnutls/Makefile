@@ -1,10 +1,9 @@
-# $FreeBSD$
+# $FreeBSD: head/security/gnutls/Makefile 394256 2015-08-14 20:38:38Z feld $
 
 PORTNAME=	gnutls
-PORTVERSION=	3.2.21
-PORTREVISION=	1
+PORTVERSION=	3.3.17.1
 CATEGORIES=	security net
-MASTER_SITES=	GNUPG/gnutls/v3.2
+MASTER_SITES=	GNUPG/gnutls/v${PORTVERSION:R:R}
 
 MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	GNU Transport Layer Security library
