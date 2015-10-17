@@ -1,7 +1,4 @@
 bin/openssl
-etc/ssl/cert.pem
-etc/ssl/openssl.cnf
-etc/ssl/x509v3.cnf
 include/openssl/aes.h
 include/openssl/asn1.h
 include/openssl/asn1_mac.h
@@ -24,6 +21,7 @@ include/openssl/dh.h
 include/openssl/dsa.h
 include/openssl/dso.h
 include/openssl/dtls1.h
+include/openssl/e_os2.h
 include/openssl/ec.h
 include/openssl/ecdh.h
 include/openssl/ecdsa.h
@@ -37,6 +35,7 @@ include/openssl/krb5_asn.h
 include/openssl/lhash.h
 include/openssl/md4.h
 include/openssl/md5.h
+include/openssl/mdc2.h
 include/openssl/modes.h
 include/openssl/obj_mac.h
 include/openssl/objects.h
@@ -75,16 +74,16 @@ include/openssl/x509v3.h
 include/tls.h
 lib/libcrypto.a
 lib/libcrypto.so
-lib/libcrypto.so.36
-lib/libcrypto.so.36.0.0
+lib/libcrypto.so.33
+lib/libcrypto.so.33.0.0
 lib/libssl.a
 lib/libssl.so
-lib/libssl.so.37
-lib/libssl.so.37.0.0
+lib/libssl.so.32
+lib/libssl.so.32.0.0
 lib/libtls.a
 lib/libtls.so
-lib/libtls.so.9
-lib/libtls.so.9.0.0
+lib/libtls.so.3
+lib/libtls.so.3.0.1
 libdata/pkgconfig/libcrypto.pc
 libdata/pkgconfig/libssl.pc
 libdata/pkgconfig/libtls.pc
@@ -830,6 +829,7 @@ man/man3/EVP_idea_ofb.3.gz
 man/man3/EVP_md2.3.gz
 man/man3/EVP_md5.3.gz
 man/man3/EVP_md_null.3.gz
+man/man3/EVP_mdc2.3.gz
 man/man3/EVP_rc2_40_cbc.3.gz
 man/man3/EVP_rc2_64_cbc.3.gz
 man/man3/EVP_rc2_cbc.3.gz
@@ -843,6 +843,7 @@ man/man3/EVP_rc5_32_12_16_cfb.3.gz
 man/man3/EVP_rc5_32_12_16_ecb.3.gz
 man/man3/EVP_rc5_32_12_16_ofb.3.gz
 man/man3/EVP_ripemd160.3.gz
+man/man3/EVP_sha.3.gz
 man/man3/EVP_sha1.3.gz
 man/man3/EVP_sha224.3.gz
 man/man3/EVP_sha256.3.gz
@@ -1507,7 +1508,6 @@ man/man3/tls_config_clear_keys.3.gz
 man/man3/tls_config_free.3.gz
 man/man3/tls_config_insecure_noverifycert.3.gz
 man/man3/tls_config_insecure_noverifyname.3.gz
-man/man3/tls_config_insecure_noverifytime.3.gz
 man/man3/tls_config_new.3.gz
 man/man3/tls_config_parse_protocols.3.gz
 man/man3/tls_config_set_ca_file.3.gz
@@ -1528,8 +1528,6 @@ man/man3/tls_connect.3.gz
 man/man3/tls_connect_fds.3.gz
 man/man3/tls_connect_servername.3.gz
 man/man3/tls_connect_socket.3.gz
-man/man3/tls_conn_cipher.3.gz
-man/man3/tls_conn_version.3.gz
 man/man3/tls_error.3.gz
 man/man3/tls_free.3.gz
 man/man3/tls_init.3.gz
@@ -1538,20 +1536,9 @@ man/man3/tls_read.3.gz
 man/man3/tls_reset.3.gz
 man/man3/tls_server.3.gz
 man/man3/tls_write.3.gz
-man/man3/tls_config_prefer_ciphers_client.3.gz
-man/man3/tls_config_prefer_ciphers_server.3.gz
-man/man3/tls_config_verify_client.3.gz
-man/man3/tls_config_verify_client_optional.3.gz
-man/man3/tls_handshake.3.gz
-man/man3/tls_peer_cert_contains_name.3.gz
-man/man3/tls_peer_cert_hash.3.gz
-man/man3/tls_peer_cert_issuer.3.gz
-man/man3/tls_peer_cert_provided.3.gz
-man/man3/tls_peer_cert_subject.3.gz
 man/man3/tmp_rsa_callback.3.gz
 man/man3/ui.3.gz
 man/man3/ui_compat.3.gz
 man/man3/verify_callback.3.gz
 man/man3/x509.3.gz
-@dir etc/ssl/certs
 @dir include/openssl
