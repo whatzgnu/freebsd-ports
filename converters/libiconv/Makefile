@@ -1,9 +1,9 @@
 # Created by: Maxim Sobolev <sobomax@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/converters/libiconv/Makefile 398996 2015-10-10 14:03:00Z tijl $
 
 PORTNAME=	libiconv
 PORTVERSION=	1.14
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	converters devel
 MASTER_SITES=	GNU
 
@@ -26,19 +26,11 @@ OPTIONS_DEFAULT=ENCODINGS
 ENCODINGS_DESC=	Include extra character sets
 PATCHES_DESC=	Apply patches to fix CP932, add EUCJP-MS
 
-.include <bsd.port.options.mk>
+ENCODINGS_CONFIGURE_ENABLE=	extra-encodings
 
-.if ${PORT_OPTIONS:MENCODINGS}
-CONFIGURE_ARGS+=	--enable-extra-encodings
-.endif
-
-.if ${PORT_OPTIONS:MPATCHES}
-PATCH_SITES+=	http://apolloron.org/software/libiconv-1.14-ja/
-PATCH_SITES+=	${MASTER_SITE_LOCAL}
-PATCH_SITE_SUBDIR+=	kwm
-PATCHFILES+=	${DISTNAME}-ja-1.patch.gz
-PATCH_DIST_STRIP+=	-p1
-.endif
+PATCHES_PATCH_SITES=	http://apolloron.org/software/libiconv-1.14-ja/ \
+			LOCAL/kwm
+PATCHES_PATCHFILES=	${DISTNAME}-ja-1.patch.gz:-p1
 
 post-patch:
 	@${REINPLACE_CMD} -e 's:ei_ksc5601:ei_euc_kr:g' ${WRKSRC}/lib/aliases.h
