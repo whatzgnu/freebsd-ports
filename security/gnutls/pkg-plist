@@ -24,7 +24,6 @@ include/gnutls/x509-ext.h
 include/gnutls/x509.h
 info/dir
 info/gnutls-client-server-use-case.png
-info/gnutls-guile.info
 info/gnutls-handshake-sequence.png
 info/gnutls-handshake-state.png
 info/gnutls-internals.png
@@ -33,7 +32,6 @@ info/gnutls-logo.png
 info/gnutls-modauth.png
 info/gnutls-pgp.png
 info/gnutls-x509.png
-info/gnutls.info
 info/pkcs11-vision.png
 lib/libgnutls-openssl.so
 lib/libgnutls-openssl.so.27
