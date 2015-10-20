@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/Mk/Uses/gmake.mk 399326 2015-10-15 07:36:38Z bapt $
 #
 # Provide support to use the GNU make
 #

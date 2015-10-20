@@ -1,4 +1,4 @@
-# $FreeBSD: head/security/gnutls/Makefile 394256 2015-08-14 20:38:38Z feld $
+# $FreeBSD$
 
 PORTNAME=	gnutls
 PORTVERSION=	3.3.17.1
@@ -31,7 +31,7 @@ MAKE_ENV=	MAKEINFOFLAGS=--no-split
 CPE_VENDOR=	gnu
 
 OPTIONS_DEFINE=		CRYWRAP EXAMPLES LIBDANE NLS P11KIT TPM ZLIB
-OPTIONS_DEFAULT=	CRYWRAP P11KIT ZLIB #TPM
+OPTIONS_DEFAULT=	CRYWRAP P11KIT TPM ZLIB
 OPTIONS_SUB=		yes
 
 CRYWRAP_DESC=			Enable Crywrap TLS proxy service
@@ -49,9 +49,9 @@ P11KIT_DESC=		PKCS\#11 and p11-kit support
 P11KIT_CONFIGURE_WITH=	p11-kit
 P11KIT_LIB_DEPENDS=	libp11-kit.so:${PORTSDIR}/security/p11-kit
 
-# TPM_DESC=		TPM (trousers) support
-# TPM_CONFIGURE_WITH=	tpm
-# TPM_LIB_DEPENDS=	libtspi.so:${PORTSDIR}/security/trousers
+TPM_DESC=		TPM (trousers) support
+TPM_CONFIGURE_WITH=	tpm
+TPM_LIB_DEPENDS=	libtspi.so:${PORTSDIR}/security/trousers
 
 ZLIB_CONFIGURE_WITH=	zlib
 
