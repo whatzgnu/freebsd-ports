@@ -7,6 +7,7 @@
     SUBDIR += abcl
     SUBDIR += adacontrol
     SUBDIR += afnix
+    SUBDIR += alchemist.el
     SUBDIR += algol68g
     SUBDIR += alisp
     SUBDIR += angelscript
@@ -32,7 +33,6 @@
     SUBDIR += chicken
     SUBDIR += cint
     SUBDIR += cjs
-    SUBDIR += clang-cheri
     SUBDIR += clang-devel
     SUBDIR += clang33
     SUBDIR += clang34
@@ -40,6 +40,7 @@
     SUBDIR += clang36
     SUBDIR += clojure
     SUBDIR += clojure-mode.el
+    SUBDIR += cloudabi-clang
     SUBDIR += cmucl
     SUBDIR += cmucl-extra
     SUBDIR += cocor
@@ -54,6 +55,7 @@
     SUBDIR += ecl
     SUBDIR += elan
     SUBDIR += elixir
+    SUBDIR += elixir-mode.el
     SUBDIR += elk
     SUBDIR += emacs-lisp-intro
     SUBDIR += erlang
@@ -61,6 +63,7 @@
     SUBDIR += erlang-runtime15
     SUBDIR += erlang-runtime16
     SUBDIR += erlang-runtime17
+    SUBDIR += erlang-runtime18
     SUBDIR += erlang-wx
     SUBDIR += execline
     SUBDIR += expect
@@ -85,7 +88,6 @@
     SUBDIR += gcc-ecj45
     SUBDIR += gcc46
     SUBDIR += gcc47
-    SUBDIR += gcc47-aux
     SUBDIR += gcc48
     SUBDIR += gcc49
     SUBDIR += gcc5
@@ -142,6 +144,7 @@
     SUBDIR += linux-f10-libg2c
     SUBDIR += linux-f10-tcl85
     SUBDIR += linux-j
+    SUBDIR += lua-ada
     SUBDIR += lua-mode.el
     SUBDIR += lua51
     SUBDIR += lua52
@@ -208,6 +211,7 @@
     SUBDIR += p5-Switch
     SUBDIR += p5-Tcl
     SUBDIR += p5-Test-XPath
+    SUBDIR += p5-Try-Catch
     SUBDIR += p5-Try-Tiny
     SUBDIR += p5-Try-Tiny-Retry
     SUBDIR += p5-TryCatch
@@ -222,6 +226,7 @@
     SUBDIR += perl5.16
     SUBDIR += perl5.18
     SUBDIR += perl5.20
+    SUBDIR += perl5.22
     SUBDIR += petite-chez
     SUBDIR += pfe
     SUBDIR += phantomjs
@@ -244,7 +249,6 @@
     SUBDIR += py-mx-base
     SUBDIR += py-prolog
     SUBDIR += pypy
-    SUBDIR += pypy-devel
     SUBDIR += pypy3-devel
     SUBDIR += python
     SUBDIR += python-doc-html
@@ -276,6 +280,7 @@
     SUBDIR += ruby22
     SUBDIR += runawk
     SUBDIR += rust
+    SUBDIR += rust-nightly
     SUBDIR += s9fes
     SUBDIR += sagittarius-scheme
     SUBDIR += sather-specification
@@ -299,6 +304,7 @@
     SUBDIR += smalltalk
     SUBDIR += smlnj
     SUBDIR += snobol4
+    SUBDIR += spark
     SUBDIR += spidermonkey17
     SUBDIR += spidermonkey170
     SUBDIR += spidermonkey185

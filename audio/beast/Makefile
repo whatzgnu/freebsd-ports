@@ -5,8 +5,7 @@ PORTNAME=	beast
 PORTVERSION=	0.7.8
 PORTREVISION=	8
 CATEGORIES=	audio
-MASTER_SITES=	http://dist.testbit.eu/beast/%SUBDIR%/
-MASTER_SITE_SUBDIR=	v${PORTVERSION:R}
+MASTER_SITES=	http://dist.testbit.eu/beast/v${PORTVERSION:R}/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Powerful music composition and modular synthesis application
@@ -26,7 +25,7 @@ USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig shared-mime-in
 SHEBANG_FILES=	autotools/intltool-merge
 # Fails to build with GCC 4.9, cf. PR 196849.
 USE_GCC=	4.8
-USE_GNOME=	libgnomecanvas
+USE_GNOME=	intltool libgnomecanvas
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-silent-rules \
 		--enable-osspcm=/dev/dsp \

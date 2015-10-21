@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	scilab
-PORTVERSION=	5.5.0
-PORTREVISION=	2
+PORTVERSION=	5.5.2
 CATEGORIES=	math cad java
 MASTER_SITES=	http://www.scilab.org/download/${PORTVERSION}/
 DISTFILES=	${DISTNAME}-src${EXTRACT_SUFX}
@@ -23,8 +22,8 @@ LIB_DEPENDS=	libxml2.so:${PORTSDIR}/textproc/libxml2 \
 		libamd.so:${PORTSDIR}/math/suitesparse
 RUN_DEPENDS=	xdg-open:${PORTSDIR}/devel/xdg-utils
 
-USES=		desktop-file-utils fortran gettext gmake iconv libtool \
-		pathfix pkgconfig shared-mime-info
+USES=		cpe desktop-file-utils fortran gettext gmake iconv \
+		libtool pathfix pkgconfig shared-mime-info
 GNU_CONFIGURE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -32,16 +31,23 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS=	--with-gfortran \
 		--without-emf \
 		-disable-static-system-lib
-CONFIGURE_ENV=	BLAS_LIBS="${BLAS_LIBS}" LAPACK_LIBS="${LAPACK_LIBS}"
+CONFIGURE_ENV=	BLAS_LIBS="${BLASLIB}" LAPACK_LIBS="${LAPACKLIB}"
 MAKE_ENV=	LANG=en_US.UTF-8 \
 		LC_ALL=en_US.UTF-8
 INSTALL_TARGET=	install-strip
 
-OPTIONS_DEFINE=	ATLAS GUI OCAML TK
-OPTIONS_DEFAULT=	GUI OCAML TK
+PLIST_SUB=	SHLIB_VER=${PORTVERSION}
+
+OPTIONS_DEFINE=	GUI OCAML TK
+OPTIONS_RADIO=	BLAS
+OPTIONS_RADIO_BLAS=	ATLAS NETLIB OPENBLAS
+OPTIONS_DEFAULT=	GUI NETLIB OCAML TK
 OPTIONS_SUB=	yes
 
-ATLAS_DESC=	Use Atlas instead of Blas
+ATLAS_USES=	blaslapack:atlas
+NETLIB_USES=	blaslapack:netlib
+OPENBLAS_USES=	blaslapack:openblas
+
 GUI_DESC=	Graphical User Interface (Java)
 OCAML_DESC=	Scicos - dynamical system simulator (requires GUI)
 
@@ -105,17 +111,14 @@ TK_CONFIGURE_ON=	--with-tk-library=${LOCALBASE}/lib \
 TK_USES=	tk
 TK_USE=		XORG=x11
 
+.if !exists(/usr/include/omp.h)
+CONFIGURE_ARGS+=	--without-openmp
+.endif
+
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MATLAS}
-LIB_DEPENDS+=	libatlas.so:${PORTSDIR}/math/atlas
-BLAS_LIBS=	-lf77blas
-LAPACK_LIBS=	-lalapack -lcblas
-.else
-LIB_DEPENDS+=	liblapack.so:${PORTSDIR}/math/lapack \
-		libblas.so:${PORTSDIR}/math/blas
-BLAS_LIBS=	-lblas
-LAPACK_LIBS=	-llapack
+.if ${PORT_OPTIONS:MOCAML} && empty(PORT_OPTIONS:MGUI)
+IGNORE=	with OCAML option requies GUI. Please rerun 'make config' and select GUI
 .endif
 
 .if ${PORT_OPTIONS:MGUI}
@@ -167,8 +170,7 @@ post-patch:
 .endif
 
 pre-install:
-	@${MKDIR} ${STAGEDIR}${DATADIR}/.atoms
-	@${TOUCH} ${STAGEDIR}${DATADIR}/.atoms/.keep_me
+	${MKDIR} ${STAGEDIR}${DATADIR}/.atoms
 
 post-install:
 	@# Remove empty dirs in DATADIR/modules - they will be removed by the

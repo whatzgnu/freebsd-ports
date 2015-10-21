@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	darktable
-PORTVERSION=	1.6.6
+PORTVERSION=	1.6.7
 CATEGORIES=	graphics
 MASTER_SITES=	https://github.com/darktable-org/${PORTNAME}/releases/download/release-${PORTVERSION}/
 
@@ -22,7 +22,7 @@ ONLY_FOR_ARCHS_REASON=	uses SSE extensions
 
 USES=		compiler:c++11-lib cmake:outsource desktop-file-utils	\
 		ninja pkgconfig tar:xz
-USE_GNOME=	librsvg2
+USE_GNOME=	intltool librsvg2
 USE_SQLITE=	yes
 USE_LDCONFIG=	${PREFIX}/lib/${PORTNAME}
 INSTALLS_ICONS=	yes

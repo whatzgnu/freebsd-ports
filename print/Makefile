@@ -3,6 +3,7 @@
 
     COMMENT = Desktop publishing
 
+    SUBDIR += R-cran-knitr
     SUBDIR += a2pdf
     SUBDIR += a2ps
     SUBDIR += abc2mtex
@@ -22,7 +23,6 @@
     SUBDIR += catdvi
     SUBDIR += cdlabelgen
     SUBDIR += cloudprint
-    SUBDIR += cm-super
     SUBDIR += cups
     SUBDIR += cups-base
     SUBDIR += cups-bjnp
@@ -77,7 +77,6 @@
     SUBDIR += gimp-gutenprint
     SUBDIR += gl2ps
     SUBDIR += gnome-cups-manager
-    SUBDIR += gnome-specimen
     SUBDIR += gnomephotoprinter
     SUBDIR += gribouy
     SUBDIR += gsfonts
@@ -105,6 +104,8 @@
     SUBDIR += kde_poster
     SUBDIR += kover
     SUBDIR += kpdftool
+    SUBDIR += latex-beamer
+    SUBDIR += latex-biber
     SUBDIR += latex-ltablex
     SUBDIR += latex-resume
     SUBDIR += latex2rtf
@@ -187,7 +188,6 @@
     SUBDIR += pslib
     SUBDIR += pstotext
     SUBDIR += psutils
-    SUBDIR += pup
     SUBDIR += py-cups
     SUBDIR += py-fonttools
     SUBDIR += py-pdf
@@ -208,7 +208,7 @@
     SUBDIR += rtf2latex2e
     SUBDIR += rubygem-afm
     SUBDIR += rubygem-color
-    SUBDIR += rubygem-colortools
+    SUBDIR += rubygem-color-tools
     SUBDIR += rubygem-pdf-core
     SUBDIR += rubygem-pdf-reader
     SUBDIR += rubygem-pdf-writer
@@ -230,6 +230,7 @@
     SUBDIR += t1utils
     SUBDIR += tex
     SUBDIR += tex-aleph
+    SUBDIR += tex-basic-engines
     SUBDIR += tex-dvipdfmx
     SUBDIR += tex-dvipsk
     SUBDIR += tex-formats
@@ -243,9 +244,9 @@
     SUBDIR += texlive-base
     SUBDIR += texlive-docs
     SUBDIR += texlive-full
-    SUBDIR += texlive-infra
     SUBDIR += texlive-texmf
     SUBDIR += texlive-texmf-source
+    SUBDIR += texlive-tlmgr
     SUBDIR += texvc
     SUBDIR += tgif2tex
     SUBDIR += transfig

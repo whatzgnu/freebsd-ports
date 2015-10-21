@@ -9,8 +9,7 @@ MASTER_SITES=	SF
 MAINTAINER=	makc@FreeBSD.org
 COMMENT=	Drivers and utilities for HP Printers and All-in-One devices
 
-LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
-		libcupsmime.so:${PORTSDIR}/print/cups-base \
+LIB_DEPENDS=	libcupsmime.so:${PORTSDIR}/print/cups-base \
 		libcups.so:${PORTSDIR}/print/cups-client \
 		libcupsimage.so:${PORTSDIR}/print/cups-image \
 		libdbus-1.so:${PORTSDIR}/devel/dbus
@@ -22,8 +21,8 @@ RUN_DEPENDS=	espgs:${PORTSDIR}/print/cups-pstoraster \
 CONFLICTS_INSTALL=	hpijs-[0-9]*
 
 INSTALL_TARGET=	install-strip
-USES=		dos2unix libtool pkgconfig python shebangfix
-USE_GHOSTSCRIPT_RUN=	yes
+USES=		dos2unix ghostscript:run jpeg libtool pkgconfig python \
+		shebangfix
 USE_GNOME=	pygobject
 USE_LDCONFIG=	yes
 

@@ -11,11 +11,10 @@ MAINTAINER=	stephen@FreeBSD.org
 COMMENT=	Automatic 3D tetrahedral mesh generator
 
 LIB_DEPENDS=	libTix8.4.3.so:${PORTSDIR}/x11-toolkits/tix \
-		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libtogl.so:${PORTSDIR}/graphics/togl
 
 USE_LDCONFIG=	yes
-USES=		gmake libtool tk
+USES=		gmake jpeg libtool tk
 USE_GL=		yes
 USE_XORG=	xmu xi
 GNU_CONFIGURE=	yes
@@ -67,6 +66,5 @@ post-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/include
 	${SH} ${FILESDIR}/netgen_copy_include_for_salome ${WRKSRC} ${STAGEDIR}${PREFIX}
 	${LN} ${STAGEDIR}${PREFIX}/lib/libnglib.so ${STAGEDIR}${PREFIX}/lib/libnglib.so.1
-	${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.mk>

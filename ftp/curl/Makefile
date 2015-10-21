@@ -1,8 +1,9 @@
 # Created by: Neil Blakey-Milner <nbm@rucus.ru.ac.za>
-# $FreeBSD: head/ftp/curl/Makefile 389953 2015-06-17 17:24:57Z sunpoet $
+# $FreeBSD$
 
 PORTNAME=	curl
 PORTVERSION=	7.43.0
+PORTREVISION=	2
 CATEGORIES=	ftp www
 MASTER_SITES=	http://curl.haxx.se/download/ \
 		LOCAL/sunpoet
@@ -161,9 +162,13 @@ IGNORE=		only supports LDAPS with SSL
 IGNORE=		only supports LIBSSH2 with OpenSSL
 .endif
 
-.if ${PORT_OPTIONS:MOPENSSL} && defined(OPENSSL_PORT) && ${OPENSSL_PORT} == "security/libressl"
-.if ${PORT_OPTIONS:MGSSAPI_BASE}
-IGNORE=		with GSSAPI_BASE, configure failed to detect OpenSSL/LibreSSL from ports and link against base OpenSSL
+.if ${PORT_OPTIONS:MGSSAPI_BASE} && ${PORT_OPTIONS:MOPENSSL} && (defined(WITH_OPENSSL_PORT) || (!defined(WITH_OPENSSL_BASE) && exists(${LOCALBASE}/lib/libcrypto.so)))
+IGNORE=		GSSAPI_BASE is not compatible with OpenSSL from ports. Use other GSSAPI options or OpenSSL from base system
+.endif
+
+.if defined(OPENSSL_PORT) && ${OPENSSL_PORT} == "security/libressl"
+.if ${PORT_OPTIONS:MGSSAPI_BASE} && ${PORT_OPTIONS:MOPENSSL}
+IGNORE=		GSSAPI_BASE is not compatible with LibreSSL. Use other GSSAPI options
 .endif
 .if ${PORT_OPTIONS:MTLS_SRP}
 IGNORE=		unsupported TLS-SRP in LibreSSL

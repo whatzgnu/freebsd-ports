@@ -5,8 +5,7 @@ PORTNAME=	latex2html
 PORTVERSION=	2008
 PORTREVISION=	2
 CATEGORIES=	textproc
-MASTER_SITES=	${MASTER_SITE_TEX_CTAN}
-MASTER_SITE_SUBDIR=	support/${PORTNAME}
+MASTER_SITES=	TEX_CTAN/support/${PORTNAME}
 
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	Convert LaTeX documents to HTML
@@ -16,8 +15,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 CONFLICTS=	ja-latex2html-[0-9]*
 
-USES=		perl5
-USE_GHOSTSCRIPT=yes
+USES=		ghostscript perl5
 USE_TEX=	latex dvipsk texhash
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-perl=${PERL} \

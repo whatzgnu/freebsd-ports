@@ -1,13 +1,14 @@
 # $FreeBSD$
 
 PORTNAME=	fluentd
-PORTVERSION=	0.10.53
-PORTREVISION=	1
+PORTVERSION=	0.10.61
 CATEGORIES=	sysutils rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Fluent event collector
+
+LICENSE=	APACHE20
 
 RUN_DEPENDS=	\
 	rubygem-cool.io>=1.1.1:${PORTSDIR}/devel/rubygem-cool.io \
@@ -27,6 +28,7 @@ USE_RC_SUBR=	fluentd
 USERS=		fluentd
 GROUPS=		fluentd
 SUB_LIST+=	USER=${USERS} GROUP=${GROUPS} RUBY=${RUBY}
+NO_ARCH=	YES
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/fluentd/plugin

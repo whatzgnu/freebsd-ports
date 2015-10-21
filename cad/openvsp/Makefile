@@ -3,6 +3,7 @@
 
 PORTNAME=	openvsp
 PORTVERSION=	2.3.0
+DISTVERSIONPREFIX=	${GH_PROJECT}_
 PORTREVISION=	3
 CATEGORIES=	cad
 
@@ -16,7 +17,6 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/libopenNURBS.a:${PORTSDIR}/graphics/opennurbs
 LIB_DEPENDS=	libpthread-stubs.so:${PORTSDIR}/devel/libpthread-stubs \
-		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libdrm.so:${PORTSDIR}/graphics/libdrm \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
@@ -27,10 +27,9 @@ LIB_DEPENDS=	libpthread-stubs.so:${PORTSDIR}/devel/libpthread-stubs \
 USE_GITHUB=	yes
 GH_PROJECT=	OpenVSP
 GH_ACCOUNT=	${GH_PROJECT}
-GH_TAGNAME=	${GH_PROJECT}_${PORTVERSION}
 
 CMAKE_SOURCE_PATH=	${WRKSRC}/src
-USES=		cmake:outsource dos2unix iconv
+USES=		cmake:outsource dos2unix iconv jpeg
 USE_XORG=	ice sm x11 xau xcb xdamage xdmcp xext xfixes xft \
 		xinerama xrender xxf86vm
 USE_GL=		glu

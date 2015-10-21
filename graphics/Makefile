@@ -11,6 +11,8 @@
     SUBDIR += IPA
     SUBDIR += ImageMagick
     SUBDIR += ImageMagick-nox11
+    SUBDIR += ImageMagick7
+    SUBDIR += ImageMagick7-nox11
     SUBDIR += O2-tools
     SUBDIR += OpenEXR
     SUBDIR += R-cran-GDD
@@ -47,6 +49,7 @@
     SUBDIR += argyllcms
     SUBDIR += asciio
     SUBDIR += atril
+    SUBDIR += atril-lite
     SUBDIR += autopano-sift-c
     SUBDIR += autoq3d
     SUBDIR += autotrace
@@ -95,6 +98,7 @@
     SUBDIR += commons-utilities
     SUBDIR += compupic
     SUBDIR += converseen
+    SUBDIR += copperspice
     SUBDIR += cosmoplayer
     SUBDIR += crw
     SUBDIR += cthumb
@@ -153,6 +157,7 @@
     SUBDIR += evas_generic_loaders-svg
     SUBDIR += evas_generic_loaders-xcf
     SUBDIR += evince
+    SUBDIR += evince-lite
     SUBDIR += evolvotron
     SUBDIR += exact-image
     SUBDIR += exif
@@ -167,7 +172,6 @@
     SUBDIR += figurine
     SUBDIR += flam3
     SUBDIR += flasm
-    SUBDIR += fli2gif
     SUBDIR += flphoto
     SUBDIR += fly
     SUBDIR += fortytwo
@@ -175,7 +179,6 @@
     SUBDIR += fotoxx
     SUBDIR += founts
     SUBDIR += fpc-cairo
-    SUBDIR += fpc-fpgtk
     SUBDIR += fpc-graph
     SUBDIR += fpc-hermes
     SUBDIR += fpc-imagemagick
@@ -282,7 +285,6 @@
     SUBDIR += gpicview
     SUBDIR += gplot
     SUBDIR += gpsmanshp
-    SUBDIR += gqview
     SUBDIR += gracula
     SUBDIR += grads
     SUBDIR += grafx2
@@ -359,6 +361,7 @@
     SUBDIR += import-pictures
     SUBDIR += impressive
     SUBDIR += inkscape
+    SUBDIR += intel-backlight
     SUBDIR += intergif
     SUBDIR += inventor
     SUBDIR += ipe
@@ -445,7 +448,6 @@
     SUBDIR += ksaneplugin
     SUBDIR += ksnapshot
     SUBDIR += kudu
-    SUBDIR += kuickshow-kde4
     SUBDIR += l2p
     SUBDIR += laternamagica
     SUBDIR += lcdtest
@@ -469,6 +471,7 @@
     SUBDIR += libcaca
     SUBDIR += libcdr01
     SUBDIR += libchamplain
+    SUBDIR += libchamplain08
     SUBDIR += libdmtx
     SUBDIR += libdrm
     SUBDIR += libecwj2
@@ -510,6 +513,7 @@
     SUBDIR += libpano13
     SUBDIR += libpcd
     SUBDIR += libpgf
+    SUBDIR += libpotrace
     SUBDIR += libprojectm
     SUBDIR += libpuzzle
     SUBDIR += libqrencode
@@ -530,6 +534,7 @@
     SUBDIR += libwmf-nox11
     SUBDIR += libwpg
     SUBDIR += libwpg03
+    SUBDIR += lightzone
     SUBDIR += linplasma
     SUBDIR += linux-XnViewMP
     SUBDIR += linux-adobesvg
@@ -802,6 +807,7 @@
     SUBDIR += pstoedit
     SUBDIR += pstoepsi
     SUBDIR += pure-gl
+    SUBDIR += py-pyganim
     SUBDIR += py-PyX
     SUBDIR += py-PyX12
     SUBDIR += py-aafigure
@@ -834,6 +840,7 @@
     SUBDIR += py-opencv
     SUBDIR += py-openexr
     SUBDIR += py-opengl
+    SUBDIR += py-opengl-accelerate
     SUBDIR += py-openimageio
     SUBDIR += py-paint
     SUBDIR += py-pillow
@@ -856,6 +863,7 @@
     SUBDIR += py-sorl-thumbnail
     SUBDIR += py-soya3d
     SUBDIR += py-stltools
+    SUBDIR += py-toyplot
     SUBDIR += py-wand
     SUBDIR += py-webcolors
     SUBDIR += py3-cairo
@@ -915,12 +923,14 @@
     SUBDIR += rubygem-flamegraph
     SUBDIR += rubygem-gd2
     SUBDIR += rubygem-gdk_pixbuf2
+    SUBDIR += rubygem-gemojione
     SUBDIR += rubygem-geokit
     SUBDIR += rubygem-gitlab_emoji
     SUBDIR += rubygem-goocanvas
     SUBDIR += rubygem-gruff
     SUBDIR += rubygem-image_science
     SUBDIR += rubygem-imagesize
+    SUBDIR += rubygem-mini_magick
     SUBDIR += rubygem-objectdetect
     SUBDIR += rubygem-opengl
     SUBDIR += rubygem-pdfkit
@@ -964,9 +974,7 @@
     SUBDIR += simpleviewer
     SUBDIR += sk1libs
     SUBDIR += skanlite
-    SUBDIR += skencil
     SUBDIR += sketch
-    SUBDIR += sng
     SUBDIR += springgraph
     SUBDIR += squish
     SUBDIR += sswf

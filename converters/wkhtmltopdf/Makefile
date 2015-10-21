@@ -5,8 +5,7 @@ PORTNAME=	wkhtmltopdf
 PORTVERSION=	0.12.2.1
 PORTREVISION=	1
 CATEGORIES=	converters
-MASTER_SITES=	SF
-MASTER_SITE_SUBDIR=	${PORTNAME}/${PORTVERSION}
+MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}
 DISTNAME=	wkhtmltox-${PORTVERSION}
 
 MAINTAINER=	mm@FreeBSD.org
@@ -17,11 +16,10 @@ LICENSE_FILE_LGPL3=	${INSTALL_WRKSRC}/COPYING
 
 LIB_DEPENDS+=	libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
-		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng.so:${PORTSDIR}/graphics/png
 
 
-USES=			pkgconfig gmake perl5 iconv tar:bzip2
+USES=			iconv jpeg gmake perl5 pkgconfig tar:bzip2
 USE_XORG=		x11 xext xrender
 USE_PERL5=		build
 USE_LDCONFIG=		yes

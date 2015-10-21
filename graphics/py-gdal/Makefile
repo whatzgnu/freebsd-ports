@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
-PORTVERSION=	1.11.2
+PORTVERSION=	2.0.0
 CATEGORIES=	graphics python
-MASTER_SITES=	http://download.osgeo.org/gdal/ \
-		ftp://ftp.remotesensing.org/pub/gdal/ \
+MASTER_SITES=	http://download.osgeo.org/gdal/${PORTVERSION}/ \
+		ftp://ftp.remotesensing.org/pub/gdal/${PORTVERSION}/ \
 		LOCAL/sunpoet
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -25,8 +25,7 @@ USES=		python shebangfix tar:xz
 WRKSRC=		${WRKDIR}/${DISTNAME}/swig/python
 
 SHEBANG_FILES=	scripts/*.py
-python_OLD_CMD=	${SETENV} python
-python_CMD=	${PYTHON_CMD}
+python_OLD_CMD=	/usr/bin/env python
 
 NUMPY_BUILD_DEPENDS=	${PKGNAMEPREFIX}numpy>=1.0.0:${PORTSDIR}/math/py-numpy
 NUMPY_RUN_DEPENDS=	${PKGNAMEPREFIX}numpy>=1.0.0:${PORTSDIR}/math/py-numpy

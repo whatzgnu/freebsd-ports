@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rails
-PORTVERSION=	3.2.21
+PORTVERSION=	3.2.22
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
@@ -40,6 +40,8 @@ RUN_DEPENDS=	rubygem-actionmailer>=${PORTVERSION}:${PORTSDIR}/mail/rubygem-actio
 # XXX: and thus rdoc
 NOPORTDOCS=	yes
 
+NO_ARCH=	yes
+
 USE_RUBY=	yes
 USE_RUBY_RDOC=	yes
 USE_RUBYGEMS=	yes
@@ -53,7 +55,6 @@ CPE_VENDOR=	rubyonrails
 CPE_PRODUCT=	ruby_on_rails
 
 OPTIONS_DEFINE=	PASSENGER MEMCACHE_CLIENT
-MONGRELCLUSTER_DESC=	Mongrel Cluster backend
 PASSENGER_DESC=	Passenger backend
 MEMCACHE_CLIENT_DESC=	MemCache-Client support
 OPTIONSFILE=	${PORT_DBDIR}/rubygem-${PORTNAME}/options

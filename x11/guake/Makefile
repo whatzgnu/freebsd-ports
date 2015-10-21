@@ -1,8 +1,8 @@
 # $FreeBSD: head/x11/guake/Makefile 339634 2014-01-13 21:00:02Z rene $
 
 PORTNAME=	guake
-PORTVERSION=	0.5.2
-PORTREVISION=	1
+PORTVERSION=	0.7.2
+PORTREVISION=	0
 CATEGORIES=	x11
 
 MAINTAINER=	nivit@FreeBSD.org
@@ -43,7 +43,7 @@ PLIST_SUB+=	DESKTOPDIR="${DESKTOPDIR:S,${PREFIX}/,,}"
 USES=		autoreconf:build desktop-file-utils gettext gmake libtool \
 		pkgconfig python:2
 USE_GITHUB=	yes
-USE_GNOME=	gtk20 pygnome2
+USE_GNOME=	gtk20 pygnome2 intltool
 
 .include <bsd.port.options.mk>
 
