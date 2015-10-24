@@ -2,7 +2,7 @@
 
 PORTNAME=	llvm
 DISTVERSION=	3.6.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/releases/3.6.2/
 DISTNAME=	${PORTNAME}-${DISTVERSION}.src
@@ -16,7 +16,6 @@ LLVM_RELEASE=	${PORTVERSION:C/([0-9]\.[0-9].[0-9]).*/\1/}
 LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
-UNIQUENAME=	${PORTNAME}${LLVM_SUFFIX}
 
 WRKSRC=		${WRKDIR}/llvm-${DISTVERSION}.src
 
@@ -178,14 +177,18 @@ post-patch:
 	    ${WRKSRC}/utils/lit/lit.py ${WRKSRC}/utils/lit/lit/*.py \
 	    ${WRKSRC}/utils/lit/lit/formats/*.py
 
-.if ${PORT_OPTIONS:MCMAKE}
 post-configure:
+.if ${PORT_OPTIONS:MCMAKE}
 	${MKDIR} ${WRKDIR}/cmake
 	cd ${WRKDIR}/cmake && cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER:STRING="${CC}" -DCMAKE_CXX_COMPILER:STRING="${CXX}" ${WRKSRC}
 	${REINPLACE_CMD} -e 's|${WRKDIR}/cmake|${LLVM_PREFIX}|' \
 	    -e 's|${WRKSRC}/cmake/modules|${DATADIR}/cmake|' \
 	    ${WRKDIR}/cmake/share/llvm/cmake/LLVMConfig.cmake
 .endif
+	@${REINPLACE_CMD} -e 's|HAVE_MACH_MACH_H|NOHAVE_MACH_MACH_H|g' \
+		${WRKSRC}/include/llvm/Config/config.h.cmake
+	@${REINPLACE_CMD} -e 's|HAVE_MACH_MACH_H|NOHAVE_MACH_MACH_H|g' \
+		${WRKSRC}/cmake/config-ix.cmake
 
 post-build:
 .if ${PORT_OPTIONS:MMANPAGES}

@@ -161,6 +161,7 @@
     SUBDIR += gnu-radius
     SUBDIR += go-amqp
     SUBDIR += go-cs
+    SUBDIR += go-geoip
     SUBDIR += go.net
     SUBDIR += gofish
     SUBDIR += gogoc
@@ -204,6 +205,7 @@
     SUBDIR += howl
     SUBDIR += hping
     SUBDIR += hping-devel
+    SUBDIR += hs-aws
     SUBDIR += hs-connection
     SUBDIR += hs-gsasl
     SUBDIR += hs-hoauth2
@@ -214,6 +216,7 @@
     SUBDIR += hs-network-info
     SUBDIR += hs-network-multicast
     SUBDIR += hs-network-protocol-xmpp
+    SUBDIR += hs-network-uri
     SUBDIR += hs-pcap
     SUBDIR += hs-publicsuffixlist
     SUBDIR += hs-sendfile
@@ -270,6 +273,7 @@
     SUBDIR += kdenetwork4
     SUBDIR += kdenetwork4-filesharing
     SUBDIR += kdenetwork4-strigi-analyzers
+    SUBDIR += kea
     SUBDIR += kget
     SUBDIR += kio-upnp-ms
     SUBDIR += kippo
@@ -307,6 +311,7 @@
     SUBDIR += libilbc
     SUBDIR += libkfbapi
     SUBDIR += libkvkontakte
+    SUBDIR += libmaia
     SUBDIR += libmateweather
     SUBDIR += libmaxminddb
     SUBDIR += libmediawiki
@@ -369,7 +374,6 @@
     SUBDIR += macchanger
     SUBDIR += mad_fcl
     SUBDIR += malo-firmware-kmod
-    SUBDIR += mcast-tools
     SUBDIR += mdns-repeater
     SUBDIR += mediastreamer
     SUBDIR += mediatomb
@@ -449,6 +453,7 @@
     SUBDIR += nxproxy
     SUBDIR += nyancat
     SUBDIR += nylon
+    SUBDIR += ocserv
     SUBDIR += ohphone
     SUBDIR += olsrd
     SUBDIR += omcmd
@@ -874,6 +879,9 @@
     SUBDIR += php56-sockets
     SUBDIR += php56-xmlrpc
     SUBDIR += phpldapadmin
+    SUBDIR += pim6-tools
+    SUBDIR += pim6dd
+    SUBDIR += pim6sd
     SUBDIR += pimd
     SUBDIR += pimdd
     SUBDIR += pipsecd
@@ -1055,6 +1063,8 @@
     SUBDIR += rubygem-epp-client-smallregistry
     SUBDIR += rubygem-fog-atmos
     SUBDIR += rubygem-fog-aws
+    SUBDIR += rubygem-fog-brightbox
+    SUBDIR += rubygem-fog-dynect
     SUBDIR += rubygem-fog-ecloud
     SUBDIR += rubygem-fog-google
     SUBDIR += rubygem-fog-local
@@ -1161,6 +1171,7 @@
     SUBDIR += slurm
     SUBDIR += smb4k-kde4
     SUBDIR += smbldap-tools
+    SUBDIR += smcroute
     SUBDIR += smm++
     SUBDIR += sniffit
     SUBDIR += sntop
@@ -1177,6 +1188,7 @@
     SUBDIR += spread4
     SUBDIR += sprinkle
     SUBDIR += sqtop
+    SUBDIR += srelay
     SUBDIR += ss5
     SUBDIR += ssldump
     SUBDIR += sslh

@@ -4,6 +4,7 @@
     COMMENT = Text processing utilities (does not include desktop publishing)
 
     SUBDIR += 2bsd-diff
+    SUBDIR += R-cran-DT
     SUBDIR += R-cran-R2HTML
     SUBDIR += R-cran-XML
     SUBDIR += R-cran-formatR
@@ -11,6 +12,7 @@
     SUBDIR += R-cran-htmltools
     SUBDIR += R-cran-markdown
     SUBDIR += R-cran-pystr
+    SUBDIR += R-cran-rmarkdown
     SUBDIR += R-cran-stringi
     SUBDIR += R-cran-stringr
     SUBDIR += R-cran-xtable
@@ -166,6 +168,7 @@
     SUBDIR += eo-aspell
     SUBDIR += eqe
     SUBDIR += erlang-edown
+    SUBDIR += erlang-p1xml
     SUBDIR += erlang-yamerl
     SUBDIR += es-aspell
     SUBDIR += es-hunspell
@@ -240,11 +243,14 @@
     SUBDIR += hs-appar
     SUBDIR += hs-attoparsec
     SUBDIR += hs-attoparsec-enumerator
+    SUBDIR += hs-bencode
     SUBDIR += hs-blaze-html
     SUBDIR += hs-blaze-markup
     SUBDIR += hs-bytestring-csv
     SUBDIR += hs-case-insensitive
+    SUBDIR += hs-cassava
     SUBDIR += hs-citeproc-hs
+    SUBDIR += hs-cmark
     SUBDIR += hs-csv
     SUBDIR += hs-double-conversion
     SUBDIR += hs-feed
@@ -261,14 +267,18 @@
     SUBDIR += hs-libxml
     SUBDIR += hs-libxml-sax
     SUBDIR += hs-pandoc
+    SUBDIR += hs-pandoc-citeproc
     SUBDIR += hs-pandoc-types
     SUBDIR += hs-parsec
     SUBDIR += hs-polyparse
+    SUBDIR += hs-regex-applicative
     SUBDIR += hs-regex-base
     SUBDIR += hs-regex-compat
+    SUBDIR += hs-regex-compat-tdfa
     SUBDIR += hs-regex-pcre-builtin
     SUBDIR += hs-regex-posix
     SUBDIR += hs-regex-tdfa
+    SUBDIR += hs-rfc5051
     SUBDIR += hs-stringsearch
     SUBDIR += hs-tagsoup
     SUBDIR += hs-tagstream-conduit
@@ -763,6 +773,7 @@
     SUBDIR += p5-String-Strip
     SUBDIR += p5-String-ToIdentifier-EN
     SUBDIR += p5-String-Tokenizer
+    SUBDIR += p5-String-Trim
     SUBDIR += p5-String-Truncate
     SUBDIR += p5-String-Urandom
     SUBDIR += p5-String-Util
@@ -883,6 +894,7 @@
     SUBDIR += p5-Text-Shellwords
     SUBDIR += p5-Text-Similarity
     SUBDIR += p5-Text-SimpleTable
+    SUBDIR += p5-Text-SimpleTable-AutoWidth
     SUBDIR += p5-Text-SimpleTemplate
     SUBDIR += p5-Text-Soundex
     SUBDIR += p5-Text-SpellChecker
@@ -1138,6 +1150,7 @@
     SUBDIR += peco
     SUBDIR += perl2html
     SUBDIR += permute
+    SUBDIR += php-mecab
     SUBDIR += php5-ctype
     SUBDIR += php5-dom
     SUBDIR += php5-pspell
@@ -1173,7 +1186,6 @@
     SUBDIR += popup-stacks
     SUBDIR += ppower4
     SUBDIR += print-n-times
-    SUBDIR += prosper
     SUBDIR += pugixml
     SUBDIR += pure-csv
     SUBDIR += pure-xml
@@ -1229,6 +1241,7 @@
     SUBDIR += py-pystache
     SUBDIR += py-pystemmer
     SUBDIR += py-python-augeas
+    SUBDIR += py-python-docx
     SUBDIR += py-pytidylib
     SUBDIR += py-pyx12
     SUBDIR += py-qrcode
@@ -1247,6 +1260,8 @@
     SUBDIR += py-sphinx
     SUBDIR += py-sphinx-intl
     SUBDIR += py-sphinx_rtd_theme
+    SUBDIR += py-sphinx_numfig
+    SUBDIR += py-sphinx_wikipedia
     SUBDIR += py-sphinxcontrib-adadomain
     SUBDIR += py-sphinxcontrib-bitbucket
     SUBDIR += py-sphinxcontrib-httpdomain
@@ -1331,7 +1346,7 @@
     SUBDIR += ruby-rss.alt
     SUBDIR += ruby-rttool
     SUBDIR += ruby-sary
-    SUBDIR += ruby-xmlconfigfile
+    SUBDIR += ruby-xml-configfile
     SUBDIR += ruby-xmlparser
     SUBDIR += ruby-xmlscan
     SUBDIR += rubygem-albino
@@ -1425,6 +1440,7 @@
     SUBDIR += rubygem-simplecov-html
     SUBDIR += rubygem-spreadsheet
     SUBDIR += rubygem-stamp
+    SUBDIR += rubygem-string-scrub
     SUBDIR += rubygem-syntax
     SUBDIR += rubygem-termcolor
     SUBDIR += rubygem-terminal-table

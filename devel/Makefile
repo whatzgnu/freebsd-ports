@@ -19,6 +19,7 @@
     SUBDIR += R-cran-caTools
     SUBDIR += R-cran-caret
     SUBDIR += R-cran-chron
+    SUBDIR += R-cran-doParallel
     SUBDIR += R-cran-evaluate
     SUBDIR += R-cran-foreach
     SUBDIR += R-cran-gbm
@@ -38,6 +39,8 @@
     SUBDIR += R-cran-registry
     SUBDIR += R-cran-reshape
     SUBDIR += R-cran-reshape2
+    SUBDIR += R-cran-rngtools
+    SUBDIR += R-cran-rstudioapi
     SUBDIR += SpecTcl
     SUBDIR += aap
     SUBDIR += aarch64-binutils
@@ -63,6 +66,7 @@
     SUBDIR += android-tools-adb-devel
     SUBDIR += android-tools-fastboot
     SUBDIR += android-tools-fastboot-devel
+    SUBDIR += android-tools-simpleperf
     SUBDIR += anjuta
     SUBDIR += anjuta-extras
     SUBDIR += antlr
@@ -292,6 +296,7 @@
     SUBDIR += cproto
     SUBDIR += cpuflags
     SUBDIR += critcl
+    SUBDIR += cs-eric6
     SUBDIR += cscope
     SUBDIR += cscout
     SUBDIR += csmith
@@ -431,6 +436,7 @@
     SUBDIR += elixir-inflex
     SUBDIR += elixir-lager_logger
     SUBDIR += elixir-msgpax
+    SUBDIR += elixir-paratize
     SUBDIR += elixir-plug
     SUBDIR += elixir-poison
     SUBDIR += elixir-quantum
@@ -479,6 +485,7 @@
     SUBDIR += erlang-sbroker
     SUBDIR += erlang-ssl_verify_hostname
     SUBDIR += erlang-syslog
+    SUBDIR += es-eric6
     SUBDIR += etcd
     SUBDIR += etcdctl
     SUBDIR += etl
@@ -568,8 +575,10 @@
     SUBDIR += geany
     SUBDIR += geany-plugin-addons
     SUBDIR += geany-plugin-autoclose
+    SUBDIR += geany-plugin-automark
     SUBDIR += geany-plugin-codenav
     SUBDIR += geany-plugin-commander
+    SUBDIR += geany-plugin-ctags
     SUBDIR += geany-plugin-debugger
     SUBDIR += geany-plugin-defineformat
     SUBDIR += geany-plugin-devhelp
@@ -578,20 +587,23 @@
     SUBDIR += geany-plugin-geanypy
     SUBDIR += geany-plugin-gendoc
     SUBDIR += geany-plugin-geniuspaste
-    SUBDIR += geany-plugin-gproject
+    SUBDIR += geany-plugin-git-changebar
     SUBDIR += geany-plugin-insertnum
     SUBDIR += geany-plugin-latex
     SUBDIR += geany-plugin-lipsum
     SUBDIR += geany-plugin-lua
     SUBDIR += geany-plugin-macro
+    SUBDIR += geany-plugin-markdown
     SUBDIR += geany-plugin-miniscript
     SUBDIR += geany-plugin-multiterm
     SUBDIR += geany-plugin-numberedbookmarks
+    SUBDIR += geany-plugin-overview
     SUBDIR += geany-plugin-pairtaghighlighter
     SUBDIR += geany-plugin-pg
     SUBDIR += geany-plugin-pohelper
     SUBDIR += geany-plugin-pretty-printer
     SUBDIR += geany-plugin-prj
+    SUBDIR += geany-plugin-projectorganizer
     SUBDIR += geany-plugin-scope
     SUBDIR += geany-plugin-sendmail
     SUBDIR += geany-plugin-shiftcolumn
@@ -635,6 +647,7 @@
     SUBDIR += gitg0
     SUBDIR += github-backup-utils
     SUBDIR += gitinspector
+    SUBDIR += gitlist
     SUBDIR += gitolite
     SUBDIR += gitolite2
     SUBDIR += gitphp
@@ -751,7 +764,6 @@
     SUBDIR += hs-HUnit
     SUBDIR += hs-IfElse
     SUBDIR += hs-List
-    SUBDIR += hs-MaybeT
     SUBDIR += hs-MemoTrie
     SUBDIR += hs-MissingH
     SUBDIR += hs-MonadCatchIO-mtl
@@ -764,6 +776,7 @@
     SUBDIR += hs-STMonadTrans
     SUBDIR += hs-SafeSemaphore
     SUBDIR += hs-ShellCheck
+    SUBDIR += hs-StateVar
     SUBDIR += hs-Stream
     SUBDIR += hs-TypeCompose
     SUBDIR += hs-abstract-deque
@@ -780,6 +793,7 @@
     SUBDIR += hs-async
     SUBDIR += hs-atomic-primops
     SUBDIR += hs-auto-update
+    SUBDIR += hs-base-orphans
     SUBDIR += hs-base-unicode-symbols
     SUBDIR += hs-base16-bytestring
     SUBDIR += hs-base64-bytestring
@@ -795,6 +809,7 @@
     SUBDIR += hs-byteable
     SUBDIR += hs-byteorder
     SUBDIR += hs-bytestring-lexing
+    SUBDIR += hs-bytestring-mmap
     SUBDIR += hs-bytestring-nums
     SUBDIR += hs-bytestring-show
     SUBDIR += hs-c2hs
@@ -809,6 +824,7 @@
     SUBDIR += hs-conduit-combinators
     SUBDIR += hs-conduit-extra
     SUBDIR += hs-configurator
+    SUBDIR += hs-constraints
     SUBDIR += hs-convertible
     SUBDIR += hs-cpphs
     SUBDIR += hs-darcs
@@ -819,6 +835,7 @@
     SUBDIR += hs-data-default-instances-dlist
     SUBDIR += hs-data-default-instances-old-locale
     SUBDIR += hs-data-hash
+    SUBDIR += hs-data-ordlist
     SUBDIR += hs-data-pprint
     SUBDIR += hs-date-cache
     SUBDIR += hs-datetime
@@ -826,6 +843,7 @@
     SUBDIR += hs-directory-tree
     SUBDIR += hs-dlist
     SUBDIR += hs-dlist-instances
+    SUBDIR += hs-easy-file
     SUBDIR += hs-edit-distance
     SUBDIR += hs-either
     SUBDIR += hs-enclosed-exceptions
@@ -834,6 +852,7 @@
     SUBDIR += hs-errors
     SUBDIR += hs-exceptions
     SUBDIR += hs-extensible-exceptions
+    SUBDIR += hs-extra
     SUBDIR += hs-fast-logger
     SUBDIR += hs-fgl
     SUBDIR += hs-file-embed
@@ -843,35 +862,41 @@
     SUBDIR += hs-fsnotify
     SUBDIR += hs-gconf
     SUBDIR += hs-generic-deriving
-    SUBDIR += hs-geniplate
+    SUBDIR += hs-geniplate-mirror
     SUBDIR += hs-ghc-events
     SUBDIR += hs-ghc-mtl
     SUBDIR += hs-ghc-paths
     SUBDIR += hs-gio
     SUBDIR += hs-git-annex
-    SUBDIR += hs-glade
     SUBDIR += hs-glib
     SUBDIR += hs-gtk2hs-buildtools
     SUBDIR += hs-haddock
+    SUBDIR += hs-haddock-api
     SUBDIR += hs-haddock-library
     SUBDIR += hs-happy
     SUBDIR += hs-hashable
     SUBDIR += hs-hashed-storage
     SUBDIR += hs-hashtables
-    SUBDIR += hs-haskell-platform
     SUBDIR += hs-haskell-src
     SUBDIR += hs-haskell-src-exts
     SUBDIR += hs-hasktags
     SUBDIR += hs-hastache
+    SUBDIR += hs-hex
     SUBDIR += hs-hinotify
     SUBDIR += hs-hint
     SUBDIR += hs-hlibev
     SUBDIR += hs-hlint
     SUBDIR += hs-hoogle
+    SUBDIR += hs-hourglass
+    SUBDIR += hs-hsb2hs
     SUBDIR += hs-hslogger
     SUBDIR += hs-hslua
     SUBDIR += hs-hspec
+    SUBDIR += hs-hspec-core
+    SUBDIR += hs-hspec-discover
     SUBDIR += hs-hspec-expectations
+    SUBDIR += hs-js-flot
+    SUBDIR += hs-js-jquery
     SUBDIR += hs-keys
     SUBDIR += hs-kqueue
     SUBDIR += hs-language-c
@@ -879,8 +904,11 @@
     SUBDIR += hs-largeword
     SUBDIR += hs-lazysmallcheck
     SUBDIR += hs-lens
+    SUBDIR += hs-lifted-async
     SUBDIR += hs-lifted-base
     SUBDIR += hs-logict
+    SUBDIR += hs-map-syntax
+    SUBDIR += hs-memory
     SUBDIR += hs-mmap
     SUBDIR += hs-mmorph
     SUBDIR += hs-monad-control
@@ -893,17 +921,21 @@
     SUBDIR += hs-mtl
     SUBDIR += hs-mueval
     SUBDIR += hs-murmur-hash
+    SUBDIR += hs-mutable-containers
+    SUBDIR += hs-newtype
+    SUBDIR += hs-old-locale
+    SUBDIR += hs-old-time
     SUBDIR += hs-optparse-applicative
     SUBDIR += hs-parallel
     SUBDIR += hs-pcre-light
     SUBDIR += hs-prelude-extras
+    SUBDIR += hs-preprocessor-tools
     SUBDIR += hs-prettyclass
     SUBDIR += hs-primitive
     SUBDIR += hs-profunctors
     SUBDIR += hs-project-template
     SUBDIR += hs-quickcheck-io
     SUBDIR += hs-random
-    SUBDIR += hs-ranges
     SUBDIR += hs-readline
     SUBDIR += hs-reflection
     SUBDIR += hs-resource-pool
@@ -932,13 +964,13 @@
     SUBDIR += hs-test-framework
     SUBDIR += hs-test-framework-hunit
     SUBDIR += hs-test-framework-quickcheck2
-    SUBDIR += hs-testpack
     SUBDIR += hs-text
     SUBDIR += hs-text-icu
     SUBDIR += hs-tf-random
     SUBDIR += hs-threads
     SUBDIR += hs-threadscope
     SUBDIR += hs-time-compat
+    SUBDIR += hs-time-locale-compat
     SUBDIR += hs-timezone-olson
     SUBDIR += hs-timezone-series
     SUBDIR += hs-transformers-base
@@ -955,6 +987,7 @@
     SUBDIR += hs-uuagc-bootstrap
     SUBDIR += hs-uuagc-cabal
     SUBDIR += hs-uuid
+    SUBDIR += hs-uuid-types
     SUBDIR += hs-uulib
     SUBDIR += hs-vault
     SUBDIR += hs-vector
@@ -983,6 +1016,7 @@
     SUBDIR += ipython
     SUBDIR += ireport
     SUBDIR += isl
+    SUBDIR += it-eric6
     SUBDIR += itext
     SUBDIR += jakarta-commons-configuration
     SUBDIR += jakarta-commons-daemon
@@ -1079,6 +1113,7 @@
     SUBDIR += libcli
     SUBDIR += libconfig
     SUBDIR += libconfuse
+    SUBDIR += libcutl
     SUBDIR += libcwd
     SUBDIR += libcxxrt
     SUBDIR += libdaemon
@@ -1325,6 +1360,7 @@
     SUBDIR += linux_kdump
     SUBDIR += linux_libusb
     SUBDIR += lion
+    SUBDIR += lldb37
     SUBDIR += llnextgen
     SUBDIR += llvm-cheri
     SUBDIR += llvm-devel
@@ -1364,6 +1400,7 @@
     SUBDIR += lua-lgi
     SUBDIR += lua-lpeg
     SUBDIR += lua-lpeg51
+    SUBDIR += lua-luarocks
     SUBDIR += lua-lunit
     SUBDIR += lua-posix
     SUBDIR += lua-pty
@@ -1478,7 +1515,6 @@
     SUBDIR += ocaml-cmdliner
     SUBDIR += ocaml-cppo
     SUBDIR += ocaml-deriving-ocsigen
-    SUBDIR += ocaml-equeue
     SUBDIR += ocaml-extlib
     SUBDIR += ocaml-findlib
     SUBDIR += ocaml-ipaddr
@@ -2183,6 +2219,7 @@
     SUBDIR += p5-File-Cat
     SUBDIR += p5-File-ChangeNotify
     SUBDIR += p5-File-ConfigDir
+    SUBDIR += p5-File-Copy-Link
     SUBDIR += p5-File-Copy-Recursive
     SUBDIR += p5-File-CountLines
     SUBDIR += p5-File-CreationTime
@@ -2236,6 +2273,7 @@
     SUBDIR += p5-File-Slurp
     SUBDIR += p5-File-Slurp-Tiny
     SUBDIR += p5-File-Slurp-Tree
+    SUBDIR += p5-File-Slurper
     SUBDIR += p5-File-Spec-Native
     SUBDIR += p5-File-Stream
     SUBDIR += p5-File-Sync
@@ -2430,6 +2468,8 @@
     SUBDIR += p5-List-Flatten
     SUBDIR += p5-List-Gen
     SUBDIR += p5-List-Group
+    SUBDIR += p5-List-Objects-Types
+    SUBDIR += p5-List-Objects-WithUtils
     SUBDIR += p5-List-Permutor
     SUBDIR += p5-List-PowerSet
     SUBDIR += p5-List-Rotation-Cycle
@@ -2652,6 +2692,7 @@
     SUBDIR += p5-MooseX-Types-DateTime
     SUBDIR += p5-MooseX-Types-DateTime-ButMaintained
     SUBDIR += p5-MooseX-Types-DateTime-MoreCoercions
+    SUBDIR += p5-MooseX-Types-DateTime-MySQL
     SUBDIR += p5-MooseX-Types-DateTimeX
     SUBDIR += p5-MooseX-Types-ISO8601
     SUBDIR += p5-MooseX-Types-JSON
@@ -3403,6 +3444,7 @@
     SUBDIR += pccts
     SUBDIR += pcl
     SUBDIR += pcre
+    SUBDIR += pcre2
     SUBDIR += pcre++
     SUBDIR += pcsc-ada
     SUBDIR += pcsc-lite
@@ -3598,6 +3640,7 @@
     SUBDIR += pecl-expect
     SUBDIR += pecl-gearman
     SUBDIR += pecl-hidef
+    SUBDIR += pecl-hrtime
     SUBDIR += pecl-htscanner
     SUBDIR += pecl-inclued
     SUBDIR += pecl-inotify
@@ -3648,6 +3691,7 @@
     SUBDIR += php-libawl
     SUBDIR += php-memoize
     SUBDIR += php-scalar_objects
+    SUBDIR += php-uprofiler
     SUBDIR += php-xdebug
     SUBDIR += php5-blitz
     SUBDIR += php5-blitz-devel
@@ -3821,6 +3865,7 @@
     SUBDIR += py-apipkg
     SUBDIR += py-appdirs
     SUBDIR += py-application
+    SUBDIR += py-apscheduler
     SUBDIR += py-archetypes.querywidget
     SUBDIR += py-archetypes.referencebrowserwidget
     SUBDIR += py-archetypes.schemaextender
@@ -4007,6 +4052,7 @@
     SUBDIR += py-jsonrpclib
     SUBDIR += py-jsonschema
     SUBDIR += py-kaptan
+    SUBDIR += py-kayako
     SUBDIR += py-kazoo
     SUBDIR += py-kid
     SUBDIR += py-kjbuckets
@@ -4104,6 +4150,7 @@
     SUBDIR += py-pycerberus
     SUBDIR += py-pycparser
     SUBDIR += py-pydasm
+    SUBDIR += py-pydoop
     SUBDIR += py-pyechonest
     SUBDIR += py-pyee
     SUBDIR += py-pyelftools
@@ -4135,6 +4182,7 @@
     SUBDIR += py-python-statsd
     SUBDIR += py-python2-pythondialog
     SUBDIR += py-pythonbrew
+    SUBDIR += py-pytimeparse
     SUBDIR += py-pytrie
     SUBDIR += py-pytz
     SUBDIR += py-pyutil
@@ -4182,6 +4230,7 @@
     SUBDIR += py-sanetime
     SUBDIR += py-scripttest
     SUBDIR += py-sdl2
+    SUBDIR += py-selection
     SUBDIR += py-semantic_version
     SUBDIR += py-serpent
     SUBDIR += py-setproctitle
@@ -4268,6 +4317,7 @@
     SUBDIR += py-virtualenvwrapper
     SUBDIR += py-watchdog
     SUBDIR += py-wcwidth
+    SUBDIR += py-weblib
     SUBDIR += py-wheel
     SUBDIR += py-wsgi_xmlrpc
     SUBDIR += py-wsgitools
@@ -4279,6 +4329,7 @@
     SUBDIR += py-xmltodict
     SUBDIR += py-xoltar-toolkit
     SUBDIR += py-yaml
+    SUBDIR += py-yandex-money-sdk
     SUBDIR += py-yappi
     SUBDIR += py-yapps2
     SUBDIR += py-ydbf
@@ -4651,7 +4702,6 @@
     SUBDIR += rubygem-flexmock
     SUBDIR += rubygem-fluent-logger
     SUBDIR += rubygem-fog
-    SUBDIR += rubygem-fog-brightbox
     SUBDIR += rubygem-fog-core
     SUBDIR += rubygem-fog-json
     SUBDIR += rubygem-font-awesome-rails
@@ -4699,7 +4749,6 @@
     SUBDIR += rubygem-icalendar
     SUBDIR += rubygem-ice_cube
     SUBDIR += rubygem-ice_nine
-    SUBDIR += rubygem-igraph
     SUBDIR += rubygem-inflecto
     SUBDIR += rubygem-interact
     SUBDIR += rubygem-io-like
@@ -5090,6 +5139,7 @@
     SUBDIR += tokamak
     SUBDIR += tortoisehg
     SUBDIR += tpasm
+    SUBDIR += tr-eric6
     SUBDIR += trac-bitten
     SUBDIR += tradcpp
     SUBDIR += trio
@@ -5131,6 +5181,7 @@
     SUBDIR += winpdb
     SUBDIR += wizardkit
     SUBDIR += wxGlade
+    SUBDIR += wxformbuilder
     SUBDIR += xa65
     SUBDIR += xc3sprog
     SUBDIR += xdg-user-dirs
