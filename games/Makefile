@@ -43,6 +43,7 @@
     SUBDIR += aop
     SUBDIR += apoolGL
     SUBDIR += apricots
+    SUBDIR += aquaria
     SUBDIR += arkanoidsb
     SUBDIR += armagetron
     SUBDIR += arx-libertatis
@@ -229,6 +230,7 @@
     SUBDIR += ember
     SUBDIR += endgame-singularity
     SUBDIR += endgame-singularity-music
+    SUBDIR += endless-sky
     SUBDIR += enigma
     SUBDIR += ensemblist
     SUBDIR += entombed
@@ -896,6 +898,7 @@
     SUBDIR += sol
     SUBDIR += solarconquest
     SUBDIR += solarus
+    SUBDIR += solarus-quest-editor
     SUBDIR += solarwolf
     SUBDIR += sopwith
     SUBDIR += spacejunk

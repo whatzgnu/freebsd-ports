@@ -550,7 +550,7 @@ CONFIGURE_ARGS+=--with-http_stub_status_module
 CONFIGURE_ARGS+=--with-http_sub_module
 .endif
 
-.if ${PORT_OPTIONS:MHTTP_UPLOAD} 	 
+.if ${PORT_OPTIONS:MHTTP_UPLOAD}
 GIT_UPLOAD_VERSION= aba1e3f34c
 GH_ACCOUNT+=	vkholodkov:upload
 GH_PROJECT+=	nginx-upload-module:upload
@@ -640,12 +640,11 @@ CONFIGURE_ARGS+=--add-module=${WRKSRC_let}
 LIB_DEPENDS+=	libluajit-5.1.so:${PORTSDIR}/lang/luajit
 CONFIGURE_ENV+=	"LUAJIT_INC=${LOCALBASE}/include/luajit-2.0"
 CONFIGURE_ENV+=	"LUAJIT_LIB=${LOCALBASE}/lib"
-NGINX_LUA_VERSION=	0.9.15
+NGINX_LUA_VERSION=	0.9.16
 GH_ACCOUNT+=	openresty:lua
 GH_PROJECT+=	lua-nginx-module:lua
 GH_TAGNAME+=	v${NGINX_LUA_VERSION}:lua
 CONFIGURE_ARGS+=--add-module=${WRKSRC_lua}
-EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-ngx_http_lua_socket_udp.c
 .endif
 
 .if ${PORT_OPTIONS:MMEMC}
@@ -672,10 +671,11 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-nginx-modsecurity-configure
 .endif
 
 .if ${PORT_OPTIONS:MNAXSI}
-NGINX_NAXSI_VERSION=	0.50
-MASTER_SITES+=	http://naxsi.googlecode.com/files/:naxsi
-DISTFILES+=	naxsi-core-${NGINX_NAXSI_VERSION}.tgz:naxsi
-CONFIGURE_ARGS+=--add-module=${WRKDIR}/naxsi-core-${NGINX_NAXSI_VERSION}/naxsi_src
+NGINX_NAXSI_VERSION=	0.54
+GH_ACCOUNT+=	nbs-system:naxsi
+GH_PROJECT+=	naxsi:naxsi
+GH_TAGNAME+=	${NGINX_NAXSI_VERSION}:naxsi
+CONFIGURE_ARGS+=--add-module=${WRKDIR}/naxsi-${NGINX_NAXSI_VERSION}/naxsi_src
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_REWRITE} || defined(USE_HTTP_REWRITE)
@@ -688,10 +688,10 @@ CONFIGURE_ARGS+=--without-http_rewrite_module \
 .endif
 
 .if ${PORT_OPTIONS:MPASSENGER}
-PASSENGER_VERSION=	5.0.16
+PASSENGER_VERSION=	5.0.20
 MASTER_SITES+=	http://s3.amazonaws.com/phusion-passenger/releases/:passenger
 DISTFILES+=	passenger-${PASSENGER_VERSION}.tar.gz:passenger
-CONFIGURE_ARGS+=--add-module=${WRKDIR}/passenger-${PASSENGER_VERSION}/ext/nginx
+CONFIGURE_ARGS+=--add-module=${WRKDIR}/passenger-${PASSENGER_VERSION}/src/nginx_module
 EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-passenger-build-nginx.rb
 .if empty(PORT_OPTIONS:MDEBUG)
 CONFIGURE_ENV+=	OPTIMIZE="yes"
@@ -1041,7 +1041,7 @@ do-install:
 
 .if ${PORT_OPTIONS:MNAXSI}
 	${INSTALL_DATA} \
-	${WRKDIR}/naxsi-core-${NGINX_NAXSI_VERSION}/naxsi_config/naxsi_core.rules \
+	${WRKDIR}/naxsi-${NGINX_NAXSI_VERSION}/naxsi_config/naxsi_core.rules \
 	${STAGEDIR}${ETCDIR}
 .endif
 

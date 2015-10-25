@@ -185,6 +185,7 @@
     SUBDIR += lsw
     SUBDIR += luit
     SUBDIR += lumina
+    SUBDIR += lumina-devel
     SUBDIR += lumina-i18n
     SUBDIR += lupe
     SUBDIR += lxde-meta
@@ -211,7 +212,6 @@
     SUBDIR += mxico
     SUBDIR += numlockx
     SUBDIR += nvidia-driver
-    SUBDIR += nvidia-driver-173
     SUBDIR += nvidia-driver-304
     SUBDIR += nvidia-driver-340
     SUBDIR += nvidia-settings
@@ -407,7 +407,6 @@
     SUBDIR += xloadimage
     SUBDIR += xlockmore
     SUBDIR += xlogo
-    SUBDIR += xlogout
     SUBDIR += xlsatoms
     SUBDIR += xlsclients
     SUBDIR += xlupe

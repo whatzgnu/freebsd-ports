@@ -19,6 +19,7 @@
     SUBDIR += awka
     SUBDIR += bas2tap
     SUBDIR += basic256
+    SUBDIR += beignet
     SUBDIR += bf2c
     SUBDIR += bigloo
     SUBDIR += bsh
@@ -42,6 +43,7 @@
     SUBDIR += clojure
     SUBDIR += clojure-mode.el
     SUBDIR += cloudabi-clang
+    SUBDIR += clover
     SUBDIR += cmucl
     SUBDIR += cmucl-extra
     SUBDIR += cocor
@@ -61,6 +63,7 @@
     SUBDIR += emacs-lisp-intro
     SUBDIR += erlang
     SUBDIR += erlang-java
+    SUBDIR += erlang-riak
     SUBDIR += erlang-runtime15
     SUBDIR += erlang-runtime16
     SUBDIR += erlang-runtime17

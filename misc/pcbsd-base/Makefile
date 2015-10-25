@@ -21,7 +21,7 @@ RUN_DEPENDS=	pc-updategui:${PORTSDIR}/sysutils/pcbsd-utils-qt5 \
 		warden:${PORTSDIR}/sysutils/warden \
 		iocage:${PORTSDIR}/sysutils/iocage-devel \
 		pbi:${PORTSDIR}/sysutils/pbi-manager \
-		appcafe-setpass:${PORTSDIR}/sysutils/pcbsd-appweb \
+		${LOCALBASE}/share/appcafe/dispatcher:${PORTSDIR}/sysutils/pcbsd-appweb \
 		git:${PORTSDIR}/devel/git \
 		beadm:${PORTSDIR}/sysutils/beadm \
 		samba41>=0:${PORTSDIR}/net/samba41 \
@@ -77,7 +77,6 @@ RUN_DEPENDS=	pc-updategui:${PORTSDIR}/sysutils/pcbsd-utils-qt5 \
 		gutenprint-foomatic>=0:${PORTSDIR}/print/gutenprint-foomatic \
 		system-config-printer:${PORTSDIR}/print/system-config-printer \
 		numlockx:${PORTSDIR}/x11/numlockx \
-		mupdf:${PORTSDIR}/graphics/mupdf \
 		pciutils>=0:${PORTSDIR}/sysutils/pciutils \
 		gpg:${PORTSDIR}/security/gnupg \
 		foo2zjs>=0:${PORTSDIR}/print/foo2zjs \

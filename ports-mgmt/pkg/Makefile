@@ -1,7 +1,8 @@
 # $FreeBSD: head/ports-mgmt/pkg/Makefile 366286 2014-08-26 23:12:10Z bdrewery $
 
 PORTNAME=	pkg
-DISTVERSION=	1.5.6
+DISTVERSION=	1.6.1
+PORTREVISION=	1
 _PKG_VERSION=	${DISTVERSION}
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	\
@@ -71,6 +72,7 @@ PKG_DEPENDS=
 PKG_BIN=	${WRKSRC}/src/pkg-static
 
 post-install:
+	${LN} -sf ${PREFIX}/sbin/pkg ${STAGEDIR}${PREFIX}/sbin/bapt-get
 	@${MV} ${STAGEDIR}${PREFIX}/lib/libpkg_static.a \
 		${STAGEDIR}${PREFIX}/lib/libpkg.a
 

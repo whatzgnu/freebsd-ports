@@ -41,11 +41,13 @@
     SUBDIR += dvi2tty
     SUBDIR += dvips2ascii
     SUBDIR += dvisvg
+    SUBDIR += dymo-cups-drivers
     SUBDIR += easylatex
     SUBDIR += enscript-a4
     SUBDIR += enscript-letter
     SUBDIR += enscript-letterdj
     SUBDIR += enscriptfonts
+    SUBDIR += epson-inkjet-printer-escpr
     SUBDIR += epsonepl
     SUBDIR += flpsed
     SUBDIR += font-amsfonts

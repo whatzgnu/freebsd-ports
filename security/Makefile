@@ -112,8 +112,11 @@
     SUBDIR += easy-rsa
     SUBDIR += easypg
     SUBDIR += elixir-comeonin
+    SUBDIR += elixir-jose
     SUBDIR += engine_pkcs11
+    SUBDIR += erlang-jose
     SUBDIR += erlang-p1tls
+    SUBDIR += esteidfirefoxplugin
     SUBDIR += expiretable
     SUBDIR += f-prot
     SUBDIR += fakebo
@@ -160,6 +163,7 @@
     SUBDIR += go.crypto
     SUBDIR += goptlib
     SUBDIR += gorilla
+    SUBDIR += govpn
     SUBDIR += gpa
     SUBDIR += gpasman
     SUBDIR += gpass
@@ -170,6 +174,7 @@
     SUBDIR += gsasl
     SUBDIR += gsfv
     SUBDIR += gss
+    SUBDIR += gstreamer1-plugins-dtls
     SUBDIR += gtk-knocker
     SUBDIR += gtkpasman
     SUBDIR += gwee
@@ -260,7 +265,6 @@
     SUBDIR += kpcli
     SUBDIR += kqoauth
     SUBDIR += krb5
-    SUBDIR += krb5-111
     SUBDIR += krb5-112
     SUBDIR += krb5-appl
     SUBDIR += kripp
@@ -274,8 +278,8 @@
     SUBDIR += libassuan
     SUBDIR += libbeid
     SUBDIR += libbf
-    SUBDIR += libcryptui
     SUBDIR += libbzrtp
+    SUBDIR += libcryptui
     SUBDIR += libecc
     SUBDIR += libfprint
     SUBDIR += libgcrypt
@@ -785,6 +789,7 @@
     SUBDIR += py-Products.PluggableAuthService
     SUBDIR += py-RestrictedPython
     SUBDIR += py-SecretStorage
+    SUBDIR += py-acme
     SUBDIR += py-artifacts
     SUBDIR += py-bcrypt
     SUBDIR += py-borg.localrole
@@ -843,6 +848,8 @@
     SUBDIR += py-pysha3
     SUBDIR += py-python-registry
     SUBDIR += py-rekall
+    SUBDIR += py-rekall-core
+    SUBDIR += py-rekall_gui
     SUBDIR += py-requests-kerberos
     SUBDIR += py-rsa
     SUBDIR += py-service_identity
@@ -953,6 +960,7 @@
     SUBDIR += rubygem-ruby-saml
     SUBDIR += rubygem-scrypt
     SUBDIR += rubygem-six
+    SUBDIR += rubygem-sshkey
     SUBDIR += rubygem-sshkit
     SUBDIR += rubygem-twitter_oauth
     SUBDIR += safesh
@@ -1093,6 +1101,7 @@
     SUBDIR += yersinia
     SUBDIR += ykclient
     SUBDIR += ykpers
+    SUBDIR += yubikey-personalization-gui
     SUBDIR += zebedee
     SUBDIR += zenmap
     SUBDIR += zxid

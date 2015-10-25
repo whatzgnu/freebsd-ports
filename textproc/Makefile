@@ -83,6 +83,7 @@
     SUBDIR += clucene
     SUBDIR += clucene-qt4
     SUBDIR += clucene-qt5
+    SUBDIR += cmark
     SUBDIR += coccigrep
     SUBDIR += code2html
     SUBDIR += codespell
@@ -223,6 +224,7 @@
     SUBDIR += groff
     SUBDIR += groonga
     SUBDIR += gsed
+    SUBDIR += gspell
     SUBDIR += gtk-doc
     SUBDIR += gtkspell
     SUBDIR += gtkspell-reference
@@ -1182,6 +1184,7 @@
     SUBDIR += po4a
     SUBDIR += pocketreader
     SUBDIR += pod2mdoc
+    SUBDIR += pootle
     SUBDIR += popup
     SUBDIR += popup-stacks
     SUBDIR += ppower4
@@ -1259,12 +1262,13 @@
     SUBDIR += py-sparqlwrapper
     SUBDIR += py-sphinx
     SUBDIR += py-sphinx-intl
-    SUBDIR += py-sphinx_rtd_theme
     SUBDIR += py-sphinx_numfig
+    SUBDIR += py-sphinx_rtd_theme
     SUBDIR += py-sphinx_wikipedia
     SUBDIR += py-sphinxcontrib-adadomain
     SUBDIR += py-sphinxcontrib-bitbucket
     SUBDIR += py-sphinxcontrib-httpdomain
+    SUBDIR += py-sphinxcontrib-programoutput
     SUBDIR += py-syck
     SUBDIR += py-texttable
     SUBDIR += py-tinycss
@@ -1282,8 +1286,6 @@
     SUBDIR += py-xlutils
     SUBDIR += py-xlwriter
     SUBDIR += py-xlwt
-    SUBDIR += py-xml
-    SUBDIR += py-xmltools
     SUBDIR += py-xmltv
     SUBDIR += py-zope.app.i18n
     SUBDIR += py-zope.app.locales
@@ -1349,6 +1351,7 @@
     SUBDIR += ruby-xml-configfile
     SUBDIR += ruby-xmlparser
     SUBDIR += ruby-xmlscan
+    SUBDIR += rubygem-actionpack-xml_parser
     SUBDIR += rubygem-albino
     SUBDIR += rubygem-amatch
     SUBDIR += rubygem-asciidoctor
@@ -1378,6 +1381,7 @@
     SUBDIR += rubygem-fog-xml
     SUBDIR += rubygem-gemoji
     SUBDIR += rubygem-gherkin
+    SUBDIR += rubygem-gherkin3
     SUBDIR += rubygem-github-linguist
     SUBDIR += rubygem-github-markdown
     SUBDIR += rubygem-github-markup
@@ -1437,6 +1441,7 @@
     SUBDIR += rubygem-sass-rails5
     SUBDIR += rubygem-sass32
     SUBDIR += rubygem-sax-machine
+    SUBDIR += rubygem-scss_lint
     SUBDIR += rubygem-simplecov-html
     SUBDIR += rubygem-spreadsheet
     SUBDIR += rubygem-stamp
@@ -1502,6 +1507,7 @@
     SUBDIR += sl-hyphen
     SUBDIR += sl-mythes
     SUBDIR += slides
+    SUBDIR += smi
     SUBDIR += smu
     SUBDIR += so-hunspell
     SUBDIR += soothsayer
