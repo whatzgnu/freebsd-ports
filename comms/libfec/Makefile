@@ -6,13 +6,12 @@ PORTVERSION=	3.0.1
 PORTREVISION=	1
 CATEGORIES=	comms astro hamradio math
 MASTER_SITES=	http://www.ka9q.net/code/fec/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 DISTNAME=	fec-${PORTVERSION}
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	Several forward error correction (FEC) decoders
-
-BROKEN=		produces unusable library
 
 MAKEFILE=	makefile
 

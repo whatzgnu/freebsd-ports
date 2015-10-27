@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	cyrus-imapd
-PORTVERSION=	2.4.18
-#PORTREVISION=	0
+PORTVERSION=	2.4.17
+PORTREVISION=	11
 CATEGORIES=	mail ipv6
 MASTER_SITES=	ftp://ftp.cyrusimap.org/cyrus-imapd/ \
 		http://cyrusimap.org/releases/
@@ -109,7 +109,8 @@ GSSAPI_MIT_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
 
 .if ${PORT_OPTIONS:MAUTOCREATE} || ${PORT_OPTIONS:MAUTOSIEVE}
 PATCH_DIST_STRIP=	-p1
-PATCH_SITES+=		LOCAL/mm
+PATCH_SITES+=		${MASTER_SITE_LOCAL}
+PATCH_SITE_SUBDIR=	mm
 .endif
 
 .if ${PORT_OPTIONS:MAUTOCREATE}
@@ -121,7 +122,6 @@ PLIST_FILES+=	cyrus/bin/compile_sieve
 .if ${PORT_OPTIONS:MAUTOSIEVE}
 AUTOSIEVE_VERSION=	0.6.0
 PATCHFILES+=	${PORTNAME}-2.4.12-autosieve-${AUTOSIEVE_VERSION}.patch
-BROKEN=		Not buildable with autosieve patch
 .endif
 
 .if ${PORT_OPTIONS:MBDB}

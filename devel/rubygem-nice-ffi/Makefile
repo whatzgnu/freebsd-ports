@@ -8,14 +8,11 @@ CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
-COMMENT=	Convenience layer atop Ruby-FFI
-
-LICENSE=	MIT
+COMMENT=	Nice-FFI is a layer on top of Ruby-FFI
 
 RUN_DEPENDS=	rubygem-ffi>=0.5.0:${PORTSDIR}/devel/rubygem-ffi
 
-NO_ARCH=	yes
-USE_RUBY=	yes
+USE_RUBY=		yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 

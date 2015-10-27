@@ -2,34 +2,36 @@
 # $FreeBSD$
 
 PORTNAME=	rifiuti2
-PORTVERSION=	0.6.1
+DISTVERSION=	0.5.1
 CATEGORIES=	security
-MASTER_SITES=	https://github.com/abelcheung/rifiuti2/releases/download/${PORTVERSION}/
+MASTER_SITES=	GOOGLE_CODE
 
 MAINTAINER=	antoine@FreeBSD.org
 COMMENT=	Tool for analyzing Windows recycle bin
 
 LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/docs/LICENSE
 
 GNU_CONFIGURE=	yes
-USES=		gettext gmake pkgconfig tar:xz
+USES=		gettext pkgconfig
 USE_GNOME=	glib20
 
 CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 PLIST_FILES=	bin/rifiuti \
 		bin/rifiuti-vista \
 		man/man1/rifiuti.1.gz \
-		man/man1/rifiuti-vista.1.gz \
-		share/locale/zh_HK/LC_MESSAGES/rifiuti.mo
-PORTDOCS=	NEWS.md README.md
+		man/man1/rifiuti-vista.1.gz
+PORTDOCS=	AUTHORS ChangeLog NEWS README THANKS TODO
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

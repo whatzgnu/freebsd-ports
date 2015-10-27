@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	icinga
-PORTVERSION=	1.13.3
+PORTVERSION=	1.13.1
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 MASTER_SITES=	https://github.com/Icinga/${PORTNAME}-core/releases/download/v${PORTVERSION}/
 
@@ -14,7 +15,8 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libltdl.so:${PORTSDIR}/devel/libltdl \
 		libgd.so:${PORTSDIR}/graphics/gd
 
-USES=		cpe gmake perl5
+USES=		cpe gmake
+USE_AUTOTOOLS=	autoconf
 USE_RC_SUBR=	icinga
 
 GNU_CONFIGURE=	yes
@@ -48,15 +50,13 @@ CONFIGURE_ARGS=	--with-command-user=${ICINGAUSER} \
 		--libexecdir=${PREFIX}/libexec/icinga \
 		--with-plugin-dir=${LOCALBASE}/libexec/nagios \
 		--with-log-dir=${ICINGALOGDIR} \
-		--with-httpd-conf=${EXAMPLESDIR}/apache2 \
+		--with-httpd-conf=${EXAMPLESDIR}/apache22 \
 		--enable-event-broker \
 		--enable-nanosleep \
 		ac_cv_lib_iconv_main=no
 
 CONFIGURE_ENV=	PERL=${PERL} \
 		HOME=${WRKDIR} # prevent creation of .rnd file
-
-MAKE_ARGS=	INSTALL_OPTS= INSTALL_OPTS_WEB=
 
 INSTALL_TARGET=	install install-config install-eventhandlers install-webconf
 
@@ -105,14 +105,8 @@ CONFIGURE_ARGS+=	--disable-idoutils
 post-patch:
 	@${REINPLACE_CMD} -e 's#/bin/ping#/sbin/ping#' \
 		${WRKSRC}/sample-config/cgi.cfg.in
-.for f in icinga.cfg.in \
-          cgiauth.cfg.in \
-	  template-object/localhost.cfg.in \
-	  template-object/templates.cfg.in 
 	@${REINPLACE_CMD} -e 's#Linux#${OPSYS}#' \
-	                  -e 's#linux#${OPSYS:tl}#' \
-		${WRKSRC}/sample-config/${f}
-.endfor
+		${WRKSRC}/sample-config/icinga.cfg.in
 	@${REINPLACE_CMD} -e 's#775#755#g; s#664#644#g' \
 		${WRKSRC}/html/Makefile.in
 # Use correct make(1) syntax to unbreak parallel builds

@@ -1,8 +1,8 @@
 # Created by: Elvis Chiang <elvis@sslab.cs.ccu.edu.tw>
-# $FreeBSD$
+# $FreeBSD: head/www/wordpress/Makefile 397019 2015-09-15 19:53:40Z delphij $
 
 PORTNAME=	wordpress
-PORTVERSION=	4.2.4
+PORTVERSION=	4.3.1
 PORTEPOCH=	1
 CATEGORIES=	www
 MASTER_SITES=	http://wordpress.org/

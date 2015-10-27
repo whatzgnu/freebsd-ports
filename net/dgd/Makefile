@@ -4,6 +4,8 @@
 PORTNAME=	dgd
 PORTVERSION=	1.4.22
 CATEGORIES=	net lang games
+MASTER_SITES=	https://github.com/dworkin/dgd/archive/
+DISTNAME=	${PORTVERSION}
 
 MAINTAINER=	glewis@FreeBSD.org
 COMMENT=	Dworkin's Game Driver
@@ -17,8 +19,6 @@ CPLUSPLUS_COMMENTS_DESC=	Allow C++ style comments in LPC
 OPTIONS_DEFAULT=CPLUSPLUS_COMMENTS
 
 USES=		gmake
-USE_GITHUB=	yes
-GH_ACCOUNT=	dworkin
 
 DIST_SUBDIR=	dgd
 BASE_WRKSRC=	${WRKDIR}/${PORTNAME}-${PORTVERSION}

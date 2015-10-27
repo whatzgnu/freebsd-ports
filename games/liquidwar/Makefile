@@ -6,8 +6,9 @@ PORTVERSION=	5.6.4
 PORTREVISION=	4
 CATEGORIES=	games
 MASTER_SITES=	http://liquidwar.sunsite.dk/archive/ \
-		SAVANNAH \
+		${MASTER_SITE_SAVANNAH} \
 		http://ufoot.hd.free.fr/pub/archive/
+MASTER_SITE_SUBDIR=	liquidwar
 
 MAINTAINER=	edwin@mavetju.org
 COMMENT=	You control an army of liquid and have to try and eat your opponents

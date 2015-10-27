@@ -5,7 +5,8 @@ PORTNAME=	libdockapp
 PORTVERSION=	0.6.2
 PORTREVISION=	4
 CATEGORIES=	x11-wm
-MASTER_SITES=	LOCAL/xride
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	xride
 
 MAINTAINER=	xride@FreeBSD.org
 COMMENT=	Standard library for Window Maker dock apps

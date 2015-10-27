@@ -12,8 +12,6 @@ COMMENT=	Ruby bindings for RRD
 RUN_DEPENDS=	rrdtool:${PORTSDIR}/databases/rrdtool \
 		rubygem-rrd-ffi>=0.2.13:${PORTSDIR}/devel/rubygem-rrd-ffi
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

@@ -8,7 +8,7 @@ MASTER_SITES=	https://forge.ocamlcore.org/frs/download.php/728/
 PKGNAMEPREFIX=	ocaml-
 DISTNAME=	caml${PORTNAME}-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	jaapb@kerguelen.org
 COMMENT=	OCaml binding to the NDBM and GDBM database library
 
 LICENSE=	LGPL20

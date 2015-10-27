@@ -1,12 +1,18 @@
 # $FreeBSD$
 
 PORTNAME=	qtcurve
-PORTREVISION=	0
+PORTVERSION=	1.8.14
+PORTREVISION=	4
+CATEGORIES=	x11-themes
+MASTER_SITES=	http://craigd.wikispaces.com/file/view/
+PKGNAMEPREFIX=	kde4-style-
+DISTNAME=	QtCurve-KDE4-${PORTVERSION}
 
-COMMENT=	QtCurve KDE 4 widget style and window decoration
+MAINTAINER=	makc@FreeBSD.org
+COMMENT=	QtCurve KDE4 widget style
 
-QTCURVE_SLAVE=	kde4
+USES=		cmake gettext-tools tar:bzip2
+USE_QT4=	qmake_build uic_build moc_build rcc_build
+USE_KDE4=	kdelibs workspace kdeprefix automoc4
 
-MASTERDIR=	${.CURDIR}/../qtcurve
-
-.include "${MASTERDIR}/Makefile"
+.include <bsd.port.mk>

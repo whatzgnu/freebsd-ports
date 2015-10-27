@@ -22,7 +22,8 @@ RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash \
 
 USE_GNOME=	pango
 USE_PERL5=	build
-USES=		cmake ghostscript gmake perl5 pkgconfig
+USE_GHOSTSCRIPT=yes
+USES=		cmake gmake perl5 pkgconfig
 CMAKE_ARGS=	-DENABLE_java:BOOL=OFF \
 		-DENABLE_octave:BOOL=OFF \
 		-DENABLE_pdl:BOOL=OFF \

@@ -80,5 +80,11 @@ man/man5/xsredir.5.gz
 man/man5/xsscripts.5.gz
 man/man7/httpd_cgi.7.gz
 man/man7/httpd_ssi.7.gz
-@dir %%WWWDIR%%/logs
-@dir %%WWWDIR%%/htdocs
+@dirrm %%WWWDIR%%/contrib
+@dirrm %%WWWDIR%%/gfxcount
+@dirrmtry %%WWWDIR%%/cgi-bin
+@dirrmtry %%WWWDIR%%/conf
+@dirrmtry %%WWWDIR%%/htdocs
+@dirrmtry %%WWWDIR%%/icons
+@dirrmtry %%WWWDIR%%/logs
+@dirrmtry %%WWWDIR%%

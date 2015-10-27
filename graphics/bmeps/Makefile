@@ -13,7 +13,8 @@ COMMENT=	Convert PNG/JPEG/TIFF to PDF/EPS
 
 LICENSE=	BSD3CLAUSE
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff
 
 GNU_CONFIGURE=	yes
@@ -26,7 +27,7 @@ CONFIGURE_ENV=	ac_cv_header_sys_termios_h=no
 
 ALL_TARGET=	bmpp
 MAKEFILE=	GNUmakefile
-USES=		gmake jpeg
+USES=		gmake
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

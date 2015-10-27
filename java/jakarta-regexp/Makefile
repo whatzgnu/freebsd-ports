@@ -5,7 +5,8 @@ PORTNAME=	jakarta-regexp
 PORTVERSION=	1.5
 PORTREVISION=	3
 CATEGORIES=	java devel
-MASTER_SITES=	APACHE_JAKARTA/regexp/binaries
+MASTER_SITES=	${MASTER_SITE_APACHE_JAKARTA}
+MASTER_SITE_SUBDIR=	regexp/binaries
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Regular expressions for Java

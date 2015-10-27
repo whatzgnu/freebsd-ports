@@ -5,7 +5,8 @@ PORTNAME=	libopensync-plugin-vformat
 PORTVERSION=	0.39
 CATEGORIES=	deskutils
 MASTER_SITES=	http://www.opensync.org/download/releases/${PORTVERSION}/ \
-		LOCAL/danilo
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	danilo
 PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	danilo@FreeBSD.org

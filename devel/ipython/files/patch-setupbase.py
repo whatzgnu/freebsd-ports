@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- setupbase.py.orig
 +++ setupbase.py
 @@ -272,7 +272,7 @@

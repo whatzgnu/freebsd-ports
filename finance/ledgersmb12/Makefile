@@ -3,7 +3,7 @@
 
 PORTNAME=	ledgersmb
 PORTVERSION=	1.2.17
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	finance perl5
 MASTER_SITES=	SF/ledger-smb/${PORTNAME}/${PORTVERSION}
 
@@ -19,19 +19,17 @@ LATEST_LINK=	ledgersmb12
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 NO_BUILD=	yes
-NO_ARCH=	yes
-USES=		perl5 shebangfix
-SHEBANG_FILES=	utils/devel/chart-load-test.sh \
-		utils/devel/find-use \
-		utils/pos/pos-hardware-client-startup-script
+USES=		perl5
 USE_PERL5=	run build patch
 PLIST_SUB=	WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 SUB_FILES=	pkg-message
 
+.include <bsd.port.pre.mk>
+
 post-patch:
-	@${REINPLACE_CMD} -i '' -e 's|/usr/bin/perl|${perl_CMD}|' \
+	@${PERL} -pi -e 's|/usr/bin/perl|${PERL}|' \
 		`${FIND} ${WRKSRC} -name \*.pl`
-	@${SED} -e 's|%%PREFIX%%|${PREFIX}|g' \
+	@${PERL} -pe 's|%%PREFIX%%|${PREFIX}|g' \
 		${FILESDIR}/ledger-smb-httpd.conf.in \
 		> ${WRKDIR}/ledger-smb-httpd.conf
 
@@ -39,6 +37,6 @@ do-install:
 	@${CP} -R ${WRKSRC} ${STAGEDIR}${PREFIX}
 	@cd ${STAGEDIR}${PREFIX}/${PORTNAME} ; \
 		${CHMOD} 711 templates css spool
-	${INSTALL_DATA} ${WRKDIR}/ledger-smb-httpd.conf ${STAGEDIR}${PREFIX}/etc/
+	@${INSTALL_DATA} ${WRKDIR}/ledger-smb-httpd.conf ${STAGEDIR}${PREFIX}/etc/
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

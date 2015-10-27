@@ -16,8 +16,7 @@ LICENSE=	LGPL21
 
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-USES=		cpe libtool
-CPE_VENDOR=	c-icap_project
+USES=		libtool
 USE_LDCONFIG=	yes
 USE_RC_SUBR=	c-icap
 

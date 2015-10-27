@@ -17,8 +17,11 @@ GH_ACCOUNT=	mono
 PLIST_SUB+=	ASSEMBLY_VERSION=1.1.15
 
 GNU_CONFIGURE=	yes
-USES=		autoreconf gmake mono pathfix pkgconfig
+USES=		gmake mono pathfix pkgconfig
 USE_GNOME=	gtksharp20
 PATHFIX_MAKEFILEIN=	Makefile.am
+
+USE_AUTOTOOLS=	aclocal autoconf automake
+AUTOMAKE_ARGS=	--add-missing -i -f
 
 .include <bsd.port.mk>

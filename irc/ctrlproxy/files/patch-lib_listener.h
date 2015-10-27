@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lib/listener.h.orig
 +++ lib/listener.h
 @@ -5,8 +5,12 @@

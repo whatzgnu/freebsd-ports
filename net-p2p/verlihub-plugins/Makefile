@@ -5,7 +5,10 @@ PORTNAME=	verlihub
 PORTVERSION=	1.0
 PORTREVISION=	3
 CATEGORIES=	net-p2p
+MASTER_SITES=	# empty
 PKGNAMESUFFIX=	-plugins
+DISTFILES=	# empty
+EXTRACT_ONLY=	# empty
 
 MAINTAINER=	skylord@vt.net.ru
 COMMENT=	Meta-port for VerliHub plugins
@@ -20,6 +23,7 @@ RUN_DEPENDS=	\
 		${LOCALBASE}/lib/libmessanger_pi.so:${PORTSDIR}/net-p2p/verlihub-plugins-messanger \
 		${LOCALBASE}/lib/libstats_pi.so:${PORTSDIR}/net-p2p/verlihub-plugins-stats
 
-USES=		metaport
+NO_BUILD=	yes
+NO_INSTALL=	yes
 
 .include <bsd.port.mk>

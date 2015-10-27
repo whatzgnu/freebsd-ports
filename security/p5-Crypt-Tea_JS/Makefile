@@ -3,7 +3,7 @@
 
 PORTNAME=	Crypt-Tea_JS
 PORTVERSION=	2.23
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	security perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -13,8 +13,7 @@ COMMENT=	Next gen Tiny Encryption Algorithm in Perl and Javascript
 
 CONFLICTS=	p5-Crypt-T_e_a-[0-9]*
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	examples/tea_demo.cgi
+USES=		perl5
 USE_PERL5=	configure
 
 OPTIONS_DEFINE=	EXAMPLES
@@ -22,7 +21,9 @@ PORTEXAMPLES=	tea_demo.cgi
 PORTDATA=	Tea_JS.js
 
 post-install:
+	${CHMOD} u+w ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Crypt/Tea_JS/Tea_JS.so
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Crypt/Tea_JS/Tea_JS.so
+	${CHMOD} u-w ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Crypt/Tea_JS/Tea_JS.so
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/Tea_JS.js ${STAGEDIR}${DATADIR}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}

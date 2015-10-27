@@ -8,7 +8,7 @@ CATEGORIES=	graphics
 MASTER_SITES=	http://mirror.mcx2.org/ \
 		http://prima.eu.org/cgi-bin/cvsweb.cgi/apps/fotofix/fotofix/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Simple image viewer
 
 BROKEN=		No public distfiles

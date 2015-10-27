@@ -3,6 +3,7 @@
 
 PORTNAME=	paprefs
 PORTVERSION=	0.9.10
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://freedesktop.org/software/pulseaudio/${PORTNAME}/
 
@@ -16,7 +17,7 @@ GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 USES=		gmake pkgconfig
-USE_GNOME=	gconfmm26 gnomeprefix intltool
+USE_GNOME=	gconfmm26 gnomeprefix
 
 CONFIGURE_ARGS=	--disable-lynx
 

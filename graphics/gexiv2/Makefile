@@ -3,7 +3,7 @@
 
 PORTNAME=	gexiv2
 PORTVERSION=	0.6.1
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	graphics
 MASTER_SITES=	http://yorba.org/download/${PORTNAME}/${PORTVERSION:R}/
 DISTNAME=	lib${PORTNAME}_${PORTVERSION}
@@ -12,7 +12,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GObject-based wrapper around Exiv2 library
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	gm4:${PORTSDIR}/devel/m4
 LIB_DEPENDS=	libexiv2.so:${PORTSDIR}/graphics/exiv2
@@ -33,8 +32,5 @@ post-patch:
 
 pre-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/vala/vapi
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libgexiv2.so
 
 .include <bsd.port.mk>

@@ -12,8 +12,6 @@ COMMENT=	Collection of text algorithms
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING.txt
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

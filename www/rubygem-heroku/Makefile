@@ -2,7 +2,6 @@
 
 PORTNAME=	heroku
 PORTVERSION=	3.9.1
-PORTREVISION=	1
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
@@ -10,8 +9,6 @@ MAINTAINER=	rpaulo@FreeBSD.org
 COMMENT=	Heroku Client
 
 LICENSE=	MIT
-
-NO_ARCH=	yes
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

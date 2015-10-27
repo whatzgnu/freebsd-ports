@@ -2,7 +2,7 @@
 
 PORTNAME=	otr
 PORTVERSION=	4.0.0
-PORTREVISION=	6
+PORTREVISION=	5
 CATEGORIES=	security net-im net
 MASTER_SITES=	http://www.cypherpunks.ca/otr/
 PKGNAMEPREFIX=	pidgin-
@@ -22,9 +22,8 @@ LIB_DEPENDS=	libotr.so.5:${PORTSDIR}/security/libotr \
 USES=		cpe gettext gmake libtool pkgconfig
 CPE_VENDOR=	cypherpunks
 CPE_PRODUCT=	${PKGNAMEPREFIX}${PORTNAME}
-USE_GNOME=	gtk20 intltool
+USE_GNOME=	gtk20
 GNU_CONFIGURE=	yes
-INSTALL_TARGET=	install-strip
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

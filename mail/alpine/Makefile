@@ -2,7 +2,7 @@
 
 PORTNAME?=	alpine
 PORTVERSION=	2.20
-PORTREVISION?=	1
+PORTREVISION?=	0
 CATEGORIES?=	mail news ipv6
 MASTER_SITES=	http://patches.freeiz.com/alpine/release/src/
 DIST_SUBDIR=	alpine-${PORTVERSION}

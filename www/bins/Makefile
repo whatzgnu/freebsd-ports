@@ -3,7 +3,7 @@
 
 PORTNAME=	bins
 PORTVERSION=	1.1.29
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	www
 MASTER_SITES=	http://download.gna.org/bins/
 
@@ -29,16 +29,15 @@ RUN_DEPENDS=	\
 USES=		tar:bzip2 perl5
 USE_PERL5=	run
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 # additional scripts
 BINS_SCRIPTS=	tools/bins_txt2xml
 # doc file extension
 DOC_EXTS=	html sgml xml
 
-OPTIONS_DEFINE=	DOCS I18N
-OPTIONS_DEFAULT=I18N
-I18N_DESC=	Enable internationalization support
+MAN1=	bins-edit-gui.1 bins.1 bins_edit.1
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch::
 # perl PREFIX safeness
@@ -68,6 +67,8 @@ post-install:
 ## default for either pointyhat or unattended builds
 ##
 .if defined(PACKAGE_BUILDING) || defined(BATCH)
+WITH_I18N=	yes
+
 post-patch::
 	${REINPLACE_CMD} -e 's,read dummy,,' ${WRKSRC}/install.sh
 .endif
@@ -75,8 +76,16 @@ post-patch::
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-install.sh
 
 # localization support
-.if ${PORT_OPTIONS:MI18N}
+.if defined(WITH_I18N)
 RUN_DEPENDS+=	p5-Locale-gettext>=0:${PORTSDIR}/devel/p5-Locale-gettext
 .endif
+
+pre-everything::
+.if !defined(WITH_I18N)
+	@${ECHO_MSG} '===>'
+	@${ECHO_MSG} '===> Define WITH_I18N to enable localization support.'
+	@${ECHO_MSG} '===> Support for languages other than english.'
+.endif
+	@${ECHO_MSG} '===>'
 
 .include <bsd.port.post.mk>

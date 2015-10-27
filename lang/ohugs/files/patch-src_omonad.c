@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/omonad.c.orig
 +++ src/omonad.c
 @@ -526,7 +526,7 @@

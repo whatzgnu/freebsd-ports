@@ -5,8 +5,9 @@ PORTNAME=		spidermonkey24
 PORTVERSION=		24.2.0
 PORTREVISION=		1
 CATEGORIES=		lang
-MASTER_SITES=		MOZILLA/js
+MASTER_SITES=		${MASTER_SITE_MOZILLA}
 #http://people.mozilla.org/~sstangl/
+MASTER_SITE_SUBDIR=	js
 DISTNAME=		mozjs-${PORTVERSION}
 
 MAINTAINER=		kwm@FreeBSD.org

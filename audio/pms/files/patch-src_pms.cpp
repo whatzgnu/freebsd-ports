@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/pms.cpp.orig
 +++ src/pms.cpp
 @@ -23,6 +23,10 @@

@@ -31,7 +31,8 @@ SUB_LIST=	PYTHON_CMD=${PYTHON_CMD} \
 		TUMGREYSPF_USER=${TUMGREYSPF_USER}
 
 SHEBANG_FILES=	*
-python_OLD_CMD=	/usr/bin/env python
+python_OLD_CMD=	${SETENV} python
+python_CMD=	${PYTHON_CMD}
 
 TUMGREYSPF_DIR?=	/var/db/${PORTNAME}
 TUMGREYSPF_USER?=	nobody

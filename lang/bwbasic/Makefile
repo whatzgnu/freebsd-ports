@@ -2,20 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	bwbasic
-PORTVERSION=	3.00
+PORTVERSION=	2.61
 CATEGORIES=	lang
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/version%20${PORTVERSION}/
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	Bywater Basic interpreter
-
-LICENSE=	GPLv2
+COMMENT=	The Bywater Basic interpreter
 
 NO_WRKSUBDIR=	yes
 
 USES=		dos2unix zip
 GNU_CONFIGURE=	yes
-MAKE_ARGS=	CFLAGS="${CFLAGS} -ansi -DHAVE_ISNAN=1"
+MAKE_ARGS=	CFLAGS="${CFLAGS} -ansi"
 ALL_TARGET=	${PORTNAME}
 
 PORTDOCS=	*

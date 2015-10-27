@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- delay.c.orig	Sun Aug 22 22:05:16 2004
 +++ delay.c	Sun Aug 22 22:05:28 2004
 @@ -21,6 +21,7 @@

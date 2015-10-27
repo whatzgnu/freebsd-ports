@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- ehnt_client.c.orig
 +++ ehnt_client.c
 @@ -27,6 +27,11 @@

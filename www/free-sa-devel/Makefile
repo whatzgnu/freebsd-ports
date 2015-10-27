@@ -4,7 +4,8 @@
 PORTNAME=	free-sa
 PORTVERSION=	2.0.0b6.7
 CATEGORIES=	www
-MASTER_SITES=	SF/free-sa/free-sa-dev/2.0.0b6p7
+MASTER_SITES=	SF
+MASTER_SITE_SUBDIR=	free-sa/free-sa-dev/2.0.0b6p7
 PKGNAMESUFFIX=	-devel
 DISTNAME=	free-sa-2.0.0b6p7
 

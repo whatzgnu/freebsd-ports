@@ -9,7 +9,8 @@ PORTVERSION=	2.017
 PORTEPOCH=	2
 CATEGORIES=	devel lisp
 PKGNAMEPREFIX=	cl-
-MASTER_SITES=	LOCAL/olgeni
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	olgeni
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	System definition facility for Common Lisp

@@ -1,9 +1,10 @@
 # Created by: Ade Lovett <ade@FreeBSD.org>
 # $FreeBSD$
+#   $MCom: ports/devel/gnome-vfs/Makefile,v 1.191 2010/09/29 12:30:29 kwm Exp $
 
 PORTNAME=	gnome-vfs
 PORTVERSION=	2.24.4
-PORTREVISION?=	4
+PORTREVISION?=	3
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -18,7 +19,8 @@ USES=		tar:bzip2
 RUN_DEPENDS=	update-mime-database:${PORTSDIR}/misc/shared-mime-info
 
 USES+=		gettext gmake libtool:keepla pathfix pkgconfig
-USE_GNOME=	gconf2 gnomemimedata intlhack referencehack
+USE_GNOME=	gnomeprefix intlhack gnomemimedata gconf2 \
+		referencehack
 INSTALL_TARGET=	install-strip
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes

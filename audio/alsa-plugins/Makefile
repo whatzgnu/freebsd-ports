@@ -5,7 +5,7 @@ PORTNAME=	alsa-plugins
 PORTVERSION=	1.0.29
 CATEGORIES=	audio
 MASTER_SITES=	ALSA/plugins \
-		GENTOO
+		GENTOO/distfiles
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	ALSA compatibility library plugins
@@ -15,7 +15,7 @@ LICENSE=	LGPL21 # or any later version
 LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
 
 GNU_CONFIGURE=	yes
-USES=		alias libtool:keepla pkgconfig tar:bzip2
+USES=		libtool:keepla pkgconfig tar:bzip2
 EXTRA_PATCHES+=	${FILESDIR}/alsa-plugins.patch
 INSTALL_TARGET=	install-strip
 CPPFLAGS+=	-I${.CURDIR}/../alsa-lib/files

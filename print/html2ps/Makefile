@@ -21,7 +21,8 @@ RUN_DEPENDS=	mogrify:${PORTSDIR}/graphics/ImageMagick \
 		paperconf:${PORTSDIR}/print/libpaper
 
 NO_BUILD=	yes
-USES=		ghostscript:run perl5
+USES=		perl5
+USE_GHOSTSCRIPT_RUN=	yes
 
 SUB_FILES=	html2psrc
 

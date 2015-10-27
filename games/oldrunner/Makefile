@@ -4,7 +4,8 @@
 PORTNAME=	oldrunner
 PORTVERSION=	20120131
 CATEGORIES=	games
-MASTER_SITES=	LOCAL/culot
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	culot
 
 MAINTAINER=	culot@FreeBSD.org
 COMMENT=	Textmode remake of Broderbund's LodeRunner

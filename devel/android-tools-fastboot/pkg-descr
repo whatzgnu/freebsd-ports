@@ -1,4 +1,0 @@
-Fastboot is a diagnostic protocol primarily used to update the flash
-filesystem of Android devices over USB.
-
-This package provides the fastboot command-line tool.

@@ -1,10 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	llvm
-DISTVERSION=	3.6.2
-PORTREVISION=	1
+DISTVERSION=	3.6.0
 CATEGORIES=	devel lang
-MASTER_SITES=	http://llvm.org/releases/3.6.2/
+MASTER_SITES=	http://llvm.org/releases/3.6.0/
 DISTNAME=	${PORTNAME}-${DISTVERSION}.src
 PKGNAMESUFFIX=	${LLVM_SUFFIX}
 
@@ -20,7 +19,7 @@ UNIQUENAME=	${PORTNAME}${LLVM_SUFFIX}
 
 WRKSRC=		${WRKDIR}/llvm-${DISTVERSION}.src
 
-USES=		compiler:c++11-lib execinfo gmake perl5 tar:xz libedit
+USES=		compiler:c++11-lib execinfo gmake perl5 tar:xz
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_PREFIX=	${LLVM_PREFIX}
 USE_LDCONFIG=	${LLVM_PREFIX}/lib

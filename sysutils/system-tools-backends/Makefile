@@ -4,7 +4,6 @@
 
 PORTNAME=	system-tools-backends
 PORTVERSION=	2.10.2
-PORTREVISION=	1
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -17,8 +16,7 @@ LIB_DEPENDS=	libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib \
 		libpolkit-gobject-1.so:${PORTSDIR}/sysutils/polkit
 RUN_DEPENDS=	p5-Net-DBus>=0:${PORTSDIR}/devel/p5-Net-DBus
 
-USES=		gettext-tools gmake pathfix perl5 pkgconfig shebangfix tar:bzip2
-SHEBANG_FILES=	SystemToolsBackends.pl.in
+USES=		gettext-tools gmake pathfix perl5 pkgconfig tar:bzip2
 USE_GNOME=	intlhack glib20
 GNU_CONFIGURE=	yes
 USE_GNOME_SUBR=	yes

@@ -6,7 +6,8 @@ PORTVERSION=	2.0.2
 PORTREVISION=	11
 CATEGORIES=	x11-clocks
 MASTER_SITES=	http://perso.wanadoo.fr/alltrax/ \
-		LOCAL/novel
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	novel
 DISTNAME=	${PORTNAME}2_0.2-1
 
 MAINTAINER=	novel@FreeBSD.org

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- /dev/null
 +++ sources.el
 @@ -0,0 +1,4 @@

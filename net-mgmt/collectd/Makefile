@@ -3,7 +3,7 @@
 
 PORTNAME=	collectd
 PORTVERSION=	4.10.9
-PORTREVISION=	21
+PORTREVISION=	20
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://collectd.org/files/
 
@@ -15,7 +15,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libltdl.so:${PORTSDIR}/devel/libltdl
 
 GNU_CONFIGURE=	yes
-USES=		autoreconf gmake libtool shebangfix
+USES=		autoreconf gmake libtool
 INSTALL_TARGET=	install-strip
 
 OPTIONS_DEFINE=		CGI BIND DEBUG GCRYPT LIBVIRT
@@ -431,8 +431,6 @@ PLIST_SUB+=	XMMS=""
 CONFIGURE_ARGS+=--disable-xmms
 PLIST_SUB+=	XMMS="@comment "
 .endif
-
-SHEBANG_FILES=	contrib/collection.cgi
 
 post-patch:
 	@${RM} -r ${WRKSRC}/libltdl

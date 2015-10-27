@@ -8,18 +8,18 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 PKGNAMESUFFIX=	-devel
 DIST_SUBDIR=	python
 
-MAINTAINER=	python@FreeBSD.org
+MAINTAINER=	lwhsu@FreeBSD.org
 COMMENT=	High-level Python Web framework
 
 LICENSE=	BSD3CLAUSE
 
-SNAPSHOTDATE=	20150709
+SNAPSHOTDATE=	20150326
 
 USES=		cpe gettext python
 USE_GITHUB=	yes
 USE_PYTHON=	autoplist distutils
 
-GH_TAGNAME=	c954931
+GH_TAGNAME=	3e64f3d
 
 CONFLICTS=	py2[0-9]-django-[0-9]*
 CPE_VENDOR=	djangoproject

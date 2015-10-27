@@ -8,14 +8,10 @@ CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	sunpoet@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Mark modules as loaded or unloaded
 
-LICENSE=	ART10 GPLv1
-LICENSE_COMB=	dual
-
-NO_ARCH=	yes
-USE_PERL5=	configure
 USES=		perl5
+USE_PERL5=	configure
 
 .include <bsd.port.mk>

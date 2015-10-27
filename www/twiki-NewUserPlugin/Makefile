@@ -4,7 +4,7 @@
 PORTNAME=	NewUserPlugin
 SVNREV=		17515
 MASTER_SITES=	http://protey.ru/freebsd/distfiles/ \
-		LOCAL/skv
+		${MASTER_SITE_LOCAL:S!$!skv/!}
 
 COMMENT=	Create user's topic for externally authenticated users
 

@@ -5,7 +5,8 @@ PORTNAME=	nasawash
 PORTVERSION=	0.50
 CATEGORIES=	comms hamradio
 MASTER_SITES=	ftp://ftp.amsat.org/amsat/software/Linux/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 DISTNAME=	nasawash
 
 MAINTAINER=	hamradio@FreeBSD.org

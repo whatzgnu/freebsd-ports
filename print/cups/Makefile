@@ -2,19 +2,22 @@
 # $FreeBSD$
 
 PORTNAME=	cups
-PORTVERSION=	2.0.3
+PORTVERSION=	1.7.3
 PORTREVISION=	1
 CATEGORIES=	print
+MASTER_SITES=	# empty
+DISTFILES=	# empty
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Common UNIX Printing System: Metaport to install complete system
 
-RUN_DEPENDS=	espgs:${PORTSDIR}/${PKGCATEGORY}/cups-pstoraster \
+BUILD_DEPENDS=	espgs:${PORTSDIR}/${PKGCATEGORY}/cups-pstoraster \
 		lpr-cups:${PORTSDIR}/${PKGCATEGORY}/cups-base \
 		ttfread:${PORTSDIR}/${PKGCATEGORY}/cups-filters
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		metaport
-
-SUB_FILES=	pkg-message
+NO_BUILD=	yes
+NO_INSTALL=	yes
+NO_MTREE=	yes
 
 .include <bsd.port.mk>

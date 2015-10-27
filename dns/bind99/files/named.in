@@ -4,8 +4,8 @@
 #
 
 # PROVIDE: named
-# REQUIRE: %%NAMED_REQUIRE%%
-# BEFORE: %%NAMED_BEFORE%%
+# REQUIRE: FILESYSTEMS defaultroute ldconfig
+# BEFORE: NETWORKING
 # KEYWORD: shutdown
 
 #

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	exifr
-PORTVERSION=	1.2.3
+PORTVERSION=	1.2.1
 CATEGORIES=	graphics rubygems
 MASTER_SITES=	RG
 
@@ -11,7 +11,6 @@ COMMENT=	Pure-ruby EXIF reader
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

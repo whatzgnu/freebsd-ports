@@ -17,7 +17,6 @@ LICENSE=	GPLv2
 BUILD_DEPENDS=	prezip-bin:${PORTSDIR}/textproc/aspell \
 		wordlist2hunspell:${PORTSDIR}/textproc/hunspell
 
-NO_ARCH=	yes
 USES=		tar:bzip2
 
 PLIST_FILES=	%%DATADIR%%/te_IN.aff \

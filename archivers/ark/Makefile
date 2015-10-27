@@ -3,7 +3,6 @@
 
 PORTNAME=	ark
 PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
 CATEGORIES=	archivers kde
 MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
@@ -14,8 +13,7 @@ COMMENT=	Archiving tool for KDE
 LIB_DEPENDS=	libqjson.so:${PORTSDIR}/devel/qjson
 
 USE_KDE4=	kdeprefix automoc4 kdelibs libkonq
-USES=		cmake:outsource libarchive cpe tar:xz
-CPE_VENDOR=	kde
+USES=		cmake:outsource tar:xz
 USE_QT4=	qtestlib qmake_build moc_build rcc_build uic_build
 USE_LDCONFIG=	yes
 

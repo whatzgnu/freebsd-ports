@@ -60,3 +60,4 @@ sbin/auditd
 sbin/auditfilterd
 sbin/auditreduce
 sbin/praudit
+@dirrm include/bsm

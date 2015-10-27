@@ -4,7 +4,8 @@
 PORTNAME=	dvdimagecmp
 PORTVERSION=	0.3
 CATEGORIES=	sysutils
-MASTER_SITES=	SUNSITE/apps/video
+MASTER_SITES=	SUNSITE
+MASTER_SITE_SUBDIR=	apps/video
 
 MAINTAINER=	ports@thepentagon.org
 COMMENT=	Simple tool for comparing an image to a burned disc

@@ -6,7 +6,8 @@ PORTREVISION=	7
 CATEGORIES=	math devel
 MASTER_SITES=	ftp://space.mit.edu/pub/davis/slang/v${SLANG_VER}/modules/grace/ \
 		ftp://ftp.fu-berlin.de/pub/unix/misc/slang/v${SLANG_VER}/modules/grace/ \
-		LOCAL/garga/slgrace
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	garga/slgrace/
 
 MAINTAINER=	garga@FreeBSD.org
 COMMENT=	SLang module to plot graphs with grace

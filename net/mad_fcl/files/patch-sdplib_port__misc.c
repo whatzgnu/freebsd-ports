@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- sdplib/port_misc.c.orig
 +++ sdplib/port_misc.c
 @@ -47,6 +47,7 @@

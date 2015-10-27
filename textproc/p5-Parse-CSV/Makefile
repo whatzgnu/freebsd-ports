@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Parse-CSV
-PORTVERSION=	2.04
+PORTVERSION=	2.00
+PORTREVISION=	1
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -13,11 +14,11 @@ COMMENT=	Highly flexible CSV parser for large files
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-BUILD_DEPENDS=	p5-Params-Util>=1:${PORTSDIR}/devel/p5-Params-Util \
-		p5-Text-CSV_XS>=0.80:${PORTSDIR}/textproc/p5-Text-CSV_XS
-RUN_DEPENDS:=	${BUILD_DEPENDS}
+BUILD_DEPENDS=	p5-Params-Util>=0.22:${PORTSDIR}/devel/p5-Params-Util \
+		p5-Text-CSV_XS>=0.42:${PORTSDIR}/textproc/p5-Text-CSV_XS
+RUN_DEPENDS=	p5-Params-Util>=0.22:${PORTSDIR}/devel/p5-Params-Util \
+		p5-Text-CSV_XS>=0.42:${PORTSDIR}/textproc/p5-Text-CSV_XS
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 

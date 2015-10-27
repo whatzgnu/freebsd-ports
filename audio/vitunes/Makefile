@@ -3,17 +3,15 @@
 
 PORTNAME=	vitunes
 PORTVERSION=	2.3
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://vitunes.org/files/ \
 		http://mirror.4bit.ws/ \
-		LOCAL/dhn
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	dhn
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Curses-based media player with vim-like keybinds
-
-LICENSE=	ISCL
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer
 LIB_DEPENDS=	libtag.so:${PORTSDIR}/audio/taglib

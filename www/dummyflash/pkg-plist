@@ -1,1 +1,2 @@
 %%WEBPLUGIN_DIR%%/dummyflash.so
+@dirrmtry %%WEBPLUGIN_DIR%%

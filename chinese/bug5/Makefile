@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	bug5
-PORTVERSION=	1.18
+PORTVERSION=	1.17
 CATEGORIES=	chinese converters
 
 MAINTAINER=	buganini@gmail.com
@@ -19,8 +19,5 @@ GH_ACCOUNT=	buganini
 MAKE_ARGS=	PREFIX=${PREFIX}
 
 PLIST_FILES=	bin/bug5
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/bug5
 
 .include <bsd.port.mk>

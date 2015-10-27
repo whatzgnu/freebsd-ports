@@ -13,9 +13,10 @@ COMMENT=	Multimedia streaming server for KiSS/Linksys player
 LICENSE=	GPLv2
 
 LIB_DEPENDS=	libgd.so:${PORTSDIR}/graphics/gd \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libdvdread.so:${PORTSDIR}/multimedia/libdvdread
 
-USES=		compiler:nestedfct dos2unix iconv jpeg
+USES=		compiler:nestedfct dos2unix iconv
 MAKE_ENV=	FreeBSD=defined
 
 USE_RC_SUBR=	kissdx

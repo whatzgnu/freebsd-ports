@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	Products.ExternalMethod
-PORTVERSION=	2.13.1
+PORTVERSION=	2.13.0
+PORTREVISION=	1
 CATEGORIES=	devel python zope
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -11,7 +12,6 @@ MAINTAINER=	zope@FreeBSD.org
 COMMENT=	Support for external Python methods within a Zope 2 environment
 
 LICENSE=	ZPL21
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}AccessControl>=0:${PORTSDIR}/security/py-AccessControl \
 		${PYTHON_PKGNAMEPREFIX}Acquisition>=0:${PORTSDIR}/devel/py-Acquisition \
@@ -19,8 +19,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}AccessControl>=0:${PORTSDIR}/security/py-Acc
 		${PYTHON_PKGNAMEPREFIX}Persistence>=0:${PORTSDIR}/devel/py-Persistence \
 		zodb${PYTHON_PKGNAMESUFFIX}>=0:${PORTSDIR}/databases/zodb3
 
-NO_ARCH=	yes
 USES=		python zip
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

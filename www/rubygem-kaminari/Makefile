@@ -2,19 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	kaminari
-PORTVERSION=	0.16.3
+PORTVERSION=	0.16.1
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Sophisticated paginator for Rails 3
 
-LICENSE=	MIT
-
-RUN_DEPENDS=	rubygem-actionpack>=3.0.0:${PORTSDIR}/www/rubygem-actionpack \
-		rubygem-activesupport>=3.0.0:${PORTSDIR}/devel/rubygem-activesupport
-
-NO_ARCH=	yes
+RUN_DEPENDS=	rubygem-activesupport>=3.0.0:${PORTSDIR}/devel/rubygem-activesupport \
+		rubygem-actionpack>=3.0.0:${PORTSDIR}/www/rubygem-actionpack
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

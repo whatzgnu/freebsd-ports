@@ -3,9 +3,9 @@
 
 PORTNAME=	libgpg-error
 PORTVERSION=	1.19
-PORTREVISION=	1
 CATEGORIES=	security devel
-MASTER_SITES=	GNUPG
+MASTER_SITES=	${MASTER_SITE_GNUPG}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	novel@FreeBSD.org
 COMMENT=	Common error values for all GnuPG components
@@ -31,7 +31,6 @@ PLIST_SUB=	NLS="@comment "
 .endif
 
 DOCS=		AUTHORS ChangeLog NEWS README
-INFO=		gpgrt
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

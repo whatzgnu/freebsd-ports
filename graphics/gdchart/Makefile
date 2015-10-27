@@ -13,9 +13,10 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Easy to use fast C API for creating charts and graphs
 
 LIB_DEPENDS=	libgd.so:${PORTSDIR}/graphics/gd \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libfreetype.so:${PORTSDIR}/print/freetype2
 
-USES=		jpeg uidfix
+USES=		uidfix
 MAKEFILE=	${FILESDIR}/Makefile
 MAKE_ARGS=	PREFIX="${PREFIX}" LOCALBASE="${LOCALBASE}"
 USE_LDCONFIG=	yes

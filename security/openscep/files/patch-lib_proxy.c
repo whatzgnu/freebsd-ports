@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lib/proxy.c.orig
 +++ lib/proxy.c
 @@ -10,6 +10,7 @@

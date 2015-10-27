@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	ufraw
-PORTVERSION=	0.22
+PORTVERSION=	0.19.2
+PORTREVISION=	6
 CATEGORIES=	graphics
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -11,13 +12,14 @@ COMMENT=	Read and manipulate raw images from various digital cameras
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libpng.so:${PORTSDIR}/graphics/png \
-		liblcms2.so:${PORTSDIR}/graphics/lcms2
+		liblcms.so:${PORTSDIR}/graphics/lcms
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-silent-rules --enable-extras
-USES=		desktop-file-utils gettext gmake jpeg pkgconfig
+USES=		gettext pkgconfig gmake desktop-file-utils
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-lpthread -L${LOCALBASE}/lib

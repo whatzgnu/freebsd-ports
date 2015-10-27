@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	sourcecodepro-ttf
-PORTVERSION=	2.010
-DISTVERSIONSUFFIX=	R-ro/1.030R-it
+PORTVERSION=	1.017
+PORTREVISION=	1
 CATEGORIES=	x11-fonts
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -11,7 +11,6 @@ COMMENT=	Set of fonts by Adobe designed for coders
 
 LICENSE=	OFL11
 
-NO_ARCH=	yes
 NO_BUILD=	yes
 USE_XORG=	x11
 USES=		fonts
@@ -21,6 +20,7 @@ SUB_FILES=	pkg-message
 
 GH_ACCOUNT=	adobe-fonts
 GH_PROJECT=	source-code-pro
+GH_TAGNAME=	${PORTVERSION}R
 USE_GITHUB=	yes
 
 do-install:

@@ -1,11 +1,9 @@
-# Created by: Ben Woods <woodsb02@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	plexhometheater
-PORTVERSION=	1.4.1
-PORTREVISION=	1
+PORTVERSION=	1.3.6
 DISTVERSIONPREFIX=v
-DISTVERSIONSUFFIX=.469-47a90f01
+DISTVERSIONSUFFIX=.441-309e72d1
 CATEGORIES=	multimedia
 
 MAINTAINER=	woodsb02@gmail.com
@@ -37,6 +35,7 @@ LIB_DEPENDS=	libass.so:${PORTSDIR}/multimedia/libass \
 		libGLEW.so:${PORTSDIR}/graphics/glew \
 		libhal.so:${PORTSDIR}/sysutils/hal \
 		libjasper.so:${PORTSDIR}/graphics/jasper \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		liblzo2.so:${PORTSDIR}/archivers/lzo2 \
 		libmad.so:${PORTSDIR}/audio/libmad \
 		libmicrohttpd.so:${PORTSDIR}/www/libmicrohttpd \
@@ -68,7 +67,7 @@ GH_ACCOUNT=	plexinc
 GH_PROJECT=	plex-home-theater-public
 BUNDLE_LIBS=	yes
 
-USES=		cmake:outsource execinfo gmake iconv:wchar_t jpeg pkgconfig python:2
+USES=		cmake:outsource execinfo gmake iconv:wchar_t pkgconfig python:2
 CMAKE_ARGS+=	-DENABLE_AUTOUPDATE:BOOL=false
 CMAKE_ARGS+=	-DENABLE_DUMP_SYMBOLS:BOOL=false
 CMAKE_ARGS+=	-DENABLE_PYTHON:BOOL=false

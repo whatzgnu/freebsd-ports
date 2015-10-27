@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	drupal7
-PORTVERSION=	7.38
+PORTVERSION=	7.37
 CATEGORIES=	www
 MASTER_SITES=	http://ftp.drupal.org/files/projects/
 DISTNAME=	drupal-${PORTVERSION}
@@ -14,8 +14,7 @@ COMMENT=	Database driven web content management system (CMS)
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 
-USES=		drupal:7 shebangfix
-SHEBANG_FILES=	scripts/password-hash.sh
+USES=		drupal:7
 
 USE_PHP=	dom filter gd hash json mbstring pcre pdo session simplexml xml
 WANT_PHP_WEB=	yes

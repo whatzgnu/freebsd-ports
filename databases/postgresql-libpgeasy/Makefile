@@ -6,7 +6,8 @@ PORTNAME=	libpgeasy
 PORTVERSION=	3.0.4
 PORTREVISION=	1
 CATEGORIES=	databases
-MASTER_SITES=	PGSQL/projects/gborg/pgeasy/stable
+MASTER_SITES=	${MASTER_SITE_PGSQL}
+MASTER_SITE_SUBDIR=	projects/gborg/pgeasy/stable
 DIST_SUBDIR=	postgresql
 
 MAINTAINER=	pgsql@FreeBSD.org

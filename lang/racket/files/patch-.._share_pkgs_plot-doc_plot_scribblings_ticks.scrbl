@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- ../share/pkgs/plot-doc/plot/scribblings/ticks.scrbl.orig
 +++ ../share/pkgs/plot-doc/plot/scribblings/ticks.scrbl
 @@ -183,22 +183,6 @@

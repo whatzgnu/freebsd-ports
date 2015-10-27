@@ -11,10 +11,12 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	High-end interface client for CVS
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 USE_GNOME=	gtk12
-USES=		autoreconf gmake tk:wrapper
+USES+=		gmake tk:wrapper
+USE_AUTOTOOLS=	aclocal autoheader automake autoconf
+ACLOCAL_ARGS=	-I ${LOCALBASE}/share/aclocal
+AUTOMAKE_ARGS=	--add-missing --force --copy --gnu
 GNU_CONFIGURE=	yes
 CXXFLAGS:=	${CXXFLAGS:N-std=*:N:}
 CONFIGURE_ARGS=	--with-tclinclude=${TCL_INCLUDEDIR} \

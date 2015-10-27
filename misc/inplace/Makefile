@@ -5,7 +5,8 @@ PORTNAME=	inplace
 PORTVERSION=	1.2.3
 CATEGORIES=	misc
 MASTER_SITES=	ftp://ftp.iDaemons.org/pub/distfiles/ \
-		LOCAL/knu
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	knu
 
 MAINTAINER=	knu@FreeBSD.org
 COMMENT=	Tool to edit files in-place through given filter commands

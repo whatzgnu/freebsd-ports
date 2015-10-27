@@ -4,15 +4,13 @@
 PORTNAME=	pathrate
 PORTVERSION=	2.4.1
 CATEGORIES=	benchmarks
-MASTER_SITES=	http://www.cc.gatech.edu/~dovrolis/bw-est/
+MASTER_SITES=	http://www.cc.gatech.edu/fac/Constantinos.Dovrolis/
 DISTNAME=	${PORTNAME}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Measurement tool for capacity estimation of network paths
 
-LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
-
+BROKEN=		Unfetchable
 GNU_CONFIGURE=	yes
 USES=		gmake
 
@@ -22,7 +20,8 @@ MAKEFILE=	makefile
 PLIST_FILES=	bin/pathrate_rcv bin/pathrate_snd
 
 do-install:
-	(cd ${WRKSRC} && ${INSTALL_PROGRAM} pathrate_rcv pathrate_snd \
-		${STAGEDIR}${PREFIX}/bin)
+.for f in pathrate_rcv pathrate_snd
+	${INSTALL_PROGRAM} ${WRKSRC}/${f} ${STAGEDIR}${PREFIX}/bin
+.endfor
 
 .include <bsd.port.mk>

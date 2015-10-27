@@ -5,7 +5,8 @@ PORTNAME=	subtickets
 PORTVERSION=	0.2.0.${GITDATE}
 PORTREVISION=	1
 CATEGORIES=	www devel python
-MASTER_SITES=	http://distfiles.cse.tw/
+MASTER_SITES=	http://distfiles.cse.tw/ \
+		https://github.com/itota/trac-subtickets-plugin/tarball/${GITVERSION}/
 PKGNAMEPREFIX=	trac-
 DISTNAME=	itota-trac-subtickets-plugin-a0fc153
 
@@ -16,12 +17,10 @@ LICENSE=	BSD3CLAUSE
 
 RUN_DEPENDS=	tracd:${PORTSDIR}/www/trac
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	itota
-GH_PROJECT=	trac-subtickets-plugin
-GH_TAGNAME=	a0fc153
+GITVERSION=	a0fc153
 GITDATE=	20130328
 
+WRKSRC=		${WRKDIR}/itota-trac-${PORTNAME}-plugin-${GITVERSION}
 USES=		python:2
 USE_PYTHON=	distutils autoplist
 

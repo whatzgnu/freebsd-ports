@@ -3,7 +3,7 @@
 
 PORTNAME=	lam
 PORTVERSION=	7.1.5b2
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	net parallel
 MASTER_SITES=	http://www.lam-mpi.org/download/files/ \
 		http://www.thinkingnerds.com/lam/download/files/
@@ -11,12 +11,7 @@ MASTER_SITES=	http://www.lam-mpi.org/download/files/ \
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Local Area Multicomputer MPI implementation
 
-LICENSE=	lam
-LICENSE_NAME=	Software License for LAM/MPI
-LICENSE_FILE=	${WRKSRC}/LICENSE
-LICENSE_PERMS=	${_LICENSE_PERMS_DEFAULT}
-
-USES=		 libtool perl5 tar:bzip2
+USES=		perl5 tar:bzip2 libtool
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-rsh=ssh --without-fc
 USE_LDCONFIG=	yes
@@ -36,7 +31,7 @@ pre-configure:
 		s|use warnings;||' ${WRKSRC}/tools/mpiexec/mpiexec
 
 post-install:
-.if ${ARCH} != "armv6" && ${ARCH} != "i386" && ${ARCH} != "powerpc"
+.if ${ARCH} != "i386" && ${ARCH} != "powerpc"
 	${RMDIR} ${STAGEDIR}${PREFIX}/lib/lam
 .endif
 

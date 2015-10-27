@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	zLOG
-PORTVERSION=	2.11.2
+PORTVERSION=	2.11.1
+PORTREVISION=	1
 CATEGORIES=	devel python zope
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -11,12 +12,10 @@ MAINTAINER=	zope@FreeBSD.org
 COMMENT=	General logging facility
 
 LICENSE=	ZPL21
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zconfig>=0:${PORTSDIR}/devel/py-zconfig
 
-NO_ARCH=	yes
-USES=		python:2
-USE_PYTHON=	autoplist distutils
+USES=		python
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

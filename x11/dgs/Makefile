@@ -10,14 +10,16 @@ MASTER_SITES=	GNU/../old-gnu/dgs
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Display ghostscript system
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff
 
 MAKE_JOBS_UNSAFE=	yes
 
+USE_GHOSTSCRIPT_RUN=	yes
 USE_XORG=	xt sm ice xext x11
 USE_GNOME=	glib12
-USES=		ghostscript:run gmake jpeg libtool makeinfo
+USES=		gmake libtool makeinfo
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}-0.5.9

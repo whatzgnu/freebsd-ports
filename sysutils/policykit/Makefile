@@ -4,7 +4,7 @@
 
 PORTNAME=	policykit
 PORTVERSION=	0.9
-PORTREVISION=	10
+PORTREVISION=	8
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	http://hal.freedesktop.org/releases/
 DISTNAME=	PolicyKit-${PORTVERSION}
@@ -50,8 +50,12 @@ PLIST_SUB+=	MANPAGES="@comment "
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/PolicyKit
+	if [ ! -f ${PREFIX}/etc/PolicyKit/PolicyKit.conf ]; then \
+		${INSTALL_DATA} ${WRKSRC}/data/PolicyKit.conf \
+			${STAGEDIR}${PREFIX}/etc/PolicyKit/PolicyKit.conf ; \
+	fi
 	${INSTALL_DATA} ${WRKSRC}/data/PolicyKit.conf \
-		${STAGEDIR}${PREFIX}/etc/PolicyKit/PolicyKit.conf.sample
+		${STAGEDIR}${PREFIX}/etc/PolicyKit/PolicyKit.conf.dist
 	# this file is used for reloading rules, handle it in the plist.
 	@${RM} ${STAGEDIR}/var/lib/misc/PolicyKit.reload
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/lib*.so.*

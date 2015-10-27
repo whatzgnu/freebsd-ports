@@ -29,7 +29,11 @@ MMAP_DESC=	Enable mmap(2) support
 LAYER2_DESC=	Enable Layer-2 support: MAC addresses and VLANs
 SHARED_DESC=	Enable shared objects
 
-.include <bsd.port.options.mk>
+.include <bsd.port.pre.mk>
+
+.if ${ARCH} == "amd64" || ${ARCH} == "sparc64"
+CONFIGURE_ARGS+=--enable-64bit
+.endif
 
 .if ${PORT_OPTIONS:MMYSQL}
 USE_MYSQL=	yes
@@ -42,7 +46,6 @@ PLIST_SUB+=	WITH_MYSQL="@comment "
 
 .if ${PORT_OPTIONS:MPGSQL}
 USES+=		pgsql
-WANT_PGSQL=	lib
 CONFIGURE_ARGS+=--enable-pgsql
 PLIST_SUB+=	WITH_PGSQL=""
 .else
@@ -102,12 +105,6 @@ LIB_DEPENDS+=	libGeoIP.so:${PORTSDIR}/net/GeoIP
 CONFIGURE_ARGS+=--enable-geoip \
 		--with-geoip-libs=${LOCALBASE}/lib \
 		--with-geoip-includes=${LOCALBASE}/include
-.endif
-
-.include <bsd.port.pre.mk>
-
-.if ${ARCH} == "amd64" || ${ARCH} == "sparc64"
-CONFIGURE_ARGS+=--enable-64bit
 .endif
 
 post-patch:

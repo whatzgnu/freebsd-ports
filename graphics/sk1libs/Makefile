@@ -12,11 +12,12 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Set of python libraries for sK1 Project
 
 LIB_DEPENDS=	liblcms.so:${PORTSDIR}/graphics/lcms \
-		libfreetype.so:${PORTSDIR}/print/freetype2
+		libfreetype.so:${PORTSDIR}/print/freetype2 \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 PROJECTHOST=	uniconvertor
 
-USES=		jpeg python
+USES=		python
 USE_PYTHON=	distutils
 PYDISTUTILS_BUILD_TARGET=build_ext
 PYDISTUTILS_BUILDARGS=	-L${LOCALBASE}/lib \

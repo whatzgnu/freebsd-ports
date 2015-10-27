@@ -3,18 +3,18 @@
 
 PORTNAME=	symon
 PORTVERSION=	2.86
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	sysutils
 MASTER_SITES=	http://wpd.home.xs4all.nl/symon/philes/ \
-		LOCAL/uqs
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	uqs
 
 MAINTAINER=	uqs@FreeBSD.org
 COMMENT=	Performance and information monitoring tool
 
 SUB_FILES=	pkg-message
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	client/getsymonitem.pl
+USES=		perl5
 USE_PERL5=	build
 MAKE_JOBS_UNSAFE=	yes
 

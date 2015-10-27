@@ -17,7 +17,7 @@ RUN_DEPENDS=	xdg-open:${PORTSDIR}/devel/xdg-utils
 
 USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
 		shared-mime-info
-USE_GNOME=	gtkmm24 intltool
+USE_GNOME=	gtkmm24
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-update-mimedb
 INSTALL_TARGET=	install-strip
@@ -33,6 +33,7 @@ post-patch:
 	@${REINPLACE_CMD} -e \
 		'/optimization_flags/s|CXXFLAGS=|#CXXFLAGS=| ; \
 		 /optimization_flags/s|CFLAGS=|#CFLAGS=| ; \
+		 s|"GNU strip"|"strip"| ; \
 		 /DATADIRNAME/s|lib|share| ; \
 		 s|<tr1/|<| ; \
 		 s|::tr1||' \

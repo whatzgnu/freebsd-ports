@@ -3,7 +3,8 @@
 PORTNAME=	vrflash
 PORTVERSION=	0.20
 CATEGORIES=	comms
-MASTER_SITES=	LOCAL/dinoex
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=dinoex
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Flash kernels and romdisks to the Agenda VR3

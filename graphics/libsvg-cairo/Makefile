@@ -11,11 +11,12 @@ MASTER_SITES=	http://cairographics.org/snapshots/
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	SVG rendering library
 
-LIB_DEPENDS=	libsvg.so:${PORTSDIR}/graphics/libsvg \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libsvg.so:${PORTSDIR}/graphics/libsvg \
 		libcairo.so:${PORTSDIR}/graphics/cairo
 
 GNU_CONFIGURE=	yes
-USES=		jpeg libtool pathfix pkgconfig
+USES=		libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 PLIST_FILES=	include/svg-cairo.h \
 		lib/libsvg-cairo.a \

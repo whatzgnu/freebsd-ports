@@ -11,6 +11,7 @@ MASTER_SITES=	http://scripts.sil.org/ttw/fonts2go.cgi?family=DoulosSIL&pkg=Compa
 .else
 MASTER_SITES=	LOCAL/bf
 .endif
+MASTER_SITE_SUBDIR=	#prevent bsd.xorg.mk from setting a default subdirectory
 
 MAINTAINER=	bf@FreeBSD.org
 COMMENT=	Doulos SIL TrueType font collection, compact variant

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- archdep.cpp.orig
 +++ archdep.cpp
 @@ -75,7 +75,7 @@

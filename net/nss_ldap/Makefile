@@ -16,9 +16,11 @@ LICENSE=	GPLv2
 
 NSS_LDAP_VERSION=265
 
-USES=		autoreconf gmake perl5
+USES=		gmake perl5
 USE_PERL5=	build
 GNU_CONFIGURE=	yes
+USE_AUTOTOOLS=	automake aclocal autoconf autoheader
+AUTOMAKE_ARGS=	--add-missing
 USE_LDCONFIG=	yes
 USE_OPENLDAP=	yes
 

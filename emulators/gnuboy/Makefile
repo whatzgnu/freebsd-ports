@@ -14,10 +14,10 @@ LICENSE=	GPLv2 # (or later)
 
 LIB_DEPENDS=	libvga.so:${PORTSDIR}/graphics/svgalib
 
-USES=		autoreconf compiler
+USES=		compiler
 USE_SDL=	sdl
 USE_XORG=	x11
-GNU_CONFIGURE=	yes
+USE_AUTOTOOLS=	autoconf
 CONFIGURE_ARGS=	--with-sdl --enable-optimize=low
 
 PORTDOCS=	*

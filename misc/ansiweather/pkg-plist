@@ -1,5 +1,0 @@
-bin/ansiweather
-%%DATADIR%%/ansiweather.plugin.zsh
-%%PORTDOCS%%%%DOCSDIR%%/AUTHORS
-%%PORTDOCS%%%%DOCSDIR%%/README.md
-%%PORTEXAMPLES%%%%EXAMPLESDIR%%/ansiweatherrc.example

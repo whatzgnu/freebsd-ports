@@ -4,7 +4,8 @@
 PORTNAME=	lollypop
 PORTVERSION=	0.9.15
 CATEGORIES=	audio
-MASTER_SITES=	https://github.com/gnumdk/${PORTNAME}/releases/download/${PORTVERSION}/
+MASTER_SITES=	https://github.com/gnumdk/%SUBDIR%/
+MASTER_SITE_SUBDIR=	${PORTNAME}/releases/download/${PORTVERSION}
 
 MAINTAINER=	olivierd@FreeBSD.org
 COMMENT=	Play and organize your music collection
@@ -28,6 +29,8 @@ INSTALLS_ICONS=	yes
 
 SHEBANG_FILES=	src/*.py
 SHEBANG_LANG=	python
+python_OLD_CMD=	/usr/bin/python
+python_CMD=	${PYTHON_CMD}
 
 GLIB_SCHEMAS=	org.gnome.Lollypop.gschema.xml
 

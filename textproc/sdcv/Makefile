@@ -11,7 +11,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Text-based utility for work with dictionaries in StarDict's format
 
 LICENSE=	GPLv2 # (or later)
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 GNU_CONFIGURE=	yes
 USES=		autoreconf gettext pkgconfig readline tar:bzip2
@@ -21,12 +20,6 @@ SUB_FILES=	pkg-message
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
-
-.include <bsd.port.pre.mk>
-
-.if ${OSVERSION} < 1000000
-BROKEN=		does not build on < 10.x: error expanding embedded variable
-.endif
 
 post-patch:
 .for i in doc/sdcv.1 src/sdcv.cpp
@@ -41,4 +34,4 @@ post-patch:
 	@${REINPLACE_CMD} '/AM_GNU_GETTEXT_VERSION/s/0\.14\.1/0.19.1/' \
 		${WRKSRC}/configure.ac
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

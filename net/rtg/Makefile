@@ -3,7 +3,7 @@
 
 PORTNAME=	rtg
 PORTVERSION=	0.7.4
-PORTREVISION=	12
+PORTREVISION=	11
 CATEGORIES=	net
 MASTER_SITES=	SF \
 		ftp://ftpmirror.uk/freebsd-ports/rtg/
@@ -21,7 +21,7 @@ USE_RC_SUBR=	rtgpoll
 USE_MYSQL=	client
 WANT_PERL=	yes
 USES=		shebangfix
-SHEBANG_FILES=	etc/95.pl etc/report.pl etc/rtgtargmkr.pl.in
+SHEBANG_FILES=	etc/95.pl etc/report.pl
 SUB_FILES=	pkg-message
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--sysconfdir=${PREFIX}/etc/${PORTNAME} \

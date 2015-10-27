@@ -3,3 +3,4 @@ include/cgi-lib.h
 include/html-lib.h
 include/list-lib.h
 share/doc/cgi-lib/cgi-lib.html
+@dirrm share/doc/cgi-lib

@@ -3,7 +3,7 @@
 
 PORTNAME=	reportlab
 PORTVERSION=	3.0
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	print python
 MASTER_SITES=	CHEESESHOP \
 		http://www.reportlab.com/ftp/
@@ -34,7 +34,7 @@ MAKE_ENV=	PACKAGE_PATH="${REPORTLABDIR}"
 
 REPORTLABDIR=	${PYTHONPREFIX_SITELIBDIR}/reportlab
 DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-PORTDOCS=	reportlab-userguide.pdf
+DOCS=		reportlab-userguide.pdf
 
 OPTIONS_DEFINE=	CJK FREETYPE DOCS
 OPTIONS_DEFAULT=	CJK FREETYPE
@@ -65,11 +65,10 @@ post-patch:
 .endif
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/reportlab/*/*.so
 .if ${PORT_OPTIONS:MDOCS}
 	@cd ${WRKSRC}/docs && ${PYTHON_CMD} genAll.py
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-.for i in ${PORTDOCS}
+.for i in ${DOCS}
 	${INSTALL_DATA} ${WRKSRC}/docs/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
 .endif

@@ -3,9 +3,9 @@
 
 PORTNAME=	pxz
 PORTVERSION=	0.20141018
-PORTREVISION=	1
 CATEGORIES=	archivers
-MASTER_SITES=	LOCAL/delphij
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	delphij
 DISTNAME=	pxz-git-${PORTVERSION:S/0.//}
 
 MAINTAINER=	ports@FreeBSD.org
@@ -25,8 +25,5 @@ MAKE_ENV+=	BINDIR=${PREFIX}/bin \
 MAKE_ARGS+=	CC="${CC}"
 
 BROKEN_sparc64=	Does not link on sparc64
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/pxz
 
 .include <bsd.port.mk>

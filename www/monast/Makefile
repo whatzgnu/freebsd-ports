@@ -3,7 +3,7 @@
 
 PORTNAME=	monast
 PORTVERSION=	1.4
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	www net
 MASTER_SITES=	SF/monast/MonAst%20for%20Asterisk%201.4_1.6/1.4
 
@@ -13,8 +13,7 @@ COMMENT=	Monitoring and an operator panel interface for AsteriskTM
 USES=		python
 USE_RC_SUBR=	monast
 
-NO_BUILD=	yes
-NO_ARCH=	yes
+NO_BUILD=	YES
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,/usr/bin/python,${PYTHON_CMD},' \
@@ -24,7 +23,7 @@ post-patch:
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/monast/amapi ${STAGEDIR}${PREFIX}/monast/simplejson ${STAGEDIR}${WWWDIR}
 	${INSTALL_SCRIPT} ${WRKSRC}/pymon/monast.py ${STAGEDIR}${PREFIX}/monast/monast.py
-	${INSTALL_DATA} ${WRKSRC}/pymon/monast.conf.sample ${STAGEDIR}${PREFIX}/etc/
+	${INSTALL_DATA} ${WRKSRC}/pymon/monast.conf.sample ${STAGEDIR}${PREFIX}/etc/monast.conf.default
 	${INSTALL_DATA} ${WRKSRC}/pymon/amapi/* ${STAGEDIR}${PREFIX}/monast/amapi/
 	${INSTALL_DATA} ${WRKSRC}/pymon/simplejson/* ${STAGEDIR}${PREFIX}/monast/simplejson/
 	${INSTALL_DATA} ${WRKSRC}/*.php ${STAGEDIR}${WWWDIR}/

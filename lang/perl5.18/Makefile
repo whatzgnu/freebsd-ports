@@ -3,7 +3,7 @@
 
 PORTNAME=	perl
 PORTVERSION=	${PERL_VERSION}
-PORTREVISION=	15
+PORTREVISION=	14
 CATEGORIES=	lang devel perl5
 MASTER_SITES=	CPAN/../../src/5.0
 DIST_SUBDIR=	perl
@@ -15,9 +15,6 @@ LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 LICENSE_FILE_ART10=	${WRKSRC}/Artistic
 LICENSE_FILE_GPLv1=	${WRKSRC}/Copying
-
-DEPRECATED=	Unsupported, please upgrade to a more recent version of Perl
-EXPIRATION_DATE=2016-12-31
 
 CONFLICTS_INSTALL=	perl5.*-*
 
@@ -161,6 +158,11 @@ PLIST_SUB+=	PERL_VERSION=${PERL_VERSION} \
 		PRIV_LIB=${_PRIV_LIB} \
 		ARCH_LIB=${_ARCH_LIB}
 
+.if ${PORT_OPTIONS:MDEBUG}
+STRIP=
+STRIP_CMD=	${TRUE}
+.endif
+
 .if ${OSVERSION} >= 900022
 PLIST_SUB+=	MANCONF=""
 .else
@@ -179,15 +181,13 @@ post-extract:
 	${LN} -s libperl.so.${PERL_VERSION} ${WRKSRC}/libperl.so
 	${LN} -s libperl.so.${PERL_VERSION} ${WRKSRC}/libperl.so.${PERL_VER}
 
-.if !defined(MAKING_PATCHES)
-# make clean patch makepatch MAKING_PATCHES=
 post-patch:
 	${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
 		${WRKSRC}/Configure ${WRKSRC}/hints/freebsd.sh
-post-patch-PTHREAD-on:
+.if ${PORT_OPTIONS:MPTHREAD}
 	${REINPLACE_CMD} -e 's|%%PTHREAD_LIBS%%|-lpthread|g;' \
 		${WRKSRC}/hints/freebsd.sh
-post-patch-PTHREAD-off:
+.else
 	${REINPLACE_CMD} -e 's|%%PTHREAD_LIBS%%||g;' \
 		${WRKSRC}/hints/freebsd.sh
 .endif

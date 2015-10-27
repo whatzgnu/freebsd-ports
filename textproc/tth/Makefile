@@ -14,7 +14,8 @@ COMMENT=	TeX to HTML translator
 
 RUN_DEPENDS=	ppmtogif:${PORTSDIR}/graphics/netpbm
 
-USES=		ghostscript:run shebangfix tar:tgz
+USES=		shebangfix tar:tgz
+USE_GHOSTSCRIPT_RUN=	yes
 #USE_TEX=	latex
 SHEBANG_FILES=	Xfonts.fix
 

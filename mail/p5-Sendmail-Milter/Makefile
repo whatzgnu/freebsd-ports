@@ -16,7 +16,7 @@ USE_PERL5=	configure
 
 .include <bsd.port.pre.mk>
 
-.if exists(${PERL})
+.if exists(${PERL5})
 PERLTHREADS!=	${PERL} -V::usethreads
 .if ${PERLTHREADS} != "'define';"
 IGNORE=	requires perl to be built with -DWITH_THREADS

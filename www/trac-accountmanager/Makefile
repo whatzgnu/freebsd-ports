@@ -5,8 +5,9 @@ PORTVERSION=	0.5.${REV}
 PORTEPOCH=	1
 PORTREVISION=	1
 CATEGORIES=	www devel python
-MASTER_SITES=	LOCAL/kuriyama \
+MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://trac-hacks.org/changeset/${REV}/accountmanagerplugin/trunk?old_path=/&format=zip&filename=
+MASTER_SITE_SUBDIR=	kuriyama
 PKGNAMEPREFIX=	trac-
 DIST_SUBDIR=	trac
 

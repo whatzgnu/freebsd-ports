@@ -1,6 +1,6 @@
---- mmc.c.orig	2014-12-10 20:53:22 UTC
-+++ mmc.c
-@@ -83,6 +83,9 @@ typedef struct MapStruct {
+--- mmc.c.orig	Tue Oct 22 09:42:01 2002
++++ mmc.c	Fri Nov 14 12:26:39 2003
+@@ -83,6 +83,9 @@
      time_t ct;
      int refcount;
      time_t reftime;
@@ -10,7 +10,7 @@
      void* addr;
      unsigned int hash;
      int hash_idx;
-@@ -149,7 +152,11 @@ mmc_map( char* filename, struct stat* sb
+@@ -149,7 +152,11 @@
  	/* Yep.  Just return the existing map */
  	++m->refcount;
  	m->reftime = now;
@@ -22,7 +22,7 @@
  	}
  
      /* Open the file. */
-@@ -195,7 +202,9 @@ mmc_map( char* filename, struct stat* sb
+@@ -195,7 +202,9 @@
      else
  	{
  	size_t size_size = (size_t) m->size;	/* loses on files >2GB */
@@ -33,7 +33,7 @@
  	/* Map the file into memory. */
  	m->addr = mmap( 0, size_size, PROT_READ, MAP_PRIVATE, fd, 0 );
  	if ( m->addr == (void*) -1 && errno == ENOMEM )
-@@ -243,8 +252,9 @@ mmc_map( char* filename, struct stat* sb
+@@ -243,8 +252,9 @@
  	    }
  #endif /* HAVE_MMAP */
  	}
@@ -44,7 +44,7 @@
      /* Put the Map into the hash table. */
      if ( add_hash( m ) < 0 )
  	{
-@@ -262,8 +272,12 @@ mmc_map( char* filename, struct stat* sb
+@@ -262,8 +272,12 @@
      /* Update the total byte count. */
      mapped_bytes += m->size;
  
@@ -57,7 +57,7 @@
      }
  
  
-@@ -276,14 +290,18 @@ mmc_unmap( void* addr, struct stat* sbP,
+@@ -276,14 +290,18 @@
      if ( sbP != (struct stat*) 0 )
  	{
  	m = find_hash( sbP->st_ino, sbP->st_dev, sbP->st_size, sbP->st_ctime );
@@ -76,7 +76,7 @@
      if ( m == (Map*) 0 )
  	syslog( LOG_ERR, "mmc_unmap failed to find entry!" );
      else if ( m->refcount <= 0 )
-@@ -372,7 +390,9 @@ really_unmap( Map** mm )
+@@ -372,7 +390,9 @@
      m = *mm;
      if ( m->size != 0 )
  	{
@@ -87,12 +87,12 @@
  	if ( munmap( m->addr, m->size ) < 0 )
  	    syslog( LOG_ERR, "munmap - %m" );
  #else /* HAVE_MMAP */
-@@ -523,7 +543,7 @@ void
+@@ -523,7 +543,7 @@
  mmc_logstats( long secs )
      {
      syslog(
--	LOG_NOTICE, "  map cache - %d allocated, %d active (%lld bytes), %d free; hash size: %d; expire age: %ld",
-+	LOG_NOTICE, "  map cache - %d allocated, %d active (%lld bytes), %d free; hash size: %d; expire age: %d",
+-	LOG_INFO, "  map cache - %d allocated, %d active (%lld bytes), %d free; hash size: %d; expire age: %ld",
++	LOG_INFO, "  map cache - %d allocated, %d active (%lld bytes), %d free; hash size: %d; expire age: %d",
  	alloc_count, map_count, (long long) mapped_bytes, free_count, hash_size,
  	expire_age );
      if ( map_count + free_count != alloc_count )

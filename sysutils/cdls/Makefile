@@ -4,8 +4,7 @@
 PORTNAME=	cdls
 PORTVERSION=	4.2
 CATEGORIES=	sysutils
-MASTER_SITES=	ftp://zml12.dyndns.org/ \
-		ftp://vps337.directvps.nl/
+MASTER_SITES=	ftp://pd7w.fs2a.eu/
 
 MAINTAINER=	hans@dehartog.nl
 COMMENT=	Curses based file manager for system managers

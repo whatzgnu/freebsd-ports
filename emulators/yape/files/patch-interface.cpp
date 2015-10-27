@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- interface.cpp.orig
 +++ interface.cpp
 @@ -10,7 +10,7 @@

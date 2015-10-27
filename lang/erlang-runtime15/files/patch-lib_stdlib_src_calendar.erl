@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lib/stdlib/src/calendar.erl.orig
 +++ lib/stdlib/src/calendar.erl
 @@ -215,11 +215,19 @@

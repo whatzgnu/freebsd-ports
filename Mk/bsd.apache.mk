@@ -217,7 +217,7 @@ APACHE_MODULES+=	${module}
 .if defined(WITH_STATIC_MODULES)
 .for module in ${APACHE_MODULES}
 .	if ${WITH_STATIC_MODULES:M${module}}
-_CONFIGURE_ARGS+=	--enable-${module:tl}=static
+_CONFIGURE_ARGS+=	--enable-${module:tl}
 .	else
 _CONFIGURE_ARGS+=	--enable-${module:tl}=shared
 .	endif

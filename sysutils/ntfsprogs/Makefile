@@ -2,15 +2,14 @@
 
 PORTNAME=	ntfsprogs
 PORTVERSION=	2.0.0
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	sysutils
 MASTER_SITES=	SF/linux-ntfs/NTFS%20Tools%20and%20Library/${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Utilities and library to manipulate NTFS partitions
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE=	GPLv2
 
 CONFLICTS_INSTALL=	fusefs-ntfs-*
 
@@ -19,7 +18,6 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-INSTALL_TARGET=	install-strip
 
 PORTDOCS=	*
 

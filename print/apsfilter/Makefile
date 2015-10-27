@@ -50,7 +50,6 @@ COMPRESS_DESC=	print compressed documents
 DOCS_MAKE_ARGS=	-DDOCS
 PORTDOCS=	ANNOUNCE FAQ HOWTO-BUGREPORTS apsfilter4.png \
 		README.BSD handbook.html README.TeX paper
-GS_USES=	ghostscript:run
 
 .include <bsd.port.options.mk>
 
@@ -59,9 +58,9 @@ GS_USES=	ghostscript:run
 # (instead of WITHOUT_X11=true, or similar) gmake won't pick it up.  So make
 # sure that NO_X is defined *and* has a value.
 MAKE_ENV+=	NO_X=true
-# ghostscript.mk USES doesn't check PORT_OPTIONS:MX11, so set this manualy
-# so it selects the nox11 gs port
-WITHOUT_X11=	yes
+.if empty(GHOSTSCRIPT_PORT:M*-nox11)
+GSUFX=	-nox11
+.endif
 .endif
 
 # hint: for batch mode you can now draw the following decisions
@@ -77,6 +76,7 @@ PSUFX=	-letter
 PSUFX=	-letterdj
 .endif
 
+_DEPENDS_GS=	gs:${PORTSDIR}/${GHOSTSCRIPT_PORT}${GSUFX}
 _DEPENDS_ASCII=	a2ps:${PORTSDIR}/print/a2ps \
 		enscript:${PORTSDIR}/print/enscript${PSUFX} \
 		mpage:${PORTSDIR}/print/mpage \

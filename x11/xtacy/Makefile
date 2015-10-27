@@ -6,7 +6,8 @@ PORTVERSION=	1.14
 PORTREVISION=	2
 CATEGORIES=	x11
 MASTER_SITES=	http://www.ultranet.com/~jjohnson/ \
-		SUNSITE/apps/graphics/hacks/X
+		${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	apps/graphics/hacks/X
 DISTNAME=	${PORTNAME}114
 
 MAINTAINER=	matt@bdd.net

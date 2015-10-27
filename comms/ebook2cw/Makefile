@@ -4,7 +4,8 @@ PORTNAME=	ebook2cw
 PORTVERSION=	0.8.2
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://fkurz.net/ham/ebook2cw/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Convert text files into cw as an mp3 or ogg file

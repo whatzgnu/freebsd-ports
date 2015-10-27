@@ -5,12 +5,15 @@ PORTNAME=	khotot
 PORTVERSION=	1.0
 PORTREVISION=	2
 CATEGORIES=	arabic x11-fonts
+MASTER_SITES=	#
+DISTFILES=	#
+EXTRACT_ONLY=	#
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Meta-port for popular Arabic font packages
 
-USES=		metaport
-
+NO_BUILD=	yes
+NO_INSTALL=	yes
 SUB_FILES=	pkg-message
 
 OPTIONS_DEFINE=	MONO AEFONTS KACST

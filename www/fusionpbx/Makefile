@@ -6,7 +6,7 @@ DISTVERSION=	3.3
 PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://www.fusionpbx.com/downloads/ \
-		GOOGLE_CODE
+		${MASTER_SITE_GOOGLE_CODE}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PHP5 Graphical User Interface for FreeSwitch

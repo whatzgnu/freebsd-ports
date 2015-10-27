@@ -5,9 +5,10 @@ PORTNAME=	dahdi-kmod26
 PORTVERSION=	${DAHDI_VERSION:S/-/./g}
 PORTREVISION=	1
 CATEGORIES=	misc
-MASTER_SITES=	LOCAL/fjoe \
+MASTER_SITES=	${MASTER_SITE_LOCAL}\
 		http://people.freebsd.org/~fjoe/dahdi/\
 		http://downloads.digium.com/pub/telephony/firmware/releases/:firmware
+MASTER_SITE_SUBDIR=	fjoe
 DISTNAME=	dahdi-freebsd-${DAHDI_VERSION}
 DISTFILES=	${DISTNAME}.tar.bz2\
 		oslec-linux-${OSLEC_VERSION}${EXTRACT_SUFX}\

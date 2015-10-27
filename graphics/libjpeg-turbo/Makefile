@@ -1,6 +1,7 @@
 # Created by: Denis Podolskiy <bytestore@yandex.ru>
 # $FreeBSD$
 
+PORTREVISION=	5
 PKGNAMEPREFIX=	lib
 
 COMMENT=	SIMD-accelerated JPEG codec library, provides libTurboJPEG

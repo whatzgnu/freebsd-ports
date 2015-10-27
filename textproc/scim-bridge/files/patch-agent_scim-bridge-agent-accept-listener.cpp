@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- agent/scim-bridge-agent-accept-listener.cpp.orig
 +++ agent/scim-bridge-agent-accept-listener.cpp
 @@ -106,12 +106,12 @@

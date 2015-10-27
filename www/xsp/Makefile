@@ -10,6 +10,9 @@ COMMENT=	Mono based web server
 
 LICENSE=	MIT
 
+BUILD_DEPENDS=	${LOCALBASE}/bin/mono:${PORTSDIR}/lang/mono
+RUN_DEPENDS=	${LOCALBASE}/bin/mono:${PORTSDIR}/lang/mono
+
 MAKE_JOBS_UNSAFE=	yes
 
 GH_ACCOUNT=	mono
@@ -17,7 +20,6 @@ USE_GITHUB=	yes
 USE_SQLITE=	3
 USES=		gmake mono pathfix pkgconfig tar:bzip2
 GNU_CONFIGURE=	yes
-CONFIGURE_ENV=	ac_cv_path_GMCS=${LOCALBASE}/bin/mcs
 USE_AUTOTOOLS=	automake autoconf aclocal
 PATHFIX_MAKEFILEIN=Makefile.am
 

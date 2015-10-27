@@ -5,7 +5,8 @@ PORTNAME=	unclutter
 PORTVERSION=	8
 PORTREVISION=	3
 CATEGORIES=	misc
-MASTER_SITES=	XCONTRIB/utilities
+MASTER_SITES=	${MASTER_SITE_XCONTRIB}
+MASTER_SITE_SUBDIR=	utilities
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Remove idle cursor image from screen

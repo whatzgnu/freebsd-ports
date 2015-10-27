@@ -3,15 +3,14 @@
 
 PORTNAME=	libpreludedb
 PORTVERSION=	1.0.1p1
-PORTREVISION=	10
+PORTREVISION=	9
 CATEGORIES=	security
 MASTER_SITES=	https://www.prelude-ids.org/attachments/download/287/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Framework library for access to Prelude NIDS database
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE=	GPLv2
 
 LIB_DEPENDS=	libltdl.so:${PORTSDIR}/devel/libltdl \
 		libgmp.so:${PORTSDIR}/math/gmp \

@@ -2,23 +2,37 @@
 # $FreeBSD$
 
 PORTNAME=	flops
-PORTVERSION=	2.1
+PORTVERSION=	2.0
 CATEGORIES=	benchmarks
+MASTER_SITES=	http://mbsd.msk.ru/dist/
+DISTFILES=	${PORTNAME}.c ${PORTNAME}.doc
+EXTRACT_ONLY=	#
 
-MAINTAINER=	amdmi3@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Floating point benchmark to give your MFLOPS rating
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	AMDmi3
+BROKEN=		Unfetchable
+OPTIONS_DEFINE=	DOCS
 
-PORTDOCS=	README
+NO_WRKSUBDIR=	yes
+
+PORTDOCS=	flops.doc
 PLIST_FILES=	bin/flops
 
-OPTIONS_DEFINE=	DOCS
+post-extract:
+	@(cd ${DISTDIR} && ${TAR} -cf - ${DISTFILES}) | \
+		(cd ${WRKSRC} && ${TAR} -xf -)
+
+post-patch:
+	@${REINPLACE_CMD} -e \
+		's|^void main|int main|' ${WRKSRC}/flops.c
+
+do-build:
+	(cd ${WRKSRC} && ${CC} ${CFLAGS} -DUNIX -o flops flops.c)
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/flops ${STAGEDIR}${PREFIX}/bin/
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}/
+	${INSTALL_DATA} ${WRKSRC}/flops.doc ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- main.c.orig
 +++ main.c
 @@ -33,7 +33,6 @@

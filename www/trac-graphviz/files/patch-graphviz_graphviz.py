@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- graphviz/graphviz.py.orig
 +++ graphviz/graphviz.py
 @@ -16,11 +16,11 @@

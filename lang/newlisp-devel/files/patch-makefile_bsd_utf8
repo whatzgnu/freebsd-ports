@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- makefile_bsd_utf8.orig
 +++ makefile_bsd_utf8
 @@ -4,14 +4,12 @@

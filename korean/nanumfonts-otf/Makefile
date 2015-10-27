@@ -1,45 +1,34 @@
 # $FreeBSD$
 
 PORTNAME=	nanumfonts
-PORTVERSION=	20141022
+PORTVERSION=	3.1
+PORTREVISION=	1
 CATEGORIES=	korean
-MASTER_SITES=	http://appdown.naver.com/naver/font/NanumFont/setup/ \
-		LOCAL/jkim
+MASTER_SITES=	http://cdn.naver.com/naver/NanumFont/fontfiles/ \
+		LOCAL
+MASTER_SITE_SUBDIR=	jkim
 PKGNAMESUFFIX=	-${FONTTYPE}
-DISTFILES=	${DISTFILE_LIST:S/^/${DISTFILE_PRFX}/:S/$/${DISTFILE_SUFX}/}
-DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
+DISTFILES=	NanumFont_${FONTTYPE:tu}_ALL${EXTRACT_SUFX} \
+		NanumFontSetup_${FONTTYPE:tu}_GOTHICECO${EXTRACT_SUFX} \
+		NanumFontSetup_${FONTTYPE:tu}_GOTHICLIGHT${EXTRACT_SUFX} \
+		NanumFontSetup_${FONTTYPE:tu}_MYUNGJOECO${EXTRACT_SUFX}
 
 MAINTAINER=	jkim@FreeBSD.org
 COMMENT=	Nanum family Hangul fonts (${FONTFORMAT})
 
 LICENSE=	OFL11
 
-EXTRACT_DEPENDS=	7z:${PORTSDIR}/archivers/p7zip
-
-DISTFILE_LIST=	ALL GOTHICECO MYUNGJOECO
-DISTFILE_PRFX=	NanumFontSetup_${FONTTYPE:tu}_
-DISTFILE_SUFX=	_hangeulcamp.exe
 DISTINFO_FILE=	${PKGDIR}/distinfo.${FONTTYPE}
 
-EXTRACT_CMD=	7z
-EXTRACT_BEFORE_ARGS=	e -y
-EXTRACT_AFTER_ARGS=	'$$WINDIR/Fonts'
-
-NO_ARCH=	yes
+NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
-USES=		fonts
+USES=		fonts zip
 
 FONTTYPE?=	otf
 FONTFORMAT?=	OpenType
 
 FONTNAME=	nanum-${FONTTYPE}
-FONTLIST=	NanumBarunGothic \
-		NanumBarunGothicBold \
-		NanumBarunGothicLight \
-		NanumBarunGothicUltraLight \
-		NanumBarunpenB \
-		NanumBarunpenR \
-		NanumBrush \
+FONTLIST=	NanumBrush \
 		NanumGothic \
 		NanumGothicBold \
 		NanumGothicEco \
@@ -54,14 +43,12 @@ FONTLIST=	NanumBarunGothic \
 		NanumMyeongjoEcoExtraBold \
 		NanumMyeongjoExtraBold \
 		NanumPen
-FONTFILES=	${FONTLIST:S|$|.${FONTTYPE}|}
+FONTFILES=	${FONTLIST:S/$/.${FONTTYPE}/}
 
 PLIST_FILES=	${FONTFILES:S|^|${FONTSDIR}/|}
 
 do-install:
 	${MKDIR} ${STAGEDIR}${FONTSDIR}
-.for f in ${FONTFILES}
-	${INSTALL_DATA} ${WRKDIR}/${f} ${STAGEDIR}${FONTSDIR}
-.endfor
+	${INSTALL_DATA} ${FONTFILES:S|^|${WRKSRC}/|} ${STAGEDIR}${FONTSDIR}
 
 .include <bsd.port.mk>

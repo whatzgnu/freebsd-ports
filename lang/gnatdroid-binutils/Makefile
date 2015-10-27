@@ -4,7 +4,8 @@
 PORTNAME=		binutils
 PORTVERSION=		2.25
 CATEGORIES=		lang
-MASTER_SITES=		SOURCEWARE/binutils/releases
+MASTER_SITES=		${MASTER_SITE_SOURCEWARE}
+MASTER_SITE_SUBDIR=	binutils/releases
 PKGNAMEPREFIX=		gnatdroid-
 
 MAINTAINER=	marino@FreeBSD.org

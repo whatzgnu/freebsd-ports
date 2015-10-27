@@ -4,7 +4,8 @@
 PORTNAME=	squirrelmail-translations
 PORTVERSION=	20150324
 CATEGORIES=	mail www
-MASTER_SITES=	LOCAL/adamw/squirrelmail
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	adamw/squirrelmail
 DISTNAME=	squirrelmail-${PORTVERSION}_0200-SVN.locales
 DIST_SUBDIR=	squirrelmail
 

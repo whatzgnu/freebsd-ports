@@ -7,10 +7,7 @@ CATEGORIES=	databases rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
-COMMENT=	MySQL API module for Ruby
-
-LICENSE=	GPLv2 RUBY
-LICENSE_COMB=	dual
+COMMENT=	The MySQL API module for Ruby
 
 USE_MYSQL=	yes
 USE_RUBY=	yes

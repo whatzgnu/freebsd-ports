@@ -28,7 +28,7 @@
 #		it as RUN_DEPENDS.
 #
 # If build and run are omitted, Python will be added as BUILD_DEPENDS and
-# RUN_DEPENDS. PYTHON_NO_DEPENDS can be set to not add any dependencies.
+# RUN_DEPENDS.
 #
 # Variables, which can be set by a user:
 #
@@ -142,7 +142,7 @@
 # PYTHON_PORTSDIR	- The port directory of the chosen Python interpreter
 #
 # PYTHON_REL		- The release number of the chosen Python interpreter
-#			  without dots, e.g. 2706, 3401, ...
+#			  without dots, e.g. 276, 341, ...
 #
 # PYTHON_SUFFIX		- The major-minor release number of the chosen Python
 #			  interpreter without dots, e.g. 27, 34, ...
@@ -243,8 +243,7 @@ _PYTHON_ARGS:=		${_PYTHON_ARGS:Nrun}
 
 # The port does not specify a build or run dependency, assume both are
 # required.
-.if !defined(_PYTHON_BUILD_DEP) && !defined(_PYTHON_RUN_DEP) && \
-    !defined(PYTHON_NO_DEPENDS)
+.if !defined(_PYTHON_BUILD_DEP) && !defined(_PYTHON_RUN_DEP)
 _PYTHON_BUILD_DEP=	yes
 _PYTHON_RUN_DEP=	yes
 .endif
@@ -383,7 +382,7 @@ PYTHON_REL=		# empty
 PYTHON_ABIVER=		# empty
 PYTHON_PORTSDIR=	${_PYTHON_RELPORTDIR}${PYTHON_SUFFIX}
 PYTHON_PORTVERSION!=	${MAKE} -V PORTVERSION -C ${PYTHON_PORTSDIR}
-PYTHON_REL=		${PYTHON_PORTVERSION:C/\.([0-9]+)$/.0\1/:C/\.0?([0-9][0-9])$/.\1/:S/.//g}
+PYTHON_REL=		${PYTHON_PORTVERSION:S/.//g}
 
 # Might be overridden by calling ports
 PYTHON_CMD?=		${_PYTHON_BASECMD}${_PYTHON_VERSION}
@@ -500,7 +499,7 @@ add-plist-pymod:
 		${_PYTHONPKGLIST} | ${SORT} >> ${TMPPLIST}
 
 .else
-.if ${PYTHON_REL} >= 3200 && defined(_PYTHON_FEATURE_PY3KPLIST)
+.if ${PYTHON_REL} >= 320 && defined(_PYTHON_FEATURE_PY3KPLIST)
 # When Python version is 3.2+ we rewrite all the filenames
 # of TMPPLIST that end with .py[co], so that they conform
 # to PEP 3147 (see http://www.python.org/dev/peps/pep-3147/)
@@ -515,15 +514,11 @@ add-plist-post:
 		pc="__pycache__" mt="$$(${PYMAGICTAG})" \
 		${TMPPLIST} > ${TMPPLIST}.pyc_tmp
 	@${MV} ${TMPPLIST}.pyc_tmp ${TMPPLIST}
-.endif # ${PYTHON_REL} >= 3200 && defined(_PYTHON_FEATURE_PY3KPLIST)
+.endif # ${PYTHON_REL} >= 320 && defined(_PYTHON_FEATURE_PY3KPLIST)
 .endif # defined(_PYTHON_FEATURE_AUTOPLIST) && defined(_PYTHON_FEATURE_DISTUTILS)
 
 # Fix for programs that build python from a GNU auto* environment
 CONFIGURE_ENV+=	PYTHON="${PYTHON_CMD}"
-
-# By default CMake picks up the highest available version of Python package.
-# Enforce the version required by the port or the default.
-CMAKE_ARGS+=	-DPython_ADDITIONAL_VERSIONS=${PYTHON_VER}
 
 # Python 3rd-party modules
 PYGAME=		${PYTHON_PKGNAMEPREFIX}game>0:${PORTSDIR}/devel/py-game

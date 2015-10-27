@@ -13,9 +13,10 @@ COMMENT=	Cross-platform C++ graphical user interface toolkit
 
 LICENSE=	LGPL20
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
-USES=		jpeg pkgconfig
+USES=		pkgconfig
 USE_XORG=	xft
 USE_GL=		glu
 USE_LDCONFIG=	yes

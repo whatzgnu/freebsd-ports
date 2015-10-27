@@ -9,6 +9,7 @@ MASTER_SITES=	http://downloads.ghostscript.com/public/:gs_srcs \
 		SF/ghostscript/GPL%20Ghostscript/${PORTVERSION}:gs_srcs \
 		ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/GPL/gs${PORTVERSION:S/.//}/:gs_srcs \
 		http://www.humblesoft.com/pub/:epag
+MASTER_SITE_SUBDIR=	ghostscript/:gs_srcs
 PKGNAMESUFFIX=	8
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:gs_srcs ${EPAG_SRCS}:epag
 DIST_SUBDIR=	${PORTNAME}
@@ -23,6 +24,7 @@ LICENSE=	GPLv3
 LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2 \
 		libjasper.so:${PORTSDIR}/graphics/jasper \
 		libjbig2dec.so:${PORTSDIR}/graphics/jbig2dec \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libpaper.so:${PORTSDIR}/print/libpaper \
 		libtiff.so:${PORTSDIR}/graphics/tiff
@@ -35,7 +37,7 @@ CONFLICTS_INSTALL= \
 		ghostscript9-agpl-[0-9]* \
 		ghostscript9-agpl-nox11-[0-9]*
 
-USES=		gmake jpeg pkgconfig tar:xz shebangfix
+USES=		gmake pkgconfig tar:xz shebangfix
 SHEBANG_FILES=	${WRKSRC}/lib/fixmswrd.pl
 WANT_GNOME=	yes
 USE_LDCONFIG=	yes

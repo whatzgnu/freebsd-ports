@@ -9,12 +9,8 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Industrial strength asset packaging library for Rails
 
-LICENSE=	MIT
-
-RUN_DEPENDS=	rubygem-cssmin>=1.0.3:${PORTSDIR}/textproc/rubygem-cssmin \
-		rubygem-jsmin>=1.0.1:${PORTSDIR}/textproc/rubygem-jsmin
-
-NO_ARCH=	yes
+RUN_DEPENDS=	rubygem-jsmin>=1.0.1:${PORTSDIR}/textproc/rubygem-jsmin \
+		rubygem-cssmin>=1.0.3:${PORTSDIR}/textproc/rubygem-cssmin
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

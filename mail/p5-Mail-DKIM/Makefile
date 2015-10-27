@@ -3,7 +3,7 @@
 
 PORTNAME=	Mail-DKIM
 PORTVERSION=	0.40
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	mail perl5
 MASTER_SITES=	CPAN \
 		http://jason.long.name/dkimproxy/
@@ -22,8 +22,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USES=		perl5 shebangfix
 USE_PERL5=	configure
-SHEBANG_FILES=	scripts/dkim*.pl sample_mime_lite.pl
-NO_ARCH=	yes
+SHEBANG_FILES=	scripts/dkim*.pl
 
 post-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/scripts/dkim*.pl ${STAGEDIR}${PREFIX}/bin

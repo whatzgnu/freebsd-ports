@@ -5,10 +5,11 @@ PORTNAME=	unicode-uhoai
 PORTVERSION=	2.1
 PORTREVISION=	4
 CATEGORIES=	vietnamese x11-fonts
-MASTER_SITES=	LOCAL/obrien
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	obrien
 DISTNAME=	uhoaiw21
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	obrien@FreeBSD.org
 COMMENT=	Unicode TrueType Font with UHoai Vietnamese encoding
 
 USES=		fonts zip:infozip

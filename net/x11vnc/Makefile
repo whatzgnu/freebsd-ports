@@ -12,7 +12,8 @@ COMMENT=	VNC server for use with real X displays
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libdbus-1.so:${PORTSDIR}/devel/dbus \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libdbus-1.so:${PORTSDIR}/devel/dbus \
 		libpthread-stubs.so:${PORTSDIR}/devel/libpthread-stubs
 
 USE_XORG=	x11 xcb xdamage xfixes xrandr xinerama xext xtst xau xrender \
@@ -20,7 +21,7 @@ USE_XORG=	x11 xcb xdamage xfixes xrandr xinerama xext xtst xau xrender \
 # Sets LDFLAGS and adds to CONFIGURE_ENV, therefore we set LDFLAGS
 LDFLAGS+=	-L${LOCALBASE}/lib
 USE_OPENSSL=	yes
-USES=		iconv jpeg pkgconfig
+USES=		iconv pkgconfig
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 

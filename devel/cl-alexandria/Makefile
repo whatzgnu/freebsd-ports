@@ -5,7 +5,8 @@ PORTVERSION=	2010.01.16
 PORTREVISION=	3
 CATEGORIES=	devel lisp
 PKGNAMEPREFIX=	cl-
-MASTER_SITES=	LOCAL/olgeni
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	olgeni
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	Collection of portable public domain utilities for Common Lisp

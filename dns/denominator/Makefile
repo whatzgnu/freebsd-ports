@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	denominator
-PORTVERSION=	4.6.0
+PORTVERSION=	4.3.3
 CATEGORIES=	dns java
-MASTER_SITES=	https://bintray.com/artifact/download/netflixoss/maven/com/netflix/${PORTNAME}/${PORTNAME}-cli/${PORTVERSION}/
-DISTNAME=	${PORTNAME}-cli-${PORTVERSION}-fat.jar
+MASTER_SITES=	http://dl.bintray.com/content/netflixoss/${PORTNAME}/${PORTNAME}-cli/release/${PORTVERSION}/
+DISTNAME=	${PORTNAME}
 EXTRACT_SUFX=
 
 MAINTAINER=	swills@FreeBSD.org
@@ -21,6 +21,6 @@ do-extract:
 	@${CP} ${DISTDIR}/${DISTNAME} ${WRKDIR}/${DISTNAME}
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/${DISTNAME}/${DISTNAME} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	${INSTALL_PROGRAM} ${WRKDIR}/${DISTNAME}/${DISTNAME} ${STAGEDIR}${PREFIX}/bin/
 
 .include <bsd.port.mk>

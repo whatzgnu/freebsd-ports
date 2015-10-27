@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/psh.h.orig
 +++ src/psh.h
 @@ -52,7 +52,6 @@

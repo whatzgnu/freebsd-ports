@@ -23,6 +23,7 @@ PLIST_SUB=	PORTVERSION=${PORTVERSION}
 INSTALL_TARGET=	install-strip
 
 SHEBANG_FILES=	tools/splitconfig
+python_CMD=	${PYTHON_CMD}
 
 CONFIGURE_ARGS=	--enable-shared
 

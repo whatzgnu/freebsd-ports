@@ -10,11 +10,9 @@ MASTER_SITES=	http://www.ndesk.org/archive/ndesk-dbus/
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	C\# implementation of D-Bus
 
-USES=		gmake mono pathfix pkgconfig
-GNU_CONFIGURE=	yes
-CONFIGURE_ENV=	ac_cv_path_CSC=${LOCALBASE}/bin/mcs
-
 OPTIONS_DEFINE=	DOCS
+USES=	gmake mono pathfix pkgconfig
+GNU_CONFIGURE=	yes
 
 DOCS=		AUTHORS COPYING README
 

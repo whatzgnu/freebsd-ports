@@ -6,7 +6,8 @@ PORTVERSION=	1.1
 PORTREVISION=	4
 CATEGORIES=	audio
 MASTER_SITES=	http://www.ecs.soton.ac.uk/~njl98r/code/ladspa/ \
-		LOCAL/arved
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	arved
 DISTNAME=	xmms_ladspa-${PORTVERSION}
 
 MAINTAINER=	arved@FreeBSD.org

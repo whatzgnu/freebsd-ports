@@ -12,9 +12,6 @@ MASTER_SITES=	http://oss.gonicus.de/pub/gosa/ \
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Web Based LDAP Administration Program
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 RUN_DEPENDS=	p5-Crypt-SmbHash>=0.12:${PORTSDIR}/security/p5-Crypt-SmbHash \
 		pecl-imagick>=2.2.2:${PORTSDIR}/graphics/pecl-imagick
 
@@ -23,7 +20,6 @@ USE_PHP=	gettext iconv imap ldap mbstring mhash mysql pcre posix \
 		session spl xml zlib
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 PKGMESSAGE=	${WRKDIR}/pkg-message
 REINPLACE_ARGS=	-i ""
 SUB_FILES=	pkg-message
@@ -64,6 +60,5 @@ do-install:
 	(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
 	(cd ${WRKSRC} && ${INSTALL_DATA} AUTHORS COPYING Changelog FAQ \
 		INSTALL README README.safemode ${STAGEDIR}${DOCSDIR})
-	${MKDIR} ${STAGEDIR}/var/spool/gosa
 
 .include <bsd.port.mk>

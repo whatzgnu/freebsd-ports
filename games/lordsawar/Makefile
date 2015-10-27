@@ -19,7 +19,7 @@ LIB_DEPENDS=	libtar.so:${PORTSDIR}/devel/libtar \
 		libgnet-2.0.so:${PORTSDIR}/net/gnet2
 
 USES=		gettext gmake pkgconfig
-USE_GNOME=	gtkmm24 intltool
+USE_GNOME=	gtkmm24
 USE_SDL=	sdl image mixer
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-boost-includedir=${LOCALBASE}/include
@@ -29,4 +29,10 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 PORTDATA=	*
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} < 1000000
+BROKEN=		does not build
+.endif
+
+.include <bsd.port.post.mk>

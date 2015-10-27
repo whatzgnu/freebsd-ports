@@ -1,8 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	virtualenv
-PORTVERSION=	13.1.0
+PORTVERSION=	12.0.7
+PORTREVISION=	0
 CATEGORIES=	devel python
+MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	nivit@FreeBSD.org
@@ -10,18 +12,15 @@ COMMENT=	Tool for creating isolated Python environments
 
 LICENSE=	MIT
 
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:${PORTSDIR}/devel/py-pytest \
-		${PYTHON_PKGNAMEPREFIX}mock>0:${PORTSDIR}/devel/py-mock
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}nose:${PORTSDIR}/devel/py-nose \
+		${PYTHON_PKGNAMEPREFIX}mock:${PORTSDIR}/devel/py-mock
 
 OPTIONS_DEFINE=	DOCS
 
 DOCS_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinx>=1.1.3:${PORTSDIR}/textproc/py-sphinx
 
 USES=		python
-USE_GITHUB=	yes
-USE_PYTHON=	autoplist concurrent distutils
-
-GH_ACCOUNT=	pypa
+USE_PYTHON=	autoplist distutils
 
 .include <bsd.port.options.mk>
 
@@ -37,6 +36,6 @@ post-install:
 .endif
 
 regression-test: build
-	@cd ${WRKSRC} && ${PYTHON_CMD} ${PYDISTUTILS_SETUP} test
+	@cd ${WRKSRC} && ${PYTHON_CMD} ${PYSETUP} test
 
 .include <bsd.port.mk>

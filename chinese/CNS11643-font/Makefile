@@ -30,5 +30,10 @@ do-install:
 	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/${f} ${STAGEDIR}${FONTSDIR}
 .endfor
 
+post-install:
+	@${ECHO_CMD} "*******************************************************************************"
+	@${CAT} ${PKGMESSAGE}
+	@${ECHO_CMD} "*******************************************************************************"
+
 .include "${.CURDIR}/../ttfm/Makefile.ttf"
 .include <bsd.port.mk>

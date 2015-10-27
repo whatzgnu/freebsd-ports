@@ -2,18 +2,24 @@
 # $FreeBSD$
 
 PORTNAME=	zsi
-DISTVERSION=	2.1-a1
+PORTVERSION=	2.0
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	net python
-MASTER_SITES=	SF/pywebsvcs/ZSI/ZSI-${DISTVERSION:S,-,_,}
+MASTER_SITES=	SF/pywebsvcs/ZSI/ZSI-${PORTVERSION}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
-DISTNAME=	${PORTNAME:tu}-${DISTVERSION}
+DISTNAME=	${PORTNAME:tu}-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	Pure Python implementation of SOAP 1.1
+COMMENT=	Pure Python module that provides an implementation of SOAP 1.1
+
+BUILD_DEPENDS=	${PYXML}
+RUN_DEPENDS=	${PYXML}
+
+CONFLICTS=	py-zsi-devel-2.*
 
 USES=		python:2
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
@@ -22,13 +28,10 @@ PORTEXAMPLES=	*
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-.for docfile in CHANGES README doc/zsi.* doc/*.png
+.for docfile in CHANGES README doc/zsi.* doc/*.tex
 	${INSTALL_DATA} ${WRKSRC}/${docfile} ${STAGEDIR}${DOCSDIR}
 .endfor
-.for dir in client server
-	@${MV} ${WRKSRC}/doc/examples/${dir} ${WRKSRC}
-.endfor
-.for subdir in samples test client server
+.for subdir in interop samples test
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/${subdir}
 	${CP} -rp ${WRKSRC}/${subdir}/* ${STAGEDIR}${EXAMPLESDIR}/${subdir}
 .endfor

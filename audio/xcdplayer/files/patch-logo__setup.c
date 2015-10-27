@@ -1,5 +1,5 @@
 
-$NetBSD: pkgsrc/audio/xcdplayer/patches/patch-ai,v 1.4 2005/12/11 20:48:46 joerg Exp $
+$FreeBSD$
 
 --- logo_setup.c.orig	Tue Jan 12 19:59:46 1993
 +++ logo_setup.c	Mon Aug 25 00:38:35 2003
@@ -7,7 +7,7 @@ $NetBSD: pkgsrc/audio/xcdplayer/patches/patch-ai,v 1.4 2005/12/11 20:48:46 joerg
  # include <stdio.h>
  
  # include "cdrom_globs.h"
-+#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
++#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
 +# include "cdrom_freebsd.h"
 +#endif
  #ifdef sun

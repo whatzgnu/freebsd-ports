@@ -11,16 +11,11 @@ MAINTAINER=	vg@FreeBSD.org
 COMMENT=	Is an application, language, and network arch
 
 LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/LICENSE
-
-BROKEN_armv6=	does not build
-BROKEN_mips=	does not build (tests segfault)
-BROKEN_mips64=	does not build (tests segfault)
 
 LIB_DEPENDS=	libzmq.so:${PORTSDIR}/net/libzmq2 \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3
 
-USES=		gmake tar:bzip2
+USES=	gmake tar:bzip2
 MAKE_FLAGS=	freebsd
 EXAMPLES_LIST=	bbs \
 		chat \
@@ -32,21 +27,26 @@ EXAMPLES_LIST=	bbs \
 		python \
 		tornado \
 		zcov
-MAKE_JOBS_UNSAFE=yes
 
-OPTIONS_DEFINE=	EXAMPLES
+OPTIONS_DEFINE=		EXAMPLES
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MEXAMPLES}
+PLIST_SUB+=	EXAMPLES=""
+.else
+PLIST_SUB+=	EXAMPLES="@comment "
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's#/usr/local#${LOCALBASE}#g' ${WRKSRC}/Makefile
-	@${REINPLACE_CMD} -e 's#fdclose#my_fdclose#g' ${WRKSRC}/src/*.c \
-		${WRKSRC}/src/task/*.[ch] ${WRKSRC}/tests/*.c
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/mongrel2/*/*.so
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@${MKDIR} ${STAGEDIR}/${EXAMPLESDIR}
-.for example in ${EXAMPLES_LIST}
-	@cd ${WRKSRC}/examples && ${COPYTREE_SHARE} ${example} ${STAGEDIR}/${EXAMPLESDIR}
+.for examples in ${EXAMPLES_LIST}
+	@cd ${WRKSRC}/examples && ${COPYTREE_SHARE} ${examples} ${STAGEDIR}/${EXAMPLESDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

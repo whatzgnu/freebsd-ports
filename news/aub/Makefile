@@ -8,7 +8,7 @@ CATEGORIES=	news
 MASTER_SITES=	http://yukidoke.org/~mako/projects/aub/download/
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	obrien@FreeBSD.org
 COMMENT=	Assemble usenet binaries
 
 USES=		shebangfix

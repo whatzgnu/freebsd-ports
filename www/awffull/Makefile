@@ -3,7 +3,7 @@
 
 PORTNAME=	awffull
 PORTVERSION=	3.10.2
-PORTREVISION=	14
+PORTREVISION=	13
 CATEGORIES?=	www
 MASTER_SITES=	http://www.stedee.id.au/files/
 
@@ -11,7 +11,6 @@ MAINTAINER?=	chad@wickdev.com
 COMMENT=	AWFFull is a webserver log analysis tool forked from Webalizer
 
 LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	${LOCALBASE}/share/fonts/bitstream-vera/Vera.ttf:${PORTSDIR}/x11-fonts/bitstream-vera
 LIB_DEPENDS=	libgd.so:${PORTSDIR}/graphics/gd \
@@ -27,9 +26,7 @@ FONTLABEL?=	${LOCALBASE}/share/fonts/bitstream-vera/Vera.ttf
 OPTIONS_DEFINE=	GEOIP DOCS EXAMPLES NLS
 OPTIONS_SUB=	yes
 
-USES=		gettext iconv shebangfix
-SHEBANG_FILES=	contrib/awffull_history_regen.pl \
-		contrib/awffull_history_regen_german.pl
+USES=		gettext iconv
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--with-font-default=${FONTDEFAULT} \

@@ -12,3 +12,4 @@
 %%DATADIR%%/dictionary.usr
 %%DATADIR%%/dictionary.versanet
 %%DATADIR%%/dictionary.xtradius
+@dirrm %%DATADIR%%

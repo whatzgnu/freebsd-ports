@@ -3,7 +3,7 @@
 
 PORTNAME=	qiviewer
 PORTVERSION=	0.5.0
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	graphics
 MASTER_SITES=	GOOGLE_CODE
 
@@ -11,10 +11,9 @@ MAINTAINER=	vg@FreeBSD.org
 COMMENT=	Fast and lightweight image viewer
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKDIR}/${PORTNAME}/COPYING
 
-USES=		desktop-file-utils qmake tar:bzip2
-USE_QT4=	corelib gui imageformats_run linguisttools_build \
+USES=		qmake tar:bzip2
+USE_QT4=	gui xml dbus imageformats_run linguist_build \
 		moc_build rcc_build uic_build
 
 PLIST_FILES=	bin/qiviewer \
@@ -30,7 +29,7 @@ WEBP_DESC=	Support for WebP image format (experimental)
 WEBP_QMAKE_ON=	CONFIG+=enable-webp
 
 post-configure:
-	@${REINPLACE_CMD} -e 's|lrelease|lrelease-qt4|g' \
+	${REINPLACE_CMD} -e 's|lrelease|lrelease-qt4|g' \
 		${WRKSRC}/Makefile
 
 .include <bsd.port.mk>

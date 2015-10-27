@@ -4,7 +4,8 @@ PORTNAME=	cocoon
 PORTVERSION=	2.1.11
 PORTREVISION=	1
 CATEGORIES=	www java
-MASTER_SITES=	APACHE/${PORTNAME}
+MASTER_SITES=	${MASTER_SITE_APACHE}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 DISTNAME=	${PDISTNAME}-src
 
 MAINTAINER=	ports@FreeBSD.org
@@ -23,7 +24,6 @@ LATEST_LINK=	${APP_NAME}
 PLIST=		${WRKDIR}/pkg-plist
 PDISTNAME=	${PORTNAME}-${PORTVERSION}
 PKGMESSAGE=	${WRKDIR}/pkg-message
-NO_ARCH=	yes
 
 COCOON_LIB=	${JAVASHAREDIR}/${APP_NAME}
 PLIST_SUB+=	COCOON_LIB="${COCOON_LIB}"
@@ -113,7 +113,10 @@ post-build:
 	| ${SED} -e "s|^|${APP_NAME}/|" >> ${PLIST}
 
 	@cd ${WRKSRC} && ${FIND} -H -d ${COPYDIRS} -type d -empty \
-	| ${SED} -e "s|^|@dir ${APP_NAME}/|" >> ${PLIST}
+	| ${SED} -e "s|^|@exec mkdir -p %D/${APP_NAME}/|" >> ${PLIST}
+
+	@cd ${WRKSRC} && ${FIND} -H -d ${COPYDIRS} -type d \
+	| ${SED} -e "s|^|@dirrm ${APP_NAME}/|" >> ${PLIST}
 
 	@${CAT} ${MASTERDIR}/pkg-plist >> ${PLIST}
 

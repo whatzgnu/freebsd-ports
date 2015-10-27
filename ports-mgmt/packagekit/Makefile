@@ -4,7 +4,7 @@
 
 PORTNAME=	PackageKit
 PORTVERSION=	0.6.11
-PORTREVISION?=	8
+PORTREVISION?=	7
 CATEGORIES=	ports-mgmt sysutils
 MASTER_SITES=	http://www.packagekit.org/releases/
 
@@ -15,14 +15,10 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/docbook2man:${PORTSDIR}/textproc/docbook-utils
 LIB_DEPENDS=	libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib \
 		libpolkit-gobject-1.so:${PORTSDIR}/sysutils/polkit \
 		libck-connector.so:${PORTSDIR}/sysutils/consolekit
-RUN_DEPENDS=	lsof:${PORTSDIR}/sysutils/lsof \
-		bash:${PORTSDIR}/shells/bash
+RUN_DEPENDS=	lsof:${PORTSDIR}/sysutils/lsof
 
-USES=		cpe execinfo gettext gmake iconv libtool pathfix pkgconfig \
-		python:build shared-mime-info shebangfix
-CPE_VENDOR=	packagekit_project
-SHEBANG_FILES=	backends/test/helpers/search-name.sh \
-		contrib/cron/packagekit-background.cron
+USES=		execinfo gettext gmake iconv libtool pathfix pkgconfig \
+		python:build shared-mime-info
 USE_GNOME=	glib20 intltool introspection
 USE_SQLITE=	3
 USE_LDCONFIG=	yes

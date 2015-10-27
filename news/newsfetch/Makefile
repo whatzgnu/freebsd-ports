@@ -5,7 +5,8 @@ PORTNAME=	newsfetch
 PORTVERSION=	1.21
 PORTREVISION=	2
 CATEGORIES=	news
-MASTER_SITES=	SUNSITE/system/news/readers
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	system/news/readers
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Download news articles from NNTP server

@@ -10,8 +10,6 @@ DISTNAME=	gstreamer-editing-services-${PORTVERSION}
 MAINTAINER=	multimedia@FreeBSD.org
 COMMENT=	Gstreamer editing services
 
-PORTSCOUT=	limitw:1,even
-
 USES=		gmake libtool pathfix pkgconfig tar:xz
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes

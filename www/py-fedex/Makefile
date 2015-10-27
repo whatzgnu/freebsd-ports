@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	fedex
-PORTVERSION=	1.1.1
+PORTVERSION=	1.0.14
+PORTREVISION=	1
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,8 +15,7 @@ LICENSE=	BSD3CLAUSE
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}suds>=0:${PORTSDIR}/net/py-suds
 
-NO_ARCH=	yes
 USES=		python:2
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

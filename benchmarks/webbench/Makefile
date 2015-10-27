@@ -4,7 +4,8 @@
 PORTNAME=	webbench
 PORTVERSION=	1.5
 CATEGORIES=	benchmarks www
-MASTER_SITES=	SUNSITE/apps/www/servers
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	apps/www/servers
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Simple forking web benchmark

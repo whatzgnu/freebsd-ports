@@ -11,7 +11,8 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Motion detection application
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
+
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 OPTIONS_DEFINE=	FFMPEG MYSQL PGSQL DOCS EXAMPLES
 OPTIONS_SINGLE=	VIDEO
@@ -21,8 +22,8 @@ VIDEO_DESC=	Video capture driver. Choose one of BKTR or PWCBSD
 BKTR_DESC=	BKTR based TV capture cards
 PWCBSD_DESC=	PWCBSD based Webcams
 
-USES=		autoreconf gmake jpeg
-GNU_CONFIGURE=	yes
+USES=		gmake
+USE_AUTOTOOLS=	autoconf
 
 USE_RC_SUBR=	${PORTNAME}
 SUB_FILES=	pkg-message

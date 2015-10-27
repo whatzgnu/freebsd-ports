@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- bytesex.h.orig	Tue Sep 14 15:22:45 2004
 +++ bytesex.h	Tue Sep 14 15:21:50 2004
 @@ -8,10 +8,12 @@

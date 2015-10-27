@@ -1,3 +1,6 @@
+%%PERL5_MAN3%%/MIME::Type.3.gz
+%%PERL5_MAN3%%/MIME::Types.3.gz
+%%PERL5_MAN3%%/MojoX::MIME::Types.3.gz
 %%SITE_PERL%%/MIME/Type.pm
 %%SITE_PERL%%/MIME/Type.pod
 %%SITE_PERL%%/MIME/Types.pm
@@ -5,6 +8,3 @@
 %%SITE_PERL%%/MIME/types.db
 %%SITE_PERL%%/MojoX/MIME/Types.pm
 %%SITE_PERL%%/MojoX/MIME/Types.pod
-%%PERL5_MAN3%%/MIME::Type.3.gz
-%%PERL5_MAN3%%/MIME::Types.3.gz
-%%PERL5_MAN3%%/MojoX::MIME::Types.3.gz

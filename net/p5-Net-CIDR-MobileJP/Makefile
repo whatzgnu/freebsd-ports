@@ -2,7 +2,7 @@
 
 PORTNAME=	Net-CIDR-MobileJP
 PORTVERSION=	0.24
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	net perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -17,9 +17,7 @@ RUN_DEPENDS=	\
 	p5-YAML>0:${PORTSDIR}/textproc/p5-YAML
 BUILD_DEPENDS:=	${RUN_DEPENDS}
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	net-cidr-mobilejp-scraper.pl
+USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 .include <bsd.port.mk>

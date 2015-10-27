@@ -20,7 +20,8 @@ GH_TAGNAME=	bea99d9
 
 USES=		shebangfix python tar:bzip2
 SHEBANG_FILES=	*.py
-python_OLD_CMD=	/usr/bin/env python
+python_OLD_CMD?=	/usr/bin/env python
+python_CMD?=	${PYTHON_CMD}
 USE_GNOME=	pygtk2
 
 PORTDOCS=	CHANGELOG README.md

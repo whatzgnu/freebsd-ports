@@ -3,7 +3,6 @@
 
 PORTNAME=	jgraph
 PORTVERSION=	8.3
-PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	http://web.eecs.utk.edu/~plank/plank/jgraph/
 DISTFILES=	${PORTNAME}.shar.Z
@@ -20,5 +19,9 @@ NO_WRKSUBDIR=	yes
 MAKEFILE=	makefile
 MAKE_ENV+=	DATADIR=${DATADIR}
 CFLAGS+=	-Wno-return-type
+
+post-patch:
+	@${REINPLACE_CMD} -E -e 's,(PREFIX|DATADIR)},DESTDIR}$${&,' \
+		-e 's|-o bin -g bin||' ${WRKSRC}/makefile
 
 .include <bsd.port.mk>

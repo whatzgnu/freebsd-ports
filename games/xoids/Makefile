@@ -5,7 +5,8 @@ PORTNAME=	xoids
 PORTVERSION=	1.5
 PORTREVISION=	1
 CATEGORIES=	games
-MASTER_SITES=	XCONTRIB/games
+MASTER_SITES=	${MASTER_SITE_XCONTRIB}
+MASTER_SITE_SUBDIR=	games
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	X Window Asteroids style game with full color pixmaps

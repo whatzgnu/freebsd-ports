@@ -18,6 +18,7 @@ LIB_DEPENDS=	libnmsg.so:${PORTSDIR}/net/nmsg
 USE_PYTHON=	distutils autoplist
 USES=		python shebangfix uniquefiles:dirs
 
+python_CMD=	${PYTHON_CMD}
 python_OLD_CMD=	/usr/bin/env python
 SHEBANG_FILES=	examples/*.py
 

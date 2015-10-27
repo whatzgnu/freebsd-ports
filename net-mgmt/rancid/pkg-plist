@@ -1,3 +1,6 @@
+@exec mkdir -p %D/var/rancid
+@exec chmod 775 %D/var/rancid
+@dirrmtry var
 bin/rancid-cvs
 bin/rancid-run
 libexec/rancid/alogin
@@ -136,4 +139,7 @@ etc/rancid/rancid.conf.sample
 %%DATADIR%%/rancid-cvspurge
 %%DATADIR%%/rancid.conf.sample
 %%DATADIR%%/rtrfilter
-@dir(,,775) var/rancid
+@dirrm %%DATADIR%%
+@dirrm var/rancid
+@dirrm etc/rancid
+@dirrm libexec/rancid

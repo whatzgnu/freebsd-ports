@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	opensaml2
-PORTVERSION=	2.5.5
+PORTVERSION=	2.5.3
+PORTREVISION=	2
 CATEGORIES=	security
 MASTER_SITES=	http://shibboleth.net/downloads/c++-opensaml/${PORTVERSION}/
 DISTNAME=	opensaml-${PORTVERSION}

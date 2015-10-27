@@ -7,7 +7,6 @@ include/rudiments/chat.h
 include/rudiments/client.h
 include/rudiments/codetree.h
 include/rudiments/commandline.h
-include/rudiments/compiler.h
 include/rudiments/crypt.h
 include/rudiments/datetime.h
 include/rudiments/device.h
@@ -26,6 +25,7 @@ include/rudiments/hostentry.h
 include/rudiments/inetsocketclient.h
 include/rudiments/inetsocketserver.h
 include/rudiments/inetsocketutil.h
+include/rudiments/intervaltimer.h
 include/rudiments/linkedlist.h
 include/rudiments/listener.h
 include/rudiments/logger.h
@@ -49,8 +49,6 @@ include/rudiments/private/codetree.h
 include/rudiments/private/codetreeincludes.h
 include/rudiments/private/commandline.h
 include/rudiments/private/commandlineincludes.h
-include/rudiments/private/compiler.h
-include/rudiments/private/compilerincludes.h
 include/rudiments/private/config.h
 include/rudiments/private/cryptincludes.h
 include/rudiments/private/datetime.h
@@ -91,6 +89,8 @@ include/rudiments/private/inetsocketserver.h
 include/rudiments/private/inetsocketserverincludes.h
 include/rudiments/private/inetsocketutil.h
 include/rudiments/private/inetsocketutilincludes.h
+include/rudiments/private/intervaltimer.h
+include/rudiments/private/intervaltimerincludes.h
 include/rudiments/private/inttypes.h
 include/rudiments/private/linkedlist.h
 include/rudiments/private/linkedlistincludes.h
@@ -124,6 +124,8 @@ include/rudiments/private/randomnumber.h
 include/rudiments/private/randomnumberincludes.h
 include/rudiments/private/regularexpression.h
 include/rudiments/private/regularexpressionincludes.h
+include/rudiments/private/rpcentry.h
+include/rudiments/private/rpcentryincludes.h
 include/rudiments/private/rudimentsinlines.h
 include/rudiments/private/semaphoreset.h
 include/rudiments/private/semaphoresetincludes.h
@@ -137,6 +139,8 @@ include/rudiments/private/serviceentry.h
 include/rudiments/private/serviceentryincludes.h
 include/rudiments/private/sharedmemory.h
 include/rudiments/private/sharedmemoryincludes.h
+include/rudiments/private/shmfile.h
+include/rudiments/private/shmfileincludes.h
 include/rudiments/private/signalclassesincludes.h
 include/rudiments/private/signalhandler.h
 include/rudiments/private/signalset.h
@@ -144,7 +148,6 @@ include/rudiments/private/singlylinkedlist.h
 include/rudiments/private/singlylinkedlistincludes.h
 include/rudiments/private/singlylinkedlistinlines.h
 include/rudiments/private/singlylinkedlistnode.h
-include/rudiments/private/snooze.h
 include/rudiments/private/snoozeincludes.h
 include/rudiments/private/socketclient.h
 include/rudiments/private/socketclientincludes.h
@@ -183,12 +186,14 @@ include/rudiments/protocolentry.h
 include/rudiments/randomnumber.h
 include/rudiments/regularexpression.h
 include/rudiments/resultcodes.h
+include/rudiments/rpcentry.h
 include/rudiments/semaphoreset.h
 include/rudiments/serialport.h
 include/rudiments/serialportprofile.h
 include/rudiments/server.h
 include/rudiments/serviceentry.h
 include/rudiments/sharedmemory.h
+include/rudiments/shmfile.h
 include/rudiments/signalclasses.h
 include/rudiments/singlylinkedlist.h
 include/rudiments/snooze.h

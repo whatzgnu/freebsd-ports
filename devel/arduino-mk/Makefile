@@ -3,7 +3,7 @@
 
 PORTNAME=	arduino-mk
 PORTVERSION=	0.10
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://mjo.tc/atelier/2009/02/acli/
 DISTNAME=	${PORTNAME}_${PORTVERSION}
@@ -19,8 +19,6 @@ RUN_DEPENDS=	gmake:${PORTSDIR}/devel/gmake \
 		arduino:${PORTSDIR}/devel/arduino
 PATCH_DEPENDS=	${LOCALBASE}/arduino/lib/version.txt:${PORTSDIR}/devel/arduino
 
-USES=		shebangfix
-SHEBANG_FILES=	bin/ard-parse-boards bin/ard-reset-arduino
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 NO_BUILD=	yes

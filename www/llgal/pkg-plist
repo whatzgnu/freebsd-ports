@@ -24,4 +24,9 @@ share/locale/de/LC_MESSAGES/llgal.mo
 share/locale/en/LC_MESSAGES/llgal.mo
 share/locale/fr/LC_MESSAGES/llgal.mo
 share/locale/it/LC_MESSAGES/llgal.mo
-@dir %%ETCDIR%%
+@dirrm %%DATADIR%%
+%%PORTDOCS%%@dirrm %%DOCSDIR%%/examples/dynamic_comments_in_slides
+%%PORTDOCS%%@dirrm %%DOCSDIR%%/examples
+%%PORTDOCS%%@dirrm %%DOCSDIR%%
+@dirrmtry %%ETCDIR%%
+@exec mkdir -p %D/%%ETCDIR%%

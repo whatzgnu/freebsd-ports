@@ -223,3 +223,6 @@
 %%PORTDOCS%%%%DOCSDIR%%/README
 %%PORTDOCS%%%%DOCSDIR%%/Emacs.ap
 %%PORTDOCS%%%%DOCSDIR%%/NEWS
+%%PORTDOCS%%@dirrm %%DOCSDIR%%
+@dirrm %%TT_FONTSDIR%%
+@dirrmtry %%T1_FONTSDIR%%

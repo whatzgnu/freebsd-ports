@@ -6,7 +6,8 @@ DISTVERSION=	1.2a
 PORTREVISION=	5
 CATEGORIES=	astro
 MASTER_SITES=	http://makemebad.net/geek/codes/${PORTNAME}/ \
-		LOCAL/krion
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	krion
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Show latitude and longitude of the moon

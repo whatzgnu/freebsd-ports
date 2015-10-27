@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- setup.py.orig
 +++ setup.py
 @@ -8,7 +8,7 @@

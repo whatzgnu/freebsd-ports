@@ -7,7 +7,6 @@
     SUBDIR += artemis
     SUBDIR += avida
     SUBDIR += babel
-    SUBDIR += bcftools
     SUBDIR += biococoa
     SUBDIR += biojava
     SUBDIR += blat

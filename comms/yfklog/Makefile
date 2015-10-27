@@ -5,10 +5,11 @@ PORTNAME=	yfklog
 PORTVERSION=	0.3.5
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://fkurz.net/ham/yfklog/ \
-		LOCAL/db
-DISTFILES=	${DISTNAME}.tar.gz yfk.png
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
+DISTFILES=	${PORTNAME}-${PORTVERSION}.tar.gz yfk.png
 DIST_SUBDIR=	${PORTNAME}
-EXTRACT_ONLY=	${DISTNAME}.tar.gz
+EXTRACT_ONLY=	${PORTNAME}-${PORTVERSION}.tar.gz
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Amateur Radio curses based logging program

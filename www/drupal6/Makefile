@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	drupal6
-PORTVERSION=	6.36
+PORTVERSION=	6.35
 CATEGORIES=	www
 MASTER_SITES=	http://ftp.drupal.org/files/projects/
 DISTNAME=	drupal-${PORTVERSION}
@@ -11,8 +11,7 @@ DIST_SUBDIR=	drupal
 MAINTAINER=	simon.wright@gmx.net
 COMMENT=	Database driven web content management system (CMS)
 
-USES=		drupal:6 shebangfix
-SHEBANG_FILES=	scripts/drupal.sh
+USES=		drupal:6
 
 USE_PHP=	gd pcre session xml mbstring
 WANT_PHP_WEB=	yes

@@ -13,10 +13,11 @@ COMMENT=	Tilt the floor to guide a ball through an obstacle course
 LICENSE=	GPLv2
 
 LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libvorbis.so:${PORTSDIR}/audio/libvorbis \
 		libphysfs.so:${PORTSDIR}/devel/physfs
 
-USES=		gmake iconv jpeg
+USES=		gmake iconv
 USE_GL=		gl
 USE_SDL=	sdl2 ttf2
 MAKE_ARGS+=	DATADIR="${DATADIR}" \

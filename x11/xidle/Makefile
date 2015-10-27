@@ -2,19 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	xidle
-PORTVERSION=	26052015
+PORTVERSION=	24102005
+PORTREVISION=	2
 CATEGORIES=	x11
-MASTER_SITES=	LOCAL/novel
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	novel
 
 MAINTAINER=	novel@FreeBSD.org
 COMMENT=	Run a program on X inactivity
 
 USES=	tar:bzip2
 CFLAGS+=	-I${LOCALBASE}/include -D__dead=static
-MAKE_ARGS+=	X11BASE="${LOCALBASE}" \
+MAKE_ARGS+=	X11LIBDIR="${LOCALBASE}/lib" \
 		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 
-USE_XORG=	x11 xscrnsaver xcb xau xdmcp xext
+USE_XORG=	x11 xscrnsaver
 PLIST_FILES=	bin/xidle man/man1/xidle.1.gz
 
 do-install:

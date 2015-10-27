@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/DBsql.cs.orig
 +++ src/DBsql.cs
 @@ -958,10 +958,10 @@

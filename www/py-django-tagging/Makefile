@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	django-tagging
-PORTVERSION=	0.4
+PORTVERSION=	0.3.2
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
-NO_ARCH=	yes
 
 MAINTAINER=	ports@caomhin.org
 COMMENT=	Generic tagging application for Django

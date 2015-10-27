@@ -3,7 +3,6 @@
 
 PORTNAME=	audacity
 PORTVERSION=	2.1.0
-PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}
 DISTNAME=	${PORTNAME}-minsrc-${PORTVERSION}
@@ -12,14 +11,13 @@ MAINTAINER=	xxjack12xx@gmail.com
 COMMENT=	GUI editor for digital audio waveforms
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 LIB_DEPENDS=	libsndfile.so:${PORTSDIR}/audio/libsndfile
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-minsrc-${PORTVERSION}
 
 GNU_CONFIGURE=	yes
-USES=		cpe desktop-file-utils gettext gmake pkgconfig shared-mime-info \
+USES=		desktop-file-utils gettext gmake pkgconfig shared-mime-info \
 		tar:xz
 USE_WX=		2.8
 WX_UNICODE=	yes
@@ -63,8 +61,7 @@ CONFIGURE_ARGS+=	--disable-sse
 DEBUG_CONFIGURE_WITH=	debug
 
 FFMPEG_CONFIGURE_WITH=	ffmpeg
-FFMPEG_RUN_DEPENDS=	${LOCALBASE}/bin/ffmpeg:${PORTSDIR}/multimedia/ffmpeg
-FFMPEG_LIB_DEPENDS=	libavformat.so:${PORTSDIR}/multimedia/ffmpeg
+FFMPEG_RUN_DEPENDS=     ${LOCALBASE}/bin/ffmpeg:${PORTSDIR}/multimedia/ffmpeg
 FFMPEG_CFLAGS=		-I${LOCALBASE}/include/ffmpeg
 FFMPEG_CPPFLAGS=	-I${LOCALBASE}/include/ffmpeg
 FFMPEG_CXXFLAGS=	-I${LOCALBASE}/include/ffmpeg

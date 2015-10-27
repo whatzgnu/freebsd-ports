@@ -3,11 +3,10 @@
 
 PORTNAME=	pychm
 PORTVERSION=	0.8.4
-PORTREVISION=	1
 CATEGORIES=	textproc python
 MASTER_SITES=	SF/gnochm/${PORTNAME}/${PORTVERSION}
 
-MAINTAINER=	cpm@fbsd.es
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Bindings for CHMLIB library
 
 LICENSE=	GPLv2 # or later
@@ -16,8 +15,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS=	libchm.so:${PORTSDIR}/misc/chmlib
 
 NO_BUILD=	yes
-USES=		python:2
-USE_PYTHON=	autoplist distutils
+USES=		python
+USE_PYTHON=	distutils
 
 .include <bsd.port.pre.mk>
 

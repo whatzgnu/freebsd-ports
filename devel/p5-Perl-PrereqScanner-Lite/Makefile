@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	Perl-PrereqScanner-Lite
-PORTVERSION=	0.26
+PORTVERSION=	0.21
+PORTREVISION=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -13,7 +14,7 @@ LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
 RUN_DEPENDS=	\
-	p5-Compiler-Lexer>=0.22:${PORTSDIR}/devel/p5-Compiler-Lexer \
+	p5-Compiler-Lexer>=0.19:${PORTSDIR}/devel/p5-Compiler-Lexer \
 	p5-Module-Path>0:${PORTSDIR}/devel/p5-Module-Path
 BUILD_DEPENDS=	${RUN_DEPENDS}
 

@@ -4,10 +4,11 @@
 PORTNAME=	vis2u
 PORTVERSION=	1.0
 CATEGORIES=	vietnamese textproc
-MASTER_SITES=	LOCAL/obrien
+MASTER_SITES=	LOCAL
+MASTER_SITE_SUBDIR=	obrien
 DISTNAME=	${PORTNAME}${PORTVERSION:S/.//g}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	obrien@FreeBSD.org
 COMMENT=	VISCII->Unicode conversion
 
 USES=		zip:infozip

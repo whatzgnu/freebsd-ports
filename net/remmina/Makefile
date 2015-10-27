@@ -42,8 +42,6 @@ USES+=		gettext
 PLIST_SUB+=	NLS=""
 LDFLAGS+=	-lintl
 .else
-USES+=		gettext	# doesn't build otherwise
-LDFLAGS+=	-lintl	# doesn't build otherwise
 PLIST_SUB+=	NLS="@comment "
 .endif
 

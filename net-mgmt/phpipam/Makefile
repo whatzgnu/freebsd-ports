@@ -4,7 +4,9 @@
 PORTNAME=	phpipam
 PORTVERSION=	1.0
 CATEGORIES=	net-mgmt
-MASTER_SITES=	SF/${PORTNAME}
+MASTER_SITES=	SF
+MASTER_SITE_SUBDIR=	${PORTNAME}
+EXTRACT_SUFX=	.tar
 
 MAINTAINER=	jake@xz.cx
 COMMENT=	PHP IP Address Management IPv4/IPv6
@@ -23,7 +25,6 @@ SUB_LIST=	DISTNAME=${DISTNAME}
 
 OPTIONS_DEFINE=	LDAP
 
-USES=		tar:
 USE_PHP=	ctype gettext gmp json mysqli pcntl session simplexml
 LDAP_USE=	PHP=ldap
 WANT_PHP_WEB=	yes

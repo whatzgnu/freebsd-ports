@@ -6,8 +6,9 @@ PORTVERSION=	2.92.0
 PORTREVISION=	2
 CATEGORIES=	multimedia graphics
 MASTER_SITES=	ftp://ftp.nstu.ru/pub/mirrors/xanim.va.pubnix.com/ \
-		LOCAL/dinoex \
+		${MASTER_SITE_LOCAL} \
 		ftp://ftp.nstu.ru/pub/mirrors/xanim.va.pubnix.com/dlls/
+MASTER_SITE_SUBDIR=	dinoex
 DISTNAME=	xanim2920
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:main ${EXTRA_FILES}
 

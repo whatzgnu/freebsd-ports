@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- theme-icons/icon-theme-installer.orig
 +++ theme-icons/icon-theme-installer
 @@ -101,12 +101,12 @@

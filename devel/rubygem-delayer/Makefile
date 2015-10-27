@@ -9,8 +9,6 @@ MASTER_SITES=	RG
 MAINTAINER=	meta+ports@vmeta.jp
 COMMENT=	Delay any task, similar to a priority-queue
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

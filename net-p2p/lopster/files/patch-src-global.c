@@ -1,3 +1,5 @@
+$FreeBSD$
+
 This used to be patch-src::global.c, but has been moved to stop using
 colons in patch names.
 

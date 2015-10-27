@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	httpclient
-PORTVERSION=	2.6.0.1
+PORTVERSION=	2.4.0
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
@@ -10,8 +10,6 @@ COMMENT=	Yet another HTTP client implementation by NaHi
 
 LICENSE=	BSD2CLAUSE RUBY
 LICENSE_COMB=	dual
-
-NO_ARCH=	yes
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

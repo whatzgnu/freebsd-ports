@@ -3,7 +3,6 @@
 
 PORTNAME=	kdepimlibs
 PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
 CATEGORIES=	deskutils kde
 MASTER_SITES=	KDE/${KDE4_BRANCH}/${PORTVERSION}/src
 DIST_SUBDIR=	KDE/${PORTVERSION}
@@ -22,8 +21,7 @@ LIB_DEPENDS=	libgpgme.so:${PORTSDIR}/security/gpgme \
 
 USE_KDE4=	kdelibs akonadi kdeprefix \
 		automoc4 ontologies soprano
-USES=		cmake:outsource shared-mime-info shebangfix tar:xz
-SHEBANG_FILES=	mailtransport/kconf_update/migrate-transports.pl
+USES=		cmake:outsource shared-mime-info tar:xz
 USE_OPENLDAP=	yes
 USE_QT4=	corelib dbus declarative designer_build gui network sql xml \
 		qmake_build moc_build rcc_build uic_build

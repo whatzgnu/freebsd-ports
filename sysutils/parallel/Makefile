@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	parallel
-PORTVERSION=	20150622
+PORTVERSION=	20150322
 CATEGORIES=	sysutils
 MASTER_SITES=	GNU
 
@@ -10,7 +10,6 @@ MAINTAINER=	howeyc@gmail.com
 COMMENT=	Shell tool for executing jobs in parallel
 
 LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 OPTIONS_DEFINE=	DOCS
 

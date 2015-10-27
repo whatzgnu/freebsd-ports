@@ -1,5 +1,7 @@
---- cardcomm/pkcs11/src/cardlayer/cache.cpp.orig	2015-02-19 13:59:02 UTC
-+++ cardcomm/pkcs11/src/cardlayer/cache.cpp
+Index: cardlayer/src/cache.cpp
+===================================================================
+--- cardlayer/src/cache.cpp	(revision 1614)
++++ cardlayer/src/cache.cpp	(working copy)
 @@ -203,10 +203,8 @@ void CCache::DiskStoreFile(const std::st
  		; // TODO: log
  	else
@@ -13,8 +15,10 @@
  		fclose(f);
  	}
  }
---- cardcomm/pkcs11/src/cardlayer/card.cpp.orig	2015-02-19 13:59:02 UTC
-+++ cardcomm/pkcs11/src/cardlayer/card.cpp
+Index: cardlayer/src/card.cpp
+===================================================================
+--- cardlayer/src/card.cpp	(revision 1614)
++++ cardlayer/src/card.cpp	(working copy)
 @@ -301,7 +301,7 @@ tCacheInfo CCard::GetCacheInfo(const std
  {
  	// By default no caching, card must implement this method
@@ -24,8 +28,10 @@
  
  	return dontCache;
  }
---- cardcomm/pkcs11/src/cardlayer/pkcs15.cpp.orig	2015-02-19 13:59:02 UTC
-+++ cardcomm/pkcs11/src/cardlayer/pkcs15.cpp
+Index: cardlayer/src/pkcs15.cpp
+===================================================================
+--- cardlayer/src/pkcs15.cpp	(revision 1614)
++++ cardlayer/src/pkcs15.cpp	(working copy)
 @@ -27,7 +27,7 @@ namespace eIDMW
  {
  
@@ -50,8 +56,10 @@
      m_poParser(NULL)
    {
      Clear();
---- cardcomm/pkcs11/src/cardlayer/pkcs15.h.orig	2015-02-19 13:59:02 UTC
-+++ cardcomm/pkcs11/src/cardlayer/pkcs15.h
+Index: cardlayer/src/pkcs15.h
+===================================================================
+--- cardlayer/src/pkcs15.h	(revision 1614)
++++ cardlayer/src/pkcs15.h	(working copy)
 @@ -90,7 +90,6 @@ namespace eIDMW
  
    private:
@@ -60,9 +68,11 @@
      PKCS15Parser *m_poParser;
  
  #ifdef WIN32
---- cardcomm/pkcs11/src/cardlayer/reader.cpp.orig	2015-02-19 13:59:02 UTC
-+++ cardcomm/pkcs11/src/cardlayer/reader.cpp
-@@ -284,8 +284,7 @@ std::string CReader::GetSerialNr()
+Index: cardlayer/src/reader.cpp
+===================================================================
+--- cardlayer/src/reader.cpp	(revision 1614)
++++ cardlayer/src/reader.cpp	(working copy)
+@@ -280,8 +280,7 @@ std::string CReader::GetSerialNr()
      }
      catch(CMWException &e)
      {
@@ -72,9 +82,11 @@
          return m_oPKCS15.GetSerialNr();
      }
  }
---- cardcomm/pkcs11/src/cardlayer/threadpool.cpp.orig	2015-02-19 13:59:02 UTC
-+++ cardcomm/pkcs11/src/cardlayer/threadpool.cpp
-@@ -81,7 +81,7 @@ void CEventCallbackThread::Run()
+Index: cardlayer/src/threadpool.cpp
+===================================================================
+--- cardlayer/src/threadpool.cpp	(revision 1614)
++++ cardlayer/src/threadpool.cpp	(working copy)
+@@ -79,7 +79,7 @@ void CEventCallbackThread::Run()
  	m_bRunning = false;
  }
  
@@ -83,8 +95,10 @@
  {
  	m_bStop = true;
  }
---- cardcomm/pkcs11/src/cardlayer/threadpool.h.orig	2015-02-19 13:59:02 UTC
-+++ cardcomm/pkcs11/src/cardlayer/threadpool.h
+Index: cardlayer/src/threadpool.h
+===================================================================
+--- cardlayer/src/threadpool.h	(revision 1614)
++++ cardlayer/src/threadpool.h	(working copy)
 @@ -42,7 +42,7 @@ public:
  
  	void Run();

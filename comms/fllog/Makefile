@@ -5,7 +5,8 @@ PORTNAME=	fllog
 PORTVERSION=	1.2.0
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://www.w1hkj.com/downloads/fllog/ \
-		LOCAL/shurd
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	shurd
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Ham Radio logging program

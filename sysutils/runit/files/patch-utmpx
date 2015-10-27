@@ -1,3 +1,5 @@
+$FreeBSD$
+
 Since init lacks this code in FreeBSD (utx-logout is performed in pam_lastlog)
 we will simply make utmpset.c a noop if utmpx is present.
 

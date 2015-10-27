@@ -2,12 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	freemind
-PORTVERSION=	1.0.1
+PORTVERSION=	0.9.0
+PORTEPOCH=	1
 CATEGORIES=	deskutils editors java
 MASTER_SITES=	SF
 DISTNAME=	${PORTNAME}-bin-max-${PORTVERSION}
 
-MAINTAINER=	sergey.v.brunov@gmail.com
+MAINTAINER=	wenheping@gmail.com
 COMMENT=	Free mind-mapping software written in Java
 
 LICENSE=	GPLv2

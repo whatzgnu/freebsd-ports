@@ -5,7 +5,8 @@ PORTNAME=	mm
 PORTVERSION=	1.4.2
 PORTREVISION=	1
 CATEGORIES=	devel
-MASTER_SITES=	OSSP/lib/${PORTNAME}
+MASTER_SITES=	${MASTER_SITE_OSSP}
+MASTER_SITE_SUBDIR=	lib/${PORTNAME}
 
 MAINTAINER=	rodrigo@FreeBSD.org
 COMMENT=	Shared memory allocation library for pre-forked process models

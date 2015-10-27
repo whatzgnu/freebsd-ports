@@ -10,12 +10,8 @@ MASTER_SITES=	http://www.tntnet.org/download/
 MAINTAINER=	nox@FreeBSD.org
 COMMENT=	Collection of general-purpose C++ classes
 
-LICENSE=	LGPL21 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 PATCH_STRIP=	-p1
-USES=		cpe iconv libtool pathfix
-CPE_VENDOR=	tntnet
+USES=		iconv libtool pathfix
 USE_CSTD=	gnu89
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include

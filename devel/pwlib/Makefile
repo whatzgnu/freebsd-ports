@@ -33,6 +33,8 @@ OPTIONS_DEFAULT=	PLUGINS LDAP
 OPTIONS_SUB=	yes
 LDAP_DESC=	OpenLDAP support
 
+BROKEN_armv6=	Does not install on arm: mtree
+
 CFLAGS+=		-O1
 MAKE_ENV=	STDCCFLAGS+="-I${LOCALBASE}"
 CPPFLAGS+=	-O1 -I${WRKSRC}/include -I${LOCALBASE}/include

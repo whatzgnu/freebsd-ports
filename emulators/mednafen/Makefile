@@ -10,8 +10,7 @@ MASTER_SITES=	SF/${PORTNAME}/Mednafen/${PORTVERSION}
 MAINTAINER=	acm@FreeBSD.org
 COMMENT=	Portable multi-system emulator
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE=	GPLv2
 
 LIB_DEPENDS=	libcdio.so:${PORTSDIR}/sysutils/libcdio \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile \
@@ -28,8 +27,7 @@ SUB_FILES=	pkg-message
 CONFIGURE_ARGS+=--disable-alsa --disable-alsatest \
 		--with-sdl-prefix=${LOCALBASE}
 
-USES=		cpe iconv pkgconfig:build tar:bzip2
-CPE_VENDOR=	david_shadoff
+USES=		iconv pkgconfig:build tar:bzip2
 
 OPTIONS_DEFINE=	NLS DOCS JACK
 OPTIONS_MULTI=	EMU

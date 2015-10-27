@@ -5,7 +5,8 @@ PORTNAME=	mdocml
 PORTVERSION=	1.13.3
 CATEGORIES=	textproc
 MASTER_SITES=	http://mdocml.bsd.lv/snapshots/ \
-		LOCAL/uqs
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	uqs
 
 MAINTAINER=	uqs@FreeBSD.org
 COMMENT=	mdoc macro compiler

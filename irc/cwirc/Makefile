@@ -6,7 +6,8 @@ PORTVERSION=	2.0.0
 PORTREVISION=	5
 CATEGORIES=	irc comms hamradio
 MASTER_SITES=	http://users.skynet.be/ppc/cwirc/download/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 
 MAINTAINER=	db@FreeBSD.org
 COMMENT=	X-Chat Morse plugin

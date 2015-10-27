@@ -1,6 +1,9 @@
---- erts/etc/unix/run_erl.c.orig	2015-03-31 12:32:52 UTC
+
+$FreeBSD$
+
+--- erts/etc/unix/run_erl.c.orig
 +++ erts/etc/unix/run_erl.c
-@@ -73,9 +73,6 @@
+@@ -69,9 +69,6 @@
  #ifdef HAVE_UTMP_H
  #  include <utmp.h>
  #endif

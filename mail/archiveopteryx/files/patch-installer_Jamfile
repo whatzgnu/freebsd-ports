@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- installer/Jamfile.orig
 +++ installer/Jamfile
 @@ -5,7 +5,7 @@

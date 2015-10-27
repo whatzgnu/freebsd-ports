@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	acts-as-taggable-on
-PORTVERSION=	3.5.0
+PORTVERSION=	3.4.2
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 PKGNAMESUFFIX=	3
@@ -13,9 +13,8 @@ LICENSE=	MIT
 
 RUN_DEPENDS=	rubygem-activerecord4>=4.1.6:${PORTSDIR}/databases/rubygem-activerecord4
 
-NO_ARCH=	yes
-USE_RUBY=	yes
-USE_RUBYGEMS=	yes
-RUBYGEM_AUTOPLIST=	yes
+USE_RUBY=	YES
+USE_RUBYGEMS=	YES
+RUBYGEM_AUTOPLIST=	YES
 
 .include <bsd.port.mk>

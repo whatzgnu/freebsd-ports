@@ -4,7 +4,7 @@
 
 PORTNAME=	liboil
 PORTVERSION=	0.3.17
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	http://liboil.freedesktop.org/download/
 

@@ -23,28 +23,19 @@ shebangonefile() {
 
 	f="$@"
 	rc=0
-
-	# blacklist of files which are not intended to be runnable
-	case "${f##*/}" in
-	*.pm|*.pod|*.txt)
-		return 0
-		;;
-	esac
-
 	interp=$(sed -n -e '1s/^#![[:space:]]*\([^[:space:]]*\).*/\1/p;2q' "$f")
 	case "$interp" in
 	"") ;;
+	/usr/bin/env) ;;
 	${LINUXBASE}/*) ;;
 	${LOCALBASE}/*) ;;
 	${PREFIX}/*) ;;
+	/usr/bin/awk) ;;
+	/usr/bin/sed) ;;
+	/usr/bin/nawk) ;;
 	/bin/csh) ;;
 	/bin/sh) ;;
 	/bin/tcsh) ;;
-	/usr/bin/awk) ;;
-	/usr/bin/env) ;;
-	/usr/bin/nawk) ;;
-	/usr/bin/sed) ;;
-	/usr/sbin/dtrace) ;;
 	*)
 		err "'${interp}' is an invalid shebang you need USES=shebangfix for '${f#${STAGEDIR}${PREFIX}/}'"
 		rc=1
@@ -66,8 +57,7 @@ shebang() {
 	# Use heredoc to avoid losing rc from find|while subshell
 	done <<-EOF
 	$(find ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/sbin \
-	    ${STAGEDIR}${PREFIX}/libexec ${STAGEDIR}${PREFIX}/www \
-	    -type f -perm +111 2>/dev/null)
+	    ${STAGEDIR}${PREFIX}/libexec -type f -perm +111 2>/dev/null)
 	EOF
 
 	# Split stat(1) result into 2 lines and read each line separately to
@@ -87,32 +77,10 @@ shebang() {
 	# Use heredoc to avoid losing rc from find|while subshell
 	done <<-EOF
 	$(find ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/sbin \
-	    ${STAGEDIR}${PREFIX}/libexec ${STAGEDIR}${PREFIX}/www \
-	    -type l -exec stat -f "%N${LF}%Y" {} + 2>/dev/null)
+	    ${STAGEDIR}${PREFIX}/libexec -type l \
+	    -exec stat -f "%N${LF}%Y" {} + 2>/dev/null)
 	EOF
 
-	return ${rc}
-}
-
-baselibs() {
-	local rc
-	[ "${PKGBASE}" = "pkg" -o "${PKGBASE}" = "pkg-devel" ] && return
-	while read f; do
-		case ${f} in
-		/usr/lib/libarchive*)
-			err "Bad linking on ${f} please add USES=libarchive"
-			rc=1
-			;;
-		/lib/libedit*)
-			err "Bad linking on ${f} please add USES=libedit"
-			rc=1
-			;;
-		esac
-	done <<-EOF
-	$(find ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/sbin \
-		${STAGEDIR}${PREFIX}/lib ${STAGEDIR}${PREFIX}/libexec \
-		-type f -exec ldd -a {} + 2>/dev/null)
-	EOF
 	return ${rc}
 }
 
@@ -293,7 +261,7 @@ prefixvar() {
 	fi
 }
 
-checks="shebang symlinks paths stripped desktopfileutils sharedmimeinfo suidfiles libtool libperl prefixvar" # baselibs"
+checks="shebang symlinks paths stripped desktopfileutils sharedmimeinfo suidfiles libtool libperl prefixvar"
 
 ret=0
 cd ${STAGEDIR}

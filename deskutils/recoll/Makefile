@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	recoll
-PORTVERSION=	1.21.0
+PORTVERSION=	1.20.2
 CATEGORIES=	deskutils
 MASTER_SITES=	http://www.lesbonscomptes.com/${PORTNAME}/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	arved@FreeBSD.org
 COMMENT=	Personal full text search package, based on Xapian
 
 LICENSE=	GPLv2
@@ -20,7 +20,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS} \
 		unrar:${PORTSDIR}/archivers/unrar \
 		unrtf:${PORTSDIR}/textproc/unrtf
 
-USES=		bison gmake iconv shebangfix
+USES=		gmake iconv shebangfix
 SHEBANG_FILES=	filters/rclimg desktop/hotrecoll.py
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-pic

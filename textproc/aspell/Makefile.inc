@@ -1,7 +1,8 @@
 # $FreeBSD$
 # To be included by dictionaries ports.
 
-MASTER_SITES?=	GNU/aspell/dict/${DICT}
+MASTER_SITES?=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR?=	aspell/dict/${DICT}
 DISTNAME?=	aspell${DISTVERSION}
 PORTVERSION?=	${DISTVERSION:tl:C/cvs/0_/:C/pt_../p/:C/[0-9]?-?[a-z]+-//g:C/([0-9])([a-z])/\1.\2/g:C/:(.)/\1/g:C/[^a-z0-9+]+/./g}
 

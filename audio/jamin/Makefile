@@ -3,7 +3,7 @@
 
 PORTNAME=	jamin
 PORTVERSION=	0.95.0
-PORTREVISION=	15
+PORTREVISION=	14
 CATEGORIES=	audio
 MASTER_SITES=	SF
 
@@ -19,9 +19,6 @@ BUILD_DEPENDS=	${LOCALBASE}/include/fftw3.h:${PORTSDIR}/math/fftw3
 
 GNU_CONFIGURE=	yes
 USES=		desktop-file-utils gmake libtool pkgconfig shared-mime-info
-USE_GNOME=	gtk20 intltool libxml2
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ladspa/jamincont_1912.so
+USE_GNOME=	gtk20 libxml2
 
 .include <bsd.port.mk>

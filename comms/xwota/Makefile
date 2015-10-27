@@ -6,7 +6,8 @@ PORTVERSION=	0.4
 PORTREVISION=	7
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://people.fabaris.it/iz0ete/xwota/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	X version of who is on the air

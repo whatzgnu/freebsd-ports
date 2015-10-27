@@ -3,7 +3,7 @@
 
 PORTNAME=	geomorph
 PORTVERSION=	0.60.1
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	graphics
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/0.60/
 
@@ -13,8 +13,7 @@ COMMENT=	Height field generator and editor
 LIB_DEPENDS=	libgtkglext-x11-1.0.so:${PORTSDIR}/x11-toolkits/gtkglext \
 		libpng.so:${PORTSDIR}/graphics/png
 
-USES=		desktop-file-utils gmake pkgconfig shebangfix
-SHEBANG_FILES=	update-rc
+USES=		gmake pkgconfig
 USE_GL=		yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-libintl-prefix="${LOCALBASE}"

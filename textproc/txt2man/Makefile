@@ -17,7 +17,6 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USES=		cpe gmake
 MAKE_ENV=	prefix=${STAGEDIR}${PREFIX}
-NO_ARCH=	yes
 
 CPE_VENDER=	marc_vertes
 

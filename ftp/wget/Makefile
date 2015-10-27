@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	wget
-DISTVERSION=	1.16.3
+DISTVERSION=	1.16.2
+PORTREVISION=	1
 CATEGORIES=	ftp www ipv6
 MASTER_SITES=	GNU
 
@@ -50,7 +51,6 @@ CONFIGURE_ARGS+=--with-ssl=openssl --with-libssl-prefix=${OPENSSLBASE}
 CPPFLAGS+=	-I${OPENSSLINC}
 LDFLAGS+=	-L${OPENSSLLIB}
 .elif ${PORT_OPTIONS:MGNUTLS}
-USES+=		pkgconfig
 LIB_DEPENDS+=	libgnutls.so:${PORTSDIR}/security/gnutls
 CONFIGURE_ARGS+=--with-ssl=gnutls
 CPPFLAGS+=	-I${LOCALBASE}/include

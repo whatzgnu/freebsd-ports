@@ -3,15 +3,13 @@
 
 PORTNAME=	sysvbanner
 PORTVERSION=	1.0.15
-DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
+MASTER_SITES=	http://github.com/uffejakobsen/${PORTNAME}/archive/v${PORTVERSION}.tar.gz?dummy=/
 
 MAINTAINER=	uffe@uffe.org
 COMMENT=	SysV banner
 
 USES=		gmake
-USE_GITHUB=	yes
-GH_ACCOUNT=	uffejakobsen
 
 ALL_TARGET=	banner
 

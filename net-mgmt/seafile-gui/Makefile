@@ -2,7 +2,6 @@
 
 PORTNAME=	seafile-gui
 PORTVERSION=	4.1.0
-PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	net-mgmt
 
@@ -29,10 +28,9 @@ USE_QT4=	corelib dbus gui network \
 USE_OPENSSL=	yes
 INSTALLS_ICONS=	yes
 LRELEASE=	${PREFIX}/bin/lrelease-qt4
-CMAKE_ARGS+=	-DCMAKE_INCLUDE_PATH:PATH=include/glib-2.0 \
-		-DOPENSSL_INCLUDE_DIRS=${OPENSSLINC} \
-		-DOPENSSL_LIBRARIES="-L${OPENSSLLIB} -lcrypto"
+CMAKE_ARGS+=	-DCMAKE_INCLUDE_PATH:PATH=include/glib-2.0
 
+WITH_OPENSSL_PORT=	yes
 CMAKE_BUILD_TYPE=	Release
 
 # Note that per PR 197984, cairo must be built with X11 and XCB options

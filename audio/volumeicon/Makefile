@@ -17,7 +17,7 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 
 USES=		gmake gettext pkgconfig
-USE_GNOME=	gtk30 intltool
+USE_GNOME=	gtk30
 
 OPTIONS_DEFINE=		NLS NOTIFY
 OPTIONS_DEFAULT=	NOTIFY

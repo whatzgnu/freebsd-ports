@@ -29,3 +29,4 @@
 %%WWWDIR%%/ssm.js
 %%WWWDIR%%/ssmItems.js
 %%WWWDIR%%/timespan.php
+@dirrmtry %%WWWDIR%%

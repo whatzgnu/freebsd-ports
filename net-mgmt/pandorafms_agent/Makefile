@@ -14,8 +14,7 @@ OPTIONS_DEFINE=		DOCS TENTACLE_SERVER
 OPTIONS_DEFAULT=	DOCS TENTACLE_SERVER
 TENTACLE_SERVER_DESC=	Install tentalce_server
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	plugins/pandora_netusage
+USES=		perl5
 
 SUB_FILES=	pkg-message
 

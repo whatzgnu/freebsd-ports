@@ -11,8 +11,6 @@ COMMENT=	Detects the mime type of a file by extension or by content
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

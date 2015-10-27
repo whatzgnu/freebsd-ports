@@ -3,7 +3,8 @@
 PORTNAME=	mod_reproxy
 PORTVERSION=	0.02.20110826
 CATEGORIES=	www
-MASTER_SITES=	LOCAL/kuriyama
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	kuriyama
 
 MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Apache module to support x-reproxy-url header

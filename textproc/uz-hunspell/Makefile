@@ -13,7 +13,6 @@ MAINTAINER=	office@FreeBSD.org
 COMMENT=	Uzbek hunspell dictionaries
 
 ALL_TARGET=	uz_UZ.dic
-NO_ARCH=	yes
 USES=		tar:bzip2
 WRKSRC=		${WRKDIR}/${DISTNAME}/hunspell
 

@@ -5,7 +5,8 @@ PORTNAME=	gmp
 PORTVERSION=	5.1.3
 PORTREVISION=	2
 CATEGORIES=	math devel
-MASTER_SITES=	GNU
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	gmp
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT=	Free library for arbitrary precision arithmetic

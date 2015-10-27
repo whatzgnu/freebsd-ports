@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- network.c.orig	Wed Apr 10 23:09:33 2002
 +++ network.c	Thu Oct 16 23:14:23 2003
 @@ -14,9 +14,6 @@

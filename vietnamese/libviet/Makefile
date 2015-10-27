@@ -7,7 +7,7 @@ PORTREVISION=	1
 CATEGORIES=	vietnamese devel
 MASTER_SITES=	LOCAL/obrien
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	obrien@FreeBSD.org
 COMMENT=	VIQR<->VISCII conversion and VISCII ctype-like routines
 
 USES=		tar:bzip2

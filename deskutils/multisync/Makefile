@@ -3,7 +3,7 @@
 
 PORTNAME?=	multisync
 PORTVERSION=	0.82
-PORTREVISION=	13
+PORTREVISION=	12
 CATEGORIES=	deskutils
 MASTER_SITES=	SF/multisync/OldFiles
 DISTNAME=	multisync-${PORTVERSION}
@@ -17,7 +17,6 @@ GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 MAKE_JOBS_UNSAFE=	yes
-INSTALL_TARGET=	install-strip
 
 post-patch:
 	@${FIND} ${WRKDIR} -type l -delete

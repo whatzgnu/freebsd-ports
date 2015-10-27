@@ -3,7 +3,7 @@
 
 PORTNAME=	libntlm
 PORTVERSION=	1.3
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	http://www.nongnu.org/libntlm/releases/
 

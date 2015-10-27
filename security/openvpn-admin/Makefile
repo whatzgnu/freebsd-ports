@@ -10,15 +10,12 @@ MASTER_SITES=	SF/${PORTNAME}/OldFiles
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GUI frontend to openvpn
 
-LICENSE=	LGPL21 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 RUN_DEPENDS=	openvpn:${PORTSDIR}/security/openvpn
 
 WRKSRC=		${WRKDIR}/${DISTNAME:S/b//}
 
 USES=		gettext gmake pkgconfig
-USE_GNOME=	gtksharp20 intltool
+USE_GNOME=	gtksharp20
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib

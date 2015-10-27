@@ -11,9 +11,6 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Python interface to GPGME library
 
-LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 BUILD_DEPENDS=	swig1.3:${PORTSDIR}/devel/swig13
 LIB_DEPENDS=	libgpgme.so:${PORTSDIR}/security/gpgme
 

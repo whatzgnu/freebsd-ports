@@ -3,16 +3,14 @@
 PORTNAME=	raysfilter
 PORTVERSION=	1.14
 CATEGORIES=	mail
-MASTER_SITES=	LOCAL/dinoex
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=dinoex
 DISTNAME=	rays-filter-${PORTVERSION}
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Configurable filter for Sendmail Milter
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/GNU-public-licence.txt
-
-USES=		shebangfix
+USES=		shebangfix 
 CTARGETS+=	rays-filter
 CFLAGS+=	-Wall
 LIBS+=		-lpthread

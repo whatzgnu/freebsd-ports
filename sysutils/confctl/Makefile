@@ -5,7 +5,8 @@ PORTNAME=	confctl
 PORTVERSION=	1.2
 CATEGORIES=	sysutils
 MASTER_SITES=	http://cloud.github.com/downloads/trasz/confctl/ \
-		LOCAL/trasz
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	trasz
 
 MAINTAINER=	trasz@FreeBSD.org
 COMMENT=	Utility to parse and modify C-like configuration files

@@ -3,7 +3,6 @@
 
 PORTNAME=	odt2txt
 PORTVERSION=	0.5
-DISTVERSIONPREFIX=	v
 CATEGORIES=	textproc
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -14,10 +13,13 @@ LICENSE=	GPLv2
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 USES=		gmake iconv
+WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 PLIST_FILES=	bin/odt2txt man/man1/odt2txt.1.gz
 
 GH_ACCOUNT=	dstosberg
+GH_PROJECT=	odt2txt
+GH_TAGNAME=	v${PORTVERSION}
 USE_GITHUB=	yes
 
 post-patch:

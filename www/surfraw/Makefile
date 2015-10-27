@@ -2,7 +2,6 @@
 
 PORTNAME=	surfraw
 PORTVERSION=	2.2.9
-PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://surfraw.alioth.debian.org/dist/
 
@@ -10,10 +9,7 @@ MAINTAINER=	jadawin@FreeBSD.org
 COMMENT=	Command line interface to popular WWW search engines
 
 GNU_CONFIGURE=	yes
-USES=		gmake perl5 shebangfix
-SHEBANG_FILES=	opensearch-discover \
-		opensearch-genquery \
-		surfraw-update-path.IN
+USES=		perl5 gmake
 
 post-patch:	.SILENT
 	${REINPLACE_CMD} '\|xdg/surfraw|d' ${WRKSRC}/Makefile.in
@@ -29,6 +25,11 @@ post-install:
 		${STAGEDIR}${PREFIX}/etc/bash_completion.d/surfraw
 .for f in surfraw.bookmarks surfraw.conf
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${PREFIX}/etc/${f}.sample
+	@if [ ! -f ${STAGEDIR}${PREFIX}/etc/${f} ]; then \
+		${INSTALL_DATA} ${STAGEDIR}${PREFIX}/etc/${f}.sample \
+			${STAGEDIR}${PREFIX}/etc/${f}; \
+	fi
 .endfor
 
+.include "${.CURDIR}/manpages"
 .include <bsd.port.mk>

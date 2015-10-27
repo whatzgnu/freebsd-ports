@@ -5,4 +5,4 @@ asynchronously executing callables.
 
 This is described in PEP-3148 and is included in Python 3.2+
 
-WWW: https://github.com/agronholm/pythonfutures
+WWW: http://code.google.com/p/pythonfutures/

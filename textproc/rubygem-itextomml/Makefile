@@ -9,11 +9,8 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Native Ruby bindings to itex2MML
 
-LICENSE=	GPLv2 LGPL20 MPL
-LICENSE_COMB=	dual
-
-USE_RUBY=	yes
-USE_RUBYGEMS=	yes
+USE_RUBY=		yes
+USE_RUBYGEMS=		yes
 RUBYGEM_AUTOPLIST=	yes
 
 .include <bsd.port.mk>

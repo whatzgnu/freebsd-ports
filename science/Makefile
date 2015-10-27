@@ -97,9 +97,6 @@
     SUBDIR += nifticlib
     SUBDIR += openbabel
     SUBDIR += openkim
-    SUBDIR += orthanc
-    SUBDIR += orthanc-postgresql
-    SUBDIR += orthanc-webviewer
     SUBDIR += p5-Algorithm-SVMLight
     SUBDIR += p5-Chemistry-3DBuilder
     SUBDIR += p5-Chemistry-Bond-Find
@@ -151,7 +148,6 @@
     SUBDIR += py-pydicom
     SUBDIR += py-pysal
     SUBDIR += py-scikit-learn
-    SUBDIR += py-scikit-sparse
     SUBDIR += py-scimath
     SUBDIR += py-scipy
     SUBDIR += py-ws2300
@@ -164,8 +160,8 @@
     SUBDIR += qtresistors
     SUBDIR += rubygem-ai4r
     SUBDIR += rubygem-cdo
+    SUBDIR += rubygem-netcdf
     SUBDIR += rubygem-ruby-dcl
-    SUBDIR += rubygem-ruby-netcdf
     SUBDIR += sigrok-cli
     SUBDIR += sigrok-firmware
     SUBDIR += sigrok-firmware-fx2lafw

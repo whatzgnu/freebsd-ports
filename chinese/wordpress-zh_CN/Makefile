@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	wordpress
-PORTVERSION=	4.2.2
-DISTVERSIONSUFFIX=	-zh_CN
+PORTVERSION=	4.2
 CATEGORIES=	chinese www
 MASTER_SITES=	http://cn.wordpress.org/ \
 		http://mirror.joehorn.idv.tw/wordpress/
 PKGNAMESUFFIX=	-zh_CN
+DISTNAME=	${PORTNAME}-${PORTVERSION}${PKGNAMESUFFIX}
 
 MAINTAINER=	joehorn@gmail.com
 COMMENT=	State-of-the-art semantic personal publishing platform

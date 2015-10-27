@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec %%PREFIX%%/bin/mono %%PREFIX%%/share/keepass/KeePass.exe "$@"

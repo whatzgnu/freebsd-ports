@@ -7,3 +7,5 @@
 %%DATADIR%%/SkyTpl/setup.ini.SafeMode.php
 %%DATADIR%%/class.SkyTemplate.php
 %%DATADIR%%/class.SkyTemplate_withDaddy.php
+@dirrm %%DATADIR%%/SkyTpl
+@dirrm %%DATADIR%%

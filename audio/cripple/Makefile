@@ -7,7 +7,7 @@ PORTREVISION=	8
 CATEGORIES=	audio
 MASTER_SITES=	http://www.vortex.prodigynet.co.uk/${PORTNAME}/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Command line CD ripper/encoder wrapper with cddb support
 
 BROKEN=		Fails to fetch

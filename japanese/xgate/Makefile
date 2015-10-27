@@ -78,13 +78,14 @@ post-patch:
 	${FIND} ${WRKSRC} -name \*.orig -delete
 
 do-install:
-	${MKDIR} ${STAGEDIR}/var/log/xgate
 	${MKDIR} ${STAGEDIR}${APP_HOME}/webapps/${PORTNAME}
 	@cd ${WRKSRC}/${PORTNAME} && \
 		${COPYTREE_SHARE} \* ${STAGEDIR}${APP_HOME}/webapps/${PORTNAME}
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-.for docf in ${PORTDOCS}
-	${INSTALL_DATA} ${WRKSRC}/docs/${docf} ${STAGEDIR}${DOCSDIR}
-.endfor
+.  for docf in ${PORTDOCS}
+	@${INSTALL_DATA} ${WRKSRC}/docs/${docf} ${STAGEDIR}${DOCSDIR}
+.  endfor
+.endif
 
 .include <bsd.port.mk>

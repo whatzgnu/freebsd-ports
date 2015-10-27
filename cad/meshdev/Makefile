@@ -4,8 +4,9 @@
 PORTNAME=	meshdev
 PORTVERSION=	0.5
 CATEGORIES=	cad
-MASTER_SITES=	LOCAL/gahr \
+MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://people.freebsd.org/~gahr/distfiles/
+MASTER_SITE_SUBDIR=	gahr
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Mesh comparison software

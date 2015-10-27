@@ -15,6 +15,7 @@ RUN_DEPENDS=	\
 		${LOCALBASE}/bin/svn:${PORTSDIR}/devel/subversion \
 		${LOCALBASE}/sbin/pkg_cutleaves:${PORTSDIR}/ports-mgmt/pkg_cutleaves \
 		${LOCALBASE}/bin/pkg_tree:${PORTSDIR}/ports-mgmt/pkg_tree \
+		${LOCALBASE}/bin/porteasy:${PORTSDIR}/ports-mgmt/porteasy \
 		${LOCALBASE}/sbin/portdowngrade:${PORTSDIR}/ports-mgmt/portdowngrade
 
 .include <bsd.port.mk>

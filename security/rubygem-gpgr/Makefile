@@ -10,11 +10,7 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Very light interface to the command-line GPG tool
 
-LICENSE=	RUBY
-
 RUN_DEPENDS=	gpg:${PORTSDIR}/security/gnupg
-
-NO_ARCH=	yes
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

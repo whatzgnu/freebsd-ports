@@ -15,7 +15,8 @@ LICENSE=	GPLv2
 BUILD_DEPENDS=	a2ps:${PORTSDIR}/print/a2ps \
 		mpage:${PORTSDIR}/print/mpage
 
-USES=		ghostscript:build tar:tgz tk
+USES=		tar:tgz tk
+USE_GHOSTSCRIPT_BUILD=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_path_WISH=${WISH}
 CONFIGURE_ARGS=	--with-spool_directory=/var/spool/lpd

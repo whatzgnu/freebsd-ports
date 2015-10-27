@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-print_ghostscript9-nox11_UNSET_FORCE+=	X11
+OPTIONS_UNSET=	X11
 
 MASTERDIR=	${.CURDIR}/../ghostscript9
 

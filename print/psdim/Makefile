@@ -12,7 +12,7 @@ COMMENT=	Calculates the optimal placement of the pages for n-up printing
 
 LICENSE=	GPLv2
 
-USES=		ghostscript
+USE_GHOSTSCRIPT=yes
 
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--prefix=${PREFIX}

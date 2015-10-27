@@ -81,13 +81,13 @@ post-patch:
 	${REINPLACE_CMD} -e 's/import logging/&.handlers/1' -i.bak ${WRKSRC}/test/engine/test_execute.py
 
 pre-build:
-.if ${PYTHON_REL} >= 3000
+.if ${PYTHON_REL} >= 300
 	@${PY2TO3_CMD} ${PY2TO3_ARGS} ${WRKSRC}/lib
 .endif
 
 post-install:
-.if ${PYTHON_REL} >= 3000
-	@${PY2TO3_CMD} ${PY2TO3_ARGS} ${WRKSRC}/doc
+.if ${PYTHON_REL} >= 300
+	@${PY2TO3_CMD} ${PY2TO3_ARGS} ${STAGEDIR}${WRKSRC}/doc
 .endif
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in ${AL_PORTDOCS}
@@ -99,12 +99,12 @@ post-install:
 .endfor
 
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-.if ${PYTHON_REL} >= 3000
+.if ${PYTHON_REL} >= 300
 	@${PY2TO3_CMD} ${PY2TO3_ARGS} ${WRKSRC}/examples
 .endif
 	cd ${WRKSRC}/examples/ && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 
-.if ${PYTHON_REL} < 3000
+.if ${PYTHON_REL} < 300
 PLIST_SUB+=	SPEEDUPS=""
 .else
 # C extensions are not supported in py3k
@@ -112,7 +112,7 @@ PLIST_SUB+=	SPEEDUPS="@comment "
 .endif
 
 regression-test: build
-.if ${PYTHON_REL} >= 3000
+.if ${PYTHON_REL} >= 300
 	${PY2TO3_CMD} ${PY2TO3_ARGS} ${WRKSRC}/test
 .endif
 	@cd ${WRKSRC} && ${PYTHON_CMD} sqla_nose.py

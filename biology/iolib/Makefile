@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	io_lib
-PORTVERSION=	1.14.0
+PORTVERSION=	1.13.10
 CATEGORIES=	biology
 MASTER_SITES=	SF/staden/${PORTNAME}/${PORTVERSION}
 
@@ -16,6 +16,5 @@ LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 USES=		gmake libtool
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

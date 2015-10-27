@@ -7,7 +7,7 @@ CATEGORIES=	audio
 MASTER_SITES=	http://www.puchalla-online.de/ \
 		http://mirror.mcx2.org/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Small and fast command line MP3 editor
 
 USES=		tar:bzip2 readline

@@ -5,8 +5,9 @@ PORTNAME=	alignmargins
 PORTVERSION=	1.0
 PORTREVISION=	1
 CATEGORIES=	print
-MASTER_SITES=	LOCAL/lofi \
+MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://www.linuxprinting.org/download/printing/
+MASTER_SITE_SUBDIR=lofi
 DISTFILES=	alignmargins align.ps
 
 MAINTAINER=	ports@FreeBSD.org

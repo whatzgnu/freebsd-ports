@@ -3,7 +3,6 @@
 
 PORTNAME=	tuc
 PORTVERSION=	1.10
-PORTREVISION=	1
 CATEGORIES=	converters
 MASTER_SITES=	http://www.whizkidtech.redprince.net/fports/
 

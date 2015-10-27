@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- misc/monitor.php.orig
 +++ misc/monitor.php
 @@ -39,17 +39,17 @@

@@ -2,22 +2,23 @@
 # $FreeBSD$
 
 PORTNAME=	mupen64plus
-PORTVERSION?=	2.5
-PORTREVISION?=	0
+PORTVERSION?=	2.0
+PORTREVISION?=	4
 CATEGORIES=	emulators
-MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}${PKGNAMESUFFIX}/releases/download/${PORTVERSION}/ \
-		LOCAL/acm/${PORTNAME} \
-		LOCAL/acm/${PORTNAME}/:plugin
+MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE} \
+		${MASTER_SITE_LOCAL:S,$,acm/${PORTNAME}/,} \
+		${MASTER_SITE_GOOGLE_CODE}:plugin \
+		http://cdn.bitbucket.org/wahrhaft/${PORTNAME}${PKGNAMESUFFIX}/downloads/:plugin
 PKGNAMESUFFIX?=	-core
 DIST_SUBDIR=	${PORTNAME}
 
-MAINTAINER?=	acm@FreeBSD.org
+MAINTAINER?=	ports@FreeBSD.org
 COMMENT?=	Fork of Mupen64 Nintendo 64 emulator
 
 #PROJECTHOST=	bsdistfiles
-USES+=		gmake pkgconfig
+USES=		gmake pkgconfig
 USE_GL?=	yes
-USE_SDL?=	sdl2
+USE_SDL?=	yes
 USE_LDCONFIG?=	yes
 ONLY_FOR_ARCHS=	i386 amd64
 

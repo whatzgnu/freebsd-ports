@@ -4,7 +4,8 @@
 PORTNAME=	mimms
 DISTVERSION=	3.2.1
 CATEGORIES=	multimedia net
-MASTER_SITES=	SAVANNAH
+MASTER_SITES=	${MASTER_SITE_SAVANNAH}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	liu_yinghong@yahoo.com.cn
 COMMENT=	Download streams using the MMS protocol

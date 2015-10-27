@@ -4,8 +4,10 @@ PORTNAME=	openbgpd
 PORTVERSION=	5.2.20121209
 PORTREVISION=	2
 CATEGORIES=	net
-MASTER_SITES=	OPENBSD/OpenBGPD
+MASTER_SITES=	${MASTER_SITE_OPENBSD}
+MASTER_SITE_SUBDIR=	OpenBGPD
 DISTNAME=	${PORTNAME}-4.6
+EXTRACT_SUFX=	.tgz
 DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	hrs@FreeBSD.org
@@ -17,7 +19,7 @@ LICENSE_FILE=	${FILESDIR}/COPYING
 CONFLICTS=	zebra-[0-9]* quagga-[0-9]*
 
 WRKSRC=		${WRKDIR}
-USES=		uidfix tar:tgz
+USES=		uidfix
 USE_RC_SUBR=	${PORTNAME}
 PLIST_FILES=	sbin/bgpctl sbin/bgpd man/man5/bgpd.conf.5.gz \
 		man/man8/bgpctl.8.gz man/man8/bgpd.8.gz

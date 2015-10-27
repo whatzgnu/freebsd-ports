@@ -3,7 +3,6 @@
 
 PORTNAME=	sprockets
 PORTVERSION=	2.2.3
-PORTREVISION=	1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 PKGNAMESUFFIX=	22
@@ -14,11 +13,12 @@ COMMENT=	Ruby library that preprocesses and concatenates JavaScript files
 LICENSE=	MIT
 
 RUN_DEPENDS=	rubygem-hike>=1.2:${PORTSDIR}/devel/rubygem-hike \
-		rubygem-multi_json>=1.0:${PORTSDIR}/devel/rubygem-multi_json \
-		rubygem-rack16>=1.0:${PORTSDIR}/www/rubygem-rack16 \
+		rubygem-multi_json>=1.9.2:${PORTSDIR}/devel/rubygem-multi_json \
+		rubygem-rack>=1.0:${PORTSDIR}/www/rubygem-rack \
 		rubygem-tilt1>=1.1:${PORTSDIR}/devel/rubygem-tilt1
 
-NO_ARCH=	yes
+CONFLICTS_INSTALL=	rubygem-sprockets211-[0-9]*
+
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

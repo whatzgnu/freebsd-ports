@@ -7,7 +7,7 @@ COMMENT=	Multithreaded SQL database (client)
 
 MASTERDIR=	${.CURDIR}/../percona55-server
 
-PKGMESSAGE=	${.CURDIR}/pkg-message
+PKGMESSAGE=	mustnotexist
 PATCHDIR=	${.CURDIR}/files
 PLIST=		${.CURDIR}/pkg-plist
 

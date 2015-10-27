@@ -16,10 +16,14 @@ LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
 
 CONFLICTS=	tads-2.*
 
-USES=		autoreconf gmake
+USES=		gmake
+USE_AUTOTOOLS=	automake autoconf
 GNU_CONFIGURE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib -lcompat
+
+pre-configure:
+	(cd ${WRKSRC}; ${SH} bootstrap)
 
 .include <bsd.port.mk>

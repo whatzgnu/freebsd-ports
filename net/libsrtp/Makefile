@@ -20,8 +20,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-openssl
 CPPFLAGS+=	-I${OPENSSLBASE}/include
 LIBS+=		-L${OPENSSLBASE}/lib
-USES=		cpe gmake pathfix pkgconfig
-CPE_VENDOR=	cisco
+USES=		gmake pathfix pkgconfig
 USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
 

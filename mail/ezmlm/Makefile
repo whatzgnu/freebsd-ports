@@ -13,7 +13,7 @@ MASTER_SITES=	http://cr.yp.to/software/ \
 		ftp://ftp.nl.uu.net/pub/unix/mail/qmail/ \
 		ftp://ftp.archive.de.uu.net/pub/unix/mail/qmail/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	Easy-to-use, high-speed mailing list manager for qmail
 
 LEGAL_TEXT=	No license -- see http://cr.yp.to/softwarelaw.html

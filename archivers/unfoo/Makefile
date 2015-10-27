@@ -3,8 +3,8 @@
 
 PORTNAME=	unfoo
 PORTVERSION=	1.0.7
-DISTVERSIONPREFIX=	v
 CATEGORIES=	archivers
+MASTER_SITES=	GH
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tiny sh(1) wrapper to simplify decompression of files
@@ -16,6 +16,7 @@ RUN_DEPENDS=	unace:${PORTSDIR}/archivers/unace \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	vitaminmoo
+GH_TAGNAME=	v${PORTVERSION}
 
 NO_BUILD=	yes
 PLIST_FILES=	bin/${PORTNAME}

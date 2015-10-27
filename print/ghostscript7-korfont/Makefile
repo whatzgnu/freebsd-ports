@@ -16,7 +16,7 @@ RUN_DEPENDS=	${LOCALBASE}/share/fonts/CIDFont/Munhwa-Regular:${PORTSDIR}/korean/
 		${LOCALBASE}/share/ghostscript/Resource/CIDFont/HYSMyeongJo-Medium:${PORTSDIR}/print/ghostscript7-commfont
 
 # set these forcibly
-USES=		ghostscript:7,run
+USE_GHOSTSCRIPT_RUN=	7
 NO_BUILD=		yes
 DEPENDS_ARGS+=		-DA4
 

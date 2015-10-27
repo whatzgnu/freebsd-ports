@@ -3,7 +3,7 @@
 
 PORTNAME=	jackit
 PORTVERSION=	0.124.1
-PORTREVISION=	5
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://jackaudio.org/downloads/
 DISTNAME=	jack-audio-connection-kit-${PORTVERSION}
@@ -14,17 +14,18 @@ COMMENT=	Low latency audio server
 LICENSE=	GPLv2 LGPL21
 LICENSE_COMB=	multi
 
-LIB_DEPENDS=	libsndfile.so:${PORTSDIR}/audio/libsndfile \
+LIB_DEPENDS=	libportaudio.so.0:${PORTSDIR}/audio/portaudio \
+		libsndfile.so:${PORTSDIR}/audio/libsndfile \
 		libsamplerate.so:${PORTSDIR}/audio/libsamplerate \
 		libcelt0.so:${PORTSDIR}/audio/celt \
 		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid
 
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USES=		gmake pathfix pkgconfig libtool
+USES=		gmake pathfix pkgconfig libtool:keepla
 USE_BDB=	48+
 
-CONFIGURE_ARGS=	--disable-portaudio \
+CONFIGURE_ARGS=	--enable-portaudio \
 		--with-default-tmpdir=/tmp
 
 CFLAGS+=	-I${BDB_INCLUDE_DIR}

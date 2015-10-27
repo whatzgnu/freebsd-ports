@@ -18,8 +18,6 @@ LICENSE_NAME=	Info-ZIP license
 LICENSE_FILE=	${WRKSRC}/LICENSE
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
-USES=		cpe
-CPE_VENDOR=	info-zip
 ALL_TARGET=	bsd
 MAKEFILE=	unix/Makefile
 MAKE_ARGS=	LF2="${STRIP}"

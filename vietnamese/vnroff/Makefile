@@ -4,11 +4,12 @@
 PORTNAME=	vnroff
 PORTVERSION=	2.1
 CATEGORIES=	vietnamese print
-MASTER_SITES=	LOCAL/obrien
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	obrien
 DISTNAME=	${PORTNAME}-2.0
 DISTFILES=	vnroff.c.Z vnroff.1.Z
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	obrien@FreeBSD.org
 COMMENT=	Converts Vietnamese VIQR text into troff format
 
 PLIST_FILES=	bin/vnroff man/man1/vnroff.1.gz

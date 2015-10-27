@@ -9,3 +9,4 @@ include/libecc/square.hcc
 lib/libecc.so
 lib/libecc.so.2
 lib/libecc.so.2.0.1
+@dirrm include/libecc

@@ -11,6 +11,10 @@ MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-src/${PORTNAME}-src-${PORTVERSION}-1
 MAINTAINER=	ohartman@zedat.fu-berlin.de
 COMMENT=	Bibliographic reference database
 
+BROKEN=		Fails to link
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2015-05-26
+
 LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2 \
 		libbtparse.so:${PORTSDIR}/textproc/btparse \
 		libdbi.so:${PORTSDIR}/databases/libdbi
@@ -21,7 +25,6 @@ INSTALL_TARGET=	install-strip
 PORTDOCS=	*
 
 CFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-lm
 
 CONFIGURE_ARGS=	--with-expat-lib=${LOCALBASE}/lib \
 		--with-classpath-root=${PREFIX}/share/java/classes \

@@ -6,6 +6,7 @@ PORTVERSION=	0.31.7
 PORTREVISION=	2
 CATEGORIES=	games
 MASTER_SITES=	http://www.vergenet.net/~conrad/software/tractorgen/dl/
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	robin@15augustus.nl
 COMMENT=	Generates ASCII tractors

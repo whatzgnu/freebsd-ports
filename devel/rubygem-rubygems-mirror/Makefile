@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rubygems-mirror
-PORTVERSION=	1.1.0
+PORTVERSION=	1.0.1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
@@ -11,9 +11,7 @@ COMMENT=	Mirror rubygems
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-net-http-persistent>=2.9:${PORTSDIR}/www/rubygem-net-http-persistent
-
-NO_ARCH=	yes
+RUN_DEPENDS=	rubygem-net-http-persistent>=2.1:${PORTSDIR}/www/rubygem-net-http-persistent
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

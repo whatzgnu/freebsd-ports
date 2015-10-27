@@ -7,7 +7,7 @@ CATEGORIES=	textproc
 MASTER_SITES=	http://ocsigen.org/download/
 PKGNAMEPREFIX=	ocaml-
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	jaapb@kerguelen.org
 COMMENT=	OCaml XML typing library
 
 LICENSE=	LGPL21_SSLEX
@@ -22,7 +22,6 @@ USES=			gmake
 USE_OCAML=		yes
 USE_OCAML_FINDLIB=	yes
 USE_OCAML_LDCONFIG=	yes
-USE_OCAML_CAMLP4=	yes
 USE_OCAMLFIND_PLIST=	yes
 
 SA_DIR=			${LOCALBASE}/${OCAML_SITELIBDIR}

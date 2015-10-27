@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ruby2ruby
-PORTVERSION=	2.2.0
+PORTVERSION=	2.1.3
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
@@ -13,8 +13,6 @@ LICENSE=	MIT
 
 RUN_DEPENDS=	rubygem-ruby_parser>=3.1:${PORTSDIR}/devel/rubygem-ruby_parser \
 		rubygem-sexp_processor>=4.0:${PORTSDIR}/devel/rubygem-sexp_processor
-
-NO_ARCH=	yes
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

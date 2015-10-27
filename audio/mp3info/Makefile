@@ -3,9 +3,10 @@
 
 PORTNAME=	mp3info
 PORTVERSION=	0.8.5
-DISTVERSIONSUFFIX=	a
 CATEGORIES=	audio
-MASTER_SITES=	SUNSITE/apps/sound/mp3-utils/mp3info
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	apps/sound/mp3-utils/mp3info
+DISTNAME=	${PORTNAME}-${PORTVERSION}a
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	MP3 technical info viewer and ID3 1.x tag editor

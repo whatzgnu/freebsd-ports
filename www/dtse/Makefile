@@ -3,7 +3,6 @@
 
 PORTNAME=	dtse
 PORTVERSION=	1.3
-PORTREVISION=	1
 CATEGORIES=	www perl5
 MASTER_SITES=	http://apt.douglasthrift.net/files/${PORTNAME}/ \
 		http://code.douglasthrift.net/files/${PORTNAME}/
@@ -21,9 +20,7 @@ USE_OPENSSL=	yes
 CONFIGURE_ARGS+=	--with-openssl=${OPENSSLBASE}
 .endif
 
-USES=		gmake perl5 shebangfix tar:bzip2
-SHEBANG_FILES=	search.cgi.in
-perl_OLD_CMD=	@which_perl@
+USES=		gmake perl5 tar:bzip2
 USE_AUTOTOOLS=	aclocal:env automake:env autoconf:env
 
 HAS_CONFIGURE=	yes

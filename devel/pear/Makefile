@@ -10,8 +10,7 @@ MASTER_SITES=	http://miwibox.org/distfiles/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PEAR framework for PHP
 
-USES=		cpe tar:bzip2
-CPE_VENDOR=	php
+USES=		tar:bzip2
 NO_BUILD=	yes
 
 WANT_PHP_CLI=	yes

@@ -21,8 +21,7 @@ LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib \
 
 WRKSRC=		${WRKDIR}/last.fm-${PORTVERSION}
 
-USES=		cpe dos2unix qmake:norecursive tar:bzip2
-CPE_VENDOR=	last
+USES=		dos2unix qmake:norecursive tar:bzip2
 DOS2UNIX_GLOB=	*.h *.cpp
 USE_QT4=	moc_build rcc_build uic_build \
 		gui network sql xml imageformats_run

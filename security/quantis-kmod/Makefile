@@ -5,7 +5,8 @@ PORTNAME=	quantis
 DISTVERSION=	v13.11.08
 CATEGORIES=	security
 MASTER_SITES=	http://www.idquantique.com/~download/Quantis/ \
-		LOCAL/ale
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	ale
 PKGNAMESUFFIX=	-kmod
 DISTNAME=	Quantis-${DISTVERSION}-src
 

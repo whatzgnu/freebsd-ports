@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- enemyshot.c.orig
 +++ enemyshot.c
 @@ -11,6 +11,7 @@

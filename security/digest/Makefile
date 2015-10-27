@@ -5,7 +5,8 @@ PORTNAME?=	digest
 PORTVERSION?=	20050323
 PORTREVISION=	1
 CATEGORIES?=	security sysutils
-MASTER_SITES?=	NETBSD/../../misc/digest
+MASTER_SITES?=	${MASTER_SITE_NETBSD}
+MASTER_SITE_SUBDIR=	../../misc/digest
 
 MAINTAINER?=	ports@FreeBSD.org
 COMMENT?=	Message digest wrapper utility

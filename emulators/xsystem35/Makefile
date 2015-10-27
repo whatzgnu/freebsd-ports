@@ -15,7 +15,8 @@ LICENSE=	GPLv2 # (or later)
 
 LIB_DEPENDS=	libvorbisfile.so:${PORTSDIR}/audio/libvorbis \
 		libltdl.so:${PORTSDIR}/devel/libltdl \
-		libfreetype.so:${PORTSDIR}/print/freetype2
+		libfreetype.so:${PORTSDIR}/print/freetype2 \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 OPTIONS_DEFINE=	ESOUND DOCS EXAMPLES
 OPTIONS_DEFINE_i386=	MMX
@@ -35,7 +36,7 @@ MMX_BUILD_DEPENDS=nasm:${PORTSDIR}/devel/nasm
 MMX_CONFIGURE_ENABLE=mmx
 
 EXTRACT_AFTER_ARGS=--exclude libltdl
-USES=		gettext gmake jpeg libtool shebangfix
+USES=		gettext gmake libtool shebangfix
 SHEBANG_FILES=	contrib/instgame
 USE_XORG=	x11 xext xxf86vm
 GNU_CONFIGURE=	yes

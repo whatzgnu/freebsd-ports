@@ -3,7 +3,7 @@
 
 PORTNAME=	ldns
 PORTVERSION=	1.6.17
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	dns
 MASTER_SITES=	http://www.nlnetlabs.nl/downloads/ldns/ \
 		LOCAL/ehaupt
@@ -15,8 +15,7 @@ LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 GNU_CONFIGURE=	yes
-USES=		cpe gmake libtool
-CPE_VENDOR=	nlnetlabs
+USES=		gmake libtool
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
 

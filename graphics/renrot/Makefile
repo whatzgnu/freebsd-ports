@@ -13,9 +13,9 @@ COMMENT=	Program to rename and rotate image files according to EXIF tags
 LICENSE=	ART20
 
 BUILD_DEPENDS=	p5-Image-ExifTool>=0:${PORTSDIR}/graphics/p5-Image-ExifTool
-RUN_DEPENDS:=	${BUILD_DEPENDS}
+RUN_DEPENDS:=	${BUILD_DEPENDS} jpegtran:${PORTSDIR}/graphics/jpeg
 
-USES=		perl5 jpeg:run
+USES=		perl5
 USE_PERL5=	configure
 
 PORTDOCS=	AUTHORS README README.russian ChangeLog NEWS TODO

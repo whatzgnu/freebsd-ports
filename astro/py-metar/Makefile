@@ -18,5 +18,6 @@ USE_PYTHON=	autoplist distutils
 USES=		python:2 shebangfix
 
 SHEBANG_FILES=	bin/py${PORTNAME}
+python_CMD=	${PYTHON_CMD}
 
 .include <bsd.port.mk>

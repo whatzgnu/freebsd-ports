@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	tsung
-PORTVERSION=	1.6.0
+PORTVERSION=	1.5.1
 CATEGORIES=	benchmarks sysutils
 MASTER_SITES=	http://tsung.erlang-projects.org/dist/
 

@@ -5,7 +5,8 @@ PORTNAME=	xshisen
 PORTVERSION=	1.51
 PORTREVISION=	4
 CATEGORIES=	games
-MASTER_SITES=	LOCAL/hrs
+MASTER_SITES=	LOCAL
+MASTER_SITE_SUBDIR=	hrs
 
 MAINTAINER=	turutani@scphys.kyoto-u.ac.jp
 COMMENT=	Shisen-sho puzzle game for X11

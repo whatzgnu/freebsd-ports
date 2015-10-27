@@ -4,7 +4,8 @@
 PORTNAME=	dcetest
 PORTVERSION=	1.2
 CATEGORIES=	security
-MASTER_SITES=	PACKETSTORM/UNIX/scanners
+MASTER_SITES=	${MASTER_SITE_PACKETSTORM}
+MASTER_SITE_SUBDIR=	UNIX/scanners
 
 MAINTAINER=	onatan@gmail.com
 COMMENT=	Utility to dump MSRPC endpoint information from Windows systems

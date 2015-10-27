@@ -5,6 +5,8 @@ PORTNAME=	liblas
 PORTVERSION=	1.7.0
 PORTREVISION=	1
 CATEGORIES=	devel
+MASTER_SITES=	https://github.com/libLAS/libLAS/archive/
+DISTNAME=	${PORTVERSION}
 
 MAINTAINER=	wen@FreeBSD.org
 COMMENT=	Library For Reading And Writing LAS-Format Data
@@ -18,8 +20,7 @@ CONFLICTS=	liblas12-1.2*
 USES=		cmake libtool
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USE_GITHUB=	yes
-GH_ACCOUNT=	libLAS
-GH_PROJECT=	${GH_ACCOUNT}
+
+WRKSRC=		${WRKDIR}/libLAS-${PORTVERSION}
 
 .include <bsd.port.mk>

@@ -5,7 +5,7 @@ PORTNAME=	ish
 PORTVERSION=	2.01a5
 CATEGORIES=	converters
 MASTER_SITES=	http://www.unix.gr.jp/jnetcex/soft/\
-		PORTS_JP
+		${MASTER_SITE_PORTS_JP}
 DISTNAME=	${PORTNAME}${PORTVERSION:S/.//}
 
 MAINTAINER=	ports@FreeBSD.org

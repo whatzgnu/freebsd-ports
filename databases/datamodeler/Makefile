@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	datamodeler
-PORTVERSION=	4.1.1.888
+PORTVERSION=	4.0.0.833
 DISTVERSIONSUFFIX=-1
 CATEGORIES=	databases java
 MASTER_SITES=	#http://www.oracle.com/technetwork/developer-tools/datamodeler/downloads/index.html
@@ -17,7 +17,8 @@ EXTRACT_DEPENDS=rpm2cpio.pl:${PORTSDIR}/archivers/rpm2cpio
 RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 
 USE_JAVA=	yes
-JAVA_VERSION=	1.8+
+
+JAVA_VERSION=	1.7+
 
 NO_BUILD=	yes
 
@@ -33,6 +34,10 @@ OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
 
+.if ${PORT_OPTIONS:MDOCS}
+PORTDOCS=	readme.html
+.endif
+
 .if !exists(${DISTDIR}/${DIST_SUBDIR}/${DISTNAME}${EXTRACT_SUFX})
 IGNORE=	due to Oracle license restrictions, you must fetch the source \
 distribution manually. Please access \
@@ -46,7 +51,7 @@ restart this installation.
 
 do-install:
 	@${ECHO_MSG} -n ">> Installing scripts..."
-	@${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME}.script.sh ${STAGEDIR}/${PREFIX}/bin/${PORTNAME}
+	@${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME}.script.sh ${STAGEDIR}/${LOCALBASE}/bin/${PORTNAME}
 	@${ECHO_MSG} " [ DONE ]"
 
 .for d in configuration datamodeler dropins dvt equinox external ide \
@@ -68,5 +73,10 @@ do-install:
 	@${ECHO_MSG} -n ">> Installing icon ..."
 	@${INSTALL_DATA} ${WRKSRC}/icon.png ${STAGEDIR}/${DATADIR}/icon.png
 	@${ECHO_MSG} " [ DONE ]"
+
+.if ${PORT_OPTIONS:MDOCS}
+	@${MKDIR} ${STAGEDIR}/${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/readme.html ${STAGEDIR}/${DOCSDIR}/
+.endif
 
 .include <bsd.port.post.mk>

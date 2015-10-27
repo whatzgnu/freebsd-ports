@@ -9,7 +9,7 @@ MASTER_SITES=	http://cdn.bitbucket.org/mmottl/sqlite3-ocaml/downloads/
 PKGNAMEPREFIX=	ocaml-
 DISTNAME=	${PORTNAME}-ocaml-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	jaapb@kerguelen.org
 COMMENT=	OCaml bindings to sqlite3 library
 
 LICENSE=	OCSQLT3

@@ -5,7 +5,8 @@ PORTNAME=	greylite
 PORTVERSION=	2.3
 PORTREVISION=	4
 CATEGORIES=	mail
-MASTER_SITES=	LOCAL/oliver
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	oliver
 
 MAINTAINER=	oliver@FreeBSD.org
 COMMENT=	Modified greylisting for qmail and for any other MDA

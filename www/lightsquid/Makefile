@@ -3,7 +3,7 @@
 
 PORTNAME=	lightsquid
 PORTVERSION=	1.8
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	www
 MASTER_SITES=	SF
 
@@ -13,9 +13,7 @@ COMMENT=	Light and fast web based squid proxy traffic analyser
 OPTIONS_DEFINE=		GD DOCS
 OPTIONS_DEFAULT=	GD
 
-USES=		perl5 tar:tgz shebangfix
-SHEBANG_FILES=	*.cgi *.pl tools/SiteAggregator/*.pl lang/*.pl tools/*.pl \
-		lightsquid.cfg
+USES=		perl5 tar:tgz
 USE_PERL5=	run
 NO_BUILD=	yes
 
@@ -63,7 +61,10 @@ do-install:
 		${INSTALL_DATA} "{}" "${STAGEDIR}/${PREFIX}/libexec/${PORTNAME}/{}" \;
 	${MKDIR} ${STAGEDIR}/${ETCDIR}
 .for i in ${CONFIGS}
-	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}/${ETCDIR}/${i}.sample
+	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}/${ETCDIR}/${i}.dist
+.if !exists(${ETCDIR}/${i})
+	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}/${ETCDIR}
+.endif
 .endfor
 	${MKDIR} ${STAGEDIR}/${WWWDIR}/report
 	${MKDIR} ${STAGEDIR}/${WWWDIR}/tpl

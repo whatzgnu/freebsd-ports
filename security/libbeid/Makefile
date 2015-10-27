@@ -1,37 +1,30 @@
 # $FreeBSD$
 
 PORTNAME=	libbeid
-PORTVERSION=	4.1.2
-DISTVERSIONPREFIX=	v
+PORTVERSION=	4.0.6.1614
 CATEGORIES=	security
+MASTER_SITES=	http://tijl.fastmail.fm/mirror/
 
 MAINTAINER=	tijl@FreeBSD.org
-COMMENT=	Belgian eID PKCS #11 module
+COMMENT=	Belgian eID support libraries
 
 LICENSE=	LGPL3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libpcsclite.so:${PORTSDIR}/devel/pcsc-lite
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	Fedict
-GH_PROJECT=	eid-mw
-
-USES=		autoreconf dos2unix libtool pkgconfig
+USES=		autoreconf dos2unix libtool pkgconfig tar:xz
 USE_GNOME=	gtk20
 
-DOS2UNIX_FILES=	cardcomm/pkcs11/src/common/datafile.cpp \
-		cardcomm/pkcs11/src/common/logbase.cpp \
-		cardcomm/pkcs11/src/common/util.cpp \
-		cardcomm/pkcs11/src/dialogs/dialogs.h \
-		cardcomm/pkcs11/src/log.h
+DOS2UNIX_FILES=	common/src/datafile.cpp common/src/logbase.cpp \
+		common/src/util.cpp dialogs/src/dialogs.h pkcs11/src/asn1.c \
+		pkcs11/src/log.h pkcs11/src/cal.cpp pkcs11/src/cal.h
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-static
 INSTALL_TARGET=	install-strip
 
 post-patch:
-	@${REINPLACE_CMD} '/^libbeidpkcs11_la_LIBADD =/s/-ldl//' \
-		${WRKSRC}/cardcomm/pkcs11/src/Makefile.am
+	@${REINPLACE_CMD} -e '/svn_revision/d' -e '/SUBDIRS/s/xpi//' \
+		${WRKSRC}/Makefile.am ${WRKSRC}/configure.ac
 
 .include <bsd.port.mk>

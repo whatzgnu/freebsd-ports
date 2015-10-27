@@ -6,7 +6,8 @@ PORTREVISION=	3
 DISTVERSIONSUFFIX=	.g28c5a6a
 CATEGORIES=	net hamradio
 MASTER_SITES=	http://he.fi/aprsc/down/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 
 MAINTAINER=	toyokun@gmail.com
 COMMENT=	Plain APRS-IS server

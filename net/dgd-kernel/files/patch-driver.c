@@ -1,3 +1,5 @@
+$FreeBSD$
+
 --- kernellib/kernel/sys/driver.c.orig	2011-07-30 14:15:13.000000000 -0700
 +++ kernellib/kernel/sys/driver.c	2011-07-30 14:16:23.000000000 -0700
 @@ -596,16 +596,16 @@

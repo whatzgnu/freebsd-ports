@@ -2,32 +2,33 @@
 # $FreeBSD$
 
 PORTNAME=	violet
-PORTVERSION=	2.1.0
+PORTVERSION=	0.21.1
+PORTREVISION=	1
 CATEGORIES=	devel editors java
 MASTER_SITES=	SF/${PORTNAME}/violetumleditor/${PORTVERSION}
-DISTNAME=	violetumleditor-${PORTVERSION}
+DISTNAME=	com.horstmann.violet-${PORTVERSION}
 EXTRACT_SUFX=	.jar
 EXTRACT_ONLY=
 
 MAINTAINER=	graudeejs@gmail.com
 COMMENT=	Violet is a easy to learn and use UML editor
 
-LICENSE=	GPLv2
-
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 
+LICENSE=	GPLv2
+
 NO_BUILD=	YES
 
-PLIST_FILES=	%%JAVASHAREDIR%%/${PORTNAME}/violetumleditor.jar bin/${PORTNAME}
+PLIST_FILES=	%%JAVASHAREDIR%%/${PORTNAME}/com.horstmann.violet.jar bin/${PORTNAME}
 
 pre-install:
 	${ECHO} "#!/bin/sh" > ${WRKDIR}/violet.sh
-	${ECHO} "${PREFIX}/bin/java -jar ${JAVASHAREDIR}/${PORTNAME}/violetumleditor.jar" >> ${WRKDIR}/violet.sh
+	${ECHO} "${PREFIX}/bin/java -jar ${JAVASHAREDIR}/${PORTNAME}/com.horstmann.violet.jar" >> ${WRKDIR}/violet.sh
 
 do-install:
 	${MKDIR} ${STAGEDIR}${JAVASHAREDIR}/${PORTNAME}
-	${INSTALL_DATA} ${DISTDIR}/violetumleditor-${PORTVERSION}.jar ${STAGEDIR}${JAVASHAREDIR}/${PORTNAME}/violetumleditor.jar
+	${INSTALL_DATA} ${DISTDIR}/com.horstmann.violet-${PORTVERSION}.jar ${STAGEDIR}${JAVASHAREDIR}/${PORTNAME}/com.horstmann.violet.jar
 	${INSTALL_SCRIPT} ${WRKDIR}/violet.sh ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>

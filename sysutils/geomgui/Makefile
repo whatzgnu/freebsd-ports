@@ -5,7 +5,8 @@ PORTNAME=	geomgui
 PORTVERSION=	0.13
 CATEGORIES=	sysutils
 MASTER_SITES=	http://tinkering.hambrew.net/geomgui/ \
-		LOCAL/xride
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	xride
 
 MAINTAINER=	xride@FreeBSD.org
 COMMENT=	Viewer for kernel geom layer

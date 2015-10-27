@@ -11,8 +11,6 @@ DISTNAME=	${PORTNAME}.${PORTVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Version of the Mr Do video arcade game for X11
 
-BROKEN=		fails to run
-
 USES=		imake tar:tgz
 USE_XORG=	x11 xext xaw xmu xt sm ice
 MAKE_ARGS=	XAPPLOADDIR=${PREFIX}/lib/X11/app-defaults

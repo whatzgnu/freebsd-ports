@@ -5,7 +5,8 @@ PORTNAME=		sokoban
 PORTVERSION=		1.0
 PORTREVISION=		2
 CATEGORIES=		games
-MASTER_SITES=		SUNSITE/games/strategy
+MASTER_SITES=		${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	games/strategy
 DISTNAME=		${PORTNAME}-src
 
 MAINTAINER=		lifanov@mail.lifanov.com

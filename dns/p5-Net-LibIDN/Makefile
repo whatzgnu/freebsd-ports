@@ -21,6 +21,8 @@ CONFIGURE_ARGS=	--with-libidn=${LOCALBASE}/lib \
 		--with-libidn-inc=${LOCALBASE}/include
 
 post-install:
+	${CHMOD} u+w ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Net/LibIDN/LibIDN.so
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Net/LibIDN/LibIDN.so
+	${CHMOD} u-w ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Net/LibIDN/LibIDN.so
 
 .include <bsd.port.mk>

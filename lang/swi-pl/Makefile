@@ -11,6 +11,7 @@ MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Edinburgh-style Prolog compiler
 
 LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libodbc.so:${PORTSDIR}/databases/unixODBC
 
 CFLAGS+=	-I${LOCALBASE}/include
@@ -20,7 +21,7 @@ SWIPLDIR=	${PORTNAME:C/-//}-${PORTVERSION}
 
 NOPRECIOUSMAKEVARS=	yes
 USE_XORG=	xft xpm xt
-USES=		gmake jpeg pathfix pkgconfig shebangfix
+USES=		pkgconfig pathfix gmake shebangfix
 MAKE_JOBS_UNSAFE=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ARCH=${ARCH}-${OPSYS:tl}
@@ -40,7 +41,7 @@ PLIST_SUB=	DISTNAME=${SWIPLDIR} ARCH=${ARCH} OS=${OPSYS:tl} \
 
 .include <bsd.port.pre.mk>
 
-.if (${ARCH} == "i386" || ${ARCH} == "powerpc" || ${ARCH} == "armv6")
+.if (${ARCH} == "i386" || ${ARCH} == "powerpc")
 PLIST_SUB+=	BITS=32
 .else
 PLIST_SUB+=	BITS=64

@@ -1,10 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	5.2.0
-PORTREVISION?=	0
+PORTVERSION=	4.9.2
+PORTREVISION?=	1
 CATEGORIES=	devel
-MASTER_SITES=	GCC/releases/gcc-${DISTVERSION}
+MASTER_SITES=	GCC
+MASTER_SITE_SUBDIR=	releases/gcc-${DISTVERSION}
 PKGNAMEPREFIX?=	powerpc64-
 
 MAINTAINER=	bapt@FreeBSD.org
@@ -16,8 +17,7 @@ LICENSE_COMB=	multi
 USES=	gmake iconv libtool tar:bzip2 makeinfo compiler
 PLIST_SUB=	TARGETARCH=${PKGNAMEPREFIX:C/-//g} \
 		OPSYS=${OPSYS:tl} \
-		GCC_TARGET=${GCC_TARGET} \
-		GCC_VERSION=${PORTVERSION}
+		GCC_TARGET=${GCC_TARGET}
 
 LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp \
 		libmpfr.so:${PORTSDIR}/math/mpfr \

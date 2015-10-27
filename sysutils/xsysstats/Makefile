@@ -2,9 +2,10 @@
 
 PORTNAME=	xsysstats
 PORTVERSION=	1.51
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	sysutils
-MASTER_SITES=	XCONTRIB/utilities
+MASTER_SITES=	${MASTER_SITE_XCONTRIB}
+MASTER_SITE_SUBDIR=	utilities
 DISTNAME=	${PORTNAME}${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
@@ -20,8 +21,5 @@ PLIST_FILES=	bin/xsysstats man/man1/${PORTNAME}.1.gz
 
 pre-patch:
 	${RM} ${WRKSRC}/headers.h && ${TOUCH} ${WRKSRC}/headers.h
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>

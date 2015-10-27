@@ -3,7 +3,7 @@
 
 PORTNAME=	crrcsim
 PORTVERSION=	0.9.11
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	games
 MASTER_SITES=	BERLIOS
 
@@ -11,15 +11,16 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Model-airplane flight simulation program
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/libplibsl.a:${PORTSDIR}/x11-toolkits/plib
-LIB_DEPENDS=	libportaudio.so:${PORTSDIR}/audio/portaudio
+LIB_DEPENDS=	libportaudio.so.2:${PORTSDIR}/audio/portaudio2 \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 GNU_CONFIGURE=	yes
-USES=		gmake jpeg
+USES=		gmake
 USE_SDL=	sdl
 USE_GL=		gl glu
 
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+CPPFLAGS+=	-I${LOCALBASE}/include/portaudio2 -I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib/portaudio2 -L${LOCALBASE}/lib
 
 PLIST_FILES=	bin/${PORTNAME} man/man1/${PORTNAME}.1.gz
 PORTDOCS=	*

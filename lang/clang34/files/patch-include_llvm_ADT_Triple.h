@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- include/llvm/ADT/Triple.h.orig
 +++ include/llvm/ADT/Triple.h
 @@ -296,6 +296,11 @@

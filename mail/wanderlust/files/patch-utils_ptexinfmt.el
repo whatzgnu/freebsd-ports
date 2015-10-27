@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- utils/ptexinfmt.el.orig
 +++ utils/ptexinfmt.el
 @@ -68,50 +68,50 @@

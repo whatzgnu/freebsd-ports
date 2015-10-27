@@ -23,5 +23,8 @@ USE_PYTHON=	distutils autoplist
 post-patch:
 	${REINPLACE_CMD} -e 's|tag_date = 1||' ${WRKSRC}/setup.cfg
 
+post-install:
+	@${CAT} ${PKGMESSAGE}
+
 .include "${.CURDIR}/../../www/trac/plugin.mk"
 .include <bsd.port.mk>

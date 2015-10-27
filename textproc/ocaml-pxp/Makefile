@@ -21,7 +21,6 @@ USES=		gmake
 USE_OCAML=	true
 USE_OCAML_FINDLIB=	true
 USE_OCAML_LDCONFIG=	true
-USE_OCAML_CAMLP4=	true
 
 ULEX_BUILD_DEPENDS=	${LOCALBASE}/${OCAML_SITELIBDIR}/ulex/ulexing.a:${PORTSDIR}/devel/ocaml-ulex
 ULEX_RUN_DEPENDS=	${LOCALBASE}/${OCAML_SITELIBDIR}/ulex/ulexing.a:${PORTSDIR}/devel/ocaml-ulex

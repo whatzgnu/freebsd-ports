@@ -6,7 +6,8 @@ PORTVERSION=	3.5
 PORTREVISION=	5
 CATEGORIES=	sysutils
 MASTER_SITES=	ftp://ftp.berlios.de/pub/sformat/:sformat \
-		LOCAL/marius:libschily,sformat
+		${MASTER_SITE_LOCAL:S/$/:libschily,sformat/}
+MASTER_SITE_SUBDIR=	marius/:libschily,sformat
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:sformat \
 		${LIBSCHILY}:libschily
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}

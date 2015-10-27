@@ -1,6 +1,8 @@
 --- Makefile.orig	Mon Oct 13 11:14:02 2003
 +++ Makefile	Mon Oct 13 11:16:20 2003
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,10 @@
++# $FreeBSD$
++
 +PROG=	calibrator
 +SRCS=	calibrator.c
 +NO_MAN=	defined

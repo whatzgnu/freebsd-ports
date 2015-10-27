@@ -11,7 +11,8 @@ MASTER_SITES=	http://www.hdfgroup.org/ftp/HDF/releases/HDF${PORTVERSION}/src/ \
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Hierarchical Data Format library (from NCSA)
 
-LIB_DEPENDS=	libsz.so:${PORTSDIR}/science/szip
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libsz.so:${PORTSDIR}/science/szip
 
 CONFLICTS_INSTALL=	netcdf-4.[0-9]*
 
@@ -21,7 +22,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-shared --with-jpeg=${LOCALBASE} --with-szlib=${LOCALBASE}
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
-USES=		fortran jpeg libtool tar:bzip2
+USES=		fortran libtool tar:bzip2
 
 PORTDATA=	*
 PORTEXAMPLES=	*

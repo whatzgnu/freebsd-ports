@@ -5,7 +5,8 @@ PORTNAME=	libexecinfo
 PORTVERSION=	1.1
 PORTREVISION=	3
 CATEGORIES=	devel
-MASTER_SITES=	LOCAL/itetcu
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	itetcu
 
 MAINTAINER=	itetcu@FreeBSD.org
 COMMENT=	Library for inspecting program's backtrace

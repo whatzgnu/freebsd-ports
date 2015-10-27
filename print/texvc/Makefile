@@ -24,7 +24,7 @@ RASTER_DESC=	rasterization support
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MRASTER}
-USES+=		ghostscript:run
+USE_GHOSTSCRIPT_RUN=	yes
 USE_TEX=	latex dvipsk
 RUN_DEPENDS+=	convert:${PORTSDIR}/graphics/ImageMagick
 .endif

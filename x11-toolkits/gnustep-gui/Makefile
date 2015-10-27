@@ -2,9 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	gnustep-gui
-PORTVERSION=	0.24.1
+PORTVERSION=	0.24.0
+PORTREVISION=	5
 CATEGORIES=	x11-toolkits gnustep
-MASTER_SITES=	GNUSTEP/core
+MASTER_SITES=	${MASTER_SITE_GNUSTEP}
+MASTER_SITE_SUBDIR=	core
 
 MAINTAINER=	theraven@FreeBSD.org
 COMMENT=	GNUstep GUI library
@@ -20,6 +22,7 @@ DOCS_BUILD_DEPENDS=	texi2html:${PORTSDIR}/textproc/texi2html \
 			texi2pdf:${PORTSDIR}/print/texinfo
 
 LIB_DEPENDS+=	libtiff.so:${PORTSDIR}/graphics/tiff
+LIB_DEPENDS+=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 LIB_DEPENDS+=	libpng.so:${PORTSDIR}/graphics/png
 LIB_DEPENDS+=	libgif.so:${PORTSDIR}/graphics/giflib
 LIB_DEPENDS+=	libsndfile.so:${PORTSDIR}/audio/libsndfile
@@ -35,7 +38,7 @@ CONFIGURE_ARGS+=	--with-x
 CONFIGURE_ARGS+=	--with-x-include=${LOCALBASE}/include
 CONFIGURE_ARGS+=	--with-x-include=${LOCALBASE}/lib
 
-USES=		gnustep jpeg pkgconfig
+USES=		gnustep pkgconfig
 USE_GNUSTEP=	base build
 USE_XORG=	x11 xt
 

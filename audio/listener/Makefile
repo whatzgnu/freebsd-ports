@@ -3,7 +3,6 @@
 
 PORTNAME=	listener
 PORTVERSION=	2.2
-PORTREVISION=	1
 CATEGORIES=	audio security
 MASTER_SITES=	PACKETSTORM/linux/security \
 		http://www.vanheusden.com/listener/
@@ -13,13 +12,13 @@ COMMENT=	Program to listen for and record sound activity
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libportaudio.so:${PORTSDIR}/audio/portaudio \
+LIB_DEPENDS=	libportaudio.so.2:${PORTSDIR}/audio/portaudio2 \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile
 
 USES=		ncurses tar:tgz
 
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+CPPFLAGS+=	-I${LOCALBASE}/include/portaudio2 -I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib/portaudio2 -L${LOCALBASE}/lib
 
 OPTIONS_DEFINE=	DOCS
 

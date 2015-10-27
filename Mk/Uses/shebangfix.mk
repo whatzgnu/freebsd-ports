@@ -26,7 +26,7 @@
 #
 # MAINTAINER: portmgr@FreeBSD.org
 
-.if !defined(_INCLUDE_USES_SHEBANGFIX_MK)
+.if !defined(_INCLUDE_USES_SHEBANGFIX_Mk)
 _INCLUDE_USES_SHEBANGFIX_MK=	yes
 
 bash_OLD_CMD?=	/bin/bash
@@ -40,11 +40,7 @@ perl_CMD?=	${LOCALBASE}/bin/perl
 php_OLD_CMD?=	/usr/bin/php
 php_CMD?=	${LOCALBASE}/bin/php
 python_OLD_CMD?=	/usr/bin/python
-.if ${USES:Mpython*}
-python_CMD?=	${PYTHON_CMD}
-.else
 python_CMD?=	${LOCALBASE}/bin/python
-.endif
 ruby_OLD_CMD?=	/usr/bin/ruby
 ruby_CMD?=	${LOCALBASE}/bin/ruby
 tcl_OLD_CMD?=	/usr/bin/tclsh

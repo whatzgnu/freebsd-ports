@@ -7,7 +7,8 @@ PORTREVISION=	3
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	http://www.physionet.org/physiotools/xview/src/ \
 		http://komquats.com/distfiles/ \
-		LOCAL/cy
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	cy
 DISTNAME=	xview-3.2p1.4-19c
 # EXTRACT_ONLY=	# empty
 

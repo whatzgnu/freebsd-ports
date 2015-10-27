@@ -14,7 +14,6 @@ USE_LDCONFIG=	yes
 
 WRKSRC=		${WRKDIR}/lockdown
 
-CFLAGS_aarch64+=-fPIC
 CFLAGS_amd64+=	-fPIC
 
 do-install:

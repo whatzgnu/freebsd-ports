@@ -6,7 +6,8 @@ PORTVERSION=	0.8.6
 PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://vagalume.igalia.com/files/source/ \
-		DEBIAN_POOL/pool/main/v/vagalume/
+		${MASTER_SITE_DEBIAN_POOL}
+MASTER_SITE_SUBDIR=	pool/main/v/vagalume/
 
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	A GTK+-based client for the Last.fm online radio
@@ -16,7 +17,7 @@ LIB_DEPENDS=	libxml2.so:${PORTSDIR}/textproc/libxml2 \
 
 GNU_CONFIGURE=	yes
 USES=		gmake pkgconfig desktop-file-utils
-USE_GNOME=	gtk20 intltool
+USE_GNOME=	gtk20
 USE_GSTREAMER=	good mad gconf
 INSTALLS_ICONS=	yes
 

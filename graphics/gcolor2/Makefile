@@ -11,7 +11,7 @@ MAINTAINER=	ps.ports@smyrak.com
 COMMENT=	Simple GTK+ 2.0 color selector
 
 USES=		pkgconfig
-USE_GNOME=	gtk20 gnomeprefix intltool
+USE_GNOME=	gtk20 gnomeprefix
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

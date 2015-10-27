@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	igor
-PORTVERSION=	1.526
+PORTVERSION=	1.502
 CATEGORIES=	textproc
 MASTER_SITES=	http://docscripts.glenbarber.us/tags/${PORTNAME}/${PORTVERSION}/
 

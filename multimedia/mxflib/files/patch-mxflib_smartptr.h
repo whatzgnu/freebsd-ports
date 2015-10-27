@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- mxflib/smartptr.h.orig
 +++ mxflib/smartptr.h
 @@ -503,7 +503,7 @@

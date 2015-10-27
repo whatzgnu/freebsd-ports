@@ -6,7 +6,7 @@ PORTVERSION=	1.3.3
 PORTREVISION=	5
 CATEGORIES=	graphics
 MASTER_SITES=	ftp://ftp.su.se/pub/lunar/source-archive/ \
-		GENTOO
+		GENTOO/distfiles
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast pixel formats conversion library

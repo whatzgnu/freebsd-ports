@@ -3,7 +3,7 @@
 
 PORTNAME=	XML-STX
 PORTVERSION=	0.43
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -16,10 +16,8 @@ BUILD_DEPENDS=	p5-XML-SAX>=0:${PORTSDIR}/textproc/p5-XML-SAX \
 		p5-XML-NamespaceSupport>=0:${PORTSDIR}/textproc/p5-XML-NamespaceSupport
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	examples/tester.pl examples/stx-filter.pl
+USES=		perl5
 USE_PERL5=	configure patch
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 

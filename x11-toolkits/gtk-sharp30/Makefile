@@ -20,8 +20,4 @@ SHEBANG_FILES=	parser/*.pl
 USE_PERL5=	run
 MAKE_ENV=	INSTALL_STRIP_FLAG=${STRIP}
 
-post-patch:
-	@${REINPLACE_CMD} -e 's|gmcs|mcs|g' \
-		${WRKSRC}/configure
-
 .include <bsd.port.mk>

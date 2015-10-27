@@ -15,8 +15,6 @@ RUN_DEPENDS=	rubygem-activerecord>=0:${PORTSDIR}/databases/rubygem-activerecord 
 		rubygem-activesupport>=0:${PORTSDIR}/devel/rubygem-activesupport \
 		rubygem-uuidtools>=2.0.0:${PORTSDIR}/devel/rubygem-uuidtools
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 USE_RAKE=	yes

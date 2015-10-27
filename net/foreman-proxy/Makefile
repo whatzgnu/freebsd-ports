@@ -2,18 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	foreman-proxy
-PORTVERSION=	1.8.2
+PORTVERSION=	1.7.1
 CATEGORIES=	net
-MASTER_SITES=	http://downloads.theforeman.org/foreman-proxy/
 
-MAINTAINER=	mmoll@FreeBSD.org
+MAINTAINER=	mm@FreeBSD.org
 COMMENT=	Foreman Proxy Agent
 
 LICENSE=	GPLv3
 
 RUN_DEPENDS=	rubygem-bundler_ext>=0.4:${PORTSDIR}/sysutils/rubygem-bundler_ext \
 		rubygem-json>=1.8.1:${PORTSDIR}/devel/rubygem-json \
-		rubygem-rack16>=1.4:${PORTSDIR}/www/rubygem-rack16 \
+		rubygem-rack>=1.4:${PORTSDIR}/www/rubygem-rack \
 		rubygem-sinatra>=1.4.3:${PORTSDIR}/www/rubygem-sinatra \
 		${LOCALBASE}/bin/wget:${PORTSDIR}/ftp/wget
 
@@ -21,7 +20,9 @@ OPTIONS_DEFINE=	BMC PUPPET
 BMC_DESC=	Depend on rubyipmi for BMC support
 PUPPET_DESC=	Depend on Puppet
 
-USES=		tar:bzip2
+USE_GITHUB=	yes
+GH_ACCOUNT=	theforeman
+GH_PROJECT=	smart-proxy
 USE_RUBY=	yes
 USE_RAKE=	yes
 USE_RC_SUBR=	foreman-proxy
@@ -46,7 +47,7 @@ PLIST_SUB=	${SUB_LIST} MKDIR="${MKDIR}"
 
 BMC_RUN_DEPENDS=	rubygem-rubyipmi>=0.7:${PORTSDIR}/sysutils/rubygem-rubyipmi
 PUPPET_RUN_DEPENDS=	puppet:${PORTSDIR}/sysutils/puppet \
-			rubygem-ruby-augeas>=0.5:${PORTSDIR}/textproc/rubygem-ruby-augeas
+			rubygem-ruby-augeas>=0.5:${PORTSDIR}/textproc/rubygem-augeas
 
 post-patch:
 	@${REINPLACE_CMD} \

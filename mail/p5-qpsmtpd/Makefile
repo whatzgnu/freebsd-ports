@@ -3,10 +3,11 @@
 
 PORTNAME=	qpsmtpd
 PORTVERSION=	0.93
-DISTVERSIONPREFIX=	v
 PORTREVISION=	1
 CATEGORIES=	mail perl5
+MASTER_SITES=	https://github.com/smtpd/qpsmtpd/archive/
 PKGNAMEPREFIX=	p5-
+DISTFILES=	v${PORTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	noc-ports@biglist.com
 COMMENT=	Flexible SMTP daemon written in Perl and featuring a plugin API
@@ -25,9 +26,6 @@ OPTIONS_DEFINE=	MODPERL DOCS EXAMPLES
 OPTIONS_DEFAULT=MODPERL
 MOD_PERL_DESC=	"Apache Support via mod_perl"
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	smtpd
-
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMODPERL}
@@ -35,6 +33,7 @@ USE_APACHE_RUN=	22+
 RUN_DEPENDS+=	${APACHE_PKGNAMEPREFIX}mod_perl2>=0:${PORTSDIR}/www/mod_perl2
 .endif
 
+WRKSRC=		${WRKDIR}/${DISTNAME}
 USES=		perl5
 USE_PERL5=	configure
 

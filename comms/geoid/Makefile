@@ -6,7 +6,8 @@ PORTREVISION=	7
 DISTVERSIONSUFFIX=	.src
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://www.w1hkj.com/LinuxApps/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 DISTNAME=	fl_geoid
 EXTRACT_SUFX=	.src.tar.gz
 

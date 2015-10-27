@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- serial.h.orig
 +++ serial.h
 @@ -1,7 +1,7 @@

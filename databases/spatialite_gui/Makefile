@@ -11,7 +11,6 @@ MAINTAINER=	coder@tuxfamily.org
 COMMENT=	Graphical User Interface (GUI) tool supporting SpatiaLite
 
 LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libgaiagraphics.so:${PORTSDIR}/graphics/libgaiagraphics \
 		libfreexl.so:${PORTSDIR}/textproc/freexl \
@@ -25,7 +24,7 @@ USES=		gmake pkgconfig iconv
 
 CFLAGS+=	-I${LOCALBASE}/include
 CPPFLAGS+=	-I${LOCALBASE}/include `${WX_CONFIG} --cppflags`
-LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB} `${WX_CONFIG} --libs` -lsqlite3
+LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB} `${WX_CONFIG} --libs`
 CONFIGURE_ARGS=	CFLAGS="${CFLAGS} ${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
 USE_LDCONFIG=	yes
 

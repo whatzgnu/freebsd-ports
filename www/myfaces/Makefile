@@ -5,7 +5,8 @@ PORTNAME=	myfaces
 PORTVERSION=	1.1.1
 PORTREVISION=	2
 CATEGORIES=	www devel java
-MASTER_SITES=	APACHE/${PORTNAME}/binaries
+MASTER_SITES=	${MASTER_SITE_APACHE}
+MASTER_SITE_SUBDIR=	${PORTNAME}/binaries
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Free open source JavaServer(tm) Faces implementation

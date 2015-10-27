@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	tanks-of-freedom
-PORTVERSION=	0.3.5
-DISTVERSIONSUFFIX=-beta
+PORTVERSION=	git20150306
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -17,6 +16,7 @@ RUN_DEPENDS=	godot:${PORTSDIR}/devel/godot
 USE_GITHUB=	yes
 GH_ACCOUNT=	w84death
 GH_PROJECT=	Tanks-of-Freedom
+GH_TAGNAME=	56699f4
 
 DESKTOP_ENTRIES="Tanks of Freedom" \
 		"" \

@@ -14,7 +14,7 @@ EXTRA_PATCHES=	${.CURDIR}/files/patch-*
 PLIST=		${WRKDIR}/pkg-plist
 PKGMESSAGE=	${.CURDIR}/pkg-message
 
-USES+=		ghostscript:run
+USE_GHOSTSCRIPT_RUN=	yes
 
 post-patch:
 	@${ECHO_CMD} "share/enscript/README.BIG5" > ${WRKDIR}/pkg-plist
@@ -22,5 +22,6 @@ post-patch:
 
 post-install:
 	@${INSTALL_DATA} ${.CURDIR}/files/README.BIG5 ${STAGEDIR}${PREFIX}/share/enscript
+	@${CAT} ${PKGMESSAGE}
 
 .include "${MASTERDIR}/Makefile"

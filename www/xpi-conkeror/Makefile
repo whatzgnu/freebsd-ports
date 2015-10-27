@@ -4,8 +4,9 @@
 PORTNAME=	conkeror
 PORTVERSION=	20140911
 CATEGORIES=	www
-MASTER_SITES=	http://distfiles.pirateparty.in/ashish/ \
-		LOCAL/ashish
+MASTER_SITES=	http://distfiles.pirateparty.in/%SUBDIR%/ \
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	ashish
 
 MAINTAINER=	ashish@FreeBSD.org
 COMMENT=	Keyboard-oriented, customizable web browser based on Mozilla XULRunner

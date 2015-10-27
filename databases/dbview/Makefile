@@ -4,7 +4,8 @@
 PORTNAME=	dbview
 PORTVERSION=	1.0.4
 CATEGORIES=	databases
-MASTER_SITES=	SUNSITE/apps/database/proprietary
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	apps/database/proprietary
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	View dBase III files

@@ -11,10 +11,8 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	High performance single-tasking web server
 
 LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		cpe gmake makeinfo tar:bzip2
-CPE_VENDOR=	${PORTVERSION:C/\.r/./}
+USES=		gmake makeinfo tar:bzip2
 GNU_CONFIGURE=	yes
 
 INFO=		boa

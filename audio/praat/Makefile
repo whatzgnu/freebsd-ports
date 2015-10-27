@@ -2,31 +2,25 @@
 # $FreeBSD$
 
 PORTNAME=	praat
-PORTVERSION=	5.4.08
+PORTVERSION=	5.3.59
 CATEGORIES=	audio science
 MASTER_SITES=	http://www.fon.hum.uva.nl/praat/
-DISTNAME=	praat5408_sources
+DISTNAME=	praat5359_sources
 
 MAINTAINER=	jwbacon@tds.net
 COMMENT=	Phonetics by Computer
 
 LICENSE=	GPLv2
 
+BROKEN=		Unfetchable
 DOS2UNIX_REGEX=	.*Makefile
 USES=		dos2unix iconv motif pkgconfig
 USE_GNOME=	gtk20
-WRKSRC=		${WRKDIR}/sources_5408
+WRKSRC=		${WRKDIR}/sources_5359
 MAKEFILE=	makefile
 PLIST_FILES=	bin/praat man/man1/praat.1.gz
 
 LIB_DEPENDS+=	libasound.so:${PORTSDIR}/audio/alsa-lib
-
-.include <bsd.port.pre.mk>
-
-.if ${OSVERSION} < 1000000
-# Requires std=g++11
-USE_GCC=	yes
-.endif
 
 post-patch:
 	@${FIND} ${WRKSRC} -name Makefile -exec \
@@ -48,4 +42,4 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/praat ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${FILESDIR}/praat.1 ${STAGEDIR}${PREFIX}/man/man1
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

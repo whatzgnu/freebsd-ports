@@ -6,7 +6,7 @@ PORTVERSION=	1.0
 PORTREVISION=	2
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://komquats.com/distfiles/ \
-		LOCAL/cy
+		${MASTER_SITE_LOCAL}/cy/
 
 MAINTAINER=	cy@FreeBSD.org
 COMMENT=	Print lines contans IP matching a pattern in CIDR format

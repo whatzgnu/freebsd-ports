@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- plugins_src/accel/perlin_noise_drv.c.orig
 +++ plugins_src/accel/perlin_noise_drv.c
 @@ -22,6 +22,11 @@

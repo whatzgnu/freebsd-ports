@@ -6,7 +6,8 @@ PORTVERSION=	1.2
 PORTREVISION=	12
 CATEGORIES=	security net
 MASTER_SITES=	http://monkey.org/~dugsong/fragroute/ \
-		PACKETSTORM/UNIX/security
+		${MASTER_SITE_PACKETSTORM}
+MASTER_SITE_SUBDIR=	UNIX/security
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tool for intercepting, modifying, and rewriting egress traffic

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	fldigi
-PORTVERSION=	3.22.10
+PORTVERSION=	3.22.08
+PORTREVISION=	1
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://www.w1hkj.com/downloads/fldigi/\
 		LOCAL/shurd
@@ -46,7 +47,8 @@ OSS_CONFIGURE_ENABLE=		oss
 SNDFILE_CONFIGURE_WITH=		sndfile
 SNDFILE_LIB_DEPENDS=		libsndfile.so:${PORTSDIR}/audio/libsndfile
 PORTAUDIO_CONFIGURE_WITH=	portaudio
-PORTAUDIO_LIB_DEPENDS=		libportaudio.so:${PORTSDIR}/audio/portaudio
+PORTAUDIO_BUILD_DEPENDS=	${LOCALBASE}/lib/portaudio2/libportaudio.so:${PORTSDIR}/audio/portaudio2
+PORTAUDIO_RUN_DEPENDS=		${LOCALBASE}/lib/portaudio2/libportaudio.so:${PORTSDIR}/audio/portaudio2
 PULSEAUDIO_CONFIGURE_WITH=	pulseaudio
 PULSEAUDIO_LIB_DEPENDS=		libpulse.so:${PORTSDIR}/audio/pulseaudio
 HAMLIB_CONFIGURE_WITH=		hamlib

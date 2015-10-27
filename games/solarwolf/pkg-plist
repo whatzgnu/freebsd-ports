@@ -1,4 +1,6 @@
-@(,,555) bin/solarwolf
+@mode 555
+bin/solarwolf
+@mode
 man/man6/solarwolf.6.gz
 share/pixmaps/solarwolf.png
 %%DATADIR%%/code/allmodules.py
@@ -168,3 +170,9 @@ share/pixmaps/solarwolf.png
 %%DATADIR%%/readme.txt
 %%DATADIR%%/solarwolf.py
 %%DATADIR%%/solarwolf.pyc
+@mode 755
+@dirrmtry %%DATADIR%%/code
+@dirrmtry %%DATADIR%%/data/audio
+@dirrmtry %%DATADIR%%/data/music
+@dirrmtry %%DATADIR%%/data
+@dirrmtry %%DATADIR%%

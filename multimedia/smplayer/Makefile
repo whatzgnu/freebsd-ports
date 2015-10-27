@@ -24,8 +24,7 @@ ALL_TARGET=	src/smplayer
 CONFIGURE_WRKSRC=	${WRKSRC}/src
 MAKE_ARGS+=	PREFIX=${PREFIX} DESTDIR=${STAGEDIR}
 
-USES=		cpe desktop-file-utils dos2unix gmake qmake tar:bzip2
-CPE_VENDOR=	ricardo_villalba
+USES=		desktop-file-utils dos2unix gmake qmake tar:bzip2
 DOS2UNIX_REGEX=	.*.[^p][^n][^g]$
 INSTALLS_ICONS=	yes
 
@@ -34,7 +33,7 @@ PORTDOCS=	Changelog Not_so_obvious_things.txt Readme.txt \
 OPTIONS_DEFINE=	DOCS DEBUG
 
 # Do not use unstable versions
-PORTSCOUT=	site:http://sourceforge.net/projects/smplayer/files/SMPlayer/
+PORTSCOUT= skipv:14.3.0.6306
 
 SUB_FILES=	pkg-message
 

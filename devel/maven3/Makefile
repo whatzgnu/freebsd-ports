@@ -4,7 +4,8 @@
 PORTNAME=	maven3
 DISTVERSION=	3.0.5
 CATEGORIES=	devel java
-MASTER_SITES=	APACHE/maven/binaries
+MASTER_SITES=	${MASTER_SITE_APACHE}
+MASTER_SITE_SUBDIR=	maven/binaries
 DISTNAME=	apache-maven-${DISTVERSION}-bin
 
 MAINTAINER=	wombat@marsupial.org

@@ -5,7 +5,8 @@ PORTNAME=	yolk
 PORTVERSION=	0.4.3
 PORTREVISION=	0
 CATEGORIES=	misc python
-MASTER_SITES=	CHEESESHOP
+MASTER_SITES=	${MASTER_SITE_CHEESESHOP}
+MASTER_SITE_SUBDIR=	source/y/${PORTNAME}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	nivit@FreeBSD.org
@@ -34,7 +35,7 @@ post-install:
 
 .include <bsd.port.pre.mk>
 
-.if ${PYTHON_REL} == 2701 || ${PYTHON_REL} == 3200
+.if ${PYTHON_REL} == 271 || ${PYTHON_REL} == 320
 IGNORE=	does not work with ${PYTHON_VERSION} (see http://goo.gl/SZpDN)
 .endif
 

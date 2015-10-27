@@ -3,7 +3,7 @@
 
 PORTNAME=	rancid
 PORTVERSION=	2.3.8
-PORTREVISION=	5
+PORTREVISION=	2
 CATEGORIES=	net-mgmt
 MASTER_SITES=	ftp://ftp.shrubbery.net/pub/rancid/
 
@@ -31,6 +31,7 @@ NEWERCONFIG_FILES2=	etc/lg.conf
 NEWCONFIG_FILES=	rancid.conf lg.conf
 
 OPTIONS_DEFINE=		SVN
+OPTIONS_DEFAULT=
 
 SVN_DESC=		Use Subversion instead of CVS
 
@@ -56,6 +57,11 @@ post-patch:
 post-install:
 	${LN} -s ${PREFIX}/libexec/${PORTNAME}/rancid-cvs ${STAGEDIR}${PREFIX}/bin
 	${LN} -s ${PREFIX}/libexec/${PORTNAME}/rancid-run ${STAGEDIR}${PREFIX}/bin
+.if !defined(BATCH)
+	@ ${ECHO}
+	@ ${CAT} ${PKGMESSAGE}
+	@ ${ECHO}
+.endif
 .for file in ${NEWCONFIG_FILES}
 	@ if [ -f ${PREFIX}/etc/${PORTNAME}/${file} ] ; then \
 	${ECHO} "WARNING: *** new ${file} file is installed as ${PREFIX}/rancid/${file}.sample"; \

@@ -26,4 +26,7 @@ USE_PHP=	xml pcre zlib mysql pgsql ftp
 do-install:
 	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}
 
+post-install:
+	@${CAT} ${PKGMESSAGE}
+
 .include <bsd.port.post.mk>

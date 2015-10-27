@@ -3,7 +3,6 @@
 
 PORTNAME=	jspacker
 DISTVERSION=	1.00b
-PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://nivi.interfree.it/distfiles/${PORTNAME}/ \
 		http://deanedwards.googlecode.com/svn/trunk/download/
@@ -15,13 +14,10 @@ COMMENT=	JavaScript compressor/obfuscator (Perl version)
 JSPACKER=	jsPacker.pl
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 NO_WRKSUBDIR=	yes
 
-USES=		perl5 shebangfix zip
+USES=		perl5 zip
 USE_PERL5=	run
-SHEBANG_FILES=	jsPacker.pl
-perl_OLD_CMD=	perl
 
 SUB_FILES=	${PORTNAME}
 SUB_LIST=	JSPACKER=${JSPACKER} \

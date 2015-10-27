@@ -2,39 +2,38 @@
 # $FreeBSD$
 
 PORTNAME=	log4cpp
-PORTVERSION=	1.1.1
+DISTVERSION=	1.1
+PORTREVISION=	1
 CATEGORIES=	devel
-MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-${PORTVERSION:R}.x%20%28new%29/${PORTNAME}-${PORTVERSION:R}
+MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-${PORTVERSION}.x%20%28new%29/${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Library of C++ classes for flexible logging
 
-LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/COPYING
-
-WRKSRC=		${WRKDIR}/${PORTNAME}
-
 USES=		gmake libtool pathfix
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-html-docs
-REINPLACE_ARGS=	-i ""
-INSTALL_TARGET=	install-strip
+CONFIGURE_ARGS=	--with-pthreads --disable-html-docs
 USE_LDCONFIG=	yes
+WRKSRC=		${WRKDIR}/${PORTNAME}
 
-OPTIONS_DEFINE=		DOXYGEN
-OPTIONS_SUB=		yes
+# doxygen build is BROKEN atm
+#.if exists (${LOCALBASE}/bin/doxygen) || ${PORT_OPTIONS:MDOCS}
+#BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
+#.else
+CONFIGURE_ARGS+=	--disable-doxygen
+#.endif
 
-DOXYGEN_BUILD_DEPENDS=		doxygen:${PORTSDIR}/devel/doxygen
-DOXYGEN_CONFIGURE_ENABLE=	doxygen
+#.if !exists (${LOCALBASE}/bin/doxygen) && ${PORT_OPTIONS:MDOCS}
+#pre-everything::
+#	@${ECHO_CMD}
+#	@${ECHO_CMD} By default, this port uses doxygen to build its documentation.\
+#It currently is not present your system, and if you do not want to install it, abort\
+#this build by hitting CTRL+C and re-run the installation with OPTIONS_UNSET=DOCS | ${FMT} 74
+#	@${ECHO_CMD}
+#	@sleep 3
+#.endif
 
 post-patch:
-	@${REINPLACE_CMD} -e \
-		's|^MAX_|#MAX_|' \
-		${WRKSRC}/doc/Doxyfile.in
-	@${REINPLACE_CMD} -e \
-		's|$$(prefix)/doc/.*|@docdir@| ; \
-		 s|\([[:blank:]]\)\($$(man3dir)\)|\1$$(DESTDIR)\2| ; \
-		 s|\([[:blank:]]\)\($$(docdir)\)|\1$$(DESTDIR)\2|' \
-		${WRKSRC}/doc/Makefile.in
+	@${REINPLACE_CMD} -e 's| -pedantic||g' ${WRKSRC}/configure
 
 .include <bsd.port.mk>

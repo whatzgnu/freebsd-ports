@@ -35,10 +35,15 @@ post-patch:
 
 post-install:
 .if ${PORT_OPTIONS:MEXAMPLES}
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	cd ${WRKSRC}; \
-		${COPYTREE_SHARE} "cli demos examples" \
-		${STAGEDIR}${EXAMPLESDIR} "! -type d"
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/cli
+	cd ${WRKSRC}/cli; \
+	${FIND} . | ${CPIO} -pdm -R ${LIBOWN}:${LIBGRP} ${STAGEDIR}${EXAMPLESDIR}/cli
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/demos
+	cd ${WRKSRC}/demos; \
+	${FIND} . | ${CPIO} -pdm -R ${LIBOWN}:${LIBGRP} ${STAGEDIR}${EXAMPLESDIR}/demos
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/examples
+	cd ${WRKSRC}/examples; \
+	${FIND} . | ${CPIO} -pdm -R ${LIBOWN}:${LIBGRP} ${STAGEDIR}${EXAMPLESDIR}/examples
 .endif
 
 .include <bsd.port.mk>

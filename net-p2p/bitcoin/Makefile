@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	bitcoin
-PORTVERSION=	0.11.0
+PORTVERSION=	0.10.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	net-p2p finance
 
@@ -13,8 +13,7 @@ LICENSE=	MIT
 
 LIB_DEPENDS=	libboost_date_time.so:${PORTSDIR}/devel/boost-libs
 
-USES=		autoreconf compiler:c++0x gmake libtool pkgconfig shebangfix
-SHEBANG_FILES=	src/test/*.py
+USES=		autoreconf compiler:c++0x gmake libtool pkgconfig
 USE_GITHUB=	yes
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
@@ -71,11 +70,11 @@ WALLET_USE=			BDB=48
 
 GH_ACCOUNT=	bitcoin
 
-CONFIGURE_ARGS?=	--without-libs \
-			--disable-reduce-exports \
+CONFIGURE_ARGS?=	--without-daemon \
 			--with-gui \
-			--without-daemon \
-			--without-utils
+			--without-libs \
+			--without-utils \
+			--disable-reduce-exports
 
 CONFIGURE_ENV=	CRYPTO_CFLAGS="-I${OPENSSLINC}" CRYPTO_LIBS="-L${OPENSSLLIB} -lcrypto" \
 		SSL_CFLAGS="-I${OPENSSLINC}" SSL_LIBS="-L${OPENSSLLIB} -lssl"
@@ -97,9 +96,6 @@ post-install:
 .endif
 
 regression-test: build
-	# To use this sucessfully, remove --without-daemon and --without-utils
-	# from CONFIGURE_ARGS above.
-
 	@cd ${WRKSRC} && ${GMAKE} check
 
 .include <bsd.port.mk>

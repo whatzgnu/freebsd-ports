@@ -13,9 +13,7 @@ LICENSE=	GPLv2
 
 OPTIONS_DEFINE=	PGSQL MYSQL
 
-USES=		cpe tar:bzip2
-CPE_VERSION=	${DISTVERSION:C/-.*//}
-CPE_UPDATE=	${DISTVERSION:C/[^-]*((-.*)?)/\1/:C/-//}
+USES=	tar:bzip2
 USE_PHP=	pcre xml simplexml
 NO_BUILD=	yes
 

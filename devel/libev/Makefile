@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	libev
-PORTVERSION=	4.20
+PORTVERSION=	4.15
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://dist.schmorp.de/libev/ \
@@ -10,8 +11,6 @@ MASTER_SITES=	http://dist.schmorp.de/libev/ \
 
 MAINTAINER=	vsevolod@FreeBSD.org
 COMMENT=	Full-featured and high-performance event loop library
-
-LICENSE=	BSD2CLAUSE
 
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
@@ -25,6 +24,6 @@ post-patch:
 		${FILESDIR}/libev.pc.in > ${WRKDIR}/libev.pc
 
 post-install:
-	${INSTALL_DATA} ${WRKDIR}/libev.pc ${STAGEDIR}${PKGCONFIGDIR}/
+	@${INSTALL_DATA} ${WRKDIR}/libev.pc ${STAGEDIR}${PKGCONFIGDIR}/
 
 .include <bsd.port.mk>

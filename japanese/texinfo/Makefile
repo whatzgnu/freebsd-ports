@@ -5,7 +5,8 @@ PORTNAME=	texinfo
 PORTVERSION=	4.7
 PORTREVISION=	8
 CATEGORIES=	japanese print
-MASTER_SITES=	GNU
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 PATCH_SITES=	ftp://jupiter.fsci.fuk.kindai.ac.jp/pub/ptex/utils/ \
 		http://www.fsci.fuk.kindai.ac.jp/aftp/pub/ptex/utils/

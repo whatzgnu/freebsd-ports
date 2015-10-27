@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gnubg
-PORTVERSION=	1.05.000
+PORTVERSION=	1.04.000
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	http://www.c-s.li/ports/ \
 		http://files.gnubg.org/media/sources/

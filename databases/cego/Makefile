@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	cego
-PORTVERSION=	2.23.12
+PORTVERSION=	2.22.0
 CATEGORIES=	databases
 MASTER_SITES=	http://www.lemke-it.com/
 
@@ -9,7 +9,6 @@ MAINTAINER=	pi@FreeBSD.org
 COMMENT=	Relational and transactional database system
 
 LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	liblfcbase.so:${PORTSDIR}/devel/lfcbase \
 		liblfcxml.so:${PORTSDIR}/devel/lfcxml
@@ -20,11 +19,10 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 
 USE_LDCONFIG=	yes
 
-USES=		libtool ncurses readline shebangfix
-SHEBANG_FILES=	tools/cgbackup tools/cgrecover
+USES=		ncurses readline libtool
 
-USERS=		cego
-GROUPS=		cego
+USERS=	cego
+GROUPS=	cego
 
 PLIST_SUB+=	USER=${USERS}
 
@@ -42,7 +40,7 @@ post-install:
 	${CP} ${WRKSRC}/samples/rc/cego ${STAGEDIR}${PREFIX}/etc/rc.d/
 
 post-stage:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libcego.so.2.0.0
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libcgwrap.so.2.0.0
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libcego.so.1.0.0
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libcgwrap.so.1.0.0
 
 .include <bsd.port.mk>

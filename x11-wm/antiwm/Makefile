@@ -6,7 +6,7 @@ PORTVERSION=	0.0.5
 CATEGORIES=	x11-wm
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Minimalist window manager inspired by Ratpoison
 
 OPTIONS_DEFINE=	DOCS

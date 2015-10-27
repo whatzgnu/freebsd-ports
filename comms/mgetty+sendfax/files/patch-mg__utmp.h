@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- mg_utmp.h.orig
 +++ mg_utmp.h
 @@ -1,4 +1,4 @@

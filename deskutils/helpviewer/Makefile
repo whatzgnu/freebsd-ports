@@ -2,25 +2,26 @@
 
 PORTNAME=	helpviewer
 PORTVERSION=	0.3
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	deskutils gnustep
 MASTER_SITES=	http://www.roard.com/helpviewer/download/
 DISTNAME=	HelpViewer-${PORTVERSION}
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Online help viewer for GNUstep programs
 
 LICENSE=	GPLv2
 
-USES=		gnustep tar:tgz
+USES=		gnustep
 USE_GNUSTEP=	back build
 
-post-patch:
-	${REINPLACE_CMD} -e 's|Foundation/GSXML.h|GNUstepBase/GSXML.h|' \
-		${WRKSRC}/HandlerStructureXLP.h \
-		${WRKSRC}/TextFormatterXLP.h
+FIXME=	HandlerStructureXLP.h TextFormatterXLP.h
 
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/GNUstep/Local/Applications/HelpViewer.app/HelpViewer
+post-patch:
+.for i in ${FIXME}
+	${REINPLACE_CMD} -e 's|Foundation/GSXML.h|GNUstepBase/GSXML.h|' \
+		${WRKSRC}/${i}
+.endfor
 
 .include <bsd.port.mk>

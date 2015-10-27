@@ -20,7 +20,6 @@ GH_ACCOUNT=	JohnDoh
 GH_PROJECT=	Roundcube-Plugin-SieveRules-Managesieve
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 WWWDIR=		${PREFIX}/www/roundcube/plugins/sieverules
 

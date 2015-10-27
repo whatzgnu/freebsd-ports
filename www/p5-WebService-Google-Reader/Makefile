@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	WebService-Google-Reader
-PORTVERSION=	0.23
+PORTVERSION=	0.22
+PORTREVISION=	1
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -24,6 +25,7 @@ BUILD_DEPENDS=	p5-JSON-XS>=2:${PORTSDIR}/converters/p5-JSON-XS \
 		p5-JSON>=2:${PORTSDIR}/converters/p5-JSON \
 		p5-XML-Atom>0:${PORTSDIR}/textproc/p5-XML-Atom \
 		p5-XML-LibXML>0:${PORTSDIR}/textproc/p5-XML-LibXML
+
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USES=		perl5

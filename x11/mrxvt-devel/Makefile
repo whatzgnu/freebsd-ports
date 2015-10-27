@@ -69,7 +69,7 @@ CONFIGURE_ARGS+=	--disable-xpm
 .if ! ${PORT_OPTIONS:MJPEG} || ! ${PORT_OPTIONS:MBACKGROUND}
 CONFIGURE_ARGS+=	--disable-jpeg
 .else
-USES+=		jpeg
+LIB_DEPENDS+=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 .endif
 
 .if ! ${PORT_OPTIONS:MPNG} || ! ${PORT_OPTIONS:MBACKGROUND}

@@ -6,7 +6,8 @@ PORTVERSION=	20041031
 PORTREVISION=	3
 CATEGORIES=	russian x11-fonts
 MASTER_SITES=	http://dev.gentoo.org/~sergey/ \
-		LOCAL/novel
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	novel
 DISTNAME=	artwiz_ru
 
 MAINTAINER=	novel@FreeBSD.org

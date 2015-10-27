@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- meta.lisp.orig
 +++ meta.lisp
 @@ -47,7 +47,7 @@

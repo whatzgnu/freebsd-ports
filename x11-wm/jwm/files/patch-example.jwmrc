@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- example.jwmrc.orig
 +++ example.jwmrc
 @@ -4,7 +4,8 @@

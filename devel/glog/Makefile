@@ -3,7 +3,6 @@
 
 PORTNAME=	glog
 PORTVERSION=	0.3.4
-DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -25,6 +24,8 @@ USES=		execinfo libtool pathfix
 PORTDOCS=	*
 
 GH_ACCOUNT=	google
+GH_PROJECT=	${PORTNAME}
+GH_TAGNAME=	v${PORTVERSION}
 USE_GITHUB=	yes
 
 post-patch:

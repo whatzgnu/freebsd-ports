@@ -7,7 +7,7 @@ PORTREVISION=	1
 CATEGORIES=	mail python
 MASTER_SITES=	http://pyropus.ca/software/${PORTNAME}/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	Qmail queue diagnostic and repair tool
 
 LICENSE=	GPLv2

@@ -4,7 +4,8 @@
 PORTNAME=	lcov
 PORTVERSION=	1.10
 CATEGORIES=	devel
-MASTER_SITES=	SF/ltp/Coverage%20Analysis/LCOV-${PORTVERSION}
+MASTER_SITES=	SF
+MASTER_SITE_SUBDIR=ltp/Coverage%20Analysis/LCOV-${PORTVERSION}
 
 MAINTAINER=	romain@FreeBSD.org
 COMMENT=	The Linux Test Project GCOV extension

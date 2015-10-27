@@ -1,19 +1,14 @@
 # $FreeBSD$
 
 PORTNAME=	gitlab-grack
-PORTVERSION=	2.0.2
-PORTREVISION=	2
+PORTVERSION=	1.1.0
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Ruby/Rack Git Smart-HTTP Server Handler
 
-LICENSE=	MIT
-
-RUN_DEPENDS=	rubygem-rack15>=1.5.1:${PORTSDIR}/www/rubygem-rack15
-
-NO_ARCH=	yes
+RUN_DEPENDS=	rubygem-rack>=1.4.1:${PORTSDIR}/www/rubygem-rack
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

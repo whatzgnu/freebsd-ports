@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	CoinMP
-PORTVERSION=	1.8.2
+PORTVERSION=	1.8.1
 CATEGORIES=	math
 MASTER_SITES=	http://www.coin-or.org/download/source/CoinMP/
 

@@ -13,7 +13,7 @@ LICENSE=	GPLv2
 
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
-USE_GNOME=	gtk20 intltool
+USE_GNOME=	gtk20
 USES=		desktop-file-utils gettext-tools \
 		gmake libtool pathfix pkgconfig tar:bzip2
 CPPFLAGS+=	-I${LOCALBASE}/include

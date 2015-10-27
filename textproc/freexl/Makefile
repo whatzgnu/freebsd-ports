@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freexl
-PORTVERSION=	1.0.1
+DISTVERSION=	1.0.0i
 CATEGORIES=	textproc
 MASTER_SITES=	http://www.gaia-gis.it/gaia-sins/freexl-sources/
 

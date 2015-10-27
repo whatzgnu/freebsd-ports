@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	CGI-Compile
-PORTVERSION=	0.19
+PORTVERSION=	0.18
+PORTREVISION=	1
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:MIYAGAWA
@@ -25,5 +26,9 @@ TEST_DEPENDS=	\
 USES=		perl5
 USE_PERL5=	modbuildtiny
 NO_ARCH=	YES
+
+# Workaround until Module::Build::Tiny 0.039.
+post-patch:
+	${REINPLACE_CMD} -e 's|0.039|0.038|' ${WRKSRC}/Build.PL
 
 .include <bsd.port.mk>

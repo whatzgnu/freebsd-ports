@@ -5,7 +5,7 @@ PORTNAME=	xbubble
 PORTVERSION=	0.5.8
 PORTREVISION=	7
 CATEGORIES=	games
-MASTER_SITES=	GENTOO
+MASTER_SITES=	GENTOO/distfiles
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Puzzle Bobble clone for Unix/X11 platforms

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- ./build.xml.orig
 +++ ./build.xml
 @@ -99,7 +99,7 @@

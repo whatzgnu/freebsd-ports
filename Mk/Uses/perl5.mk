@@ -55,12 +55,8 @@ PERL_VERSION=	5.16.3
 PERL_VERSION=	5.18.4
 .elif ${PERL5_DEFAULT} == 5.20
 PERL_VERSION=	5.20.2
-.elif ${PERL5_DEFAULT} == 5.22
+.elif ${PERL5_DEFAULT} == 5.21 || ${PERL5_DEFAULT} == devel
 PERL_VERSION=	5.22.0
-.elif ${PERL5_DEFAULT} == devel
-PERL_VERSION=	5.23.2
-# Force PERL_PORT here in case two identical PERL_VERSION.
-PERL_PORT?=	perl5-devel
 .else
 IGNORE=	Invalid perl5 version ${PERL5_DEFAULT}
 .endif
@@ -87,10 +83,9 @@ PERL_LEVEL=0
 PERL_ARCH?=	mach
 
 # there must always be a default to prevent dependency failures such
-# as "ports/lang: not found".  Also, perl5-devel is taken care in the
-# perl5_default file, or up there in the default versions selection.
-.if   ${PERL_LEVEL} >= 502200
-PERL_PORT?=	perl5.22
+# as "ports/lang: not found"
+.if   ${PERL_LEVEL} >= 502100
+PERL_PORT?=	perl5-devel
 .elif   ${PERL_LEVEL} >= 502000
 PERL_PORT?=	perl5.20
 .elif ${PERL_LEVEL} >= 501800
@@ -297,8 +292,8 @@ fix-perl-things:
 	@${RMDIR} -p ${STAGEDIR}${PREFIX}/lib/perl5/${PERL_VER}/${PERL_ARCH} 2>/dev/null || :
 
 .if !target(regression-test)
-TEST_ARGS?=	${MAKE_ARGS}
-TEST_ENV?=	${MAKE_ENV}
+TEST_ARGS+=	${MAKE_ARGS}
+TEST_ENV+=	${MAKE_ENV}
 TEST_TARGET?=	test
 TEST_WRKSRC?=	${BUILD_WRKSRC}
 .if !target(test)

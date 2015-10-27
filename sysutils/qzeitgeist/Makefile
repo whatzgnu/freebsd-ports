@@ -2,13 +2,13 @@
 
 PORTNAME=	qzeitgeist
 PORTVERSION=	0.8.0
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	KDE/stable/lib${PORTNAME}/${PORTVERSION}/src/:kde \
 		http://launchpad.net/zeitgeist/${ZEITGEIST_VERSION:R}/${ZEITGEIST_VERSION}/+download/
 DISTNAME=	lib${PORTNAME}-${PORTVERSION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:kde \
-		zeitgeist-${ZEITGEIST_VERSION}.tar.xz
+		zeitgeist-${ZEITGEIST_VERSION}.tar.gz
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	avilla@FreeBSD.org
@@ -27,15 +27,17 @@ USES=		cmake python:build tar:bzip2
 USE_LDCONFIG=	yes
 
 # To be kept in sync with sysutils/zeitgeist.
-ZEITGEIST_VERSION=	0.9.16
+ZEITGEIST_VERSION=	0.8.2
 
 post-extract:
 	@(cd ${WRKDIR} && ${TAR} ${EXTRACT_BEFORE_ARGS} \
-		${_DISTDIR}/zeitgeist-${ZEITGEIST_VERSION}.tar.xz \
+		${_DISTDIR}/zeitgeist-${ZEITGEIST_VERSION}.tar.gz \
 		${EXTRACT_AFTER_ARGS})
 	cd ${WRKDIR}/zeitgeist-${ZEITGEIST_VERSION} && \
-		${CP} -r python/*.py \
-			data/ontology \
+		${CP} zeitgeist/datamodel.py \
+			extra/ontology/*.trig \
+			extra/rdfxml2py \
+			extra/PythonSerializer.py \
 			${WRKSRC}/scripts
 
 post-patch:
@@ -45,9 +47,20 @@ post-patch:
 		${WRKSRC}/CMakeLists.txt \
 		${WRKSRC}/src/CMakeLists.txt \
 		${WRKSRC}/QZeitgeistConfig.cmake.in
+	${REINPLACE_CMD} -e '/import _config/ d' \
+		-e 's|_config.datadir, "zeitgeist/ontology/zeitgeist.py"|runpath, "zeitgeist.py"|' \
+		${WRKSRC}/scripts/datamodel.py
 	${REINPLACE_CMD} -e 's|zeitgeist.datamodel|datamodel|' \
 		${WRKSRC}/scripts/onto2cpp.py
 	${REINPLACE_CMD} -e 's|env python|env ${PYTHON_CMD}|g' \
 		${WRKSRC}/scripts/onto2cpp.py
+	${REINPLACE_CMD} -e 's|/usr/bin/python|${PYTHON_CMD}|g' \
+		${WRKSRC}/scripts/rdfxml2py
+
+pre-build:
+	cd ${WRKSRC}/scripts && \
+		${CAT} *.trig | \
+		${LOCALBASE}/bin/rapper -i trig -o rdfxml -I ZeitgeistNamespace - | \
+		./rdfxml2py >> zeitgeist.py
 
 .include <bsd.port.mk>

@@ -3,7 +3,7 @@
 
 PORTNAME=	Device-Modem
 PORTVERSION=	1.57
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	comms perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -17,12 +17,8 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-Device-SerialPort>=0:${PORTSDIR}/comms/p5-Device-SerialPort
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	examples/xmodem.pl \
-		examples/shell.pl \
-		examples/caller-id.pl
+USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	EXAMPLES
 

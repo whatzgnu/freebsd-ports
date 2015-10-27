@@ -9,12 +9,8 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	MySQL Adapter for DataMapper
 
-LICENSE=	MIT
-
-RUN_DEPENDS=	rubygem-dm-do-adapter>=${PORTVERSION}:${PORTSDIR}/databases/rubygem-dm-do-adapter \
-		rubygem-do_mysql>=0.10.6:${PORTSDIR}/databases/rubygem-do_mysql
-
-NO_ARCH=	yes
+RUN_DEPENDS=	rubygem-do_mysql>=0.10.6:${PORTSDIR}/databases/rubygem-do_mysql \
+		rubygem-dm-do-adapter>=${PORTVERSION}:${PORTSDIR}/databases/rubygem-dm-do-adapter
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

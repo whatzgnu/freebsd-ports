@@ -3,7 +3,7 @@
 
 PORTNAME=	Archive-Extract-Libarchive
 PORTVERSION=	0.38
-PORTREVISION=	4
+PORTREVISION=	2
 CATEGORIES=	archivers perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -21,9 +21,6 @@ TEST_DEPENDS=	p5-File-Slurp>=0:${PORTSDIR}/devel/p5-File-Slurp \
 		p5-Test-Pod>=1.04:${PORTSDIR}/devel/p5-Test-Pod
 
 USE_PERL5=	modbuild
-USES=		perl5 libarchive
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Archive/Extract/Libarchive/Libarchive.so
+USES=		perl5
 
 .include <bsd.port.mk>

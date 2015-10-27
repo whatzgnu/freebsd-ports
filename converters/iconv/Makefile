@@ -5,7 +5,8 @@ PORTNAME=	iconv
 PORTVERSION=	2.0
 PORTREVISION=	4
 CATEGORIES=	converters
-MASTER_SITES=	LOCAL/bland
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	bland
 
 MAINTAINER=	bland@FreeBSD.org
 COMMENT=	Charset conversion library and utilities

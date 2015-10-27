@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lib/runtime_tools/src/observer_backend.erl.orig
 +++ lib/runtime_tools/src/observer_backend.erl
 @@ -83,7 +83,7 @@

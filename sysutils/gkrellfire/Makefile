@@ -6,7 +6,8 @@ PORTVERSION=	0.4.2
 PORTREVISION=	4
 CATEGORIES=	sysutils
 MASTER_SITES=	http://freenet-homepage.de/thomas-steinke/ \
-		LOCAL/novel
+		LOCAL
+MASTER_SITE_SUBDIR=	novel
 
 MAINTAINER=	novel@FreeBSD.org
 COMMENT=	Gkrellm2 plugin which shows the system load as a flame

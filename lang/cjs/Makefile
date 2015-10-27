@@ -4,6 +4,7 @@
 PORTNAME=	cjs
 PORTVERSION=	2.4.1
 CATEGORIES=	lang gnome
+MASTER_SITES=	http://github.com/linuxmint/${PORTNAME}/archive/${PORTVERSION}.tar.gz?dummy=/
 DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
@@ -15,11 +16,10 @@ LIB_DEPENDS=	libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib \
 
 CONFLICTS_BUILD=spidermonkey17-1.7.*
 
-USES=		autoreconf compiler:c11 gettext libtool gmake \
+USES=		autoreconf:build compiler:c11 gettext libtool gmake \
 		pathfix pkgconfig python:build shebangfix
-USE_GNOME=	cairo glib20 gnomeprefix introspection:build
-USE_GITHUB=	yes
-GH_ACCOUNT=	linuxmint
+USE_GNOME=	cairo glib20 gnomeprefix introspection:build \
+		intlhack
 USE_LDCONFIG=	yes
 PATHFIX_MAKEFILEIN=	Makefile.am
 GNU_CONFIGURE=	yes
@@ -30,5 +30,9 @@ INSTALL_TARGET=	install-strip
 CONFIGURE_ARGS+=--enable-compile-warnings=no
 
 python_OLD_CMD=	/usr/bin/env python
+python_CMD=	${PYTHON_CMD}
+
+pre-configure:
+	cd ${WRKSRC} && ${SETENV} NOCONFIGURE=yes ${SH} ./autogen.sh
 
 .include <bsd.port.mk>

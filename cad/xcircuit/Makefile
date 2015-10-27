@@ -16,7 +16,8 @@ LICENSE=	GPLv2
 OPTIONS_DEFINE=	EXAMPLES
 
 USE_XORG=	xpm xscrnsaver xt
-USES=	tk ghostscript:run gmake tar:tgz
+USES=	tk gmake tar:tgz
+USE_GHOSTSCRIPT_RUN=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-tcl=${TCL_LIBDIR} \
 		--with-tk=${TK_LIBDIR}

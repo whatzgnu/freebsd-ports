@@ -9,8 +9,6 @@ MASTER_SITES=	SF
 MAINTAINER=	pi@FreeBSD.org
 COMMENT=	Persistent DB connection pooling/proxying/load balancing system
 
-LICENSE=	LGPL20
-
 LIB_DEPENDS=	librudiments.so:${PORTSDIR}/devel/rudiments
 
 WANT_GNOME=	yes
@@ -21,7 +19,6 @@ CONFIGURE_ARGS=		${SQLRELAY_CONFIGURE_ARGS} \
 			--disable-tcl \
 			--disable-java \
 			--disable-msql \
-			--disable-nodejs \
 			--disable-perl \
 			--disable-php \
 			--disable-python \
@@ -46,24 +43,19 @@ TOSTRIP=	bin/sqlr-start \
 		bin/sqlr-pwdenc \
 		bin/sqlr-status \
 		bin/sqlrsh \
-		lib/libsqlrodbc-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libsqlrutil-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libsqlrclient-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libsqlrclientwrapper-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libpqsqlrelay-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libmysql3sqlrelay-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libmysql40sqlrelay-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libmysql41sqlrelay-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libmysql50sqlrelay-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libmysql51sqlrelay-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		lib/libsqlrserver-${SQLRELAY_PORTVERSION}.so.1.0.0 \
-		libexec/sqlrelay/sqlrauth_database.so \
+		lib/libsqlrutil-0.59.so.1.0.0 \
+		lib/libsqlrclient-0.59.so.1.0.0 \
+		lib/libsqlrclientwrapper-0.59.so.1.0.0 \
+		lib/libpqsqlrelay-0.59.so.1.0.0 \
+		lib/libmysql3sqlrelay-0.59.so.1.0.0 \
+		lib/libmysql40sqlrelay-0.59.so.1.0.0 \
+		lib/libmysql41sqlrelay-0.59.so.1.0.0 \
+		lib/libmysql50sqlrelay-0.59.so.1.0.0 \
+		lib/libmysql51sqlrelay-0.59.so.1.0.0 \
+		lib/libsqlrserver-0.59.so.1.0.0 \
+		libexec/sqlrelay/sqlrauth_default.so \
 		libexec/sqlrelay/sqlrauth_sqlrelay.so \
-		libexec/sqlrelay/sqlrauth_userlist.so \
 		libexec/sqlrelay/sqlrconnection_router.so \
-		libexec/sqlrelay/sqlrfilter_patterns.so \
-		libexec/sqlrelay/sqlrfilter_regex.so \
-		libexec/sqlrelay/sqlrfilter_string.so \
 		libexec/sqlrelay/sqlrlogger_custom_nw.so \
 		libexec/sqlrelay/sqlrlogger_custom_sc.so \
 		libexec/sqlrelay/sqlrlogger_debug.so \
@@ -74,9 +66,7 @@ TOSTRIP=	bin/sqlr-start \
 		libexec/sqlrelay/sqlrpwdenc_md5.so \
 		libexec/sqlrelay/sqlrpwdenc_rot.so \
 		libexec/sqlrelay/sqlrquery_sqlrcmdcstat.so \
-		libexec/sqlrelay/sqlrquery_sqlrcmdgstat.so \
-		libexec/sqlrelay/sqlrresultsettranslation_reformatdatetime.so \
-		libexec/sqlrelay/sqlrtranslation_normalize.so
+		libexec/sqlrelay/sqlrquery_sqlrcmdgstat.so
 
 .include "${.CURDIR}/Makefile.common"
 
@@ -92,7 +82,6 @@ LIB_DEPENDS+=		libgdbm.so:${PORTSDIR}/databases/gdbm \
 			libsqlite3.so:${PORTSDIR}/databases/sqlite3
 CONFIGURE_ARGS+=	--with-gdbm-prefix="${LOCALBASE}" \
 			--with-sqlite-prefix="${LOCALBASE}"
-TOSTRIP+=		libexec/sqlrelay/sqlrconnection_sqlite.so
 .else
 CONFIGURE_ARGS+=	--without-gdbm-prefix \
 			--disable-sqlite
@@ -109,7 +98,6 @@ CONFIGURE_ARGS+=	--disable-mysql
 .if ${PORT_OPTIONS:MFIREBIRD}
 USE_FIREBIRD=	yes
 CONFIGURE_ARGS+=	--with-firebird-prefix="${LOCALBASE}"
-TOSTRIP+=		libexec/sqlrelay/sqlrconnection_firebird.so
 .else
 CONFIGURE_ARGS+=	--disable-firebird
 .endif
@@ -117,7 +105,6 @@ CONFIGURE_ARGS+=	--disable-firebird
 .if ${PORT_OPTIONS:MPGSQL}
 USES+=			pgsql
 CONFIGURE_ARGS+=	--with-postgresql-prefix="${LOCALBASE}"
-TOSTRIP+=		libexec/sqlrelay/sqlrconnection_postgresql.so
 .else
 CONFIGURE_ARGS+=	--disable-postgresql
 .endif
@@ -125,15 +112,13 @@ CONFIGURE_ARGS+=	--disable-postgresql
 .if ${PORT_OPTIONS:MODBC}
 LIB_DEPENDS+=		libodbc.so:${PORTSDIR}/databases/unixODBC
 CONFIGURE_ARGS+=	--with-odbc-prefix="${LOCALBASE}"
-TOSTRIP+=		libexec/sqlrelay/sqlrconnection_odbc.so
 .else
 CONFIGURE_ARGS+=	--disable-odbc
 .endif
 
 .if ${PORT_OPTIONS:MFREETDS}
-LIB_DEPENDS+=		libtdsodbc.so:${PORTSDIR}/databases/freetds
+LIB_DEPENDS+=		libtds.so:${PORTSDIR}/databases/freetds
 CONFIGURE_ARGS+=	--with-freetds-prefix="${LOCALBASE}"
-TOSTRIP+=		libexec/sqlrelay/sqlrconnection_freetds.so
 .else
 CONFIGURE_ARGS+=	--disable-freetds
 .endif
@@ -151,7 +136,7 @@ post-configure:
 
 post-stage:
 .for f in ${TOSTRIP}
-	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/${f}
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${f}
 .endfor
 
 .include <bsd.port.mk>

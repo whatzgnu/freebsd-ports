@@ -1,3 +1,5 @@
+$FreeBSD$
+
 --- doc/Makefile	Sat Aug 10 17:45:46 2002
 +++ doc/Makefile	Sat Aug 10 17:48:23 2002
 @@ -0,0 +1,12 @@

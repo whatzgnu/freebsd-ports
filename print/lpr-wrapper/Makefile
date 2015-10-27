@@ -16,8 +16,9 @@ RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash \
 		mpage:${PORTSDIR}/print/mpage \
 		pstops:${PORTSDIR}/print/psutils
 
-USES=		ghostscript:run shebangfix
+USES=		shebangfix
 SHEBANG_FILES=	lpr-wrapper.in lpr-wrapper-cups.in lpr-wrapper-features
+USE_GHOSTSCRIPT_RUN=	yes
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--prefix=${PREFIX}
 

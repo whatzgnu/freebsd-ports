@@ -3,7 +3,7 @@
 
 PORTNAME=	tornado
 PORTVERSION=	1.4
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	games
 MASTER_SITES=	https://kiza.eu/media/software/tornado/
 
@@ -11,7 +11,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Ccurses-based game of weather destruction
 
 LICENSE=	GPLv2 # (or later)
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 USES=		gettext gmake ncurses
 
@@ -36,23 +35,26 @@ post-patch:
 		's|/usr/local|PREFIX|' ${WRKSRC}/doc/man/${i}/tornado.6.${i}.in
 .endfor
 
+post-build:
+	@${LN} -sf tornado.scores ${WRKSRC}/tornado.scores.init
+
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/tornado \
-		${STAGEDIR}${PREFIX}/bin
-	${INSTALL_MAN} ${WRKSRC}/doc/man/tornado.6 \
-		${STAGEDIR}${MAN6PREFIX}/man/man6
+	(cd ${WRKSRC} && ${INSTALL_PROGRAM} tornado \
+		${STAGEDIR}${PREFIX}/bin)
+	(cd ${WRKSRC}/doc/man && ${INSTALL_MAN} tornado.6 \
+		${STAGEDIR}${MAN6PREFIX}/man/man6)
 .for i in de fr it nl no ru
 	@${MKDIR} ${STAGEDIR}${MAN6PREFIX}/man/${i}/man6
-	${INSTALL_MAN} ${WRKSRC}/doc/man/${i}/tornado.6 \
-		${STAGEDIR}${MAN6PREFIX}/man/${i}/man6
+	(cd ${WRKSRC}/doc/man/${i} && ${INSTALL_MAN} tornado.6 \
+		${STAGEDIR}${MAN6PREFIX}/man/${i}/man6)
 .endfor
 .for i in de es fr it nl no pt ru
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/locale/${i}/LC_MESSAGES
-	${INSTALL_DATA} ${WRKSRC}/po/${i}.mo \
-		${STAGEDIR}${PREFIX}/share/locale/${i}/LC_MESSAGES/tornado.mo
+	(cd ${WRKSRC}/po && ${INSTALL_DATA} ${i}.mo \
+		${STAGEDIR}${PREFIX}/share/locale/${i}/LC_MESSAGES/tornado.mo)
 .endfor
-	@${MKDIR} ${STAGEDIR}/var/games
-	${INSTALL_DATA} ${WRKSRC}/tornado.scores \
-		${STAGEDIR}/var/games/tornado.scores.sample
+	@${MKDIR} ${STAGEDIR}${DATADIR}
+	(cd ${WRKSRC} && ${INSTALL_DATA} tornado.scores.init \
+		${STAGEDIR}${DATADIR})
 
 .include <bsd.port.mk>

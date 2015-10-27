@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- rate.c.orig
 +++ rate.c
 @@ -74,6 +74,7 @@

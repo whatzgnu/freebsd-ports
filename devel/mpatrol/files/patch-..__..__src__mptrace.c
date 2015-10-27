@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- ../../src/mptrace.c
 +++ ../../src/mptrace.c
 @@ -268,27 +268,27 @@

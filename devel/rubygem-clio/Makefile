@@ -11,8 +11,6 @@ COMMENT=	Make easier commandline parsing and console output
 
 LICENSE=	GPLv3
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

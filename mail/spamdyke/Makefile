@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	spamdyke
-PORTVERSION=	5.0.1
+PORTVERSION=	5.0.0
+PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	http://www.spamdyke.org/releases/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	Qmail filter for monitoring and intercepting SMTP connections
 
 LICENSE=	GPLv2

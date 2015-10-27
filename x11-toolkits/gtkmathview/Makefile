@@ -3,15 +3,12 @@
 
 PORTNAME=	gtkmathview
 PORTVERSION=	0.8.0
-PORTREVISION=	9
+PORTREVISION=	8
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	http://helm.cs.unibo.it/mml-widget/sources/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GTK Widget to Render MathML Documents
-
-LICENSE=	LGPL3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	xsltproc:${PORTSDIR}/textproc/libxslt
 LIB_DEPENDS=	libpopt.so:${PORTSDIR}/devel/popt \
@@ -21,7 +18,6 @@ LIB_DEPENDS=	libpopt.so:${PORTSDIR}/devel/popt \
 GNU_CONFIGURE=	yes
 USES=		gmake libtool pathfix pkgconfig
 USE_GNOME=	gtk20 libxml2 pangox-compat
-INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include

@@ -6,7 +6,8 @@ PORTVERSION=	2.30
 PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	http://miller.emu.id.au/pmiller/software/cook/ \
-		LOCAL/jasone
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=jasone
 
 MAINTAINER=	jasone@FreeBSD.org
 COMMENT=	Like make(1), but more powerful and clean

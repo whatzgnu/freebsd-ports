@@ -5,8 +5,9 @@ PORTNAME=	blindelephant
 PORTVERSION=	1.0
 PORTREVISION=	20100819
 CATEGORIES=	security www
-MASTER_SITES=	LOCAL/niels \
+MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://people.freebsd.org/~niels/distfiles/
+MASTER_SITE_SUBDIR=	niels
 DISTNAME=	${PORTNAME}-${PORTREVISION}
 
 MAINTAINER=	ports@FreeBSD.org

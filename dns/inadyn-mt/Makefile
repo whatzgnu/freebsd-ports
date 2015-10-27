@@ -12,7 +12,7 @@ COMMENT=	Simple dynamic dns client
 
 LICENSE=	GPLv3
 
-USES=		autoreconf
+USE_AUTOTOOLS=	autoconf automake:env
 USE_RC_SUBR=	inadyn-mt
 GNU_CONFIGURE=	yes
 

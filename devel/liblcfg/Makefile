@@ -3,7 +3,7 @@
 
 PORTNAME=	liblcfg
 PORTVERSION=	0.2.2
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://liblcfg.carnivore.it/files/
 

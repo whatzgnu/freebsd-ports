@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	zconfig
-PORTVERSION=	3.0.4
+PORTVERSION=	2.9.3
+PORTREVISION=	1
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -13,10 +14,8 @@ MAINTAINER=	zope@FreeBSD.org
 COMMENT=	General use python configuration library
 
 LICENSE=	ZPL21
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-NO_ARCH=	yes
-USES=		python
-USE_PYTHON=	autoplist distutils
+USES=		python:2
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

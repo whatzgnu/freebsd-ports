@@ -70,6 +70,9 @@
 %%PYTHON_SITELIBDIR%%/yahoo/search/webservices.py
 %%PYTHON_SITELIBDIR%%/yahoo/search/webservices.pyc
 %%PYTHON_SITELIBDIR%%/yahoo/search/webservices.pyo
+@dirrm %%PYTHON_SITELIBDIR%%/yahoo/search/dom
+@dirrm %%PYTHON_SITELIBDIR%%/yahoo/search
+@dirrm %%PYTHON_SITELIBDIR%%/yahoo
 %%PORTDOCS%%%%DOCSDIR%%/yahoo.search.webservices.html
 %%PORTDOCS%%%%DOCSDIR%%/index.html
 %%PORTDOCS%%%%DOCSDIR%%/yahoo.html
@@ -97,5 +100,7 @@
 %%PORTDOCS%%%%DOCSDIR%%/yahoo.search.version.html
 %%PORTDOCS%%%%DOCSDIR%%/yahoo.search.video.html
 %%PORTDOCS%%%%DOCSDIR%%/yahoo.search.web.html
+%%PORTDOCS%%@dirrm %%DOCSDIR%%
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/profile.py
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/websearch.py
+%%PORTEXAMPLES%%@dirrm %%EXAMPLESDIR%%

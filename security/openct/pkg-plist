@@ -29,3 +29,4 @@ man/man1/openct-tool.1.gz
 sbin/ifdhandler
 sbin/ifdproxy
 sbin/openct-control
+@dirrm include/openct

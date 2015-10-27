@@ -3,7 +3,6 @@
 
 PORTNAME=	lynx
 PORTVERSION=	2.8.8.2
-PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	www ipv6
 MASTER_SITES=	http://lynx.isc.org/current/ \
@@ -17,8 +16,7 @@ LICENSE=	GPLv2
 
 CONFLICTS=	lynx-2.8.[8-9]d*
 
-USES=		cpe shebangfix tar:bzip2
-SHEBANG_FILES=	samples/mailto-form.pl
+USES=		cpe tar:bzip2
 USE_OPENSSL=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}2-8-8
 GNU_CONFIGURE=	yes

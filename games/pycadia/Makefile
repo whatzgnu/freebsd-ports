@@ -5,7 +5,7 @@ PORTNAME=	pycadia
 PORTVERSION=	0.5.1
 PORTREVISION=	6
 CATEGORIES=	games python
-MASTER_SITES=	GENTOO \
+MASTER_SITES=	GENTOO/distfiles \
 		SF/nemysisfreebsdp/games/
 DIST_SUBDIR=	python
 

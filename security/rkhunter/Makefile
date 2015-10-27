@@ -3,7 +3,7 @@
 
 PORTNAME=	rkhunter
 PORTVERSION=	1.4.2
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	SF
 
@@ -18,9 +18,7 @@ OPTIONS_DEFAULT=LSOF
 RUN_DEPENDS+=	p5-Digest-SHA1>=0:${PORTSDIR}/security/p5-Digest-SHA1 \
 		${LOCALBASE}/bin/wget:${PORTSDIR}/ftp/wget
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	files/check_modules.pl files/filehashsha.pl \
-		files/stat.pl
+USES=		perl5
 NO_BUILD=	yes
 SUB_FILES=	415.${PORTNAME}
 

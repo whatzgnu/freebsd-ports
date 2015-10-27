@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	linphone
-PORTVERSION=	3.8.5
+PORTVERSION=	3.8.1
 PORTEPOCH=	1
 CATEGORIES=	net
 MASTER_SITES=	SAVANNAH/linphone/3.8.x/sources
@@ -12,7 +12,8 @@ COMMENT=	SIP client supporting voice/video calls and text messaging
 LIB_DEPENDS=	libbellesip.so:${PORTSDIR}/net/belle-sip \
 		libmediastreamer_base.so:${PORTSDIR}/net/mediastreamer \
 		libortp.so:${PORTSDIR}/net/ortp \
-		libmbedtls.so.9:${PORTSDIR}/security/polarssl13 \
+		libpolarssl.so.8:${PORTSDIR}/security/polarssl13 \
+		libsoup-2.4.so:${PORTSDIR}/devel/libsoup \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3
 
 CONFLICTS_INSTALL=	linphone-base-[0-9]*
@@ -27,8 +28,7 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
-USES=		gettext-tools gmake iconv libtool pathfix pkgconfig \
-		readline:port
+USES=		gettext-tools gmake libtool pathfix pkgconfig readline:port
 USE_GNOME=	gtk20 intltool libxml2
 USE_LDCONFIG=	yes
 

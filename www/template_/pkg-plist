@@ -7,3 +7,5 @@
 %%DATADIR%%/tpl_plugin/prefilter.parseMySyntax.php
 %%DATADIR%%/Template_.class.php
 %%DATADIR%%/Template_.compiler.php
+@dirrm %%DATADIR%%/tpl_plugin
+@dirrm %%DATADIR%%

@@ -1,4 +1,6 @@
-# $FreeBSD$
+# Created by: Michael Johnson <ahze@FreeBSD.org>
+# $FreeBSD: head/deskutils/nautilus-actions/Makefile 335773 2013-12-06 16:32:34Z kwm $
+#   $MCom: ports/branches/GNOME_3_12/deskutils/nautilus-actions/Makefile 19794 2014-08-08 18:28:36Z gusi $
 
 PORTNAME=	nautilus-actions
 PORTVERSION=	3.2.4
@@ -14,7 +16,7 @@ LIB_DEPENDS=	libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid \
 		libunique-3.0.so:${PORTSDIR}/x11-toolkits/libunique3
 
 USES=		gettext gmake libtool pkgconfig tar:xz
-USE_GNOME=	gtk30 intltool nautilus3
+USE_GNOME=	gtk30 nautilus3
 INSTALLS_ICONS=	yes
 INSTALLS_OMF=	yes
 GNU_CONFIGURE=	yes

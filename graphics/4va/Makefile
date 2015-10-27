@@ -5,13 +5,14 @@ PORTNAME=	4va
 PORTVERSION=	1.21
 PORTREVISION=	2
 CATEGORIES=	graphics
-MASTER_SITES=	SUNSITE/apps/graphics/hacks/X
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	apps/graphics/hacks/X
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Four-Dimensional graphics tumbler for X11
 
 USE_XORG=	x11
-USES=		tar:tgz
 
 MAKE_ARGS=	CC="${CC}" CFLAGS="${CFLAGS} -I${LOCALBASE}/include" \
 		CLIBS="-lm -lX11 -L${LOCALBASE}/lib"

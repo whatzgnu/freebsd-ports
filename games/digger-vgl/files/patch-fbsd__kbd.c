@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- fbsd_kbd.c.orig
 +++ fbsd_kbd.c
 @@ -1,6 +1,8 @@

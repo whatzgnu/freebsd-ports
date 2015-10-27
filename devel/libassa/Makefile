@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	libassa
-DISTVERSION=	3.5.0
+DISTVERSION=	3.4.2-2
+PORTREVISION=	1
 CATEGORIES=	devel
-MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${DISTVERSION:C/\.[0-9]*$//}
+MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${DISTVERSION:C/-.*$//}
 
 MAINTAINER=	rodrigo@FreeBSD.org
 COMMENT=	C++ networking library and application framework

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lru.c.orig	Sun Aug 22 13:14:28 1999
 +++ lru.c	Sun Aug 22 17:15:12 2004
 @@ -253,8 +253,9 @@

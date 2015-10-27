@@ -11,7 +11,6 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Library for handling binary OpenStreetMap data
 
 LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING.osmpbf
 
 LIB_DEPENDS=	libprotobuf.so:${PORTSDIR}/devel/protobuf
 

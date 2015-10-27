@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	sass
-PORTVERSION=	3.4.16
+PORTVERSION=	3.4.13
 CATEGORIES=	textproc ruby
 MASTER_SITES=	RG
 
@@ -11,7 +11,6 @@ COMMENT=	Sass is an extension of CSS3
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

@@ -1,10 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	libsodium
-PORTVERSION=	1.0.3
+PORTVERSION=	1.0.2
 CATEGORIES=	security
-MASTER_SITES=	http://download.libsodium.org/libsodium/releases/ \
-		https://github.com/jedisct1/libsodium/releases/download/1.0.3/
+MASTER_SITES=	http://download.dnscrypt.org/libsodium/releases/
 
 MAINTAINER=	vsevolod@FreeBSD.org
 COMMENT=	Library to build higher-level cryptographic tools

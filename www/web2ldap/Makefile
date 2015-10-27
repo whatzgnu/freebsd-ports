@@ -3,7 +3,6 @@
 
 PORTNAME=	web2ldap
 PORTVERSION=	1.2.19
-PORTREVISION=	2
 CATEGORIES=	www
 MASTER_SITES=	http://www.web2ldap.de/download/ \
 		http://www.sfr-fresh.com/unix/www/ \
@@ -12,16 +11,13 @@ MASTER_SITES=	http://www.web2ldap.de/download/ \
 MAINTAINER=	bsam@FreeBSD.org
 COMMENT=	Python-based WWW gateway to LDAP servers
 
-LICENSE=	GPLv2
-
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}ldap>=2.4.0:${PORTSDIR}/net/py-ldap \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}ldap2>=2.4.0:${PORTSDIR}/net/py-ldap2 \
 		${PYTHON_SITELIBDIR}/pyweblib/__init__.py:${PORTSDIR}/www/pyweblib \
-		${PYTHON_PKGNAMEPREFIX}ipaddr>0:${PORTSDIR}/devel/py-ipaddr \
+		${PYTHON_SITELIBDIR}/ipaddr.py:${PORTSDIR}/devel/py-ipaddr \
 		${LOCALBASE}/etc/mime.types:${PORTSDIR}/misc/mime-support
 
 OPTIONS_DEFINE=	DOCS
-USES=		cpe python:2 shebangfix
-SHEBANG_FILES=	sbin/*.py fcgi/*.py
+USES=		python
 SUB_FILES=	pkg-message
 
 PORTDOCS=	*
@@ -29,14 +25,12 @@ PORTDATA=	*
 PLIST_DIRS=	%%DATADIR%%/var/log %%DATADIR%%/var/run
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|/etc|${LOCALBASE}/etc|g' \
-			  -e 's|nobody|web2ldap|g' \
+	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
 		${WRKSRC}/etc/web2ldap/web2ldapcnf/standalone.py
 	@${FIND} ${WRKSRC} -name '*.orig' -delete -o -name '*.bak' -delete
 
 do-build:
-	${PYTHON_CMD} -m compileall ${WRKSRC}
-	${PYTHON_CMD} -O -m compileall ${WRKSRC}
+	@(cd ${WRKSRC} && ${PYTHON_CMD} ./sbin/compile.py)
 
 do-install:
 	@${ECHO_MSG} "==> Installing program files..."

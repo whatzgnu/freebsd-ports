@@ -1,3 +1,4 @@
+$FreeBSD$
 --- gui.cpp	Tue Jun 29 17:16:38 2004
 +++ gui.cpp.port	Sat Jul  9 21:25:43 2005
 @@ -121,7 +121,7 @@

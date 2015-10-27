@@ -3,7 +3,7 @@
 
 PORTNAME=	miro
 PORTVERSION=	6.0
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	multimedia
 MASTER_SITES=	ftp://ftp.osuosl.org/pub/pculture.org/miro/src/ \
 		http://ftp.osuosl.org/pub/pculture.org/miro/src/
@@ -35,9 +35,7 @@ INSTALL_WRKSRC=	${WRKSRC}/linux
 
 USE_GNOME=	gconf2 gtk20
 USE_GSTREAMER=	python gconf
-USES=		gettext gmake pkgconfig desktop-file-utils python shared-mime-info shebangfix
-SHEBANG_FILES=	resources/testdata/7digital-replies/generate.py \
-		resources/testdata/echonest-replies/generate.py
+USES=		gettext gmake pkgconfig desktop-file-utils python shared-mime-info
 USE_PYTHON=	distutils
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes

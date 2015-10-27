@@ -6,7 +6,8 @@ PORTVERSION=	0.8.13
 PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://www.mr511.de/software/ \
-		SUNSITE/libs
+		${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	libs
 
 MAINTAINER=	rodrigo@FreeBSD.org
 COMMENT=	Public ELF file access library similar to libelf(3) in Solaris

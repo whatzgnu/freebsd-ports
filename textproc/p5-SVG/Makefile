@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	SVG
-PORTVERSION=	2.64
+PORTVERSION=	2.63
 CATEGORIES=	textproc graphics perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -15,10 +15,8 @@ LICENSE_COMB=	dual
 
 OPTIONS_DEFINE=	EXAMPLES
 
-USES=		dos2unix perl5 shebangfix
-SHEBANG_FILES=	examples/*.pl examples/*.cgi examples/*.psgi
+USES=		perl5 dos2unix
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 PORTEXAMPLES=	*
 

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/phpsh.php.orig
 +++ src/phpsh.php
 @@ -10,7 +10,7 @@

@@ -3,7 +3,6 @@
 
 PORTNAME=	quackle
 PORTVERSION=	0.98
-DISTVERSIONPREFIX=	v
 CATEGORIES=	games
 
 MAINTAINER=	pawel@FreeBSD.org
@@ -12,6 +11,7 @@ COMMENT=	Scrabble-like word game utilizing Qt4
 LICENSE=	GPLv3
 
 USE_GITHUB=	yes
+GH_TAGNAME=	v${PORTVERSION}
 
 USES=		gmake qmake
 USE_QT4=	gui moc_build

@@ -9,8 +9,6 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Fast, Enjoyable HTML Parser for Ruby
 
-LICENSE=	MIT
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

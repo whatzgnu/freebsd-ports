@@ -1,5 +1,4 @@
 bin/ss2tk
-bin/ssdiff
 bin/xls2csv
 bin/xlscat
 bin/xlsgrep

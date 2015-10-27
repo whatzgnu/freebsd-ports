@@ -11,8 +11,8 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Elegant personal publishing system with Smarty
 
 USE_PHP=	mysql pcre session
-NO_BUILD=	yes
-WANT_PHP_WEB=	yes
+NO_BUILD=	YES
+WANT_PHP_WEB=	YES
 
 WRKSRC=		${WRKDIR}/${PORTNAME:tl}
 WWWDOCROOT?=	www

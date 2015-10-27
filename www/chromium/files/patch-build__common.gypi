@@ -1,6 +1,6 @@
---- build/common.gypi.orig	2015-07-15 16:29:56.000000000 -0400
-+++ build/common.gypi	2015-07-22 18:47:32.413623000 -0400
-@@ -97,7 +97,7 @@
+--- build/common.gypi.orig	2015-04-18 22:35:23.000000000 +0200
++++ build/common.gypi	2015-04-18 22:42:51.000000000 +0200
+@@ -94,7 +94,7 @@
  
            'conditions': [
              # ChromeOS and Windows use Aura and Ash.
@@ -9,29 +9,7 @@
                'use_ash%': 1,
                'use_aura%': 1,
              }],
-@@ -676,7 +676,7 @@
-       # Whether the entire browser uses toolkit-views on Mac instead of Cocoa.
-       'mac_views_browser%': 0,
- 
--      # By default, use ICU data file (icudtl.dat).
-+      # By default, use ICU data file (icudtl.dat)
-       'icu_use_data_file_flag%': 1,
- 
-       # Turn on JNI generation optimizations by default.
-@@ -697,6 +697,12 @@
-           'os_bsd%': 0,
-         }],
- 
-+        ['OS=="freebsd" or OS=="openbsd"', {
-+            'icu_use_data_file_flag%': 0,
-+        }, {
-+            'icu_use_data_file_flag%': 1,
-+        }],
-+
-         # NSS usage.
-         ['(OS=="linux" or OS=="freebsd" or OS=="openbsd" or OS=="solaris")', {
-           'use_nss_certs%': 1,
-@@ -735,7 +741,7 @@
+@@ -694,7 +694,7 @@
          }],
  
          # DBus usage.
@@ -40,7 +18,7 @@
            'use_dbus%': 1,
          }, {
            'use_dbus%': 0,
-@@ -986,7 +992,7 @@
+@@ -944,7 +944,7 @@
          }, {
            'use_openmax_dl_fft%': 0,
          }],
@@ -49,7 +27,16 @@
              'enable_mdns%' : 1,
          }],
  
-@@ -1248,6 +1254,10 @@
+@@ -968,7 +968,7 @@
+         # except when building Android WebView.
+         # TODO(jshin): Handle 'use_system_icu' on Linux (Chromium).
+         # Set the data reduction proxy origin for Android Webview.
+-        ['android_webview_build==0', {
++        ['android_webview_build==0 and OS!="freebsd" and OS!="openbsd"', {
+           'icu_use_data_file_flag%' : 1,
+         }, {
+           'icu_use_data_file_flag%' : 0,
+@@ -1216,6 +1216,10 @@
      # able to turn it off for various reasons.
      'linux_disable_pie%': 0,
  
@@ -60,7 +47,7 @@
      # The release channel that this build targets. This is used to restrict
      # channel-specific build options, like which installer packages to create.
      # The default is 'all', which does no channel-specific filtering.
-@@ -4631,6 +4641,13 @@
+@@ -4479,6 +4483,13 @@
          'ldflags': [
            '-Wl,--no-keep-memory',
          ],

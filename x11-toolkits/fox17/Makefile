@@ -33,7 +33,7 @@ PORTDOCS=	*
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MJPEG}
-USES+=		jpeg
+LIB_DEPENDS+=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 .else
 CONFIGURE_ARGS+=--disable-jpeg
 .endif

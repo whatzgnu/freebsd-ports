@@ -2,7 +2,6 @@
 
 PORTNAME=	Selenium-Remote-Driver
 PORTVERSION=	0.2300
-PORTREVISION=	1
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:GEMPESAW
@@ -27,8 +26,7 @@ BUILD_DEPENDS=	p5-Archive-Extract>=0.74:${PORTSDIR}/archivers/p5-Archive-Extract
 		p5-namespace-clean>=0.25:${PORTSDIR}/devel/p5-namespace-clean
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	driver-example.pl
+USES=		perl5
 USE_PERL5=	configure
 NO_ARCH=	yes
 

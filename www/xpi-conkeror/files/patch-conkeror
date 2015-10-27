@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- conkeror.orig
 +++ conkeror
 @@ -0,0 +1,12 @@

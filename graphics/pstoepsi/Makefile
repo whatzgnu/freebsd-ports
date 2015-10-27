@@ -15,7 +15,7 @@ COMMENT=	Wiliam Chia-Wei Cheng's yet another PS to EPSI converter
 
 RUN_DEPENDS=	pbmtoepsi:${PORTSDIR}/graphics/netpbm
 
-USES=		ghostscript:run
+USE_GHOSTSCRIPT_RUN=	yes
 NO_WRKSUBDIR=	yes
 
 pre-patch:

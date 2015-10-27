@@ -1,8 +1,9 @@
 # Created by: Dave McKay <dave@mu.org>
 # $FreeBSD$
+#   $MCom: ports/trunk/security/seahorse/Makefile 19992 2014-10-18 19:48:08Z gusi $
 
 PORTNAME=	seahorse
-PORTVERSION=	3.16.0
+PORTVERSION=	3.14.1
 CATEGORIES=	security gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -19,8 +20,6 @@ LIB_DEPENDS=	libgpgme.so:${PORTSDIR}/security/gpgme \
 		libsecret-1.so:${PORTSDIR}/security/libsecret \
 		libsoup-2.4.so:${PORTSDIR}/devel/libsoup
 RUN_DEPENDS=	gnupg>=2.1:${PORTSDIR}/security/gnupg
-
-PORTSCOUT=	limitw:1,even
 
 USE_XORG=	sm
 USE_LDCONFIG=	yes

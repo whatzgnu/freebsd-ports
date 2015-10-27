@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- tvcapture.c.orig
 +++ tvcapture.c
 @@ -34,11 +34,18 @@

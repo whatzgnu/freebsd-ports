@@ -13,7 +13,6 @@ COMMENT=	Save log files in a nice way
 
 USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 

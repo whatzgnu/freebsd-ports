@@ -5,7 +5,8 @@ PORTVERSION=	0.3.1
 PORTREVISION=	1
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://fkurz.net/ham/qrq/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Morse telegraphy trainer similar to the classic DOS version by DL4MM

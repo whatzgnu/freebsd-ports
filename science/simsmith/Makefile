@@ -5,7 +5,8 @@ PORTNAME=	simsmith
 PORTVERSION=	9.9
 CATEGORIES=	science hamradio
 MASTER_SITES=	http://ae6ty.com/Smith_Charts_files/ \
-		LOCAL/shurd
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	shurd
 DISTNAME=	SimSmith9p9
 EXTRACT_SUFX=	.jar
 EXTRACT_ONLY=

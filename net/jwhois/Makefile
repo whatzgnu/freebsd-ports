@@ -5,7 +5,8 @@ PORTNAME=	jwhois
 PORTVERSION=	4.0
 PORTREVISION=	3
 CATEGORIES=	net
-MASTER_SITES=	GNU
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	jwhois
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Improved WHOIS client capable of selecting server to query

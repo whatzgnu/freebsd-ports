@@ -1,15 +1,6 @@
 --- chrome/common/chrome_paths.cc.orig	2014-10-10 08:54:11 UTC
 +++ chrome/common/chrome_paths.cc
-@@ -198,7 +198,7 @@
-         return false;
-       break;
-     case chrome::DIR_DEFAULT_DOWNLOADS_SAFE:
--#if defined(OS_WIN) || defined(OS_LINUX)
-+#if defined(OS_WIN) || defined(OS_LINUX) || defined(OS_BSD)
-       if (!GetUserDownloadsDirectorySafe(&cur))
-         return false;
-       break;
-@@ -488,10 +488,12 @@
+@@ -461,10 +461,12 @@
        if (!base::PathExists(cur))  // We don't want to create this
          return false;
        break;
@@ -23,7 +14,7 @@
  #else
        cur = base::FilePath(FILE_PATH_LITERAL("/etc/chromium/policies"));
  #endif
-@@ -557,7 +559,7 @@
+@@ -542,7 +544,7 @@
  #endif
        break;
  
@@ -32,7 +23,7 @@
      case chrome::DIR_NATIVE_MESSAGING:
  #if defined(OS_MACOSX)
  #if defined(GOOGLE_CHROME_BUILD)
-@@ -571,6 +573,9 @@
+@@ -556,6 +558,9 @@
  #if defined(GOOGLE_CHROME_BUILD)
        cur = base::FilePath(FILE_PATH_LITERAL(
            "/etc/opt/chrome/native-messaging-hosts"));
@@ -42,7 +33,7 @@
  #else
        cur = base::FilePath(FILE_PATH_LITERAL(
            "/etc/chromium/native-messaging-hosts"));
-@@ -583,7 +588,7 @@
+@@ -568,7 +573,7 @@
          return false;
        cur = cur.Append(FILE_PATH_LITERAL("NativeMessagingHosts"));
        break;

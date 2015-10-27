@@ -5,10 +5,11 @@ PORTNAME=	tcpshow
 PORTVERSION=	1.74
 PORTREVISION=	1
 CATEGORIES=	net security
-MASTER_SITES=	LOCAL/obrien
+MASTER_SITES=	LOCAL
+MASTER_SITE_SUBDIR=	obrien
 DISTFILES=	tcpshow.c tcpshow.1
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	obrien@FreeBSD.org
 COMMENT=	Decode tcpdump(1) output
 
 NO_WRKSUBDIR=	yes

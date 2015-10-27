@@ -1,8 +1,9 @@
 --- tvdownloader.sh.orig	2010-10-16 16:27:16.000000000 +0200
 +++ tvdownloader.sh	2010-12-19 23:38:13.000000000 +0100
-@@ -1,20 +1,4 @@
+@@ -1,20 +1,5 @@
 -#!/bin/bash
 +#! /bin/sh
++# $FreeBSD$
  
  cd "__DATADIR__/tvdownloader/"
 -

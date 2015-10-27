@@ -1,8 +1,6 @@
 # Figure out what to install
 .if ${OPSYS} == FreeBSD
 
-ONLY_FOR_ARCHS?= amd64 i386
-
 .if ${ARCH} == amd64
 . if ${OSVERSION} >= 1000100
 PLATFORM=	freebsd100x86_64
@@ -24,7 +22,3 @@ IGNORE=		unsupported OS release, sorry
 .else
 IGNORE=		${OPSYS} is unsupported, sorry
 .endif
-
-P4VERSION?=	r${PORTVERSION:S/^20//:C/\.[0-9]+$//}
-DIST_SUBDIR?=	perforce/${PORTVERSION}/bin.${PLATFORM}
-DISTINFO_FILE?=	${MASTERDIR}/distinfo.${PLATFORM}

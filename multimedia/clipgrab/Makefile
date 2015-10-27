@@ -2,9 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	clipgrab
-PORTVERSION=	3.4.11
+PORTVERSION=	3.2.0.10
+PORTREVISION=	1
 CATEGORIES=	multimedia
-MASTER_SITES=	http://download.clipgrab.de/
+MASTER_SITES=	http://clipgrab.de/download/ \
+		http://vanbittern.org/
 
 MAINTAINER=	vg@FreeBSD.org
 COMMENT=	Program to download videos from YouTube and etc
@@ -19,13 +21,12 @@ PLIST_FILES=	bin/${PORTNAME} \
 		%%DATADIR%%/icon.png \
 		%%DATADIR%%/logo.png \
 		%%DATADIR%%/paypal-logo.png \
+		%%DATADIR%%/paypal.png \
 		%%DATADIR%%/splash.png
 
 DESKTOP_ENTRIES="Clipgrab" "Download and convert videos from YouTube and etc" \
 		"${DATADIR}/icon.png" "${PORTNAME}" \
 		"AudioVideo;" true
-
-QMAKE_SOURCE_PATH=	${WRKSRC}/${PORTNAME}.pro
 
 post-patch:
 	${REINPLACE_CMD} -e 's,img/,share/${PORTNAME}/,g' \

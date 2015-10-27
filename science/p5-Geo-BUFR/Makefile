@@ -3,7 +3,6 @@
 
 PORTNAME=	Geo-BUFR
 PORTVERSION=	1.31
-PORTREVISION=	1
 CATEGORIES=	science perl5 geography
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:PSANNES
@@ -13,13 +12,8 @@ MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Perl extension for handling of WMO BUFR files
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/LICENCE
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	*.pl
+USES=		perl5
 USE_PERL5=	configure
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Geo/BUFR/BUFR.so
 
 .include <bsd.port.mk>

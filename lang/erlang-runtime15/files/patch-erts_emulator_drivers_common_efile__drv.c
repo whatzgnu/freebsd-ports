@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- erts/emulator/drivers/common/efile_drv.c.orig
 +++ erts/emulator/drivers/common/efile_drv.c
 @@ -311,6 +311,18 @@

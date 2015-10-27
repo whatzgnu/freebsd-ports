@@ -5,7 +5,8 @@ PORTNAME=	mplayer-skins
 PORTVERSION=	1.1.3
 PORTREVISION=	2
 CATEGORIES=	multimedia
-MASTER_SITES=	MPLAYERHQ/skins
+MASTER_SITES=	${MASTER_SITE_MPLAYERHQ}
+MASTER_SITE_SUBDIR=	skins
 DISTFILES=	# filled in later after options
 DIST_SUBDIR=	mplayer-skins
 

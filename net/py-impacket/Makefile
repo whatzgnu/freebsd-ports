@@ -19,7 +19,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}asn1>=0:${PORTSDIR}/devel/py-asn1 \
 		${PYTHON_PKGNAMEPREFIX}pycrypto>=0:${PORTSDIR}/security/py-pycrypto
 
 USES=		dos2unix python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	*
 

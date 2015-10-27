@@ -16,7 +16,7 @@ DESCR=		${.CURDIR}/pkg-descr
 PLIST=		${.CURDIR}/pkg-plist
 
 USES=		python
-USE_GNOME=	intltool pygtk2 vte
+USE_GNOME=	vte pygtk2
 CONFIGURE_ARGS=	--enable-python \
 		--disable-Bsymbolic \
 		--disable-freetypetest

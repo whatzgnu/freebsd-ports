@@ -10,7 +10,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Powerful web content management system
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 USE_PHP=	xsl mysql iconv gd
 USE_MYSQL=	yes
 SUB_FILES=	pkg-message
@@ -18,6 +17,13 @@ SUB_FILES=	pkg-message
 do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
 	${CP} -R ${WRKSRC}/ ${STAGEDIR}${WWWDIR}
-	${TOUCH} ${STAGEDIR}${WWWDIR}/system/config/localconfig.php.sample
+
+create-plist:
+	@${FIND} -s ${WRKSRC}/${file} -not -type d \
+		| ${SED} -e 's,^${WRKSRC},%%WWWDIR%%,' > ${PLIST}
+	@${ECHO_CMD} '@exec touch %D/%%WWWDIR%%/system/config/localconfig.php;chown ${WWWOWN} %D/%%WWWDIR%%/system/config/localconfig.php' >> ${PLIST}
+	@${ECHO_CMD} '@unexec if [ ! -s %D/%%WWWDIR%%/system/config/localconfig.php ];then rm -f %D/%%WWWDIR%%/system/config/localconfig.php;fi' >> ${PLIST}
+	@${FIND} -ds ${WRKSRC}/${file} -type d \
+	| ${SED} -e 's,^${WRKSRC},@dirrm %%WWWDIR%%,' >> ${PLIST}
 
 .include <bsd.port.mk>

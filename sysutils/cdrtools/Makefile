@@ -22,7 +22,8 @@ PORTNAME=	cdrtools
 PORTVERSION=	3.00
 PORTREVISION=	2
 CATEGORIES=	sysutils audio
-MASTER_SITES=	SF/${PORTNAME}
+MASTER_SITES=	SF
+MASTER_SITE_SUBDIR=${PORTNAME}
 
 MAINTAINER=	marius@FreeBSD.org
 COMMENT=	CD/DVD/BluRay and ISO-9660 image creation and extraction tools

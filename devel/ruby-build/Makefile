@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	ruby-build
-PORTVERSION=	20150803
+PORTVERSION=	20150506
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel ruby
 
@@ -24,7 +24,6 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	sstephenson
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 PLIST_FILES=	bin/ruby-build \
 		libexec/rbenv-install \

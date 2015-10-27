@@ -3,7 +3,6 @@
 
 PORTNAME=	imdbpy
 PORTVERSION=	5.0
-PORTREVISION=	1
 CATEGORIES=	www python
 MASTER_SITES=	SF/${PORTNAME}/IMDbPY/${PORTVERSION}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -22,8 +21,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}lxml>=0:${PORTSDIR}/devel/py-lxml \
 
 OPTIONS_DEFINE=	DOCS
 
-USES=		python:2 shebangfix
-SHEBANG_FILES=	docs/goodies/reduce.sh
+USES=		python:2
 USE_PYTHON=	distutils autoplist
 
 DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}

@@ -5,7 +5,8 @@ PORTNAME=	eawplus
 PORTVERSION=	12.1
 PORTREVISION=	3
 CATEGORIES=	audio
-MASTER_SITES=	LOCAL/nork
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	nork
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	E.A.W.+Izumo+Tamuki collection of Gravis Ultrasound MIDI patches

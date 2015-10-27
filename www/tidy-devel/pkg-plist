@@ -18,3 +18,5 @@ lib/libtidy.a
 %%PORTDOCS%%%%DOCSDIR%%/release-notes.html
 %%PORTDOCS%%%%DOCSDIR%%/tidy.css
 %%PORTDOCS%%%%DOCSDIR%%/tidy.gif
+@dirrm include/tidy
+%%PORTDOCS%%@dirrm %%DOCSDIR%%

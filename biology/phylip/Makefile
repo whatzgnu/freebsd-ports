@@ -1,4 +1,4 @@
-# Created by: David A. Bader <dbader@eece.unm.edu>
+# Created by: dbader@eece.unm.edu
 # $FreeBSD$
 
 PORTNAME=	phylip
@@ -11,7 +11,7 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Phylogeny Inference Package
 
 LICENSE=	BSD2CLAUSE
-LICENSE_FILE=	${WRKSRC}/src/COPYRIGHT
+LICENSE_FILES=	${WRKSRC}/COPYRIGHT
 
 BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash
 

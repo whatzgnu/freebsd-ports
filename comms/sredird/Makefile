@@ -5,7 +5,8 @@ PORTNAME=	sredird
 PORTVERSION=	2.2.2
 PORTREVISION=	1
 CATEGORIES=	comms
-MASTER_SITES=	SUNSITE/system/serial
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	system/serial
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	RFC 2217 compliant serial port redirector

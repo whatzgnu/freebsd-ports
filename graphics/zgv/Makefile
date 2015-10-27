@@ -12,12 +12,13 @@ COMMENT=	Graphics viewer for SVGAlib
 
 LICENSE=	GPLv2 # (or later)
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff
 
 OPTIONS_DEFINE=	SDL DOCS
 
-USES=		gmake jpeg makeinfo
+USES=		gmake makeinfo
 ALL_TARGET=	zgv info
 INFO=		zgvrc
 

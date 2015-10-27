@@ -9,11 +9,6 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Prawn Extension to Provides Table Support and Other Layout
 
-LICENSE=	GPLv2 RUBY
-LICENSE_COMB=	dual
-
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

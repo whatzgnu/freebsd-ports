@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	stabledist
-DISTVERSION=	0.7-0
+DISTVERSION=	0.6-6
+PORTREVISION=	4
 CATEGORIES=	math
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
@@ -11,8 +12,6 @@ COMMENT=	Stable Distribution Functions
 
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
-
-BROKEN=		requires R >=  3.1.0
 
 USES=	cran:auto-plist
 

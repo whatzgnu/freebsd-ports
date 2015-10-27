@@ -5,7 +5,8 @@ PORTNAME=	lbrate
 PORTVERSION=	1.1
 PORTREVISION=	2
 CATEGORIES=	archivers
-MASTER_SITES=	SUNSITE/utils/compress
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	utils/compress
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Extract/decompress CP/M LBR archives

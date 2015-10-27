@@ -6,7 +6,8 @@ PORTVERSION=	3.0.1
 PORTREVISION=	4
 CATEGORIES=	x11-fonts
 MASTER_SITES=	http://www.netlab.is.tsukuba.ac.jp/~yokota/archive/ \
-		LOCAL/pav
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	pav
 DISTNAME=	NeXFontSel-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org

@@ -3,16 +3,15 @@
 
 PORTNAME=	libmowgli2
 PORTVERSION=	2.0.0
-DISTVERSIONPREFIX=	libmowgli-
 PORTREVISION=	1
 CATEGORIES=	devel
+MASTER_SITES=	http://github.com/atheme/libmowgli-2/archive/
+DISTNAME=	libmowgli-${DISTVERSION}
 
 MAINTAINER=	tdb@FreeBSD.org
 COMMENT=	Development framework for C
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	atheme
-GH_PROJECT=	libmowgli-2
+WRKSRC=		${WRKDIR}/libmowgli-2-libmowgli-${DISTVERSION}
 
 GNU_CONFIGURE=	yes
 USES=		gmake pathfix

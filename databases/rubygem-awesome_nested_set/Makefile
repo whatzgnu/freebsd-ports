@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	awesome_nested_set
-PORTVERSION=	3.0.2
+PORTVERSION=	2.1.6
 CATEGORIES=	databases rubygems
 MASTER_SITES=	RG
 
@@ -11,9 +11,8 @@ COMMENT=	Nested set implementation for Active Record
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-activerecord4>=4.0.0:${PORTSDIR}/databases/rubygem-activerecord4
+RUN_DEPENDS=	rubygem-activerecord>=${PORTVERSION}:${PORTSDIR}/databases/rubygem-activerecord
 
-NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

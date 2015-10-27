@@ -5,7 +5,8 @@ PORTNAME=	ftpsesame
 PORTVERSION=	0.95
 CATEGORIES=	ftp
 MASTER_SITES=	http://www.sentia.org/downloads/ \
-		LOCAL/sem
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	sem
 
 MAINTAINER=	sem@FreeBSD.org
 COMMENT=	Helper for pf firewall to pass FTP protocol

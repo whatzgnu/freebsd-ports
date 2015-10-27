@@ -9,9 +9,6 @@ MASTER_SITES=	http://hyvatti.iki.fi/~jaakko/pic/
 MAINTAINER=	erik@bz.bzflag.bz
 COMMENT=	Serial port pic16c84 programmer
 
-LICENSE=	GPLv3 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 OPTIONS_DEFINE=	DOCS
 
 USES=		gmake
@@ -21,8 +18,9 @@ PLIST_FILES=	bin/picprog \
 
 PORTDOCS=	README anybrowser3.png jdm84ne3.png jdm84pcb6.png picprog.html
 
-ONLY_FOR_ARCHS=	i386 amd64
-ONLY_FOR_ARCHS_REASON=	uses x86 assembly
+.for a in ia64 powerpc sparc64
+BROKEN_${a}=		Does not compile on ia64, powerpc, or sparc64
+.endfor
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|^CXX=.*||; s|^CXXFLAGS=.*||; s|^LDFLAGS=.*||' \
@@ -35,5 +33,6 @@ do-install:
 .for f in README *.png picprog.html
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
+
 
 .include <bsd.port.mk>

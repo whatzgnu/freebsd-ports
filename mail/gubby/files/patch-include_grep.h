@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- include/grep.h.orig
 +++ include/grep.h
 @@ -45,7 +45,7 @@

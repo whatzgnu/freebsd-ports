@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libarena
-PORTVERSION=	0.3.7
+PORTVERSION=	0.3.6
 CATEGORIES=	devel
 MASTER_SITES=	http://www.25thandclement.com/~william/projects/releases/
 
@@ -28,6 +28,5 @@ post-patch:
 .endfor
 	@${REINPLACE_CMD} -e \
 		'/^PREFIX/s|:=|?=|' ${WRKSRC}/mk/Variables.mk
-	${CP} ${WRKSRC}/GNUmakefile ${WRKSRC}/Makefile
 
 .include <bsd.port.mk>

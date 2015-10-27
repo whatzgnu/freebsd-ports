@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gnustep-base
-PORTVERSION=	1.24.8
+PORTVERSION=	1.24.6
+PORTREVISION=	7
 CATEGORIES=	lang devel gnustep
 MASTER_SITES=	GNUSTEP/core
 

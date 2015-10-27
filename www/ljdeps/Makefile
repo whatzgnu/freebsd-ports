@@ -5,6 +5,8 @@ PORTNAME=	ljdeps
 PORTVERSION=	1.0
 PORTREVISION=	6
 CATEGORIES=	www perl5
+MASTER_SITES=	# Undefined
+DISTFILES=	# Undefined
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Meta-port to install all the perl modules used by LiveJournal
@@ -27,6 +29,10 @@ RUN_DEPENDS=	p5-Net-Telnet>=0:${PORTSDIR}/net/p5-Net-Telnet \
 		p5-SOAP-Lite>=0:${PORTSDIR}/net/p5-SOAP-Lite \
 		p5-Unicode-MapUTF8>=0:${PORTSDIR}/converters/p5-Unicode-MapUTF8
 
-USES=		metaport perl5
+EXTRACT_ONLY=	# Empty
+NO_BUILD=	yes
+USES=		perl5
+
+do-install:	# Empty
 
 .include <bsd.port.mk>

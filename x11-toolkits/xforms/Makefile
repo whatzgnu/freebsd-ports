@@ -6,7 +6,8 @@ DISTVERSION=	1.2.4
 PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	x11-toolkits graphics
-MASTER_SITES=	SAVANNAH
+MASTER_SITES=	${MASTER_SITE_SAVANNAH}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Graphical user interface toolkit for X Window System
@@ -14,9 +15,10 @@ COMMENT=	Graphical user interface toolkit for X Window System
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING.LIB
 
-LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libtiff.so:${PORTSDIR}/graphics/tiff
 
-USES=		jpeg libtool
+USES=		libtool
 USE_XORG=	xpm
 USE_GL=		gl
 USE_LDCONFIG=	yes

@@ -4,7 +4,8 @@
 PORTNAME=	libublio
 PORTVERSION=	20070103
 CATEGORIES=	devel
-MASTER_SITES=	LOCAL/mandree
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	mandree
 
 MAINTAINER=	mandree@FreeBSD.org
 COMMENT=	User space caching library

@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	zenphoto
-PORTVERSION=	1.4.9
-DISTVERSIONPREFIX=	${PORTNAME}-
+PORTVERSION=	1.4.6
 CATEGORIES=	www
+MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/archive/
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Simpler web photo gallery
@@ -12,17 +12,14 @@ COMMENT=	Simpler web photo gallery
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 
-NO_ARCH=	yes
 NO_BUILD=	yes
 USE_PHP=	gd gettext json mbstring mysql pcre session
-USES=		cpe
 WANT_PHP_WEB=	yes
+WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTNAME}-${PORTVERSION}
 
 PKGDEINSTALL=	${WRKDIR}/pkg-deinstall
 PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-deinstall pkg-message
-
-USE_GITHUB=	yes
 
 post-extract:
 	@${MKDIR} ${WRKSRC}/cache/

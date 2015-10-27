@@ -100,7 +100,6 @@
     SUBDIR += nasawash
     SUBDIR += ncid
     SUBDIR += nec2c
-    SUBDIR += nmealib
     SUBDIR += nokryptia
     SUBDIR += o2sms
     SUBDIR += obexapp

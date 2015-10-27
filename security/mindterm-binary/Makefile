@@ -5,7 +5,8 @@ PORTNAME=	mindterm-binary
 PORTVERSION=	1.2.1
 PORTREVISION=	1
 CATEGORIES=	security
-MASTER_SITES=	LOCAL/alex
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	alex
 DISTNAME=	mindtermbin-v121
 DISTFILES=	mindterm-ssh.html ${EXTRACT_ONLY}
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
@@ -16,7 +17,6 @@ COMMENT=	Full vt220 compatible Java SSH-1 client (not only for websites)
 USES=		zip
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
-NO_ARCH=	yes
 NO_CDROM=	Do not sell for profit
 
 OPTIONS_DEFINE=	DOCS

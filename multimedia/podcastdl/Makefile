@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	podcastdl
-PORTVERSION=	0.3.2
+PORTVERSION=	0.3.1
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://rodrigo.osorio.free.fr/freebsd/distfiles/ \
 		http://files.bebik.net/podcastdl/

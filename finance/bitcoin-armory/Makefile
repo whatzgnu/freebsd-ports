@@ -3,7 +3,6 @@
 
 PORTNAME=	BitcoinArmory
 PORTVERSION=	0.92.3
-PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	finance
 
@@ -24,8 +23,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}qt4-core>=${PYQT4_VERSION}:${PORTSDIR}/devel
 USE_GITHUB=	yes
 GH_ACCOUNT=	etotheipi
 
-USES=		gmake python shebangfix
-SHEBANG_FILES=	extras/extractKeysFromWallet.py
+USES=		gmake python
 USE_GCC=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -36,11 +34,9 @@ ONLY_FOR_ARCHS_REASON=	low-level code available only for i386 and amd64
 
 post-patch:
 	@${REINPLACE_CMD} 's/python-config/$${PYTHON_CONFIG}/' ${WRKSRC}/cppForSwig/Makefile
-
 post-stage:
 	@${SED} -i.bak -e 's|%%LOCALBASE%%|${LOCALBASE}|g' ${STAGEDIR}/${LOCALBASE}/bin/armory && \
 		${RM} -f ${STAGEDIR}/${LOCALBASE}/bin/armory.bak
-
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/armory/_CppBlockUtils.so
 

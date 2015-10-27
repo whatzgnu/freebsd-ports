@@ -6,8 +6,9 @@ PORTVERSION=	0.7.5
 PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.13thmonkey.org/udfclient/releases/ \
-		NETBSD \
-		LOCAL/miwi
+		${MASTER_SITE_NETBSD} \
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	miwi
 DISTFILES=	UDFclient.${PORTVERSION}.tgz
 
 MAINTAINER=	avg@icyb.net.ua

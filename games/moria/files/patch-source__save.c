@@ -1,3 +1,5 @@
+$FreeBSD$
+
 --- source/save.c.orig	Thu Aug  7 16:24:56 2003
 +++ source/save.c	Thu Aug  7 16:26:16 2003
 @@ -102,7 +102,7 @@

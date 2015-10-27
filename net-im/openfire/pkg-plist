@@ -352,6 +352,7 @@
 %%PLUGINS%%%%DATADIR%%/plugins/gojara.jar
 %%PLUGINS%%%%DATADIR%%/plugins/hazelcast.jar
 %%PLUGINS%%%%DATADIR%%/plugins/jingleNodes.jar
+%%PLUGINS%%%%DATADIR%%/plugins/jmxweb.jar
 %%PLUGINS%%%%DATADIR%%/plugins/justmarried.jar
 %%PLUGINS%%%%DATADIR%%/plugins/kraken.jar
 %%PLUGINS%%%%DATADIR%%/plugins/loadStats.jar

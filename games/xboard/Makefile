@@ -56,8 +56,7 @@ GTK2_CONFIGURE_WITH=	gtk
 
 .include <bsd.port.options.mk>
 
-USES+=		desktop-file-utils makeinfo perl5 pkgconfig shared-mime-info \
-		shebangfix
+USES+=		desktop-file-utils makeinfo perl5 pkgconfig shared-mime-info
 USE_XORG+=	xt xpm
 USE_GNOME+=	librsvg2
 .if ${PORT_OPTIONS:MXAW}
@@ -66,8 +65,6 @@ USE_XORG+=	xaw
 .if ${PORT_OPTIONS:MGTK2}
 USE_GNOME+=	gtk20
 .endif
-SHEBANG_FILES=	texi2man
-
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=MKDIR_P="${MKDIR}" PERLPATH=${PERL}
 CFLAGS+=	-I${LOCALBASE}/include

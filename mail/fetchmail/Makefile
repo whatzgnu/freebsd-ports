@@ -59,7 +59,7 @@ CONFIGURE_ARGS+=	--enable-POP2
 .endif
 
 .if ${PORT_OPTIONS:MX11}
-USES+=		python
+USES+=		python:run
 RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}tkinter>=0:${PORTSDIR}/x11-toolkits/py-tkinter
 PLIST_SUB+=	NOX11="@comment "
 .else

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	hotcrp
-PORTVERSION=	2.94
+PORTVERSION=	2.92
+PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://www.read.seas.harvard.edu/~kohler/hotcrp/
 

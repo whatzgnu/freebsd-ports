@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/icmp.c.orig
 +++ src/icmp.c
 @@ -197,7 +197,7 @@

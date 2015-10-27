@@ -3,7 +3,7 @@
 
 PORTNAME=	smokeping
 PORTVERSION=	2.6.11
-PORTREVISION=	4
+PORTREVISION=	1
 CATEGORIES=	net-mgmt www
 MASTER_SITES=	http://oss.oetiker.ch/smokeping/pub/ \
 		http://smokeping.cs.pu.edu.tw/pub/
@@ -109,5 +109,9 @@ post-patch:
 post-install:
 	${MKDIR} ${STAGEDIR}/${PREFIX}/smokeping/htdocs/img
 	${MKDIR} ${STAGEDIR}/${PREFIX}/var/smokeping
+
+.if !defined(BATCH)
+	${CAT} ${PKGMESSAGE}
+.endif
 
 .include <bsd.port.post.mk>

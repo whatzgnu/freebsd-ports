@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	cgal
-PORTVERSION=	4.6
+PORTVERSION=	4.4
 CATEGORIES=	math
-MASTER_SITES=	http://gforge.inria.fr/frs/download.php/34703/
+MASTER_SITES=	http://gforge.inria.fr/frs/download.php/33524/
 DISTNAME=	CGAL-${PORTVERSION}
 
 MAINTAINER=	wen@FreeBSD.org
@@ -31,12 +31,12 @@ GUI_DESC=		Build libCGAL_ImageIO and libCGAL_Qt4
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGUI}
-USE_QT4=	corelib qmake_build moc_build rcc_build uic_build gui opengl svg
+USE_QT4=	corelib qmake_build moc_build rcc_build uic_build gui opengl
 LIB_DEPENDS+=	libGLU.so:${PORTSDIR}/graphics/libGLU
 CMAKE_ARGS=	-DWITH_CGAL_Qt3=OFF
 PLIST_SUB+=	GUI=""
 .else
-USE_QT4=	corelib qmake_build moc_build rcc_build svg uic_build
+USE_QT4=	corelib qmake_build moc_build rcc_build uic_build
 CMAKE_ARGS=	-DWITH_CGAL_Qt4=OFF -DWITH_CGAL_ImageIO=OFF -DWITH_CGAL_Qt3=OFF
 PLIST_SUB+=	GUI="@comment "
 .endif

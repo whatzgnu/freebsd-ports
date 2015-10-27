@@ -1,12 +1,18 @@
+# Created by: Dmitry Klimov <lazyklimm@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	qtcurve
-PORTREVISION=	0
+PORTVERSION=	1.8.16
+CATEGORIES=	x11-themes
+MASTER_SITES=	http://craigd.wikispaces.com/file/view/
+PKGNAMEPREFIX=	gtk2-
+PKGNAMESUFFIX=	-theme
+DISTNAME=	QtCurve-Gtk2-${PORTVERSION}
 
-COMMENT=	QtCurve GTK+ 2.x engine and theme
+MAINTAINER=	makc@FreeBSD.org
+COMMENT=	QtCurve GTK2 Theme Engine
 
-QTCURVE_SLAVE=	gtk2
+USES=		cmake pkgconfig tar:bzip2
+USE_GNOME=	gtk20
 
-MASTERDIR=	${.CURDIR}/../qtcurve
-
-.include "${MASTERDIR}/Makefile"
+.include <bsd.port.mk>

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- rtpsend.c.orig	Tue Sep 10 13:24:10 2002
 +++ rtpsend.c	Sat Aug 16 08:58:12 2003
 @@ -353,9 +353,9 @@

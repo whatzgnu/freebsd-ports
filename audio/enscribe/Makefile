@@ -12,10 +12,11 @@ COMMENT=	Create digital audio watermark images from photographic images
 
 LIB_DEPENDS=	libsndfile.so:${PORTSDIR}/audio/libsndfile \
 		libgd.so:${PORTSDIR}/graphics/gd \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libfreetype.so:${PORTSDIR}/print/freetype2
 
-USES=		jpeg pkgconfig tar:tgz
+USES=		pkgconfig tar:tgz
 
 LICENSE=	GPLv2
 

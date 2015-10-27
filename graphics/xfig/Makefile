@@ -11,7 +11,8 @@ DISTNAME=	${PORTNAME}.${PORTVERSION}.full
 MAINTAINER=	mjl@luckie.org.nz
 COMMENT=	Drawing program for X11
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libXaw3d.so:${PORTSDIR}/x11-toolkits/Xaw3d
 RUN_DEPENDS=	fig2dev:${PORTSDIR}/print/transfig
 
@@ -19,7 +20,7 @@ CONFLICTS=	xfig-[12].* xfig-3.1* xfig-3.2.[1234]*
 
 WRKSRC=		${WRKDIR}/${PORTNAME}.${PORTVERSION}
 
-USES=		imake jpeg
+USES=		imake
 USE_XORG=	ice sm x11 xaw xext xi xmu xpm xt
 USE_CSTD=	gnu89
 CFLAGS+=	-Wno-return-type

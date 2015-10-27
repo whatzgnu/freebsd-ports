@@ -14,7 +14,8 @@ RUN_DEPENDS=	xcompmgr:${PORTSDIR}/x11-wm/xcompmgr
 
 GNU_CONFIGURE=	yes
 LIBS+=		-L${LOCALBASE}/lib -lX11
-USES=		autoreconf libtool pkgconfig
+USES=		libtool pkgconfig
+USE_AUTOTOOLS=	automake:env
 USE_GNOME=	gtkmm24
 USE_XORG=	x11
 
@@ -28,7 +29,9 @@ DESKTOP_ENTRIES="gcompmgr" \
 OPTIONS_DEFINE=	DOCS
 
 post-patch:
-	@${RM} -f ${WRKSRC}/INSTALL
+.for file in depcomp install-sh missing
+	@${LN} -sf ${AUTOMAKE_DIR}/${file} ${WRKSRC}
+.endfor
 	@${REINPLACE_CMD} -e 's|connect(SigC::slot|connect(sigc::mem_fun|g ; \
 		s|#include <sigc++\/compatibility\.h>||g' \
 			${WRKSRC}/src/*.cc

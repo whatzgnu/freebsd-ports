@@ -54,5 +54,8 @@ do-install:
 		${SED} 's,^${STAGEDIR}${PREFIX}/,,' | ${SORT} >> ${TMPPLIST}
 	@${FIND} ${STAGEDIR}${DATADIR} -not -type d | \
 		${SED} 's,^${STAGEDIR}${PREFIX}/,,' | ${SORT} >> ${TMPPLIST}
+	@${FIND} ${STAGEDIR}${DATADIR} -type d | \
+		${SED} 's,^${STAGEDIR}${PREFIX}/,@dirrm ,' | \
+			${SORT} -r >> ${TMPPLIST}
 
 .include <bsd.port.mk>

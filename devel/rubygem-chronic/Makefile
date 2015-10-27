@@ -6,11 +6,7 @@ CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
-COMMENT=	Natural language date/time parser written in pure Ruby
-
-LICENSE=	MIT
-
-NO_ARCH=	yes
+COMMENT=	Chronic is a natural language date/time parser written in pure Ruby
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

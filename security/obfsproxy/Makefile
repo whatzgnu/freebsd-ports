@@ -22,4 +22,7 @@ USES=		python twisted
 SUB_FILES=	pkg-message
 PYDISTUTILS_PKGNAME=obfsproxy
 
+post-install:
+	${CAT} ${PKGMESSAGE}
+
 .include <bsd.port.mk>

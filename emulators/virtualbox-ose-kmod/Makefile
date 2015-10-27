@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	virtualbox-ose
-DISTVERSION=	4.3.30
+DISTVERSION=	4.3.26
 CATEGORIES=	emulators
 MASTER_SITES=	http://download.virtualbox.org/virtualbox/${DISTVERSION}/ \
 		http://tmp.chruetertee.ch/ \
@@ -91,8 +91,10 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|\$$KBUILDDIR_BIN/kmk_sed|${LOCALBASE}/bin/kmk_sed|g' ${WRKSRC}/configure
 
 pre-build:
-	cd ${WRKSRC}/src/VBox/HostDrivers && \
-	    ${SH} -c '. ${WRKSRC}/env.sh && ${KMK_CONFIG} ${LOCALBASE}/bin/kmk ${KMK_FLAGS}'
+	@${REINPLACE_CMD} -e 's|/bin/bash|/bin/sh|' \
+		${WRKSRC}/env.sh
+	cd ${WRKSRC} && ${SH} env.sh && cd ${WRKSRC}/src/VBox/HostDrivers && \
+	    ${KMK_CONFIG} ${LOCALBASE}/bin/kmk ${KMK_FLAGS}
 
 do-install:
 	${MKDIR} ${STAGEDIR}${KMODDIR}

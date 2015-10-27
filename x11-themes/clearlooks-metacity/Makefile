@@ -7,7 +7,8 @@ PORTVERSION=	2.0
 PORTREVISION=	7
 CATEGORIES=	x11-themes
 MASTER_SITES=	http://www.stellingwerff.com/
-#MASTER_SITES=	SOURCEFORGE/clearlooks
+#MASTER_SITES=	${MASTER_SITE_SOURCEFORGE}
+#MASTER_SITE_SUBDIR=	clearlooks
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Clearlooks Metacity theme

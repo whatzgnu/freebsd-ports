@@ -34,4 +34,7 @@ do-extract:
 	${MKDIR} ${WRKDIR}
 	cd ${GNULIB_DIR}; ./gnulib-tool --create-testdir --dir="${WRKSRC}" ${PORTNAME}
 
+post-install:
+	@${CAT} ${PKGMESSAGE}
+
 .include <bsd.port.post.mk>

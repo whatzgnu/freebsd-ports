@@ -1,7 +1,7 @@
 # Created by: Alonso Cardenas Marquez <acm@FreeBSD.org>
 # $FreeBSD$
 
-PORTREVISION=	0
+PORTREVISION=	3
 PKGNAMESUFFIX=	-ui-console
 
 COMMENT=	UI for Mupen64plus

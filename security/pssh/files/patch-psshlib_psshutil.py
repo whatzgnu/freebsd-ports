@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- psshlib/psshutil.py.orig
 +++ psshlib/psshutil.py
 @@ -27,7 +27,10 @@

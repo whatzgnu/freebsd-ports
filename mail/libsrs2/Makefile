@@ -5,7 +5,8 @@ PORTNAME=		libsrs2
 PORTVERSION=		1.0.18
 PORTREVISION=		3
 CATEGORIES=		mail
-MASTER_SITES=		http://www.libsrs2.org/srs/
+MASTER_SITES=		http://www.libsrs2.org/%SUBDIR%/
+MASTER_SITE_SUBDIR=	srs
 
 MAINTAINER=		pi@FreeBSD.org
 COMMENT=		Sender Rewriting Scheme 2 C Implementation

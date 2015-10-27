@@ -4,7 +4,8 @@
 PORTNAME=	py2html
 PORTVERSION=	0.7
 CATEGORIES=	textproc www python
-MASTER_SITES=	LOCAL/perky
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	perky
 PKGNAMESUFFIX=	-${PYTHON_PKGNAMEPREFIX:S/-//}
 
 MAINTAINER=	ports@FreeBSD.org
@@ -14,6 +15,7 @@ USES=		python:2 shebangfix
 USE_PYTHON=	distutils autoplist
 
 python_OLD_CMD=	/usr/bin/env python
+python_CMD=	${PYTHON_CMD}
 SHEBANG_FILES=	py2html
 
 .include <bsd.port.mk>

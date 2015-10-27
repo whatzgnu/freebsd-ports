@@ -20,6 +20,7 @@ WRKSRC=		${WRKDIR}/${PORTNAME}
 USES=		python shebangfix tar:tgz
 SHEBANG_FILES=	samples/*.py
 python_OLD_CMD=	.*
+python_CMD=	${PYTHON_CMD}
 USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	README

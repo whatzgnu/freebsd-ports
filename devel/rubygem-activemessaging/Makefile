@@ -11,8 +11,6 @@ COMMENT=	Event-driven architecture for rails
 
 RUN_DEPENDS=	rubygem-activesupport>=2.3.11:${PORTSDIR}/devel/rubygem-activesupport
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

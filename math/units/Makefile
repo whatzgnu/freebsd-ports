@@ -4,7 +4,8 @@
 PORTNAME=	units
 PORTVERSION=	2.11
 CATEGORIES=	math
-MASTER_SITES=	GNU
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	jharris@widomaker.com
 COMMENT=	Unit conversion and calculation

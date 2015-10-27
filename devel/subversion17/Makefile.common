@@ -2,12 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	subversion
-PORTVERSION=	1.7.21
+PORTVERSION=	1.7.20
 PORTREVISION?=	0
 CATEGORIES+=	devel
-MASTER_SITES=	APACHE/subversion
+MASTER_SITES=	${MASTER_SITE_APACHE}
 DIST_SUBDIR=	subversion17
 PKGNAMESUFFIX=	17
+MASTER_SITE_SUBDIR=	subversion
 
 USE_KDE4=	# Used below if KWallet support is enabled
 GNU_CONFIGURE=	yes
@@ -38,7 +39,7 @@ OPTIONS_NAME=		devel_subversion17
 # ===============================================================
 OPTIONS_SUB=			yes
 
-#BDB_CONFIGURE_OFF=		--with-berkeley-db=no
+BDB_CONFIGURE_OFF=		--without-berkeley-db
 BDB_USE=			BDB=42+
 
 GNOME_KEYRING_CONFIGURE_OFF=	--without-gnome-keyring
@@ -91,11 +92,6 @@ CFLAGS+=	-fpic -DPIC
 
 .if ${PORT_OPTIONS:MFREEBSD_TEMPLATE} && defined(ORGANIZATION)
 CFLAGS+=	-DHAS_ORGANIZATION_NAME
-.endif
-
-# unbreak py-subversion
-.if !${PORT_OPTIONS:MBDB}
-CONFIGURE_ARGS+=	--with-berkeley-db=no
 .endif
 
 .include <bsd.port.pre.mk>

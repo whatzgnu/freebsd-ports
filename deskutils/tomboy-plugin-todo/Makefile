@@ -15,7 +15,6 @@ BUILD_DEPENDS=	tomboy:${PORTSDIR}/deskutils/tomboy
 RUN_DEPENDS=	tomboy:${PORTSDIR}/deskutils/tomboy
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ENV=	ac_cv_path_GMCS=${LOCALBASE}/bin/mcs
 USES=		gmake pkgconfig
 
 .include <bsd.port.mk>

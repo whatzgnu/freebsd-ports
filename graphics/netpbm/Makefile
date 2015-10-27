@@ -2,22 +2,24 @@
 # $FreeBSD$
 
 PORTNAME=	netpbm
-PORTVERSION=	10.35.96
-PORTREVISION=	0
+PORTVERSION=	10.35.94
+PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	SF/netpbm/super_stable/${PORTVERSION} \
-		LOCAL/dinoex/:man
+		${MASTER_SITE_LOCAL:S/$/:man/}
+MASTER_SITE_SUBDIR=	dinoex/:man
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Toolkit for conversion of images between different formats
 
 LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libjbig.so:${PORTSDIR}/graphics/jbigkit \
 		libjasper.so:${PORTSDIR}/graphics/jasper \
 		libxml2.so:${PORTSDIR}/textproc/libxml2
 
-USES=		gmake jpeg perl5 shebangfix tar:tgz
+USES=		tar:tgz gmake perl5 shebangfix
 CFLAGS+=	-DPNG_DEPSTRUCT= -Iutil
 MAKE_ENV=	LN="${LN}" RANLIB="${RANLIB}"
 MAKEFILE=	GNUmakefile

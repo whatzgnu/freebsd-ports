@@ -20,7 +20,6 @@ BUILD_DEPENDS:=	${RUN_DEPENDS}
 REINPLACE_ARGS=	-i ''
 USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 RADDBFILES=	dictionary \
 		dictionary.ascend \

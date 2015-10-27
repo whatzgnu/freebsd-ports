@@ -2,7 +2,7 @@
 
 PORTNAME=	mplayer2
 PORTVERSION=	${MPLAYER2_PORT_VERSION}
-PORTREVISION=	13
+PORTREVISION=	11
 CATEGORIES=	multimedia audio
 MASTER_SITES=	LOCAL/gblach/
 
@@ -23,7 +23,9 @@ USES=		cpe gmake iconv ncurses pkgconfig tar:xz
 HAS_CONFIGURE=	yes
 CONFIGURE_ENV=	TMPDIR="${WRKSRC}"
 CONFIGURE_ARGS=	--cc=${CC} \
-		--extra-libs='-lavresample ${PORTAUDIOLIB}' \
+		--extra-cflags='-I${LOCALBASE}/include/portaudio2' \
+		--extra-libs='-lavresample' \
+		--extra-ldflags='-L${LOCALBASE}/lib/portaudio2' \
 		--mandir=${PREFIX}/man \
 		--enable-libavresample \
 		--disable-alsa \
@@ -139,8 +141,7 @@ CONFIGURE_ARGS+=	--disable-pulse
 .endif
 
 .if ${PORT_OPTIONS:MPORTAUDIO}
-LIB_DEPENDS+=		libportaudio.so:${PORTSDIR}/audio/portaudio
-PORTAUDIOLIB=		-lportaudio
+LIB_DEPENDS+=		libportaudio.so.2:${PORTSDIR}/audio/portaudio2
 .else
 CONFIGURE_ARGS+=	--disable-portaudio
 .endif

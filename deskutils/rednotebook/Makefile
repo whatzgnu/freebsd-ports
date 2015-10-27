@@ -4,7 +4,8 @@
 PORTNAME=	rednotebook
 PORTVERSION=	1.9.0
 CATEGORIES=	deskutils python
-MASTER_SITES=	SF/rednotebook
+MASTER_SITES=	SF
+MASTER_SITE_SUBDIR=	rednotebook
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	cheunghonyu@gmail.com

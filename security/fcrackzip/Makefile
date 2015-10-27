@@ -8,10 +8,8 @@ CATEGORIES=	security archivers
 MASTER_SITES=	http://oldhome.schmorp.de/data/marc/ \
 		http://distfiles.macports.org/${PORTNAME}/
 
-MAINTAINER=	bofh@FreeBSD.org
+MAINTAINER=	stefan@FreeBSD.org
 COMMENT=	Portable, fast, and featureful ZIP password cracker
-
-LICENSE=	GPLv2
 
 GNU_CONFIGURE=	yes
 USES=		perl5

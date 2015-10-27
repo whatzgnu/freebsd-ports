@@ -13,12 +13,13 @@ COMMENT=	Simple Sprite engine written in C++
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-USES=		gmake jpeg zip
+USES=		gmake zip
 USE_GL=		gl
 USE_SDL=	image sdl
 MAKEFILE=	MakefileKyra

@@ -2,19 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	vifm
-PORTVERSION=	0.8
-DISTVERSIONPREFIX=	v
+PORTVERSION=	0.7.8
 CATEGORIES=	misc
+MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}
 
-MAINTAINER=	mp39590@gmail.com
+MAINTAINER=	kaspars@bankovskis.lv
 COMMENT=	Ncurses based file manager with vi like keybindings
 
 LICENSE=	GPLv2
 
-USES=		desktop-file-utils gmake ncurses tar:bzip2
+USES=		gmake ncurses tar:bzip2 desktop-file-utils
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--without-gtk
-
-USE_GITHUB=	yes
 
 .include <bsd.port.mk>

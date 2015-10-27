@@ -6,3 +6,4 @@ bin/ez-pine-gpg-incoming
 bin/ez-pine-gpg-helper-recipient
 bin/ez-pine-gpg-helper-sender
 %%PORTDOCS%%%%DOCSDIR%%/README
+%%PORTDOCS%%@dirrm %%DOCSDIR%%

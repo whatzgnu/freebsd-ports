@@ -5,7 +5,8 @@ PORTNAME=	bbjd
 PORTVERSION=	1.01
 PORTREVISION=	1
 CATEGORIES=	misc
-MASTER_SITES=	SUNSITE/games/strategy
+MASTER_SITES=	SUNSITE
+MASTER_SITE_SUBDIR=	games/strategy
 
 MAINTAINER=	demon@FreeBSD.org
 COMMENT=	Beat the blackjack dealer

@@ -50,4 +50,6 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
 
+	@${CAT} ${PKGMESSAGE}
+
 .include <bsd.port.mk>

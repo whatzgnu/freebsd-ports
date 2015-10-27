@@ -1,6 +1,6 @@
---- src/synaser.pas.orig	2015-03-04 15:17:21 UTC
-+++ src/synaser.pas
-@@ -302,7 +302,7 @@ type
+--- src/synaser.pas.orig	2014-06-30 22:04:41.000000000 -0700
++++ src/synaser.pas	2014-06-30 22:21:53.000000000 -0700
+@@ -302,7 +302,7 @@
      procedure DcbToTermios(const dcb: TDCB; var term: termios); virtual;
      procedure TermiosToDcb(const term: termios; var dcb: TDCB); virtual;
  {$ENDIF}
@@ -9,7 +9,7 @@
      function ReadLockfile: integer; virtual;
      function LockfileName: String; virtual;
      procedure CreateLockfile(PidNr: integer); virtual;
-@@ -591,7 +591,7 @@ type
+@@ -591,7 +591,7 @@
  
      {:Raise Synaser error with ErrNumber code. Usually used by internal routines.}
      procedure RaiseSynaError(ErrNumber: integer); virtual;
@@ -18,7 +18,7 @@
      function  cpomComportAccessible: boolean; virtual;{HGJ}
      procedure cpomReleaseComport; virtual; {HGJ}
  {$ENDIF}
-@@ -766,7 +766,7 @@ begin
+@@ -766,7 +766,7 @@
    end;
    if InstanceActive then
    begin
@@ -27,7 +27,7 @@
      if FLinuxLock then
        cpomReleaseComport;
      {$ENDIF}
-@@ -917,7 +917,7 @@ begin
+@@ -917,7 +917,7 @@
    FHandle := THandle(fpOpen(FDevice, O_RDWR or O_SYNC));
  {$ENDIF}
    SerialCheck(integer(FHandle));
@@ -36,7 +36,7 @@
    if FLastError <> sOK then
      if FLinuxLock then
        cpomReleaseComport;
-@@ -949,7 +949,7 @@ begin
+@@ -949,7 +949,7 @@
    begin
      SetSynaError(ErrNoDeviceAnswer);
      FileClose(integer(FHandle));         {HGJ}
@@ -45,7 +45,7 @@
      if FLinuxLock then
        cpomReleaseComport;                {HGJ}
      {$ENDIF}                             {HGJ}
-@@ -1899,7 +1899,7 @@ begin
+@@ -1899,7 +1899,7 @@
    {$IFNDEF FPC}
    SerialCheck(ioctl(integer(FHandle), TCFLSH, TCIOFLUSH));
    {$ELSE}
@@ -54,7 +54,7 @@
    //SerialCheck(fpioctl(integer(FHandle), TCFLSH, TCIOFLUSH));
    {$ENDIF}
    FBuffer := '';
-@@ -2136,7 +2136,7 @@ end;
+@@ -2136,7 +2136,7 @@
    Ownership Manager.
  }
  

@@ -2,16 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	poco
-DISTVERSION=	1.6.0
+# New version 1.4.6p4 is available; please use DISTVERSION upon updating
+PORTVERSION=	1.4.3
 CATEGORIES=	devel net
-MASTER_SITES=	http://pocoproject.org/releases/${PORTNAME}-${PORTVERSION}/
+MASTER_SITES=	SF/${PORTNAME}/sources/${PORTNAME}-${PORTVERSION}
+DISTNAME=	${PORTNAME}-${PORTVERSION}p1
 
 MAINTAINER=	wes@FreeBSD.org
 COMMENT=	C++ libraries with a network/internet focus
 
 LICENSE=	BSL
-
-BROKEN_FreeBSD_9_i386=	does not build
 
 CONFLICTS=	poco-ssl-[0-9]*
 

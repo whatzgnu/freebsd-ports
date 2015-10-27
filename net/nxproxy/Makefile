@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	nxproxy
-DISTVERSION=	3.5.0.32
+DISTVERSION=	3.5.0.31
 CATEGORIES=	net
 MASTER_SITES=	http://code.x2go.org/releases/source/nx-libs/
 DISTNAME=	nx-libs-${PORTVERSION}-lite
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	bapt@FreeBSD.org
 COMMENT=	Helper program for x2go
 
 LICENSE=	GPLv2
@@ -16,8 +16,7 @@ LIB_DEPENDS=	libXcomp.so:${PORTSDIR}/x11/nxcomp
 WRKSRC=	${WRKDIR}/nx-libs-${PORTVERSION}/${PORTNAME}
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-USES=		autoreconf
-GNU_CONFIGURE=	yes
+USE_AUTOTOOLS=	autoconf
 PLIST_FILES=	bin/nxproxy \
 		man/man1/nxproxy.1.gz
 

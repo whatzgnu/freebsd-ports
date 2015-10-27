@@ -5,7 +5,8 @@ PORTNAME=	xworld
 PORTVERSION=	2.0
 PORTREVISION=	2
 CATEGORIES=	astro geography
-MASTER_SITES=	LOCAL/naddy
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	naddy
 
 MAINTAINER=	naddy@FreeBSD.org
 COMMENT=	Earth as seen from the direction of the sun

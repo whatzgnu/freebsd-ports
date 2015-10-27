@@ -5,7 +5,8 @@ PORTNAME=	zookeeper
 PORTVERSION=	3.4.6
 PORTREVISION=	3
 CATEGORIES=	devel java
-MASTER_SITES=	APACHE/zookeeper/zookeeper-${PORTVERSION}
+MASTER_SITES=	${MASTER_SITE_APACHE}
+MASTER_SITE_SUBDIR=	zookeeper/zookeeper-${PORTVERSION}
 
 MAINTAINER=	skreuzer@FreeBSD.org
 COMMENT=	Service for maintaining distributed configuration, naming and locks

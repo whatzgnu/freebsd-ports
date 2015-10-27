@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- /dev/null
 +++ flickrnet.pc.in
 @@ -0,0 +1,8 @@

@@ -10,7 +10,7 @@ MASTER_SITES=	http://cr.yp.to/software/ \
 		ftp://ftp.net.ohio-state.edu/pub/networking/mail/qmail/ \
 		ftp://mirror.pipex.net/pub/unix/mail/qmail/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	RFC 822 mail message parsing library and rewriting utilities
 
 USES=		qmail:vars

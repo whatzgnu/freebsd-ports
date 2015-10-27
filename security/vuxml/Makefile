@@ -83,7 +83,7 @@ validate: tidy
 		${ECHO_CMD} Consider using ${VUXML_FILE}.unexpanded for final commit; \
 		return 1; \
 	fi
-	${PYTHON_CMD} ${FILESDIR}/extra-validation.py ${VUXML_FILE}
+	${PYTHON_CMD} ${FILESDIR}/extra-validation.py
 
 tidy: vuln.xml
 	@if [ ! -e ${LOCALBASE}/share/xml/dtd/vuxml/catalog.xml ]; \
@@ -96,16 +96,4 @@ tidy: vuln.xml
 newentry:
 	@${SH} ${FILESDIR}/newentry.sh "${VUXML_FILE}"
 
-.include <bsd.port.pre.mk>
-
-.if defined(VID) && !empty(VID)
-html: work/${VID}.html
-work/${VID}.html: ${FILESDIR}/html.xsl ${FILESDIR}/common.css ${VUXML_FILE}
-	${MKDIR} work
-	xsltproc --stringparam vid "${VID}" \
-	    --output ${.TARGET} \
-	    ${FILESDIR}/html.xsl ${VUXML_FILE}
-	${INSTALL_DATA} ${FILESDIR}/common.css work
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

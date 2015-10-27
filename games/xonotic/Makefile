@@ -3,7 +3,6 @@
 
 PORTNAME=	xonotic
 PORTVERSION=	0.8.0
-PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	http://nl.dl.xonotic.org/ \
 		http://mirror.bitmissile.com/xonotic/releases/
@@ -12,14 +11,13 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Fast-paced, chaotic, and intense multiplayer first person shooter
 
 LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
-		libpng.so:${PORTSDIR}/graphics/png
+		libpng.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 #MANUAL_PACKAGE_BUILD=	huge (930M)
 
-USES=		jpeg shebangfix zip:infozip
-SHEBANG_FILES=	server/rcon.pl server/rcon2irc/rcon2irc.pl
-WRKSRC=		${WRKDIR}/Xonotic
-BUILD_WRKSRC=	${WRKSRC}/source/darkplaces
+USES=		zip:infozip
+WRKSRC=		${WRKDIR}/Xonotic/source/darkplaces
 MAKEFILE=	BSDmakefile
 MAKE_ARGS=	DP_FS_BASEDIR="${DATADIR}" \
 		DP_PRELOAD_DEPENDENCIES=yes \
@@ -71,27 +69,27 @@ PLIST_FILES+=	bin/${PORTNAME}-dedicated
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,/usr/X11R6,${LOCALBASE},' \
-		${BUILD_WRKSRC}/${MAKEFILE} ${BUILD_WRKSRC}/makefile.inc
+		${WRKSRC}/${MAKEFILE} ${WRKSRC}/makefile.inc
 	@${REINPLACE_CMD} -e '/LDFLAGS_BSDSV/s,$$,-L${LOCALBASE}/lib,' \
-		${BUILD_WRKSRC}/makefile.inc
-	@${ECHO_CMD} >> ${BUILD_WRKSRC}/prvm_offsets.h # silence 'no newline' warnings
+		${WRKSRC}/makefile.inc
+	@${ECHO_CMD} >> ${WRKSRC}/prvm_offsets.h # silence 'no newline' warnings
 
 do-install:
 .if ${PORT_OPTIONS:MCLIENT}
-	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/darkplaces-sdl ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
-	${INSTALL_DATA} ${WRKSRC}/misc/logos/icons_ico/xonotic.ico ${STAGEDIR}${PREFIX}/share/pixmaps/
+	${INSTALL_PROGRAM} ${WRKSRC}/darkplaces-sdl ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	${INSTALL_DATA} ${WRKDIR}/Xonotic/misc/logos/icons_ico/xonotic.ico ${STAGEDIR}${PREFIX}/share/pixmaps/
 .endif
 .if ${PORT_OPTIONS:MDEDICATED}
-	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/darkplaces-dedicated ${STAGEDIR}${PREFIX}/bin/${PORTNAME}-dedicated
-	cd ${WRKSRC} && ${COPYTREE_SHARE} "server" ${STAGEDIR}${DATADIR}/
+	${INSTALL_PROGRAM} ${WRKSRC}/darkplaces-dedicated ${STAGEDIR}${PREFIX}/bin/${PORTNAME}-dedicated
+	cd ${WRKDIR}/Xonotic && ${COPYTREE_SHARE} "server" ${STAGEDIR}${DATADIR}/
 # Fixup lost +x permissions on scripts after COPYTREE_SHARE
 	${FIND} ${STAGEDIR}${DATADIR}/server -type f -name *.sh -o -name rcon*.pl | \
 		${XARGS} ${CHMOD} +x
 .endif
 	${MKDIR} ${STAGEDIR}${DATADIR}/data
-	${INSTALL_DATA} ${WRKSRC}/data/*.pk3 ${STAGEDIR}${DATADIR}/data/
+	${INSTALL_DATA} ${WRKDIR}/Xonotic/data/*.pk3 ${STAGEDIR}${DATADIR}/data/
 .if ${PORT_OPTIONS:MENCRYPTION}
-	${INSTALL_DATA} ${WRKSRC}/key_0.d0pk ${STAGEDIR}${DATADIR}/
+	${INSTALL_DATA} ${WRKDIR}/Xonotic/key_0.d0pk ${STAGEDIR}${DATADIR}/
 .endif
 
 .include <bsd.port.mk>

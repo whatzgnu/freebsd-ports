@@ -5,7 +5,7 @@ PORTVERSION=	0.4.0
 PORTREVISION=	1
 CATEGORIES=	devel python
 MASTER_SITES=	http://launchpadlibrarian.net/74803944/ \
-		LOCAL/sbz
+		LOCAL/${MAINTAINER:C/([^@]*)@.*/\1/}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	sbz@FreeBSD.org

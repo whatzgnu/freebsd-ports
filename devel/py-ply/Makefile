@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ply
-PORTVERSION=	3.6
-PORTREVISION=	1
+PORTVERSION=	3.4
 CATEGORIES=	devel python
 MASTER_SITES=	http://www.dabeaz.com/ply/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,15 +13,11 @@ COMMENT=	Python Lex-Yacc
 LICENSE=	BSD3CLAUSE
 
 USES=		python
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 
-PORTDOCS=	ply.html internal.html
+PORTDOCS=	ply.html internal.html README
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
-
-post-extract:
-	@${FIND} ${WRKSRC}/example -name "*.pyc" -type f -delete
-	@${FIND} ${WRKSRC}/example -name "__pycache__" -type d -delete
 
 pre-configure:
 	@${REINPLACE_CMD} -e 's|from setuptools import setup|from distutils.core import setup|' \
@@ -30,8 +25,9 @@ pre-configure:
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/doc/ply.html ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/doc/internal.html ${STAGEDIR}${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/doc/ply.html ${STAGEDIR}${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/doc/internal.html ${STAGEDIR}${DOCSDIR}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${CP} -R ${WRKSRC}/example/ ${STAGEDIR}${EXAMPLESDIR}
 

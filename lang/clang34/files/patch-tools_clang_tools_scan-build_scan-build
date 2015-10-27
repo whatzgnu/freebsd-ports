@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- tools/clang/tools/scan-build/scan-build.orig
 +++ tools/clang/tools/scan-build/scan-build
 @@ -419,7 +419,7 @@

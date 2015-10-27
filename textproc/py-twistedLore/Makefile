@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	twistedLore
-PORTVERSION=	15.2.1
+PORTVERSION=	15.1.0
 CATEGORIES=	textproc python
 MASTER_SITES=	http://twistedmatrix.com/Releases/Lore/${PORTVERSION:R}/ \
 		LOCAL/sunpoet
@@ -14,8 +14,7 @@ COMMENT=	Documentation generator with HTML and LaTeX support
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 USES=		python:2 tar:bzip2 twisted
 
 .include <bsd.port.mk>

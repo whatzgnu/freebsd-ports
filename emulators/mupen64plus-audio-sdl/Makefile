@@ -1,12 +1,12 @@
 # Created by: Jose Alonso Cardenas Marquez <acm@FreeBSD.org>
 # $FreeBSD$
 
-PORTREVISION=	0
+PORTREVISION=	3
 PKGNAMESUFFIX=	-audio-sdl
 
 COMMENT=	Mupen64plus audio sdl plugin
 
-USE_SDL=	sdl2
+USE_SDL=	sdl
 
 MASTERDIR=	${.CURDIR}/../mupen64plus-core
 

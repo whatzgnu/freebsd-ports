@@ -5,7 +5,8 @@ PORTNAME=	libmaitretarot
 PORTVERSION=	0.1.98
 PORTREVISION=	7
 CATEGORIES=	games
-MASTER_SITES=	SAVANNAH/maitretarot
+MASTER_SITES=	${MASTER_SITE_SAVANNAH}
+MASTER_SITE_SUBDIR=	maitretarot
 
 MAINTAINER=	thierry@FreeBSD.org
 COMMENT=	Core library of MaitreTarot, a Tarot card game

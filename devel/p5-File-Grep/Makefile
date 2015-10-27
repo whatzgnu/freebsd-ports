@@ -13,6 +13,5 @@ COMMENT=	Perl Module that Find matches to a pattern in files or function
 
 USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 .include <bsd.port.mk>

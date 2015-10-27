@@ -3,9 +3,10 @@
 
 
 PORTNAME=	mysql-connector-java
-PORTVERSION=	5.1.36
+PORTVERSION=	5.1.35
 CATEGORIES=	databases java
-MASTER_SITES=	MYSQL/Connector-J
+MASTER_SITES=	${MASTER_SITE_MYSQL}
+MASTER_SITE_SUBDIR=	Connector-J
 
 MAINTAINER=	matthew@FreeBSD.org
 COMMENT=	MySQL Connector/J: JDBC interface for MySQL
@@ -19,7 +20,7 @@ CPE_VENDOR=	oracle
 CPE_PRODUCT=	mysql_connector_j
 
 USE_JAVA=	yes
-JAVA_VERSION=	1.6 1.7
+JAVA_VERSION=	1.6+
 BUILDDIR=	${WRKDIR}/${DISTNAME}
 APIDOCSDIR=	${STAGEDIR}${DOCSDIR}/javadoc
 SRCDIR=		${WRKDIR}/${DISTNAME}/src

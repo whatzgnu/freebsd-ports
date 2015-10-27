@@ -2,24 +2,23 @@
 # $FreeBSD$
 
 PORTNAME=	czmq
-PORTVERSION=	3.0.2
+PORTVERSION=	2.2.0
+PORTREVISION=	1
 CATEGORIES=	net
 MASTER_SITES=	http://download.zeromq.org/
 
 MAINTAINER=	koobs@FreeBSD.org
 COMMENT=	High-level C Binding for ZeroMQ
 
-LICENSE=	MPL
-LICENSE_FILE=	${WRKSRC}/LICENSE
+LICENSE=	LGPL3
 
 LIB_DEPENDS=	libzmq.so:${PORTSDIR}/net/libzmq4
 
-USES=		autoreconf libtool pkgconfig
+USES=		libtool pathfix
 USE_LDCONFIG=	yes
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-libzmq=${LOCALBASE} \
-		--with-pkgconfigdir=${LOCALBASE}/libdata/pkgconfig
+CONFIGURE_ARGS=	--with-libzmq=${LOCALBASE}
 
 MAKE_ENV=	V=1
 INSTALL_TARGET=	install-strip

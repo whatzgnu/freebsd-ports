@@ -3,7 +3,7 @@
 
 PORTNAME=	squirrelmail-tmda-plugin
 PORTVERSION=	1.0.2
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	http://www.squirrelmail.org/plugins/
 DISTNAME=	tmdatools 1.0.2 1.4.2 \(stable\)
@@ -17,7 +17,6 @@ RUN_DEPENDS=	tmda-filter:${PORTSDIR}/mail/tmda \
 
 USES=		perl5
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 SQUIRREL_PLUGIN_NAME=	tmdatools
 WRKSRC=		${WRKDIR}/tmdatools
@@ -31,8 +30,6 @@ PLIST_SUB+=	SQUIRRELDIR=squirrelmail
 .endif
 TMDATOOLDIR?=	${SQUIRRELDIR}/plugins/${SQUIRREL_PLUGIN_NAME}
 PLIST_SUB+=	TMDATOOLDIR=plugins/${SQUIRREL_PLUGIN_NAME}
-SUB_LIST=	TMDATOOLDIR=${TMDATOOLDIR}
-SUB_FILES=	pkg-message
 
 pre-everything::
 	@${ECHO} "The plugin expects SquirrelMail install in ${SQUIRRELDIR}"
@@ -46,7 +43,14 @@ post-patch:
 	@${RM} ${WRKSRC}/tmdatools_config.php.sample.bak
 
 do-install:
-	${MKDIR} ${STAGEDIR}${TMDATOOLDIR}
-	${CP} -Rp ${WRKSRC}/ ${STAGEDIR}${TMDATOOLDIR}
+	@${MKDIR} ${STAGEDIR}${TMDATOOLDIR}
+	@${CP} -Rp ${WRKSRC}/ ${STAGEDIR}${TMDATOOLDIR}
+	@${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}${TMDATOOLDIR}
+	@${RM} -f ${WRKSRC}/tmdatools_config.php.sample.bak
+
+post-install:
+	@${ECHO} ""
+	@${ECHO} "Refer to ${TMDATOOLDIR}/INSTALL and README for final installation/configuration instructions."
+	@${ECHO} ""
 
 .include <bsd.port.mk>

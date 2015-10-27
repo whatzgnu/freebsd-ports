@@ -19,9 +19,10 @@ BUILD_DEPENDS=	${LOCALBASE}/lib/libtrio.a:${PORTSDIR}/devel/trio
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-USES=		autoreconf pathfix gettext gmake pkgconfig tar:tgz
+USES=		pathfix gettext gmake pkgconfig tar:tgz
 USE_GCC=	yes
 USE_GNOME=	libgnomeprintui libgnomeui
+USE_AUTOTOOLS=	automake:env
 GNU_CONFIGURE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -31,7 +32,10 @@ OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e '/^SUBDIRS/s| desktop-links docs | |' \
-		 ${WRKSRC}/Makefile.am
+		 ${WRKSRC}/Makefile.in
+
+pre-configure:
+	@${LN} -sf ${AUTOMAKE_DIR}/depcomp ${WRKSRC}
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/desktop-links/Terraform.desktop \

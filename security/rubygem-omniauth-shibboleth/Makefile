@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	omniauth-shibboleth
-PORTVERSION=	1.2.1
+PORTVERSION=	1.2.0
 CATEGORIES=	security rubygems
 MASTER_SITES=	RG
 
@@ -12,7 +12,6 @@ LICENSE=	MIT
 
 RUN_DEPENDS=	rubygem-omniauth>=1.0:${PORTSDIR}/security/rubygem-omniauth
 
-NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

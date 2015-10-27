@@ -1,9 +1,8 @@
 # $FreeBSD$
-# pkg-help formatted with fmt 59 63
 
 PORTNAME=	bind
 PORTVERSION=	${ISCVERSION:S/-P/P/}
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	dns net ipv6
 MASTER_SITES=	ISC/bind9/${ISCVERSION}
 PKGNAMESUFFIX=	99
@@ -15,7 +14,7 @@ COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 LICENSE=	ISCL
 
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.9.7-P2
+ISCVERSION=	9.9.7
 
 MAKE_JOBS_UNSAFE=	yes
 
@@ -43,7 +42,7 @@ SUB_FILES=	pkg-message
 
 OPTIONS_DEFAULT=	IPV6 SSL THREADS SIGCHASE IDN GSSAPI_NONE RRL
 OPTIONS_DEFINE=		SSL IDN REPLACE_BASE LARGE_FILE FIXED_RRSET SIGCHASE \
-			IPV6 THREADS FILTER_AAAA GOST PYTHON START_LATE MINCACHE \
+			IPV6 THREADS FILTER_AAAA GOST PYTHON \
 			LINKS RPZ_NSIP RPZ_NSDNAME RRL DOCS RPZ_PATCH NEWSTATS
 OPTIONS_GROUP=		DLZ
 OPTIONS_GROUP_DLZ=	DLZ_POSTGRESQL DLZ_MYSQL DLZ_BDB \
@@ -59,10 +58,8 @@ LARGE_FILE_DESC=	64-bit file support
 FIXED_RRSET_DESC=	Enable fixed rrset ordering
 SIGCHASE_DESC=		dig/host/nslookup will do DNSSEC validation
 FILTER_AAAA_DESC=	Enable filtering of AAAA records
-GOST_DESC=		Enable GOST ciphers, needs SSL (see help on 8 and 9)
+GOST_DESC=		Enable GOST ciphers, needs SSL (see help)
 PYTHON_DESC=		Build with Python utilities
-START_LATE_DESC=	Start BIND late in the boot process
-MINCACHE_DESC=		Use the mincachettl patch
 
 LINKS_DESC=		Create conf file symlinks in ${PREFIX}
 NEWSTATS_DESC=		Enable alternate xml statistics channel format
@@ -81,7 +78,6 @@ GSSAPI_BASE_DESC=	${GSSAPI_DESC} (Heimdal in base)
 GSSAPI_HEIMDAL_DESC=	${GSSAPI_DESC} (security/heimdal)
 GSSAPI_MIT_DESC=	${GSSAPI_DESC} (security/krb5)
 GSSAPI_NONE_DESC=	No ${GSSAPI_DESC}
-MINCACHE_EXTRA_PATCHES=	${FILESDIR}/extrapatch-bind-min-override-ttl
 
 SSL_CONFIGURE_ON=	--with-openssl=${OPENSSLBASE}
 SSL_USE=		openssl=yes
@@ -133,11 +129,6 @@ DLZ_LDAP_USE=		openldap=yes
 DLZ_FILESYSTEM_CONFIGURE_ON=	--with-dlz-filesystem=yes
 
 DLZ_STUB_CONFIGURE_ON=	--with-dlz-stub=yes
-
-START_LATE_SUB_LIST=	NAMED_REQUIRE="SERVERS cleanvar" \
-			NAMED_BEFORE="LOGIN"
-START_LATE_SUB_LIST_OFF=NAMED_REQUIRE="NETWORKING ldconfig syslogd" \
-			NAMED_BEFORE="SERVERS"
 
 GSSAPI_BASE_USES=	gssapi
 GSSAPI_BASE_CONFIGURE_ON= \

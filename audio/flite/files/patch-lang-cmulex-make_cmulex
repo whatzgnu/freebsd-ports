@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lang/cmulex/make_cmulex.orig
 +++ lang/cmulex/make_cmulex
 @@ -36,7 +36,7 @@

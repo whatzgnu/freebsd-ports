@@ -5,7 +5,8 @@ PORTNAME=	xautolock
 PORTVERSION=	2.2
 PORTREVISION=	1
 CATEGORIES=	x11
-MASTER_SITES=	SUNSITE/X11/screensavers
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	X11/screensavers
 
 MAINTAINER=	romain@FreeBSD.org
 COMMENT=	Activate xlock after a user defined time of inactivity

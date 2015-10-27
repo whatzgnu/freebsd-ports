@@ -5,9 +5,10 @@ PORTNAME=	win32-codecs
 DISTVERSION=	20110131
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
-MASTER_SITES=	MPLAYERHQ/releases/codecs \
+MASTER_SITES=	${MASTER_SITE_MPLAYERHQ} \
 		http://ftp.lug.udel.edu/MPlayer/releases/codecs/ \
 		ftp://ftp.lug.udel.edu/MPlayer/releases/codecs/
+MASTER_SITE_SUBDIR=	releases/codecs
 DISTFILES=	all-${DISTVERSION}.tar.bz2 \
 		${ADDITIONAL_CODECS_DISTFILES}
 DIST_SUBDIR=	win32

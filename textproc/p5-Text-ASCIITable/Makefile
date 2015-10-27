@@ -3,7 +3,7 @@
 
 PORTNAME=	Text-ASCIITable
 PORTVERSION=	0.20
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -14,10 +14,8 @@ COMMENT=	Create a nice formatted table using ASCII characters
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	ansi-example.pl
+USES=		perl5
 USE_PERL5=	modbuild
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	EXAMPLES
 

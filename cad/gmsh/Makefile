@@ -15,6 +15,7 @@ MAINTAINER=	stephen@FreeBSD.org
 COMMENT=	Automatic 3D finite element mesh generator
 
 LIB_DEPENDS=	libfltk.so:${PORTSDIR}/x11-toolkits/fltk \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng.so:${PORTSDIR}/graphics/png \
 		liblapack.so:${PORTSDIR}/math/lapack
 RUN_DEPENDS=	getdp:${PORTSDIR}/science/getdp
@@ -23,7 +24,7 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}-source
 
 SLAVEDIRS=	cad/gmsh-occ
 
-USES=		cmake fortran gmake jpeg tar:tgz
+USES=		cmake fortran gmake tar:tgz
 USE_GL=		yes
 ALL_TARGET=	all
 

@@ -5,7 +5,8 @@ PORTNAME=	xldlas
 PORTVERSION=	0.85
 PORTREVISION=	8
 CATEGORIES=	math
-MASTER_SITES=	SUNSITE/apps/graphics/visualization
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	apps/graphics/visualization
 EXTRACT_SUFX=	-source.tgz
 
 MAINTAINER=	ports@FreeBSD.org

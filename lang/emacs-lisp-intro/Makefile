@@ -4,7 +4,8 @@
 PORTNAME=	emacs-lisp-intro
 PORTVERSION=	2.04
 CATEGORIES=	lang elisp
-MASTER_SITES=	GNU/emacs
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	emacs
 
 MAINTAINER=	amakawa@jp.FreeBSD.org
 COMMENT=	Introduction to Emacs Lisp programming

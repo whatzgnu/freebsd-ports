@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Archive-Extract
-PORTVERSION=	0.76
+PORTVERSION=	0.74
 CATEGORIES=	archivers perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -13,7 +13,6 @@ COMMENT=	Generic archive extracting mechanism
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 

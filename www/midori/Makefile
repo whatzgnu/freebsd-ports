@@ -61,8 +61,7 @@ CMAKE_ARGS+=	-DUSE_GTK3:BOOL=ON \
 .endif
 
 .if ${PORT_OPTIONS:MZEITGEIST}
-BROKEN=		Doesn't build with zeitgeist >= 0.9.0
-LIB_DEPENDS+=	libzeitgeist-2.0.so:${PORTSDIR}/sysutils/zeitgeist
+LIB_DEPENDS+=	libzeitgeist-1.0.so:${PORTSDIR}/sysutils/libzeitgeist
 CMAKE_ARGS+=	-DUSE_ZEITGEIST:BOOL=ON
 .else
 CMAKE_ARGS+=	-DUSE_ZEITGEIST:BOOL=OFF

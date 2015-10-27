@@ -24,6 +24,7 @@ USE_LDCONFIG=	yes
 USES=		gmake iconv perl5 pkgconfig python scons shebangfix
 USE_PERL5=	build
 SHEBANG_FILES=	python/*.py
+python_CMD=	${PYTHON_CMD}
 LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 INSTALL_TARGET=	install-lib install-headers --install-sandbox=${STAGEDIR}
 

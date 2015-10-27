@@ -7,17 +7,18 @@ PORTREVISION=	6
 CATEGORIES=	multimedia
 MASTER_SITES=	http://raaf.atspace.org/ \
 		http://www.selasky.org/hans_petter/video4bsd/releases/ \
-		LOCAL/kwm
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	kwm
 
 MAINTAINER=	hselasky@FreeBSD.org
 COMMENT=	The Video4Linux PWC webcam viewer
 
 BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev.h:${PORTSDIR}/multimedia/v4l_compat
-LIB_DEPENDS=	libv4l1.so:${PORTSDIR}/multimedia/libv4l
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libv4l1.so:${PORTSDIR}/multimedia/libv4l
 
 CONFLICTS=	pwcbsd-[0-9]*
 
-USES=		jpeg
 USE_SDL=	sdl
 
 WRKSRC=		${WRKDIR}/${PORTNAME}

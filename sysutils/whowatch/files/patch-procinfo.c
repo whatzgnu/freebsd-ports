@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- procinfo.c.orig
 +++ procinfo.c
 @@ -65,7 +65,7 @@

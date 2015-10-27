@@ -3,7 +3,6 @@
 
 PORTNAME=	snoopy
 PORTVERSION=	1.9.0
-DISTVERSIONPREFIX=	${PORTNAME}-
 CATEGORIES=	security
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -20,6 +19,8 @@ PLIST_FILES=	bin/detect lib/snoopy.so
 PORTDOCS=	ChangeLog README.md TODO
 
 GH_ACCOUNT=	a2o
+GH_PROJECT=	${PORTNAME}
+GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
 USE_GITHUB=	yes
 
 post-patch:

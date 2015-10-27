@@ -22,3 +22,4 @@ bin/logprocess.pl
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/NewModule.pm
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/NewOutputModule.pm
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/logprocess.conf
+%%PORTEXAMPLES%%@dirrm %%EXAMPLESDIR%%

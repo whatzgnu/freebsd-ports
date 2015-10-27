@@ -3,7 +3,7 @@
 
 PORTNAME=	pycdf
 PORTVERSION=	0.6.3
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	science python
 MASTER_SITES=	SF/pysclint/${PORTNAME}/${PORTNAME}-${PORTVERSION}b
 DISTNAME=	${PORTNAME}-0.6-3b
@@ -11,16 +11,14 @@ DISTNAME=	${PORTNAME}-0.6-3b
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Python Interface to the Unidata NetCDF Library
 
-LIB_DEPENDS=	libnetcdf.so:${PORTSDIR}/science/netcdf
 BUILD_DEPENDS=	${PYNUMPY}
+LIB_DEPENDS=	libnetcdf.so:${PORTSDIR}/science/netcdf
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 LDFLAGS+=	"-L${LOCALBASE}/lib"
 
 USES=		python
 USE_PYTHON=	distutils autoplist
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/pycdf/_pycdfext.so
+WRKSRC=		${WRKDIR}/${DISTNAME}
 
 .include <bsd.port.mk>

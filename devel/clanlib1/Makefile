@@ -3,7 +3,7 @@
 
 PORTNAME=	clanlib
 PORTVERSION=	1.0.0
-PORTREVISION=	7
+PORTREVISION=	6
 CATEGORIES=	devel
 MASTER_SITES=	http://www.clanlib.org/download/releases-1.0/
 DISTNAME=	ClanLib-${PORTVERSION}
@@ -14,11 +14,12 @@ COMMENT=	Cross-platform game SDK
 
 LICENSE=	ZLIB
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libmikmod.so:${PORTSDIR}/audio/libmikmod \
 		libvorbis.so:${PORTSDIR}/audio/libvorbis
 
-USES=		gmake jpeg libtool pathfix pkgconfig tar:tgz
+USES=		gmake libtool pathfix pkgconfig tar:tgz
 USE_XORG=	x11 xi
 USE_LDCONFIG=	yes
 USE_SDL=	gfx
@@ -37,7 +38,6 @@ CONFIGURE_ARGS=	--disable-docs \
 		--enable-clanMikMod \
 		--enable-clanVorbis \
 		--enable-getaddr
-INSTALL_TARGET=	install-strip
 
 PLIST_SUB+=	VER=${PORTVERSION:R}
 

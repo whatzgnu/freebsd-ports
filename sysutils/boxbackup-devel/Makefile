@@ -4,7 +4,7 @@
 PORTNAME=	boxbackup
 PORTVERSION=	0.11.r${SVNVERSION:C/^[0-9\.]+_[a-z]+_([0-9]+)/\1/}
 CATEGORIES=	sysutils
-MASTER_SITES=	http://www.boxbackup.org/snapshots/201108/
+MASTER_SITES=	http://www.boxbackup.org/snapshots/%SUBDIR%/
 PKGNAMESUFFIX=	${CLIENT_OR_SERVER}-devel
 DISTNAME=	${PORTNAME}-${SVNVERSION}
 
@@ -15,6 +15,7 @@ LICENSE=	BSD3CLAUSE GPLv2
 LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/LICENSE-DUAL.txt
 
+MASTER_SITE_SUBDIR=201108
 SVNVERSION=	0.11_trunk_2979
 
 NO_LATEST_LINK=	yes
@@ -141,6 +142,7 @@ post-install:
 .if ${PORT_OPTIONS:MSERVER}
 	@${MKDIR} -m 0700 ${STAGEDIR}${PREFIX}/etc/box/bbstored
 .endif
+	@${CAT} ${PKGMESSAGE}
 
 test:
 	 @${ECHO_CMD} "===> Running tests"

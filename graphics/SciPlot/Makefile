@@ -5,7 +5,8 @@ PORTNAME=	SciPlot
 PORTVERSION=	1.36
 PORTREVISION=	4
 CATEGORIES=	graphics math
-MASTER_SITES=	XCONTRIB/widgets
+MASTER_SITES=	${MASTER_SITE_XCONTRIB}
+MASTER_SITE_SUBDIR=	widgets
 
 MAINTAINER=	thierry@FreeBSD.org
 COMMENT=	Full-featured Xt widget to display 2D data in a graph

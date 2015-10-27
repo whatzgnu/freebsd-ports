@@ -1,12 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	ncmpcpp
-PORTVERSION=	0.6.5
-PORTREVISION=	1
+PORTVERSION=	0.6.3
 CATEGORIES=	audio
 MASTER_SITES=	http://ncmpcpp.rybczak.net/stable/
 
-MAINTAINER=	yamagi@yamagi.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	ncurses mpd client, clone of ncmpc with some new features
 
 LICENSE=	GPLv2

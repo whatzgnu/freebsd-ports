@@ -7,10 +7,8 @@ CATEGORIES=	ports-mgmt
 MASTER_SITES=	# none
 DISTFILES=	# none
 
-MAINTAINER=	bofh@FreeBSD.org
+MAINTAINER=	stefan@FreeBSD.org
 COMMENT=	Interactive script for deinstalling 'leaf' packages
-
-LICENSE=	BSD2CLAUSE
 
 NO_BUILD=	yes
 USES=		perl5

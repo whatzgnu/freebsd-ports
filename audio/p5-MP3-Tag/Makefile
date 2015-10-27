@@ -13,7 +13,6 @@ COMMENT=	Module for reading tags of MP3 audio files
 
 USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 CONFLICTS=	p5-tagged-0.*
 

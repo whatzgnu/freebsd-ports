@@ -3,7 +3,6 @@
 
 PORTNAME=	pdmenu
 PORTVERSION=	1.3.4
-PORTREVISION=	1
 CATEGORIES=	misc
 MASTER_SITES=	DEBIAN
 DISTNAME=	${PORTNAME}_${PORTVERSION}
@@ -17,8 +16,7 @@ LIB_DEPENDS=	libslang.so:${PORTSDIR}/devel/libslang2
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-USES=		gettext gmake shebangfix
-SHEBANG_FILES=	examples/showdir.pl
+USES=		gettext gmake
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	SLANG_H_LOC="${LOCALBASE}/include/slang.h" \
 		SLANG_LIB_LOC="${LOCALBASE}/lib"

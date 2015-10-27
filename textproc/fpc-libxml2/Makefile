@@ -1,7 +1,7 @@
 # Created by: Christoper Key <cjk32@cam.ac.uk>
 # $FreeBSD$
 
-PORTREVISION=	1
+PORTREVISION=	0
 CATEGORIES=	textproc lang
 PKGNAMESUFFIX=	-libxml2
 

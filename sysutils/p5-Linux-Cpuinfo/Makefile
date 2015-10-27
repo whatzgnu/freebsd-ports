@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	Linux-Cpuinfo
-PORTVERSION=	1.12
+PORTVERSION=	1.9
 CATEGORIES=	sysutils perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -14,6 +14,5 @@ LICENSE_COMB=	dual
 
 USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 .include <bsd.port.mk>

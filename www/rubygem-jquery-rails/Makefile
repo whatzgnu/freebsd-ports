@@ -2,21 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	jquery-rails
-PORTVERSION=	3.1.3
+PORTVERSION=	3.1.2
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
-COMMENT=	Provides a Rails generator for jQuery
+COMMENT=	Provides a rails generator for jquery
 
-LICENSE=	MIT
-
-RUN_DEPENDS=	rubygem-railties>=3.0:${PORTSDIR}/www/rubygem-railties \
-		rubygem-thor>=0.14:${PORTSDIR}/devel/rubygem-thor
-
-PORTSCOUT=	limit:^3.*
-
-NO_ARCH=	yes
+RUN_DEPENDS+=	rubygem-railties>=3.2.10:${PORTSDIR}/www/rubygem-railties \
+		rubygem-thor>=0.16:${PORTSDIR}/devel/rubygem-thor
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

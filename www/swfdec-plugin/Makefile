@@ -3,12 +3,12 @@
 
 PORTNAME=	swfdec-plugin
 PORTVERSION=	0.8.2
-PORTREVISION=	6
+PORTREVISION=	5
 CATEGORIES=	www
 MASTER_SITES=	http://swfdec.freedesktop.org/download/swfdec-mozilla/0.8/
 DISTNAME=	swfdec-mozilla-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	kwm@FreeBSD.org
 COMMENT=	Flash rendering plugin
 
 LIB_DEPENDS=	libswfdec-0.8.so:${PORTSDIR}/graphics/swfdec

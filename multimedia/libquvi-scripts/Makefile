@@ -19,7 +19,6 @@ OPTIONS_SUB=	yes
 NSFW_DESC=	Enable adult website support
 
 GNU_CONFIGURE=	yes
-NO_ARCH=	yes
 USES=		pathfix tar:xz
 
 NSFW_CONFIGURE_WITH=	nsfw

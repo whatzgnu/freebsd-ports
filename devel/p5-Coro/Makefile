@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	Coro
-PORTVERSION=	6.47
+PORTVERSION=	6.42
 PORTEPOCH=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
@@ -21,7 +21,6 @@ BUILD_DEPENDS=	p5-AnyEvent>=7:${PORTSDIR}/devel/p5-AnyEvent \
 		p5-IO-AIO>=3.1:${PORTSDIR}/devel/p5-IO-AIO \
 		p5-common-sense>=0:${PORTSDIR}/devel/p5-common-sense
 RUN_DEPENDS:=	${BUILD_DEPENDS}
-BUILD_DEPENDS+=	p5-Canary-Stability>=0:${PORTSDIR}/devel/p5-Canary-Stability
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
@@ -39,10 +38,4 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/doc/cede-vs-schedule ${STAGEDIR}${DOCSDIR}/
 	${INSTALL_SCRIPT} ${WRKSRC}/eg/* ${STAGEDIR}${EXAMPLESDIR}/
 
-.include <bsd.port.pre.mk>
-
-.if ${PERL_LEVEL} >= 502200
-BROKEN=		Perl >= 5.22 is not supported
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

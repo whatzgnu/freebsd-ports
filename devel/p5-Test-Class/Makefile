@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Test-Class
-PORTVERSION=	0.50
+PORTVERSION=	0.48
+PORTREVISION=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -18,8 +19,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Contextual-Return>=0:${PORTSDIR}/devel/p5-Contextual-Return \
 		p5-Test-Exception>=0.25:${PORTSDIR}/devel/p5-Test-Exception
 
-NO_ARCH=	yes
 USES=		perl5
-USE_PERL5=	configure
+USE_PERL5=	modbuild
 
 .include <bsd.port.mk>

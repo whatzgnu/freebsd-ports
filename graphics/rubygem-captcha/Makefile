@@ -9,11 +9,9 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Simple CAPTCHA written in Ruby
 
-LICENSE=	MIT
+BUILD_DEPENDS=	rubygem-rmagick>=1.0:${PORTSDIR}/graphics/rubygem-rmagick
+RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-RUN_DEPENDS=	rubygem-rmagick>=2.9.2:${PORTSDIR}/graphics/rubygem-rmagick
-
-NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

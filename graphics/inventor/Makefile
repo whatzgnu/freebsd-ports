@@ -14,13 +14,14 @@ COMMENT=	SGI's Open Inventor (TM)
 
 LICENSE=	LGPL21
 
-LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2
+LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2 \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 CONFLICTS=	Coin-[0-9]* SoXt-[0-9]*
 
 USE_XORG=	x11 xext xi xp xt
 USE_GL=		glu glw
-USES=		gmake iconv jpeg motif
+USES=		iconv gmake motif
 USE_LDCONFIG=	yes
 ONLY_FOR_ARCHS=	i386 amd64
 MAKE_JOBS_UNSAFE=	yes

@@ -5,6 +5,8 @@ PORTNAME=		psptoolchain
 PORTVERSION=		20111215
 PORTREVISION=		2
 CATEGORIES=		devel
+MASTER_SITES=		# none
+DISTFILES=		# none
 
 MAINTAINER=		tphilipp@potion-studios.com
 COMMENT=		PlayStation Portable development toolchain meta port
@@ -25,6 +27,11 @@ RUN_DEPENDS=		psp-gdb:${PORTSDIR}/devel/psptoolchain-gdb \
 			psp-strings:${PORTSDIR}/devel/psptoolchain-binutils \
 			psp-strip:${PORTSDIR}/devel/psptoolchain-binutils
 
-USES=			metaport
+NO_WRKSUBDIR=		YES
+NO_BUILD=		YES
+NO_FETCH=		YES
+NO_MTREE=		YES
+
+do-install:
 
 .include <bsd.port.mk>

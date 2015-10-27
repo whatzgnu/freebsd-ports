@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- libs.mk.orig
 +++ libs.mk
 @@ -232,8 +232,8 @@

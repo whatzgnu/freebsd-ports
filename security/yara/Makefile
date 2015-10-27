@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	yara
-PORTVERSION=	3.4.0
+PORTVERSION=	3.3.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	security
 
@@ -13,7 +13,7 @@ GH_ACCOUNT=	plusvic
 
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-USES=		alias autoreconf libtool
+USES=		autoreconf libtool
 USE_LDCONFIG=	yes
 
 .include <bsd.port.mk>

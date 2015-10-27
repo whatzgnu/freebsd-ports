@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	sdl2pp
-PORTVERSION=	0.8.2
+PORTVERSION=	0.7.1
 CATEGORIES=	devel
 
 MAINTAINER=	amdmi3@FreeBSD.org

@@ -2,11 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	electric
-PORTVERSION=	9.06
+PORTVERSION=	9.05
+PORTREVISION=	1
 CATEGORIES=	cad java
-MASTER_SITES=	GNU/${PORTNAME:S/-ng//} \
+MASTER_SITES=	${MASTER_SITE_GNU} \
 		http://www.staticfreesoft.com/:1 \
 		http://www.staticfreesoft.com/jmanual/:2
+MASTER_SITE_SUBDIR=	${PORTNAME:S/-ng//}
 PKGNAMESUFFIX=	-ng
 EXTRACT_SUFX=
 DISTFILES+=	${PORTNAME}Binary-${PORTVERSION}.jar

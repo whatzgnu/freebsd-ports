@@ -1,12 +1,18 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
 # $FreeBSD$
+#   $MCom: ports/trunk/x11/gnome3/Makefile 19831 2014-08-26 15:33:17Z kwm $
 
 PORTNAME=	gnome3
-PORTVERSION=	3.16.2
+PORTVERSION=	3.14.2
 CATEGORIES?=	x11 gnome
+MASTER_SITES=	# empty
+DISTFILES=	# empty
+EXTRACT_ONLY=	# empty
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT?=	"meta-port" for the GNOME 3 integrated X11 desktop
+COMMENT?=	The "meta-port" for the GNOME 3 integrated X11 desktop
+
+CONFLICTS?=	gnome3-lite-[0-9]*
 
 RUN_DEPENDS?=	dconf-editor:${PORTSDIR}/devel/dconf-editor \
 		gnome-session>=3.0.0:${PORTSDIR}/x11/gnome-session \
@@ -30,19 +36,16 @@ RUN_DEPENDS?=	dconf-editor:${PORTSDIR}/devel/dconf-editor \
 		gnome-control-center>=3.0.0:${PORTSDIR}/sysutils/gnome-control-center \
 		${LOCALBASE}/share/gnome-background-properties/gnome-backgrounds.xml:${PORTSDIR}/x11-themes/gnome-backgrounds \
 		caribou>=0:${PORTSDIR}/accessibility/caribou \
+		${LOCALBASE}/share/help/C/gnome-help/index.page:${PORTSDIR}/misc/gnome-user-docs \
 		${LOCALBASE}/share/sounds/freedesktop/index.theme:${PORTSDIR}/audio/freedesktop-sound-theme \
 		ekiga:${PORTSDIR}/net-im/ekiga
 
-CONFLICTS?=	gnome3-lite-[0-9]*
-
-USES=		metaport
+NO_BUILD=	yes
+NO_MTREE=	yes
 
 .if ${.CURDIR:T}!="gnome3-lite"
 OPTIONS_DEFINE+=MAPI
 MAPI_DESC=	Depend on evolution-mapi (pulls in samba4)
-
-DOCS_RUN_DEPENDS=	gnome-user-docs>=0:${PORTSDIR}/misc/gnome-user-docs
-MAPS_RUN_DEPENDS=	evolution-mapi>=3.0.0:${PORTSDIR}/mail/evolution-mapi
 .endif
 
 .include <bsd.port.options.mk>
@@ -51,8 +54,6 @@ MAPS_RUN_DEPENDS=	evolution-mapi>=3.0.0:${PORTSDIR}/mail/evolution-mapi
 RUN_DEPENDS+=	empathy>=3.0.0:${PORTSDIR}/net-im/empathy \
 		epiphany>=3.0.0:${PORTSDIR}/www/epiphany \
 		gucharmap>=3.0.0:${PORTSDIR}/deskutils/gucharmap \
-		gnome-characters>=3.0.0:${PORTSDIR}/deskutils/gnome-characters \
-		gnome-calendar>=3.0:${PORTSDIR}/deskutils/gnome-calendar \
 		eog>=3.0.0:${PORTSDIR}/graphics/eog \
 		eog-plugins>=3.0.0:${PORTSDIR}/graphics/eog-plugins \
 		gedit>=3.0.0:${PORTSDIR}/editors/gedit \
@@ -75,6 +76,11 @@ RUN_DEPENDS+=	empathy>=3.0.0:${PORTSDIR}/net-im/empathy \
 		cheese>=3.0.0:${PORTSDIR}/multimedia/cheese \
 		alacarte>=3.0.0:${PORTSDIR}/deskutils/alacarte
 
+.if ${PORT_OPTIONS:MMAPI}
+RUN_DEPENDS+=	evolution-mapi>=3.0.0:${PORTSDIR}/mail/evolution-mapi
+.endif
 .endif # !gnome3-lite section
+
+do-install:	# empty
 
 .include <bsd.port.mk>

@@ -1,7 +1,6 @@
 # $FreeBSD$
 
 PORTNAME=	hidapi
-DISTVERSIONPREFIX=	${PORTNAME}-
 DISTVERSION=	0.8.0-rc1
 PORTREVISION=	3
 CATEGORIES=	comms
@@ -14,6 +13,7 @@ LICENSE_COMB=	dual
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	signal11
+GH_TAGNAME=	${PORTNAME}-${DISTVERSION}
 
 USES=		autoreconf iconv:wchar_t libtool
 GNU_CONFIGURE=	yes

@@ -9,8 +9,6 @@ MASTER_SITES=	RG
 MAINTAINER=	don@na.rim.or.jp
 COMMENT=	Ruby interface to HTML Tidy Library Project
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=  yes

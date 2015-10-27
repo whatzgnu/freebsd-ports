@@ -5,6 +5,7 @@ PORTNAME=	phplist
 PORTVERSION=	3.0.10
 CATEGORIES=	mail www
 MASTER_SITES=	SF
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@bsdserwis.com
 COMMENT=	Full-featured open-source newsletter manager
@@ -13,7 +14,6 @@ LICENSE=	GPLv2
 
 RUN_DEPENDS=	${PEARDIR}/HTTP/Request.php:${PORTSDIR}/www/pear-HTTP_Request
 
-USES=		cpe tar:tgz
 USE_PHP=	hash iconv imap mysql pcre session xml zlib
 NO_BUILD=	yes
 NO_ARCH=	yes

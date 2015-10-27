@@ -2,10 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
-PORTVERSION=	2.0.0
+PORTVERSION=	1.11.2
+PORTREVISION=	2
 CATEGORIES=	graphics ruby
-MASTER_SITES=	http://download.osgeo.org/gdal/${PORTVERSION}/ \
-		ftp://ftp.remotesensing.org/pub/gdal/${PORTVERSION}/ \
+MASTER_SITES=	http://download.osgeo.org/gdal/ \
+		ftp://ftp.remotesensing.org/pub/gdal/ \
 		LOCAL/sunpoet
 PKGNAMEPREFIX=	${RUBY_PKGNAMEPREFIX}
 
@@ -16,8 +17,6 @@ LICENSE=	MIT
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/swig3.0:${PORTSDIR}/devel/swig30
 LIB_DEPENDS=	libgdal.so:${PORTSDIR}/graphics/gdal
-
-IGNORE=		disabled by upstream (https://trac.osgeo.org/gdal/changeset/28756)
 
 MAKE_ARGS=	USER_DEFS=-fPIC
 MAKEFILE=	GNUmakefile

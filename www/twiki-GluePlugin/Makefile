@@ -4,7 +4,7 @@
 PORTNAME=	GluePlugin
 SVNREV=		15708
 MASTER_SITES=	http://protey.ru/freebsd/distfiles/ \
-		LOCAL/skv
+		${MASTER_SITE_LOCAL:S!$!skv/!}
 
 COMMENT=	Allow to format tags and arguments on multiple lines
 

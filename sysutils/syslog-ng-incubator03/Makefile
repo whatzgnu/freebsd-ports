@@ -3,11 +3,10 @@
 
 PORTNAME=	syslog-ng-incubator
 PORTVERSION=	0.3.3
-PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://packages.madhouse-project.org/syslog-ng/incubator/
 DISTFILES=	syslog-ng-incubator-${PORTVERSION}.tar.xz
-PKGNAMESUFFIX=	03
+PKGNAMESUFFIX=03
 
 MAINTAINER=	cy@FreeBSD.org
 COMMENT=	The syslog-ng module incubator
@@ -19,8 +18,7 @@ MAKE_JOBS_UNSAFE=	yes
 LIB_DEPENDS=	libevtlog.so:${PORTSDIR}/sysutils/eventlog \
 		libsyslog-ng-3.5.6.so:${PORTSDIR}/sysutils/syslog-ng35
 
-USES=		bison gmake libtool lua pathfix pkgconfig shebangfix tar:xz
-SHEBANG_FILES=	scl/elasticsearch/es-bridge
+USES=		gmake pkgconfig pathfix bison lua tar:xz libtool
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 USE_GNOME=	glib20

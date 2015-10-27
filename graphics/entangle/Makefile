@@ -3,7 +3,7 @@
 
 PORTNAME=	entangle
 DISTVERSION=	0.7.0
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	http://entangle-photo.org/download/sources/
 
@@ -20,12 +20,11 @@ LIB_DEPENDS=	libgphoto2.so:${PORTSDIR}/graphics/libgphoto2 \
 		libgexiv2.so:${PORTSDIR}/graphics/gexiv2 \
 		libraw_r.so:${PORTSDIR}/graphics/libraw \
 		libpeas-1.0.so:${PORTSDIR}/devel/libpeas
-RUN_DEPENDS:=	${BUILD_DEPENDS:Nitstool*} \
-		${PYTHON_PKGNAMEPREFIX}libpeas>=0:${PORTSDIR}/devel/py3-libpeas
+RUN_DEPENDS:=	${BUILD_DEPENDS:Nitstool*}
 
-USES=		gettext-tools gmake libtool pkgconfig python:3
+USES=		gettext-tools gmake libtool pkgconfig
 GNU_CONFIGURE=	yes
-USE_GNOME=	gtk30 intltool introspection:build
+USE_GNOME=	gtk30 introspection:build
 GLIB_SCHEMAS=	org.entangle-photo.manager.gschema.xml
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes

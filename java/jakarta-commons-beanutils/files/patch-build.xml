@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- build.xml.orig
 +++ build.xml
 @@ -212,8 +212,6 @@

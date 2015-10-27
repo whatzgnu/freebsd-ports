@@ -7,7 +7,8 @@ PORTREVISION=	3
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	ftp://ftp.x.org/R5contrib/ \
 		http://komquats.com/distfiles/ \
-		LOCAL/cy
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=     cy
 
 DISTNAME=	SlingShot${PORTVERSION}
 

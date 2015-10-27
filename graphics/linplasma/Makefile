@@ -5,7 +5,8 @@ PORTNAME=	linplasma
 PORTVERSION=	1.0
 PORTREVISION=	1
 CATEGORIES=	graphics
-MASTER_SITES=	SUNSITE/apps/graphics/hacks/svgalib
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	apps/graphics/hacks/svgalib
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Sinus plasma, an SVGAlib demo

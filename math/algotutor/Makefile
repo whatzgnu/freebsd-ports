@@ -2,7 +2,7 @@
 
 PORTNAME=	algotutor
 PORTVERSION=	0.8.6
-PORTREVISION=	7
+PORTREVISION=	6
 CATEGORIES=	math
 MASTER_SITES=	http://www.cyut.edu.tw/~ckhung/dl/
 
@@ -14,7 +14,6 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USE_PERL5=	build
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 MANPAGES=	algotutor.1 gen_at_graph.1
 BINFILES=	algotutor gen_at_graph
@@ -24,8 +23,7 @@ LIBFILES=	BST.pm Board.pm Collection.pm Configurable.pm DCEdge.pm \
 		Vector3.pm Vertex.pm basic.pl utilalgo
 
 USES=		shebangfix perl5 tar:tgz
-SHEBANG_FILES=	algotutor dp/flwa dp/lcs dp/matrixchain \
-		gen_at_graph graph/flwa
+SHEBANG_FILES=	algotutor gen_at_graph
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,!!SITE_PERL!!,${PREFIX}/${SITE_PERL_REL},' \

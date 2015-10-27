@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	abbayedesmorts
-PORTVERSION=	git20150512
+PORTVERSION=	git20150409
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -11,9 +11,9 @@ COMMENT=	Cross-platform port of l'Abbaye des Morts by Locomalito
 LICENSE=	GPLv3
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	nevat
+GH_ACCOUNT=	AMDmi3 # portability changes not yet merged upstream
 GH_PROJECT=	abbayedesmorts-gpl
-GH_TAGNAME=	558116d5d6
+GH_TAGNAME=	c603c83
 
 USE_SDL=	sdl2 mixer2 image2
 

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	minecraft-server
-PORTVERSION=	1.8.8
+PORTVERSION=	1.8.4
 CATEGORIES=	games java
 MASTER_SITES=	https://s3.amazonaws.com/Minecraft.Download/versions/${PORTVERSION}/
 DISTNAME=	minecraft_server.${PORTVERSION}.jar
@@ -25,11 +25,8 @@ GROUPS=		${USERS}
 
 NO_BUILD=	yes
 USE_JAVA=	yes
-SUB_FILES=	minecraft-server \
-		pkg-message \
+SUB_FILES=	pkg-message \
 		pkg-deinstall
-SUB_LIST=	VERSION=${PORTVERSION}
-PLIST_SUB=	VERSION=${PORTVERSION}
 
 CONFIG_FILES=	banned-ips.json \
 		banned-players.json \
@@ -53,7 +50,7 @@ do-install:
 	${MKDIR} ${STAGEDIR}/var/db/minecraft-server
 	${MKDIR} ${STAGEDIR}/var/log/minecraft-server
 .if ${PORT_OPTIONS:MSTANDALONE}
-	${INSTALL_SCRIPT} ${WRKDIR}/minecraft-server ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_SCRIPT} ${FILESDIR}/minecraft-server ${STAGEDIR}${PREFIX}/bin
 	${CP} ${FILESDIR}/java-args.txt ${STAGEDIR}${ETCDIR}
 .endif
 .for file in ${CONFIG_FILES}

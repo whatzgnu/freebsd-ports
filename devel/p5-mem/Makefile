@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mem
-PORTVERSION=	0.4.6
+PORTVERSION=	0.4.5
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:LAWALSH
@@ -14,7 +14,6 @@ COMMENT=	Use "in-mem" pkgs and force definitions into mem early
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

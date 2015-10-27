@@ -31,20 +31,12 @@ CONFIGURE_ARGS+=	--enable-server
 
 PORTDOCS=		NEWS COPYING README PROTOCOL TODO
 
-.include <bsd.port.options.mk>
-
-.if ${OSVERSION} < 1000000
-WITH_OPENSSL_PORT=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
-.endif
-
 post-install:
 .if defined(PKGNAMESUFFIX)
-	${MKDIR} ${STAGEDIR}${PREFIX}/libexec/nagios/
+	${INSTALL_DATA} -d ${STAGEDIR}${PREFIX}/libexec/nagios/
 	${LN} -s ${PREFIX}/sbin/send_nsca ${STAGEDIR}${PREFIX}/libexec/nagios/send_nsca
 
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} -d ${STAGEDIR}${EXAMPLESDIR}
 	cd ${WRKSRC}/contrib && ${INSTALL_DATA} ${PORTEXAMPLES} \
 		${STAGEDIR}${EXAMPLESDIR}
 

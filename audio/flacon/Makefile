@@ -2,7 +2,6 @@
 # $FreeBSD$
 
 PORTNAME=	flacon
-DISTVERSIONPREFIX=	v
 DISTVERSION=	1.0.1
 CATEGORIES=	audio
 
@@ -14,6 +13,7 @@ LICENSE=	LGPL21
 LIB_DEPENDS=	libuchardet.so:${PORTSDIR}/textproc/uchardet
 
 USE_GITHUB=	yes
+GH_TAGNAME=	v${PORTVERSION}
 
 USES=		cmake pkgconfig
 USE_QT4=	gui network \

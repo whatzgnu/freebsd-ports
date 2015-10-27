@@ -3,7 +3,7 @@
 
 PORTNAME=	ovs
 PORTVERSION=	1.05
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	mail
 MASTER_SITES=	ftp://ftp.oav.net/openvisp/stats/ \
 		http://mirror.amdmi3.ru/distfiles/
@@ -18,9 +18,8 @@ RUN_DEPENDS=	rrdtool>=0:${PORTSDIR}/databases/rrdtool \
 		p5-File-Tail>=0:${PORTSDIR}/devel/p5-File-Tail
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 USES=		perl5 shebangfix
-SHEBANG_FILES=	ovs.pl ovs.cgi
+SHEBANG_FILES=	ovs.pl
 
 CGIDIR?=	${PREFIX}/www/cgi-bin
 DATADIR?=	/var/db/ovs

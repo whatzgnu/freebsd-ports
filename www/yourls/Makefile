@@ -17,7 +17,6 @@ GH_PROJECT=	${PORTNAME:tu}
 
 NO_BUILD=	yes
 
-USES=		cpe
 USE_PHP=	bcmath curl json mysql pcre xml
 
 SUB_LIST+=	PKGNAME=${PKGNAME}

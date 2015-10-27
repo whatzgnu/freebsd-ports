@@ -3,7 +3,6 @@
 
 PORTNAME=	lmon
 PORTVERSION=	1.2
-PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.bsdconsulting.no/tools/
 
@@ -17,10 +16,8 @@ RUN_DEPENDS=	p5-Config-IniFiles>=0:${PORTSDIR}/devel/p5-Config-IniFiles \
 		p5-Mail-Sendmail>=0:${PORTSDIR}/mail/p5-Mail-Sendmail \
 		p5-File-Tail>=0:${PORTSDIR}/devel/p5-File-Tail
 
-USES=		perl5 shebangfix tar:tgz
-SHEBANG_FILES=	control.pl lmon.pl
+USES=		perl5 tar:tgz
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 PORTDOCS=	README TODO
 PORTEXAMPLES=	*

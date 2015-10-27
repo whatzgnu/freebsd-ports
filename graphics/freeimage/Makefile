@@ -17,7 +17,6 @@ WRKSRC=		${WRKDIR}/FreeImage
 MAKE_ARGS=	CC="${CC}" CPP="${CPP}" CXX="${CXX}"
 
 CFLAGS+=	-fexceptions -fvisibility=hidden
-CFLAGS_aarch64=	-fPIC
 CFLAGS_amd64=	-fPIC
 
 PLIST_FILES=	include/FreeImage.h \

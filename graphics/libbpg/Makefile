@@ -13,7 +13,8 @@ COMMENT=	BPG (Better Portable Graphics) is a new image format
 LICENSE=	BSD2CLAUSE LGPL21
 LICENSE_COMB=	multi
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png
 
 OPTIONS_DEFINE=	SDL JCTVC X265
 OPTIONS_DEFAULT=SDL JCTVC
@@ -23,13 +24,13 @@ USE_LDCONFIG=	yes
 SDL_USE=	SDL=image
 X265_LIB_DEPENDS=	libx265.so:${PORTSDIR}/multimedia/x265
 
+.include <bsd.port.options.mk>
+
 JCTVC_DESC=	Enable JCTVC (best quality but slow) for the encoder
 JCTVCHI_DESC=	Use bit depths > 12 with JCTVC (experimental)
-USES=		compiler:c++11-lib gmake jpeg
+USES=		gmake compiler:c++11-lib
 CFLAGS+=	-fPIC -I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-
-.include <bsd.port.options.mk>
 
 do-configure:
 .if ! ${PORT_OPTIONS:MSDL}

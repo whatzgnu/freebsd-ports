@@ -3,7 +3,7 @@
 
 PORTNAME=	libtai
 PORTVERSION=	0.60
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	devel
 MASTER_SITES=	http://cr.yp.to/libtai/ \
 		ftp://ftp.sunsite.auc.dk/disk1/qmail/ \

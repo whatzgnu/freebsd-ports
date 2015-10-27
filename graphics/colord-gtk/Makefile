@@ -1,8 +1,10 @@
 # Created by: Koop Mast <kwm@FreeBSD.org>
 # $FreeBSD$
+#    $MCom: ports/trunk/graphics/colord-gtk/Makefile 18610 2013-06-30 16:33:05Z marcus $
 
 PORTNAME=	colord-gtk
-PORTVERSION=	0.1.26
+PORTVERSION=	0.1.25
+PORTREVISION=	3
 CATEGORIES=	graphics
 MASTER_SITES=	http://www.freedesktop.org/software/colord/releases/
 
@@ -25,15 +27,6 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
-OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	MANPAGES
-OPTIONS_DEFAULT=MANPAGES
-
-MANPAGES_BUILD_DEPENDS=	docbook2html:${PORTSDIR}/textproc/docbook-utils \
-			docbook-sgml>0:${PORTSDIR}/textproc/docbook-sgml
-
-.include <bsd.port.options.mk>
-
 post-patch:
 	@${REINPLACE_CMD} -e 's|-Wclobbered||g' \
 		-e 's|-Wempty-body||g' \
@@ -41,10 +34,5 @@ post-patch:
 		-e 's|-Wtype-limits||g' \
 		-e 's|-Wmissing-parameter-type||g' \
 		${WRKSRC}/configure
-
-.if ! ${PORT_OPTIONS:MMANPAGES}
-	@${REINPLACE_CMD} -e "s|2MAN_TRUE=$$|2MAN_TRUE='#'|g ; \
-		s|2MAN_FALSE='#'|2MAN_FALSE=|g" ${WRKSRC}/configure
-.endif
 
 .include <bsd.port.mk>

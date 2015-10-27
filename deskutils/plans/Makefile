@@ -3,7 +3,7 @@
 
 PORTNAME=	plans
 PORTVERSION=	8.2.1
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	deskutils www
 MASTER_SITES=	http://www.planscalendar.com/release/:plans \
 		http://www.planscalendar.com/addons/:addons \
@@ -30,11 +30,9 @@ LICENSE=	GPLv2
 BUILD_DEPENDS=	p5-CGI-Session>=0:${PORTSDIR}/www/p5-CGI-Session
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 shebangfix zip
-USE_PERL5=	run
-SHEBANG_FILES=	email_reminders.cgi plans.cgi plans_check.cgi upcoming_events.cgi
 NO_BUILD=	yes
-NO_ARCH=	yes
+USES=		perl5 zip
+USE_PERL5=	run
 
 SHAREOWN=	${WWWOWN}
 SHAREGRP=	${WWWGRP}
@@ -62,5 +60,6 @@ do-install:
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR})
 	@${FIND} ${STAGEDIR}${WWWDIR} -name '*.cgi' -exec ${CHMOD} 755 {} \;
 	@${FIND} ${STAGEDIR}${WWWDIR} -name '*.xml.sample' -exec ${CHMOD} 664 {} \;
+	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.mk>

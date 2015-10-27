@@ -5,8 +5,9 @@ PORTNAME=	memcacheq
 PORTVERSION=	0.2.0
 PORTREVISION=	4
 CATEGORIES=	databases
-MASTER_SITES=	GOOGLE_CODE \
-		GENTOO
+MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE} \
+		${MASTER_SITE_GENTOO}
+MASTER_SITE_SUBDIR=	distfiles
 
 MAINTAINER=	m.tsatsenko@gmail.com
 COMMENT=	Simple queue service over Memcache

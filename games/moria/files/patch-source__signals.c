@@ -1,3 +1,5 @@
+$FreeBSD$
+
 --- source/signals.c	Thu Jul 21 19:47:42 1994
 +++ source/signals.c	Tue Aug  5 10:00:36 2003
 @@ -89,7 +89,7 @@

@@ -5,7 +5,8 @@ PORTNAME=	yagiuda
 PORTVERSION=	1.19
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://www.g8wrb.org/yagi/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Used to calculate yagi-uda antenna patterns useful to ham radio

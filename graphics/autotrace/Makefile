@@ -15,8 +15,7 @@ LICENSE_COMB=	multi
 
 LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
 
-USES=		cpe pathfix pkgconfig libtool
-CPE_VENDOR=	autotrace_project
+USES=		pathfix pkgconfig libtool
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CPPFLAGS+=	$$(libpng-config --I_opts)

@@ -20,7 +20,7 @@ USERS=	netmon
 GROUPS=	${USERS}
 
 GNU_CONFIGURE=	yes
-MAKE_JOBS_UNSAFE=	yes
+DISABLE_MAKE_JOBS=yes
 USES=		bison tar:tgz
 CFLAGS+=	-Wno-return-type
 

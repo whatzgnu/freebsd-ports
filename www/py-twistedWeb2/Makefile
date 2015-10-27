@@ -10,12 +10,13 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	TwistedWeb2-${PORTVERSION}
 
 MAINTAINER=	python@FreeBSD.org
-COMMENT=	Next generation Web Server Framework built with Twisted
+COMMENT=	The next generation Web Server Framework built with Twisted
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist distutils
+WRKSRC=		${WRKDIR}/TwistedWeb2-${PORTVERSION}
+
 USES=		python tar:bzip2 twisted
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

@@ -6,7 +6,8 @@ PORTVERSION=	1.8.2
 PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	cad
-MASTER_SITES=	http://ftp.geda-project.org/geda-gaf/stable/v${PORTVERSION:R}/${PORTVERSION}/
+MASTER_SITES=	http://ftp.geda-project.org/geda-gaf/stable/%SUBDIR%/
+MASTER_SITE_SUBDIR=	v${PORTVERSION:R}/${PORTVERSION}
 DISTNAME=	${PORTNAME}-gaf-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org

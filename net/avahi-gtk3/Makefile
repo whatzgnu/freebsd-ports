@@ -1,7 +1,7 @@
 # Created by: Michael Johnson <ahze@FreeBSD.org>
 # $FreeBSD$
 
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	net
 PKGNAMESUFFIX=	-gtk3
 
@@ -27,8 +27,5 @@ do-build:
 
 do-install:
 	@(cd ${WRKSRC}/avahi-ui; ${MAKE_CMD} ${MAKE_ARGS} install-libLTLIBRARIES)
-
-post-install:
-	@${RMDIR} ${STAGEDIR}${PREFIX}/etc/avahi
 
 .include "${MASTERDIR}/Makefile"

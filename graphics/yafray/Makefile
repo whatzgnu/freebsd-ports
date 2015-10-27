@@ -11,7 +11,9 @@ MASTER_SITES=	http://freebsd.nsu.ru/distfiles/ \
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast XML based raytracer
 
-USES=		jpeg scons
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
+
+USES=		scons
 USE_LDCONFIG=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}

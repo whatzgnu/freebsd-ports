@@ -5,7 +5,8 @@ PORTNAME=	xin
 PORTVERSION=	1.0.0
 PORTREVISION=	1
 CATEGORIES=	sysutils
-MASTER_SITES=	SUNSITE/utils/file
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	utils/file
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Splits standard input and pipes into a command

@@ -137,10 +137,8 @@ MOZ_OPTIONS+=	--enable-jemalloc
 # Standard depends
 _ALL_DEPENDS=	cairo event ffi graphite harfbuzz hunspell icu jpeg nspr nss opus png pixman soundtouch sqlite vorbis vpx
 
-.if ! ${PORT_OPTIONS:MBUNDLED_CAIRO}
 cairo_LIB_DEPENDS=	libcairo.so:${PORTSDIR}/graphics/cairo
 cairo_MOZ_OPTIONS=	--enable-system-cairo
-.endif
 
 event_LIB_DEPENDS=	libevent.so:${PORTSDIR}/devel/libevent2
 event_MOZ_OPTIONS=	--with-system-libevent
@@ -163,9 +161,9 @@ icu_LIB_DEPENDS=		libicui18n.so:${PORTSDIR}/devel/icu
 icu_MOZ_OPTIONS=		--with-system-icu --with-intl-api
 
 -jpeg_BUILD_DEPENDS=yasm:${PORTSDIR}/devel/yasm
-# XXX JCS_EXTENSIONS API is currently disabled by r371283
-# XXX Remove files/patch-ijg-libjpeg once -turbo is default
-jpeg_USES=		jpeg
+# XXX depends on ports/180159 or package flavor support
+#jpeg_LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/libjpeg-turbo
+jpeg_LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 jpeg_MOZ_OPTIONS=	--with-system-jpeg=${LOCALBASE}
 
 nspr_LIB_DEPENDS=	libnspr4.so:${PORTSDIR}/devel/nspr
@@ -219,7 +217,6 @@ ${use:S/-/_WITHOUT_/}=	${TRUE}
 BUILD_DEPENDS+=	${${dep}_BUILD_DEPENDS}
 LIB_DEPENDS+=	${${dep}_LIB_DEPENDS}
 RUN_DEPENDS+=	${${dep}_RUN_DEPENDS}
-USES+=		${${dep}_USES}
 MOZ_OPTIONS+=	${${dep}_MOZ_OPTIONS}
 .else
 BUILD_DEPENDS+=	${-${dep}_BUILD_DEPENDS}
@@ -380,12 +377,10 @@ STRIP=
 MOZ_OPTIONS+=	--disable-dtrace
 .endif
 
-.if ${MOZILLA_VER:R:R} < 40
-. if ${PORT_OPTIONS:MLOGGING} || ${PORT_OPTIONS:MDEBUG}
+.if ${PORT_OPTIONS:MLOGGING} || ${PORT_OPTIONS:MDEBUG}
 MOZ_OPTIONS+=	--enable-logging
-. else
+.else
 MOZ_OPTIONS+=	--disable-logging
-. endif
 .endif
 
 .if ${PORT_OPTIONS:MPROFILE}
@@ -411,9 +406,6 @@ MOZ_OPTIONS+=	--enable-strip --enable-install-strip
 # _MAKE_JOBS is only available after bsd.port.post.mk, thus cannot be
 # used in .mozconfig. And client.mk automatically uses -jN where N
 # is what multiprocessing.cpu_count() returns.
-.if defined(DISABLE_MAKE_JOBS) || defined(MAKE_JOBS_UNSAFE)
-MAKE_JOBS_NUMBER=	1
-.endif
 .if defined(MAKE_JOBS_NUMBER)
 MOZ_MAKE_FLAGS+=-j${MAKE_JOBS_NUMBER}
 .endif
@@ -452,6 +444,7 @@ LIBS+=		-lcxxrt
 . endif
 .elif ${ARCH:Mpowerpc*}
 USES:=		compiler:gcc-c++11-lib ${USES:Ncompiler*c++11*}
+CFLAGS+=	-D__STDC_CONSTANT_MACROS
 . if ${ARCH} == "powerpc64"
 MOZ_EXPORT+=	UNAME_m="${ARCH}"
 CFLAGS+=	-mminimal-toc

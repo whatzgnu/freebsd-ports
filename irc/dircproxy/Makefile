@@ -20,5 +20,6 @@ MAN1=		dircproxy.1 dircproxy-crypt.1
 
 post-install:
 	@cd ${WRKSRC}/doc && make install-man DESTDIR=${STAGEDIR}
+	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.mk>

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- tinyca2.orig
 +++ tinyca2
 @@ -18,7 +18,7 @@

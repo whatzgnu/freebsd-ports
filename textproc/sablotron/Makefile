@@ -3,15 +3,14 @@
 
 PORTNAME=	Sablot
 PORTVERSION=	1.0.3
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	textproc
 MASTER_SITES=	SF/sablotron/sablotron-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	XML toolkit implementing XSLT 1.0, XPath 1.0 and DOM Level2
 
-LICENSE=	MPL GPLv2
-LICENSE_COMB=	dual
+LICENSE=	GPLv2
 
 LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2
 
@@ -41,6 +40,13 @@ LDFLAGS+=	-L${LOCALBASE}/lib -lexpat ${ICONV_LIB}
 
 PORTDOCS=	*
 
+DOCSRCDIR1=	${WRKSRC}
+DOC_FILES1=	README README_JS RELEASE
+
+DOCSRCDIR2=	${WRKSRC}/doc/misc
+DOCSDIR2=	${DOCSDIR}/doc/misc
+DOC_FILES2=	DEBUGGER NOTES
+
 .include <bsd.port.options.mk>
 
 post-patch:
@@ -49,8 +55,9 @@ post-patch:
 .endif
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libsablot.so
-	cd ${WRKSRC} && ${COPYTREE_SHARE} "README README_JS RELEASE \
-		doc/misc/DEBUGGER doc/misc/NOTES" ${STAGEDIR}${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${DOC_FILES1:S|^|${DOCSRCDIR1}/|} ${STAGEDIR}${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR2}
+	${INSTALL_DATA} ${DOC_FILES2:S|^|${DOCSRCDIR2}/|} ${STAGEDIR}${DOCSDIR2}
 
 .include <bsd.port.mk>

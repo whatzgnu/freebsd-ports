@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- schema/Jamfile.orig
 +++ schema/Jamfile
 @@ -9,7 +9,7 @@

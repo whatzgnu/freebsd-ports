@@ -8,6 +8,7 @@
     SUBDIR += abby
     SUBDIR += acidrip
     SUBDIR += aegisub
+    SUBDIR += arista
     SUBDIR += asdcplib
     SUBDIR += assimp
     SUBDIR += atomicparsley
@@ -15,10 +16,12 @@
     SUBDIR += audacious-plugins
     SUBDIR += audiopreview
     SUBDIR += avbin
-    SUBDIR += avidemux
-    SUBDIR += avidemux-cli
-    SUBDIR += avidemux-plugins
-    SUBDIR += avidemux-qt4
+    SUBDIR += avidemux2
+    SUBDIR += avidemux2-plugins
+    SUBDIR += avidemux26
+    SUBDIR += avidemux26-cli
+    SUBDIR += avidemux26-plugins
+    SUBDIR += avidemux26-qt4
     SUBDIR += avinfo
     SUBDIR += baka-mplayer
     SUBDIR += bangarang
@@ -32,7 +35,6 @@
     SUBDIR += clipgrab
     SUBDIR += clive
     SUBDIR += clutter-gst
-    SUBDIR += clutter-gst3
     SUBDIR += cuse4bsd-kmod
     SUBDIR += cx88
     SUBDIR += deforaos-player
@@ -57,6 +59,7 @@
     SUBDIR += emovix
     SUBDIR += ffmpeg
     SUBDIR += ffmpeg0
+    SUBDIR += ffmpeg26
     SUBDIR += ffmpeg2theora
     SUBDIR += ffmpegthumbnailer
     SUBDIR += flvmeta
@@ -128,7 +131,6 @@
     SUBDIR += gstreamer1-plugins-dvdread
     SUBDIR += gstreamer1-plugins-gnonlin
     SUBDIR += gstreamer1-plugins-good
-    SUBDIR += gstreamer1-plugins-hls
     SUBDIR += gstreamer1-plugins-kate
     SUBDIR += gstreamer1-plugins-mpeg2dec
     SUBDIR += gstreamer1-plugins-mpeg2enc
@@ -170,7 +172,6 @@
     SUBDIR += libcec
     SUBDIR += libdc1394
     SUBDIR += libdca
-    SUBDIR += libde265
     SUBDIR += libdv
     SUBDIR += libdvbcsa
     SUBDIR += libdvbpsi
@@ -366,7 +367,6 @@
     SUBDIR += tivodecode
     SUBDIR += totem
     SUBDIR += totem-pl-parser
-    SUBDIR += tovid
     SUBDIR += transcode
     SUBDIR += tstools
     SUBDIR += tvheadend
@@ -414,7 +414,6 @@
     SUBDIR += w_scan
     SUBDIR += webcamd
     SUBDIR += win32-codecs
-    SUBDIR += winff
     SUBDIR += x264
     SUBDIR += x265
     SUBDIR += xanim

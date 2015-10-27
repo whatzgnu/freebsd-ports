@@ -6,7 +6,7 @@ PORTREVISION=	4
 PORTEPOCH=	1
 CATEGORIES=	www
 MASTER_SITES=	http://www.tracanelli.com.br/l/dev/thunder/ \
-		LOCAL/jmelo
+		${MASTER_SITE_LOCAL}/jmelo
 
 MAINTAINER=	eksffa@freebsdbrasil.com.br
 COMMENT=	Web reporting and trending analysis for Thunder Cache Pro

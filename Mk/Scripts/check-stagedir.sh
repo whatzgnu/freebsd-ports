@@ -224,8 +224,20 @@ case "$1" in
 esac
 
 # validate environment
-validate_env STAGEDIR PREFIX LOCALBASE WRKDIR WRKSRC MTREE_FILE \
-    TMPPLIST PLIST_SUB_SED SCRIPTSDIR PORT_OPTIONS NO_PREFIX_RMDIR
+envfault=
+for i in STAGEDIR PREFIX LOCALBASE WRKDIR WRKSRC MTREE_FILE \
+    TMPPLIST PLIST_SUB_SED SCRIPTSDIR \
+    PORT_OPTIONS NO_PREFIX_RMDIR
+do
+    if ! ( eval ": \${${i}?}" ) 2>/dev/null ; then
+		envfault="${envfault}${envfault:+" "}${i}"
+    fi
+done
+if [ -n "$envfault" ] ; then
+	echo "Environment variables $envfault undefined. Aborting." \
+	| fmt >&2
+	exit 1
+fi
 
 set -u
 

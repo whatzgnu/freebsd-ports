@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	di
-PORTVERSION=	4.36
+PORTVERSION=	4.35
+PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.gentoo.com/di/ \
 		http://www.cyberbotx.com/di/

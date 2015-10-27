@@ -6,7 +6,8 @@ PORTVERSION=	1.3
 PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	http://www.lysator.liu.se/~nisse/misc/ \
-		LOCAL/sem
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	sem
 
 MAINTAINER=	sem@FreeBSD.org
 COMMENT=	Standalone version of arguments parsing functions from GLIBC

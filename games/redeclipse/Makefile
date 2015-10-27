@@ -3,7 +3,6 @@
 
 PORTNAME=	redeclipse
 PORTVERSION=	1.5.0
-DISTVERSIONPREFIX=	v
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -17,6 +16,7 @@ RUN_DEPENDS=	redeclipse-data>=1.5.0:${PORTSDIR}/games/redeclipse-data
 USE_GITHUB=	yes
 GH_ACCOUNT=	red-eclipse
 GH_PROJECT=	base
+GH_TAGNAME=	v${PORTVERSION}
 
 USES=		gmake
 BUILD_WRKSRC=	${WRKSRC}/src

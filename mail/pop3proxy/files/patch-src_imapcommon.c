@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/imapcommon.c.orig
 +++ src/imapcommon.c
 @@ -121,6 +121,7 @@

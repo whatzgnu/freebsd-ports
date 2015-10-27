@@ -2,7 +2,7 @@
 
 PORTNAME=	varnish
 PORTVERSION=	4.0.3
-PORTREVISION=	7
+PORTREVISION=	3
 CATEGORIES=	www
 MASTER_SITES=	http://repo.varnish-cache.org/source/
 PKGNAMESUFFIX=	4
@@ -17,9 +17,7 @@ LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre \
 
 CONFLICTS=	varnish-2.* varnish-3.*
 
-USES=		autoreconf cpe gmake libtool pkgconfig python:2,build readline shebangfix
-SHEBANG_FILES=	lib/libvcc/vmodtool.py
-python_OLD_CMD=	/usr/bin/env python
+USES=		autoreconf cpe gmake libtool pkgconfig python:build readline
 CPE_VENDOR=	varnish-cache
 CFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes

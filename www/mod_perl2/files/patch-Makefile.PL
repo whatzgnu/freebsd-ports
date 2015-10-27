@@ -1,6 +1,6 @@
---- Makefile.PL.orig	2015-05-13 19:26:43 UTC
-+++ Makefile.PL
-@@ -731,11 +731,11 @@ modperl_lib:
+--- m	Wed May 18 11:55:48 2005
++++ Makefile.PL	Wed May 18 11:56:07 2005
+@@ -668,11 +668,11 @@
  	cd "$(MODPERL_SRC)" && $(MAKE)
  
  modperl_lib_install:

@@ -18,7 +18,7 @@ GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 USES=		gettext gmake pkgconfig
-USE_GNOME=	gtk20 intltool
+USE_GNOME=	gtk20
 
 post-patch:
 	@${CHMOD} a+x ${WRKSRC}/install-sh

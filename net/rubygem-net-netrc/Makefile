@@ -11,8 +11,6 @@ COMMENT=	Net::Netrc provides ftp(1)-style .netrc parsing
 
 RUN_DEPENDS=	rubygem-platform>=0.3.0:${PORTSDIR}/devel/rubygem-platform
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

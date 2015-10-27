@@ -11,14 +11,11 @@ PKGNAMESUFFIX=	16
 DISTNAME=	Django-${PORTVERSION}
 DIST_SUBDIR=	python
 
-MAINTAINER=	python@FreeBSD.org
+MAINTAINER=	lwhsu@FreeBSD.org
 COMMENT=	High-level Python Web framework
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
-
-DEPRECATED=	not supported by upstream
-EXPIRATION_DATE=	2015-08-10
 
 USES=		cpe python
 USE_PYTHON=	autoplist distutils

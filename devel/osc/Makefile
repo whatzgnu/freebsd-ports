@@ -24,7 +24,6 @@ CPE_PRODUCT=	opensuse_osc
 USES=		cpe python
 USE_PYTHON=	distutils
 PYDISTUTILS_PKGVERSION=${PORTVERSION:C/^([0-9]+\.[0-9]+)\.[0-9]+/\1/}
-NO_ARCH=	yes
 
 PORTDOCS=	*
 

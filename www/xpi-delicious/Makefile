@@ -4,7 +4,8 @@
 PORTNAME=	delicious
 PORTVERSION=	1.3
 CATEGORIES=	www
-MASTER_SITES=	MOZDEV/${PORTNAME}
+MASTER_SITES=	${MASTER_SITE_MOZDEV}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	lapo@lapo.it
 COMMENT=	Extension to ease the use of del.icio.us remote bookmarks

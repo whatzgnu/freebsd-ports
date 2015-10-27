@@ -13,8 +13,7 @@ MAINTAINER=	kerndtr@kerndt.com
 COMMENT=	WWW front end for mail archives
 
 USES=		tar:bzip2 perl5
-NO_BUILD=	yes
-NO_ARCH=	yes
+NO_BUILD=	Yes
 
 INSTALL_ARGS=	-prefix ${STAGEDIR} -binpath ${STAGEDIR}${PREFIX}/bin \
 		-libpath ${STAGEDIR}${PREFIX}/${SITE_PERL_REL} \

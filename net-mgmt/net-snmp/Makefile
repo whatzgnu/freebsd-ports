@@ -3,7 +3,7 @@
 
 PORTNAME=	snmp
 PORTVERSION=	5.7.3
-PORTREVISION=	8
+PORTREVISION=	7
 CATEGORIES=	net-mgmt ipv6
 MASTER_SITES=	SF/net-${PORTNAME}/net-${PORTNAME}/${PORTVERSION}
 PKGNAMEPREFIX=	net-
@@ -37,8 +37,7 @@ GNU_CONFIGURE=	yes
 USE_RC_SUBR=	snmpd snmptrapd
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
-USES=		cpe perl5 libtool
-CPE_VENDOR=	net-snmp
+USES=		perl5 libtool
 USE_PERL5=	build run
 USE_CSTD=	c99
 
@@ -272,7 +271,7 @@ post-build:
 	${REINPLACE_CMD} -e 's| perlinstall||' ${WRKSRC}/Makefile
 .endif
 
-post-install: strip-files install-config-files install-doc-files
+post-install: strip-files install-config-files install-doc-files display-message
 	@${MKDIR} ${STAGEDIR}/var/agentx
 	@(cd ${STAGEDIR}${PREFIX}/lib && ${LN} -sf libnetsnmp.so.${SHLIB_VERSION} libnetsnmp.so)
 	@(cd ${STAGEDIR}${PREFIX}/lib && ${LN} -sf libnetsnmpagent.so.${SHLIB_VERSION} libnetsnmpagent.so)
@@ -295,6 +294,10 @@ install-doc-files:
 	${INSTALL_DATA} ${WRKSRC}/${filename} ${STAGEDIR}${DOCSDIR}
 . endfor
 .endif
+
+display-message:
+	${ECHO_MSG}
+	${CAT} ${PKGMESSAGE}
 
 # Maintainer's note:
 #   Don't forget to bump library version in these ports.

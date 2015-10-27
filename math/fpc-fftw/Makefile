@@ -1,7 +1,7 @@
 # Created by: Alonso Cardenas Marquez <acm@FreeBSD.org>
 # $FreeBSD$
 
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	math lang
 PKGNAMESUFFIX=	-fftw
 

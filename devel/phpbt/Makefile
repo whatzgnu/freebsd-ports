@@ -3,15 +3,12 @@
 
 PORTNAME=	phpbt
 PORTVERSION=	1.0.1
-PORTREVISION=	2
-CATEGORIES=	devel
+PORTREVISION=	1
+CATEGORIES?=	devel
 MASTER_SITES=	SF
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Bug-tracking system developed in PHP
-
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 RUN_DEPENDS=	${LOCALBASE}/share/pear/DB.php:${PORTSDIR}/databases/pear-DB
 
@@ -19,14 +16,11 @@ RUN_DEPENDS=	${LOCALBASE}/share/pear/DB.php:${PORTSDIR}/databases/pear-DB
 USE_PHP=	ctype pcre posix session tokenizer xml zlib
 .endif
 
-USES=		shebangfix
-SHEBANG_FILES=	contrib/gnats-to-phpbt.py
-NO_BUILD=	yes
-NO_ARCH=	yes
+NO_BUILD=	YES
 PHPBT=		www/data-dist/phpbt
 PLIST_SUB=	PHPBT=${PHPBT} WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 SUB_FILES=	pkg-message
-SUB_LIST=	PHPBT=${PHPBT}
+SUB_LIST+=	PHPBT=${PHPBT}
 
 do-install:
 	-${MKDIR} ${STAGEDIR}${PREFIX}/${PHPBT}

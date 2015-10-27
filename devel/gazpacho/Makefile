@@ -5,7 +5,8 @@ PORTNAME=	gazpacho
 PORTVERSION=	0.7.2
 PORTREVISION=	4
 CATEGORIES=	devel python
-MASTER_SITES=	GNOME/sources/gazpacho/0.7
+MASTER_SITES=	${MASTER_SITE_GNOME}
+MASTER_SITE_SUBDIR=	sources/gazpacho/0.7
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GUI builder for the GTK+ toolkit
@@ -14,10 +15,9 @@ RUN_DEPENDS=	${LOCALBASE}/bin/kiwi-i18n:${PORTSDIR}/x11-toolkits/py-kiwi
 BUILD_DEPENDS=	${LOCALBASE}/bin/kiwi-i18n:${PORTSDIR}/x11-toolkits/py-kiwi
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 USE_GNOME=	pygtk2
 USE_PYTHON=	distutils
-USES=		desktop-file-utils gettext python
+USES=		gettext python
 DOCS=		AUTHORS ChangeLog CONTRIBUTORS COPYING README NEWS
 
 OPTIONS_DEFINE=	DOCS EXAMPLES

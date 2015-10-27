@@ -1,9 +1,9 @@
 # Created by: Maxim Sobolev <sobomax@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/graphics/jasper/Makefile 395527 2015-08-29 06:19:53Z dinoex $
 
 PORTNAME=	jasper
 PORTVERSION=	1.900.1
-PORTREVISION=	14
+PORTREVISION=	15
 CATEGORIES=	graphics
 MASTER_SITES=	http://www.ece.uvic.ca/~mdadams/jasper/software/ \
 		ftp://ftp.imagemagick.org/pub/ImageMagick/delegates/
@@ -13,7 +13,7 @@ COMMENT=	Implementation of the codec specified in the JPEG-2000 standard
 
 LICENSE=	MIT
 
-USES=		jpeg libtool:keepla zip
+USES=		zip libtool:keepla jpeg
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

@@ -11,6 +11,7 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Automatic panorama control point generation tool, C port
 
 LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libpano13.so:${PORTSDIR}/graphics/libpano13
 
@@ -19,7 +20,7 @@ RESTRICTED=	May be covered by patents
 CONFLICTS=	autopano-sift-[0-9]*
 
 USE_GNOME=	libxml2
-USES=		cmake jpeg
+USES=		cmake
 
 PORTDOCS=	*
 

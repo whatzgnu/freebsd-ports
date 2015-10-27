@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	opensmtpd
-PORTVERSION=	5.7.1
+PORTVERSION=	5.4.5
 PORTEPOCH=	1
 CATEGORIES=	mail
 MASTER_SITES=	http://www.opensmtpd.org/archives/ \
@@ -17,14 +17,13 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libevent.so:${PORTSDIR}/devel/libevent2
 
-OPTIONS_DEFINE=	CA_BUNDLE LIBASRDEVEL MAILERCONF PAM TABLE_DB
+OPTIONS_DEFINE=	CA_BUNDLE PAM LIBASRDEVEL MAILERCONF
 
-OPTIONS_DEFAULT=	CA_BUNDLE PAM TABLE_DB
+OPTIONS_DEFAULT=	CA_BUNDLE PAM
 
 CA_BUNDLE_DESC=	Install CA bundle for OpenSSL
 LIBASRDEVEL_DESC=	Use development version of libasr
 MAILERCONF_DESC=	Activate OpenSMTPD in mailer.conf(5)
-TABLE_DB_DESC=		Build table-db plugin (aliases)
 
 USES=		cpe libtool
 USE_OPENSSL=	yes
@@ -45,14 +44,17 @@ GROUPS=		_smtpd
 
 OPTIONS_SUB=	yes
 
-CA_BUNDLE_CONFIGURE_ON=	--with-ca-file=${LOCALBASE}/share/certs/ca-root-nss.crt
-CA_BUNDLE_RUN_DEPENDS=	${LOCALBASE}/share/certs/ca-root-nss.crt:${PORTSDIR}/security/ca_root_nss
-
 LIBASRDEVEL_LIB_DEPENDS_OFF=	libasr.so:${PORTSDIR}/dns/libasr
 LIBASRDEVEL_LIB_DEPENDS=	libasr.so:${PORTSDIR}/dns/libasr-devel
 
+CA_BUNDLE_CONFIGURE_ON=	--with-ca-file=${LOCALBASE}/share/certs/ca-root-nss.crt
+CA_BUNDLE_RUN_DEPENDS=	${LOCALBASE}/share/certs/ca-root-nss.crt:${PORTSDIR}/security/ca_root_nss
+
 PAM_CONFIGURE_ON=	--with-pam --with-pam-service=smtpd
 
-TABLE_DB_CONFIGURE_ON=	--enable-table-db
+post-patch:
+	@${FIND} ${WRKSRC} -type f -name 'Makefile.in' |${XARGS} ${TOUCH}
+	@${TOUCH} ${WRKSRC}/aclocal.m4 ${WRKSRC}/Makefile.in
+	@${TOUCH} ${WRKSRC}/config.h.in ${WRKSRC}/configure
 
 .include <bsd.port.mk>

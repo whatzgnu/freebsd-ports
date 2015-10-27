@@ -6,7 +6,8 @@ PORTREVISION=	1
 CATEGORIES=	news security
 # Distribution broken
 # MASTER_SITES=	http://people.qualcomm.com/ggr/
-MASTER_SITES=	LOCAL/dinoex
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	dinoex
 DISTNAME=	PGPMoose
 EXTRACT_SUFX=	.tar.Z
 

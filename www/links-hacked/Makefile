@@ -12,10 +12,11 @@ COMMENT=	Hacked version of a Links WWW browser
 
 LICENSE=	GPLv2
 
-USES=		autoreconf execinfo
+USES=		execinfo
 USE_OPENSSL=	yes
 USE_CSTD=	gnu89
-GNU_CONFIGURE=	yes
+USE_AUTOTOOLS=	aclocal autoheader automake autoconf
+AUTOMAKE_ARGS=	--add-missing --copy
 CONFIGURE_ARGS=	--with-ssl --without-pmshell --without-atheos --without-fb
 
 CFLAGS+=	-Wno-error=return-type
@@ -49,9 +50,9 @@ X11_CONFIGURE_WITH=	x
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDIRECTFB} || ${PORT_OPTIONS:MSVGALIB} || ${PORT_OPTIONS:MX11}
-LIB_DEPENDS+=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS+=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff
-USES+=		jpeg
 CONFIGURE_ARGS+=	--enable-graphics
 .else
 CONFIGURE_ARGS+=	--disable-graphics --without-libjpeg --without-libtiff

@@ -23,7 +23,7 @@ GNU_CONFIGURE=	yes
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS+=	--with-pilot-prefix=${LOCALBASE}
-USE_GNOME+=	gtk20 intltool
+USE_GNOME+=	gtk20
 OPTIONS_DEFINE=	DOCS NLS
 INSTALL_TARGET=	install-strip
 

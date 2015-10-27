@@ -3,9 +3,8 @@
 
 PORTNAME=		flac
 PORTVERSION=		1.2.1
-PORTREVISION=		3
+PORTREVISION=		2
 CATEGORIES=		audio linux
-MASTER_SITES=		CENTOS_LINUX_UPDATES
 
 MAINTAINER=		emulation@FreeBSD.org
 COMMENT=		Free lossless audio codec (Linux CentOS ${LINUX_DIST_VER})
@@ -17,7 +16,7 @@ USE_LINUX=		c6
 USE_LINUX_APPS=		libogg
 USE_LINUX_RPM=		yes
 
-RPMVERSION=		7.el6_6
+RPMVERSION=		6.1.el6
 BRANDELF_DIRS=		usr/bin
 USE_LDCONFIG=		yes
 

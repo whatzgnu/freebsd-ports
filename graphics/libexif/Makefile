@@ -3,7 +3,7 @@
 
 PORTNAME=	libexif
 PORTVERSION=	0.6.21
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	graphics
 MASTER_SITES=	SF
 
@@ -11,12 +11,10 @@ MAINTAINER=	marius@nuenneri.ch
 COMMENT=	Library to read digital camera file meta-data
 
 LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 OPTIONS_DEFINE=	DOCS NLS
 
-USES=		cpe gmake libtool pathfix pkgconfig tar:bzip2
-CPE_VENDOR=	curtis_galloway
+USES=		gmake libtool pathfix pkgconfig tar:bzip2
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 GNU_CONFIGURE=	yes

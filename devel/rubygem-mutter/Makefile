@@ -10,8 +10,6 @@ MASTER_SITES=	RG
 MAINTAINER=	nivit@FreeBSD.org
 COMMENT=	This Ruby gem is a tiny command-line interface library
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

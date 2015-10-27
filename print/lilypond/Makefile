@@ -3,7 +3,7 @@
 
 PORTNAME=	lilypond
 PORTVERSION=	2.18.2
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	print audio
 MASTER_SITES=	http://download.linuxaudio.org/lilypond/sources/v${PORTVERSION:R}/
 
@@ -47,8 +47,8 @@ INFO=		internals \
 		lilypond-web \
 		music-glossary
 
-USES=		bison:build gettext ghostscript:9 gmake pkgconfig perl5 \
-		python:-3
+USES=		bison:build gettext gmake pkgconfig perl5 python:-3
+USE_GHOSTSCRIPT=9
 USE_TEX=	latex
 USE_PERL5=	build
 USE_GNOME=	pango
@@ -85,8 +85,6 @@ post-patch:
 .endif
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/lilypond
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/lilypond/${PORTVERSION}/python/midi.so
 	@${LN} -fs ${DATADIR}/${PORTVERSION} ${STAGEDIR}${DATADIR}/current
 
 regression-test: build

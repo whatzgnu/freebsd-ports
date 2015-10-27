@@ -11,9 +11,7 @@ DISTNAME=	se${PORTVERSION:S/.//g:tl}
 MAINTAINER=	glewis@FreeBSD.org
 COMMENT=	Dungeon explorin', slashin', hackin' game
 
-USES=		cpe gmake
-CPE_VENDOR=	freebsd
-CPE_PRODUCT=	slashem-tty
+USES=		gmake
 PKGDEINSTALL=	${WRKDIR}/pkg-deinstall
 SUB_FILES+=	pkg-deinstall
 MAKE_JOBS_UNSAFE=	yes

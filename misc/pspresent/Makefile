@@ -13,7 +13,7 @@ COMMENT=	Full-screen slide shows of postscript files
 LICENSE=	GPLv2
 
 USE_XORG=	x11 xext xinerama
-USES=		ghostscript:run
+USE_GHOSTSCRIPT_RUN=	yes
 MAKE_ARGS=	CC="${CC}" CFLAGS="${CFLAGS}" LDLIBS="${LDFLAGS}"
 ALL_TARGET=	pspresent
 

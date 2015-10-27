@@ -5,7 +5,8 @@ PORTVERSION=		1.0
 PORTREVISION=		0
 PORTEPOCH=		0
 CATEGORIES=		databases
-MASTER_SITES=		SAMBA/tdb
+MASTER_SITES=		${MASTER_SITE_SAMBA}
+MASTER_SITE_SUBDIR=	tdb
 
 MAINTAINER=		timur@FreeBSD.org
 COMMENT=		Not so Trivial DataBase
@@ -24,7 +25,6 @@ PLIST_SUB+=		PKGCONFIGDIR=${PKGCONFIGDIR:S;${PREFIX}/;;}
 
 CONFIGURE_ARGS+=	--mandir=${MANPREFIX}/man \
 			--infodir=${PREFIX}/${INFO_PATH}/${INFO_SUBDIR} \
-			--disable-rpath \
 			--without-gettext
 
 OPTIONS_DEFINE=		MANPAGES

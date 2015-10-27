@@ -3,7 +3,6 @@
 
 PORTNAME=	redeclipse-data
 PORTVERSION=	1.5.0
-DISTVERSIONPREFIX=	v
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -14,6 +13,7 @@ COMMENT=	Data files for Red Eclipse first-person shooter
 USE_GITHUB=	yes
 GH_ACCOUNT=	red-eclipse
 GH_PROJECT=	data
+GH_TAGNAME=	v${PORTVERSION}
 
 NO_BUILD=	yes
 NO_ARCH=	yes

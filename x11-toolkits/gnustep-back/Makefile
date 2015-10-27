@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	gnustep-back
-PORTVERSION=	0.24.1
+PORTVERSION=	0.24.0
+PORTREVISION=	5
 CATEGORIES=	x11-toolkits gnustep
 MASTER_SITES=	GNUSTEP/core
 
@@ -12,6 +13,7 @@ LICENSE_COMB=	multi
 LICENSE=	GPLv3 LGPL3
 
 LIB_DEPENDS+=	libgif.so:${PORTSDIR}/graphics/giflib \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libXft.so:${PORTSDIR}/x11-fonts/libXft \
 		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
@@ -28,7 +30,7 @@ CONFIGURE_ARGS=	--with-tiff-library=${LOCALBASE}/lib \
 		--enable-graphics=cairo \
 		--disable-glitz
 
-USES=		gnustep jpeg pkgconfig
+USES=		gnustep pkgconfig
 USE_GNUSTEP=	base gui build
 USE_XORG=	xft xrender xmu xext x11 xcursor xfixes xmu
 USE_GL=		yes

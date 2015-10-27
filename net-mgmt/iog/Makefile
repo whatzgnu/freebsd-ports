@@ -3,7 +3,7 @@
 
 PORTNAME=	iog
 PORTVERSION=	1.03
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://www.dynw.com/iog/
 
@@ -11,9 +11,7 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Graphs Byte Counts for switches/routers/etc
 
 NO_BUILD=	yes
-NO_ARCH=	yes
-USES=		perl5 shebangfix tar:tgz
-SHEBANG_FILES=	${PORTNAME}
+USES=		perl5 tar:tgz
 PLIST_SUB=	VERSION=${PORTVERSION}
 USERS=		iog
 

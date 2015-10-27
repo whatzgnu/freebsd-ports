@@ -12,6 +12,7 @@ COMMENT=	Simple paint program
 LICENSE=	GPLv3
 
 LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libopenjpeg.so:${PORTSDIR}/graphics/openjpeg15 \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
@@ -21,8 +22,9 @@ RUN_DEPENDS=	psselect:${PORTSDIR}/print/psutils \
 		bash:${PORTSDIR}/shells/bash
 
 USE_XORG=	xft xmu xpm
+USE_GHOSTSCRIPT_RUN=yes
 GNU_CONFIGURE=	yes
-USES=		ghostscript:run jpeg libtool:build shebangfix tar:bzip2
+USES=		libtool:build shebangfix tar:bzip2
 SHEBANG_FILES=	share/bin/imgmerge share/bin/xpaint_ocr
 
 CPPFLAGS+=	-I${LOCALBASE}/include -I${LOCALBASE}/include/freetype2 \

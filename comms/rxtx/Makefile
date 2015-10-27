@@ -10,12 +10,10 @@ MASTER_SITES=	http://rxtx.qbang.org/pub/rxtx/ \
 PKGNAMESUFFIX=	-${JAVA_PORT:S/java\///}
 DISTNAME=	${PORTNAME}-${PORTVERSION:S/p/pre/}
 
-MAINTAINER=	james@elstone.net
+MAINTAINER=	mirror176@cox.net
 COMMENT=	Native interface to serial ports in Java
 
 USES=		gmake libtool zip
-USE_LINUX=	c6
-
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 JAVA_OS=	native

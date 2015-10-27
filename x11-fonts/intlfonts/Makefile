@@ -5,7 +5,8 @@ PORTNAME=	intlfonts
 PORTVERSION=	1.2.1
 PORTREVISION=	4
 CATEGORIES=	x11-fonts
-MASTER_SITES=	GNU
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	intlfonts
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Free X11 fonts for all characters that Emacs can handle

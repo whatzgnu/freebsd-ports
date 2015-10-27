@@ -5,7 +5,8 @@ grepv() {
 }
 
 if [ "x$2" = "xPOST-INSTALL" ]; then
-	FONTDIR=%%FONTSDIR%%
+	FONTDIR=${PKG_PREFIX}/%%FONTSDIR%%
+	cd ${PKG_PREFIX}/%%FONTSDIR%%; %%LOCALBASE%%/bin/mkfontdir
 
 	# font alias entry here!
 	TMPFILE=/tmp/install-fonts-alias-$$

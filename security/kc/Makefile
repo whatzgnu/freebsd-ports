@@ -5,6 +5,7 @@ PORTNAME=	kc
 PORTVERSION=	2.3.2
 PORTREVISION=	1
 CATEGORIES=	security
+MASTER_SITES=	http://github.com/levaidaniel/${PORTNAME}/archive/${PORTVERSION}.tar.gz?dummy=/
 
 MAINTAINER=	leva@ecentrum.hu
 COMMENT=	Console based password storing application
@@ -15,8 +16,6 @@ LIB_DEPENDS=	libxml2.so:${PORTSDIR}/textproc/libxml2 \
 		libpcre.so:${PORTSDIR}/devel/pcre
 
 USES=		pkgconfig uidfix
-USE_GITHUB=	yes
-GH_ACCOUNT=	levaidaniel
 
 PLIST_FILES=	bin/kc man/man1/kc.1.gz
 

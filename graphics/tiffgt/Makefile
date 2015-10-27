@@ -1,22 +1,23 @@
 # $FreeBSD$
 
 PORTNAME=	tiffgt
-DISTVERSION=	4.0.4
+DISTVERSION=	4.0.4beta
 CATEGORIES=	graphics
 MASTER_SITES=	ftp://ftp.remotesensing.org/pub/libtiff/ \
 		http://download.osgeo.org/libtiff/
 DISTNAME=	tiff-${DISTVERSION}
 
-MAINTAINER=	bofh@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	X11 Tools for working with TIFF images
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 
-LIB_DEPENDS=	libjbig.so:${PORTSDIR}/graphics/jbigkit \
-		libtiff.so:${PORTSDIR}/graphics/tiff
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libjbig.so:${PORTSDIR}/graphics/jbigkit \
+		libtiff.so:${PORTSDIR}/${PKGCATEGORY}/tiff
 
-USES=		cpe jpeg libtool
+USES=		cpe libtool
 CPE_PRODUCT=	libtiff
 CPE_VERSION=	${DISTVERSION:C/[a-z]+//}
 CPE_UPDATE=	${DISTVERSION:C/[0-9.]+//}
@@ -25,7 +26,8 @@ USE_GL=		glut glu gl
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--with-jpeg-include-dir=${LOCALBASE}/include \
-			--with-jpeg-lib-dir=${LOCALBASE}/lib --with-x
+			--with-jpeg-lib-dir=${LOCALBASE}/lib \
+			--with-x --with-libgl
 PLIST_FILES=	bin/tiffgt man/man1/tiffgt.1.gz
 
 pre-configure:

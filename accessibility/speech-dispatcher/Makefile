@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	speech-dispatcher
-PORTVERSION=	0.8.3
+PORTVERSION=	0.8
+PORTREVISION=	2
 CATEGORIES=	accessibility audio
 MASTER_SITES=	http://devel.freebsoft.org/pub/projects/speechd/
 
@@ -23,7 +24,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 
-ETCFILES=	clients/emacs.conf modules/pico-generic.conf \
+ETCFILES=	clients/emacs.conf clients/gnome-speech.conf \
 		modules/cicero.conf modules/dtk-generic.conf \
 		modules/epos-generic.conf modules/espeak-generic.conf \
 		modules/espeak-mbrola-generic.conf modules/espeak.conf \
@@ -31,12 +32,13 @@ ETCFILES=	clients/emacs.conf modules/pico-generic.conf \
 		modules/ivona.conf modules/llia_phon-generic.conf \
 		modules/swift-generic.conf speechd.conf
 
-PORTDOCS=	ANNOUNCE AUTHORS ChangeLog FAQ NEWS README TODO
+PLIST_SUB+=	ETCFILES="${ETCFILES}"
 
-INFO=		spd-say speech-dispatcher speech-dispatcher-cs ssip
+PORTDOCS=	AUTHORS ChangeLog FAQ INSTALL NEWS README TODO
 
-OPTIONS_DEFINE=	ALSA AO DOCS ESPEAK FESTIVAL FLITE NAS \
-		PULSEAUDIO PYTHON
+INFO=		spd-say speech-dispatcher ssip
+
+OPTIONS_DEFINE=	ALSA AO DOCS ESPEAK FESTIVAL FLITE NAS PULSEAUDIO #PYTHON
 OPTIONS_DEFAULT=ESPEAK
 OPTIONS_SUB=	yes
 
@@ -64,10 +66,12 @@ NAS_CONFIGURE_WITH=	nas
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:${PORTSDIR}/audio/pulseaudio
 PULSEAUDIO_CONFIGURE_WITH=pulse
 
-PYTHON_RUN_DEPENDS=	${PYTHON_SITELIBDIR}/xdg/__init__.py:${PORTSDIR}/devel/py3-xdg
-PYTHON_USES=		python:3
-PYTHON_USE=		PYTHON=py3kplist
-PYTHON_CONFIGURE_ENABLE=python
+# devel/py-xdg doesn't support Python 3.
+CONFIGURE_ARGS+=	--disable-python
+PLIST_SUB+=		PYTHON="@comment "
+#PYTHON_RUN_DEPENDS=	${PYTHON_SITELIBDIR}/xdg/__init__.py:${PORTSDIR}/devel/py-xdg
+#PYTHON_USE=		PYTHON=3
+#PYTHON_CONFIGURE_ENABLE=python
 
 post-patch:
 	@${REINPLACE_CMD} -e '/SUBDIRS/ s/tests//' \
@@ -77,8 +81,6 @@ post-install:
 .for f in ${ETCFILES}
 	@${MV} ${STAGEDIR}${ETCDIR}/${f} ${STAGEDIR}${ETCDIR}/${f}.sample
 .endfor
-	@${RM} -rf ${STAGEDIR}${DATADIR}/conf
-	@${RMDIR} ${STAGEDIR}${DATADIR} || ${TRUE}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
 

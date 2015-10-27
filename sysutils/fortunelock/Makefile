@@ -4,7 +4,8 @@
 PORTNAME=	fortunelock
 PORTVERSION=	0.1.2
 CATEGORIES=	sysutils
-MASTER_SITES=	LOCAL/dannyboy
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	dannyboy
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Locks a terminal while showing fortunes

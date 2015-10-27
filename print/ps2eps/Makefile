@@ -13,7 +13,8 @@ COMMENT=	Generate Encapsulated Postscript file from Postscript document
 
 WRKSRC=		${WRKDIR}/ps2eps
 
-USES=		ghostscript:run perl5
+USE_GHOSTSCRIPT_RUN=	yes
+USES=		perl5
 USE_PERL5=	run
 OPTIONS_DEFINE=	DOCS
 

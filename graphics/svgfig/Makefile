@@ -4,16 +4,17 @@ PORTNAME=	SVGFig
 PORTVERSION=	1.1.6
 PORTREVISION=	1
 CATEGORIES=	graphics python
-MASTER_SITES=	GOOGLE_CODE
+MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	${PORTNAME:tl}-${PORTVERSION}
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Draw mathematical figures in SVG using Python
 
 WRKSRC=		${WRKDIR}/${PORTNAME:tl}
 
-USES=		python tar:tgz
+USES=		python
 USE_PYTHON=	distutils autoplist
 
 post-patch:

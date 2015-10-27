@@ -11,10 +11,8 @@ MAINTAINER=	vg@FreeBSD.org
 COMMENT=	Family of hash functions
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		cpe libtool
-CPE_VENDOR=	google
+USES=		libtool
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 

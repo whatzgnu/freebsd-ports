@@ -25,6 +25,8 @@ post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/truerand.c ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/truerand.h ${STAGEDIR}${DOCSDIR}
+	${CHMOD} u+w ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/TrulyRandom/TrulyRandom.so
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/TrulyRandom/TrulyRandom.so
+	${CHMOD} u-w ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/TrulyRandom/TrulyRandom.so
 
 .include <bsd.port.mk>

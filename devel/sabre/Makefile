@@ -4,7 +4,8 @@
 PORTNAME=	sabre
 PORTVERSION=	20100501
 CATEGORIES=	devel multimedia java
-MASTER_SITES=	SF/sabre-library
+MASTER_SITES=	SF
+MASTER_SITE_SUBDIR=	sabre-library
 DISTNAME=	${PORTNAME}-src-${PORTVERSION}
 
 MAINTAINER=	ale@FreeBSD.org

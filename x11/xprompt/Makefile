@@ -5,7 +5,8 @@ PORTNAME=	xprompt
 PORTVERSION=	1.4
 PORTREVISION=	2
 CATEGORIES=	x11
-MASTER_SITES=	LOCAL/mph
+MASTER_SITES=	LOCAL
+MASTER_SITE_SUBDIR=	mph
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Displays a dialog box and prompts user for text

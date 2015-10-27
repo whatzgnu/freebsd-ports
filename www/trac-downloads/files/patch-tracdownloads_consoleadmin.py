@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- tracdownloads/consoleadmin.py.orig
 +++ tracdownloads/consoleadmin.py
 @@ -122,7 +122,8 @@

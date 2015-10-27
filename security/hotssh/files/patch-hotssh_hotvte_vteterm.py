@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- hotssh/hotvte/vteterm.py.orig
 +++ hotssh/hotvte/vteterm.py
 @@ -264,7 +264,7 @@

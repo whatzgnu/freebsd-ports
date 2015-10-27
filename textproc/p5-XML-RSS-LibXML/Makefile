@@ -3,7 +3,7 @@
 
 PORTNAME=	XML-RSS-LibXML
 PORTVERSION=	0.31.03
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -27,11 +27,8 @@ TEST_DEPENDS=	p5-Test-Differences>=0:${PORTSDIR}/devel/p5-Test-Differences \
 
 OPTIONS_DEFINE=	EXAMPLES
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	tools/benchmark.pl
-perl_OLD_CMD=	perl
+USES=		perl5
 USE_PERL5=	modbuild
-NO_ARCH=	yes
 
 PORTEXAMPLES=	benchmark.pl
 

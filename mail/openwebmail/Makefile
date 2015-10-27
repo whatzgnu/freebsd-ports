@@ -5,8 +5,9 @@ PORTNAME=	openwebmail
 PORTVERSION=	2.53
 PORTREVISION=	2
 CATEGORIES=	mail
-MASTER_SITES=	http://openwebmail.acatysmoof.com/download/release/ \
-		http://openwebmail.org/openwebmail/download/release/
+MASTER_SITES=	http://openwebmail.acatysmoof.com/download/%SUBDIR%/ \
+		http://openwebmail.org/openwebmail/download/%SUBDIR%/
+MASTER_SITE_SUBDIR?=	release
 
 MAINTAINER=	crees@FreeBSD.org
 COMMENT=	Webmail system designed to manage big mail folder files efficiently
@@ -26,7 +27,7 @@ SUB_FILES=	pkg-install
 
 OPTIONS_DEFINE=	ANTIWORD MAGICK ISPELL LEARNSPAM LSOF PAM POP3_OVER_SSL QUOTA \
 		SPAMCHECK SPAMCHECK_ALL SPEEDYCGI TNEF VIRUSCHECK VIRUSCHECK_ALL \
-		WGET
+		WGET ZLIB
 
 ANTIWORD_DESC=	AntiWord
 ISPELL_DESC=	ISpell
@@ -42,12 +43,13 @@ TNEF_DESC=	tnef
 VIRUSCHECK_DESC=	Virus check (Clam AntiVirus)
 VIRUSCHECK_ALL_DESC=	Virus check for all (default: pop3)
 WGET_DESC=	wget
+ZLIB_DESC=	ZLib
 
 .include <bsd.port.pre.mk>
 
 # WITH_SPEEDYCGI needs suidperl enabled under perl 5.8.4 or above,
 # so, disable it first, and enable it again if perl exists and enabled suidperl
-.if ${PORT_OPTIONS:MSPEEDYCGI}
+.if ${PERL_LEVEL} >= 500804 && !empty(PORT_OPTIONS:MSPEEDYCGI)
 DISABLE_SPEEDYCGI=yes
 PORT_OPTIONS:=	${PORT_OPTIONS:NSPEEDYCGI}
 .if exists(${PERL})
@@ -56,7 +58,7 @@ PERL_V!=	${PERL} -V
 .undef DISABLE_SPEEDYCGI
 .endif # dosuid
 .endif # exists(${PERL})
-.endif # SPEEDYCGI
+.endif # perl5.8
 
 .if ${PORT_OPTIONS:MLEARNSPAM} || !empty(PORT_OPTIONS:MSPAMCHECK_ALL)
 PORT_OPTIONS+=	SPAMCHECK
@@ -105,7 +107,11 @@ RUN_DEPENDS+=	spamassassin>=0:${PORTSDIR}/mail/spamassassin
 .if ${PORT_OPTIONS:MSPEEDYCGI}
 RUN_DEPENDS+=	speedy_suidperl:${PORTSDIR}/www/p5-CGI-SpeedyCGI
 SUB_LIST+=	WITHOUT_SPEEDYCGI="@comment "
+.if ${PERL_LEVEL} < 500804
+EXTRA_PATCHES+=	${PATCH_WRKSRC}/misc/patches/suidperl2speedy_suidperl.patch
+.else
 EXTRA_PATCHES+=	${PATCH_WRKSRC}/misc/patches/suidperl2speedy_suidperl.notmp.patch
+.endif
 .else
 SUB_LIST+=	WITHOUT_SPEEDYCGI=""
 .endif
@@ -116,6 +122,12 @@ RUN_DEPENDS+=	clamdscan:${PORTSDIR}/security/clamav
 
 .if ${PORT_OPTIONS:MWGET}
 RUN_DEPENDS+=	${LOCALBASE}/bin/wget:${PORTSDIR}/ftp/wget
+.endif
+
+.if ${PORT_OPTIONS:MZLIB}
+. if ${PERL_LEVEL} < 500903
+RUN_DEPENDS+=	p5-IO-Compress>=0:${PORTSDIR}/archivers/p5-IO-Compress
+. endif
 .endif
 
 post-extract:

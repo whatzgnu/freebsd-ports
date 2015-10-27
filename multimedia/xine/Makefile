@@ -12,10 +12,11 @@ COMMENT=	X11 multimedia player
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libxine.so:${PORTSDIR}/multimedia/libxine
 
-USES=		desktop-file-utils execinfo gmake iconv jpeg pkgconfig readline \
+USES=		desktop-file-utils execinfo gmake iconv pkgconfig readline \
 		shared-mime-info tar:xz
 USE_XORG=	x11 xext xinerama xscrnsaver xtst xv xxf86vm
 GNU_CONFIGURE=	yes

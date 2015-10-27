@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/slonik/slonik.c.orig
 +++ src/slonik/slonik.c
 @@ -22,7 +22,6 @@

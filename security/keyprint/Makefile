@@ -3,20 +3,18 @@
 
 PORTNAME=	keyprint
 PORTVERSION=	1.0
-PORTREVISION=	1
 CATEGORIES=	security
-MASTER_SITES=	LOCAL/mharo
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	mharo
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Print S/Key keys on a piece of paper, twice the size of a credit card
 
-USES=		perl5 shebangfix
-USE_PERL5=	run
-SHEBANG_FILES=	keyprint
+USES=		shebangfix
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 PORTDOCS=	README
+SHEBANG_FILES=	keyprint
 
 OPTIONS_DEFINE=	DOCS
 

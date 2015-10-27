@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	texstudio
-PORTVERSION=	2.9.4
+PORTVERSION=	2.8.8
 PORTREVISION=	1
 CATEGORIES=	editors
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/TeXstudio%20${PORTVERSION}
@@ -12,9 +12,9 @@ COMMENT=	Integrated writing environment for creating LaTeX documents
 LIB_DEPENDS=	libpoppler.so:${PORTSDIR}/graphics/poppler \
 		libpoppler-qt4.so:${PORTSDIR}/graphics/poppler-qt4
 
-USES=		desktop-file-utils dos2unix execinfo ghostscript:run \
-		pkgconfig qmake
+USES=		desktop-file-utils dos2unix execinfo pkgconfig qmake
 DOS2UNIX_FILES=	${PORTNAME}.pro
+USE_GHOSTSCRIPT_RUN=	yes
 USE_QT4=	gui network script svg xml iconengines_run \
 		designer_build moc_build rcc_build uic_build
 USE_TEX=	latex dvipsk

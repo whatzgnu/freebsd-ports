@@ -13,7 +13,8 @@ DISTNAME=	Pike-v${PORTVERSION}
 MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Dynamic programming language with a syntax similar to C++
 
-LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libgdbm.so:${PORTSDIR}/databases/gdbm \
 		libpcre.so:${PORTSDIR}/devel/pcre \
 		libgmp.so:${PORTSDIR}/math/gmp \
@@ -78,7 +79,7 @@ CONFIGURE_ARGS+=	--without-debug \
 		 --without-sybase \
 		 --prefix=${PREFIX}
 
-USES=		bison gettext gmake jpeg perl5
+USES=		bison gettext gmake perl5
 
 PLIST_FILES=	bin/pike bin/pike78 bin/hilfe \
 		man/man1/pike.1.gz

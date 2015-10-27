@@ -1,4 +1,4 @@
-#! /usr/bin/env perl
+#! /usr/bin/perl -w
 # ----------------------------------------------------------------------------
 # "THE BEER-WARE LICENSE" (Revision 42)
 # <tobez@FreeBSD.org> wrote this file.  As long as you retain this notice you
@@ -8,7 +8,6 @@
 #
 # $FreeBSD$
 use strict;
-use warnings;
 
 # good tests:
 # /usr/ports/archivers/zoo/files/patch-aa  (context diff)

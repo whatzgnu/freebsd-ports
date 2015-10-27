@@ -5,7 +5,8 @@ PORTNAME=	dbench
 PORTVERSION=	4.0
 PORTREVISION=	2
 CATEGORIES=	benchmarks
-MASTER_SITES=	SAMBA/../../ftp/tridge/dbench
+MASTER_SITES=	SAMBA
+MASTER_SITE_SUBDIR=	../../ftp/tridge/dbench
 
 MAINTAINER=	jlaffaye@FreeBSD.org
 COMMENT=	Simulation of the Ziff-Davis netbench benchmark

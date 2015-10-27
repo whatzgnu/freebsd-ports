@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- file.c.orig	Sat Aug 10 03:55:14 2002
 +++ file.c	Wed Apr 16 16:07:19 2003
 @@ -18,10 +18,7 @@

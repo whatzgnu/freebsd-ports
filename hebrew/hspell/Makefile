@@ -5,7 +5,8 @@ PORTNAME=	hspell
 PORTVERSION=	1.1
 CATEGORIES=	hebrew
 MASTER_SITES=	http://hspell.ivrix.org.il/ \
-		LOCAL/makc
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	makc
 
 MAINTAINER=	onatan@gmail.com
 COMMENT=	Hebrew spellchecker and morphology engine

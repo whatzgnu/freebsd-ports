@@ -14,9 +14,10 @@ COMMENT=	OpenGL jigsaw puzzle game
 LICENSE=	GPLv2 # or later
 LICENSE_FILE=	${WRKSRC}/GPL.txt
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
-USES=		gmake jpeg tar:tgz
+USES=		gmake tar:tgz
 USE_SDL=	sdl mixer
 USE_GL=		gl
 MAKE_ARGS=	CXX=${CXX}

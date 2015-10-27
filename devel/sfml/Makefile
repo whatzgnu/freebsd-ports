@@ -12,10 +12,11 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Simple and Fast Multimedia Library
 
 LIB_DEPENDS=	libsndfile.so:${PORTSDIR}/audio/libsndfile \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libGLEW.so:${PORTSDIR}/graphics/glew
 
-USES=		cmake dos2unix jpeg openal:al zip:infozip
+USES=		cmake zip:infozip openal:al dos2unix
 DOS2UNIX_FILES=	CMakeLists.txt
 USE_XORG=	x11 xrandr
 USE_GL=		gl

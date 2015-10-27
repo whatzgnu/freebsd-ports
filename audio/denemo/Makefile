@@ -3,7 +3,6 @@
 
 PORTNAME=	denemo
 PORTVERSION=	1.2.2
-PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	GNU
 
@@ -17,14 +16,14 @@ LIB_DEPENDS=	libaubio.so:${PORTSDIR}/audio/aubio \
 		libjack.so:${PORTSDIR}/audio/jack \
 		libsmf.so:${PORTSDIR}/audio/libsmf \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile \
-		libportaudio.so:${PORTSDIR}/audio/portaudio \
+		libportaudio.so.2:${PORTSDIR}/audio/portaudio2 \
 		librubberband.so:${PORTSDIR}/audio/rubberband \
 		libguile-2.0.so:${PORTSDIR}/lang/guile2 \
 		libfftw3.so:${PORTSDIR}/math/fftw3
 RUN_DEPENDS=	xdg-open:${PORTSDIR}/devel/xdg-utils
 
 USES=		bison gettext gmake pkgconfig
-USE_GNOME=	intltool librsvg2 libxml2
+USE_GNOME=	librsvg2 libxml2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-jack \
 		--disable-alsa \
@@ -33,8 +32,10 @@ CONFIGURE_ARGS=	--enable-jack \
 		--disable-gtk-doc-html \
 		--disable-gtk-doc-pdf
 
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+CPPFLAGS+=	-I${LOCALBASE}/include/portaudio2 \
+		-I${LOCALBASE}/include
+LDFLAGS+=	${LOCALBASE}/lib/portaudio2/libportaudio.so \
+		-L${LOCALBASE}/lib
 
 PORTDOCS=	*
 PORTEXAMPLES=	*

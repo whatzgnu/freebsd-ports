@@ -13,12 +13,13 @@ DISTNAME=	Imaging-${PORTVERSION}
 MAINTAINER=	mainland@apeiron.net
 COMMENT=	The Python Imaging Library
 
-LIB_DEPENDS=	liblcms.so:${PORTSDIR}/graphics/lcms \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		liblcms.so:${PORTSDIR}/graphics/lcms \
 		libfreetype.so:${PORTSDIR}/print/freetype2
 
 UNIQUENAME=	py-${PORTNAME}
 
-USES=		jpeg python
+USES=		python
 DIST_SUBDIR=	python
 USE_PYTHON=	distutils autoplist concurrent
 

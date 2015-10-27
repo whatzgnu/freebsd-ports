@@ -4,7 +4,8 @@
 PORTNAME=	ubench
 PORTVERSION=	0.32
 CATEGORIES=	benchmarks
-MASTER_SITES=	SUNSITE/system/benchmark
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	system/benchmark
 
 MAINTAINER=	brian@FreeBSD.org
 COMMENT=	Unix Benchmark Utility for CPU(s) and memory

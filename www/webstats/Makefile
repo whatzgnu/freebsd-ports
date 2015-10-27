@@ -3,7 +3,7 @@
 
 PORTNAME=	webstats
 PORTVERSION=	0.3
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	www
 MASTER_SITES=	http://www.patsplanet.com/software/webstats/files/ \
 		http://www.caomhin.org/geek/ports/
@@ -16,8 +16,7 @@ RUN_DEPENDS=	analog:${PORTSDIR}/www/analog \
 		${LOCALBASE}/reportmagic/rmagic.pl:${PORTSDIR}/www/reportmagic
 
 NO_BUILD=	yes
-USES=		perl5 shebangfix
-SHEBANG_FILES=	scripts/perl/webstats
+USES=		perl5
 
 post-patch:
 	@${REINPLACE_CMD} -i '' -e 's|%%PREFIX%%|${PREFIX}|' \

@@ -8,7 +8,8 @@ CATEGORIES=	sysutils
 MASTER_SITES=	LOCAL/garga/ucspi-ssl \
 		http://www.superscript.com/ucspi-ssl/ \
 		http://dev.qmailrocks.org/downloads/qmailrocks_3.0-beta/ \
-		GENTOO
+		${MASTER_SITE_GENTOO}
+MASTER_SITE_SUBDIR=	distfiles
 
 MAINTAINER?=	lx@FreeBSD.org
 COMMENT?=	UCSPI tools for building SSL client-server applications

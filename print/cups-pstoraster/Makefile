@@ -23,8 +23,9 @@ WRKSRC=		${WRKDIR}/espgs-${PORTVERSION}
 
 DATADIR=	${PREFIX}/share/espgs
 
+USES=		gmake tar:bzip2
 # We just need the ghostscript fonts, nothing more
-USES=		ghostscript:run gmake iconv tar:bzip2
+USE_GHOSTSCRIPT_RUN=	yes
 GNU_CONFIGURE=		yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

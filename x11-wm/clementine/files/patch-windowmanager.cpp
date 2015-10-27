@@ -1,3 +1,5 @@
+$FreeBSD$
+
 windowmanager.cpp: In method `void WindowManager::takeButtonPress(long unsigned int, unsigned int, bool, int, int)':
 windowmanager.cpp:309: implicit declaration of function `int dumpClients(...)'
 

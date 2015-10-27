@@ -3,7 +3,6 @@
 
 PORTNAME=	libpwstor
 PORTVERSION=	0.1
-PORTREVISION=	1
 CATEGORIES=	security devel
 MASTER_SITES=	SF/kageki/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -23,9 +22,5 @@ CFLAGS+=	-fPIC -DPIC
 .if defined(WITH_DEBUG)
 CONFIGURE_ARGS+=--enable-debug
 .endif
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/pwtool
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libpwstor.so
 
 .include <bsd.port.post.mk>

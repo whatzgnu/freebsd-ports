@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	ImageMagick
-DISTVERSION=	6.9.1-10
-PORTREVISION=	1
+DISTVERSION=	6.9.1-2
 PORTEPOCH=	1
 CATEGORIES=	graphics perl5
 MASTER_SITES=	http://www.imagemagick.org/download/ \
@@ -46,7 +45,8 @@ CPE_VENDOR=	imagemagick
 SHEBANG_FILES=	www/source/examples.pl
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	MAKE=${MAKE_CMD}
-CONFIGURE_ARGS=	--without-dps
+CONFIGURE_ARGS=	--without-dps \
+		--without-lcms
 USE_LDCONFIG=	yes
 USE_GNOME=	libxml2
 
@@ -195,7 +195,7 @@ PLIST_SUB+=		DJVU="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MJPEG}
-USES+=			jpeg
+LIB_DEPENDS+=		libjpeg.so:${PORTSDIR}/graphics/jpeg
 PLIST_SUB+=		JPEG=""
 .else
 CONFIGURE_ARGS+=	--without-jpeg
@@ -220,11 +220,7 @@ PLIST_SUB+=		TIFF="@comment "
 
 .if ${PORT_OPTIONS:MGSLIB}
 CONFIGURE_ARGS+=	--with-gslib
-. if ${PORT_OPTIONS:MX11}
-USES+=		ghostscript
-. else
-USES+=		ghostscript:nox11
-. endif
+USE_GHOSTSCRIPT=	yes
 .else
 CONFIGURE_ARGS+=	--without-gslib
 .endif
@@ -295,7 +291,7 @@ CONFIGURE_ARGS+=	--without-lzma
 .if ${PORT_OPTIONS:MLCMS2}
 LIB_DEPENDS+=		liblcms2.so:${PORTSDIR}/graphics/lcms2
 .else
-CONFIGURE_ARGS+=	--without-lcms
+CONFIGURE_ARGS+=	--without-lcms2
 .endif
 
 # Freetype (TrueType Font) support
@@ -357,11 +353,7 @@ PLIST_SUB+=		PANGO="@comment "
 
 # PDF (Adobe Portable Document Format) support
 .if ${PORT_OPTIONS:MPDF}
-. if ${PORT_OPTIONS:MX11}
-USES+=			ghostscript
-. else
-USES+=			ghostscript:nox11
-. endif
+USE_GHOSTSCRIPT=	yes
 .endif
 
 .if ! ${PORT_OPTIONS:MX11}
@@ -384,11 +376,11 @@ INSTALL_TARGET=	install-strip
 .endif
 
 .if ${PORT_OPTIONS:MTESTS}
-. if ${PORT_OPTIONS:MX11}
-USES+=		ghostscript:build
-. else
-USES+=		ghostscript:build,nox11
-. endif
+USE_GHOSTSCRIPT_BUILD=yes
+.endif
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 900000
+EXTRA_PATCHES+=	${FILESDIR}/extra-magick_locale.c
 .endif
 
 post-patch:
@@ -426,7 +418,7 @@ post-install: test
 
 test check:
 .if ${PORT_OPTIONS:MTESTS}
-	-cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} limits -m 20m ${MAKE} ${_MAKE_JOBS} check
+	-cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} limits -m 20m ${MAKE} check
 .endif
 
 .include <bsd.port.mk>

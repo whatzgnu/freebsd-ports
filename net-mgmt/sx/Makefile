@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	sx
-PORTVERSION=	1.2
+PORTVERSION=	0.4
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://cdn.skylable.com/source/
 
@@ -16,11 +17,10 @@ LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
 
 HAS_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
 USES=		gmake libtool pkgconfig
 CONFIGURE_ARGS=	CPPFLAGS="-I${LOCALBASE}/include" \
 		LDFLAGS="-L${LOCALBASE}/lib" --prefix="${STAGE}${PREFIX}" \
-		--sysconfdir="${ETCDIR}" --mandir="${MANPREFIX}/man"
+		--sysconfdir="${ETCDIR}"
 
 OPTIONS_DEFINE=	SXSERVER DOCS
 SXSERVER_DESC=	Enable sxhttpd server
@@ -31,11 +31,13 @@ OPTIONS_DEFAULT=SXSERVER
 .if ${PORT_OPTIONS:MSXSERVER}
 CONFIGURE_ARGS+=--localstatedir="${STAGE}${PREFIX}/sxserver"
 PLIST_SUB+=	SXSERVER=""
+PLIST_SUB+=	SXCLIENT="@comment "
 USE_RC_SUBR=	sxserver
 SUB_FILES=	pkg-message
 .else
-CONFIGURE_ARGS+=--disable-sxhttpd --disable-server
+CONFIGURE_ARGS+=--disable-sxhttpd
 PLIST_SUB+=	SXSERVER="@comment "
+PLIST_SUB+=	SXCLIENT=""
 .endif
 
 .include <bsd.port.mk>

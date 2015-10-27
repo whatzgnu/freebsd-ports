@@ -2,26 +2,46 @@
 # $FreeBSD$
 
 PORTNAME=	stxxl
-PORTVERSION=	1.4.1
+PORTVERSION=	1.3.1
 CATEGORIES=	devel
 MASTER_SITES=	SF
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Standard Template Library for Extra Large Data Sets
 
-LICENSE=	BSL
-LICENSE_FILE=	${WRKSRC}/LICENSE_1_0.txt
+USES=		gmake
+ALL_TARGET=	library_g++
 
-USES=		cmake:outsource
-CMAKE_ARGS=	-DINSTALL_PKGCONFIG_DIR:STRING="libdata/pkgconfig" \
-		-DUSE_GNU_PARALLEL:BOOL=OFF # may be enabled for future versions of clang with openmp support
+MAKE_ENV+=	COMPILER_GCC="${CXX}" OPT="${CXXFLAGS}" \
+		PTHREAD_FLAG="-lpthread"
 
 PORTDOCS=	*
 
-OPTIONS_DEFINE=	DOCS
+OPTIONS_DEFINE=	DOCS OPTIMIZED_CFLAGS
+OPTIONS_DEFAULT=OPTIMIZED_CFLAGS
 
-post-install:
-	@cd ${WRKSRC} && ${COPYTREE_SHARE} "AUTHORS CHANGELOG README TODO" \
-		${STAGEDIR}${DOCSDIR}/
+OPTIMIZED_CFLAGS_CXXFLAGS=	-O3
+
+.include <bsd.port.options.mk>
+
+post-patch:
+.if ${OSVERSION} >= 1000000
+	@${REINPLACE_CMD} -i '' -e 's|std::tr1::|std::|' \
+		${WRKSRC}/include/stxxl/bits/compat/type_traits.h \
+		${WRKSRC}/include/stxxl/bits/compat/shared_ptr.h \
+		${WRKSRC}/include/stxxl/bits/compat_hash_map.h
+.endif
+
+do-install:
+	${INSTALL_DATA} ${WRKSRC}/lib/lib${PORTNAME}.a ${STAGEDIR}${PREFIX}/lib
+	cd ${WRKSRC}/include && ${COPYTREE_SHARE} "${PORTNAME} ${PORTNAME}.h" \
+		${STAGEDIR}${PREFIX}/include
+	${RM} -f ${STAGEDIR}${PREFIX}/include/stxxl/bits/mng/config.h.orig
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
+
+regression-test:
+	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} tests_g++
+	cd ${WRKSRC}/misc && ${SH} run-all-tests
 
 .include <bsd.port.mk>

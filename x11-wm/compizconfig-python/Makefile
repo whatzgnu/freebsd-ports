@@ -3,7 +3,7 @@
 
 PORTNAME=	compizconfig-python
 PORTVERSION=	0.8.4
-PORTREVISION=	7
+PORTREVISION=	6
 CATEGORIES=	x11-wm
 MASTER_SITES=	http://releases.compiz.org/${PORTVERSION}/
 

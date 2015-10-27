@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- modules/gsl.lsp.orig
 +++ modules/gsl.lsp
 @@ -169,6 +169,7 @@

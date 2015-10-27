@@ -5,8 +5,9 @@ PORTNAME=	pload
 PORTVERSION=	0.9.5
 PORTREVISION=	4
 CATEGORIES=	net sysutils
-MASTER_SITES=	LOCAL/pav \
+MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://opal.com/jr/freebsd/ports/net/pload/
+MASTER_SITE_SUBDIR=	pav
 
 MAINTAINER=	fbsd@opal.com
 COMMENT=	X11 program to display network traffic graphs

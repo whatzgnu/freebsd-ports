@@ -2,11 +2,11 @@
 
 PORTNAME=	xmltex
 PORTVERSION=	1.9
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	print
-MASTER_SITES=	ftp://tug.org/historic/systems/texlive/2015/
+MASTER_SITES=	ftp://tug.org/historic/systems/texlive/2014/
 PKGNAMEPREFIX=	tex-
-DISTNAME=	texlive-20150523-texmf
+DISTNAME=	texlive-20140525-texmf
 DIST_SUBDIR=	TeX
 EXTRACT_ONLY=
 
@@ -28,6 +28,6 @@ TEX_FORMATS=	xmltex
 
 do-install:
 	${CAT} ${DISTDIR}/${DIST_SUBDIR}/${DISTNAME}${EXTRACT_SUFX} \
-	    ${EXTRACT_AFTER_ARGS}
+		${EXTRACT_AFTER_ARGS}
 
 .include <bsd.port.mk>

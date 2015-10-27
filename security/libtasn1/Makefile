@@ -3,9 +3,9 @@
 
 PORTNAME=	libtasn1
 PORTVERSION=	4.5
-PORTREVISION=	1
 CATEGORIES=	security
-MASTER_SITES=	GNU
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	libtasn1
 
 MAINTAINER=	novel@FreeBSD.org
 COMMENT=	ASN.1 structure parser library
@@ -20,7 +20,6 @@ OPTIONS_DEFINE=	DOCS
 
 DOCS=		AUTHORS NEWS README THANKS doc/TODO \
 		doc/libtasn1.html doc/libtasn1.pdf doc/libtasn1.ps
-INFO=		libtasn1
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

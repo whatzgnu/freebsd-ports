@@ -246,7 +246,6 @@ include/asterisk/udptl.h
 include/asterisk/ulaw.h
 include/asterisk/unaligned.h
 include/asterisk/utils.h
-include/asterisk/vector.h
 include/asterisk/version.h
 include/asterisk/xml.h
 include/asterisk/xmldoc.h
@@ -299,7 +298,7 @@ lib/asterisk/modules/res_clialiases.so
 %%CURL%%lib/asterisk/modules/res_curl.so
 %%CURL%%lib/asterisk/modules/res_config_curl.so
 %%LDAP%%lib/asterisk/modules/res_config_ldap.so
-%%SQLITE2%%lib/asterisk/modules/res_config_sqlite.so
+%%SQLITE%%lib/asterisk/modules/res_config_sqlite.so
 lib/asterisk/modules/res_config_sqlite3.so
 lib/asterisk/modules/res_format_attr_celt.so
 lib/asterisk/modules/res_format_attr_h263.so
@@ -506,12 +505,11 @@ share/asterisk/phoneprov/000000000000.cfg
 share/asterisk/phoneprov/polycom.xml
 share/asterisk/phoneprov/polycom_line.xml
 share/asterisk/phoneprov/snom-mac.xml
-share/asterisk/sounds/en/.asterisk-core-sounds-en-gsm-1.4.27
-share/asterisk/sounds/en/CHANGES-asterisk-core-en-1.4.27
-share/asterisk/sounds/en/CREDITS-asterisk-core-en-1.4.27
-share/asterisk/sounds/en/LICENSE-asterisk-core-en-1.4.27
+share/asterisk/sounds/en/.asterisk-core-sounds-en-gsm-1.4.26
+share/asterisk/sounds/en/CHANGES-asterisk-core-en-1.4.26
+share/asterisk/sounds/en/CREDITS-asterisk-core-en-1.4.26
+share/asterisk/sounds/en/LICENSE-asterisk-core-en-1.4.26
 share/asterisk/sounds/en/ascending-2tone.gsm
-share/asterisk/sounds/en/basic-pbx-ivr-main.gsm
 share/asterisk/sounds/en/conf-adminmenu-162.gsm
 share/asterisk/sounds/en/conf-adminmenu-18.gsm
 share/asterisk/sounds/en/conf-adminmenu-menu8.gsm

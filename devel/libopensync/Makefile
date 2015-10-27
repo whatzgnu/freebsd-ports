@@ -6,7 +6,8 @@ PORTVERSION=	0.39
 PORTREVISION=	4
 CATEGORIES=	devel
 MASTER_SITES=	http://www.opensync.org/download/releases/${PORTVERSION}/ \
-		LOCAL/danilo
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	danilo
 
 MAINTAINER=	danilo@FreeBSD.org
 COMMENT=	PIM data synchronization framework

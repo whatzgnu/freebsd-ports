@@ -5,7 +5,9 @@ PORTNAME=	vblade
 PORTVERSION=	21
 PORTREVISION=	1
 CATEGORIES=	net
-MASTER_SITES=	SF/aoetools/${PORTNAME}/${PORTVERSION}
+MASTER_SITES=	SF
+MASTER_SITE_SUBDIR=	aoetools/${PORTNAME}/${PORTVERSION}
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	fjoe@FreeBSD.org
 COMMENT=	Virtual EtherDrive(R) blade AoE target
@@ -16,7 +18,6 @@ MAKE_ARGS=	PLATFORM=freebsd\
 		INSTALL_MAN="${INSTALL_MAN}"
 MAKEFILE=	makefile
 ALL_TARGET=
-USES=		tar:tgz
 
 PLIST_FILES=	sbin/vblade sbin/vbladed man/man8/vblade.8.gz
 

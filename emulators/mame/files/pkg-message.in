@@ -1,11 +1,13 @@
 ==============================================================================
 
-An example configuration file has been installed in
-"%%EXAMPLESDIR%%/%%MTARGET%%.ini"
-Should you create a "~/.%%MTARGET%%" directory and place it here or
-launch "%%MTARGET%% -createconfig" and place the %%MTARGET%%.ini created instead.
+MAME has been installed.
 
-If you have a non-qwerty keyboard, you should put in your %%MTARGET%%.ini :
+A example configuration file has been installed in
+"%%EXAMPLESDIR%%/mame.ini"
+Should you create a "~/.mame" directory and place it here or
+launch "mame -createconfig" and place the mame.ini created instead.
+
+If you have a non-qwerty keyboard, you should put in your mame.ini :
 keymap      1
 keymap_file %%DATADIR%%/keymaps/km-XX.txt
 

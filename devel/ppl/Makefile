@@ -5,8 +5,9 @@ PORTNAME=	ppl
 PORTVERSION=	1.1
 PORTREVISION=	1
 CATEGORIES=	devel
-MASTER_SITES=	ftp://ftp.cs.unipr.it/pub/ppl/releases/${PORTVERSION}/ \
-		http://bugseng.com/products/ppl/download/ftp/releases/${PORTVERSION}/
+MASTER_SITES=	ftp://ftp.cs.unipr.it/pub/ppl/releases/%SUBDIR%/ \
+		http://bugseng.com/products/ppl/download/ftp/releases/%SUBDIR%/
+MASTER_SITE_SUBDIR=	${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	C++ library for the manipulation of convex polyhedra

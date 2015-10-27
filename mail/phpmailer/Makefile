@@ -3,8 +3,9 @@
 
 PORTNAME=	phpmailer
 PORTVERSION=	5.2.7
-DISTVERSIONPREFIX=	v
 CATEGORIES=	mail
+MASTER_SITES=	https://github.com/Synchro/PHPMailer/archive/
+DISTNAME=	v${PORTVERSION}
 
 MAINTAINER=	joehorn@gmail.com
 COMMENT=	Full Featured Email Transfer Class for PHP
@@ -13,9 +14,7 @@ LICENSE=	LGPL3
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	Synchro
-GH_PROJECT=	PHPMailer
+WRKSRC=		${WRKDIR}/PHPMailer-${PORTVERSION}
 
 NO_BUILD=	yes
 USE_PHP=	yes

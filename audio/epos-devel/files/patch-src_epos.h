@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/epos.h.orig
 +++ src/epos.h
 @@ -43,6 +43,7 @@

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	libisocodes
-PORTVERSION=	1.2.2
+PORTVERSION=	1.2.1
+PORTREVISION=	1
 CATEGORIES=	misc
 MASTER_SITES=	http://pkg-isocodes.alioth.debian.org/downloads/
 

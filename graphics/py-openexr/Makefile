@@ -17,6 +17,7 @@ LIB_DEPENDS=	libIlmImf.so:${PORTSDIR}/graphics/OpenEXR
 
 USES=		python
 USE_PYTHON=	distutils autoplist
+MASTER_SITE_SUBDIR=source/O/OpenEXR
 
 post-extract:
 	${REINPLACE_CMD} -e 's#/usr/local#${LOCALBASE}#g' ${WRKSRC}/setup.py

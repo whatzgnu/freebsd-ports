@@ -5,7 +5,8 @@ PORTNAME=	amavis-stats
 PORTVERSION=	0.1.12
 PORTREVISION=	4
 CATEGORIES=	security
-MASTER_SITES=	LOCAL/feld
+MASTER_SITES=	LOCAL
+MASTER_SITE_SUBDIR=	feld
 
 MAINTAINER=	feld@FreeBSD.org
 COMMENT=	Simple AMaViS statistics generator based on rrdtool

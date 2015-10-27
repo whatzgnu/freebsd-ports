@@ -3,7 +3,6 @@
 
 PORTNAME=	hub
 PORTVERSION=	2.2.0
-DISTVERSIONPREFIX=v
 CATEGORIES=	devel
 
 MAINTAINER=	koukopoulos@gmail.com
@@ -11,11 +10,17 @@ COMMENT=	Introduces git to GitHub
 
 LICENSE=	MIT
 
+USE_GITHUB=	yes
+GH_ACCOUNT=	github
+
+DISTVERSIONPREFIX=v
+
+MASTER_SITES=   GH
+
 BUILD_DEPENDS=	go:${PORTSDIR}/lang/go \
 		bash:${PORTSDIR}/shells/bash
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	github
+WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 STRIP=		# stripping can break go binaries
 

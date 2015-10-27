@@ -24,6 +24,7 @@ USE_OPENSSL=	yes
 USE_RC_SUBR=	xorp
 SHEBANG_FILES=	xrl/scripts/clnt-gen xrl/scripts/tgt-gen
 python_OLD_CMD=	.*python
+python_CMD=	${PYTHON_CMD}
 SUB_FILES=	pkg-message
 XORP_SAMPLECONF=	rtrmgr/config/multicast4.boot
 

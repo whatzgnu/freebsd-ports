@@ -3,8 +3,6 @@
 %%PORTDOCS%%%%DOCSDIR%%/FORM
 %%PORTDOCS%%%%DOCSDIR%%/HISTORY
 %%PORTDOCS%%%%DOCSDIR%%/TEMPLATE
-@owner vpopmail
-@group vchkpw
 %%WWWDIR%%/html/error.html
 %%WWWDIR%%/html/failure.html
 %%WWWDIR%%/html/init_error.html
@@ -12,10 +10,6 @@
 %%WWWDIR%%/html/register.with.password.html
 %%WWWDIR%%/html/success.html
 %%WWWDIR%%/html/success.with.password.html
-@(vpopmail,vchkpw,4755) %%WWWDIR%%/vqregister.cgi
+%%WWWDIR%%/vqregister.cgi
 %%WWWDIR%%/vqregister.conf
 %%WWWDIR%%/vqregister.email
-@dir %%WWWDIR%%/html
-@dir %%WWWDIR%%
-@owner
-@group

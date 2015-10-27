@@ -2,7 +2,6 @@
 
 PORTNAME=	wildmidi
 PORTVERSION=	0.3.8
-DISTVERSIONPREFIX=	${PORTNAME}-
 CATEGORIES=	audio
 
 MAINTAINER=	liangtai.s16@gmail.com
@@ -13,6 +12,7 @@ LICENSE=	LGPL3
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	Mindwerks
+GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
 USES=		gmake cmake:outsource
 USE_LDCONFIG=	yes
 

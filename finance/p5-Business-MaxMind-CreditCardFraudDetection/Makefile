@@ -3,7 +3,6 @@
 
 PORTNAME=	Business-MaxMind-CreditCardFraudDetection
 PORTVERSION=	1.57
-PORTREVISION=	1
 CATEGORIES=	finance perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:MAXMIND
@@ -17,10 +16,8 @@ RUN_DEPENDS+=	p5-libwww>0.0:${PORTSDIR}/www/p5-libwww \
 		p5-LWP-Protocol-https>0.0:${PORTSDIR}/www/p5-LWP-Protocol-https
 BUILD_DEPENDS+=	p5-libwww>0.0:${PORTSDIR}/www/p5-libwww
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	example*.pl
+USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 PLIST_FILES=	\
 	%%SITE_PERL%%/Business/MaxMind.pm \

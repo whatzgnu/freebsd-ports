@@ -14,7 +14,7 @@ LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre
 
 WRKSRC=		${WRKDIR}/privoxy-${PORTVERSION}-stable
 
-USES=		cpe gmake shebangfix
+USES=		gmake shebangfix
 USE_AUTOTOOLS=	autoconf
 SHEBANG_FILES=	tools/privoxy-log-parser.pl tools/privoxy-regression-test.pl tools/uagen.pl
 

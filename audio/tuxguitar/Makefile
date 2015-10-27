@@ -6,19 +6,17 @@ PORTVERSION=	1.2
 PORTREVISION=	9
 CATEGORIES=	audio java
 MASTER_SITES=	SF/${PORTNAME}/TuxGuitar/TuxGuitar-${PORTVERSION}:src \
-		LOCAL/gahr/:fluid \
+		${MASTER_SITE_LOCAL}/gahr/:fluid \
 		http://people.freebsd.org/~gahr/distfiles/:fluid \
 		http://www.alsa-project.org/~james/sound-fonts/:fluid
-DISTNAME=	${PORTNAME}-src-${DISTVERSION}
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:src \
+DISTFILES=	${PORTNAME}-src-${DISTVERSION}${EXTRACT_SUFX}:src \
 		8MBGMSFX.SF2:fluid
-EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
+EXTRACT_ONLY=	${PORTNAME}-src-${DISTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Multitrack tablature editor and player
 
 LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/../LICENSE
 
 BUILD_DEPENDS=	${JAVALIBDIR}/swt-devel.jar:${PORTSDIR}/x11-toolkits/swt-devel \
 		${JAVALIBDIR}/itext.jar:${PORTSDIR}/devel/itext \
@@ -30,8 +28,7 @@ LIB_DEPENDS=	libfluidsynth.so:${PORTSDIR}/audio/fluidsynth \
 MAKE_ENV+=	PREFIX=${PREFIX} INSTALL_DOC_DIR=${DOCSDIR} \
 		INSTALL_SHARE_DIR=${DATADIR}
 
-USES=		cpe desktop-file-utils gmake pkgconfig
-CPE_VENDOR=	herac
+USES=		desktop-file-utils gmake pkgconfig
 USE_JAVA=	yes
 USE_ANT=	yes
 WITH_GECKO=	libxul
@@ -39,7 +36,7 @@ USE_LDCONFIG=	yes
 JAVA_VERSION=	1.6+
 NOCCACHE=	yes
 
-WRKSRC_SUBDIR=	TuxGuitar
+WRKSRC=		${WRKDIR}/${PORTNAME}-src-${PORTVERSION}/TuxGuitar
 
 OPTIONS_DEFINE=	DOCS
 

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- xf86audio.c.orig
 +++ xf86audio.c
 @@ -110,6 +110,7 @@

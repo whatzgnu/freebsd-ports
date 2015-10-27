@@ -18,7 +18,6 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-Fuse>=0:${PORTSDIR}/sysutils/p5-Fuse
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

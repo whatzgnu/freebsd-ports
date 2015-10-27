@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	tigervnc
-PORTVERSION=	1.5.0
-DISTVERSIONPREFIX=	v
+PORTVERSION=	1.4.3
 CATEGORIES=	net x11-servers
+MASTER_SITES=	https://github.com/TigerVNC/tigervnc/archive/v${PORTVERSION}${EXTRACT_SUFX}?dummy=/
 
 MAINTAINER=	meta+ports@vmeta.jp
 COMMENT=	High-performance, platform-neutral implementation of VNC
@@ -28,8 +28,6 @@ USES=		autoreconf:build cmake cpe gmake libtool pkgconfig python
 USE_GL=		gl
 USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
-USE_GITHUB=	yes
-GH_ACCOUNT=	TigerVNC
 
 USE_XORG+=	bigreqsproto compositeproto damageproto fixesproto fontsproto glproto \
 		inputproto kbproto pixman randrproto renderproto resourceproto \
@@ -92,7 +90,7 @@ PLIST_SUB+=	VIEWER="@comment "
 .if ${PORT_OPTIONS:MHPJPG}
 LIB_DEPENDS+=	libturbojpeg.so:${PORTSDIR}/graphics/libjpeg-turbo
 .else
-USES+=		jpeg
+LIB_DEPENDS+=	libjpeg.so:${PORTSDIR}/graphics/jpeg
 .endif
 
 MAKE_ARGS+=	TIGERVNC_SRCDIR=${WRKSRC}

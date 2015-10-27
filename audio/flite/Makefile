@@ -13,8 +13,7 @@ COMMENT=	Small run-time speech synthesis engine
 
 OPTIONS_DEFINE=	DOCS
 
-USES=		cpe desthack gmake tar:bzip2
-CPE_VENDOR=	cmu
+USES=		tar:bzip2 gmake desthack
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-shared=yes
 USE_LDCONFIG=	yes

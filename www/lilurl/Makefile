@@ -12,7 +12,6 @@ COMMENT=	Simple PHP/MySQL script for generating lil? URLs
 
 USE_PHP=	mysql pcre
 NO_BUILD=	yes
-NO_ARCH=	yes
 WANT_PHP_WEB=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
@@ -29,9 +28,9 @@ pre-install:
 	@cd ${WRKSRC} && ${FIND} -s . -type f | \
 		${SED} -e 's|^./||;s|^|${LILURL_DIR}/|' >> ${PLIST} \
 		&& ${FIND} -d * -type d | \
-		${SED} -e 's|^|@dir ${LILURL_DIR}/|' >> ${PLIST} \
-		&& ${ECHO_CMD} @dir ${LILURL_DIR} >> ${PLIST}
-	@${ECHO_CMD} -e "@owner\n@group" >> ${PLIST}
+		${SED} -e 's|^|@dirrm ${LILURL_DIR}/|' >> ${PLIST} \
+		&& ${ECHO_CMD} @dirrm ${LILURL_DIR} >> ${PLIST}
+	@${ECHO_CMD} -e "@owner root\n@group wheel" >> ${PLIST}
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${LILURL_DIR}

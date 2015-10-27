@@ -3,9 +3,10 @@
 
 PORTNAME=	pgrouting
 PORTVERSION=	2.0.0
-DISTVERSIONPREFIX=	v
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	databases geography
+MASTER_SITES=	https://github.com/pgRouting/${PORTNAME}/archive/
+DISTFILES=	v${PORTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	coder@tuxfamily.org
 COMMENT=	Extension to PostGIS to provide geospatial routing functionality
@@ -19,8 +20,6 @@ RUN_DEPENDS=	${LOCALBASE}/share/postgresql/contrib/postgis-2.1/postgis.sql:${POR
 
 USES=		compiler:features cmake pgsql pkgconfig
 USE_LDCONFIG=	yes
-USE_GITHUB=	yes
-GH_ACCOUNT=	pgRouting
 
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

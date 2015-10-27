@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	mps-youtube
-PORTVERSION=	0.2.5
+PORTVERSION=	0.2.3
 PORTREVISION=	0
 CATEGORIES=	multimedia
 MASTER_SITES=	CHEESESHOP
-DISTFILES=	${PORTNAME}-${PORTVERSION}-2.tar.gz
 
 MAINTAINER=	nivit@FreeBSD.org
 COMMENT=	Terminal based YouTube jukebox with playlist management
@@ -14,7 +13,7 @@ COMMENT=	Terminal based YouTube jukebox with playlist management
 LICENSE=	GPLv3
 
 RUN_DEPENDS=	ca_root_nss>=3.17.3:${PORTSDIR}/security/ca_root_nss \
-		${PYTHON_PKGNAMEPREFIX}pafy>=0.3.74:${PORTSDIR}/www/py-pafy
+		${PYTHON_PKGNAMEPREFIX}pafy>=0.3.72:${PORTSDIR}/www/py-pafy
 
 CONVERTER_DESC=	Converter to MP3 and other formats
 
@@ -35,20 +34,12 @@ OPTIONS_SINGLE=	PLAYER
 OPTIONS_SINGLE_PLAYER=	MPLAYER MPV
 
 PLAYER_DESC=	Video player
-PLIST_FILES=	bin/${PORTNAME}
 
-SUB_FILES=	${PORTNAME}
-
-USES=		python:3.2+
+USES=		python
 USE_PYTHON=	autoplist distutils
 
-post-install:
-	${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME} ${STAGEDIR}/${PREFIX}/bin/${PORTNAME}
+post-patch:
+	@${REINPLACE_CMD} -e 's,%%LOCALBASE%%,${LOCALBASE},1' \
+		${WRKSRC}/mps_youtube/main.py
 
-.include <bsd.port.pre.mk>
-
-.if defined(PACKAGE_BUILDING) && ${PYTHON_VER} != ${PYTHON_DEFAULT}
-IGNORE=	you have python ${PYTHON_DEFAULT} set as the default, and this needs ${PYTHON_VER}
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

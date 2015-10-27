@@ -4,7 +4,8 @@
 PORTNAME=	cvsup-static
 PORTVERSION=	16.1h
 CATEGORIES=	net devel
-MASTER_SITES=	LOCAL/delphij
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	delphij
 PKGNAMEPREFIX=	binary-
 DISTNAME=	cvsup-without-gui-static-${ARCH}-${PORTVERSION}
 

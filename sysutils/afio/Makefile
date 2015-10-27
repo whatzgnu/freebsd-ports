@@ -3,7 +3,6 @@
 
 PORTNAME=	afio
 PORTVERSION=	2.5
-PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	SUNSITE/system/backup
 
@@ -13,8 +12,7 @@ COMMENT=	Archiver and backup program with builtin compression
 LICENSE=	ART20 BSD2CLAUSE
 LICENSE_COMB=	multi
 
-USES=		tar:tgz shebangfix
-SHEBANG_FILES=	script1/backup script2/backup
+USES=		tar:tgz
 
 ALL_TARGET=	${PORTNAME}
 
@@ -30,7 +28,9 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	cd ${WRKSRC} && ${COPYTREE_SHARE} script? ${STAGEDIR}${EXAMPLESDIR}
-	${INSTALL_SCRIPT} ${FILESDIR}/afiodump.example ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/script1/DONTDUMP ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_SCRIPT} ${FILESDIR}/afiodump.example \
+		${WRKSRC}/script2/* ${WRKSRC}/script3/* \
+		${WRKSRC}/script4/* ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>

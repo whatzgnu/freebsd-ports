@@ -7,7 +7,7 @@ POST-INSTALL CONFIGURATION FOR MAHARA
 2) Add the following to your Apache configuration, and
    restart the server:
 
-   ### For Apache earlier than 2.4.
+   ### Add the AcceptPathInfo directive only for Apache 2.0.30 or later.
    Alias /mahara %%PREFIX%%/%%MAHARADIR%%/
    AcceptPathInfo On
    <Directory %%PREFIX%%/%%MAHARADIR%%>
@@ -15,14 +15,10 @@ POST-INSTALL CONFIGURATION FOR MAHARA
       Order Allow,Deny
       Allow from all 
    </Directory>
-
-   For Apache version 2.4.x or above:
-
-   Alias /mahara %%PREFIX%%/%%MAHARADIR%%/
-   AcceptPathInfo On
-   <Directory %%PREFIX%%/%%MAHARADIR%%/>
+   <Directory %%PREFIX%%/%%MAHARADATADIR%%>
       AllowOverride None
-      Require all granted
+      Order Allow,Deny
+      Deny from all 
    </Directory>
 
 3) Make sure that magic_quotes_gpc is off and register_globals is off 

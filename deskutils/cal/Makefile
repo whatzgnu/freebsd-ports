@@ -5,7 +5,8 @@ PORTNAME=		cal
 PORTVERSION=		3.5
 PORTREVISION=		1
 CATEGORIES=		deskutils
-MASTER_SITES=		SUNSITE/utils/shell
+MASTER_SITES=		${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	utils/shell
 
 MAINTAINER=	sanpei@FreeBSD.org
 COMMENT=	Enhanced color version of standard calendar utility

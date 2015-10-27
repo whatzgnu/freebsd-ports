@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gambit-c
-DISTVERSION=	v4_7_7
+DISTVERSION=	v4_7_5
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	lang
 MASTER_SITES=	http://www.iro.umontreal.ca/~gambit/download/gambit/v4.7/source/
@@ -28,7 +29,7 @@ USE_LDCONFIG=	${PREFIX}/lib/gambit-c
 
 INFO=		gambit-c
 
-OPTIONS_DEFINE=	GCC
+OPTIONS_DEFINE=	DOCS GCC
 OPTIONS_DEFAULT=GCC
 
 GCC_DESC=	Build with GCC

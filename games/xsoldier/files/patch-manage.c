@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- manage.c.orig
 +++ manage.c
 @@ -17,7 +17,6 @@

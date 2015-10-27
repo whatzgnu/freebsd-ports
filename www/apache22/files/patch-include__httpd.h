@@ -1,6 +1,6 @@
 --- include/httpd.h.orig	2014-08-21 17:33:48 UTC
 +++ include/httpd.h
-@@ -1905,12 +1905,6 @@ AP_DECLARE(char *) ap_get_exec_line(apr_
+@@ -1905,12 +1905,6 @@
                                      const char *cmd,
                                      const char * const *argv);
  

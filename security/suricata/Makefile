@@ -3,7 +3,6 @@
 
 PORTNAME=	suricata
 PORTVERSION=	2.0.8
-PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	http://www.openinfosecfoundation.org/download/ \
 		http://mirrors.rit.edu/zi/

@@ -11,12 +11,13 @@ COMMENT=	Open POSIX Test Suite
 
 WRKSRC=		${WRKDIR}/posixtestsuite
 
-NO_ARCH=	yes
-NO_BUILD=	yes
-NO_INSTALL=	yes
+NO_BUILD=	YES
+NO_INSTALL=	YES
 NO_PACKAGE=	"Nothing to package"
 
 USES=		gmake
+
+.include <bsd.port.pre.mk>
 
 REGR_LOG=	log.run-5current
 
@@ -30,9 +31,9 @@ THEPIPE=	| tee 2>&1
 .endif
 
 .if defined(WITH_THRLIB)
-THRLIB=		${WITH_THRLIB}
+THRLIB=	${WITH_THRLIB}
 .else
-THRLIB=		-lpthread
+THRLIB=	-lpthread
 .endif
 
 pre-everything::
@@ -88,4 +89,4 @@ regression:	run
 	@[ -z ${LOCAL_REGR_LOG} ] || ( ${ECHO} "No regression detected"; exit 0 )
 	@${ECHO} "Regression log stored at ${LOCAL_REGR_LOG}"
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

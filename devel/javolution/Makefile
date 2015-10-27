@@ -4,7 +4,8 @@
 PORTNAME=	javolution
 PORTVERSION=	5.5.1
 CATEGORIES=	devel java
-MASTER_SITES=	LOCAL/ale
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	ale
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT=	Java solution for real time and embedded systems

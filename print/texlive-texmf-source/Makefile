@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	texlive
-PORTVERSION=	20150523
+PORTVERSION=	20140525
 CATEGORIES=	print
-MASTER_SITES=	ftp://ftp.tug.org/historic/systems/texlive/2015/
+MASTER_SITES=	ftp://ftp.tug.org/historic/systems/texlive/2014/
 PKGNAMESUFFIX=	-texmf-source
 DISTNAME=	${PORTNAME}-${PORTVERSION}-texmf
 DIST_SUBDIR=	TeX
@@ -11,10 +11,10 @@ DIST_SUBDIR=	TeX
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	TeX Live Typesetting System, texmf Tree (source)
 
-CONFLICTS_INSTALL=	texlive-base-201[234]*
+CONFLICTS_INSTALL=	texlive-base-201[23]*
 
 USES=		tar:xz
-USE_TEX=	texmf>=20150523
+USE_TEX=	texmf>=20140525_3
 TEXHASHDIRS=	${TEXMFDISTDIR}
 NO_BUILD=	yes
 NO_WRKSRC=	yes

@@ -3,7 +3,6 @@
 
 PORTNAME=	xastir
 PORTVERSION=	2.0.6
-PORTREVISION=	1
 CATEGORIES=	comms hamradio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-stable/${PORTNAME}-${PORTVERSION}
 
@@ -13,12 +12,11 @@ COMMENT=	X Amateur Station Tracking and Information Reporting
 BUILD_DEPENDS=	xfontsel:${PORTSDIR}/x11-fonts/xfontsel
 RUN_DEPENDS=	wget:${PORTSDIR}/ftp/wget
 LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng.so:${PORTSDIR}/graphics/png
 
 GNU_CONFIGURE=	yes
-USES=		gettext gmake jpeg motif shebangfix
-SHEBANG_FILES=	scripts/*.pl scripts/get-maptools.sh \
-		scripts/gpx2shape scripts/values.pl.in
+USES=		gettext gmake motif
 
 SUB_FILES=	pkg-message
 

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- ehnt.h.orig
 +++ ehnt.h
 @@ -23,6 +23,7 @@

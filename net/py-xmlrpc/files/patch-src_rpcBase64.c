@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/rpcBase64.c
 +++ src/rpcBase64.c
 @@ -239,7 +239,7 @@

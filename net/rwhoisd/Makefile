@@ -3,7 +3,7 @@
 
 PORTNAME=	rwhoisd
 PORTVERSION=	1.5.9.6
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	net ipv6
 MASTER_SITES=	http://projects.arin.net/rwhois/ftp/ \
 		http://www.rwhois.net/ftp/ \
@@ -15,7 +15,13 @@ COMMENT=	The Internic referral whois server
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-GNU_CONFIGURE=	yes
+OPTIONS_DEFINE=	IPV6 LARGEFILE DOCS
+OPTIONS_DEFAULT=	IPV6
+IPV6_DESC=	Enable IPV6 support
+LARGEFILE_DESC=	Enable largefile support (> 2Gb)
+
+HAS_CONFIGURE=	yes
+CONFIGURE_ARGS=	--prefix=${PREFIX}
 MAKE_JOBS_UNSAFE=yes
 
 USE_RC_SUBR=	rwhoisd
@@ -29,11 +35,6 @@ PORTDOCS=	INSTALL.html TODO UPGRADE operations_guide.html \
 ETCFILES=	rwhoisd.allow rwhoisd.auth_area rwhoisd.conf rwhoisd.deny \
 		rwhoisd.dir rwhoisd.root rwhoisd.x.dir
 PLIST_SUB+=	ETCFILES="${ETCFILES}"
-
-OPTIONS_DEFINE=	IPV6 LARGEFILE DOCS
-OPTIONS_DEFAULT=	IPV6
-IPV6_DESC=	Enable IPV6 support
-LARGEFILE_DESC=	Enable largefile support (> 2Gb)
 
 .include <bsd.port.options.mk>
 
@@ -53,8 +54,6 @@ post-patch:
 		${WRKSRC}/common/conf.h
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/*
 	${INSTALL_MAN} ${WRKSRC}/doc/rwhois_indexer.8 ${STAGEDIR}${PREFIX}/man/man8
 	${INSTALL_MAN} ${WRKSRC}/doc/rwhoisd.8 ${STAGEDIR}${PREFIX}/man/man8
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

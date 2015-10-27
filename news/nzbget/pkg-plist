@@ -1,5 +1,6 @@
 bin/nzbget
 @sample etc/nzbget.conf.sample
+sbin/nzbgetd
 @comment %%PORTDOCS%%%%DOCSDIR%%/COPYING
 %%PORTDOCS%%%%DOCSDIR%%/AUTHORS
 %%PORTDOCS%%%%DOCSDIR%%/ChangeLog

@@ -15,8 +15,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION:R}
 
-USES=		autoreconf
-GNU_CONFIGURE=	yes
+USE_AUTOTOOLS=	aclocal autoheader automake autoconf
+AUTOMAKE_ARGS=	--add-missing
 
 OPTIONS_DEFINE=	DOCS
 

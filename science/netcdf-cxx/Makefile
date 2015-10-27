@@ -3,7 +3,6 @@
 
 PORTNAME=	netcdf-cxx
 PORTVERSION=	4.2.1
-DISTVERSIONPREFIX=	v
 PORTREVISION=	2
 CATEGORIES=	science
 
@@ -22,6 +21,7 @@ USES=		libtool pathfix
 
 GH_ACCOUNT=	Unidata
 GH_PROJECT=	${PORTNAME}4
+GH_TAGNAME=	v${PORTVERSION}
 USE_GITHUB=	yes
 
 post-install:

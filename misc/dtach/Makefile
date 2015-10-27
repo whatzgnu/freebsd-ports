@@ -10,9 +10,6 @@ MASTER_SITES=	SF
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Emulates the detach feature of screen
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 GNU_CONFIGURE=	yes
 ALL_TARGET=	dtach
 
@@ -20,6 +17,8 @@ PORTDOCS=	README
 PLIST_FILES=	bin/dtach man/man1/dtach.1.gz
 
 OPTIONS_DEFINE=	DOCS
+
+.include <bsd.port.options.mk>
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/dtach ${STAGEDIR}${PREFIX}/bin

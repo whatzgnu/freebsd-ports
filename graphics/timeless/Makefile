@@ -5,7 +5,8 @@ PORTNAME=	timeless
 PORTVERSION=	1.0
 PORTREVISION=	7
 CATEGORIES=	graphics
-MASTER_SITES=	LOCAL/shaun
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	shaun
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	FreeBSD/SDL port of Tran's Timeless Demo with Sound

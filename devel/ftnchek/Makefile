@@ -4,8 +4,9 @@
 PORTNAME=	ftnchek
 PORTVERSION=	3.3.1
 CATEGORIES=	devel
-MASTER_SITES=	SUNSITE/devel/lang/fortran \
+MASTER_SITES=	${MASTER_SITE_SUNSITE} \
 		http://www.dsm.fordham.edu/~ftnchek/download/
+MASTER_SITE_SUBDIR=	devel/lang/fortran
 
 MAINTAINER=	bf@FreeBSD.org
 COMMENT=	Fortran 77 semantic checking utility

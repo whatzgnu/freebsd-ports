@@ -2,16 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	public_suffix
-PORTVERSION=	1.5.1
+PORTVERSION=	1.4.6
 CATEGORIES=	dns rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
-COMMENT=	Ruby domain name parser based on the Public Suffix List
+COMMENT=	Parse and decompose a domain name into top level domain, domain and subdomains
 
 LICENSE=	MIT
-
-NO_ARCH=	yes
 
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes

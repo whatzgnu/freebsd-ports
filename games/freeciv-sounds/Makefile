@@ -4,7 +4,7 @@
 PORTNAME=	freeciv
 PORTVERSION=	3
 CATEGORIES=	games
-MASTER_SITES=	GENTOO \
+MASTER_SITES=	GENTOO/distfiles \
 		ftp://ftp.freeciv.org/freeciv/contrib/audio/soundsets/
 PKGNAMESUFFIX=	-sounds
 DISTNAME=	stdsounds${DISTVERSION}

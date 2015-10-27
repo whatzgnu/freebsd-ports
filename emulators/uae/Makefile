@@ -5,7 +5,8 @@ PORTNAME=	uae
 PORTVERSION=	0.8.29
 PORTREVISION=	2
 CATEGORIES=	emulators
-MASTER_SITES=	LOCAL/grembo
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR= grembo
 
 MAINTAINER=	simond@irrelevant.org
 COMMENT=	Commodore Amiga emulator

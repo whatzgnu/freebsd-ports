@@ -5,7 +5,8 @@ PORTNAME=	hpl
 PORTVERSION=	2.1
 PORTREVISION=	5
 CATEGORIES=	benchmarks
-MASTER_SITES=	NETLIB/benchmark/hpl
+MASTER_SITES=	${MASTER_SITE_NETLIB}
+MASTER_SITE_SUBDIR=	benchmark/hpl
 
 MAINTAINER=	oliver@FreeBSD.org
 COMMENT=	High Performance Computing Linpack Benchmark

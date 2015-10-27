@@ -5,10 +5,11 @@ PORTNAME=	simpleirc
 PORTVERSION=	1.2
 CATEGORIES=	irc
 MASTER_SITES=	http://dl.suckless.org/tools/ \
-		LOCAL/dhn
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	dhn
 DISTNAME=	sic-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Extremely simple IRC client
 
 LICENSE=	MIT

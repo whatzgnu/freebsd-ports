@@ -15,8 +15,6 @@ RUN_DEPENDS=	rubygem-diff-lcs>=1.1:${PORTSDIR}/textproc/rubygem-diff-lcs \
 		rubygem-mime-types>=1.15:${PORTSDIR}/misc/rubygem-mime-types \
 		rubygem-posix-spawn>=0.3.6:${PORTSDIR}/devel/rubygem-posix-spawn
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

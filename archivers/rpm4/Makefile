@@ -27,8 +27,8 @@ NLS_USES=	gettext
 NLS_LIBS=	-lintl
 PORTDOCS=	*
 
-USES=		alias gmake libarchive libtool lua:51 pathfix pkgconfig \
-		shebangfix tar:bzip2
+USES=		alias gmake libtool lua:51 pathfix pkgconfig shebangfix \
+		tar:bzip2
 USE_BDB=	46+
 INVALID_BDB_VER=51
 GNU_CONFIGURE=	yes
@@ -59,6 +59,12 @@ CONFIGURE_ENV+=	LUA_CFLAGS=-I${LUA_INCDIR} \
 		LUA_LIBS="-L${LUA_LIBDIR} -llua-${LUA_VER} -lm"
 PLIST_SUB+=	VERSION=${PORTVERSION}
 
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} < 1000000
+LIB_DEPENDS+=	libarchive.so.13:${PORTSDIR}/archivers/libarchive
+.endif
+
 post-patch:
 	${REINPLACE_CMD} -e 's:\.\./\.\./bin/::' ${WRKSRC}/Makefile.in
 	${REINPLACE_CMD} -e 's/(hpux)/& || defined(__FreeBSD__)/' \
@@ -71,4 +77,4 @@ post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/doc && ${COPYTREE_SHARE} librpm/html ${STAGEDIR}${DOCSDIR}
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

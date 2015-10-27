@@ -1,8 +1,9 @@
 # Created by: Gustau Perez <gustau.perez@gmail.com>
 # $FreeBSD$
+#   $MCom: ports/trunk/deskutils/gnome-epub-thumbnailer/Makefile 20014 2014-10-23 07:08:54Z gusi $
 
 PORTNAME=	gnome-epub-thumbnailer
-PORTVERSION=	1.5
+PORTVERSION=	1.4
 PORTREVISION=	1
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	https://git.gnome.org/browse/gnome-epub-thumbnailer/snapshot/

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dogecoin
-PORTVERSION=	1.8.2
+PORTVERSION=	1.8.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	net-p2p finance
 

@@ -7,14 +7,10 @@ CATEGORIES=	textproc rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	ruby@FreeBSD.org
-COMMENT=	Parser, schema validator, and data binding tool for YAML and JSON
+COMMENT=	Kwalify is a parser, schema validator, and data binding tool for YAML and JSON
 
-LICENSE=	MIT
-
-NO_ARCH=	yes
-
-USE_RUBY=	yes
-USE_RUBYGEMS=	yes
+USE_RUBY=		yes
+USE_RUBYGEMS=		yes
 RUBYGEM_AUTOPLIST=	yes
 
 PLIST_FILES=	bin/kwalify

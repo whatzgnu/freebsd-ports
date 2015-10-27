@@ -13,10 +13,8 @@
     SUBDIR += abgx360
     SUBDIR += abgx360gui
     SUBDIR += accountsservice
-    SUBDIR += acerhdf-kmod
     SUBDIR += acpi_call
     SUBDIR += acpica-tools
-    SUBDIR += acts
     SUBDIR += adtool
     SUBDIR += afbinit
     SUBDIR += afflib
@@ -52,7 +50,6 @@
     SUBDIR += autopsy
     SUBDIR += avfs
     SUBDIR += azure-agent
-    SUBDIR += b2sum
     SUBDIR += b43-fwcutter
     SUBDIR += backupchecker
     SUBDIR += backuppc
@@ -67,11 +64,6 @@
     SUBDIR += bacula5-client-static
     SUBDIR += bacula5-docs
     SUBDIR += bacula5-server
-    SUBDIR += bareos-bat
-    SUBDIR += bareos-client
-    SUBDIR += bareos-client-static
-    SUBDIR += bareos-docs
-    SUBDIR += bareos-server
     SUBDIR += baloo
     SUBDIR += baloo-widgets
     SUBDIR += bamf
@@ -129,7 +121,6 @@
     SUBDIR += cfengine34
     SUBDIR += cfengine35
     SUBDIR += cfengine36
-    SUBDIR += cfengine37
     SUBDIR += chgrep
     SUBDIR += cinnamon-control-center
     SUBDIR += cinnamon-settings-daemon
@@ -141,7 +132,6 @@
     SUBDIR += clone
     SUBDIR += clonehdd
     SUBDIR += cloop-utils
-    SUBDIR += cloudabi-utils
     SUBDIR += clsync
     SUBDIR += cmdwatch
     SUBDIR += cmockery2
@@ -209,7 +199,6 @@
     SUBDIR += djmount
     SUBDIR += dmg2img
     SUBDIR += dmidecode
-    SUBDIR += docker-freebsd
     SUBDIR += doinkd
     SUBDIR += dolly
     SUBDIR += downtime
@@ -326,7 +315,6 @@
     SUBDIR += gaffitter
     SUBDIR += gai-leds
     SUBDIR += ganglia-monitor-core
-    SUBDIR += ganglia-webfrontend
     SUBDIR += gapcmon
     SUBDIR += garcon
     SUBDIR += gather
@@ -412,7 +400,6 @@
     SUBDIR += installwatch
     SUBDIR += intel-pcm
     SUBDIR += iocage
-    SUBDIR += iocage-devel
     SUBDIR += iogen
     SUBDIR += iograph
     SUBDIR += ioping
@@ -478,6 +465,7 @@
     SUBDIR += libsunacl
     SUBDIR += liburcu
     SUBDIR += libutempter
+    SUBDIR += libzeitgeist
     SUBDIR += life-preserver
     SUBDIR += lineak-defaultplugin
     SUBDIR += lineak-xosdplugin
@@ -664,7 +652,6 @@
     SUBDIR += p5-ZConf-Cron
     SUBDIR += p5-arclog
     SUBDIR += p5-reslog
-    SUBDIR += packer
     SUBDIR += pacman
     SUBDIR += paicc
     SUBDIR += pam_mount
@@ -726,7 +713,6 @@
     SUBDIR += polkit-gnome
     SUBDIR += polkit-kde
     SUBDIR += polkit-qt
-    SUBDIR += polkit-qt5
     SUBDIR += powerman
     SUBDIR += pp
     SUBDIR += pprotectd
@@ -742,7 +728,6 @@
     SUBDIR += pstacku
     SUBDIR += pstree
     SUBDIR += ptools
-    SUBDIR += puppet37
     SUBDIR += puppet
     SUBDIR += puppet-lint
     SUBDIR += puppet-mode.el
@@ -753,8 +738,6 @@
     SUBDIR += py-XenAPI
     SUBDIR += py-analyzemft
     SUBDIR += py-bcfg2
-    SUBDIR += py-croniter
-    SUBDIR += py-crontab
     SUBDIR += py-danzfs
     SUBDIR += py-drmaa
     SUBDIR += py-execnet
@@ -762,7 +745,6 @@
     SUBDIR += py-filelike
     SUBDIR += py-glances
     SUBDIR += py-halite
-    SUBDIR += py-honcho
     SUBDIR += py-iowait
     SUBDIR += py-nagiosplugin
     SUBDIR += py-ploy
@@ -774,11 +756,11 @@
     SUBDIR += py-power
     SUBDIR += py-psutil
     SUBDIR += py-psutil121
-    SUBDIR += py-ptyprocess
     SUBDIR += py-pytsk
     SUBDIR += py-queuelib
     SUBDIR += py-ranger
     SUBDIR += py-salt
+    SUBDIR += py-salt-api
     SUBDIR += py-shutilwhich
     SUBDIR += py-stdiff
     SUBDIR += py-supervisor
@@ -814,7 +796,6 @@
     SUBDIR += rename
     SUBDIR += renameutils
     SUBDIR += reoback
-    SUBDIR += reptyr
     SUBDIR += respond
     SUBDIR += retail
     SUBDIR += rfstool
@@ -832,10 +813,7 @@
     SUBDIR += ruby-quota
     SUBDIR += rubygem-SyslogLogger
     SUBDIR += rubygem-backup
-    SUBDIR += rubygem-bosh-gen
-    SUBDIR += rubygem-bosh_cli
     SUBDIR += rubygem-bundler
-    SUBDIR += rubygem-bundler17
     SUBDIR += rubygem-bundler_ext
     SUBDIR += rubygem-capistrano
     SUBDIR += rubygem-capistrano-ext
@@ -870,11 +848,8 @@
     SUBDIR += rubygem-murder
     SUBDIR += rubygem-ohai
     SUBDIR += rubygem-parallel
-    SUBDIR += rubygem-puppet_forge
-    SUBDIR += rubygem-r10k
     SUBDIR += rubygem-rubyipmi
     SUBDIR += rubygem-shellany
-    SUBDIR += rubygem-smart_proxy_chef
     SUBDIR += rubygem-smart_proxy_salt
     SUBDIR += rubygem-sys-admin
     SUBDIR += rubygem-sys-cpu
@@ -885,7 +860,6 @@
     SUBDIR += rubygem-sys-uptime
     SUBDIR += rubygem-teamocil
     SUBDIR += rubygem-winrm
-    SUBDIR += rubygem-winrm-fs
     SUBDIR += rubygem-yell
     SUBDIR += rundeck
     SUBDIR += runit
@@ -930,7 +904,7 @@
     SUBDIR += sleuthkit
     SUBDIR += sloth
     SUBDIR += slst
-    SUBDIR += slurm-wlm
+    SUBDIR += slurm-hpc
     SUBDIR += smartmontools
     SUBDIR += smp_utils
     SUBDIR += snap
@@ -982,7 +956,6 @@
     SUBDIR += tdir
     SUBDIR += tenshi
     SUBDIR += tentakel
-    SUBDIR += terraform
     SUBDIR += testdisk
     SUBDIR += thefish
     SUBDIR += timelimit
@@ -1007,10 +980,7 @@
     SUBDIR += ttyload
     SUBDIR += tw_cli
     SUBDIR += tzdialog
-    SUBDIR += u-boot-bananapi
     SUBDIR += u-boot-beaglebone
-    SUBDIR += u-boot-cubieboard
-    SUBDIR += u-boot-cubieboard2
     SUBDIR += u-boot-cubox-hummingboard
     SUBDIR += u-boot-duovero
     SUBDIR += u-boot-pandaboard
@@ -1050,6 +1020,7 @@
     SUBDIR += vagrant
     SUBDIR += vbetool
     SUBDIR += vcp
+    SUBDIR += vhdtool
     SUBDIR += videogen
     SUBDIR += vii
     SUBDIR += vils

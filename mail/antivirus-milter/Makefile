@@ -4,7 +4,8 @@ PORTNAME=	antivirus
 PORTVERSION=	3.30
 PORTREVISION=	7
 CATEGORIES=	mail
-MASTER_SITES=	LOCAL/dinoex
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	dinoex
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Sendmail milter wich uses McAfee Virus Scan or clamav

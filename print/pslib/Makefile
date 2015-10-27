@@ -12,10 +12,11 @@ COMMENT=	C-library for generating multi page PostScript documents
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff
 
-USES=		gettext gmake jpeg libtool pathfix pkgconfig
+USES=		gettext gmake libtool pathfix pkgconfig
 USE_GNOME=	intlhack
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes

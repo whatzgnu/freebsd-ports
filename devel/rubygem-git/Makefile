@@ -13,8 +13,6 @@ LICENSE=	MIT
 
 RUN_DEPENDS=	git>=1.6:${PORTSDIR}/devel/git
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

@@ -13,13 +13,14 @@ MAINTAINER=	joshms@pcbsd.org
 COMMENT=	Includes scientific applications
 
 RUN_DEPENDS=	galculator>=0:${PORTSDIR}/math/galculator \
-		avogadro:${PORTSDIR}/science/avogadro \
+		avogrado>=0:${PORTSDIR}/science/avogadro \
 		openbabel>=0:${PORTSDIR}/science/openbabel \
 		mpqc>=0:${PORTSDIR}/science/mpqc \
 		gnuplot>=0:${PORTSDIR}/math/gnuplot \
-		open-axiom:${PORTSDIR}/math/open-axiom \
+		openaxiom>=0:${PORTSDIR}/math/open-axiom \
+		qgis>=0:${PORTSDIR}/graphics/qgis \
 		geoserver>=0:${PORTSDIR}/graphics/geoserver \
-		grass64:${PORTSDIR}/databases/grass
+		grass>=0:${PORTSDIR}/databases/grass
 
 NO_BUILD=	yes
 

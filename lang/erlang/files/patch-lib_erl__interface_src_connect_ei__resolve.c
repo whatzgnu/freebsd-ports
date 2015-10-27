@@ -1,6 +1,9 @@
---- lib/erl_interface/src/connect/ei_resolve.c.orig	2015-03-31 12:32:52 UTC
+
+$FreeBSD$
+
+--- lib/erl_interface/src/connect/ei_resolve.c.orig
 +++ lib/erl_interface/src/connect/ei_resolve.c
-@@ -649,7 +649,8 @@ struct hostent *ei_gethostbyname_r(const
+@@ -621,7 +621,8 @@
  
    return result;
  #else

@@ -3,12 +3,13 @@
 
 PORTNAME=	pyla
 PORTVERSION=	1.1.7.1
-PORTREVISION=	1
 CATEGORIES=	comms python
 #MASTER_SITES=	http://www.teamsw.it/pyla/download/
-MASTER_SITES=   LOCAL/mr
+MASTER_SITES=   ${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=     mr
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	pyla${PORTVERSION}
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	mike@Reifenberger.com
 COMMENT=	Hylafax client written in Python
@@ -18,13 +19,7 @@ COMMENT=	Hylafax client written in Python
 WRKSRC=		${WRKDIR}/${PORTNAME}
 DATADIR=	${PREFIX}/lib/pyla
 
-USES=		python shebangfix tar:tgz
-SHEBANG_FILES=	faxcover/subst hylaform.py \
-		hylaproto.py ldapclass.py \
-		pyladebug.py
-SHEBANG_LANG=	sed
-sed_OLD_CMD=	/bin/sed
-sed_CMD=	/usr/bin/sed
+USES=		python
 PLIST=		${WRKDIR}/pkg-plist
 
 do-build:
@@ -45,7 +40,7 @@ pre-install:
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
-	${INSTALL_SCRIPT} ${WRKDIR}/pyla.sh ${STAGEDIR}${PREFIX}/bin/pyla
+	${INSTALL} -m755 ${WRKDIR}/pyla.sh ${STAGEDIR}${PREFIX}/bin/pyla
 	${TAR} -C ${WRKSRC} --exclude CVS -cf - . | \
 		${TAR} -C ${STAGEDIR}${DATADIR} --unlink -xf -
 

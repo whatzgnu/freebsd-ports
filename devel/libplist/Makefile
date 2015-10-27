@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libplist
-PORTVERSION=	1.12
+PORTVERSION=	1.11
 PORTREVISION?=	0
 CATEGORIES?=	devel
 MASTER_SITES=	http://www.libimobiledevice.org/downloads/
@@ -21,6 +21,7 @@ INSTALL_TARGET=	install-strip
 
 USE_GNOME=	libxml2
 CONFIGURE_ARGS=	--without-cython
+MAKE_JOBS_UNSAFE=	yes
 USE_LDCONFIG=	${LOCALBASE}/lib
 
 PORTDOCS=	AUTHORS NEWS README

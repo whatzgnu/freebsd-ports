@@ -2,8 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	osquery
-PORTVERSION=	1.4.7
+PORTVERSION=	1.4.5
+PORTREVISION=	1
 CATEGORIES=	sysutils
+MASTER_SITES=	GH:ghc \
+		https://codeload.github.com/${PORTNAME}/third-party/tar.gz/${PORTVERSION}?dummy=/:gh
+DISTFILES=	${DISTNAME}.tar.gz:ghc \
+		third-party-${PORTVERSION}.tar.gz:gh
 
 MAINTAINER=	zi@FreeBSD.org
 COMMENT=	SQL powered OS instrumentation, monitoring, and analytics
@@ -29,14 +34,12 @@ LIB_DEPENDS=	libboost_regex.so:${PORTSDIR}/devel/boost-libs \
 		libicuuc.so:${PORTSDIR}/devel/icu
 
 USES=		cmake:outsource gmake libtool python:build compiler:c++11-lib
-CMAKE_ENV+=	OSQUERY_BUILD_VERSION="${PORTVERSION}" HOME="${WRKDIR}" \
-		SKIP_TESTS="yes" CC="${CC}" CXX="${CXX}"
+CMAKE_ENV+=	OSQUERY_BUILD_VERSION="${PORTVERSION}" HOME="${WRKDIR}" SKIP_TESTS="yes"
 CMAKE_ARGS+=	-DFREEBSD=awesome -DCMAKE_SYSTEM_NAME="FreeBSD"
 BLDDIR=		${WRKDIR}/.build/${PORTNAME}
 USE_RC_SUBR=	${PORTNAME}d
 USE_GITHUB=	yes
-GH_ACCOUNT=	facebook ${PORTNAME}:tp
-GH_PROJECT=	third-party:tp
+GH_ACCOUNT=	facebook
 MAKE_JOBS_UNSAFE=	yes
 
 .include <bsd.port.pre.mk>
@@ -47,7 +50,7 @@ CFLAGS+=	-D_GLIBCXX_USE_C99
 
 post-extract:
 	${RMDIR} ${WRKSRC}/third-party
-	${LN} -sf ${WRKSRC_tp} ${WRKSRC}/third-party
+	${LN} -sf ${WRKDIR}/third-party-${PORTVERSION} ${WRKSRC}/third-party
 
 post-patch:
 	${REINPLACE_CMD} -e 's|/var/osquery|/var/db/osquery|g' \

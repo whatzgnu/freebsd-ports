@@ -3,6 +3,7 @@
 
 PORTNAME=	sqlite3
 PORTVERSION=	1.3.10
+PORTREVISION=	0
 CATEGORIES=	databases rubygems
 MASTER_SITES=	RG
 
@@ -15,6 +16,7 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/swig:${PORTSDIR}/devel/swig13
 LIB_DEPENDS=	libsqlite3.so:${PORTSDIR}/databases/sqlite3
 
 CONFIGURE_ARGS=	--with-sqlite3-dir=${LOCALBASE}
+GEM_NAME=	${DISTNAME}
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

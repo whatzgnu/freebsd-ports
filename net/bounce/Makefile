@@ -6,7 +6,8 @@ PORTVERSION=	1.0
 PORTREVISION=	8
 CATEGORIES=	net security
 MASTER_SITES=	http://www.iagora.com/~espel/ \
-		LOCAL/obrien
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	obrien
 DISTNAME=	bounce
 EXTRACT_SUFX=	.c
 

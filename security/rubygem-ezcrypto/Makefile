@@ -9,8 +9,6 @@ MASTER_SITES=	RG
 MAINTAINER=	skreuzer@FreeBSD.org
 COMMENT=	Wrapper for the poorly documented OpenSSL ruby library
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

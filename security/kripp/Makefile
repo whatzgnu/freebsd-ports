@@ -4,8 +4,9 @@
 PORTNAME=	kripp
 PORTVERSION=	0.6.1
 CATEGORIES=	security
-MASTER_SITES=	PACKETSTORM/sniffers \
+MASTER_SITES=	${MASTER_SITE_PACKETSTORM} \
 		http://konst.org.ua/download/
+MASTER_SITE_SUBDIR=	sniffers
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Lightweight network password sniffer

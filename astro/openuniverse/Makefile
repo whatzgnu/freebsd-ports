@@ -10,9 +10,11 @@ MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/1.0beta3
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	OpenGL Solar System simulator for X Window System
 
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
+
 USE_GL=		glut
 
-USES=		gmake jpeg
+USES=		gmake
 USE_XORG=	sm ice xmu xi xext x11
 GNU_CONFIGURE=	yes
 

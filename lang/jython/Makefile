@@ -12,8 +12,6 @@ EXTRACT_ONLY=	# none
 MAINTAINER=	python@FreeBSD.org
 COMMENT=	Implementation of Python Interpreter in Pure Java
 
-LICENSE=	PSFL
-
 BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash
 RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 

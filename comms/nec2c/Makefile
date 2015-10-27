@@ -3,10 +3,11 @@
 
 PORTNAME=	nec2c
 PORTVERSION=	.9
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://nec-archives.pa3kj.com/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 DISTNAME=	nec2c
 
 MAINTAINER=	hamradio@FreeBSD.org

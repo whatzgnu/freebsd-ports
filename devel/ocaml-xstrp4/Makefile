@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	xstrp4
-PORTVERSION=	1.8.1
+PORTVERSION=	1.8
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://download.camlcity.org/download/
 PKGNAMEPREFIX=	ocaml-

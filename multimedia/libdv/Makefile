@@ -12,14 +12,15 @@ COMMENT=	Quasar DV codec (libdv): software codec for DV video encoding format
 
 LICENSE=	LGPL21
 
-LIB_DEPENDS=	libpopt.so:${PORTSDIR}/devel/popt
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpopt.so:${PORTSDIR}/devel/popt
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-gtk
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
-USES=		jpeg libtool pathfix pkgconfig
+USES=		libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 
 DOCS=		AUTHORS COPYING COPYRIGHT ChangeLog NEWS README \

@@ -19,6 +19,8 @@ CONFIGURE_ARGS=	INC="-I${LOCALBASE}/include " \
 		LIBS="-L${LOCALBASE}/lib -lcdaudio"
 
 post-install:
+	${CHMOD} u+w ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Audio/CD/CD.so
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Audio/CD/CD.so
+	${CHMOD} u-w ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Audio/CD/CD.so
 
 .include <bsd.port.mk>

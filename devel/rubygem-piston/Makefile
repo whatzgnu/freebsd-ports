@@ -9,8 +9,6 @@ MASTER_SITES=	RG
 MAINTAINER=	tdb@FreeBSD.org
 COMMENT=	Utility to manage local copies of Subversion repositories
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

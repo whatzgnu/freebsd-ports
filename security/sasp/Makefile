@@ -5,8 +5,9 @@ PORTNAME=	sasp
 PORTVERSION=	0.1
 PORTREVISION=	3
 CATEGORIES=	security
-MASTER_SITES=	LOCAL/ahze \
+MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://people.freebsd.org/~ahze/distfiles/
+MASTER_SITE_SUBDIR=	ahze
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tool that permits to use a gateway whatever IP we have

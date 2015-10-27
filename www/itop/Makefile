@@ -12,8 +12,7 @@ COMMENT=	Simple, web based IT Service Management tool
 
 LICENSE=	AGPLv3
 
-USES=		cpe zip
-CPE_VENDOR=	combodo
+USES=		zip
 USE_PHP=	ctype iconv mbstring pcre session xml zlib readline \
 		dom simplexml hash json soap mcrypt filter zip
 

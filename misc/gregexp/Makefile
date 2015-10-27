@@ -4,7 +4,8 @@
 PORTNAME=	gregexp
 PORTVERSION=	0.4
 CATEGORIES=	misc
-MASTER_SITES=	http://dentrassi.de/download/gregexp/${PORTVERSION}/
+MASTER_SITES=	http://dentrassi.de/download/gregexp/%SUBDIR%/
+MASTER_SITE_SUBDIR=	${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Graphical regular expression explorer

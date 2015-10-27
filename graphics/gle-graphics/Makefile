@@ -18,9 +18,9 @@ BUILD_DEPENDS=	qmake-qt4:${PORTSDIR}/devel/qmake4
 
 BITMAP_IMAGES_CONFIGURE_WITH=	jpeg=${LOCALBASE} tiff=${LOCALBASE} png=${LOCALBASE}
 BITMAP_IMAGES_DESC=	Support for including bitmap images
-BITMAP_IMAGES_LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+BITMAP_IMAGES_LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png \
 		libtiffxx.so:${PORTSDIR}/graphics/tiff
-BITMAP_IMAGES_USES=	jpeg
 
 CONFIGURE_ARGS=	--with-extrafonts=yes
 
@@ -32,8 +32,7 @@ DOCS_USE=	tex=latex:build tex=dvipsk:build
 GNU_CONFIGURE=	yes
 
 LATEX_GS_DESC=	Use LaTeX & GhostScript
-LATEX_GS_USE=	tex=latex
-LATEX_GS_USES=	ghostscript
+LATEX_GS_USE=	tex=latex ghostscript=run
 
 MAKE_JOBS_UNSAFE=yes
 

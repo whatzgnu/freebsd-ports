@@ -19,7 +19,8 @@ RUN_DEPENDS=	pidgin>=0:${PORTSDIR}/net-im/pidgin \
 		filezilla>=0:${PORTSDIR}/ftp/filezilla \
 		lftp>=0:${PORTSDIR}/ftp/lftp \
 		chromium>=0:${PORTSDIR}/www/chromium \
-		firefox>=0:${PORTSDIR}/www/firefox
+		firefox>=0:${PORTSDIR}/www/firefox \
+		sigram>=0:${PORTSDIR}/net-im/sigram \
 
 NO_BUILD=	yes
 

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- conffile.c.orig
 +++ conffile.c
 @@ -57,6 +57,7 @@

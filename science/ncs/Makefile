@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	ncs
-PORTVERSION=	2.0.8
+PORTVERSION=	2.0.7
+PORTREVISION=	2
 CATEGORIES=	science parallel
 MASTER_SITES=	http://code-saturne.org/releases/
 

@@ -19,6 +19,7 @@ USES=		python shebangfix
 USE_PYTHON=	distutils autoplist
 SHEBANG_FILES=	samples/*.py
 python_OLD_CMD=	.*
+python_CMD=	${PYTHON_CMD}
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
@@ -27,7 +28,7 @@ PORTEXAMPLES=	*
 
 .include <bsd.port.pre.mk>
 
-.if ${PYTHON_REL} < 3400
+.if ${PYTHON_REL} < 340
 RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}enum34>=0:${PORTSDIR}/devel/py-enum34
 .endif
 

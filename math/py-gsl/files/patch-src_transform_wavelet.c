@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/transform/wavelet.c.orig
 +++ src/transform/wavelet.c
 @@ -70,6 +70,7 @@

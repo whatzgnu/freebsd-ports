@@ -2,7 +2,7 @@
 
 PORTNAME=	gspdf
 PORTVERSION=	0.5
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	print gnustep
 MASTER_SITES=	SAVANNAH/gap
 DISTNAME=	GSPdf-${PORTVERSION}
@@ -10,12 +10,10 @@ DISTNAME=	GSPdf-${PORTVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Postscript and Pdf Viewer for GNUstep
 
-USES=		ghostscript gnustep
+USES=		gnustep
 USE_GNUSTEP=	back build
+USE_GHOSTSCRIPT=	yes
 
-MAKE_ENV=	GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/GNUstep/System/Applications/GSPdf.app/GSPdf
+MAKE_ENV+=	GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
 
 .include <bsd.port.mk>

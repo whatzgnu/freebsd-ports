@@ -17,24 +17,26 @@ USES=		python shebangfix tar:xz
 
 PLIST_FILES=	bin/${PORTNAME} \
 		%%PYTHON_SITELIBDIR%%/${PORTNAME}.py \
-		%%PYTHON_SITELIBDIR%%/${PYCACHE_DIR}${PYCACHE_FILE}.pyc \
-		%%PYTHON_SITELIBDIR%%/${PYCACHE_DIR}${PYCACHE_FILE}.pyo \
 		man/man1/${PORTNAME}.1.gz \
 		man/man5/${PORTNAME}rc.5.gz
 PORTDATA=	airports places stations zctas zones
 
 SHEBANG_FILES=	${PORTNAME}
-python_OLD_CMD=	/usr/bin/env python
+python_OLD_CMD=	${SETENV} python
+python_CMD=	${PYTHON_CMD}
 
 .include <bsd.port.pre.mk>
 
-.if ${PYTHON_REL} < 3200
+.if ${PYTHON_REL} < 320
 PYCACHE_DIR=	# empty
 PYCACHE_FILE=	${PORTNAME}
 .else
 PYCACHE_DIR=	__pycache__/
 PYCACHE_FILE=	${PORTNAME}.cpython-${PYTHON_SUFFIX}
 .endif
+
+PLIST_FILES+=	%%PYTHON_SITELIBDIR%%/${PYCACHE_DIR}${PYCACHE_FILE}.pyc \
+		%%PYTHON_SITELIBDIR%%/${PYCACHE_DIR}${PYCACHE_FILE}.pyo
 
 do-build:
 	@${PYTHON_CMD} -m compileall ${WRKSRC}/${PORTNAME}.py

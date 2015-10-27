@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	pgbouncer
-PORTVERSION=	1.5.5
+PORTVERSION=	1.5.4
+PORTREVISION=	6
 CATEGORIES=	databases
-MASTER_SITES=	https://pgbouncer.github.io/downloads/
+MASTER_SITES=	http://pgfoundry.org/frs/download.php/3393/
 
 MAINTAINER=	m.tsatsenko@gmail.com
 COMMENT=	Lightweight connection pooler for PostgreSQL
@@ -14,7 +15,7 @@ LICENSE=	BSD2CLAUSE
 LIB_DEPENDS=	libevent.so:${PORTSDIR}/devel/libevent2
 BUILD_DEPENDS+=	${LOCALBASE}/bin/gsed:${PORTSDIR}/textproc/gsed
 
-PORTSCOUT=	site:https://pgbouncer.github.io/downloads/
+PORTSCOUT=	site:http://pgfoundry.org/frs/?group_id=1000258
 
 USERS=		pgbouncer
 GROUPS=		pgbouncer

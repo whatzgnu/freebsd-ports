@@ -6,11 +6,10 @@ PKGNAMESUFFIX=	-vnc
 
 COMMENT=	Remmina plugin for VNC protocol
 
-LIB_DEPENDS=	libgnutls.so:${PORTSDIR}/security/gnutls \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libgnutls.so:${PORTSDIR}/security/gnutls \
 		libgcrypt.so:${PORTSDIR}/security/libgcrypt \
 		libvncserver.so:${PORTSDIR}/net/libvncserver
-
-USES=		jpeg
 
 MASTERDIR=	${.CURDIR}/../remmina-plugins
 

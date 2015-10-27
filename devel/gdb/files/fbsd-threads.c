@@ -441,8 +441,6 @@ fbsd_thread_activate (void)
   fbsd_thread_active = 1;
   if (target_has_execution)
     enable_thread_event_reporting ();
-  else
-    init_thread_list ();
   fbsd_thread_update_thread_list (NULL);
   get_current_thread ();
 }

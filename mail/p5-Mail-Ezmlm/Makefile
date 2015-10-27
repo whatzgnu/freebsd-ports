@@ -9,21 +9,17 @@ MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 DISTNAME=	Ezmlm-${PORTVERSION}
 
-MAINTAINER=	perl@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Perl module to allow object methods for ezmlm-idx mailing lists
-
-LICENSE=	BSD3CLAUSE GPLv2 GPLv3
-LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	${EZMLM_DIR}/bin/ezmlm-idx:${PORTSDIR}/mail/ezmlm-idx \
 		p5-Crypt-GPG>=0:${PORTSDIR}/security/p5-Crypt-GPG
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
+EZMLM_DIR?=	${LOCALBASE}
+
 USES=		perl5
 USE_PERL5=	configure
-
-EZMLM_DIR?=	${LOCALBASE}
 
 .if defined(PACKAGE_BUILDING)
 CONFIGURE_ENV=	BSD_BATCH_INSTALL=yes

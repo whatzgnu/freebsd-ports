@@ -3,7 +3,6 @@
 
 PORTNAME=	check_mysql_slave
 PORTVERSION=	0.1.1
-PORTREVISION=	1
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://buhacoff.net/2009/products/check_mysql_slave/archive/ \
 		http://mirrors.rit.edu/zi/
@@ -21,9 +20,7 @@ RUN_DEPENDS=	p5-DBI>=1.60.7:${PORTSDIR}/databases/p5-DBI \
 PORTSCOUT=	ignore:1
 
 NO_BUILD=	yes
-NO_ARCH=	yes
-USES=		perl5 shebangfix
-SHEBANG_FILES=	check_mysql_slave check_mysql_slave_epn
+USES=		perl5
 USE_PERL5=	run
 DOC_FILES=	check_mysql_slave.html check_mysql_slave.pod
 

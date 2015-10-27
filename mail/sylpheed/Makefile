@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	sylpheed
-PORTVERSION=	3.4.3
+PORTVERSION=	3.4.2
+PORTREVISION=	2
 CATEGORIES=	mail ipv6
 MASTER_SITES=	http://sylpheed.sraoss.jp/sylpheed/v${PORTVERSION:C/\.[^\.]*$//}/  \
 		LOCAL/ehaupt

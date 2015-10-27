@@ -5,6 +5,9 @@ PORTNAME=	gourmet
 PORTVERSION=	0.17.4
 PORTREVISION=	1
 CATEGORIES=	deskutils gnome
+MASTER_SITES=	https://github.com/thinkle/gourmet/archive/
+DISTNAME=	${PORTVERSION}
+DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	rm@FreeBSD.org
 COMMENT=	GNOME recipe manager
@@ -27,11 +30,10 @@ IPYTHON_DESC=		Interactive shell support
 IPYTHON_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}ipython>0:${PORTSDIR}/devel/ipython
 
 USES=		gettext python:2
-USE_GNOME=	intltool pygnome2 pygtk2
+USE_GNOME=	pygnome2 pygtk2
 USE_PYTHON=	autoplist distutils
 PLIST_FILES+=	man/man1/gourmet.1.gz
-USE_GITHUB=	yes
-GH_ACCOUNT=	thinkle
+WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 post-patch:
 	@${REINPLACE_CMD} -e "s,'spellcheck',#'spellcheck',g" \

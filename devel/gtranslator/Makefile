@@ -1,8 +1,10 @@
 # Created by: Maxim Sobolev <sobomax@FreeBSD.org>
 # $FreeBSD$
+#   $MCom: ports/trunk/devel/gtranslator/Makefile 19822 2014-08-20 08:57:46Z gusi $
 
 PORTNAME=	gtranslator
-PORTVERSION=	2.91.7
+PORTVERSION=	2.91.6
+PORTREVISION=	1
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 

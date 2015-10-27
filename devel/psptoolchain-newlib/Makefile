@@ -6,7 +6,8 @@ PORTVERSION=		1.20.0
 PORTREVISION=		1
 CATEGORIES=		devel
 MASTER_SITES=		ftp://sources.redhat.com/pub/ \
-			SOURCEWARE/${PORTNAME}
+			${MASTER_SITE_SOURCEWARE}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 PKGNAMEPREFIX=		psptoolchain-
 
 MAINTAINER=		tphilipp@potion-studios.com

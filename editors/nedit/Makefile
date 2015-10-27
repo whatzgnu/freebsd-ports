@@ -6,8 +6,9 @@ PORTVERSION=	5.6
 PORTREVISION=	1
 CATEGORIES=	editors
 MASTER_SITES=	http://people.freebsd.org/~deischen/distfiles/ \
-		SF/${PORTNAME}/${PORTNAME}-source \
+		${MASTER_SITE_SOURCEFORGE} \
 		ftp://ftp.nluug.nl/pub/editors/NEdit/contrib/misc/
+MASTER_SITE_SUBDIR=	${PORTNAME}/${PORTNAME}-source
 DISTFILES=	nedit-5.6a-src.tar.gz nedit.app-defaults
 EXTRACT_ONLY=	nedit-5.6a-src.tar.gz
 

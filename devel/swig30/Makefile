@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	swig
-PORTVERSION=	3.0.6
+PORTVERSION=	3.0.5
 CATEGORIES=	devel
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 PKGNAMESUFFIX=	30
@@ -19,10 +19,11 @@ OPTIONS_DEFINE=	DOCS EXAMPLES
 ALL_TARGET=	# empty
 CFLAGS+=	-fPIC -DPIC
 CONFIGURE_ARGS=	--program-suffix=${PORTVERSION:R} \
-		--with-lua=${LOCALBASE}/bin/${LUA_CMD} \
+		--with-lua=${LUA_BINDIR}/lua \
 		--with-luaincl=${LUA_INCDIR} \
 		--with-lualib=${LUA_LIBDIR}
 GNU_CONFIGURE=	yes
+USE_AUTOTOOLS=	autoconf:env
 USES=		gmake lua
 
 PLIST_SUB=	MAJOR_VER=${PORTVERSION:R}

@@ -41,5 +41,6 @@ do-build:
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/${PORTNAME}.pl ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.post.mk>

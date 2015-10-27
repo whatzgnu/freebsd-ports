@@ -5,8 +5,9 @@ PORTNAME=	clustalw
 PORTVERSION=	2.1
 PORTREVISION=	1
 CATEGORIES=	biology
-MASTER_SITES=	ftp://ftp.ebi.ac.uk/pub/software/clustalw2/${PORTVERSION}/ \
-		http://www.clustal.org/download/${PORTVERSION}/
+MASTER_SITES=	ftp://ftp.ebi.ac.uk/pub/software/clustalw2/%SUBDIR%/ \
+		http://www.clustal.org/download/%SUBDIR%/
+MASTER_SITE_SUBDIR=	${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Multiple alignment program for DNA or proteins

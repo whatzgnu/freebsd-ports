@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	hamsterdb
-PORTVERSION=	2.1.11
+PORTVERSION=	2.1.9
 CATEGORIES=	databases
 MASTER_SITES=	http://files.hamsterdb.com/dl/
 

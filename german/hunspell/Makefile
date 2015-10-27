@@ -19,7 +19,6 @@ BUILD_DEPENDS=	aspell:${PORTSDIR}/textproc/aspell \
 
 USES=		gmake perl5 shebangfix tar:bzip2
 ALL_TARGET=	hunspell-all
-NO_ARCH=	yes
 USE_PERL5=	build
 SHEBANG_FILES=	bin/*.pl
 

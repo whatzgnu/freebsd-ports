@@ -3,7 +3,6 @@
 
 PORTNAME=	obspy
 PORTVERSION=	0.10.1
-PORTREVISION=	1
 CATEGORIES=	science python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -21,8 +20,7 @@ BUILD_DEPENDS=	${PYNUMPY} \
 		${PYTHON_PKGNAMEPREFIX}sqlalchemy>=0:${PORTSDIR}/databases/py-sqlalchemy
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=			fortran python shebangfix zip
-SHEBANG_FILES=		obspy/taup/tests/data/TauP_test_data/gendata.sh
+USES=			fortran zip python
 USE_LDCONFIG=		yes
 LDFLAGS+=		-shared
 USE_PYTHON=		distutils autoplist

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	sharutils
-PORTVERSION=	4.15.2
-PORTREVISION=	1
+PORTVERSION=	4.15
 CATEGORIES=	archivers
 MASTER_SITES=	GNU
 
@@ -19,7 +18,6 @@ CONFIGURE_ARGS=	--program-prefix=g --disable-uucode
 INSTALL_TARGET=	install install-man
 INFO=		sharutils
 USES=		charsetfix cpe perl5 tar:xz
-USE_PERL5=	build
 OPTIONS_SUB=	yes
 CPE_VENDOR=	gnu
 

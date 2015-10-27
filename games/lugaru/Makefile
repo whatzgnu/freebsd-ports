@@ -15,10 +15,11 @@ LICENSE=	GPLv2 # or later
 LICENSE_FILE=	${WRKSRC}/COPYING.txt
 
 LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libvorbis.so:${PORTSDIR}/audio/libvorbis \
 		libogg.so:${PORTSDIR}/audio/libogg
 
-USES=		cmake jpeg openal:soft pkgconfig tar:bzip2
+USES=		cmake openal:soft pkgconfig tar:bzip2
 USE_GL=		glu
 USE_SDL=	sdl
 USE_XORG=	sm

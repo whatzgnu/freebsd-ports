@@ -5,7 +5,7 @@ PORTNAME=	LdapContrib
 SVNREV=		16840
 PORTREVISION=	1
 MASTER_SITES=	http://protey.ru/freebsd/distfiles/ \
-		LOCAL/skv
+		${MASTER_SITE_LOCAL:S!$!skv/!}
 
 COMMENT=	LDAP services for TWiki
 

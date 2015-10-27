@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lib/CA.pm.orig
 +++ lib/CA.pm
 @@ -883,7 +883,7 @@

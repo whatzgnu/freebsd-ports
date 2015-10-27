@@ -14,7 +14,8 @@ COMMENT=	Create high quality Encapsulated Postscript, PDF, or PNG charts
 
 LICENSE=	GPLv2
 
+USE_GHOSTSCRIPT_RUN=	yes
 USE_PYTHON=	distutils autoplist
-USES=		ghostscript:run python:2.7
+USES=		python:2.7
 
 .include <bsd.port.mk>

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	hdf5
-PORTVERSION=	1.8.15
-DISTVERSIONSUFFIX=	-patch1
+PORTVERSION=	1.8.14
 PORTREVISION=	1
 CATEGORIES=	science archivers graphics
 MASTER_SITES=	http://www.hdfgroup.org/ftp/HDF5/current/src/ \
@@ -19,16 +18,15 @@ LICENSE=	BSD4CLAUSE
 
 CONFLICTS_INSTALL=	hdf-4.[0-9]* hdf5-1.6.[0-9]*
 
-PORTSCOUT=	skipv:1.8.15-patch1
-
 OPTIONS_DEFINE=	DEBUG EXAMPLES FORTRAN SZIP
-OPTIONS_DEFAULT=SZIP
 OPTIONS_SUB=	yes
 
 CONFIGURE_ARGS=	--enable-cxx \
 		--enable-hl \
 		--enable-instrument \
-		--enable-strict-format-checks
+		--enable-strict-format-checks \
+		--with-pthread=/usr \
+		--with-zlib=/usr
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 MAKE_JOBS_UNSAFE=	yes

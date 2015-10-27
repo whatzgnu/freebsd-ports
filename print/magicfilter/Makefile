@@ -10,7 +10,7 @@ MASTER_SITES=	http://www.pell.portland.or.us/~orc/Code/magicfilter/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Customizable, extensible automatic printer filter
 
-USES=		ghostscript
+USE_GHOSTSCRIPT=	yes
 
 HAS_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	configure.sh

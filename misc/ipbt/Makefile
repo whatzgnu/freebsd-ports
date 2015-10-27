@@ -5,7 +5,8 @@ PORTNAME=	ipbt
 DISTVERSION=	r8765
 CATEGORIES=	misc
 MASTER_SITES=	http://www.chiark.greenend.org.uk/~sgtatham/ipbt/ \
-		LOCAL/uqs
+		LOCAL
+MASTER_SITE_SUBDIR=	uqs
 
 MAINTAINER=	uqs@FreeBSD.org
 COMMENT=	High-tech ttyrec player with improvements over ttyplay

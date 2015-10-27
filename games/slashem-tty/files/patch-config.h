@@ -1,3 +1,5 @@
+$FreeBSD$
+
 --- include/config.h.orig	Sat Dec 30 05:08:31 2006
 +++ include/config.h	Fri Aug 17 23:09:31 2007
 @@ -230,12 +230,12 @@

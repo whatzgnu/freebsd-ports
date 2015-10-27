@@ -8,10 +8,8 @@ CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	perl@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Lightweight XML tree builder
-
-LICENSE=	ART20
 
 USES=		perl5
 USE_PERL5=	configure

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lib/connection.c.orig
 +++ lib/connection.c
 @@ -676,8 +676,12 @@

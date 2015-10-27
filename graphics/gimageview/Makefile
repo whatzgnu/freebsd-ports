@@ -13,9 +13,10 @@ COMMENT=	Yet another GTK+ based image viewer
 LICENSE=	GPLv2 # or later
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png
 
-USES=		gmake jpeg libtool pkgconfig
+USES=		gmake libtool pkgconfig
 GNU_CONFIGURE=	yes
 USE_GNOME=	gtk20
 USE_XORG=	xinerama ice

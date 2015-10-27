@@ -27,7 +27,7 @@ PGSQL_DESC=	Use PostgreSQL instead of MySQL
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MPGSQL}
+.if ${PORT_OPTIONS:MGSQL}
 ASTERISKSTATDB=	pgsql
 EXTRA_PATCHES+=	${FILESDIR}/pgsql__patch-call.log.php
 .else

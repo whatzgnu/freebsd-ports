@@ -3,25 +3,22 @@
 
 PORTNAME=	mcabber
 PORTVERSION=	0.10.2
-PORTREVISION=	7
+PORTREVISION=	6
 CATEGORIES=	net-im
 MASTER_SITES=	http://www.lilotux.net/~mikael/mcabber/files/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	Small Jabber console client
-
-LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libloudmouth-1.so:${PORTSDIR}/net-im/loudmouth
 
-USES=		gettext iconv libtool ncurses pkgconfig shebangfix tar:bzip2
-SHEBANG_FILES=	contrib/cicq2mcabber.pl \
-		contrib/events/mcnotify.py
+LICENSE=	GPLv2
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-sigwinch --libdir=${PREFIX}/lib
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
+USES=		pkgconfig gettext iconv ncurses tar:bzip2 libtool
 USE_LDCONFIG=	yes
 USE_GNOME=	glib20
 
@@ -51,7 +48,6 @@ post-patch:
 		${WRKSRC}/Makefile.*
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/mcabber/*.so
 	@${INSTALL} -d ${STAGEDIR}${EXAMPLESDIR}/
 	@${INSTALL} ${WRKSRC}/${PORTNAME}.desktop ${STAGEDIR}${PREFIX}/share/applications/
 	@${CP} -R ${WRKSRC}/contrib ${STAGEDIR}${DATADIR}/

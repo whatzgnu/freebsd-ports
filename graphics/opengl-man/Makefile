@@ -5,7 +5,8 @@ PORTNAME=	opengl-man
 PORTVERSION=	657.2
 CATEGORIES=	graphics
 MASTER_SITES=	http://www2.cons.org/freebsd-distfiles/ \
-		LOCAL/cracauer
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	cracauer
 DISTNAME=	opengl-man-657-plusmissing
 
 MAINTAINER=	ports@FreeBSD.org

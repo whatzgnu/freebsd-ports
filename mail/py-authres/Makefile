@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	authres
-PORTVERSION=	0.800
+PORTVERSION=	0.701
 CATEGORIES=	mail python
-MASTER_SITES=	http://launchpad.net/authentication-results-python/${PORTVERSION}/0.8/+download/
+MASTER_SITES=	http://launchpad.net/authentication-results-python/0.700/0.701/+download/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	yasu@utahime.org

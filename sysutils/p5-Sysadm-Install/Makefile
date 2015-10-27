@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Sysadm-Install
-PORTVERSION=	0.46
+PORTVERSION=	0.44
+PORTREVISION=	1
 CATEGORIES=	sysutils perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:MSCHILLI
@@ -22,7 +23,6 @@ BUILD_DEPENDS=	p5-Archive-Tar>=0:${PORTSDIR}/archivers/p5-Archive-Tar \
 		p5-libwww>=0:${PORTSDIR}/www/p5-libwww
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 

@@ -1,6 +1,3 @@
-Gecko Media Plugins API is a special purpose extension point for
-authorised 3rd party codecs and Encrypted Media Extensions Content
-Decryption Modules. It's supported in applications like Firefox and
-SeaMonkey as well as Firefox OS.
+Gecko Media Plugins API from mozilla-central.
 
 WWW: https://wiki.mozilla.org/GeckoMediaPlugins

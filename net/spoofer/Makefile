@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	spoofer
-PORTVERSION=	0.8a
+PORTVERSION=	0.8
 CATEGORIES=	net
-MASTER_SITES=	http://spoofer.caida.org/
+MASTER_SITES=	http://spoofer.csail.mit.edu/
 
 MAINTAINER=	jadawin@FreeBSD.org
-COMMENT=	Spoofer Project testing software
+COMMENT=	ANA Spoofer Project testing software
 
 PLIST_FILES=	bin/spoofer
 PORTDOCS=	README CHANGES

@@ -57,6 +57,8 @@ TEST_BUILD_DEPENDS=googletest>=1.7.0:${PORTSDIR}/devel/googletest \
 		luabind>0:${PORTSDIR}/devel/luabind
 TEST_EXTRA_PATCHES_OFF=${FILESDIR}/extra-patch-disable-test
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${GREP} -Flr 'utf8cpp/' ${WRKSRC} | ${XARGS} ${REINPLACE_CMD} \
 		-i .bak.utf8cpp -e 's,utf8cpp/,,'
@@ -68,8 +70,10 @@ post-patch:
 		-e 's,truetype/mona,TrueType,' \
 		-e 's,truetype/[^/"]*,TTF,'
 
-pre-install-TEST-on:
+pre-install:
+.if ${PORT_OPTIONS:MTEST}
 	(cd ${WRKSRC} && build/${PORTNAME}_unittests)
+.endif
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/build/${PORTNAME} \
@@ -83,15 +87,15 @@ do-install:
 		${INSTALL_DATA} -v $$f \
 			${STAGEDIR}${PREFIX}/share/icons/hicolor/$${f%/*}x$${f%/*}/apps; \
 	done)
-
-post-install-NLS-on:
+.if ${PORT_OPTIONS:MNLS}
 	(cd ${WRKSRC}/build/locale && ${COPYTREE_SHARE} \
 		. ${STAGEDIR}${PREFIX}/share/locale)
-
-post-install-DOCS-on:
+.endif
+.if ${PORT_OPTIONS:MDOCS}
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} \
 		"${PORTDOCS:Nnotes}" ${STAGEDIR}${DOCSDIR})
 	(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} \
 		notes ${STAGEDIR}${DOCSDIR})
+.endif
 
 .include <bsd.port.mk>

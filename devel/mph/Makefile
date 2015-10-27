@@ -4,7 +4,8 @@
 PORTNAME=	mph
 PORTVERSION=	1.2
 CATEGORIES=	devel
-MASTER_SITES=	SUNSITE/devel/lang/c
+MASTER_SITES=	SUNSITE
+MASTER_SITE_SUBDIR=	devel/lang/c
 
 MAINTAINER=	chuck@pkix.net
 COMMENT=	Minimal perfect hashing code generator

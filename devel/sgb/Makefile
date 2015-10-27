@@ -5,7 +5,8 @@ PORTNAME=	sgb
 PORTVERSION=	20090810
 CATEGORIES=	devel
 MASTER_SITES=	ftp://ftp.cs.stanford.edu/pub/sgb/ \
-		GENTOO
+		${MASTER_SITE_GENTOO}
+MASTER_SITE_SUBDIR=	distfiles
 DISTNAME=	sgb-2009-08-10
 
 MAINTAINER=	gerald@FreeBSD.org

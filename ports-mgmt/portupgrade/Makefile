@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	portupgrade
-PORTVERSION=	2.4.14
-PORTREVISION=	0
+PORTVERSION=	2.4.13
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	ports-mgmt
-MASTER_SITES=	LOCAL/bdrewery/pkgtools/ \
+MASTER_SITES=	SF/portupgrade/pkgtools/dist/ \
 		http://mirror.shatow.net/freebsd/pkgtools/ \
-		GH
+		LOCAL/bdrewery/pkgtools/
 DISTNAME=	pkgtools-${PORTVERSION}
 
 MAINTAINER=	bdrewery@FreeBSD.org
@@ -19,9 +19,6 @@ LICENSE=	BSD3CLAUSE
 OPTIONS_DEFINE=	DOCS
 
 CONFLICTS_INSTALL=	portupgrade-devel-*
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	freebsd
 
 DIST_SUBDIR=	${PORTNAME}
 USES=		tar:bzip2 uidfix

@@ -18,8 +18,6 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	liborc-0.4.so:${PORTSDIR}/devel/orc
 
-PORTSCOUT=	limit:0\.10\..*
-
 LIBAV_VERSION=	0.7.7
 WRKSRC=		${WRKDIR}/gst-ffmpeg-${PORTVERSION}
 USES=		compiler:features gmake libtool pkgconfig

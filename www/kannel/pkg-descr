@@ -1,5 +1,4 @@
-Kannel is a compact and very powerful open source WAP and SMS gateway, used 
-widely across the globe both for serving trillions of short messages (SMS), 
-WAP Push service indications and mobile internet connectivity.
+Kannel is an open source project to make a WAP gateway; it also can work as
+an SMS gateway.
 
 WWW: http://www.kannel.org/

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- file.c.orig
 +++ file.c
 @@ -171,6 +171,7 @@

@@ -35,6 +35,8 @@ CPPFLAGS+=	-D_GLIBCXX_USE_C99
 
 post-patch:
 	@${REINPLACE_CMD} -e \
+		's|"GNU strip"|"strip"|' ${WRKSRC}/configure
+	@${REINPLACE_CMD} -e \
 		's|%%DATADIR%%|${DATADIR}|' ${WRKSRC}/src/yacasmain.cpp
 #	Can't use USES=shebangfix here, cause the path appears several
 #	times in the file.

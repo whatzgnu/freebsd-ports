@@ -56,4 +56,7 @@ do-build:
 do-install:
 	@cd ${WRKSRC} && ${JAM} ${JAMARG} install
 
+post-install:
+	@${CAT} ${PKGMESSAGE}
+
 .include <bsd.port.post.mk>

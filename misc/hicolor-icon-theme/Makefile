@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	hicolor-icon-theme
-PORTVERSION=	0.15
+PORTVERSION=	0.14
 CATEGORIES=	misc gnome
 MASTER_SITES=	http://icon-theme.freedesktop.org/releases/
 

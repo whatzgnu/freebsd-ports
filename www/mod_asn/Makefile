@@ -4,8 +4,9 @@ PORTNAME=	mod_asn
 PORTVERSION=	1.5
 PORTREVISION=	2
 CATEGORIES=	www
-MASTER_SITES=	LOCAL/kuriyama \
+MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://mirrorbrain.org/files/releases/
+MASTER_SITE_SUBDIR=	kuriyama
 
 MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Look up the AS and network prefix of IP address

@@ -5,7 +5,8 @@ PORTNAME=	nvi
 PORTVERSION=	1.81.6
 PORTREVISION=	9
 CATEGORIES=	editors
-MASTER_SITES=	ftp://ftp.stack.nl/pub/users/johans/nvi/
+MASTER_SITES=	http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/ \
+		http://www.kotnet.org/~skimo/nvi/devel/
 
 MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Development snapshot of the world-renown nvi editor
@@ -16,6 +17,7 @@ OPTIONS_DEFINE=	WIDECHAR
 OPTIONS_DEFAULT=WIDECHAR
 WIDECHAR_DESC=	Enable wide-character support (UTF-8)
 
+BROKEN=		Unfetchable
 WRKSRC=			${WRKDIR}/${DISTNAME}/build.unix
 GNU_CONFIGURE=		yes
 USE_LDCONFIG=		yes

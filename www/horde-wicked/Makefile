@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	wicked
-PORTVERSION=	2.0.4
+DISTVERSION=	2.0.3
 CATEGORIES=	www pear
 PKGNAMEPREFIX=	horde-
 

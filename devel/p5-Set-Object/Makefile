@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Set-Object
-PORTVERSION=	1.35
+PORTVERSION=	1.34
+PORTREVISION=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,15 +11,20 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Perl module to manage sets of objects
 
-LICENSE=	ART20
+LICENSE=	ART10
 
 TEST_DEPENDS=	p5-Moose>=0:${PORTSDIR}/devel/p5-Moose \
 		p5-Test-LeakTrace>=0:${PORTSDIR}/devel/p5-Test-LeakTrace
 
+OPTIONS_DEFINE=	DOCS
+
 USES=		perl5
 USE_PERL5=	configure
 
+PORTDOCS=	Changes.pod README
+
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Set/Object/Object.so
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	(cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR})
 
 .include <bsd.port.mk>

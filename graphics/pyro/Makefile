@@ -13,7 +13,8 @@ COMMENT=	Simple OpenGL-based firework simulator
 
 BROKEN=		No public distfiles
 
-USES=		jpeg
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
+
 USE_GL=		gl glut
 USE_XORG=	xi xmu xext
 

@@ -3,7 +3,6 @@
 
 PORTNAME=	slv2
 PORTVERSION=	0.6.6
-PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://download.drobilla.net/
 
@@ -35,7 +34,6 @@ post-patch:
 		's|^#define _XOPEN_SOURCE .*||' ${WRKSRC}/src/plugin.c
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libslv2.so
 .for file in lv2_inspect lv2_jack_host lv2_list lv2_simple_jack_host
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${file}
 .endfor

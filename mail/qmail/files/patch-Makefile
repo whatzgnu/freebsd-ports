@@ -1,3 +1,5 @@
+$FreeBSD$
+
 This turns off the auto-finding of UIDs -- we shouldn't have the users
 until pre-install!
 

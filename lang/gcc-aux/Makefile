@@ -6,7 +6,8 @@ PORTVERSION=	${SNAPSHOT}
 PORTREVISION=	${MAIN_PR}
 CATEGORIES=	lang
 MASTER_SITES=	http://downloads.dragonlace.net/src/:boot \
-		LOCAL/marino:boot GCC/${MS_SUBDIR}
+		LOCAL/marino:boot ${MASTER_SITE_GCC}
+MASTER_SITE_SUBDIR=	${MS_SUBDIR}
 DISTFILES=	${IDENTIFICATION}.tar.bz2
 
 MAINTAINER=	marino@FreeBSD.org
@@ -116,7 +117,7 @@ DISTFILES=	\
 
 .if ${PORT_OPTIONS:MFORT} && !${PORT_OPTIONS:MBOOTSTRAP}
 LANGS+=		fortran
-#APPLY_DIFFS+=	fortran
+APPLY_DIFFS+=	fortran
 EXTRA_CONFIG+=	--enable-libquadmath
 .else
 EXTRA_CONFIG+=	--disable-libquadmath

@@ -2,16 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	text
-PORTVERSION=	0.8
+PORTVERSION=	0.6
+PORTREVISION=	1
 CATEGORIES=	textproc
+MASTER_SITES=	http://forge.ocamlcore.org/frs/download.php/937/
 PKGNAMEPREFIX=	ocaml-
+DISTNAME=	${PKGNAMEPREFIX}${PORTNAME}-${PORTVERSION}
 
-MAINTAINER=	johans@FreeBSD.org
+MAINTAINER=	jaapb@kerguelen.org
 COMMENT=	OCaml library for dealing with text
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	vbmithr
-GH_PROJECT=	${PKGNAMEPREFIX}${PORTNAME}
 
 USES=		gmake
 HAS_CONFIGURE=	yes
@@ -39,13 +38,13 @@ post-patch:
 		${WRKSRC}/setup.ml
 
 do-configure:
-	cd ${WRKSRC}; ocaml setup.ml -configure ${CONFIGURE_ARGS}
+	(cd ${WRKSRC}; ocaml setup.ml -configure ${CONFIGURE_ARGS})
 
 do-build:
-	cd ${WRKSRC}; ocaml setup.ml -build
+	(cd ${WRKSRC}; ocaml setup.ml -build)
 
 do-install:
 	${MKDIR} ${STAGEDIR}${OCAMLFIND_DESTDIR}
-	cd ${WRKSRC}; ocaml setup.ml -install
+	(cd ${WRKSRC}; ocaml setup.ml -install)
 
 .include <bsd.port.mk>

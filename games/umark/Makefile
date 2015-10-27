@@ -3,7 +3,7 @@
 
 PORTNAME=	umark
 DISTVERSION=	2.0.0-Beta3
-PORTREVISION=	8
+PORTREVISION=	7
 CATEGORIES=	games benchmarks
 MASTER_SITES=	SF/ut2k3botbench/UMark%20for%20Linux/2.0.0%20Beta%203
 DISTNAME=	UMark-for-Linux-v${DISTVERSION:S/.//g}
@@ -12,13 +12,11 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Unreal Tournament 200x series benchmark utility
 
 LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE_FILE=	${WRKSRC}/../COPYING
 
-USES=		pkgconfig shebangfix
-SHEBANG_FILES=	install_umark_data.sh utxinfo.pl
+USES=		pkgconfig
 USE_GNOME=	gtk20
-WRKSRC=		${WRKDIR}/UMark
-BUILD_WRKSRC=	${WRKSRC}/src
+WRKSRC=		${WRKDIR}/UMark/src
 MAKEFILE=	${FILESDIR}/Makefile
 SUB_FILES=	pkg-message
 PORTDOCS=	ChangeLog INSTALL README TODO
@@ -26,12 +24,13 @@ PORTDOCS=	ChangeLog INSTALL README TODO
 OPTIONS_DEFINE=	DOCS
 
 do-install:
-	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 	@${MKDIR} ${STAGEDIR}${DATADIR}
-	${INSTALL_SCRIPT} ${WRKSRC}/install_umark_data.sh ${STAGEDIR}${DATADIR}
-	${INSTALL_SCRIPT} ${WRKSRC}/utxinfo.pl ${STAGEDIR}${DATADIR}
-	cd ${WRKSRC} && ${COPYTREE_SHARE} "data html pixmaps" ${STAGEDIR}${DATADIR}
+	${INSTALL_SCRIPT} ${WRKDIR}/UMark/install_umark_data.sh ${STAGEDIR}${DATADIR}
+	${INSTALL_SCRIPT} ${WRKDIR}/UMark/utxinfo.pl ${STAGEDIR}${DATADIR}
+	cd ${WRKDIR}/UMark && ${FIND} data html pixmaps | \
+		${CPIO} -pdu ${STAGEDIR}${DATADIR}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKDIR}/UMark/,} ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

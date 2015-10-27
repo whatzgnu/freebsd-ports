@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lib/ssl/src/ssl_manager.erl.orig
 +++ lib/ssl/src/ssl_manager.erl
 @@ -145,7 +145,7 @@

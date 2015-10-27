@@ -3,7 +3,7 @@
 
 PORTNAME=	AuthCAS
 PORTVERSION=	1.6
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	security perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:OSALAUN
@@ -20,9 +20,7 @@ BUILD_DEPENDS=	p5-libwww>=0:${PORTSDIR}/www/p5-libwww \
 
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	sampleCasClient.pl
+USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 .include <bsd.port.mk>

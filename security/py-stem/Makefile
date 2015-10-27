@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	stem
-PORTVERSION=	1.4.1
-PORTREVISION=	1
+PORTVERSION=	1.3.0
 CATEGORIES=	security net python
 MASTER_SITES=	http://www.c-s.li/ports/ \
 		CHEESESHOP

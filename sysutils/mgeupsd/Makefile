@@ -5,7 +5,8 @@ PORTNAME=	mgeupsd
 PORTVERSION=	0.3
 PORTREVISION=	1
 CATEGORIES=	sysutils
-MASTER_SITES=	SUNSITE/system/ups
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	system/ups
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Monitor a state of MGE Pulsar UPS connected to RS-232 port

@@ -11,8 +11,6 @@ COMMENT=	Provides 'mail' gem with iso-2022-jp conversion capability
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

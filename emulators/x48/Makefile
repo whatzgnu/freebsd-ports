@@ -18,10 +18,12 @@ LICENSE=	GPLv3
 RUN_DEPENDS=	${LOCALBASE}/share/fonts/misc/7x14B-ISO8859-1.pcf.gz:${PORTSDIR}/x11-fonts/font-misc-misc \
 		${LOCALBASE}/share/fonts/75dpi/helvR12-ISO8859-1.pcf.gz:${PORTSDIR}/x11-fonts/font-adobe-75dpi
 
-GNU_CONFIGURE=	yes
+USE_AUTOTOOLS=	aclocal autoheader automake autoconf
+AUTOMAKE_ARGS=	--add-missing --copy -Wno-portability
+ACLOCAL_ARGS=	# default args (--acdir=...) produce broken configure script
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-lutil
-USES=		autoreconf gmake pkgconfig tar:bzip2
+USES=		gmake pkgconfig tar:bzip2
 USE_XORG=	x11 xext xt
 NO_WRKSUBDIR=	yes
 

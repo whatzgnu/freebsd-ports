@@ -3,7 +3,7 @@
 
 PORTNAME=	Math-Symbolic
 PORTVERSION=	0.612
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	math perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:SMUELLER
@@ -18,9 +18,7 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-Parse-RecDescent>=0:${PORTSDIR}/devel/p5-Parse-RecDescent
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	compile_yapp_parser.pl
+USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 .include <bsd.port.mk>

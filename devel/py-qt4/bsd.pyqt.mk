@@ -13,11 +13,11 @@ PYQT_MAINTAINER=	kde@FreeBSD.org
 MASTER_SITE_RIVERBANK=	http://www.riverbankcomputing.com/static/Downloads/%SUBDIR%/
 
 MASTER_SITES_SIP=	SF/pyqt/sip/sip-${PORTVERSION} \
-			GENTOO
+			${MASTER_SITE_GENTOO:S,%SUBDIR%,distfiles,}
 MASTER_SITES_PYQT4=	SF/pyqt/PyQt4/PyQt-${PORTVERSION} \
-			GENTOO
+			${MASTER_SITE_GENTOO:S,%SUBDIR%,distfiles,}
 MASTER_SITES_QSCI2=	SF/pyqt/QScintilla2/QScintilla-${PORTVERSION} \
-			GENTOO
+			${MASTER_SITE_GENTOO:S,%SUBDIR%,distfiles,}
 
 SIP_VERSION=		4.16.5
 PYQT4_VERSION=		4.11.3

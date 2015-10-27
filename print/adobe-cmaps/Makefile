@@ -5,7 +5,8 @@ PORTNAME=	adobe-cmaps
 PORTVERSION=	20051217
 PORTREVISION=	3
 CATEGORIES=	print
-MASTER_SITES=	LOCAL/hrs/adobe
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	hrs/adobe
 DISTFILES=	ac15.tar.gz ag15.tar.gz \
 		ai0.tar.gz aj16.tar.gz \
 		aj20.tar.gz ak12.tar.gz rksj-cmaps.tar.gz

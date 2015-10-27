@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	geographiclib
-PORTVERSION=	1.42
+PORTVERSION=	1.41
 CATEGORIES=	astro
 MASTER_SITES=	SF/geographiclib/distrib\
 		SF/geographiclib:geoids,gravity,magnetic
@@ -15,10 +15,9 @@ COMMENT=	Library for geographic projections
 
 LICENSE=	MIT
 
-BUILD_DEPENDS=	${LOCALBASE}/share/aclocal/ax_check_compile_flag.m4:${PORTSDIR}/devel/autoconf-archive
-
-USES=		autoreconf gmake libtool python
+USES=		gmake libtool python
 USE_GCC=	any
+USE_AUTOTOOLS=	autoconf
 WRKSRC=		${WRKDIR}/${DISTNAME}
 NO_WRKSUBDIR=	yes
 PORTDOCS=	*

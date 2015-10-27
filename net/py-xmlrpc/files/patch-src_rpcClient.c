@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/rpcClient.c
 +++ src/rpcClient.c
 @@ -179,7 +179,7 @@

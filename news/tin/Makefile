@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	tin
-PORTVERSION=	2.3.1
+PORTVERSION=	2.2.1
+PORTREVISION=	1
 CATEGORIES+=	news ipv6
 MASTER_SITES=	ftp://ftp.tin.org/pub/news/clients/tin/v${PORTVERSION:R}/ \
 		ftp://ftp.sunet.se/pub/news/readers/tin/v${PORTVERSION:R}/ \

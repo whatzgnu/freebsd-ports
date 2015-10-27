@@ -49,19 +49,16 @@ SUB_FILES=	pipelight-mkufs
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "i386"
-BUILD_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/wine-staging
-RUN_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/wine-staging
+BUILD_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/wine-compholio
+RUN_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/wine-compholio
 .elif ${ARCH} == "amd64"
-BUILD_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/i386-wine-staging
-RUN_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/i386-wine-staging
+BUILD_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/i386-wine-compholio
+RUN_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/i386-wine-compholio
 .endif
 
 pre-configure:
-	${LN} -s ${DISTDIR}/${DIST_SUBDIR}/pluginloader.tar.gz \
-		${WRKSRC}/pluginloader-v${DISTVERSION}.tar.gz
-	${LN} -s ${DISTDIR}/${DIST_SUBDIR}/pluginloader.tar.gz.sig \
-		${WRKSRC}/pluginloader-v${DISTVERSION}.tar.gz.sig
-	${MKDIR} ${WRKDIR}/.gnupg
+		${LN} -s ${DISTDIR}/${DIST_SUBDIR}/pluginloader.tar.gz ${WRKSRC}/pluginloader-v${DISTVERSION}.tar.gz
+		${LN} -s ${DISTDIR}/${DIST_SUBDIR}/pluginloader.tar.gz.sig ${WRKSRC}/pluginloader-v${DISTVERSION}.tar.gz.sig
 
 post-stage:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/pipelight/libpipelight.so

@@ -3,7 +3,7 @@
 
 PORTNAME=	wavpack
 PORTVERSION=	4.60.1
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://www.wavpack.com/
 

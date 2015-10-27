@@ -5,7 +5,8 @@ PORTNAME=	o3read
 PORTVERSION=	0.0.4
 CATEGORIES=	converters
 MASTER_SITES=	http://siag.nu/pub/o3read/ \
-		GENTOO
+		${MASTER_SITE_GENTOO}
+MASTER_SITE_SUBDIR=	distfiles
 
 MAINTAINER=	samm@os2.kiev.ua
 COMMENT=	Standalone converter for the OpenOffice.org writer and scalc formats

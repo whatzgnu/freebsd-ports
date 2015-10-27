@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mpv
-PORTVERSION=	0.9.2
+PORTVERSION=	0.9.1
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
 MASTER_SITES=	http://ftp.waf.io/pub/release/:1 \
@@ -17,7 +16,7 @@ COMMENT=	Free and open-source general-purpose video player
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg \
+LIB_DEPENDS=	libavcodec26.so:${PORTSDIR}/multimedia/ffmpeg26 \
 		libass.so:${PORTSDIR}/multimedia/libass \
 		libdvdread.so:${PORTSDIR}/multimedia/libdvdread \
 		libdvdnav.so:${PORTSDIR}/multimedia/libdvdnav
@@ -33,7 +32,7 @@ USE_XORG=	x11 xv xxf86vm
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 
-CPPFLAGS+=	-I.. -I${LOCALBASE}/include/ffmpeg -I${LOCALBASE}/include
+CPPFLAGS+=	-I.. -I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 CONFIGURE_ARGS=	--prefix=${PREFIX} \
@@ -44,6 +43,8 @@ CONFIGURE_ARGS=	--prefix=${PREFIX} \
 		--enable-libmpv-shared \
 		--disable-alsa \
 		--disable-pdf
+
+CONFLICTS_BUILD=	ffmpeg
 
 OPTIONS_DEFINE=		BS2B DOCS ENCA LADSPA LCMS2 LIBGUESS LUAJIT ZSH
 OPTIONS_GROUP=		IN VO AO
@@ -67,8 +68,7 @@ BS2B_CONFIGURE_ENABLE=		libbs2b
 ENCA_LIB_DEPENDS=		libenca.so:${PORTSDIR}/converters/enca
 ENCA_CONFIGURE_ENABLE=		enca
 
-LADSPA_BUILD_DEPENDS=		${LOCALBASE}/lib/ladspa/amp.so:${PORTSDIR}/audio/ladspa
-LADSPA_RUN_DEPENDS=		${LOCALBASE}/lib/ladspa/amp.so:${PORTSDIR}/audio/ladspa
+LADSPA_LIB_DEPENDS=		ladspa/amp.so:${PORTSDIR}/audio/ladspa
 LADSPA_CONFIGURE_ENABLE=	ladspa
 
 LCMS2_LIB_DEPENDS=		liblcms2.so:${PORTSDIR}/graphics/lcms2
@@ -96,7 +96,7 @@ V4L_BUILD_DEPENDS=		${LOCALBASE}/include/linux/videodev2.h:${PORTSDIR}/multimedi
 V4L_LIB_DEPENDS=		libv4l2.so:${PORTSDIR}/multimedia/libv4l
 V4L_CONFIGURE_ENABLE=		tv-v4l2
 
-YTDL_BUILD_DEPENDS=		${LOCALBASE}/bin/youtube-dl:${PORTSDIR}/www/youtube_dl
+YTDL_RUN_DEPENDS=		youtube-dl:${PORTSDIR}/www/youtube_dl
 
 SMB_LIB_DEPENDS=		libsmbclient.so:${PORTSDIR}/net/samba-libsmbclient
 SMB_CONFIGURE_ENABLE=		libsmbclient
@@ -104,7 +104,8 @@ SMB_CONFIGURE_ENABLE=		libsmbclient
 CACA_LIB_DEPENDS=		libcaca.so:${PORTSDIR}/graphics/libcaca
 CACA_CONFIGURE_ENABLE=		caca
 
-OPENGL_USE=			GL=gl
+OPENGL_USE=			XORG=glproto
+OPENGL_LIB_DEPENDS=		libGL.so:${PORTSDIR}/graphics/libGL
 OPENGL_CONFIGURE_ENABLE=	gl
 
 VAAPI_LIB_DEPENDS=		libva.so:${PORTSDIR}/multimedia/libva
@@ -121,23 +122,6 @@ JACK_CONFIGURE_ENABLE=		jack
 
 PULSEAUDIO_LIB_DEPENDS=		libpulse.so:${PORTSDIR}/audio/pulseaudio
 PULSEAUDIO_CONFIGURE_ENABLE=	pulse
-
-.include <bsd.port.options.mk>
-
-# Fix crash on i386
-.if ${ARCH} == "i386"
-CFLAGS:=	${CFLAGS:N-O*} -O0
-.endif
-
-show-info:
-	@${ECHO_MSG} ""
-	@${ECHO_MSG} "====================================================================="
-	@${ECHO_MSG} "Only for i386"
-	@${ECHO_MSG} "Make sure you have multimedia/libass build with the ASM option OFF"
-	@${ECHO_MSG} "====================================================================="
-	@${ECHO_MSG} ""
-
-pre-everything::show-info
 
 post-extract:
 	${CP} ${DISTDIR}/waf-${WAF_VERSION} ${WRKSRC}/waf

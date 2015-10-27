@@ -3,9 +3,9 @@
 
 PORTNAME=	osgearth
 PORTVERSION=	2.5
-DISTVERSIONPREFIX=	${PORTNAME}-
-PORTREVISION=	6
+PORTREVISION=	5
 CATEGORIES=	graphics geography
+MASTER_SITES=	https://github.com/gwaldron/${PORTNAME}/archive/
 
 MAINTAINER=	coder@tuxfamily.org
 COMMENT=	osgEarth is a C++ terrain rendering toolkit for OpenSceneGraph
@@ -17,12 +17,11 @@ LIB_DEPENDS=	libosg.so:${PORTSDIR}/graphics/osg \
 		libgdal.so:${PORTSDIR}/graphics/gdal \
 		libcurl.so:${PORTSDIR}/ftp/curl
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	gwaldron
+WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTNAME}
 
 USE_LDCONFIG=	YES
 USE_SQLITE=	3
-USES=		cmake gmake pkgconfig
+USES=		cmake gmake pkgconfig zip
 PLIST_SUB=	OSGVERSION=3.2.1
 
 CMAKE_ARGS+=	-DCMAKE_INCLUDE_PATH:PATH=${LOCALBASE}/include \

@@ -9,10 +9,8 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Provides hostname, IP address, and other information for a given host
 
-LICENSE=	ART20
-
-USE_RUBY=	yes
-USE_RUBYGEMS=	yes
+USE_RUBY=		yes
+USE_RUBYGEMS=		yes
 RUBYGEM_AUTOPLIST=	yes
 
 .include <bsd.port.mk>

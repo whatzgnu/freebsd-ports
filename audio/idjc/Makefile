@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	idjc
-PORTVERSION=	0.8.15
+PORTVERSION=	0.8.14
+PORTREVISION=	2
 CATEGORIES=	audio python
 MASTER_SITES=	SF/idjc/idjc/0.8
 
@@ -26,15 +27,11 @@ RUN_DEPENDS=	oggenc:${PORTSDIR}/audio/vorbis-tools \
 		${PYTHON_PKGNAMEPREFIX}mutagen>=0:${PORTSDIR}/audio/py-mutagen \
 		${PYTHON_PKGNAMEPREFIX}dbus>=0.8:${PORTSDIR}/devel/py-dbus
 
-OPTIONS_SUB=	YES
-OPTIONS_DEFINE=	DOCS NLS
-OPTIONS_DEFAULT=	DOCS NLS
+OPTIONS_DEFINE=	DOCS
 
 USES=		compiler:nestedfct desktop-file-utils gettext gmake \
 		libtool pathfix pkgconfig python:2.7
-LDFLAGS+=	-L${LOCALBASE}/lib
-NLS_USES=	gettext
-NLS_CONFIGURE_OFF=	--disable-nls
+LDFLAGS=	-L${LOCALBASE}/lib
 MAKE_JOBS_UNSAFE=	yes
 GNU_CONFIGURE=		yes
 USE_PYTHON=		pythonprefix

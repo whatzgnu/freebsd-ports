@@ -1,7 +1,7 @@
 # Created by: John Merryweather Cooper et al
 # $FreeBSD$
 
-PORTREVISION=	1
+PORTREVISION=	0
 CATEGORIES=	devel
 PKGNAMESUFFIX=	-gdbint
 

@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	libwps
-PORTVERSION=	0.4.0
-PORTREVISION=	1
+PORTVERSION=	0.2.9
+PORTREVISION=	3
 CATEGORIES=	textproc
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -13,12 +13,12 @@ COMMENT=	Microsoft file word processor format import filter library
 LICENSE=	LGPL21 MPL
 LICENSE_COMB=	dual
 
-LIB_DEPENDS=	librevenge-0.0.so:${PORTSDIR}/textproc/librevenge
+LIB_DEPENDS=	libwpd-0.9.so:${PORTSDIR}/textproc/libwpd
 
 CONFIGURE_ARGS=	--disable-werror --without-docs
 CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
-USES=		compiler:features libtool pathfix pkgconfig
+USES=		compiler:features libtool:keepla pathfix pkgconfig
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 
@@ -30,5 +30,8 @@ CONFIGURE_ARGS+=	--with-sharedptr=c++11
 BUILD_DEPENDS+=	${LOCALBASE}/include/boost/shared_ptr.hpp:${PORTSDIR}/devel/boost-libs
 CONFIGURE_ARGS+=	--with-sharedptr=boost
 .endif
+
+post-stage:
+	@${RM} -f ${STAGEDIR}${PREFIX}/bin/*
 
 .include <bsd.port.post.mk>

@@ -4,7 +4,8 @@
 PORTNAME=	httpclient
 DISTVERSION=	4.3.6
 CATEGORIES=	www java
-MASTER_SITES=	APACHE/httpcomponents/${PORTNAME}/binary
+MASTER_SITES=	${MASTER_SITE_APACHE}
+MASTER_SITE_SUBDIR=	httpcomponents/${PORTNAME}/binary
 DISTNAME=	httpcomponents-client-${DISTVERSION}-bin
 
 MAINTAINER=	ale@FreeBSD.org

@@ -3,7 +3,6 @@
 
 PORTNAME=	flowgrind
 PORTVERSION=	0.7.1
-DISTVERSIONPREFIX=	${PORTNAME}-
 PORTREVISION=	1
 CATEGORIES=	benchmarks
 
@@ -18,13 +17,17 @@ LIB_DEPENDS=	libpcap.so:${PORTSDIR}/net/libpcap \
 		libxmlrpc.so:${PORTSDIR}/net/xmlrpc-c
 
 USE_GITHUB=	yes
+GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
 
-USES=		autoreconf
+USE_AUTOTOOLS=	aclocal autoconf
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-pcap --enable-gsl
 
 post-patch:
 	@${RM} -rf ${WRKSRC}/build-aux
 	@${REINPLACE_CMD} -e 's|AC_LIB_RPATH||g' ${WRKSRC}/configure.ac
+
+pre-configure:
+	cd ${WRKSRC} && ${AUTORECONF} -i
 
 .include <bsd.port.mk>

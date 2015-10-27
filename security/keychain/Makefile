@@ -3,10 +3,10 @@
 
 PORTNAME=	keychain
 PORTVERSION=	2.8.0
-PORTREVISION=	3
+PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	http://www.funtoo.org/archive/keychain/ \
-		GENTOO
+		GENTOO/distfiles
 
 MAINTAINER=	garga@FreeBSD.org
 COMMENT=	User-friendly front-end to ssh-agent(1)

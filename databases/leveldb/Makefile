@@ -34,21 +34,22 @@ USE_GITHUB=	yes
 GPERFTOOLS_LIB_DEPENDS=	libtcmalloc.so:${PORTSDIR}/devel/google-perftools
 SNAPPY_LIB_DEPENDS=	libsnappy.so:${PORTSDIR}/archivers/snappy
 
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MSNAPPY}
+SNAPPY=		1
+.else
+SNAPPY=		0
+.endif
+
 post-patch:
 	@${REINPLACE_CMD} -e '/PLATFORM_IS_LITTLE_ENDIAN/ s|__|_|g' ${WRKSRC}/port/port_posix.h
-
-post-patch-GPERFTOOLS-off:
+.if !${PORT_OPTIONS:MGPERFTOOLS}
 	@${REINPLACE_CMD} -e 's| -ltcmalloc||' ${WRKSRC}/build_detect_platform
-
-post-patch-SNAPPY-off:
+.endif
+.if !${PORT_OPTIONS:MSNAPPY}
 	@${REINPLACE_CMD} -e 's| -DSNAPPY||; s| -lsnappy||' ${WRKSRC}/build_detect_platform
-
-# backward compatibility (for databases/p5-Tie-LevelDB)
-pre-install-SNAPPY-off:
-	${ECHO_CMD} "SNAPPY=0" >> ${WRKSRC}/build_config.mk
-
-pre-install-SNAPPY-on:
-	${ECHO_CMD} "SNAPPY=1" >> ${WRKSRC}/build_config.mk
+.endif
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/include/leveldb/ ${STAGEDIR}${PREFIX}/include/memenv/ ${STAGEDIR}${DATADIR}/
@@ -62,7 +63,8 @@ do-install:
 	${LN} -fs libleveldb.so.${SHLIB_MAJOR}.${SHLIB_MINOR} ${STAGEDIR}${PREFIX}/lib/libleveldb.so.${SHLIB_MAJOR}
 	${LN} -fs libmemenv.so.${SHLIB_MAJOR} ${STAGEDIR}${PREFIX}/lib/libmemenv.so
 	${LN} -fs libmemenv.so.${SHLIB_MAJOR}.${SHLIB_MINOR} ${STAGEDIR}${PREFIX}/lib/libmemenv.so.${SHLIB_MAJOR}
-# backward compatibility (for databases/p5-Tie-LevelDB)
+# backward compatibility
+	${ECHO_CMD} "SNAPPY=${SNAPPY}" >> ${WRKSRC}/build_config.mk
 	${GREP} '^PLATFORM_CXXFLAGS=' ${WRKSRC}/build_config.mk | ${SED} 's|PLATFORM_CXXFLAGS|PORT_CFLAGS|' >> ${WRKSRC}/build_config.mk
 	${GREP} '^PLATFORM_CXXFLAGS=' ${WRKSRC}/build_config.mk | ${SED} 's|PLATFORM_CXXFLAGS|PLATFORM_CFLAGS|' >> ${WRKSRC}/build_config.mk
 	${INSTALL_DATA} ${WRKSRC}/build_config.mk ${STAGEDIR}${DATADIR}/

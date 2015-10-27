@@ -3,7 +3,7 @@
 
 PORTNAME=	IO-All-LWP
 PORTVERSION=	0.14
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -19,8 +19,6 @@ BUILD_DEPENDS=	p5-IO-All>=0.30:${PORTSDIR}/devel/p5-IO-All \
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USE_PERL5=	configure
-USES=		perl5 shebangfix
-SHEBANG_FILES=	iocp.pl
-NO_ARCH=	yes
+USES=		perl5
 
 .include <bsd.port.mk>

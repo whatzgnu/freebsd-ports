@@ -123,13 +123,11 @@ pre-build:
 	${LN} -sf ${LLVM_PREFIX}/lib/${LIBNAME} ${WRKSRC}/${RELTYPE}/lib/
 	${LN} -sf ${LLVM_PREFIX}/lib/libLLVMTableGen.a ${WRKSRC}/${RELTYPE}/lib/
 	${LN} -sf ${LLVM_PREFIX}/lib/libLLVMSupport.a ${WRKSRC}/${RELTYPE}/lib/
-	${SETENV} ${MAKE_ENV} ${MAKE_CMD} -C ${WRKSRC}/utils/unittest
+	cd ${WRKSRC}/utils/unittest && ${MAKE_CMD}
 
 post-build:
-	${SETENV} ${MAKE_ENV} \
-		${MAKE_CMD} -C ${WRKSRC}/tools/clang/docs/tools man
-	${SETENV} ${MAKE_ENV} \
-		${MAKE_CMD} -C ${WRKSRC}/tools/clang/docs/tools html ps
+	@cd ${WRKSRC}/tools/clang/docs/tools && ${MAKE_CMD} man
+	@cd ${WRKSRC}/tools/clang/docs/tools && ${MAKE_CMD} html ps
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${LLVM_PREFIX}/lib/libclang.so

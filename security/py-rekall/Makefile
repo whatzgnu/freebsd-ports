@@ -3,7 +3,6 @@
 
 PORTNAME=	rekall
 PORTVERSION=	1.3.2
-PORTREVISION=	1
 CATEGORIES=	security python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -32,8 +31,7 @@ RUN_DEPENDS=	cabextract:${PORTSDIR}/archivers/cabextract \
 		${PYTHON_PKGNAMEPREFIX}yaml>=2.10:${PORTSDIR}/devel/py-yaml \
 		${PYTHON_PKGNAMEPREFIX}yara>=0:${PORTSDIR}/security/py-yara
 
-USES=		python:2 shebangfix
-SHEBANG_FILES=	manuskript/static/bower_components/bootstrap/test-infra/uncached-npm-install.sh
+USES=		python:2
 USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	CREDITS.txt LEGAL.txt README.md

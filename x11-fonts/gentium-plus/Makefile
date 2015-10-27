@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	GentiumPlus
-PORTVERSION=	5.000
+PORTVERSION=	1.510
+PORTREVISION=	3
 CATEGORIES=	x11-fonts
 MASTER_SITES=	http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=${MEDIA_ID}&filename=/
 

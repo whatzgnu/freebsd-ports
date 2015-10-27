@@ -3,7 +3,7 @@
 
 PORTNAME=	gc
 PORTVERSION=	7.4.2
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	devel
 MASTER_SITES=	http://www.hboehm.info/gc/gc_source/
 PKGNAMEPREFIX=	boehm-

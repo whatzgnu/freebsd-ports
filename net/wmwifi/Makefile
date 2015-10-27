@@ -7,7 +7,8 @@ DISTVERSIONSUFFIX=-bsd
 PORTREVISION=	4
 CATEGORIES=	net
 MASTER_SITES=	http://digitalssg.net/debian/ \
-		LOCAL/uqs
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	uqs
 
 MAINTAINER=	uqs@FreeBSD.org
 COMMENT=	Dockapp displaying the signal strength of WiFi connection

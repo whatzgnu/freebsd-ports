@@ -18,6 +18,8 @@ OPTIONS_DEFINE=	DOCS EXAMPLES
 
 USES=		qmail
 
+.include <bsd.port.pre.mk>
+
 post-patch:
 	@${REINPLACE_CMD} "s|cc|${CC}|g;s|-s -O|${CFLAGS}|g" ${WRKSRC}/Makefile
 	@${REINPLACE_CMD} "s|/usr/local|${PREFIX}|g;s|/var/qmail|${QMAIL_PREFIX}|g" \
@@ -32,4 +34,4 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/INSTALL ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/FAQ ${STAGEDIR}${DOCSDIR}
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

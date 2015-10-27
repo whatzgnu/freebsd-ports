@@ -3,7 +3,6 @@
 
 PORTNAME=	netcdf-fortran
 PORTVERSION=	4.4.2
-DISTVERSIONPREFIX=	v
 CATEGORIES=	science
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -22,6 +21,8 @@ USE_LDCONFIG=	yes
 USES=		fortran libtool makeinfo pathfix
 
 GH_ACCOUNT=	Unidata
+GH_PROJECT=	${PORTNAME}
+GH_TAGNAME=	v${PORTVERSION}
 USE_GITHUB=	yes
 
 post-install:

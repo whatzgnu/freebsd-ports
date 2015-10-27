@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- plugins_src/accel/wings_pick_drv.c.orig
 +++ plugins_src/accel/wings_pick_drv.c
 @@ -20,14 +20,19 @@

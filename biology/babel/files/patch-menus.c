@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- menus.c.orig	Tue Jan 21 16:52:36 1997
 +++ menus.c	Sun Nov 18 16:43:32 2001
 @@ -63,9 +63,9 @@

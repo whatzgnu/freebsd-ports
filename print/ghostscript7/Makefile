@@ -7,7 +7,10 @@ PORTREVISION=	31
 CATEGORIES=	print
 MASTER_SITES=	SF/ghostscript/gnu-gs/${PORTVERSION}:gs_srcs \
 		ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/gnu/gs${PORTVERSION:S/.//}/:gs_srcs \
-		PORTS_JP:ports_jp,ports_jp_gs
+		${MASTER_SITE_PORTS_JP:S/$/:ports_jp,ports_jp_gs/}
+MASTER_SITE_SUBDIR= \
+		ghostscript/:gs_srcs \
+		./:ports_jp
 PKGNAMESUFFIX=	7
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:gs_srcs
 DIST_SUBDIR=	${PORTNAME}
@@ -18,7 +21,8 @@ COMMENT=	Ghostscript 7.x PostScript interpreter
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libpng.so:${PORTSDIR}/graphics/png
 RUN_DEPENDS=	${LOCALBASE}/share/ghostscript/fonts/a010013l.pfb:${PORTSDIR}/print/gsfonts
 
 CONFLICTS_INSTALL= \
@@ -28,7 +32,7 @@ CONFLICTS_INSTALL= \
 		ghostscript9-agpl-[0-9]* \
 		ghostscript9-agpl-nox11-[0-9]*
 
-USES=		gmake jpeg shebangfix tar:bzip2
+USES=		tar:bzip2 gmake shebangfix
 USE_LDCONFIG=	yes
 SHEBANG_FILES=	lib/fixmswrd.pl	
 WANT_GNOME=	yes

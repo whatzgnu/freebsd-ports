@@ -3,7 +3,6 @@
 
 PORTNAME=	silc-toolkit
 PORTVERSION=	1.1.12
-PORTREVISION=	1
 CATEGORIES=	devel ipv6 net security
 MASTER_SITES=	SF/silc/silc/toolkit/sources
 DISTNAME=	${PORTNAME}${PKGNAMESUFFIX}-${PORTVERSION}
@@ -33,9 +32,5 @@ OPTIMIZED_ASM_CONFIGURE_ENABLE=	asm
 
 post-configure:
 	@${REINPLACE_CMD} 's|-fno-regmove||' ${WRKSRC}/lib/silccrypt/Makefile
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/*.so
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/silcsim/*.so
 
 .include <bsd.port.mk>

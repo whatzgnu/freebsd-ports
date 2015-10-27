@@ -3,7 +3,8 @@
 PORTNAME=	subversion-book
 DISTVERSION=	4515
 CATEGORIES=	devel misc
-MASTER_SITES=	LOCAL/lev
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=lev
 DISTFILES=	svn-book-html-r${DISTVERSION}.tar.bz2 \
 		svn-book-r${DISTVERSION}.pdf
 DIST_SUBDIR=	subversion18

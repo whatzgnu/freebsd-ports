@@ -4,7 +4,7 @@
 PORTNAME=	MathModePlugin
 SVNREV=		15934
 MASTER_SITES=	http://protey.ru/freebsd/distfiles/ \
-		LOCAL/skv
+		${MASTER_SITE_LOCAL:S!$!skv/!}
 
 COMMENT=	Include LaTeX formatted math in your TWiki pages
 

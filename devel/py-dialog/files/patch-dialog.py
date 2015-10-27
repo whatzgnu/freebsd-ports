@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- dialog.py.orig
 +++ dialog.py
 @@ -214,6 +214,10 @@

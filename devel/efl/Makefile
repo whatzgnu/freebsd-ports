@@ -2,17 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	efl
-PORTVERSION=	1.15.0
+PORTVERSION=	1.13.2
 CATEGORIES=	devel enlightenment
 MASTER_SITES=	http://download.enlightenment.org/rel/libs/${PORTNAME}/
 
-MAINTAINER=	enlightenment@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Enlightenment Foundation Libraries
 
 LICENSE=	BSD2CLAUSE LGPL21
 LICENSE_COMB=	multi
 
-LIB_DEPENDS=	libgif.so:${PORTSDIR}/graphics/giflib \
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		libgif.so:${PORTSDIR}/graphics/giflib \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
@@ -22,7 +23,7 @@ LIB_DEPENDS=	libgif.so:${PORTSDIR}/graphics/giflib \
 
 DIST_SUBDIR=	enlightenment
 GNU_CONFIGURE=	yes
-USES=		autoreconf compiler:c++11-lib gettext-tools gmake jpeg libtool \
+USES=		autoreconf compiler:c++11-lib gettext-tools gmake libtool \
 		pathfix pkgconfig shared-mime-info tar:xz
 USE_XORG=	x11 xcursor xcomposite xdamage xext xinerama xp xrandr xtst xscrnsaver
 USE_LDCONFIG=	yes
@@ -108,7 +109,12 @@ PLIST_SUB+=			AUDIO="@comment "
 
 .if ${PORT_OPTIONS:MSSL}
 USE_OPENSSL=			yes
+. if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1001000
+EXTRA_PATCHES+=			${FILESDIR}/extra-patch-configure.ac
+CONFIGURE_ENV+=			ECORE_CON_CFLAGS="-I${OPENSSLINC} -L${OPENSSLLIB}" ECORE_CON_LIBS="-lssl"
+. else
 WITH_OPENSSL_PORT=		yes
+. endif
 .else
 CONFIGURE_ARGS+=		--with-crypto=none
 .endif

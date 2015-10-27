@@ -3,7 +3,7 @@
 
 PORTNAME?=	R
 PORTVERSION=	3.0.2
-PORTREVISION=	6
+PORTREVISION=	5
 CATEGORIES=	math lang
 MASTER_SITES=	http://cran.r-project.org/%SUBDIR%/ \
 		ftp://cran.r-project.org/pub/R/%SUBDIR%/ \
@@ -22,7 +22,8 @@ MASTER_SITES=	http://cran.r-project.org/%SUBDIR%/ \
 MASTER_SITE_SUBDIR=	src/base/R-${PORTVERSION:C|\..*||}
 DISTNAME=	R-${PORTVERSION}
 
-PATCH_SITES=		LOCAL/bf
+PATCH_SITES=		${MASTER_SITE_LOCAL}
+PATCH_SITE_SUBDIR=	bf
 PATCHFILES=		R-patched-20131112-r64207.diff.bz2
 
 MAINTAINER=	bf@FreeBSD.org
@@ -196,11 +197,11 @@ USES+=			readline
 .else # LIBR_SLAVEPORT
 
 .if ${PORT_OPTIONS:MGHOSTSCRIPT}
-USES+=			ghostscript
+USE_GHOSTSCRIPT_RUN=	yes
 .endif
 
 .if ${PORT_OPTIONS:MJPEG}
-USES+=			jpeg
+LIB_DEPENDS+=		libjpeg.so:${PORTSDIR}/graphics/jpeg
 CONFIGURE_ARGS+=	--with-jpeglib
 .else
 CONFIGURE_ARGS+=	--without-jpeglib

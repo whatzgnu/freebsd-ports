@@ -11,8 +11,6 @@ COMMENT=	MonoDevelop database support
 
 LICENSE=	MIT
 
-BROKEN=		Fails to package, missing Npgsql Version 2 with mono 4
-
 BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/monodevelop.pc:${PORTSDIR}/devel/monodevelop
 RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/monodevelop.pc:${PORTSDIR}/devel/monodevelop
 

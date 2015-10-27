@@ -7,7 +7,7 @@ PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	vietnamese textproc
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	obrien@FreeBSD.org
 COMMENT=	Aspell Vietnamese dictionaries
 
 DICT=	 	vi

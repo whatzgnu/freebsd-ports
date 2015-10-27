@@ -3,7 +3,7 @@
 
 PORTNAME=	cricket
 PORTVERSION=	1.0.5
-PORTREVISION=	11
+PORTREVISION=	10
 CATEGORIES=	net-mgmt
 MASTER_SITES=	SF
 
@@ -15,18 +15,19 @@ RUN_DEPENDS=	rrdtool>=0:${PORTSDIR}/databases/rrdtool \
 		p5-SNMP_Session>=0:${PORTSDIR}/net-mgmt/p5-SNMP_Session \
 		p5-TimeDate>=0:${PORTSDIR}/devel/p5-TimeDate
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	util/metaQuery.pl
+USES=		perl5
 HAS_CONFIGURE=	yes
 NO_BUILD=	yes
 PLIST_SUB+=	VERSION=${PORTVERSION}
 SUB_FILES=	pkg-message
 
 # UID and username comes from ports/UIDs.
-USERS=		cricket
-GROUPS=		www
+USERS=	cricket
+GROUPS=	www
 
 CRICKETBASE=	${STAGEDIR}${PREFIX}/cricket
+
+.include <bsd.port.pre.mk>
 
 post-patch:
 	${REINPLACE_CMD} -e 's,/home/cricket,${PREFIX},g' \
@@ -48,4 +49,4 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/cricket-conf.pl.sample \
 		${STAGEDIR}${PREFIX}/etc/cricket-conf.pl.dist
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

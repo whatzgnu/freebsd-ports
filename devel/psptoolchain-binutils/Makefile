@@ -6,7 +6,8 @@ PORTVERSION=	2.22
 PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	ftp://ftp.gnu.org/pub/gnu/${PORTNAME}/ \
-		SOURCEWARE/${PORTNAME}/releases
+		${MASTER_SITE_SOURCEWARE}
+MASTER_SITE_SUBDIR=	${PORTNAME}/releases
 PKGNAMEPREFIX=	psptoolchain-
 
 MAINTAINER=	tphilipp@potion-studios.com

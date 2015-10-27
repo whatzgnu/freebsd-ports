@@ -13,7 +13,9 @@ COMMENT=	Quake3 map viewer (and powerful 3D game engine)
 
 LICENSE=	GPLv2
 
-USES=		gmake jpeg zip
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
+
+USES=		gmake zip
 USE_GL=		glut
 USE_XORG=	x11 xext xmu xt xi sm ice
 

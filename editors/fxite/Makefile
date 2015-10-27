@@ -10,7 +10,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Advanced cross-platform text editor
 
 LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	#
 
@@ -24,8 +23,10 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	yetanothergeek
 GH_TAGNAME=	FXITE-0_91
 
-USES=		autoreconf gmake pkgconfig lua:51 desktop-file-utils
-GNU_CONFIGURE=	yes
+USES=		gmake pkgconfig lua:51 desktop-file-utils
+USE_AUTOTOOLS=	aclocal autoconf automake
+ACLOCAL_ARGS=	--force -I m4
+AUTOMAKE_ARGS=	--gnu --add-missing --copy
 CXXFLAGS+=	-fPIC
 LDFLAGS+=	-L${LOCALBASE}/lib -lintl
 CONFIGURE_ARGS+=--with-system-lua \

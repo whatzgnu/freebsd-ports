@@ -6,10 +6,8 @@ PORTVERSION=	3.2.5
 CATEGORIES=	sysutils
 MASTER_SITES=	http://digitalcorpora.org/downloads/
 
-MAINTAINER=	portmaster@BSDforge.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Advanced Disk Imager
-
-LICENSE=	BSD3CLAUSE
 
 LIB_DEPENDS=	libafflib.so:${PORTSDIR}/sysutils/afflib
 

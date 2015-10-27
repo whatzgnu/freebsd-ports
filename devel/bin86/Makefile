@@ -6,7 +6,7 @@ PORTVERSION=	0.16.19
 CATEGORIES=	devel
 MASTER_SITES=	http://www.debath.co.uk/dev86/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	kpaasial@gmail.com
 COMMENT=	16-bit assembler and loader
 
 OPTIONS_DEFINE=	DOCS

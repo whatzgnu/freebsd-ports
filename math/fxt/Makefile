@@ -2,14 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	fxt
-PORTVERSION=	2015.07.17
+PORTVERSION=	2012.06.18
 CATEGORIES=	math
 MASTER_SITES=	http://www.jjj.de/fxt/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dhn@FreeBSD.org
 COMMENT=	FFT code and related stuff
-
-LICENSE=	GPLv3
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
@@ -28,6 +26,7 @@ post-patch:
 
 post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/00*.txt ${STAGEDIR}${DOCSDIR}/
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	(cd ${WRKSRC}/demo && ${COPYTREE_SHARE} \* ${STAGEDIR}${EXAMPLESDIR}/)
 

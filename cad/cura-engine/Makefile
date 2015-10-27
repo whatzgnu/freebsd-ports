@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	CuraEngine
-PORTVERSION=	15.04
+PORTVERSION=	14.03
 CATEGORIES=	cad
 
 MAINTAINER=	cederom@tlen.pl
@@ -13,8 +13,7 @@ USES=		compiler:c++11-lang gmake
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	Ultimaker
-
-PLIST_FILES=	bin/CuraEngine
+GH_TAGNAME=	4c1043f
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/build/CuraEngine ${STAGEDIR}${PREFIX}/bin

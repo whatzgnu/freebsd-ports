@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	librfm
-PORTVERSION=	5.3.14.6
+PORTVERSION=	5.2.10
 PORTREVISION=	1
 CATEGORIES=	x11-fm
-MASTER_SITES=	SF/xffm/${PORTVERSION}
+MASTER_SITES=	SF/xffm/librfm/
 DISTNAME=	${PORTNAME}5-${PORTVERSION}
 
 MAINTAINER=	rodrigo@FreeBSD.org
@@ -13,7 +13,7 @@ COMMENT=	Basic library used by some rfm applications
 
 LICENSE=	GPLv3
 
-BUILD_DEPENDS=	gawk:${PORTSDIR}/lang/gawk
+BUILD_DEPENDS=	gawk:${PORTSDIR}/japanese/gawk
 LIB_DEPENDS=	libtubo.so:${PORTSDIR}/x11-fm/libtubo \
 		libdbh.so:${PORTSDIR}/databases/dbh \
 		libzip.so:${PORTSDIR}/archivers/libzip \
@@ -24,9 +24,9 @@ OPTIONS_DEFINE=	NLS
 CONFIGURE_ARGS+=--with-pkglibdata
 MAKE_JOB_UNSAFE=yes
 INSTALLS_ICONS=	yes
-USES=		gettext gmake libtool:keepla pkgconfig tar:bzip2
+USES=		gmake libtool:keepla pkgconfig tar:bzip2 gettext
 GNU_CONFIGURE=	yes
-USE_GNOME=	gtk20 intltool
+USE_GNOME=	gtk20
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 

@@ -17,7 +17,6 @@ LICENSE=	LGPL21
 BUILD_DEPENDS=	aspell:${PORTSDIR}/textproc/aspell
 
 ALL_TARGET=	myspell
-NO_ARCH=	yes
 USES=		tar:bzip2
 
 PLIST_FILES=	%%DATADIR%%/wa.aff \

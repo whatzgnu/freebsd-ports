@@ -5,7 +5,8 @@ PORTNAME=	samesame
 PORTVERSION=	1.10
 CATEGORIES=	sysutils
 MASTER_SITES=	http://samesame.kruijff.org/ \
-		LOCAL/dhn
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	dhn
 
 MAINTAINER=	samesame@akruijff.dds.nl
 COMMENT=	Find duplicate files and optionally link them together

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	httplib2
-PORTVERSION=	0.9.1
+PORTVERSION=	0.9
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,7 +12,6 @@ COMMENT=	Comprehensive HTTP client library
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
 USE_PYTHON=	autoplist distutils
 USES=		python
 

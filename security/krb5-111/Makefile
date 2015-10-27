@@ -3,7 +3,7 @@
 
 PORTNAME=		krb5
 PORTVERSION=		1.11.6
-PORTREVISION=		2
+PORTREVISION=		1
 CATEGORIES=		security
 MASTER_SITES=		http://web.mit.edu/kerberos/dist/krb5/${PORTVERSION:C/^[0-9]*\.[0-9]*/&X/:C/X\.[0-9]*$//:C/X//}/
 PKGNAMESUFFIX=		-111
@@ -27,7 +27,7 @@ CONFLICTS=		heimdal-[0-9]* srp-[0-9]* krb5-[0-9]* krb5-maint-112-*
 
 LATEST_LINK=		${PORTNAME}-111
 KERBEROSV_URL=		http://web.mit.edu/kerberos/
-USES=			cpe gettext gmake perl5 gssapi:bootstrap,mit
+USES=			cpe gettext gmake perl5
 USE_PERL5=		build
 USE_LDCONFIG=		yes
 USE_CSTD=		gnu99

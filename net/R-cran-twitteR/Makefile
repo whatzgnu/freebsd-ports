@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	twitteR
-PORTVERSION=	1.1.9
+PORTVERSION=	1.1.7
+PORTREVISION=	4
 CATEGORIES=	net
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
@@ -11,10 +12,9 @@ COMMENT=	R based Twitter client
 
 LICENSE=	ART20
 
-RUN_DEPENDS=	R-cran-bit64>0:${PORTSDIR}/devel/R-cran-bit64 \
-		R-cran-rjson>0:${PORTSDIR}/converters/R-cran-rjson \
-		R-cran-DBI>=0.3.1:${PORTSDIR}/databases/R-cran-DBI \
-		R-cran-httr>=1.0.0:${PORTSDIR}/www/R-cran-httr
+RUN_DEPENDS=	R-cran-RCurl>0:${PORTSDIR}/ftp/R-cran-RCurl \
+		R-cran-rjson>=0.2.12:${PORTSDIR}/converters/R-cran-rjson \
+		R-cran-ROAuth>=0.9.3:${PORTSDIR}/security/R-cran-ROAuth
 
 USES=	cran:auto-plist
 

@@ -6,7 +6,7 @@ PORTVERSION=	1.8
 PORTREVISION=	2
 CATEGORIES=	x11 plan9
 MASTER_SITES=	ftp://freefriends.org/arnold/Source/ \
-		NETBSD
+		${MASTER_SITE_NETBSD}
 EXTRACT_SUFX=	.shar.gz
 
 MAINTAINER=	ports@FreeBSD.org

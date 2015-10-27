@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	parrot
-PORTVERSION=	7.6.0
+PORTVERSION=	7.3.0
 CATEGORIES=	lang
 MASTER_SITES=	ftp://ftp.parrot.org/pub/parrot/releases/supported/${PORTVERSION}/ \
 		LOCAL/sunpoet
@@ -13,8 +13,8 @@ COMMENT=	Parrot - virtual machine for dynamic languages
 LICENSE=	ART20
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/flex:${PORTSDIR}/textproc/flex \
-		gm4:${PORTSDIR}/devel/m4 \
-		pcre-config:${PORTSDIR}/devel/pcre
+		${LOCALBASE}/bin/gm4:${PORTSDIR}/devel/m4 \
+		${LOCALBASE}/bin/pcre-config:${PORTSDIR}/devel/pcre
 LIB_DEPENDS=	libgmp.so:${PORTSDIR}/math/gmp \
 		libicudata.so:${PORTSDIR}/devel/icu
 
@@ -47,5 +47,8 @@ post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/* \
 		${STAGEDIR}${PREFIX}/lib/libparrot.so.${PORTVERSION} \
 		${STAGEDIR}${PREFIX}/lib/parrot/${PORTVERSION}/dynext/*.so
+
+regression-test test: build
+	(cd ${WRKSRC} && ${MAKE} test)
 
 .include <bsd.port.mk>

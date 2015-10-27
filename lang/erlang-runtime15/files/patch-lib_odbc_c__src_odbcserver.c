@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- lib/odbc/c_src/odbcserver.c.orig
 +++ lib/odbc/c_src/odbcserver.c
 @@ -1150,7 +1150,7 @@

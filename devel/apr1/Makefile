@@ -4,7 +4,8 @@
 PORTNAME=	apr
 PORTVERSION=	${APR_VERSION}.${APU_VERSION}
 CATEGORIES=	devel
-MASTER_SITES=	APACHE/apr
+MASTER_SITES=	${MASTER_SITE_APACHE}
+MASTER_SITE_SUBDIR=	apr
 DISTFILES=	apr-${APR_VERSION}.tar.gz \
 		apr-util-${APU_VERSION}.tar.gz
 
@@ -19,7 +20,7 @@ USES=		iconv pathfix libtool cpe
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 
-APR_VERSION=	1.5.2
+APR_VERSION=	1.5.1
 APU_VERSION=	1.5.4
 
 CPE_VENDOR=	apache
@@ -212,10 +213,5 @@ test: build
 	-(cd ${APU_WRKDIR} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} test)
 
 #regression-test: test
-
-rpfl: configure
-# maintainer only: strip PID from logs (better compair)
-	${SED} -i '' -E 's|^configure:[0-9]+:|configure:_pid_:|g' ${APR_WRKDIR}/config.log
-	${SED} -i '' -E 's|^configure:[0-9]+:|configure:_pid_:|g' ${APU_WRKDIR}/config.log
 
 .include <bsd.port.mk>

@@ -2,19 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	amq-client
-PORTVERSION=	1.0.4
+PORTVERSION=	1.0.2
 CATEGORIES=	net rubygems
 MASTER_SITES=	RG
 
-MAINTAINER=	sunpoet@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fully-featured, low-level AMQP 0.9.1 client in Ruby
 
-LICENSE=	MIT
-
-RUN_DEPENDS=	rubygem-amq-protocol>=1.9.0:${PORTSDIR}/net/rubygem-amq-protocol \
+RUN_DEPENDS=	rubygem-amq-protocol>=0.9.0:${PORTSDIR}/net/rubygem-amq-protocol \
 		rubygem-eventmachine>=0:${PORTSDIR}/devel/rubygem-eventmachine
 
-NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- ROX-Filer/src/Makefile.in.orig
 +++ ROX-Filer/src/Makefile.in
 @@ -46,10 +46,7 @@

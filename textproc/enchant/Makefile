@@ -1,9 +1,10 @@
 # Created by: Adam Weinberger <adamw@FreeBSD.org>
 # $FreeBSD$
+#   $MCom: ports-stable/textproc/enchant/Makefile,v 1.3 2010/07/20 07:48:41 kwm Exp $
 
 PORTNAME=	enchant
 PORTVERSION=	1.6.0
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	textproc gnome
 MASTER_SITES=	http://www.abisource.com/downloads/${PORTNAME}/${PORTVERSION}/
 DIST_SUBDIR=	gnome2
@@ -13,7 +14,7 @@ COMMENT=	Dictionary/spellchecking framework
 
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USES=		gmake libtool pathfix pkgconfig
+USES=		gmake libtool:keepla pathfix pkgconfig
 USE_GNOME=	glib20
 CONFIGURE_ARGS=	--disable-uspell \
 		--disable-voikko

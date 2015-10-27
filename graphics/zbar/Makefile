@@ -3,7 +3,7 @@
 
 PORTNAME=	zbar
 PORTVERSION=	0.10
-PORTREVISION=	10
+PORTREVISION=	9
 CATEGORIES=	graphics
 MASTER_SITES=	SF
 
@@ -12,9 +12,11 @@ COMMENT=	ZBar barcode reader
 
 LICENSE=	LGPL21
 
+LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
+
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USES=		iconv jpeg libtool gmake pkgconfig
+USES=		iconv libtool gmake pkgconfig
 INSTALL_TARGET=	install-strip
 
 CONFIGURE_ARGS=	--with-jpeg=yes

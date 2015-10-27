@@ -20,4 +20,9 @@ GH_PROJECT=	py-${PORTNAME:tl}
 
 SUB_FILES=	pkg-message
 
+post-install:
+.if !defined(BATCH)
+	@${CAT} ${PKGMESSAGE}
+.endif
+
 .include <bsd.port.mk>

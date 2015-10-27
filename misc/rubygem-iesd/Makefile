@@ -11,7 +11,6 @@ COMMENT=	Modify Extensions, Kextcache and Packages on InstallESD
 
 LICENSE=	BSD2CLAUSE
 
-NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

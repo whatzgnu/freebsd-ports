@@ -3,7 +3,7 @@
 
 PORTNAME=	SWF-Builder
 PORTVERSION=	0.16
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	graphics www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -16,10 +16,8 @@ BUILD_DEPENDS=	p5-SWF-File>=0:${PORTSDIR}/graphics/p5-SWF-File \
 		p5-Font-TTF>=0:${PORTSDIR}/x11-fonts/p5-Font-TTF
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		dos2unix perl5 shebangfix
-SHEBANG_FILES=	lib/SWF/Builder/ActionScript/Compiler.pm
+USES=		perl5 dos2unix
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 post-configure:
 	@${PERL} -pi -e 's/^(POD2MAN_EXE.*)$$/\1 --lax/;' ${WRKSRC}/Makefile

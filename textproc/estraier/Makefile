@@ -3,7 +3,7 @@
 
 PORTNAME=	estraier
 PORTVERSION=	1.2.30
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	textproc
 MASTER_SITES=	http://fallabs.com/estraier/
 
@@ -12,6 +12,12 @@ COMMENT=	Full-text search system for personal use
 
 LIB_DEPENDS=	libqdbm.so:${PORTSDIR}/databases/qdbm
 
+OPTIONS_DEFINE=	CHASEN MECAB KAKASI
+OPTIONS_DEFAULT=	KAKASI
+CHASEN_DESC=	Japanese Morphological Analysis Support
+MECAB_DESC=	Part-of-Speech and Morphological Analyzer
+KAKASI_DESC=	Language processing filter/converter
+
 USES=		iconv
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-sysqdbm \
@@ -19,13 +25,6 @@ CONFIGURE_ARGS=	--with-sysqdbm \
 		--enable-devel
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/include
-INSTALL_TARGET=	install-strip
-
-OPTIONS_DEFINE=	CHASEN MECAB KAKASI
-OPTIONS_DEFAULT=	KAKASI
-CHASEN_DESC=	Japanese Morphological Analysis Support
-MECAB_DESC=	Part-of-Speech and Morphological Analyzer
-KAKASI_DESC=	Language processing filter/converter
 
 CHASEN_LIB_DEPENDS=	libchasen.so:${PORTSDIR}/japanese/chasen-base
 CHASEN_CONFIGURE_ENABLE=	chasen

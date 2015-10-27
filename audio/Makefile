@@ -51,7 +51,6 @@
     SUBDIR += baudline
     SUBDIR += bcg729
     SUBDIR += beast
-    SUBDIR += beep
     SUBDIR += beets
     SUBDIR += blop
     SUBDIR += boodler
@@ -215,7 +214,6 @@
     SUBDIR += gramofile
     SUBDIR += grip
     SUBDIR += gsm
-    SUBDIR += gsound
     SUBDIR += gspeakers
     SUBDIR += gstreamer-plugins-a52dec
     SUBDIR += gstreamer-plugins-amrnb
@@ -370,7 +368,6 @@
     SUBDIR += liblo
     SUBDIR += liblscp
     SUBDIR += libmad
-    SUBDIR += libmatemixer
     SUBDIR += libmikmod
     SUBDIR += libmodplug
     SUBDIR += libmp3-archive-perl
@@ -435,7 +432,6 @@
     SUBDIR += linux-laudio
     SUBDIR += linux-mbrola
     SUBDIR += linux-neroaaccodec
-    SUBDIR += linux-skype_oss_wrapper
     SUBDIR += linuxsampler
     SUBDIR += listener
     SUBDIR += lmms
@@ -575,6 +571,7 @@
     SUBDIR += p5-tagged
     SUBDIR += p5-xmms2
     SUBDIR += pacpl
+    SUBDIR += padevchooser
     SUBDIR += paman
     SUBDIR += paprefs
     SUBDIR += patchage
@@ -595,8 +592,8 @@
     SUBDIR += pms
     SUBDIR += pocketsphinx
     SUBDIR += portaudio
+    SUBDIR += portaudio2
     SUBDIR += praat
-    SUBDIR += pragha
     SUBDIR += puddletag
     SUBDIR += pulseaudio
     SUBDIR += pure-audio
@@ -661,7 +658,8 @@
     SUBDIR += rubygem-librmpd
     SUBDIR += rubygem-ruby-mp3info
     SUBDIR += rubygem-ruby-ogginfo
-    SUBDIR += rubygem-ruby-shout
+    SUBDIR += rubygem-shout
+    SUBDIR += rubyripper
     SUBDIR += s3mod
     SUBDIR += sbagen
     SUBDIR += schism

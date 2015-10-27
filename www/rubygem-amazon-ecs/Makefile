@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	amazon-ecs
-PORTVERSION=	2.3.1
+PORTVERSION=	2.2.5
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 

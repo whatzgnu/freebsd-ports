@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- mono/gmime-sharp.dll.config.in.orig
 +++ mono/gmime-sharp.dll.config.in
 @@ -1,3 +1,3 @@

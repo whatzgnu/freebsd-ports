@@ -74,4 +74,7 @@ pre-build:
 	@${RM} ${WRKSRC}/.byte-compile || ${TRUE}
 #.endif
 
+post-install:
+	@${CAT} ${PKGMESSAGE}
+
 .include <bsd.port.post.mk>

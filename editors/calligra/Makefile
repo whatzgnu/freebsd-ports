@@ -2,9 +2,10 @@
 
 PORTNAME=	calligra
 PORTVERSION=	${CALLIGRA_VERSION}
-PORTREVISION=	17
+PORTREVISION=	15
 CATEGORIES=	editors kde
-MASTER_SITES=	KDE/${CALLIGRA_BRANCH}/${PORTNAME}-${PORTVERSION}
+MASTER_SITES=	${MASTER_SITE_KDE}
+MASTER_SITE_SUBDIR=	${CALLIGRA_BRANCH}/${PORTNAME}-${PORTVERSION}/
 DIST_SUBDIR=	KDE
 
 MAINTAINER=	kde@FreeBSD.org
@@ -22,11 +23,12 @@ LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
 		libwpg-0.2.so:${PORTSDIR}/graphics/libwpg \
 		libpoppler-qt4.so:${PORTSDIR}/graphics/poppler-qt4 \
 		libopenjpeg.so:${PORTSDIR}/graphics/openjpeg15 \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libdcmdata.so:${PORTSDIR}/devel/dcmtk \
 		libfftw3.so:${PORTSDIR}/math/fftw3 \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
 		libgsl.so:${PORTSDIR}/math/gsl \
-		libwps-0.2.so:${PORTSDIR}/textproc/libwps02 \
+		libwps-0.2.so:${PORTSDIR}/textproc/libwps \
 		libvisio-0.0.so:${PORTSDIR}/textproc/libvisio \
 		libOpenColorIO.so:${PORTSDIR}/graphics/opencolorio
 BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/eigen2.pc:${PORTSDIR}/math/eigen2
@@ -42,7 +44,7 @@ USE_QT4=	corelib dbus designer_build gui opengl phonon porting_build \
 		qt3support qtestlib_build script sql svg webkit xml xmlpatterns \
 		moc_build qmake_build rcc_build uic_build uic3_build
 USE_SQLITE=	3
-USES=		cmake:outsource cpe compiler:c++11-lang iconv jpeg perl5 pkgconfig tar:xz\
+USES=		cmake:outsource cpe compiler:c++11-lang iconv perl5 pkgconfig tar:xz\
 		shared-mime-info
 CMAKE_ARGS=	-DCMAKE_INCLUDE_PATH:STRING="${QT_INCDIR} ${LOCALBASE}/include" \
 		-DPRODUCTSET:STRING="DESKTOP"

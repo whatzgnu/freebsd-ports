@@ -3,7 +3,7 @@
 PARENTDIR?=	${.CURDIR:S|-reference$||}
 REFERENCE_PORT=	${PKGORIGIN:S|-reference$||}
 
-PORTSCOUT=	ignore:1
+PORTSCOUT=	ignore
 
 .include "${PARENTDIR}/Makefile"
 

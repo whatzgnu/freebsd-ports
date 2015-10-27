@@ -1,9 +1,9 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
 # $FreeBSD$
+#   $MCom: ports/trunk/graphics/eog-plugins/Makefile 20061 2014-11-10 21:57:05Z gusi $
 
 PORTNAME=	eog-plugins
-PORTVERSION=	3.16.0
-PORTREVISION=	1
+PORTVERSION=	3.14.2
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -17,9 +17,7 @@ LIB_DEPENDS=	libgdata.so:${PORTSDIR}/devel/libgdata \
 		libpeas-1.0.so:${PORTSDIR}/devel/libpeas
 RUN_DEPENDS=	eog:${PORTSDIR}/graphics/eog
 
-PORTSCOUT=	limitw:1,even
-
-USE_GNOME=	intlhack gtk30
+USE_GNOME=	gnomeprefix intlhack gtk30
 USES=		gettext gmake libtool pathfix pkgconfig tar:xz
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -44,7 +42,6 @@ PLIST_SUB+=	CHAMPLAIN="@comment "
 
 PLIST_SUB+=	PYVER=${PYTHON_VER:S|.||}
 .if ${PORT_OPTIONS:MPYTHON}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}libpeas>=0:${PORTSDIR}/devel/py3-libpeas
 CONFIGURE_ARGS+=--enable-python
 USES+=		python:3
 PLIST_SUB+=	PYTHON=""

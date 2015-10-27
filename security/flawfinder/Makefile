@@ -5,7 +5,8 @@ PORTNAME=	flawfinder
 PORTVERSION=	1.31
 CATEGORIES=	security devel
 MASTER_SITES=	http://www.dwheeler.com/flawfinder/ \
-		PACKETSTORM/UNIX/security
+		${MASTER_SITE_PACKETSTORM}
+MASTER_SITE_SUBDIR=	UNIX/security
 
 MAINTAINER=	lx@FreeBSD.org
 COMMENT=	Examines source code looking for security weaknesses

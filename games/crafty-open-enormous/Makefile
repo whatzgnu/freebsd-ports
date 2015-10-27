@@ -5,7 +5,8 @@ PORTNAME=	crafty-open-enormous
 PORTVERSION=	20070924
 PORTREVISION=	1
 CATEGORIES=	games
-MASTER_SITES=	http://www.cis.uab.edu/hyatt/crafty/pgn/
+MASTER_SITES=	http://www.cis.uab.edu/hyatt/crafty/pgn/ \
+		${MASTER_SITE_LOCAL}
 DISTFILES=	enormous.zip
 EXTRACT_ONLY=	${DISTFILES}
 

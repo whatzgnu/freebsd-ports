@@ -3,7 +3,7 @@
 
 PORTNAME=	POE-Component-Jabber
 PORTVERSION=	3.00
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	net devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -21,11 +21,9 @@ BUILD_DEPENDS=	p5-Authen-SASL>=0:${PORTSDIR}/security/p5-Authen-SASL \
 		p5-POE>=0:${PORTSDIR}/devel/p5-POE
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	examples/*
+USES=		perl5
 USE_PERL5=	modbuild
 CONFIGURE_ARGS=	</dev/null
-NO_ARCH=	yes
 
 PORTEXAMPLES=	*
 

@@ -4,7 +4,8 @@
 PORTNAME=	pkcs11-gateway
 PORTVERSION=	1.2
 CATEGORIES=	security devel linux
-MASTER_SITES=	LOCAL/ale
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	ale
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT=	Wrapper Cryptoki library to use Linux PKCS\#11 modules

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- ProcessASN.pl.orig	Tue Oct 22 00:21:49 2002
 +++ ProcessASN.pl	Tue Oct 22 00:21:53 2002
 @@ -4,7 +4,7 @@

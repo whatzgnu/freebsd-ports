@@ -4,7 +4,7 @@
 PORTNAME=	esh
 PORTVERSION=	0.8.5
 CATEGORIES=	shells
-MASTER_SITES=	GENTOO
+MASTER_SITES=	GENTOO/distfiles
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	The "easy shell", a small shell with Lisp-like syntax

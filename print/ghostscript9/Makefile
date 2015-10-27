@@ -8,6 +8,7 @@ MASTER_SITES=	http://downloads.ghostscript.com/public/:gs_srcs \
 		SF/ghostscript/GPL%20Ghostscript/${PORTVERSION}:gs_srcs \
 		ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/GPL/gs${PORTVERSION:S/.//}/:gs_srcs \
 		http://www.humblesoft.com/pub/:epag
+MASTER_SITE_SUBDIR=	ghostscript/:gs_srcs
 PKGNAMESUFFIX=	9
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:gs_srcs ${EPAG_SRCS}:epag
 DIST_SUBDIR=	${PORTNAME}
@@ -22,6 +23,7 @@ LICENSE=	GPLv3
 LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2 \
 		libidn.so:${PORTSDIR}/dns/libidn \
 		libjbig2dec.so:${PORTSDIR}/graphics/jbig2dec \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libtiff.so:${PORTSDIR}/graphics/tiff \
 		liblcms2.so:${PORTSDIR}/graphics/lcms2 \
@@ -35,7 +37,7 @@ CONFLICTS_INSTALL= \
 		ghostscript9-agpl-[0-9]* \
 		ghostscript9-agpl-nox11-[0-9]*
 
-USES=		gmake jpeg pkgconfig:build tar:bzip2
+USES=		gmake pkgconfig:build tar:bzip2
 WANT_GNOME=	yes
 USE_LDCONFIG=	yes
 USE_AUTOTOOLS=	autoconf

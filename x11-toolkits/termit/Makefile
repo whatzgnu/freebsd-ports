@@ -3,7 +3,6 @@
 
 PORTNAME=	termit
 PORTVERSION=	2.10.1
-DISTVERSIONPREFIX=	${PORTNAME}-
 CATEGORIES=	x11-toolkits gnome
 
 MAINTAINER=	pawel@FreeBSD.org
@@ -13,6 +12,7 @@ LICENSE=	GPLv2
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	nonstop
+GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
 
 USES=		cmake lua pkgconfig tar:bzip2
 USE_GNOME=	gdkpixbuf2 vte

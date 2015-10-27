@@ -3,7 +3,6 @@
 
 PORTNAME=	linkchecker
 PORTVERSION=	9.3
-PORTREVISION=	1
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 DISTNAME=	LinkChecker-${PORTVERSION}
@@ -34,7 +33,7 @@ CLAMAV_RUN_DEPENDS=	clamscan:${PORTSDIR}/security/clamav
 GEOIP_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}GeoIP>0:${PORTSDIR}/net/py-GeoIP
 GTK2_USE=		gnome=pygtk2
 LOGIN_DESC=		Login form submission
-LOGIN_RUN_DEPENDS=	twill>=0:${PORTSDIR}/www/twill
+LOGIN_RUN_DEPENDS=	twill:${PORTSDIR}/www/twill
 NLS_USES=		gettext
 QT4_EXTRA_PATCHES_OFF=	${PATCHDIR}/extra-patch-noqt-setup.py
 QT4_RUN_DEPENDS=\
@@ -64,7 +63,6 @@ post-build:
 .endif
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/linkcheck/*/*.so
 .for i in 16 32 48 64 128
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/${i}x${i}/apps
 	(cd ${WRKSRC}/doc/html && ${INSTALL_DATA} logo${i}x${i}.png \

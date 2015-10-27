@@ -5,7 +5,8 @@ PORTNAME=	xlogmaster
 PORTVERSION=	1.6.2
 PORTREVISION=	1
 CATEGORIES=	sysutils
-MASTER_SITES=	GNU
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Quick & easy monitoring of logfiles and devices

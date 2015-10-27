@@ -12,7 +12,7 @@ COMMENT=	Simple and fast image viewer for X11
 LICENSE=	GPLv2
 
 USES=		desktop-file-utils gmake pkgconfig
-USE_GNOME=	gtk20 intltool
+USE_GNOME=	gtk20
 INSTALLS_ICONS=	yes
 
 GNU_CONFIGURE=	yes

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	twistedPair
-PORTVERSION=	15.2.1
+PORTVERSION=	15.1.0
 CATEGORIES=	net devel python
 MASTER_SITES=	http://twistedmatrix.com/Releases/Pair/${PORTVERSION:R}/ \
 		LOCAL/sunpoet
@@ -14,8 +14,7 @@ COMMENT=	Twisted Pair can do low level TCP work
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 USES=		python:2 tar:bzip2 twisted
 
 .include <bsd.port.mk>

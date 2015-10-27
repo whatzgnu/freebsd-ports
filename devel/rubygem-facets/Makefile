@@ -12,8 +12,6 @@ COMMENT=	RubyGem port of the single most extensive additions and extensions
 LICENSE=	GPLv2 RUBY
 LICENSE_COMB=	dual
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

@@ -6,8 +6,6 @@ PKGNAMEPREFIX=	p5-
 
 COMMENT=	Perl API for QDBM
 
-BROKEN=		does not build
-
 SLAVEPORT=	perl
 USES=		perl5 shebangfix
 

@@ -4,7 +4,8 @@
 PORTNAME=	apache-jmeter
 PORTVERSION=	2.11
 CATEGORIES=	www benchmarks java
-MASTER_SITES=	APACHE/jmeter/binaries
+MASTER_SITES=	${MASTER_SITE_APACHE}
+MASTER_SITE_SUBDIR=	jmeter/binaries
 EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	mi@aldan.algebra.com

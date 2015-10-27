@@ -3,7 +3,7 @@
 
 PORTNAME=	puredb
 PORTVERSION=	2.1
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://pureftpd.sourceforge.net/puredb/
 DISTNAME=	pure-db-${PORTVERSION}
@@ -14,7 +14,6 @@ COMMENT=	Set of libraries for creating and reading constant databases
 USES=		libtool
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
 
 DOCS=		AUTHORS FORMAT_DESCR NEWS README
 

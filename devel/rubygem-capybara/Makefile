@@ -3,7 +3,6 @@
 
 PORTNAME=	capybara
 PORTVERSION=	2.4.4
-PORTREVISION=	1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
@@ -14,11 +13,10 @@ LICENSE=	MIT
 
 RUN_DEPENDS=	rubygem-mime-types>=1.16:${PORTSDIR}/misc/rubygem-mime-types \
 		rubygem-nokogiri>=1.3.3:${PORTSDIR}/textproc/rubygem-nokogiri \
-		rubygem-rack16>=1.0.0:${PORTSDIR}/www/rubygem-rack16 \
+		rubygem-rack>=1.0.0:${PORTSDIR}/www/rubygem-rack \
 		rubygem-rack-test>=0.5.4:${PORTSDIR}/www/rubygem-rack-test \
 		rubygem-xpath>=2.0:${PORTSDIR}/devel/rubygem-xpath
 
-NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

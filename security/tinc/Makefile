@@ -2,9 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	tinc
-PORTVERSION=	1.0.26
+PORTVERSION=	1.0.24
 CATEGORIES=	security
-MASTER_SITES=	http://www.tinc-vpn.org/packages/
+MASTER_SITES=	http://www.tinc-vpn.org/packages/ \
+		ftp://ftp.wiretapped.net/pub/security/network-security/tinc/ \
+		http://www.mirrors.wiretapped.net/security/network-security/tinc/
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Virtual Private Network (VPN) daemon

@@ -1,5 +1,5 @@
 bin/fmsx
-libexec/fmsx
+bin/fmsx.bin
 %%DATADIR%%/CYRILLIC.FNT
 %%DATADIR%%/DISK.ROM
 %%DATADIR%%/FMPAC.ROM

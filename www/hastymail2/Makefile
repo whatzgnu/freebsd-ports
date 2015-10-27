@@ -12,13 +12,12 @@ DISTNAME=	hastymail2_${WIKEDVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Small, fast and secure yet powerful IMAP webmail
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE=	GPLv2
 
 NO_BUILD=	yes
 SUB_FILES=	pkg-message
 
-CONFLICTS_INSTALL=	hastymail2-devel-[0-9]*
+CONFLICTS=	hastymail-* hastymail2-devel-*
 
 WANT_PHP_WEB=	yes
 USE_PHP=	ctype pcre session xml
@@ -69,10 +68,10 @@ post-patch:
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
-	cd ${WRKSRC} && ${FIND} . ${FIND_SKIP_OPTS} \
+	@cd ${WRKSRC} && ${FIND} . ${FIND_SKIP_OPTS} \
 		| ${PAX} -rwd ${STAGEDIR}${WWWDIR}
 	@${MKDIR} ${STAGEDIR}${ETCDIR}
-	${INSTALL_DATA} ${WRKSRC}/hastymail2.conf.example \
+	@${INSTALL_DATA} ${WRKSRC}/hastymail2.conf.example \
 		${STAGEDIR}${ETCDIR}/hastymail2.conf.sample
 
 .include <bsd.port.mk>

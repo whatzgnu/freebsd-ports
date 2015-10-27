@@ -5,7 +5,8 @@ PORTNAME=	quickcheck++
 PORTVERSION=	0.0.3
 CATEGORIES=	devel
 MASTER_SITES=	http://software.legiasoft.com/archives/ \
-		LOCAL/tota/${PORTNAME}
+		LOCAL
+MASTER_SITE_SUBDIR=	tota/${PORTNAME}
 DISTNAME=	quickcheck_${PORTVERSION}
 
 MAINTAINER=	tota@FreeBSD.org

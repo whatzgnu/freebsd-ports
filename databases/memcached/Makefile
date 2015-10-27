@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	memcached
-PORTVERSION=	1.4.24
+PORTVERSION=	1.4.22
 CATEGORIES=	databases
 MASTER_SITES=	http://www.memcached.org/files/ \
-		GOOGLE_CODE \
-		GENTOO
+		${MASTER_SITE_GOOGLE_CODE} \
+		${MASTER_SITE_GENTOO}
+MASTER_SITE_SUBDIR=	distfiles
 
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	High-performance distributed memory object cache system
@@ -28,8 +29,7 @@ SASL_DESC=	Enable SASL Authentication
 USE_RC_SUBR=	memcached
 SUB_LIST+=	RC_SUBR_SUFFIX=${RC_SUBR_SUFFIX}
 
-USES=		cpe shebangfix autoreconf:build
-USE_AUTOTOOLS=	aclocal
+USES=		cpe shebangfix
 SHEBANG_FILES=	scripts/memcached-tool
 
 USE_CSTD=	c99

@@ -3,7 +3,7 @@
 
 PORTNAME=	Text-ParagraphDiff
 PORTVERSION=	2.70
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -15,10 +15,8 @@ BUILD_DEPENDS=	p5-Algorithm-Diff>=0:${PORTSDIR}/devel/p5-Algorithm-Diff \
 		p5-HTML-Parser>=0:${PORTSDIR}/www/p5-HTML-Parser
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 shebangfix
-SHEBANG_FILES=	bin/tdiff
+USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 

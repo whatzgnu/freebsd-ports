@@ -2,7 +2,6 @@
 
 PORTNAME=	shairplay
 PORTVERSION=	0.9.0.20140422
-PORTREVISION=	1
 CATEGORIES=	audio
 
 MAINTAINER=	mickael.maillot@gmail.com

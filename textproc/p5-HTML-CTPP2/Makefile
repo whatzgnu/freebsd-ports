@@ -26,10 +26,4 @@ post-patch:
 		/^my $$CXX/s|g++|${CXX}|; /^my $$CC/s|gcc|${CC}|' \
 		${WRKSRC}/Makefile.PL
 
-.include <bsd.port.pre.mk>
-
-.if ${PERL_LEVEL} >= 502200
-BROKEN=		Fails to build with Perl >= 5.22
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

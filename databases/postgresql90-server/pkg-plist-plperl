@@ -1,2 +1,4 @@
 %%DOCSDIR%%/README-plperl
 lib/postgresql/plperl.so
+@dir lib/postgresql
+@dir %%DOCSDIR%%

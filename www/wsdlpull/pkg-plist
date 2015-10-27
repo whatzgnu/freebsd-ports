@@ -47,4 +47,9 @@ man/man1/wsdlpull.1.gz
 %%DATADIR%%/soap-encoding12.xsd
 %%DATADIR%%/soap12.xsd
 %%DATADIR%%/wsdl10.xsd
-@dir include/wsdlpull/wsdlparser
+@dirrm %%DATADIR%%
+%%PORTDOCS%%@dirrm %%DOCSDIR%%
+@dirrm include/wsdlpull/xml
+@dirrm include/wsdlpull/wsdlparser
+@dirrm include/wsdlpull/schemaparser
+@dirrm include/wsdlpull

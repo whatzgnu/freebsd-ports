@@ -2,18 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	notmuch
-PORTVERSION=	0.20.2
-PORTREVISION=	1
+PORTVERSION=	0.19
 CATEGORIES=	mail
 MASTER_SITES=	http://notmuchmail.org/releases/
 
-MAINTAINER=	mp39590@gmail.com
+MAINTAINER=	ross@rosstimson.com
 COMMENT=	Thread-based email index, search, and tagging application
 
 LICENSE=	GPLv3
 
-BUILD_DEPENDS=	sphinx-build:${PORTSDIR}/textproc/py-sphinx \
-		c++filt:${PORTSDIR}/devel/binutils
+BUILD_DEPENDS=	sphinx-build:${PORTSDIR}/textproc/py-sphinx
 LIB_DEPENDS=	libgmime-2.6.so:${PORTSDIR}/mail/gmime26 \
 		libxapian.so:${PORTSDIR}/databases/xapian-core \
 		libtalloc.so:${PORTSDIR}/devel/talloc
@@ -39,15 +37,11 @@ USE_EMACS=	yes
 .endif
 
 HAS_CONFIGURE=	yes
-USES=		gmake pkgconfig python:build
+USES=		pkgconfig python:build gmake
 CONFIGURE_ARGS=	--prefix=${PREFIX} --mandir=${MANPREFIX}/man
 USE_LDCONFIG=	yes
 
 MAKE_ENV+=		PYTHONCMD=${PYTHON_CMD}
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/notmuch
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libnotmuch.so.4.2.0
 
 .include <bsd.port.pre.mk>
 

@@ -2,25 +2,22 @@
 # $FreeBSD$
 
 PORTNAME=	stonesoup
-PORTVERSION=	0.16.1
+PORTVERSION=	0.15.2
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	SF/crawl-ref/Stone%20Soup/${PORTVERSION}
-MASTER_SITES=	http://crawl.develz.org/release/
 DISTNAME=	stone_soup-${PORTVERSION}-nodeps
 
 MAINTAINER=	tobias.rehbein@web.de
 COMMENT=	Dungeon Crawl Stone Soup - a fun, free rogue-like game
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/../licence.txt
+LICENSE_FILE=	${WRKDIR}/stone_soup-${PORTVERSION}/licence.txt
 
 USE_SQLITE=	yes
-USES=		bison compiler:c++11-lib gmake lua:51 perl5 pkgconfig \
-		shebangfix tar:xz
-
+USES=		bison compiler gmake lua:51 perl5 pkgconfig shebangfix tar:xz
 USE_PERL5=	build
-SHEBANG_FILES=	util/gen-mi-enum \
-		util/good-depfile
+SHEBANG_FILES=	util/gen-mi-enum
 
 SAVEDIR=	\~/.stonesoup
 WRKSRC=		${WRKDIR}/stone_soup-${PORTVERSION}/source/
@@ -28,12 +25,10 @@ WRKSRC=		${WRKDIR}/stone_soup-${PORTVERSION}/source/
 SUB_FILES=	README.FreeBSD
 PLIST_SUB=	SAVEDIR="${SAVEDIR}"
 
-# WIZARD is currently broken upstream, remove until fixed
-##OPTIONS_DEFINE=	SOUND WIZARD LUA_BINDINGS DOCS EXAMPLES
-OPTIONS_DEFINE=	SOUND LUA_BINDINGS DOCS EXAMPLES
+OPTIONS_DEFINE=	SOUND WIZARD LUA_BINDINGS DOCS EXAMPLES
 
 SOUND_DESC=	Sound support
-##WIZARD_DESC=	Wizard mode
+WIZARD_DESC=	Wizard mode
 LUA_BINDINGS_DESC=	Bindings for LUA user scripts
 
 MAKE_ARGS=	prefix=${PREFIX} \
@@ -44,7 +39,8 @@ MAKE_ARGS=	prefix=${PREFIX} \
 		NO_AUTO_OPT=YesPlease \
 		NO_OPTIMIZE=YesPlease \
 		SQLITE_INCLUDE_DIR=${LOCALBASE}/include \
-		SQLITE_LIB=-lsqlite3
+		SQLITE_LIB=-lsqlite3 \
+		LDFLAGS="-L${LOCALBASE}/lib"
 
 .include <bsd.port.options.mk>
 
@@ -52,14 +48,13 @@ MAKE_ARGS=	prefix=${PREFIX} \
 MAKE_ARGS+=	V=yes
 .endif
 
-##.if empty(PORT_OPTIONS:MWIZARD)
-##MAKE_ARGS+=	NOWIZARD=y
-##.endif
+.if empty(PORT_OPTIONS:MWIZARD)
+MAKE_ARGS+=	NOWIZARD=y
+.endif
 
 .if ${PORT_OPTIONS:MSDL}
 CONFLICTS+=	${PORTNAME}-[0-9]*
-MAKE_ARGS+=	TILES=y \
-		GL_INCLUDE="-I ${LOCALBASE}/include/GL"
+MAKE_ARGS+=	TILES=y
 PLIST_SUB+=	SDL=""
 PKGNAMESUFFIX=	-sdl
 BUILD_DEPENDS+=	fc-list:${PORTSDIR}/x11-fonts/fontconfig \
@@ -67,8 +62,7 @@ BUILD_DEPENDS+=	fc-list:${PORTSDIR}/x11-fonts/fontconfig \
 RUN_DEPENDS+=	${LOCALBASE}/share/fonts/dejavu/DejaVuSans.ttf:${PORTSDIR}/x11-fonts/dejavu
 LIB_DEPENDS+=	libpng.so:${PORTSDIR}/graphics/png \
 		libfreetype.so:${PORTSDIR}/print/freetype2
-USE_SDL=	sdl2 image2
-USE_GL=		yes
+USE_SDL=	sdl image
 .else
 USES+=		ncurses
 CONFLICTS+=	${PORTNAME}-sdl-[0-9]*
@@ -85,12 +79,12 @@ MAKE_ARGS+=	NO_LUA_BINDINGS=yes
 
 .include <bsd.port.pre.mk>
 
-.if ${COMPILER_TYPE} != clang
-CFLAGS+=	-D_GLIBCXX_USE_C99
+.if ${COMPILER_TYPE} == clang
+CFLAGS+=	-std=c++0x
 .endif
 
 post-patch:
-#	@${REINPLACE_CMD} -e "s,%%LOCALBASE%%,${LOCALBASE},g" ${WRKSRC}/Makefile
+	@${REINPLACE_CMD} -e "s,%%LOCALBASE%%,${LOCALBASE},g" ${WRKSRC}/Makefile
 .if ${PORT_OPTIONS:MSOUND}
 	@${REINPLACE_CMD} -e "s,%%LOCALBASE%%,${LOCALBASE}," ${WRKSRC}/AppHdr.h
 	@${REINPLACE_CMD} -e "s,%%SOUND%%,," ${WRKSRC}/AppHdr.h

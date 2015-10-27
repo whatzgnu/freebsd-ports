@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- doc/Makefile.in.orig
 +++ doc/Makefile.in
 @@ -161,7 +161,7 @@

@@ -3,22 +3,19 @@
 
 PORTNAME=	sphinx-intl
 PORTVERSION=	0.9.5
-PORTREVISION=	2
-CATEGORIES=	textproc python
-MASTER_SITES=	CHEESESHOP
+CATEGORIES=	textproc
+MASTER_SITES=	https://pypi.python.org/packages/source/s/${PORTNAME}/ \
+		http://www.pcbsd.org/~kris/software/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	kmoore@FreeBSD.org
 COMMENT=	Sphinx-intl translation features
 
 LICENSE=	BSD2CLAUSE
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PKGNAMEPREFIX}sphinx>=1.1.3:${PORTSDIR}/textproc/py-sphinx \
-		${PKGNAMEPREFIX}polib>=1.0.6:${PORTSDIR}/devel/py-polib \
-		${PKGNAMEPREFIX}six>=1.8.0:${PORTSDIR}/devel/py-six
+RUN_DEPENDS=	${PKGNAMEPREFIX}sphinx>=1.1.3:${PORTSDIR}/textproc/py-sphinx
 
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

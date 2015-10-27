@@ -12,10 +12,11 @@ MAINTAINER=	john.c.prather@gmail.com
 COMMENT=	Flame Renderer
 
 LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
-		libxml2.so:${PORTSDIR}/textproc/libxml2
+		libxml2.so:${PORTSDIR}/textproc/libxml2 \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg
 
 GNU_CONFIGURE=	yes
-USES=		gmake jpeg libtool pathfix pkgconfig
+USES=		gmake libtool pathfix pkgconfig
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib

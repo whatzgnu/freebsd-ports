@@ -1,8 +1,10 @@
 # Created by: Michael Johnson <ahze@FreeBSD.org>
 # $FreeBSD$
+#   $MCom: ports/trunk/graphics/cairo/Makefile 18928 2013-11-30 02:00:25Z marcus $
 
 PORTNAME=	cairo
-PORTVERSION=	1.14.2
+PORTVERSION=	1.12.18
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	graphics
 MASTER_SITES=	http://cairographics.org/releases/
@@ -24,8 +26,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-html-dir=${DOCSDIR} \
 		--disable-directfb \
 		--enable-tee
-USES+=		cpe libtool pathfix pkgconfig
-CPE_VENDOR=	cairographics
+USES+=		libtool pathfix pkgconfig
 USE_XORG=	pixman
 USE_GNOME=	referencehack
 USE_LDCONFIG=	yes
@@ -36,17 +37,18 @@ CONFIGURE_ARGS=	--with-html-dir=${DOCSDIR} \
 		--disable-gallium \
 		--disable-glesv2 \
 		--disable-wgl \
+		--disable-egl \
 		--enable-tee
 
-OPTIONS_DEFINE=	OPENGL XCB GLIB X11
-OPTIONS_DEFAULT=OPENGL XCB GLIB X11
+OPTIONS_DEFINE=	OPENGL XCB GLIB X11 
+OPTIONS_DEFAULT=XCB GLIB X11
 XCB_DESC=	Enable XCB (X C-language Binding) Support
 GLIB_DESC=	Enable GObject Functions Feature
 OPTIONS_SUB=	yes
 X11_USE=	xorg=xrender,xext
 X11_CONFIGURE_ENABLE=xlib
-OPENGL_USE=	gl=gl,egl xorg=glproto:both,dri2proto:both
-OPENGL_CONFIGURE_ENABLE=gl egl
+OPENGL_USE=	gl=gl xorg=glproto:both,dri2proto:both
+OPENGL_CONFIGURE_ENABLE=gl
 GLIB_USE=	gnome=glib20
 GLIB_CONFIGURE_ENABLE=	gobject
 XCB_BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/xcb-renderutil.pc:${PORTSDIR}/x11/xcb-util-renderutil
@@ -54,18 +56,13 @@ XCB_RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/xcb-renderutil.pc:${PORTSDIR}/x1
 XCB_CONFIGURE_ENABLE=	xcb
 # this has another option --enable-xlib-xcb=auto but it is buggy.
 
-PLIST_SUB+=	LIBVER=2.11400.2
+PLIST_SUB+=	LIBVER=2.11200.18
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MOPENGL} && !${PORT_OPTIONS:MX11}
-BROKEN=	OpenGL option needs X11 support
-.endif
-
 post-patch:
-	@${REINPLACE_CMD} -e '/strings/s/ - / -a /' \
-		-e '/test/s/==/=/g' \
-		-e '/LIBS/s/-lrt//' -e '/LIBS/s|-ldld||' \
+	@${REINPLACE_CMD} -e '/test/s/==/=/g' \
+		-e '/LIBS/s/-lrt//'  -e '/LIBS/s|-ldld||' \
 		-e '/LIBS/s|-ldl||' \
 		${WRKSRC}/configure
 	@${REINPLACE_CMD} -e 's|-lcairo|-lcairo -lpthread|' \
@@ -75,6 +72,10 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|-ldl||g' \
 		${WRKSRC}/util/*/Makefile.in \
 		${WRKSRC}/boilerplate/Makefile.in
+.if ${PORT_OPTIONS:MOPENGL}
+	@${REINPLACE_CMD} 's|@CAIRO_CFLAGS@|-I$$(top_srcdir)/src/glew &|' \
+		${WRKSRC}/src/Makefile.in
+.endif
 
 .include <bsd.port.mk>
 

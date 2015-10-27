@@ -1,4 +1,5 @@
-Amalgalite embeds the SQLite database engine in a ruby extension. There is no
+Amalgalite embeds the SQLite database
+engine in a ruby extension. There is no
 need to install SQLite separately.
 
-WWW: https://github.com/copiousfreetime/amalgalite
+WWW: http://rubygems.org/gems/amalgalite/

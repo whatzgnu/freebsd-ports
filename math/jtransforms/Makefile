@@ -4,7 +4,8 @@ PORTNAME=	jtransforms
 PORTVERSION=	2.4
 CATEGORIES=	math java
 MASTER_SITES=	SF
-DISTNAME=	${PORTNAME}-${PORTVERSION}-src
+MASTER_SITE_SUBDIR=jtransforms/jtransforms/${PORTVERSION}
+DISTNAME=	jtransforms-${PORTVERSION}-src
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	Multithreaded FFT library written in pure Java

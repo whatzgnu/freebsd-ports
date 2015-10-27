@@ -6,7 +6,7 @@ PORTVERSION=	0.5
 PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	http://point-at-infinity.org/seccure/ \
-		NETBSD
+		${MASTER_SITE_NETBSD}
 
 MAINTAINER=	zi@FreeBSD.org
 COMMENT=	Elliptic Curve Crypto Utility for Reliable Encryption

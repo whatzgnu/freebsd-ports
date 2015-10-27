@@ -2,10 +2,11 @@
 
 PORTNAME=	libx86
 PORTVERSION=	1.1
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://www.codon.org.uk/~mjg59/libx86/downloads/	\
-		LOCAL/jkim
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	jkim
 
 MAINTAINER=	jkim@FreeBSD.org
 COMMENT=	Hardware-independent library for executing real-mode x86 code

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- erts/emulator/Makefile.in.orig
 +++ erts/emulator/Makefile.in
 @@ -544,7 +546,7 @@

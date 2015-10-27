@@ -25,4 +25,7 @@ do-install:
 	${MKDIR} ${STAGEDIR}${EMACSLISPDIR}
 	${INSTALL_DATA} ${DISTDIR}/${DISTNAME} ${STAGEDIR}${EMACSLISPDIR}/${PORTNAME}
 
+post-install:
+	@${CAT} ${PKGMESSAGE}
+
 .include <bsd.port.mk>

@@ -1,10 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	putty
-PORTVERSION=	0.65
+PORTVERSION=	0.64
 CATEGORIES=	security ipv6
-MASTER_SITES=	http://the.earth.li/~sgtatham/putty/${PORTVERSION}/ \
+MASTER_SITES=	http://the.earth.li/~sgtatham/putty/%SUBDIR%/ \
 		ftp://ftp.chiark.greenend.org.uk/users/sgtatham/putty-latest/
+MASTER_SITE_SUBDIR=	${PORTVERSION}
 
 # Beat Gaetzi (beat@) is permitted to take maintainership back
 # or commit to this port without my prior approval.

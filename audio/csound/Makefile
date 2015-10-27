@@ -15,7 +15,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Sound synthesizer
 
 LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	swig13>0:${PORTSDIR}/devel/swig13 \
 		eigen>0:${PORTSDIR}/math/eigen3 \
@@ -41,8 +40,7 @@ CONFLICTS_INSTALL=	outguess-* csound6
 
 WRKSRC=		${WRKDIR}/${PORTNAME:S/c/C/}${PORTVERSION}
 
-USES=		bison cpe gettext scons compiler:openmp python
-CPE_VENDOR=	csounds
+USES=		bison gettext scons compiler:openmp python
 MAKE_ARGS=	instdir="${STAGEDIR}" prefix="${PREFIX}" \
 		CC="${CC}" CXX="${CXX}" \
 		buildCsoundAC=0 buildCsoundVST=0 buildInterfaces=1 \
@@ -107,10 +105,15 @@ MAKE_ARGS+=	useOSC=0
 .endif
 
 .if ${PORT_OPTIONS:MPORTAUDIO}
-LIB_DEPENDS+=	libportaudio.so:${PORTSDIR}/audio/portaudio
+BUILD_DEPENDS+=	portaudio2>=0:${PORTSDIR}/audio/portaudio2
+RUN_DEPENDS+=	portaudio2>=0:${PORTSDIR}/audio/portaudio2
 MAKE_ARGS+=	usePortAudio=1
+PORTAUDIO_L=	"${LOCALBASE}/lib/portaudio2"
+PORTAUDIO_R=	"-Wl,-rpath,${LOCALBASE}/lib/portaudio2"
 .else
 MAKE_ARGS+=	usePortAudio=0
+PORTAUDIO_L=	# empty
+PORTAUDIO_R=	# empty
 .endif
 
 .if ${PORT_OPTIONS:MPULSEAUDIO}
@@ -152,7 +155,9 @@ CXXLIB=		# empty
 
 post-patch:
 	@${SED} -e "s|%%LOCALBASE%%|${LOCALBASE}|g; \
-		s|%%PYTHON_INCLUDEDIR%%|${PYTHON_INCLUDEDIR}|" \
+		s|%%PYTHON_INCLUDEDIR%%|${PYTHON_INCLUDEDIR}|; \
+		s|%%PORTAUDIO_L%%|${PORTAUDIO_L}|; \
+		s|%%PORTAUDIO_R%%|${PORTAUDIO_R}|" \
 		< ${FILESDIR}/custom.py.in > ${WRKSRC}/custom.py
 	@${REINPLACE_CMD} -e "s|'unsupported'|'linux'|; \
 		s|Exit(-1)|print \"\"|; \
@@ -163,6 +168,7 @@ post-patch:
 		/LINKFLAGS/s|\['-Wl,-Bdynamic'\]|Split('${LDFLAGS}')|; \
 		s|\"pthread\"|\"\"|; \
 		s|'pthread'|''|; \
+		s|\"portaudio.h\"|\"portaudio2/portaudio.h\"|; \
 		s|\"boost/any.hpp\"|\"##boost/any.hpp##\"|; \
 		s|\"alsa/asoundlib.h\"|\"${ALSA_H}\"|; \
 		s|'xmlfile.h'|'##xmlfile.h##'|; \
@@ -178,6 +184,8 @@ post-patch:
 		/jpluginEnvironment/s|'asound'|''|; \
 		/portaudioEnvironment/s|'asound'|''|; \
 		/jackEnvironment/s|'asound'|''|" ${WRKSRC}/SConstruct
+	@${REINPLACE_CMD} -e "s|<portaudio.h>|<portaudio2/portaudio.h>|" \
+		${WRKSRC}/InOut/rtpa.c
 	@${REINPLACE_CMD} -e "s|linux/if.h|sys/types.h|" \
 		${WRKSRC}/OOps/remote.c
 

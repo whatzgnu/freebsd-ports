@@ -12,8 +12,6 @@ COMMENT=	Ruby library for finding files in a set of paths
 
 LICENSE=	MIT
 
-NO_ARCH=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Math-MPFR
-PORTVERSION=	3.25
+PORTVERSION=	3.24
 CATEGORIES=	math perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:SISYPHUS
@@ -25,10 +25,9 @@ USES=		perl5
 USE_PERL5=	configure
 MAKE_ENV=	INC="-I${LOCALBASE}/include"
 
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/MPFR/MPFR.so
+post-stage:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/MPFR/Prec/Prec.so
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/MPFR/Random/Random.so
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/MPFR/V/V.so
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/MPFR/MPFR.so
 
 .include <bsd.port.mk>

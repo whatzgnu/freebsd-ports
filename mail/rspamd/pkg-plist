@@ -10,7 +10,6 @@ bin/rspamc
 %%ETCDIR%%/lua/rspamd.classifiers.lua
 %%ETCDIR%%/lua/rspamd.lua
 %%ETCDIR%%/lua/hfilter.lua
-%%DATADIR%%/lua/dmarc.lua
 %%DATADIR%%/lua/emails.lua
 %%DATADIR%%/lua/forged_recipients.lua
 %%DATADIR%%/lua/fun.lua
@@ -22,9 +21,7 @@ bin/rspamc
 %%DATADIR%%/lua/ratelimit.lua
 %%DATADIR%%/lua/rbl.lua
 %%DATADIR%%/lua/settings.lua
-%%DATADIR%%/lua/spamassassin.lua
 %%DATADIR%%/lua/trie.lua
-%%DATADIR%%/effective_tld_names.dat
 %%DATADIR%%/www/index.html
 %%DATADIR%%/www/plugins.txt
 %%DATADIR%%/www/img/spinner.gif
@@ -35,7 +32,6 @@ bin/rspamc
 %%DATADIR%%/www/js/rspamd.js
 %%DATADIR%%/www/js/jquery.paginatetable.js
 %%DATADIR%%/www/css/rspamd.css
-lib/rspamd/librspamd-actrie.so
 @sample %%ETCDIR%%/common.conf.sample
 @sample %%ETCDIR%%/logging.inc.sample
 @sample %%ETCDIR%%/options.inc.sample
@@ -50,11 +46,20 @@ lib/rspamd/librspamd-actrie.so
 @sample %%ETCDIR%%/surbl-whitelist.inc.sample
 man/man1/rspamc.1.gz
 man/man8/rspamd.8.gz
-@dir %%EXAMPLESDIR%%
+@dirrmtry %%DATADIR%%/lua
+@dirrmtry %%DATADIR%%/www/js
+@dirrmtry %%DATADIR%%/www/css
+@dirrmtry %%DATADIR%%/www/img
+@dirrmtry %%DATADIR%%/www
+@dirrmtry %%DATADIR%%
+@dirrmtry %%ETCDIR%%/lua/regexp
+@dirrmtry %%ETCDIR%%/lua
+@dirrmtry %%ETCDIR%%
+%%PORTEXAMPLES%%@dirrmtry %%EXAMPLESDIR%%
 @owner nobody
 @group nobody
-@dir /var/db/rspamd
-@dir /var/log/rspamd
-@dir /var/run/rspamd
+@dirrmtry /var/db/rspamd
+@dirrmtry /var/log/rspamd
+@dirrm /var/run/rspamd
 @owner
 @group

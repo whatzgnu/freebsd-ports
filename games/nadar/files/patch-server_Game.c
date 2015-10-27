@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- server/Game.c.orig	Sun Aug 22 16:35:40 2004
 +++ server/Game.c	Sun Aug 22 16:35:50 2004
 @@ -226,7 +226,7 @@

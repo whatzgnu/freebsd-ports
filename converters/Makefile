@@ -4,7 +4,6 @@
     COMMENT = Character code converters
 
     SUBDIR += R-cran-RJSONIO
-    SUBDIR += R-cran-jsonlite
     SUBDIR += R-cran-rjson
     SUBDIR += aish
     SUBDIR += ascii2binary
@@ -45,27 +44,22 @@
     SUBDIR += libticonv
     SUBDIR += libutf-8
     SUBDIR += lua-iconv
-    SUBDIR += lua-json
     SUBDIR += mimelib
     SUBDIR += mmencode
     SUBDIR += mpack
     SUBDIR += nomyso
     SUBDIR += o3read
-    SUBDIR += ocaml-base64
-    SUBDIR += ocaml-jsonm
     SUBDIR += osm2mp
     SUBDIR += osm2pgsql
     SUBDIR += p5-Boulder
     SUBDIR += p5-Convert-ASCII-Armour
     SUBDIR += p5-Convert-ASN1
     SUBDIR += p5-Convert-BER
-    SUBDIR += p5-Convert-Base32
     SUBDIR += p5-Convert-Bencode
     SUBDIR += p5-Convert-Bencode_XS
     SUBDIR += p5-Convert-BinHex
     SUBDIR += p5-Convert-Binary-C
     SUBDIR += p5-Convert-IBM390
-    SUBDIR += p5-Convert-Moji
     SUBDIR += p5-Convert-Morse
     SUBDIR += p5-Convert-NLS_DATE_FORMAT
     SUBDIR += p5-Convert-PEM
@@ -146,7 +140,6 @@
     SUBDIR += py-bsdconv
     SUBDIR += py-iconv
     SUBDIR += py-pisa
-    SUBDIR += py-rencode
     SUBDIR += py-unidecode
     SUBDIR += py-zfec
     SUBDIR += rcctools

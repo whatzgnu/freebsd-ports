@@ -15,10 +15,9 @@ LICENSE=	MIT
 
 USES=		python
 USE_PYTHON=	distutils autoplist
-NO_ARCH=	yes
 
 PORTDOCS=	*
-PORTEXAMPLES=	* .htaccess
+PORTEXAMPLES=	*
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 

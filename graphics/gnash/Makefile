@@ -12,6 +12,7 @@ COMMENT=	GNU Flash movie player
 
 LIB_DEPENDS=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
 		libltdl.so:${PORTSDIR}/devel/libltdl \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		libcurl.so:${PORTSDIR}/ftp/curl \
 		libgif.so:${PORTSDIR}/graphics/giflib \
 		libspeex.so:${PORTSDIR}/audio/speex \
@@ -19,7 +20,7 @@ LIB_DEPENDS=	libboost_thread.so:${PORTSDIR}/devel/boost-libs \
 
 CONFLICTS=	gnash-devel-[0-9]*
 
-USES=		cpe gmake jpeg libtool pkgconfig tar:bzip2
+USES=		cpe tar:bzip2 pkgconfig gmake libtool
 GNU_CONFIGURE=	yes
 WANT_SDL=	yes
 USE_GCC=	any

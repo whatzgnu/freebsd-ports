@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- frontend/main.c.orig
 +++ frontend/main.c
 @@ -137,6 +137,31 @@

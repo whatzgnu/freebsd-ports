@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- game.c.orig
 +++ game.c
 @@ -275,24 +275,24 @@

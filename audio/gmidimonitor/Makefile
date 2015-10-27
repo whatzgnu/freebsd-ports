@@ -3,15 +3,12 @@
 
 PORTNAME=	gmidimonitor
 PORTVERSION=	3.6
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://download.gna.org/gmidimonitor/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GTK+ application that shows MIDI events
-
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack \
 		liblash.so:${PORTSDIR}/audio/lash
@@ -21,9 +18,9 @@ USE_GNOME=	gtk20 libglade2
 
 CONFIGURE_ARGS=	--alsa=no
 
-PLIST_FILES=	bin/gmidimonitor %%DATADIR%%/gmidimonitor.ui
+LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+PLIST_FILES=	bin/gmidimonitor %%DATADIR%%/gmidimonitor.ui
 
 .include <bsd.port.mk>

@@ -4,7 +4,8 @@
 PORTNAME=	compiler-rt
 DISTVERSION=	0.r${SVN_REV}
 CATEGORIES=	devel
-MASTER_SITES=	LOCAL/brooks
+MASTER_SITES=	${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	brooks
 
 MAINTAINER=	brooks@FreeBSD.org
 COMMENT=	Compiler runtime library with Blocks support

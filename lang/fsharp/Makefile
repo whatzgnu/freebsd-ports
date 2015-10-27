@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fsharp
-PORTVERSION=	3.1.2.5
+PORTVERSION=	3.1.1.25
 CATEGORIES=	lang
 
 MAINTAINER=	mono@FreeBSD.org

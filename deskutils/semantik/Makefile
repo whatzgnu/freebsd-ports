@@ -1,10 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	semantik
-PORTVERSION=	0.9.4
+PORTVERSION=	0.8.4
+PORTREVISION=	3
 CATEGORIES=	deskutils kde
-MASTER_SITES=	http://ftp.waf.io/pub/release/ \
-		http://www.freehackers.org/~tnagy/release/
+MASTER_SITES=	http://${PORTNAME}.googlecode.com/files/
 
 MAINTAINER=	avilla@FreeBSD.org
 COMMENT=	KDE mind mapping tool
@@ -16,8 +16,7 @@ USE_OCAML=	yes
 NO_OCAML_RUNDEPENDS=	yes
 USE_QT4=	corelib gui linguist_build svg webkit xml \
 		moc_build qmake_build uic_build
-USES=		pkgconfig python:2 shebangfix tar:bzip2 waf \
-		shared-mime-info
+USES=		pkgconfig python shebangfix tar:bzip2 waf
 QT_NONSTANDARD=	yes
 CONFIGURE_ENV=	CXXFLAGS="${CXXFLAGS}" \
 		PATH="${KDE4_PREFIX}/bin:$$PATH" \
@@ -29,8 +28,7 @@ USE_LDCONFIG=	yes
 
 SHEBANG_FILES=	${WRKSRC}/src/templates/beamer/wscript \
 		${WRKSRC}/src/templates/pdflatex/wscript
-
-PLIST_SUB=	PORTVERSION="${PORTVERSION}"
+python_CMD=	${PYTHON_CMD}
 
 OPTIONS_DEFINE=	NLS
 OPTIONS_SUB=	yes
@@ -48,8 +46,6 @@ post-patch:
 .endif
 
 post-install:
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${PORTNAME} \
-		${STAGEDIR}${PREFIX}/bin/${PORTNAME}-d \
-		${STAGEDIR}${PREFIX}/lib/lib${PORTNAME}.so.${PORTVERSION}
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>

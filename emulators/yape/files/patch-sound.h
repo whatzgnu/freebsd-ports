@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- sound.h.orig
 +++ sound.h
 @@ -1,7 +1,7 @@

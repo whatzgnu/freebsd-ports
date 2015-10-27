@@ -3,7 +3,6 @@
 
 PORTNAME=	libdbusmenu
 PORTVERSION=	12.10.2
-PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	https://launchpadlibrarian.net/118249592/ \
 	https://launchpad.net/${PORTNAME}/${PORTVERSION:R}/${PORTVERSION}/+download/

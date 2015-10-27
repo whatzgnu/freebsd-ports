@@ -5,7 +5,8 @@ grepv() {
 }
 
 if [ "x$2" = "xPOST-DEINSTALL" ]; then
-	FONTDIR=%%FONTSDIR%%
+	FONTDIR=${PKG_PREFIX}/%%FONTSDIR%%
+	cd ${PKG_PREFIX}/%%FONTSDIR%%; %%LOCALBASE%%/bin/mkfontdir
 
 	# font alias entry here!
 	TMPFILE=/tmp/install-fonts-alias-$$
@@ -42,6 +43,9 @@ if [ "x$2" = "xPOST-DEINSTALL" ]; then
 	 echo "to enable this update."
 	 echo "**********************************************************"
 	)
+	if [ "`wc -c ${PKG_PREFIX}/%%FONTSDIR%%/fonts.dir | awk '{print $1}'`" = 2 ]; then 
+		rm -f ${PKG_PREFIX}/%%FONTSDIR%%/fonts.dir
+	fi
 fi
 
 

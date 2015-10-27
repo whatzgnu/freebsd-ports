@@ -1,11 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=		tevent
-PORTVERSION=		0.9.25
+PORTVERSION=		0.9.22
 PORTREVISION=		0
 PORTEPOCH=		0
 CATEGORIES=		devel
-MASTER_SITES=		SAMBA
+MASTER_SITES=		${MASTER_SITE_SAMBA}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
 MAINTAINER=		timur@FreeBSD.org
 COMMENT=		Talloc based event loop library
@@ -24,7 +25,6 @@ PLIST_SUB+=		PKGCONFIGDIR=${PKGCONFIGDIR:S;${PREFIX}/;;}
 
 CONFIGURE_ARGS+=	--mandir=${MANPREFIX}/man \
 			--infodir=${PREFIX}/${INFO_PATH}/${INFO_SUBDIR} \
-			--disable-rpath \
 			--without-gettext
 
 OPTIONS_DEFINE=		MANPAGES

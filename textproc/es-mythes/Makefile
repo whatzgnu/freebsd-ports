@@ -13,7 +13,6 @@ COMMENT=	Spanish thesaurus
 
 LICENSE=	LGPL21
 
-NO_ARCH=	yes
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes
 USES=		tar:bzip2

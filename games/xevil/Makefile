@@ -5,17 +5,18 @@ PORTNAME=	xevil
 PORTVERSION=	2.02.r2
 PORTREVISION=	2
 CATEGORIES=	games
-MASTER_SITES=	http://www.xevil.com/download/stable/ \
-		http://mirror.amdmi3.ru/distfiles/
+MASTER_SITES=	SF/${PORTNAME}.mirror \
+		http://www.xevil.com/download/stable/
 DISTNAME=	${PORTNAME}src${PORTVERSION:S/.r/r/}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast-action, networked, anti-social, kill-everything game
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/gpl.txt
+LICENSE=	GPLv2
 
-NO_WRKSUBDIR=	yes
+OPTIONS_DEFINE=	DOCS
+
+NO_WRKSUBDIR=yes
 
 USES=		dos2unix zip
 USE_XORG=	xpm
@@ -26,8 +27,6 @@ ALL_TARGET=	${OPSYS:tl}
 
 PORTDOCS=	*
 PLIST_FILES=	bin/${PORTNAME}
-
-OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${FIND} ${WRKSRC} -name "*.xpm" | ${XARGS} ${REINPLACE_CMD} -e \

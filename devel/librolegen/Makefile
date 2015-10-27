@@ -13,6 +13,7 @@ BUILD_DEPENDS=	${LOCALBASE}/share/cmake/Modules/webOS/webOS.cmake:${PORTSDIR}/de
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	FreeWebOS
+GH_TAGNAME=	1.0b
 
 USES=		cmake:outsource
 

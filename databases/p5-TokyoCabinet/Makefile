@@ -4,8 +4,9 @@ PORTNAME=	TokyoCabinet
 PORTVERSION=	1.34
 PORTREVISION=	1
 CATEGORIES=	databases perl5
-MASTER_SITES=	LOCAL/kuriyama \
+MASTER_SITES=	${MASTER_SITE_LOCAL} \
 		http://fallabs.com/tokyocabinet/perlpkg/
+MASTER_SITE_SUBDIR=	kuriyama
 PKGNAMEPREFIX=	p5-
 DISTNAME=	tokyocabinet-perl-${PORTVERSION}
 

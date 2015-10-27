@@ -5,7 +5,8 @@ PORTNAME=	mtools
 PORTVERSION=	4.0.10
 PORTREVISION=	4
 CATEGORIES=	emulators
-MASTER_SITES=	GNU
+MASTER_SITES=	${MASTER_SITE_GNU}
+MASTER_SITE_SUBDIR=	mtools
 
 MAINTAINER=	skreuzer@FreeBSD.org
 COMMENT=	Collection of tools for manipulating MS-DOS files

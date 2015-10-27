@@ -6,7 +6,8 @@ PORTVERSION=	2.4
 PORTREVISION=	5
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://www.chronos.org.uk/download/ \
-		LOCAL/db
+		${MASTER_SITE_LOCAL}
+MASTER_SITE_SUBDIR=	db
 
 MAINTAINER=	xride@FreeBSD.org
 COMMENT=	Amateur Radio DX cluster monitor

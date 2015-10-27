@@ -3,7 +3,6 @@
 
 PORTNAME=	libarchive
 PORTVERSION=	0.1.2
-PORTREVISION=	1
 CATEGORIES=	archivers rubygems
 MASTER_SITES=	RG
 
@@ -12,7 +11,7 @@ COMMENT=	Ruby bindings for libarchive
 
 LICENSE=	BSD3CLAUSE
 
-USES=		dos2unix libarchive
+USES=		dos2unix
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

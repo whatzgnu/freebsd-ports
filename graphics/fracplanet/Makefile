@@ -14,7 +14,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Interactive tool for creating random fractal planets and terrain
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	xsltproc:${PORTSDIR}/textproc/libxslt
 LIB_DEPENDS=	libboost_program_options.so:${PORTSDIR}/devel/boost-libs
@@ -29,9 +28,10 @@ HAS_CONFIGURE=	yes
 CONFIGURE_ENV=	QTDIR="${QT_PREFIX}"
 CONFIGURE_ARGS=	-spec ${QMAKESPEC}
 
-CXXFLAGS+=	-include ${WRKSRC}/precompiled.h
-
 PORTDOCS=	*
+
+DOCSRCDIR1=	${WRKSRC}
+DOC_FILES1=	 BUGS NEWS README THANKS ${PORTNAME}.css ${PORTNAME}.htm
 
 INSTALLS_ICONS=	yes
 ICON_SIZES=	32x32 48x48 64x64 72x72 96x96
@@ -39,11 +39,18 @@ ICON_SIZES=	32x32 48x48 64x64 72x72 96x96
 DESKTOP_ENTRIES="Fracplanet" "" "${PORTNAME}" \
 		"${PORTNAME}" "Graphics;" ""
 
-OPTIONS_DEFINE=	DOXYGEN DOCS
+OPTIONS_DEFINE=	DOCS
+OPTIONS_GROUP=	DOXYGEN
+OPTIONS_GROUP_DOXYGEN=	HTML LATEX
 
-.include <bsd.port.pre.mk>
+OPTIONS_DEFAULT=	HTML
 
-.if ${PORT_OPTIONS:MDOCS} && ${PORT_OPTIONS:MDOXYGEN}
+HTML_DESC=	Install HTML Doxygen files
+LATEX_DESC=	Install LaTeX Doxygen files
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MHTML} || ${PORT_OPTIONS:MLATEX}
 BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
 .endif
 
@@ -57,11 +64,6 @@ post-patch:
 	@${REINPLACE_CMD} -e \
 		's|-lboost_program_options|-lboost_program_options -lGLU|' \
 		${WRKSRC}/fracplanet.pro
-
-.if ${PORT_OPTIONS:MDOCS} && ${PORT_OPTIONS:MDOXYGEN}
-post-build:
-	cd ${WRKSRC} && doxygen .
-.endif
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/
@@ -78,11 +80,19 @@ do-install:
 
 .if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} BUGS NEWS README THANKS \
-		fracplanet.css fracplanet.htm ${STAGEDIR}${DOCSDIR}
-. if ${PORT_OPTIONS:MDOXYGEN}
-	@(cd ${WRKSRC} && ${COPYTREE_SHARE} "html latex" ${STAGEDIR}${DOCSDIR})
-. endif
+	${INSTALL_DATA} ${DOC_FILES1:S|^|${DOCSRCDIR1}/|} ${STAGEDIR}${DOCSDIR}
 .endif
 
-.include <bsd.port.post.mk>
+.if ${PORT_OPTIONS:MHTML} || ${PORT_OPTIONS:MLATEX}
+	@cd ${WRKSRC} && doxygen .
+.endif
+
+.if ${PORT_OPTIONS:MDOCS} && ${PORT_OPTIONS:MHTML}
+	@(cd ${WRKSRC} && ${COPYTREE_SHARE} html ${STAGEDIR}${DOCSDIR})
+.endif
+
+.if ${PORT_OPTIONS:MDOCS} && ${PORT_OPTIONS:MLATEX}
+	@(cd ${WRKSRC} && ${COPYTREE_SHARE} latex ${STAGEDIR}${DOCSDIR})
+.endif
+
+.include <bsd.port.mk>

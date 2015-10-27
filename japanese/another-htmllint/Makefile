@@ -18,7 +18,6 @@ DOS2UNIX_FILES=	readme.txt
 SHEBANG_FILES=	htmllint.cgi tagslist.cgi
 SUB_FILES=	htmllint pkg-message
 SUB_LIST+=	PERL=${PERL}
-NO_ARCH=	YES
 
 OPTIONS_DEFINE=	W3M
 W3M_DESC=	Use w3m to show rendering result
@@ -32,11 +31,7 @@ SEDSUB=		${SED} -i.bak -e 's@%%PREFIX%%@${PREFIX}@ ; s@%%DATADIR%%@${DATADIR}@'
 # Please set this!
 HTMLLINT_ADMIN?=	kuriyama@FreeBSD.org
 
-.include <bsd.port.pre.mk>
-
-.if ${PERL_LEVEL} >= 502200
-RUN_DEPENDS+=	p5-CGI.pm>=0:${PORTSDIR}/www/p5-CGI.pm
-.endif
+.include <bsd.port.options.mk>
 
 do-build:
 	@${SEDSUB} ${WRKSRC}/htmllintenv
@@ -54,4 +49,4 @@ do-install:
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PM} ${STAGEDIR}${DATADIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${RULE} ${STAGEDIR}${DATADIR}/rule
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

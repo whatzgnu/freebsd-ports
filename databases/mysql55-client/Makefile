@@ -2,14 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	mysql
-PORTREVISION=	1
 PKGNAMESUFFIX=	55-client
 
 COMMENT=	Multithreaded SQL database (client)
 
 MASTERDIR=	${.CURDIR}/../mysql55-server
 
-PKGMESSAGE=	${.CURDIR}/pkg-message
+PKGMESSAGE=	mustnotexist
 PATCHDIR=	${.CURDIR}/files
 PLIST=		${.CURDIR}/pkg-plist
 

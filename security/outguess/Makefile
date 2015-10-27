@@ -9,7 +9,8 @@ MASTER_SITES=	http://www.outguess.org/ \
 		http://cimarron.river.com/mirrors/www.outguess.org/ \
 		http://munitions.vipul.net/software/steganography/ \
 		http://the25200-1.gw.connect.com.au/security/steganography/ \
-		PACKETSTORM/crypt/stego
+		${MASTER_SITE_PACKETSTORM}
+MASTER_SITE_SUBDIR=	crypt/stego
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Steganographic tool

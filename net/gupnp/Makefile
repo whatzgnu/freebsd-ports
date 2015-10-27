@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gupnp
-PORTVERSION=	0.20.14
+PORTVERSION=	0.20.13
 CATEGORIES=	net
 MASTER_SITES=	GNOME
 
@@ -26,6 +26,7 @@ USE_CSTD=	c11
 USES=		compiler:c11 gmake libtool pathfix pkgconfig python:run shebangfix tar:xz
 
 SHEBANG_FILES=	tools/gupnp-binding-tool
+python_CMD=	${PYTHON_CMD}
 
 .include <bsd.port.pre.mk>
 

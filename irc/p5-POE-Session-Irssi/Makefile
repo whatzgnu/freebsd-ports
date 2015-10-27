@@ -3,7 +3,7 @@
 
 PORTNAME=	POE-Session-Irssi
 PORTVERSION=	0.50
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	irc perl5 devel
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:MARTIJN
@@ -13,7 +13,6 @@ MAINTAINER=	jase@FreeBSD.org
 COMMENT=	Emit POE events for Irssi signals
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	p5-POE>=1.003:${PORTSDIR}/devel/p5-POE \
 		p5-Sub-Uplevel>0:${PORTSDIR}/devel/p5-Sub-Uplevel \
@@ -25,10 +24,8 @@ RUN_DEPENDS=	p5-POE>=1.003:${PORTSDIR}/devel/p5-POE \
 
 PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
 CONFIGURE_ARGS+=	INSTALLDIRS=site
-USES=		perl5 shebangfix
-SHEBANG_FILES=	samples/clean-backlog.pl
+USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	EXAMPLES
 

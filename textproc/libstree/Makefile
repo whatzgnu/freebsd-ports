@@ -3,16 +3,15 @@
 
 PORTNAME=	libstree
 PORTVERSION=	0.4.2
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	textproc
 MASTER_SITES=	http://www.icir.org/christian/downloads/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Generic Suffix Tree Library
 
-USES=		gmake libtool
 GNU_CONFIGURE=	yes
-INSTALL_TARGET=	install-strip
+USES=		gmake libtool
 USE_LDCONFIG=	yes
 
 post-patch:

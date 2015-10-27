@@ -2,10 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	funktrackergold
-DISTVERSION=	1.5-2
+PORTVERSION=	1.5.2
 PORTREVISION=	1
 CATEGORIES=	audio
-MASTER_SITES=	SUNSITE/apps/sound/players
+MASTER_SITES=	${MASTER_SITE_SUNSITE}
+MASTER_SITE_SUBDIR=	apps/sound/players
+DISTNAME=	funktrackergold-1.5-2
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Curses MOD/FNK music tracker

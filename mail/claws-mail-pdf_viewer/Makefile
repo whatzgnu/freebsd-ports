@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	pdf_viewer
-PORTREVISION=	1
+PORTREVISION=	2
 
 COMMENT=	PDF and PostScript viewer plugin for Claws Mail
 
 LIB_DEPENDS=	libpoppler-glib.so:${PORTSDIR}/graphics/poppler-glib
 
-USES+=		ghostscript
+USE_GHOSTSCRIPT=yes
 
 CLAWS_PLUGINS_BUILD=	pdf_viewer
 

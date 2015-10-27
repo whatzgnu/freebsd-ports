@@ -11,7 +11,7 @@ MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Full-service object persistence and query toolkit for PHP
 
 USE_PHP=	yes
-PHP_DEFAULT=	5.4
+DEFAULT_VERSIONS+=	php=5
 WRKSRC=		${WRKDIR}
 
 do-build:
