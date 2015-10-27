@@ -19,6 +19,7 @@ RUN_DEPENDS=	${PYTHON_SITELIBDIR}/django/bin/django-admin.py:${PORTSDIR}/www/py-
 USES=		python zip
 USE_PYTHON=	autoplist distutils
 
+OPTIONSFILE=		${PORT_DBDIR}/py-${PORTNAME}/options
 OPTIONS_DEFINE=		TAGGING
 OPTIONS_DEFAULT=	TAGGING
 

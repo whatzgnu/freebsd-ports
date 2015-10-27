@@ -79,6 +79,8 @@ ZSH_CONFIGURE_OFF=	--without-zsh-completion-dir
 PULSE_VERSION=	${PORTVERSION}
 PLIST_SUB=	PULSE_VERSION=${PULSE_VERSION}
 
+.include <bsd.port.pre.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
 		${WRKSRC}/src/daemon/default.pa.in
@@ -92,7 +94,8 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/src/${ii} \
 		${STAGEDIR}${PREFIX}/etc/pulse/${ii}.sample
 .endfor
-post-install-BASH-off:
+.if !${PORT_OPTIONS:MBASH}
 	@${RM} -rf ${STAGEDIR}${PREFIX}/etc/bash_completion.d
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

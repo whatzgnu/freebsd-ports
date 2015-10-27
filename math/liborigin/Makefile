@@ -22,7 +22,11 @@ PORTDOCS=	*
 OPTIONS_DEFINE=	DOXYGEN
 DOXYGEN_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
 
-post-patch-DOXYGEN-off:
+.include <bsd.port.options.mk>
+
+.if ! ${PORT_OPTIONS:MDOXYGEN}
+post-patch:
 	${REINPLACE_CMD} -e '/find_package(Doxygen)/d' ${WRKSRC}/CMakeLists.txt
+.endif
 
 .include <bsd.port.mk>

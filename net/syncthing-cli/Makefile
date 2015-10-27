@@ -3,13 +3,13 @@
 
 PORTNAME=	syncthing-cli
 PORTVERSION=	0.1.0.2015070301
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	Syncthing CLI
 
-BUILD_DEPENDS=	go14>=1.4:${PORTSDIR}/lang/go14
+BUILD_DEPENDS=	${LOCALBASE}/bin/go:${PORTSDIR}/lang/go
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	syncthing AudriusButkevicius:audrius
@@ -44,8 +44,7 @@ post-patch:
 		${WRKSRC}/src/github.com/syncthing/protocol
 
 do-build:
-	@cd ${WRKSRC} ; ${SETENV} PATH=${PATH}:${LOCALBASE}/go14/bin \
-		GOPATH=${WRKSRC} go build
+	@cd ${WRKSRC} ; ${SETENV} GOPATH=${WRKSRC} go build
 	@${MV} ${WRKSRC}/syncthing-cli-${GH_TAGNAME} ${WRKSRC}/syncthing-cli
 
 do-install:

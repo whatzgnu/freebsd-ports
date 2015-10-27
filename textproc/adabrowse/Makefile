@@ -22,6 +22,8 @@ PORTDOCS=	*.html *.css
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-extract:
 	${CP} ${FILESDIR}/ad-* ${FILESDIR}/build.gpr ${WRKSRC}
 	${RM} ${WRKSRC}/sdefault.adb
@@ -35,10 +37,10 @@ do-build:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/adabrowse ${STAGEDIR}${PREFIX}/bin/adabrowse
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}/${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/*.html ${WRKSRC}/doc/*.css \
 		${STAGEDIR}/${DOCSDIR}/
+.endif
 
 .include <bsd.port.mk>

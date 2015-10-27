@@ -25,12 +25,14 @@ DESKTOP_ENTRIES=	"QDevelop" \
 			true
 
 OPTIONS_DEFINE=	TOOLS DOCS NLS
-OPTIONS_DEFAULT:=	${OPTIONS_DEFINE}
+OPTIONS_DEFAULT=	${OPTIONS_DEFINE}
 OPTIONS_SUB=	yes
 NLS_USE=	QT4=linguisttools_build
 TOOLS_DESC=	Install Qt 4 development tools (qmake, moc, etc.)
 TOOLS_USE=	${_TOOLS:C|.*|QT4=&_run|}
 _TOOLS=		assistant linguisttools moc qmake rcc uic
+
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|\"qmake\"|\"qmake-qt4\"|g" \
@@ -49,18 +51,20 @@ post-patch:
 		${WRKSRC}/plugins/tools-regexp-planner/replugin.cpp \
 		${WRKSRC}/plugins/formatting-astyle/astyleplugin.cpp
 
-post-configure-NLS-on:
+post-configure:
+.if ${PORT_OPTIONS:MNLS}
 	${LRELEASE} ${WRKSRC}/QDevelop.pro
+.endif
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/resources/images/logo.png ${STAGEDIR}${PREFIX}/share/pixmaps/qdevelop.png
-
-post-install-NLS-on:
+.if ${PORT_OPTIONS:MNLS}
 	@${MKDIR} ${STAGEDIR}${DATADIR}/translations
 	${INSTALL_DATA} ${WRKSRC}/resources/translations/*.qm ${STAGEDIR}${DATADIR}/translations
-
-post-install-DOCS-on:
+.endif
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/ChangeLog.txt ${WRKSRC}/README.txt ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

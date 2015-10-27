@@ -79,8 +79,7 @@ IGNORE+=	Zope requires Python ${_PYTHON_VER_REQUIRED}.\
 .if ${ZOPE_VERSION} == ${_ZOPE_PORTBRANCH}
 RUN_DEPENDS+=	zope213>0:${PORTSDIR}/www/zope213
 .else
-_USES_sanity+=	300:check-makevars-zope
-check-makevars-zope:
+check-makevars::
 	@${ECHO} "Makefile error: bad value for ZOPE_VERSION: ${ZOPE_VERSION}."
 	@${ECHO} "Legal values are: ${_ZOPE_PORTBRANCH} (default)"
 	@${FALSE}

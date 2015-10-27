@@ -6,12 +6,11 @@ PORTVERSION=	1.5.2
 PORTREVISION=	1
 CATEGORIES=	devel www pear
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	joehorn@gmail.com
 COMMENT=	PEAR template API ported from PHPLIB
 
 LICENSE=	LGPL3
 
-USES=		pear
-NO_ARCH=	yes
+USES=	pear
 
 .include <bsd.port.mk>

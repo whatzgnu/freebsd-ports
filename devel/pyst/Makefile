@@ -14,16 +14,19 @@ LICENSE_COMB=	dual
 
 USES=		python:2
 USE_PYTHON=	distutils
-NO_ARCH=	yes
 
 PORTDOCS=	README README.html ChangeLog
 
 OPTIONS_DEFINE=	DOCS
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for file in ${PORTDOCS}
 	@${INSTALL_DATA} ${WRKSRC}/${file} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

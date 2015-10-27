@@ -17,7 +17,6 @@ USE_PYTHON=	distutils autoplist
 USE_GITHUB=	yes
 GH_ACCOUNT=	stricaud
 GH_TAGNAME=	777ab06
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	DOCS
 
@@ -26,10 +25,14 @@ PORTDOCS=	crypto-folks.png gvgen-legend.png gvgen-propertyforeachlinks.2.png \
 		gvgen-propertylink.png gvgen-styles.png gvgen-defaultstyle.png \
    		gvgen-links.png gvgen-smartmode-1.png
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/doc/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

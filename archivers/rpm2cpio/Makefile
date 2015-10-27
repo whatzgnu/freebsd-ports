@@ -15,7 +15,6 @@ NO_WRKSUBDIR=	yes
 
 USES=		perl5
 NO_BUILD=	yes
-NO_ARCH=	yes
 REINPLACE_ARGS=
 
 PLIST_FILES=	bin/rpm2cpio.pl

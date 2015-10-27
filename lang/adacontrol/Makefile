@@ -23,6 +23,8 @@ PORTDOCS=	adacontrol*
 
 OPTIONS_DEFINE= DOCS
 
+.include <bsd.port.options.mk>
+
 do-build:
 	(cd ${BUILD_WRKSRC} && ${SETENV} ${MAKE_ENV} gnatmake -Pbuild)
 
@@ -39,10 +41,10 @@ do-install:
 		${STAGEDIR}${PREFIX}/share/gps/plug-ins
 	${INSTALL_DATA} ${WRKSRC}/doc/*.html \
 		${STAGEDIR}${PREFIX}/share/doc/gps/html
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/*.pdf ${WRKSRC}/doc/*.html \
 		${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

@@ -18,7 +18,6 @@ IGNORE=	USES=pathfix does not require args
 
 PATHFIX_MAKEFILEIN?=	Makefile.in
 
-_USES_patch+=	190:pathfix
 pathfix:
 	@${FIND} ${WRKSRC} -name "${PATHFIX_MAKEFILEIN}" -type f | ${XARGS} ${REINPLACE_CMD} -e \
 		's|[(]libdir[)]/locale|(prefix)/share/locale|g ; \

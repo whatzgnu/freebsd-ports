@@ -7,11 +7,10 @@ PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	GOOGLE_CODE
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	geekounet@poildetroll.net
 COMMENT=	Command line tool for downloading Youtube closed captions
 
-LICENSE=	GPLv3 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE=	GPLv3
 
 BUILD_DEPENDS=	p5-Getopt-ArgvFile>=1.11:${PORTSDIR}/devel/p5-Getopt-ArgvFile \
 		p5-HTML-Parser>=3.68:${PORTSDIR}/www/p5-HTML-Parser \
@@ -21,11 +20,11 @@ RUN_DEPENDS=	p5-Getopt-ArgvFile>=1.11:${PORTSDIR}/devel/p5-Getopt-ArgvFile \
 		p5-HTML-Parser>=3.68:${PORTSDIR}/www/p5-HTML-Parser \
 		p5-Umph-Prompt>=0:${PORTSDIR}/multimedia/p5-Umph-Prompt \
 		p5-XML-DOM>=1.44:${PORTSDIR}/textproc/p5-XML-DOM
+
 TEST_DEPENDS=	p5-Test-Pod>=1:${PORTSDIR}/devel/p5-Test-Pod
 
 USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 PLIST_FILES=	bin/gcap man/man1/gcap.1.gz
 

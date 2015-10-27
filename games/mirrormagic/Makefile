@@ -32,10 +32,15 @@ DESKTOP_ENTRIES="Mirror Magic" \
 OPTIONS_DEFINE=	SDL
 OPTIONS_DEFAULT=SDL
 
-SDL_USE=		SDL=image,mixer,sdl
-SDL_ALL_TARGET=		sdl
-SDL_USE_OFF=		XORG=x11,xt
-SDL_ALL_TARGET_OFF=	x11
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MSDL}
+USE_SDL=	image mixer sdl
+ALL_TARGET=	sdl
+.else
+USE_XORG=	x11
+ALL_TARGET=	x11
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|sdl-config|$$(SDL_CONFIG)|g' \

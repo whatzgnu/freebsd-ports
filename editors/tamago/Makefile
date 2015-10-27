@@ -29,6 +29,8 @@ PORTDOCS=	AUTHORS ChangeLog ChangeLog.1997-1998 \
 		README.Debian changelog.Debian
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-build:
 	cd ${WRKSRC}/helper && \
 	    ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_FLAGS} ${MAKEFILE} \
@@ -39,9 +41,9 @@ post-build:
 post-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/helper/egg-helper \
 	    ${STAGEDIR}${PREFIX}/bin/egg-helper
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

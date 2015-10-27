@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mini_magick
-PORTVERSION=	4.2.10
+PORTVERSION=	4.2.7
 CATEGORIES=	graphics rubygems
 MASTER_SITES=	RG
 

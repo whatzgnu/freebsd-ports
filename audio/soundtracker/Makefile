@@ -3,7 +3,7 @@
 
 PORTNAME=	soundtracker
 PORTVERSION=	0.6.8
-PORTREVISION=	17
+PORTREVISION=	16
 CATEGORIES=	audio
 MASTER_SITES=	http://www.soundtracker.org/dl/v${PORTVERSION:R}/
 
@@ -15,7 +15,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libsndfile.so:${PORTSDIR}/audio/libsndfile
 
 GNU_CONFIGURE=	yes
-USES=		compiler pathfix pkgconfig
+USES=		pathfix pkgconfig
 USE_GNOME=	esound gdkpixbuf
 
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -23,7 +23,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 OPTIONS_DEFINE=	JACK SDL NLS
 OPTIONS_DEFINE_i386=	ASM
-OPTIONS_SUB=	yes
 ASM_DESC=	Use optimized assembly (potentially unstable)
 
 CONFIGURE_ARGS+=	--disable-gnome
@@ -32,21 +31,30 @@ DESKTOP_ENTRIES="SoundTracker" "Pattern-oriented music editor" \
 		"${PREFIX}/share/pixmaps/${PORTNAME}.xpm" \
 		"soundtracker" "AudioVideo;Audio;AudioVideoEditing;" false
 
-ASM_CONFIGURE_ON=	--enable-asm
+.include <bsd.port.options.mk>
 
-JACK_LIB_DEPENDS=		libjack.so:${PORTSDIR}/audio/jack
-JACK_CONFIGURE_OFF=	--disable-jack
+.if ${PORT_OPTIONS:MASM}
+CONFIGURE_ARGS+=	--enable-asm
+.endif
 
-SDL_USE=		SDL=sdl
-SDL_CONFIGURE_OFF=	--disable-sdl
+.if ${PORT_OPTIONS:MJACK}
+LIB_DEPENDS+=		libjack.so:${PORTSDIR}/audio/jack
+.else
+CONFIGURE_ARGS+=	--disable-jack
+.endif
 
-NLS_USES=		gettext
-NLS_CONFIGURE_ENABLE=	nls
+.if ${PORT_OPTIONS:MSDL}
+USE_SDL=	sdl
+.else
+CONFIGURE_ARGS+=	--disable-sdl
+.endif
 
-.include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MASM} && ${CHOSEN_COMPILER_TYPE} == "clang"
-CFLAGS+=	-no-integrated-as
+.if ${PORT_OPTIONS:MNLS}
+USES+=		gettext
+PLIST_SUB+=	NLS=""
+.else
+CONFIGURE_ARGS+=	--disable-nls
+PLIST_SUB+=	NLS="@comment "
 .endif
 
 post-patch:
@@ -59,11 +67,13 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|PREFIX"/share/soundtracker|DATADIR"|' \
 		${WRKSRC}/app/gui.c
 
-pre-build-NLS-on:
+pre-build:
+.if ${PORT_OPTIONS:MNLS}
 	cd ${WRKSRC}/po && ${LOCALBASE}/bin/msgfmt -c -o ja.gmo ja.po
+.endif
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/sharp.xpm \
 		${STAGEDIR}${PREFIX}/share/pixmaps/soundtracker.xpm
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	mtl
-PORTVERSION=	2.2.1
+PORTVERSION=	2.1.3.1
+PORTREVISION=	1
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	python-digitalocean
-PORTVERSION=	1.6
+PORTVERSION=	1.3
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	skreuzer@FreeBSD.org
+MAINTAINER=	skreuzer@exit2shell.com
 COMMENT=	API to manage digitalocean.com droplets
 
 LICENSE=	GPLv3

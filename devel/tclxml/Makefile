@@ -6,7 +6,7 @@ PORTVERSION=	3.3
 CATEGORIES=	devel tcl
 MASTER_SITES=	LOCAL/bf SF/tclxml/TclXML/${PORTVERSION}
 
-MAINTAINER=	tcltk@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	API for parsing XML documents using Tcl
 
 LICENSE=	BSD2CLAUSE
@@ -32,16 +32,14 @@ MAKE_ENV+=	TCLLIBPATH=${STAGEDIR}/usr/local/lib
 
 post-patch:
 	@${REINPLACE_CMD} -e '/^TCLSH_ENV[[:blank:]]*=/,/[^\]$$/d' \
-		${WRKSRC}/Makefile.in
-	@${REINPLACE_CMD} -e 's/FreeBSD-\*/FreeBSD-*|DragonFly-*/g' \
-		${WRKSRC}/configure
+	${WRKSRC}/Makefile.in
 
 post-install:
-	(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_ARGS} doc)
+	@cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_ARGS} doc
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	(cd ${WRKSRC}/doc && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR})
+	@cd ${WRKSRC}/doc && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 
 check test: install
-	(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_ARGS} test)
+	@cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_ARGS} test
 
 .include <bsd.port.mk>

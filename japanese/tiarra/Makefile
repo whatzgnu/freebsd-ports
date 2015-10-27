@@ -3,7 +3,7 @@
 
 PORTNAME=	tiarra
 PORTVERSION=	20100212
-PORTREVISION=	7
+PORTREVISION=	5
 CATEGORIES=	japanese irc ipv6
 MASTER_SITES=	http://www.clovery.jp/tiarra/archive/2010/02/
 
@@ -18,9 +18,8 @@ RUN_DEPENDS=	p5-IO-Socket-INET6>=0:${PORTSDIR}/net/p5-IO-Socket-INET6
 USES=		perl5 tar:bzip2 shebangfix
 USE_PERL5=	run
 USE_RC_SUBR=	tiarra
-SHEBANG_FILES=	tiarra makedoc
+SHEBANG_FILES=	tiarra
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 USERS=		${TIARRA_USER}
 GROUPS=		${TIARRA_GROUP}

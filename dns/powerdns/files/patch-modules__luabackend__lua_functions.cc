@@ -4,7 +4,7 @@
    return ret;
  }
  
-+#if !(defined( __i386__) && defined(__FreeBSD__))
++#ifndef __i386__
  bool LUABackend::getValueFromTable(lua_State *lua, const std::string& key, time_t& value) {
    lua_pushstring(lua, key.c_str()); 
    lua_gettable(lua, -2);  

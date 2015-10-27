@@ -17,14 +17,18 @@ MAKE_ARGS=	THREADLIB="-lpthread" XCFLAGS="${CFLAGS}" XLDFLAGS="${LDFLAGS}"
 PLIST_FILES=	bin/flvstreamer bin/streams
 PORTDOCS=	ChangeLog ChangeLog.rtmpdump README
 
-OPTIONS_DEFINE=	DOCS
-
 do-install:
 	cd ${WRKSRC} && ${INSTALL_PROGRAM} ${PLIST_FILES:S,^bin/,,} \
 		${STAGEDIR}${PREFIX}/bin
 
-do-install-DOCS-on:
+OPTIONS_DEFINE=	DOCS
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

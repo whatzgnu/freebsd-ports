@@ -28,6 +28,8 @@ PLIST_SUB=	ONYX_VERSION=${PORTVERSION}
 
 BROKEN_ia64=	Coredump during build on ia64
 
+.include <bsd.port.options.mk>
+
 do-build:
 	@(cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} cook)
 
@@ -49,11 +51,11 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/mod/modprompt/nx/modprompt/modprompt.nx ${STAGEDIR}${DATADIR}/nx/modprompt
 	${INSTALL_MAN} ${WRKSRC}/bin/onyx/man/man1/onyx.1 ${STAGEDIR}${PREFIX}/man/man1
 	${INSTALL_MAN} ${WRKSRC}/bin/onyx_config/man/man1/onyx_config.1 ${STAGEDIR}${PREFIX}/man/man1
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/html
 	(cd ${WRKSRC}/doc/html/onyx && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}/html)
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/pdf
 	${INSTALL_DATA} ${WRKSRC}/doc/pdf/onyx/onyx.pdf ${STAGEDIR}${DOCSDIR}/pdf
+.endif
 
 .include <bsd.port.mk>

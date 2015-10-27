@@ -12,8 +12,7 @@ COMMENT=	Python Simple SOAP Library
 
 LICENSE=	LGPL3
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 USES=		python
 
 GH_ACCOUNT=	py${PORTNAME}

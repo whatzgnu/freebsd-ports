@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	path-pieces
-PORTVERSION=	0.2.0
+PORTVERSION=	0.1.4
+PORTREVISION=	1
 CATEGORIES=	www haskell
 
 MAINTAINER=	haskell@FreeBSD.org

@@ -35,18 +35,31 @@ PORTDOCS=	BUGS PLANS REDUNDANT_REPLAYERS UAE-CREDITS UAE-README \
 		play_loop_state_diagram.txt uade.html
 
 OPTIONS_DEFINE=	TEXTSCOPE FUSE XMMS DOCS
-OPTIONS_SUB=	yes
 
 TEXTSCOPE_DESC=	Audio register debug mode
 XMMS_DESC=	XMMS plugin
 
-TEXTSCOPE_CONFIGURE_WITH=	text-scope
+.include <bsd.port.options.mk>
 
-FUSE_USES=		fuse
-FUSE_CONFIGURE_WITH=	uadefs
+.if ${PORT_OPTIONS:MTEXTSCOPE}
+CONFIGURE_ARGS+=--with-text-scope
+.endif
 
-XMMS_LIB_DEPENDS=	libxmms.so:${PORTSDIR}/multimedia/xmms
-XMMS_CONFIGURE_WITH=	xmms
+.if ${PORT_OPTIONS:MFUSE}
+USES+=		fuse
+PLIST_SUB+=	FUSE=""
+.else
+CONFIGURE_ARGS+=--without-uadefs
+PLIST_SUB+=	FUSE="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MXMMS}
+LIB_DEPENDS+=	libxmms.so:${PORTSDIR}/multimedia/xmms
+PLIST_SUB+=	XMMS=""
+.else
+CONFIGURE_ARGS+=--without-xmms
+PLIST_SUB+=	XMMS="@comment "
+.endif
 
 post-extract:
 	@${RM} -rf ${WRKSRC}/players/S

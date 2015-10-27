@@ -21,6 +21,8 @@ PORTDOCS=	readme.txt
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/esmska.jar ${STAGEDIR}${DATADIR}/
@@ -30,10 +32,12 @@ do-install:
 	(cd ${WRKSRC}/ && ${COPYTREE_SHARE} license ${STAGEDIR}${DATADIR}/)
 	${INSTALL_SCRIPT} ${WRKDIR}/esmska ${STAGEDIR}${PREFIX}/bin/
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}/
 .endfor
+.endif
 
 .include <bsd.port.mk>

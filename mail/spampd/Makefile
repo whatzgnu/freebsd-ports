@@ -2,14 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	spampd
-PORTVERSION=	2.42
-PORTREVISION=	1
+PORTVERSION=	2.30
+PORTREVISION=	5
 CATEGORIES=	mail perl5
+MASTER_SITES=	http://www.worlddesign.com/Content/rd/mta/spampd/
 
-MAINTAINER=	des@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Spamassassin SMTP Proxy
-
-LICENSE=	GPLv2
 
 RUN_DEPENDS=	spamc:${PORTSDIR}/mail/spamassassin \
 		p5-Net-Server>=0:${PORTSDIR}/net/p5-Net-Server
@@ -17,14 +16,10 @@ RUN_DEPENDS=	spamc:${PORTSDIR}/mail/spamassassin \
 NO_BUILD=	yes
 PLIST_FILES=	sbin/spampd
 USES=		perl5 shebangfix
-SHEBANG_FILES=	spampd.pl
-SUB_LIST=	PERL=${PERL}
+SHEBANG_FILES=	spampd
 USE_RC_SUBR=	spampd
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	mpaperno
-
 do-install:
-	${INSTALL_SCRIPT} ${WRKSRC}/spampd.pl ${STAGEDIR}${PREFIX}/sbin/spampd
+	@${INSTALL_SCRIPT} ${WRKSRC}/spampd ${STAGEDIR}${PREFIX}/sbin
 
 .include <bsd.port.mk>

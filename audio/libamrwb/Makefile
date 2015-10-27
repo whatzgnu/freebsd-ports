@@ -40,11 +40,15 @@ OPTIONS_DEFINE=	DOCS
 
 SRC26204=	26204-b00.zip
 
-post-extract:
-	@${CP} ${_DISTDIR}/${SRC26204} ${WRKSRC}
+.include <bsd.port.options.mk>
 
-post-install-DOCS-on:
+post-extract:
+	@${CP} ${_DISTDIR}/${SRC26204} ${WRKSRC}/
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	@cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	@cd ${WRKSRC}/ && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}/
+.endif
 
 .include <bsd.port.mk>

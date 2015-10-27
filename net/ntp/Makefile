@@ -3,7 +3,6 @@
 
 PORTNAME=	ntp
 PORTVERSION=	4.2.8p3
-PORTREVISION=	1
 CATEGORIES=	net ipv6
 MASTER_SITES=	http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ \
 		http://archive.ntp.org/ntp4/ntp-4.2/ \
@@ -17,7 +16,7 @@ CONFLICTS=	ntp-rc-* ntp-devel-*
 
 GNU_CONFIGURE=	yes
 OPTIONS_SUB=	yes
-USES=		cpe pathfix shebangfix libedit libtool pkgconfig
+USES=		cpe pathfix shebangfix libtool pkgconfig
 LIB_DEPENDS=	libevent.so:${PORTSDIR}/devel/libevent2
 
 SHEBANG_FILES=	scripts/ntptrace/ntptrace.in \
@@ -38,11 +37,17 @@ NTP_SIGND_CONFIGURE_ENABLE=	ntp-signd
 NTPSNMPD_LIB_DEPENDS=	libnetsnmp.so:${PORTSDIR}/net-mgmt/net-snmp
 NTPSNMPD_CONFIGURE_OFF=	--without-ntpsnmpd
 
-SSL_CONFIGURE_ON=	--with-openssl-incdir=${OPENSSLINC} \
+.include <bsd.port.pre.mk>
+
+.if ${PORT_OPTIONS:MSSL}
+CONFIGURE_ARGS+=	--with-openssl-incdir=${OPENSSLINC} \
 			--with-openssl-libdir=${OPENSSLLIB}
+.endif
 
 .for D in ${NTP_DRIVERS}
-${D}_CONFIGURE_ON=	--enable-${D}
+.if ${PORT_OPTIONS:M${D}}
+CONFIGURE_ARGS+=	--enable-${D}
+.endif
 .endfor
 
 # XXX Temporary hack. Remember to remove this next commit.
@@ -58,4 +63,4 @@ post-install:
 	@cd ${WRKSRC}/html && ${FIND} . -print | \
 		${CPIO} -pdu -R ${SHAREOWN}:${SHAREGRP} --quiet ${STAGEDIR}${DOCSDIR}
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

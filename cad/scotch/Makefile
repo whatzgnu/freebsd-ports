@@ -61,7 +61,7 @@ PLIST_SUB+=	MPI=""
 PLIST_SUB+=	MPI="@comment "
 .endif
 
-.include <bsd.port.options.mk>
+.include <bsd.port.pre.mk>
 
 .if ${ARCH} == "i386"
 MF=	i686
@@ -90,14 +90,16 @@ do-install:
 	${INSTALL_DATA} ${INCS:S|^|${WRKSRC}/include/|} ${STAGEDIR}${PREFIX}/include
 	${INSTALL_DATA} ${LIBS:S|^|${WRKSRC}/lib/|} ${STAGEDIR}${PREFIX}/lib
 	${INSTALL_MAN} ${WRKSRC}/man/man1/* ${STAGEDIR}${MANPREFIX}/man/man1
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/doc/|} ${STAGEDIR}${DOCSDIR}
-do-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/grf ${STAGEDIR}${EXAMPLESDIR}/tgt
 	${INSTALL_DATA} ${EXAMPLES:S|^|${WRKSRC}/examples/|} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/grf/* ${STAGEDIR}${EXAMPLESDIR}/grf
 	${INSTALL_DATA} ${WRKSRC}/tgt/* ${STAGEDIR}${EXAMPLESDIR}/tgt
+.endif
 
 .if defined(MAINTAINER_MODE)
 regression-test:	install
@@ -113,4 +115,4 @@ regression-test:	install
 . endif
 .endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

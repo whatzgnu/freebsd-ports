@@ -15,6 +15,7 @@ LLVM_SUFFIX=	${PORTVERSION:S/.//g}
 LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
+UNIQUENAME=	${PORTNAME}${LLVM_SUFFIX}
 
 USES=		execinfo gmake perl5
 GNU_CONFIGURE=	yes
@@ -163,16 +164,14 @@ post-patch:
 	    -e 's|lit\.|lit${LLVM_SUFFIX}.|' \
 	    ${WRKSRC}/utils/lit/lit.py ${WRKSRC}/utils/lit/lit/*.py
 
-post-configure:
 .if ${PORT_OPTIONS:MCMAKE}
+post-configure:
 	${MKDIR} ${WRKDIR}/cmake
 	cd ${WRKDIR}/cmake && cmake -DPYTHON_EXECUTABLE=${PYTHON_CMD} -G "Unix Makefiles" ${WRKSRC}
 	${REINPLACE_CMD} -e 's|${WRKDIR}/cmake|${LLVM_PREFIX}|' \
 	    -e 's|${WRKSRC}/cmake/modules|${DATADIR}/cmake|' \
 	    ${WRKDIR}/cmake/share/llvm/cmake/LLVMConfig.cmake
 .endif
-	@${REINPLACE_CMD} -e 's|#define HAVE_MACH_MACH_H 1||g' \
-		${WRKSRC}/include/llvm/Config/config.h
 
 post-build:
 .if ${PORT_OPTIONS:MMANPAGES}

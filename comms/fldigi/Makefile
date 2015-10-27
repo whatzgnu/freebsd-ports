@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	fldigi
-PORTVERSION=	3.22.13
+PORTVERSION=	3.22.10
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://www.w1hkj.com/downloads/fldigi/\
 		LOCAL/shurd
@@ -22,7 +22,7 @@ LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo \
 
 USE_CXXSTD=	gnu++0x
 GNU_CONFIGURE=	yes
-USES=		compiler:c++11-lib gmake perl5 pkgconfig shebangfix
+USES=		gmake pkgconfig compiler:c++11-lib perl5 shebangfix
 CONFIGURE_ENV=	FLTK_CONFIG="${LOCALBASE}/bin/fltk-config" \
 		    EXTRA_LIBS="-lexecinfo"
 
@@ -54,8 +54,14 @@ HAMLIB_LIB_DEPENDS=		libhamlib.so:${PORTSDIR}/comms/hamlib
 NLS_CONFIGURE_ENABLE=		nls
 NLS_USES=			gettext
 
-BROKEN_sparc64=		Fails to install
+.include <bsd.port.pre.mk>
 
+.if ${ARCH} == "sparc64"
+BROKEN=		Fails to install
+.endif
+.if ${PORT_OPTIONS:MFLARQ}
+MAN1+=		flarq.1
+.endif
 PLIST_SUB+=	XMLRPC=""
 # Always need asciidoc for man pages
 CONFIGURE_ARGS+=--with-asciidoc
@@ -73,8 +79,10 @@ post-configure:
 	${RM} ${WRKSRC}/doc/*.1
 
 post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/guide.html ${STAGEDIR}${DOCSDIR}
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

@@ -41,14 +41,21 @@ CONVERTER_CMAKE_ON=	-DBUILD_CONVERTER=ON
 
 OPTIONS_SUB=	yes
 
-post-stage-GEN_CRQ-on:
+.include <bsd.port.options.mk>
+
+post-stage:
+.if ${PORT_OPTIONS:MGEN_CRQ}
 	${INSTALL_PROGRAM} ${WRKSRC}/src/gen_crq ${STAGEDIR}${PREFIX}/bin
-post-stage-LOAD_CERT-on:
+.endif
+.if ${PORT_OPTIONS:MLOAD_CERT}
 	${INSTALL_PROGRAM} ${WRKSRC}/src/load_cert ${STAGEDIR}${PREFIX}/bin
-post-stage-STATION_LOC-on:
+.endif
+.if ${PORT_OPTIONS:MSTATION_LOC}
 	${INSTALL_PROGRAM} ${WRKSRC}/src/station_loc ${STAGEDIR}${PREFIX}/bin
-post-stage-CONVERTER-on:
+.endif
+.if ${PORT_OPTIONS:MCONVERTER}
 	${INSTALL_PROGRAM} ${WRKSRC}/src/converter ${STAGEDIR}${PREFIX}/bin
+.endif
 
 post-patch:
 	@${SED} -e 's:%%PREFIX%%:${PREFIX}:g' \

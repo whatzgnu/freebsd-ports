@@ -17,7 +17,11 @@ SUB_FILES=	pkg-message
 OPTIONS_DEFINE=	VI_BINDINGS
 VI_BINDINGS_DESC=	Use vi-like key bindings
 
-VI_BINDINGS_EXTRA_PATCHES=	${FILESDIR}/extra-patch-vi
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MVI_BINDINGS}
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-vi
+.endif
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/juke.conf ${STAGEDIR}${PREFIX}/etc/juke.conf.sample

@@ -23,7 +23,6 @@ USES=		perl5 shebangfix
 SHEBANG_FILES=	userneu.pl smbrepair.pl
 USE_PERL5=	run
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 CONFLICTS=	userneu-1.*
 
@@ -34,6 +33,8 @@ PORTDOCS=	${LDOCS1} ${LDOCS2}
 EXAMPLES=	userlist userneu.conf.example
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 do-install:
 	cd ${WRKSRC}/doc && ${INSTALL_MAN} userneu.8 ${STAGEDIR}${MANPREFIX}/man/man8
 	cd ${WRKSRC}/doc && ${INSTALL_MAN} userneu.conf.5 ${STAGEDIR}${MANPREFIX}/man/man5
@@ -41,10 +42,10 @@ do-install:
 	${LN} -sf userneu.pl ${STAGEDIR}${PREFIX}/sbin/userquick
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${EXAMPLES} ${STAGEDIR}${EXAMPLESDIR}
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${LDOCS1} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/doc && ${INSTALL_DATA} ${LDOCS2} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

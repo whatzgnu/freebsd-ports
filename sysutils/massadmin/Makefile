@@ -6,7 +6,7 @@ PORTVERSION=	2.3
 CATEGORIES=	sysutils
 MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	sklauder@trimind.de
 COMMENT=	Send system commands to a group of remote servers simultaneously
 
 LICENSE=	GPLv3
@@ -19,7 +19,6 @@ RUN_DEPENDS=	p5-Expect>=1.21:${PORTSDIR}/lang/p5-Expect \
 
 USES=		perl5 shebangfix
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 SHEBANG_FILES=	${WRKSRC}/${PORTNAME}
 PLIST_FILES=	bin/massadmin man/man1/massadmin.1.gz

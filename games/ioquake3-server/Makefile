@@ -7,6 +7,7 @@ PKGNAMESUFFIX=	-server
 MAINTAINER=	kamikaze@bsdforen.de
 COMMENT=	Ioquake3 dedicated server
 
+UNIQUENAME=	${PORTNAME}${PKGNAMESUFFIX}
 MASTERDIR=	${.CURDIR}/../${PORTNAME}
 
 IOQ3=		SERVER GAMELIBS

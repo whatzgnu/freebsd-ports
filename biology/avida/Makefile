@@ -12,7 +12,7 @@ COMMENT=	Auto-adaptive genetic system designed for ALife research
 
 LICENSE=	GPLv3
 
-BROKEN_sparc64=	missing atomics implementation
+OPTIONS_DEFINE=	DOCS
 
 USES=		cmake:outsource ncurses
 CMAKE_ARGS=	-DAPTO_UNIT_TESTS:BOOL=OFF -DAVD_UNIT_TESTS:BOOL=OFF
@@ -30,7 +30,11 @@ DATA_FILES=	analyze.cfg avida.cfg default-gx.org \
 		instset-heads-sex.cfg instset-heads.cfg instset-smt.cfg \
 		instset-transsmt.cfg
 
-OPTIONS_DEFINE=	DOCS
+BROKEN_ia64=	Does not compile: invokes i386 asm
+BROKEN_powerpc=	Does not compile: invokes i386 asm
+BROKEN_sparc64=	Does not compile: invokes i386 asm
+
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${FIND} ${WRKSRC} -name "CMakeLists.txt" | ${XARGS} \
@@ -39,8 +43,6 @@ post-patch:
 		 s| pthread| -pthread|'
 	@${REINPLACE_CMD} -e '/long long int/s|std::abs|llabs|' \
 		${WRKSRC}/avida-core/source/main/cPopulationInterface.cc
-	@${REINPLACE_CMD} -e '/__PPC__/s|linux|${OPSYS}|' \
-		${WRKSRC}/libs/tcmalloc-1.4/src/atomicops.h
 
 pre-build:
 .for exec in ${BIN_FILES}
@@ -51,19 +53,20 @@ pre-build:
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}
 .for exec in ${BIN_FILES}
-	${INSTALL_SCRIPT} ${WRKSRC}/${exec}.sh \
-		${STAGEDIR}${PREFIX}/bin/${exec}
-	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/bin/${exec} \
-		${STAGEDIR}${PREFIX}/lib/${PORTNAME}
+	(cd ${WRKSRC} && ${INSTALL_SCRIPT} ${exec}.sh \
+		${STAGEDIR}${PREFIX}/bin/${exec})
+	(cd ${BUILD_WRKSRC}/bin && ${INSTALL_PROGRAM} ${exec} \
+		${STAGEDIR}${PREFIX}/lib/${PORTNAME})
 .endfor
-	${INSTALL_DATA} \
-		${WRKSRC}/avida-core/support/config/*.cfg \
-		${WRKSRC}/avida-core/support/config/*.org \
-			${STAGEDIR}${PREFIX}/lib/${PORTNAME}
+	(cd ${WRKSRC}/avida-core/support/config && ${INSTALL_DATA} *.cfg \
+		${STAGEDIR}${PREFIX}/lib/${PORTNAME})
+	(cd ${WRKSRC}/avida-core/support/config && ${INSTALL_DATA} *.org \
+		${STAGEDIR}${PREFIX}/lib/${PORTNAME})
 
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	@(cd ${WRKSRC}/avida-core/documentation && ${COPYTREE_SHARE} . \
 		${STAGEDIR}${DOCSDIR})
+.endif
 
 .include <bsd.port.mk>

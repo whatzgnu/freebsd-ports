@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	hxt-unicode
-PORTVERSION=	9.0.2.4
+PORTVERSION=	9.0.2.2
+PORTREVISION=	1
 CATEGORIES=	textproc haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -9,7 +10,7 @@ COMMENT=	Unicode en-/decoding functions for utf8, iso-latin-* and other encoding
 
 LICENSE=	MIT
 
-USE_CABAL=	hxt-charproperties>=9.0
+USE_CABAL=	hxt-charproperties>=9
 
 .include "${.CURDIR}/../../lang/ghc/bsd.cabal.mk"
 .include <bsd.port.mk>

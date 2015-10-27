@@ -28,9 +28,13 @@ OPTIONS_DEFAULT=	NLS
 OPTIONS_SUB=	yes
 NLS_USES=	gettext
 
-post-patch-NLS-off:
+.include <bsd.port.options.mk>
+
+post-patch:
+.if ! ${PORT_OPTIONS:MNLS}
 	@${REINPLACE_CMD} -e '/\.load(/s/ intltool//' \
 		-e '/recurse/s/ po//' ${WRKSRC}/wscript
+.endif
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}

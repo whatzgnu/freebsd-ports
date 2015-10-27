@@ -8,7 +8,7 @@ MASTER_SITES=	http://camlp5.gforge.inria.fr/distrib/src/ \
 		http://cristal.inria.fr/~ddr/camlp5/distrib/src/ \
 		http://pauillac.inria.fr/~ddr/camlp5/distrib/src/
 PKGNAMEPREFIX=	ocaml-
-DIST_SUBDIR=	${PKGBASE}
+DIST_SUBDIR=	${UNIQUENAME}
 
 PATCH_SITES=	${MASTER_SITES}
 

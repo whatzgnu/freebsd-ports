@@ -30,6 +30,8 @@ PORTDOCS=	FiSH-xchat.txt \
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	${RM} -f ${WRKSRC}/mir*
 	${CP} -pf ${FILESDIR}/Makefile ${WRKSRC}/
@@ -38,9 +40,9 @@ do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/xchat/plugins
 	${INSTALL_PROGRAM} ${WRKSRC}/xfish.so \
 		${STAGEDIR}${PREFIX}/lib/xchat/plugins/
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}/
+.endif
 
 .include <bsd.port.mk>

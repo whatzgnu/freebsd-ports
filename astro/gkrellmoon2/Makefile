@@ -3,7 +3,7 @@
 
 PORTNAME=	gkrellmoon2
 PORTVERSION=	0.6
-PORTREVISION=	10
+PORTREVISION=	9
 CATEGORIES=	astro
 MASTER_SITES=	SF/gkrellmoon/gkrellmoon/${PORTVERSION}
 DISTNAME=	gkrellmoon-${PORTVERSION}
@@ -14,9 +14,6 @@ COMMENT=	Moon clock plugin for Gkrellm2
 BUILD_DEPENDS=	${LOCALBASE}/include/gkrellm2/gkrellm.h:${PORTSDIR}/sysutils/gkrellm2
 RUN_DEPENDS=	gkrellm:${PORTSDIR}/sysutils/gkrellm2
 
-LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 USES=		pkgconfig
 USE_GNOME=	gtk20
 
@@ -26,7 +23,7 @@ OPTIONS_DEFINE=	DOCS
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/libexec/gkrellm2/plugins
-	${INSTALL_LIB} ${WRKSRC}/gkrellmoon.so \
+	${INSTALL_DATA} ${WRKSRC}/gkrellmoon.so \
 		${STAGEDIR}${PREFIX}/libexec/gkrellm2/plugins
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}

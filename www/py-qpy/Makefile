@@ -13,6 +13,7 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Generating safely-quoted html text from python code
 
 OPTIONS_DEFINE=	DOCS
+OPTIONSFILE=	${PORT_DBDIR}/py-${PORTNAME}/options
 
 USE_PYTHON=	autoplist distutils
 USES=		python:2

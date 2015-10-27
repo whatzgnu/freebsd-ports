@@ -3,7 +3,6 @@
 
 PORTNAME=	hiera-file
 PORTVERSION=	1.1.1
-PORTREVISION=	1
 CATEGORIES=	sysutils rubygems
 MASTER_SITES=	RG
 
@@ -16,6 +15,6 @@ USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 
-RUN_DEPENDS=	${PKGNAMEPREFIX}hiera1>=0:${PORTSDIR}/sysutils/rubygem-hiera1
+RUN_DEPENDS=	${PKGNAMEPREFIX}hiera>=0:${PORTSDIR}/sysutils/rubygem-hiera
 
 .include <bsd.port.mk>

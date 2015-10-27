@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Finance-QuoteHist
-PORTVERSION=	1.24
+PORTVERSION=	1.23
 CATEGORIES=	finance perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -21,7 +21,6 @@ BUILD_DEPENDS=	p5-Date-Manip>=0:${PORTSDIR}/devel/p5-Date-Manip \
 		p5-libwww>=0:${PORTSDIR}/www/p5-libwww
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 

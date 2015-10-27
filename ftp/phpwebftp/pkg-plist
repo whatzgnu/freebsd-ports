@@ -65,4 +65,3 @@
 %%WWWDIR%%/index.php
 %%WWWDIR%%/style/cm.css
 %%WWWDIR%%/style/index.html
-@dir %%WWWDIR%%/tmp

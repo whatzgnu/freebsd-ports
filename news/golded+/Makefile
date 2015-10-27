@@ -24,8 +24,13 @@ SUB_FILES=	pkg-message
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-DOCS_SUB_LIST=	NOTEWORK="Please read the ${DOCSDIR}/notework.txt before using ${PORTNAME}"
-DOCS_SUB_LIST_OFF=	NOTEWORK=""
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+SUB_LIST=	NOTEWORK="Please read the ${DOCSDIR}/notework.txt before using ${PORTNAME}"
+.else
+SUB_LIST=	NOTEWORK=""
+.endif
 
 post-patch:
 	@${SED}\
@@ -47,8 +52,6 @@ do-install:
 	${FIND} ${WRKSRC}/cfgs/$i -maxdepth 1 -type f |\
 		${XARGS} -n 1 -J @ ${INSTALL_DATA} @ ${STAGEDIR}${EXAMPLESDIR}/$i
 .endfor
-
-do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/manuals/gold_ref.txt ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/manuals/gold_usr.txt ${STAGEDIR}${DOCSDIR}

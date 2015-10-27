@@ -1,2 +1,4 @@
 bin/opentracker
-@sample %%ETCDIR%%/opentracker.conf.sample
+@unexec if cmp -s %D/%%ETCDIR%%/opentracker.conf.sample %D/%%ETCDIR%%/opentracker.conf; then rm -f %D/%%ETCDIR%%/opentracker.conf; fi
+%%ETCDIR%%/opentracker.conf.sample
+@exec cp -np %D/%F %B/opentracker.conf

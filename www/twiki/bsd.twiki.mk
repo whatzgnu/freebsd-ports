@@ -20,7 +20,6 @@ MASTER_SITES?=	http://www.sourcehosting.net/freebsd/distfiles/ \
 CATEGORIES?=	www
 SVNURL?=	http://svn.twiki.org/svn/twiki/trunk/${PNAME}
 NO_BUILD=	yes
-NO_ARCH=	yes
 TWDIR?=		${PREFIX}/share/twiki/${PNAME}
 WWWDIR?=	${PREFIX}/www/twiki
 PLIST_SUB+=	TWDIR="share/twiki/${PNAME}"

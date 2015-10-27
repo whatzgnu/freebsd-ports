@@ -23,6 +23,8 @@ STRIP=		# stripping can break go binaries
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e "s/BUILT_FROM_SOURCE/${PORTVERSION}/g" ${WRKSRC}/cf/app_constants.go
 	@cd ${WRKSRC} ; ${MKDIR} Godeps/_workspace/src/github.com/${GH_ACCOUNT}/${GH_PROJECT} ; \
@@ -44,11 +46,11 @@ do-build:
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/out/cf \
 		${STAGEDIR}${PREFIX}/bin/
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for x in ${PORTDOCS}
 	${INSTALL_MAN} ${WRKSRC}/${x} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

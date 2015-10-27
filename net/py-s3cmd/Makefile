@@ -12,21 +12,21 @@ COMMENT=	Unix-like tools to manipulate stored files from the command line
 
 LICENSE=	GPLv2
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dateutil>0:${PORTSDIR}/devel/py-dateutil
-
 USES=		python:2
 USE_PYTHON=	autoplist distutils
-NO_ARCH=	yes
+
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}dateutil>0:${PORTSDIR}/devel/py-dateutil
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	${REINPLACE_CMD} -e 's,share/man,man,' ${WRKSRC}/setup.py
-
-post-patch-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${REINPLACE_CMD} -e 's,doc/packages,doc,' ${WRKSRC}/setup.py
-
-post-patch-DOCS-off:
+.else
 	${REINPLACE_CMD} -e '/(doc_path+/d' ${WRKSRC}/setup.py
+.endif
 
 .include <bsd.port.mk>

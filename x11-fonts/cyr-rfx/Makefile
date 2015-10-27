@@ -16,7 +16,7 @@ COMMENT=	Cyrillic X11 bitmap fonts from CYR-RFX project
 BUILD_DEPENDS=	bdftopcf:${PORTSDIR}/x11-fonts/bdftopcf \
 		mkfontdir:${PORTSDIR}/x11-fonts/mkfontdir
 
-USES=		fonts
+USES=		fonts fmake
 USE_XORG=	x11
 
 CYR_RFX_ENCODING?=	koi8-o

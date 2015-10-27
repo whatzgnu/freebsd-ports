@@ -3,7 +3,7 @@
 
 PORTNAME=	tkhylafax
 PORTVERSION=	3.2b
-PORTREVISION=	6
+PORTREVISION=	5
 CATEGORIES=	comms tk
 MASTER_SITES=	ftp://ftp.hylafax.org/contrib/tkhylafax/
 DISTNAME=	${PORTNAME}-${PORTVERSION:S/b/beta/}
@@ -14,7 +14,7 @@ COMMENT=	Tcl/tk interface to Sam Leffler's fax package
 RUN_DEPENDS=	sendfax:${PORTSDIR}/comms/hylafax \
 		gv:${PORTSDIR}/print/gv
 
-USES=		tk:run
+USES+=		ghostscript:run tk:run
 
 WRKSRC=		${WRKDIR}/tkhylafax
 MAKE_ARGS=	STAGEDIR=${STAGEDIR} PREFIX=${STAGEDIR}${PREFIX} TCLSH=${TCLSH} WISH=${WISH}

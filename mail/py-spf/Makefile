@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	spf
-PORTVERSION=	2.0.12
-PORTREVISION=	1
+PORTVERSION=	2.0.11
 CATEGORIES=	mail python
 MASTER_SITES=	SF/pymilter/py${PORTNAME}/py${PORTNAME}-${PORTVERSION}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,8 +13,7 @@ COMMENT=	Python implementation of the RFC 4408 SPF protocol
 
 LICENSE=	PSFL
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 USES=		python shebangfix
 
 PLIST_FILES=	bin/spf.py

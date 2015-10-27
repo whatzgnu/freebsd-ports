@@ -25,7 +25,7 @@ SRCCONF=	/dev/null
 MAKE_ENV+=	LDADD="${LDADD}" SHLIB_MAJOR="${SHLIB_MAJOR}" \
 		SRCCONF="${SRCCONF}"
 
-OPTIONS_DEFINE=	DOCS
+.include <bsd.port.options.mk>
 
 post-extract:
 	${CP} ${_DISTDIR}/[dir]1mach.f ${WRKSRC}/src/machcon
@@ -44,8 +44,10 @@ post-patch:
 do-install:
 	${INSTALL_DATA} ${WRKSRC}/libcm.a ${STAGEDIR}${PREFIX}/lib
 
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
+.endif
 
 .include <bsd.port.mk>

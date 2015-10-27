@@ -22,6 +22,8 @@ PORTDOCS=	*
 DOCS_DISTFILES+=	${PORTNAME}-${PORTVERSION}-manual.pdf \
 			${PORTNAME}-${PORTVERSION}-manual.tar.gz
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e '/^PREFIX=/s|/usr/local|${PREFIX}|' \
 	    ${WRKSRC}/Makefile
@@ -31,10 +33,10 @@ post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/bibhva
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/hevea
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/hacha
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/doc/hevea
 	${INSTALL_DATA} ${DISTDIR}/${PORTNAME}-${PORTVERSION}-manual.pdf ${STAGEDIR}${PREFIX}/share/doc/hevea
 	(cd ${STAGEDIR}${PREFIX}/share/doc/hevea; ${TAR} xvfz ${DISTDIR}/${PORTNAME}-${PORTVERSION}-manual.tar.gz)
+.endif
 
 .include <bsd.port.mk>

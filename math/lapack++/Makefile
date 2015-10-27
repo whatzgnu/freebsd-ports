@@ -9,7 +9,6 @@ MASTER_SITES=	SF/lapackpp \
 DISTNAME=	lapackpp-${PORTVERSION}
 DIST_SUBDIR=	lapackpp
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	maho@FreeBSD.org
 COMMENT=	Linear Algebra PACKage in C++, a wrapper for LAPACK
@@ -34,9 +33,14 @@ LAPACK_LIB=	-L${LOCALBASE}/lib ${LAPACKLIB}
 #lapack++ forces to use atlas when detected, so we should disable here.
 CONFIGURE_ARGS+=	--with-blas="${BLAS_LIB}" --with-lapack="${LAPACK_LIB}" --disable-atlas --enable-static
 
-DOCS_DISTFILES=	lapack++.ps.gz:doc lapackpp1_1.ps.gz:doc lapackppman1_1.ps.gz:doc lapack++_install.ps.gz:doc
+.include <bsd.port.options.mk>
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+DISTFILES+=	${DISTNAME}${EXTRACT_SUFX} lapack++.ps.gz:doc lapackpp1_1.ps.gz:doc \
+		lapackppman1_1.ps.gz:doc lapack++_install.ps.gz:doc
+.endif
+
+post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/lapack++.ps.gz ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/lapack++_install.ps.gz ${STAGEDIR}${DOCSDIR}

@@ -2,13 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	cimg
-DISTVERSIONPREFIX=	v
-DISTVERSION=	1.6.4
+PORTVERSION=	1.6.2
 PORTEPOCH=	3
 CATEGORIES=	graphics devel
+MASTER_SITES=	SF/${PORTNAME}		\
+		SF/${PORTNAME}/older_versions
+DISTNAME=	CImg_${PORTVERSION}
+DIST_SUBDIR=	${PORTNAME}-${PORTVERSION}_${TARBALLREVISION}
 
 MAINTAINER=	thierry@FreeBSD.org
-COMMENT=	C++ Template Image Processing Library
+COMMENT=	The C++ Template Image Processing Library
 
 LICENSE=	CeCILL_C CeCILL
 LICENSE_COMB=	dual
@@ -22,9 +25,8 @@ LICENSE_PERMS_CeCILL=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 ONLY_FOR_ARCHS=	i386 amd64
 ONLY_FOR_ARCHS_REASON=	"invokes i386 asm"
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	dtschump
-GH_PROJECT=	CImg
+TARBALLREVISION=0
+USES=		zip
 
 .if !defined(WITHOUT_LAPACK)
 . if defined(WITH_ATLAS)
@@ -34,17 +36,18 @@ USES+=		blaslapack
 . endif
 .endif
 
+WRKSRC=		${WRKDIR}/${DISTNAME:C/_/-/}
 BUILD_WRKSRC=	${WRKSRC}/examples
+MAKE_ENV=	X11PATH=${LOCALBASE} LOCALBASE=${LOCALBASE}
+CPPFLAGS+=	${CFLAGS}
+LDFLAGS+=	-lpthread
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MDOCS} || ${PORT_OPTIONS:MEXAMPLES}
-USES+=		gmake
-.endif
-
 .if ${PORT_OPTIONS:MDOCS}
+USES+=		gmake
 REINPLACE_ARGS=	-i ""
 LIB_DEPENDS+=	libboard.so:${PORTSDIR}/graphics/libboard
 
@@ -97,13 +100,12 @@ NO_BUILD=	yes
 
 .include <bsd.port.pre.mk>
 
-pre-configure-DOCS-on:
-	${REINPLACE_CMD} -e 's|make|${MAKE_CMD}|' ${BUILD_WRKSRC}/Makefile
-
-pre-configure-DOCS-off:
-	${REINPLACE_CMD} -e 's|^OPTFLAGS|#OPTFLAGS|' ${BUILD_WRKSRC}/Makefile
-
 pre-configure:
+.if ${PORT_OPTIONS:MDOCS}
+	${REINPLACE_CMD} -e 's|make|${MAKE_CMD}|' ${BUILD_WRKSRC}/Makefile
+.else
+	${REINPLACE_CMD} -e 's|^OPTFLAGS|#OPTFLAGS|' ${BUILD_WRKSRC}/Makefile
+.endif
 . if !defined(WITHOUT_FFMPEG)
 	${REINPLACE_CMD} -e 's|#CIMG_FFMPEG_CFLAGS|CIMG_FFMPEG_CFLAGS|'	\
 		-e 's|#CIMG_FFMPEG_LDFLAGS|CIMG_FFMPEG_LDFLAGS|'	\
@@ -124,16 +126,16 @@ pre-configure:
 
 do-install:
 	${INSTALL_DATA} ${WRKSRC}/CImg.h ${STAGEDIR}${PREFIX}/include
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${INSTALL_PROGRAM} ${PROGS:C|^|${BUILD_WRKSRC}/|} ${STAGEDIR}${PREFIX}/bin
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOCBASE:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
-
-do-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${CP} -R ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
 	@(cd ${STAGEDIR}${EXAMPLESDIR} && ${MAKE_CMD} clean)
 	@${RM} ${STAGEDIR}${EXAMPLESDIR}/*.orig
+.endif
 
 .include <bsd.port.post.mk>

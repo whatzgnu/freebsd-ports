@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	brainfuck
-PORTVERSION=	0.1.0.2
+PORTVERSION=	0.1
+PORTREVISION=	15
 CATEGORIES=	lang haskell
 
 MAINTAINER=	haskell@FreeBSD.org
-COMMENT=	Brainfuck interpreter
+COMMENT=	Brainfuck interpreter written in Haskell
 
 LICENSE=	GPLv2
 

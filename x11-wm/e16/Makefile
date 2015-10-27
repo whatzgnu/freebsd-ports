@@ -10,7 +10,6 @@ MAINTAINER=	enlightenment@FreeBSD.org
 COMMENT=	Enlightenment DR16 window manager
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libImlib2.so:${PORTSDIR}/graphics/imlib2
 
@@ -38,12 +37,14 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-dependency-tracking \
 		--disable-rpath --enable-mans SHELL=/bin/sh
 
-post-patch:
-	${REINPLACE_CMD} -e 's|$$(USER)|${SHAREOWN}:${SHAREGRP}|g' \
-	    ${WRKSRC}/themes/Makefile.am ${WRKSRC}/themes/Makefile.in
+.include <bsd.port.options.mk>
 
-post-patch-DOCS-off:
+post-patch:
+.if !${PORT_OPTIONS:MDOCS}
 	${REINPLACE_CMD} -e '/^SUBDIRS/s|docs ||' \
 	    ${WRKSRC}/Makefile.am ${WRKSRC}/Makefile.in
+.endif
+	${REINPLACE_CMD} -e 's|$$(USER)|${SHAREOWN}:${SHAREGRP}|g' \
+	    ${WRKSRC}/themes/Makefile.am ${WRKSRC}/themes/Makefile.in
 
 .include <bsd.port.mk>

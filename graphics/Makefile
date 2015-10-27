@@ -15,15 +15,12 @@
     SUBDIR += ImageMagick7-nox11
     SUBDIR += O2-tools
     SUBDIR += OpenEXR
-    SUBDIR += R-cran-DiagrammeR
     SUBDIR += R-cran-GDD
     SUBDIR += R-cran-RColorBrewer
     SUBDIR += R-cran-colorspace
     SUBDIR += R-cran-diagram
     SUBDIR += R-cran-dichromat
-    SUBDIR += R-cran-dygraphs
     SUBDIR += R-cran-ggplot2
-    SUBDIR += R-cran-gridBase
     SUBDIR += R-cran-munsell
     SUBDIR += R-cran-pixmap
     SUBDIR += R-cran-png
@@ -47,7 +44,6 @@
     SUBDIR += aoi
     SUBDIR += apngasm
     SUBDIR += apngdis
-    SUBDIR += appleseed
     SUBDIR += apvlv
     SUBDIR += aqsis
     SUBDIR += argyllcms
@@ -329,7 +325,6 @@
     SUBDIR += guilib
     SUBDIR += gwenview-kde4
     SUBDIR += gx
-    SUBDIR += hdr_tools
     SUBDIR += hobbes-icons-xpm
     SUBDIR += hppsmtools
     SUBDIR += hs-HGL
@@ -337,6 +332,7 @@
     SUBDIR += hs-cairo
     SUBDIR += hs-dia-base
     SUBDIR += hs-dia-functions
+    SUBDIR += hs-soegtk
     SUBDIR += hs-svgcairo
     SUBDIR += hsetroot
     SUBDIR += hugin
@@ -586,7 +582,6 @@
     SUBDIR += mhgui
     SUBDIR += ming
     SUBDIR += mirage
-    SUBDIR += mitsuba
     SUBDIR += mmrecover
     SUBDIR += mozjpeg
     SUBDIR += mscgen
@@ -812,6 +807,7 @@
     SUBDIR += pstoedit
     SUBDIR += pstoepsi
     SUBDIR += pure-gl
+    SUBDIR += py-pyganim
     SUBDIR += py-PyX
     SUBDIR += py-PyX12
     SUBDIR += py-aafigure
@@ -856,7 +852,6 @@
     SUBDIR += py-pycha
     SUBDIR += py-pydot
     SUBDIR += py-pygal
-    SUBDIR += py-pyganim
     SUBDIR += py-pyggel
     SUBDIR += py-pyglet
     SUBDIR += py-pygooglechart
@@ -980,7 +975,6 @@
     SUBDIR += sk1libs
     SUBDIR += skanlite
     SUBDIR += sketch
-    SUBDIR += smillaenlarger
     SUBDIR += springgraph
     SUBDIR += squish
     SUBDIR += sswf
@@ -1056,7 +1050,6 @@
     SUBDIR += xournal
     SUBDIR += xpaint
     SUBDIR += xpdf
-    SUBDIR += xpeps
     SUBDIR += xpx
     SUBDIR += xsane
     SUBDIR += xsvg

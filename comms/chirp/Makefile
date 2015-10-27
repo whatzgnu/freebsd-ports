@@ -2,22 +2,20 @@
 
 PORTNAME=	chirp
 PORTVERSION=	0.4.1
-PORTREVISION=	3
+PORTREVISION=	1
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://chirp.danplanet.com/download/${PORTVERSION}/ \
 		LOCAL/db
 
 MAINTAINER=	hamradio@FreeBSD.org
-COMMENT=	Free, open-source tool for programming your amateur radio
+COMMENT=	Chirp is a free, open-source tool for programming your amateur radio
 
 LICENSE=	GPLv3
 
-BUILD_DEPENDS=	${CHIRP_DEPENDS}
-RUN_DEPENDS=	${CHIRP_DEPENDS}
-CHIRP_DEPENDS=	${PYTHON_PKGNAMEPREFIX}libxml2>0:${PORTSDIR}/textproc/py-libxml2 \
-		${PYTHON_PKGNAMEPREFIX}serial>0:${PORTSDIR}/comms/py-serial
+BUILD_DEPENDS=	${PYTHON_SITELIBDIR}/serial:${PORTSDIR}/comms/py-serial \
+		${PYTHON_SITELIBDIR}/libxml2.py:${PORTSDIR}/textproc/py-libxml2
 
-USES=		desktop-file-utils gettext python
+USES=		gettext python desktop-file-utils
 USE_PYTHON=	distutils
 
 OPTIONS_DEFINE=	DOCS

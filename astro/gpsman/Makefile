@@ -19,9 +19,13 @@ PLIST_SUB+=	GPSMANDIR=${GPSMANDIR:S/${PREFIX}\///}
 NO_BUILD=	yes
 PORTDOCS=	*
 
+.include <bsd.port.options.mk>
+
 GPSMAN_DEFAULT_PORT?=	/dev/cuau0
 
-DOCS_SUB_FILES=	pkg-message
+.if ${PORT_OPTIONS:MDOCS}
+SUB_FILES=	pkg-message
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} "s|/dev/ttyS0|${GPSMAN_DEFAULT_PORT}|" \
@@ -38,7 +42,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/gmsrc/gmicons/* ${STAGEDIR}${GPSMANDIR}/gmsrc/gmicons
 	${INSTALL_DATA} ${WRKSRC}/util/*.sh ${STAGEDIR}${GPSMANDIR}/util
 	${INSTALL_DATA} ${WRKSRC}/util/*.tcl ${STAGEDIR}${GPSMANDIR}/util
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html/info
 	${INSTALL_DATA} ${WRKSRC}/manual/*.pdf ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/manual/html/*.html ${STAGEDIR}${DOCSDIR}/html
@@ -46,5 +50,7 @@ do-install-DOCS-on:
 .for i in gif txt ps
 	${INSTALL_DATA} ${WRKSRC}/manual/html/info/*.${i} ${STAGEDIR}${DOCSDIR}/html/info
 .endfor
+	@${CAT} ${PKGMESSAGE}
+.endif
 
 .include <bsd.port.mk>

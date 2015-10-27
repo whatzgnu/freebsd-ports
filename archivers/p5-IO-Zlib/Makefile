@@ -12,6 +12,5 @@ COMMENT=	IO:: style interface to Compress::Zlib
 
 USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 .include <bsd.port.mk>

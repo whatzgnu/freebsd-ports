@@ -52,13 +52,15 @@ QT4_CONFIGURE_OFF=	--with-qt=no
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} 's|^pkgconfigdir = .*|pkgconfigdir = ${PREFIX}/libdata/pkgconfig|' \
 		${WRKSRC}/Makefile.in
-
-post-patch-DOCS-off:
+.if empty(PORT_OPTIONS:MDOCS)
 	@${REINPLACE_CMD} '/^install-data-am: /s/install-dist_docDATA//' \
 		${WRKSRC}/Makefile.in
+.endif
 
 post-install:
 	# make check-plist happy

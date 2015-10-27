@@ -11,14 +11,17 @@ MAINTAINER=	mm@FreeBSD.org
 COMMENT=	Improved jail startup/shutdown script
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 NO_INSTALL=	yes
 USE_RC_SUBR=	jailrc
 PORTDOCS=	*
 OPTIONS_DEFINE=	DOCS
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	@${INSTALL_DATA} ${FILESDIR}/README ${STAGEDIR}${DOCSDIR}/README
+.endif
 
 .include <bsd.port.mk>

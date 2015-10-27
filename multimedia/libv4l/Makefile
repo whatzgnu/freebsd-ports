@@ -4,7 +4,7 @@
 
 PORTNAME?=	libv4l
 PORTVERSION=	1.6.3
-PORTREVISION?=	1
+PORTREVISION?=	0
 CATEGORIES=	multimedia
 MASTER_SITES=	http://linuxtv.org/downloads/v4l-utils/:master \
 		LOCAL/kwm:local
@@ -24,6 +24,7 @@ WRKSRC=		${WRKDIR}/v4l-utils-${PORTVERSION}
 
 .if ${LIBV4L_SLAVE} != compat
 BUILD_DEPENDS+=	v4l_compat>=${PORTVERSION}:${PORTSDIR}/multimedia/v4l_compat
+LIB_DEPENDS+=	libargp.so:${PORTSDIR}/devel/argp-standalone
 
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -37,14 +38,12 @@ INSTALL_TARGET=	install-strip
 
 . if ${LIBV4L_SLAVE} == utils
 BUILD_DEPENDS+=	libv4l>=${PORTVERSION}:${PORTSDIR}/multimedia/libv4l
-LIB_DEPENDS+=	libargp.so:${PORTSDIR}/devel/argp-standalone \
-		libv4l2.so:${PORTSDIR}/multimedia/libv4l
-# Disabling building libv4l in the utils slave is too much hackery
+LIB_DEPENDS+=	libv4l2.so:${PORTSDIR}/multimedia/libv4l
+# Disabling building libv4l in the utils slave is too much hackery 
 # Lets wait for subpackages
-CONFIGURE_ARGS+=--enable-v4l-utils
+CONFIGURE_ARGS+=--enable-v4l-utils 
 . else
 CONFIGURE_ARGS+=--disable-v4l-utils --enable-libv4l
-EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-configure
 . endif
 .endif
 

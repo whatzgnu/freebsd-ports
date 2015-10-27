@@ -20,6 +20,8 @@ PORTDOCS=	gid.txt
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-extract:
 	${CP} ${FILESDIR}/construct.gpr ${WRKSRC}
 	${MKDIR} ${WRKSRC}/src ${WRKDIR}/data
@@ -46,9 +48,9 @@ do-install:
 		${STAGEDIR}${PREFIX}/lib/generic_image_decoder
 	(cd ${WRKSRC}/test && ${INSTALL_PROGRAM} to_bmp mini \
 		${STAGEDIR}${PREFIX}/bin)
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/gid.txt ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

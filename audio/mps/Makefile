@@ -24,7 +24,12 @@ MPV_DESC=	Mpv media player support
 USES=		python
 USE_PYTHON=	distutils autoplist
 
-MPLAYER_RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer
-MPV_RUN_DEPENDS=	mpv:${PORTSDIR}/multimedia/mpv
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MMPLAYER}
+RUN_DEPENDS=	mplayer:${PORTSDIR}/multimedia/mplayer
+.elif ${PORT_OPTIONS:MMPV}
+RUN_DEPENDS=	mpv:${PORTSDIR}/multimedia/mpv
+.endif
 
 .include <bsd.port.mk>

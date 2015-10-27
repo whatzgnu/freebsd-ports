@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Jinja2
-PORTVERSION=	2.8
+PORTVERSION=	2.7.3
+PORTREVISION=	0
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,22 +13,20 @@ MAINTAINER=	nivit@FreeBSD.org
 COMMENT?=	Fast and easy to use stand-alone template engine
 
 LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MarkupSafe>=0.18:${PORTSDIR}/textproc/py-MarkupSafe
 TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MarkupSafe>=0.18:${PORTSDIR}/textproc/py-MarkupSafe
 
-NO_ARCH=	yes
 USES=		python
 .if empty(PKGNAMESUFFIX)
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 .endif
 
 EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 
 OPTIONS_DEFINE?=	BABEL EXAMPLES
 OPTIONS_DEFAULT?=	BABEL
-BABEL_DESC=		Enable Babel extension
+BABEL_DESC=	Enable Babel extension
 
 BABEL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Babel>=1.3:${PORTSDIR}/devel/py-babel
 
@@ -45,8 +44,17 @@ PORTDOCS=	*
 PORT_OPTIONS:=	${PORT_OPTIONS:NEXAMPLES}
 .endif
 
+# no problem with Python > 3.2
+.if ${PYTHON_REL} >= 3200
+pre-build:
+	${PY2TO3_CMD} ${PY2TO3_ARGS} ${WRKSRC}/jinja2
+.endif
+
 .if ${PKGNAMESUFFIX} == "-doc"
 do-build:
+.	if ${PYTHON_REL} >= 3000
+	@${PY2TO3_CMD} ${PY2TO3_ARGS} ${WRKSRC}/docs
+.	endif
 	(cd ${WRKSRC}/docs && ${MAKE} html)
 
 do-install:

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	phoenix_html
-PORTVERSION=	2.2.0
+PORTVERSION=	1.4.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 PKGNAMEPREFIX=	elixir-
@@ -17,6 +17,5 @@ GH_ACCOUNT=	phoenixframework
 
 MIX_BUILD_DEPS=	devel/elixir-plug
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
-MIX_REWRITE=	yes
 
 .include <bsd.port.mk>

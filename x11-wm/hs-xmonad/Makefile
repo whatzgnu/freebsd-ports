@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	xmonad
-PORTVERSION=	0.11.1
+PORTVERSION=	0.11
+PORTREVISION=	10
 CATEGORIES=	x11-wm haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -20,8 +21,6 @@ EXECUTABLE=	xmonad
 
 OPTIONS_DEFINE+=	XFORK_FIX
 OPTIONS_DEFAULT+=	XFORK_FIX
-
-FLAGS_DISABLE=	testing
 
 XFORK_FIX_DESC=		Apply workaround for losing hotkeys (XMonad \#576)
 

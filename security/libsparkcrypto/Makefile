@@ -28,8 +28,13 @@ MAKE_ENV+=	SPARKARCH=${SPARKARCH} \
 
 OPTIONS_DEFINE=		DOCS
 
-DOCS_BUILD_DEPENDS=	adabrowse:${PORTSDIR}/textproc/adabrowse
-DOCS_MAKE_ENV_OFF=	NO_APIDOC=true
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+BUILD_DEPENDS+=	adabrowse:${PORTSDIR}/textproc/adabrowse
+.else
+MAKE_ENV+=	NO_APIDOC=true
+.endif
 
 post-patch:
 #	ports passed unwanted ARCH definition to Makefile

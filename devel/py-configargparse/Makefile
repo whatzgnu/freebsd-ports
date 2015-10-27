@@ -14,7 +14,7 @@ COMMENT=	Drop-in replacement for argparse
 LICENSE=	MIT
 
 NO_ARCH=	yes
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 USES=		python
 
 .include <bsd.port.mk>

@@ -28,6 +28,8 @@ PLIST_FILES+=	bin/swreceiver bin/spectrum-viewer-${PORTVERSION} \
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.pre.mk>
+
 do-configure:
 	cd ${WRKSRC}/make-x64/swreceiver && ${SETENV} ${MAKE_ENV} \
 		${QMAKE} ${QMAKE_ARGS}
@@ -56,9 +58,9 @@ do-install:
 		${STAGEDIR}${PREFIX}/bin/spectrum-viewer-${PORTVERSION}
 	${INSTALL} ${WRKSRC}/make-x64/fmreceiver/fmreceiver \
 		${STAGEDIR}${PREFIX}/bin/fmreceiver-${PORTVERSION}
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/docs/* ${STAGEDIR}${DOCSDIR}
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

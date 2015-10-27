@@ -6,7 +6,7 @@ PORTVERSION=	0.7.0
 PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	devel gnome
-MASTER_SITES=	GHC
+MASTER_SITES=	http://cloud.github.com/downloads/mono/${PORTNAME}/
 
 MAINTAINER=	mono@FreeBSD.org
 COMMENT=	Mono interface to the D-BUS messaging system
@@ -16,8 +16,6 @@ LICENSE=	MIT
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_path_GMCS=${LOCALBASE}/bin/mcs
 USES=		gmake mono pathfix pkgconfig
-USE_GITHUB=	yes
-GH_ACCOUNT=	mono
 
 .include <bsd.port.options.mk>
 

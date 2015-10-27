@@ -28,14 +28,18 @@ OPTIONS_DEFINE=	DOCS
 
 MAKE_JOBS_UNSAFE=	yes
 
-DOCS_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen \
-			dot:${PORTSDIR}/graphics/graphviz
+.include <bsd.port.options.mk>
 
-post-build-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen \
+    		dot:${PORTSDIR}/graphics/graphviz
+
+post-build:
 	cd ${WRKSRC} && ${MAKE_CMD} docs
 
-post-install-DOCS-on:
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/docs && ${COPYTREE_SHARE} \*-api ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

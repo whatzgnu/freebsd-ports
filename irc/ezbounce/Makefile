@@ -26,6 +26,8 @@ USE_GCC=	any
 
 SUB_FILES=	pkg-message
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${SED} -e "s:/path/to:${PREFIX}/sbin:" ${WRKSRC}/sample.conf > \
 		${WRKSRC}/ezb.conf.default
@@ -33,14 +35,14 @@ post-patch:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/ezbounce ${STAGEDIR}${PREFIX}/sbin
-	${INSTALL_DATA} ${WRKSRC}/ezb.conf.default ${STAGEDIR}${PREFIX}/etc
+	${INSTALL_SCRIPT} ${WRKSRC}/ezb.conf.default ${STAGEDIR}${PREFIX}/etc
 	${INSTALL_MAN}	${WRKSRC}/docs/ezbounce.1 ${STAGEDIR}${PREFIX}/man/man1
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/CHANGES ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/TODO ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/docs/worklog ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

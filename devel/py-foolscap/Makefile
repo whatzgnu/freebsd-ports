@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	foolscap
-PORTVERSION=	0.8.0
+PORTVERSION=	0.6.4
+PORTREVISION=	1
 CATEGORIES=	devel python
 MASTER_SITES=	http://foolscap.lothar.com/releases/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -17,9 +18,6 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>=0.13:${PORTSDIR}/security/py-open
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USES=		python twisted
-USE_PYTHON=	autoplist distutils
-
-regression-test: build
-	@cd ${WRKSRC} && ${PYTHON_CMD} ${PYDISTUTILS_SETUP} test
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

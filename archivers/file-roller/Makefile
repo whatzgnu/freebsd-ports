@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	file-roller
-PORTVERSION=	3.16.4
+PORTVERSION=	3.16.3
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	archivers gnome
 MASTER_SITES=	GNOME
@@ -33,7 +34,7 @@ PORTDOCS=	AUTHORS NEWS README TODO ChangeLog
 GLIB_SCHEMAS=	org.gnome.FileRoller.gschema.xml
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	DOCS NAUTILUS
+OPTIONS_DEFINE=	NAUTILUS
 OPTIONS_DEFAULT=NAUTILUS
 NAUTILUS_DESC=	Enable Nautilus extension
 NAUTILUS_USE=	GNOME=nautilus3
@@ -44,10 +45,14 @@ post-patch:
 		${WRKSRC}/src/fr-command-tar.c \
 		${WRKSRC}/src/fr-command-zip.c
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}/${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

@@ -24,7 +24,7 @@ PREFIX_FIX_FILES=	leapsecs_read.c INSTALL
 CLOCKSPEED_RC_SCRIPT_SAMPLE=	${FILESDIR}/clockspeed.sh.sample
 RC_SCRIPT_STARTUP_DIR=		${PREFIX}/etc/rc.d
 
-OPTIONS_DEFINE=	DOCS
+.include <bsd.port.pre.mk>
 
 post-extract:
 # get this port working under FreeBSD non-i386
@@ -63,12 +63,13 @@ do-install:
 		${STAGEDIR}/${RC_SCRIPT_STARTUP_DIR}/${CLOCKSPEED_RC_SCRIPT_SAMPLE:T}
 
 post-install:
+.if ${PORT_OPTIONS:MDOCS}
+	@${INSTALL} -d -o ${SHAREOWN} -g ${SHAREGRP} -m 755 \
+		${STAGEDIR}/${DOCSDIR}
+	@${INSTALL_DATA} ${WRKSRC}/INSTALL ${STAGEDIR}/${DOCSDIR}
+	@${INSTALL_DATA} ${PKGMESSAGE} \
+		${STAGEDIR}/${DOCSDIR}/INSTALL-FreeBSD
+.endif
 	@${SED} s!/usr/local/!${PREFIX}/! ${PKGMESSAGE}
 
-post-install-DOCS-on:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/INSTALL ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${PKGMESSAGE} \
-		${STAGEDIR}${DOCSDIR}/INSTALL-FreeBSD
-
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

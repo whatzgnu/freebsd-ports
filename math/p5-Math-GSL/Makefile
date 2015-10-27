@@ -3,7 +3,6 @@
 
 PORTNAME=	Math-GSL
 PORTVERSION=	0.35
-PORTREVISION=	1
 CATEGORIES=	math perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -24,9 +23,6 @@ TEST_DEPENDS=	p5-Test-Class>=0.12:${PORTSDIR}/devel/p5-Test-Class \
 USE_PERL5=	modbuild
 USES=		perl5
 
-BROKEN_sparc64=	does not compile on sparc64
-
-post-install:
-	${FIND} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/GSL/ -name "*.so" | ${XARGS} -J % ${STRIP_CMD} %
+BROKEN_sparc64=		Does not compile on sparc64
 
 .include <bsd.port.mk>

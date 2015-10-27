@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	codelite
-DISTVERSION=	8.1
+DISTVERSION=	6.1.1
+PORTREVISION=	1
 CATEGORIES=	editors devel
 
 MAINTAINER=	ports@FreeBSD.org
@@ -26,13 +27,12 @@ GH_ACCOUNT=	eranif
 
 USE_WX=		3.0
 WX_UNICODE=	yes
-USES=		gettext cmake:outsource dos2unix execinfo shebangfix
+USES=		gettext cmake:outsource dos2unix shebangfix
 DOS2UNIX_GLOB=	*.cpp *.txt
 USE_LDCONFIG=	${PREFIX}/lib/codelite
-SHEBANG_FILES=	Runtime/clg++ Runtime/clgcc Runtime/codelite_xterm
-bash_CMD=	/bin/sh
-INSTALLS_ICONS=	yes
+SHEBANG_FILES=	Runtime/clg++ Runtime/clgcc
 
+CXXFLAGS+=	-I${LOCALBASE}/include
 CMAKE_ARGS+=	-DIS_FREEBSD=1 \
 		-DENABLE_LLDB=0 \
 		-DPREFIX=${PREFIX}

@@ -18,7 +18,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 LIB_DEPENDS=	librazorback_api.so:${PORTSDIR}/security/razorback-api \
 		libjson-c.so:${PORTSDIR}/devel/json-c
 
-USES=		autoreconf libtool pkgconfig
+USES=		libtool pkgconfig
+USE_AUTOTOOLS=	autoconf
 GNU_CONFIGURE=	yes
 USE_RC_SUBR=	masterNugget masterNugget_safed
 CPPFLAGS+=	-I${LOCALBASE}/include

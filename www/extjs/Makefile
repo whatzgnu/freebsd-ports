@@ -9,7 +9,7 @@ MASTER_SITES=	http://cdn.sencha.com/ext/gpl/ \
 		http://mirror.joehorn.idv.tw/extjs/
 DISTNAME=	ext-${PORTVERSION}-gpl
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	joehorn@gmail.com
 COMMENT=	JavaScript platform for rapid development of cross-browser web apps
 
 LICENSE=	GPLv3
@@ -18,7 +18,6 @@ WRKSRC=		${WRKDIR}/ext-${PORTVERSION}.1144
 
 USES=		zip
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
@@ -33,20 +32,29 @@ WWW_SUB=	bootstrap.js build.xml builds cmd ext-all-debug-w-comments.js \
 		packages plugins release-notes.html resources src \
 		welcome
 
-SUB_FILES=	pkg-message
+.include <bsd.port.options.mk>
 
-DOCS_SUB_LIST=		COMMENTDOCS=
-DOCS_SUB_LIST_OFF=	COMMENTDOCS="\# "
-EXAMPLES_SUB_LIST=	COMMENTEXAMPLES=
-EXAMPLES_SUB_LIST_OFF=	COMMENTEXAMPLES="\# "
+SUB_FILES+=	pkg-message
+
+.if ${PORT_OPTIONS:MDOCS}
+SUB_LIST+=	COMMENTDOCS=
+.else
+SUB_LIST+=	COMMENTDOCS="\# "
+.endif
+
+.if ${PORT_OPTIONS:MEXAMPLES}
+SUB_LIST+=	COMMENTEXAMPLES=
+.else
+SUB_LIST+=	COMMENTEXAMPLES="\# "
+.endif
 
 do-install:
 	@cd ${WRKSRC} && ${COPYTREE_SHARE} "${WWW_SUB}" ${STAGEDIR}${WWWDIR}
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@cd ${WRKSRC}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
-
-do-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
+.endif
 
 .include <bsd.port.mk>

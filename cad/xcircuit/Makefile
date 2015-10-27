@@ -3,7 +3,6 @@
 
 PORTNAME=	xcircuit
 PORTVERSION=	3.8.78
-PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	cad
 MASTER_SITES=	http://opencircuitdesign.com/xcircuit/archive/ \
@@ -17,7 +16,7 @@ LICENSE=	GPLv2
 OPTIONS_DEFINE=	EXAMPLES
 
 USE_XORG=	xpm xscrnsaver xt
-USES=	tk ghostscript:x11,run gmake tar:tgz
+USES=	tk ghostscript:run gmake tar:tgz
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-tcl=${TCL_LIBDIR} \
 		--with-tk=${TK_LIBDIR}

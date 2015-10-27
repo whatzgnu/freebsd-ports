@@ -6,7 +6,7 @@ PORTVERSION=	1.4.1
 CATEGORIES=	mail
 MASTER_SITES=	SF
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	yanagisawa@csg.is.titech.ac.jp
 COMMENT=	DKIM filter for Postfix
 
 LICENSE=	GPLv2
@@ -19,7 +19,6 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 GNU_CONFIGURE=	yes
 USES=		perl5
-NO_ARCH=	yes
 USE_RC_SUBR=	dkimproxy_in dkimproxy_out
 
 DKIMPROXYUSER=	dkimproxy

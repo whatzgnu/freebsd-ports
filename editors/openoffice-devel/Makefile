@@ -100,7 +100,7 @@ AOOVERSION2=	2
 AOOVERSION3=	0
 # From solenv/inc/minor.mk SOURCEREVISION LAST_MINOR BUILD
 AOOTAG=		AOO420m1\(Build:9800\)
-SVNREVISION=	1697984
+SVNREVISION=	1694132
 #AOORC=rc3
 EXTSRC=		ApacheOpenOffice.ext_sources.${AOOVERSION1}.x.x.20150707.tar.gz
 
@@ -123,6 +123,8 @@ AOOUDIR=		.openoffice.org\/${AOOVERSION1}
 INSTALLATION_BASEDIR?=	openoffice-${AOOSUFFIX}
 EXECBASE?=		openoffice-${AOOSUFFIX}
 
+NO_LATEST_LINK=	yes
+
 ONLY_FOR_ARCHS=	i386 amd64
 
 USE_GL=		gl glu
@@ -132,8 +134,8 @@ JAVA_BUILD=	jdk
 JAVA_VENDOR=	openjdk
 JAVA_VERSION=	1.6+
 USE_PERL5=	build
-USE_XORG=	ice x11 xau xaw xcomposite xcursor xdamage xext xfixes xi \
-		xrandr xrender xt
+USE_XORG=	x11 ice xaw xau xext xrender xrandr \
+		xi xt xcursor xdamage xcomposite xfixes
 USES=		autoreconf:autoconf bison compiler cpe desktop-file-utils \
 		gettext-runtime gmake iconv jpeg perl5 pkgconfig python \
 		tar:${TARTYPE}
@@ -293,8 +295,6 @@ pre-everything::
 post-extract:
 	${TAR} -C ${WRKSUBDIR} -xzf ${DISTDIR}/${DIST_SUBDIR}/${EXTSRC}
 	${CP} ${DISTDIR}/${DIST_SUBDIR}/unowinreg.dll ${WRKSRC}/external/unowinreg/
-	${CP} ${FILESDIR}/freebsd-aoo-intro-developer.png ${WRKSRC}/default_images/introabout/intro.png
-	${CP} ${FILESDIR}/freebsd-aoo-about-developer.png ${WRKSRC}/default_images/introabout/about.png
 	${RM} -rf ${WRKSRC}/l10n
 	${LN} -sf ${UNZIP_CMD} ${WRKSRC}/solenv/bin/unzip
 	${SED}  -e '\|^For main/vcl/unx/generic/fontmanager/parseAFM|,/^__/p' \

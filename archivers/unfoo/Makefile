@@ -18,7 +18,6 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	vitaminmoo
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 PLIST_FILES=	bin/${PORTNAME}
 
 post-patch:

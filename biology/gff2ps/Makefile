@@ -35,8 +35,9 @@ do-extract:
 	@${MKDIR} ${WRKDIR}
 	@${GZCAT} ${DISTDIR}/${PORTNAME}_v${PORTVERSION}.gz \
 		> ${WRKDIR}/${PORTNAME}
-do-extract-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${GZCAT} ${DISTDIR}/${GFF2PS_MAN}.gz > ${WRKDIR}/${GFF2PS_MAN}
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e \
@@ -45,8 +46,9 @@ post-patch:
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/gff2ps ${STAGEDIR}${PREFIX}/bin
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKDIR}/${GFF2PS_MAN} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

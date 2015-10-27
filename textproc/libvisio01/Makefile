@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	libvisio
-PORTVERSION=	0.1.3
+PORTVERSION=	0.1.1
+PORTREVISION=	1
 CATEGORIES=	textproc devel
 MASTER_SITES=	http://dev-www.libreoffice.org/src/${PORTNAME}/
 PKGNAMESUFFIX=	01

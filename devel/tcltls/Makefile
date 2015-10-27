@@ -32,6 +32,8 @@ PLIST_FILES=	include/tls.h \
 		lib/${TCLPKG}/tls.tcl
 PORTDOCS=	*
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	${REINPLACE_CMD} -e \
 		's,package require tls.*,load ${WRKSRC}/libtls.so.1;\
@@ -40,9 +42,11 @@ post-patch:
 	# The tests in ciphers.test are meaningless so far:
 	${MV} ${WRKSRC}/tests/ciphers.test ${WRKSRC}/tests/ciphers.test.broken
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/tls.htm ${STAGEDIR}${DOCSDIR}
+.endif
 
 xregression-test test check: build
 	cd ${WRKSRC}/tests && ${SETENV} TCL_LIBRARY="${WRKSRC}" \

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	gtk2hs-buildtools
-PORTVERSION=	0.13.0.4
+PORTVERSION=	0.12.5.2
+PORTREVISION=	2
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -13,7 +14,7 @@ USE_CABAL=	hashtables random
 USE_ALEX=	yes
 USE_HAPPY=	yes
 
-EXECUTABLE=	gtk2hsC2hs gtk2hsHookGenerator gtk2hsTypeGen
+EXECUTABLE=	gtk2hsTypeGen gtk2hsHookGenerator gtk2hsC2hs
 
 STANDALONE=	yes
 

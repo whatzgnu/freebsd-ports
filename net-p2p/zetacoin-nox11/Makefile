@@ -8,6 +8,4 @@ OPTIONS_EXCLUDE=	X11 QRCODES
 
 SLAVE_PORT=	yes
 
-BROKEN_armv6=	AtomicPointer not implemented
-
 .include "${MASTERDIR}/Makefile"

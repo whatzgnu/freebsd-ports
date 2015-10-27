@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	geany
-PORTVERSION=	1.25
+PORTVERSION=	1.24.1
 CATEGORIES=	devel editors
 MASTER_SITES=	http://download.geany.org/ SF
 
@@ -18,8 +18,6 @@ USES=		desktop-file-utils gettext-tools \
 		gmake libtool pathfix pkgconfig tar:bzip2
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
 
 OPTIONS_DEFINE=	VTE NLS DOCS
 OPTIONS_DEFAULT=	VTE
@@ -32,10 +30,14 @@ VTE_DESC=	Embedded virtual terminal
 VTE_CONFIGURE_ENABLE=	vte
 VTE_USE=	GNOME=vte
 
-post-patch-DOCS-off:
-	@${REINPLACE_CMD} -e '/^SUBDIRS/ s|doc||' ${WRKSRC}/Makefile.in
+.include <bsd.port.options.mk>
 
-post-patch-NLS-off:
+post-patch:
+.if !${PORT_OPTIONS:MDOCS}
+	@${REINPLACE_CMD} -e '/^SUBDIRS/ s|doc||' ${WRKSRC}/Makefile.in
+.endif
+.if !${PORT_OPTIONS:MNLS}
 	@${REINPLACE_CMD} -e '/^SUBDIRS/ s|po||' ${WRKSRC}/Makefile.in
+.endif
 
 .include <bsd.port.mk>

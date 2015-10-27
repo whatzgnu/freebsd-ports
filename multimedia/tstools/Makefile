@@ -22,12 +22,14 @@ PORTDOCS=	*
 
 OPTIONS_DEFINE=	DOCS
 
-do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/bin/* ${STAGEDIR}${PREFIX}/bin
-	${INSTALL_DATA} ${WRKSRC}/lib/*.a ${STAGEDIR}${PREFIX}/lib
+.include <bsd.port.options.mk>
 
-do-install-DOCS-on:
+do-install:
+	${CP} ${WRKSRC}/bin/* ${STAGEDIR}${PREFIX}/bin
+	${CP} ${WRKSRC}/lib/* ${STAGEDIR}${PREFIX}/lib
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/docs/* ${STAGEDIR}${DOCSDIR}
+	${CP} ${WRKSRC}/docs/* ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

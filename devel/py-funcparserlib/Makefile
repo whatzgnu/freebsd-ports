@@ -17,7 +17,7 @@ USES=		python
 USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	README doc
-DOCSDIR=	${PREFIX}/share/doc/${PKGBASE}
+DOCSDIR=	${PREFIX}/share/doc/${UNIQUENAME}
 
 OPTIONS_DEFINE=	DOCS
 

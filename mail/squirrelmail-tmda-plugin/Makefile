@@ -9,7 +9,7 @@ MASTER_SITES=	http://www.squirrelmail.org/plugins/
 DISTNAME=	tmdatools 1.0.2 1.4.2 \(stable\)
 DISTFILES=	tmdatools.1.0.2-1.4.2.tar.gz
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	email-ports@def-defying.com
 COMMENT=	Adds TMDA support to SquirrelMail
 
 RUN_DEPENDS=	tmda-filter:${PORTSDIR}/mail/tmda \

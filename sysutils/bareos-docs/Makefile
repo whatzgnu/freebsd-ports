@@ -13,6 +13,8 @@ COMMENT=	Bareos document set (PDF)
 
 NO_BUILD=	yes
 
+UNIQUENAME=	${PORTNAME}${PKGNAMESUFFIX}
+
 PORTDOCS=	*.pdf
 
 do-extract:

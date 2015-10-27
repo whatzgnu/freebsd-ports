@@ -16,14 +16,18 @@ COMMENT=	Persistent object storage system for Python
 LICENSE=	MIT
 
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 
 OPTIONS_DEFINE=	DOCS
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@ ${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for docfile in ACKS.txt CHANGES.txt INSTALL.txt LICENSE.txt README.txt doc/FAQ.txt
 	@ ${INSTALL_DATA} ${WRKSRC}/${docfile} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

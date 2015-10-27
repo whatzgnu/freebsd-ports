@@ -3,7 +3,6 @@
 
 PORTNAME=	puppet
 PORTVERSION=	3.8.2
-PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://downloads.puppetlabs.com/puppet/
 
@@ -13,10 +12,10 @@ COMMENT=	Configuration management framework written in Ruby
 LICENSE=	APACHE20
 
 BUILD_DEPENDS=	rubygem-facter>=0:${PORTSDIR}/sysutils/rubygem-facter \
-		rubygem-hiera1>=0:${PORTSDIR}/sysutils/rubygem-hiera1
+		rubygem-hiera>=0:${PORTSDIR}/sysutils/rubygem-hiera
 RUN_DEPENDS=	rubygem-facter>=0:${PORTSDIR}/sysutils/rubygem-facter \
 		rubygem-ruby-augeas>=0:${PORTSDIR}/textproc/rubygem-ruby-augeas \
-		rubygem-hiera1>=0:${PORTSDIR}/sysutils/rubygem-hiera1
+		rubygem-hiera>=0:${PORTSDIR}/sysutils/rubygem-hiera
 
 USES=		cpe
 CPE_VENDOR=	puppetlabs

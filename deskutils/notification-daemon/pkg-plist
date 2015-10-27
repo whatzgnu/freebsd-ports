@@ -1,4 +1,3 @@
-etc/xdg/autostart/notification-daemon-autostart.desktop
 libexec/notification-daemon
 share/applications/notification-daemon.desktop
 share/locale/af/LC_MESSAGES/notification-daemon.mo
@@ -9,8 +8,6 @@ share/locale/ast/LC_MESSAGES/notification-daemon.mo
 share/locale/be/LC_MESSAGES/notification-daemon.mo
 share/locale/bg/LC_MESSAGES/notification-daemon.mo
 share/locale/bn/LC_MESSAGES/notification-daemon.mo
-share/locale/bn_IN/LC_MESSAGES/notification-daemon.mo
-share/locale/bs/LC_MESSAGES/notification-daemon.mo
 share/locale/ca/LC_MESSAGES/notification-daemon.mo
 share/locale/ca@valencia/LC_MESSAGES/notification-daemon.mo
 share/locale/cs/LC_MESSAGES/notification-daemon.mo
@@ -25,7 +22,6 @@ share/locale/eu/LC_MESSAGES/notification-daemon.mo
 share/locale/fa/LC_MESSAGES/notification-daemon.mo
 share/locale/fi/LC_MESSAGES/notification-daemon.mo
 share/locale/fr/LC_MESSAGES/notification-daemon.mo
-share/locale/fur/LC_MESSAGES/notification-daemon.mo
 share/locale/gl/LC_MESSAGES/notification-daemon.mo
 share/locale/gu/LC_MESSAGES/notification-daemon.mo
 share/locale/he/LC_MESSAGES/notification-daemon.mo
@@ -39,7 +35,6 @@ share/locale/kn/LC_MESSAGES/notification-daemon.mo
 share/locale/ko/LC_MESSAGES/notification-daemon.mo
 share/locale/lt/LC_MESSAGES/notification-daemon.mo
 share/locale/lv/LC_MESSAGES/notification-daemon.mo
-share/locale/ml/LC_MESSAGES/notification-daemon.mo
 share/locale/mr/LC_MESSAGES/notification-daemon.mo
 share/locale/ms/LC_MESSAGES/notification-daemon.mo
 share/locale/nb/LC_MESSAGES/notification-daemon.mo
@@ -50,7 +45,6 @@ share/locale/pa/LC_MESSAGES/notification-daemon.mo
 share/locale/pl/LC_MESSAGES/notification-daemon.mo
 share/locale/pt/LC_MESSAGES/notification-daemon.mo
 share/locale/pt_BR/LC_MESSAGES/notification-daemon.mo
-share/locale/quz/LC_MESSAGES/notification-daemon.mo
 share/locale/ro/LC_MESSAGES/notification-daemon.mo
 share/locale/ru/LC_MESSAGES/notification-daemon.mo
 share/locale/sk/LC_MESSAGES/notification-daemon.mo

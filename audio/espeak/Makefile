@@ -49,11 +49,13 @@ REINPLACE_ARGS=	-i.bak -e "s|%%DATADIR%%|${DATADIR}|g"
 
 BROKEN_sparc64=	Does not compile on sparc64
 
+.include <bsd.port.options.mk>
 
 post-patch:
 	cd ${BUILD_WRKSRC} && ${REINPLACE_CMD} ${REINPLACE_FILES}
-post-patch-PORTAUDIO-on:
+.if ${PORT_OPTIONS:MPORTAUDIO}
 	${MV} ${WRKSRC}/src/portaudio19.h ${WRKSRC}/src/portaudio.h
+.endif
 
 post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

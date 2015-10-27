@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	please
-PORTVERSION=	2.3
+PORTVERSION=	2.1
 CATEGORIES=	security
 
-MAINTAINER=	gblach@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Execute a command as root
 
 LICENSE=	BSD2CLAUSE

@@ -19,6 +19,11 @@ MAKE_ENV+=	DATADIR=${DATADIR} EXAMPLESDIR=${EXAMPLESDIR}
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.pre.mk>
+.if ${OSVERSION} > 900006
+EXTRA_PATCHES=	${PATCHDIR}/utmpx-src-daemon.c
+.endif
+
 do-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 
@@ -48,4 +53,4 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}/netplan.dir
 .endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

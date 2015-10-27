@@ -46,10 +46,12 @@ do-install:
 	cd ${WRKSRC} && ${INSTALL_DATA} ${SRC_EL} ${SRC_EL:S/.el$/.elc/} \
 		 ${STAGEDIR}${PREFIX}/${LISPDIR}/
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for doc in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${doc} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.post.mk>

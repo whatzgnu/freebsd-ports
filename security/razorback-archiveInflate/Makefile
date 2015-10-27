@@ -22,7 +22,8 @@ RUN_DEPENDS=	razorback-masterNugget>=0.5.0:${PORTSDIR}/security/razorback-master
 
 RB_LIBDIR?=	${PREFIX}/lib/razorback
 GNU_CONFIGURE=	yes
-USES=		autoreconf libtool pkgconfig
+USES=		libtool pkgconfig
+USE_AUTOTOOLS=	autoconf
 USE_LDCONFIG=	${RB_LIBDIR}
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

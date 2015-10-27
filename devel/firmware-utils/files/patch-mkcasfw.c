@@ -1,4 +1,6 @@
---- mkcasfw.c.orig	2011-12-22 14:21:03 UTC
+diff --git a/mkcasfw.c b/mkcasfw.c
+index 626e77d..fe9f122 100644
+--- mkcasfw.c
 +++ mkcasfw.c
 @@ -19,11 +19,13 @@
  #include <stdarg.h>

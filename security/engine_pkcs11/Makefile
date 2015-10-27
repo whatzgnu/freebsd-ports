@@ -25,6 +25,10 @@ CONFIGURE_ENV=	OPENSSL_CFLAGS="-I${OPENSSLINC}" \
 
 PORTDOCS=	*
 
-DOCS_CONFIGURE_ON=	--enable-doc
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+CONFIGURE_ARGS+=--enable-doc
+.endif
 
 .include <bsd.port.mk>

@@ -97,18 +97,19 @@ post-patch:
 .endif
 
 post-build:
-	@${MAKE_CMD} -C ${WRKSRC} check
+	@${MAKE} -C ${WRKSRC} check
 
 post-install:
-	${INSTALL_DATA} ${FILESDIR}/fetchmailrc.sample \
-		${STAGEDIR}${PREFIX}/etc/fetchmailrc.sample
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	@cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
-post-install-X11-off:
+.if empty(PORT_OPTIONS:MX11)
 	${INSTALL_SCRIPT} ${WRKDIR}/fetchmailconf ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_SCRIPT} ${WRKSRC}/fetchmailconf.py ${STAGEDIR}${PREFIX}/libexec
+.endif
+	${INSTALL} ${FILESDIR}/fetchmailrc.sample \
+		${STAGEDIR}${PREFIX}/etc/fetchmailrc.sample
 
 .include <bsd.port.mk>

@@ -27,15 +27,20 @@ PORTDOCS=	LICENSE.txt NOTICE.txt RELEASE-NOTES.txt apidocs
 JAR_VERSION=	${PORTNAME}-2.2-SNAPSHOT
 
 OPTIONS_DEFINE=	DOCS
-DOCS_ALL_TARGET=	javadoc
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+ALL_TARGET+=	javadoc
+.endif
 
 do-install:
 	${INSTALL_DATA} ${WRKSRC}/target/${JAR_VERSION}.jar \
 		${STAGEDIR}${JAVAJARDIR}/${PORTNAME}.jar
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	(cd ${WRKSRC}/target && ${COPYTREE_SHARE} apidocs ${STAGEDIR}${DOCSDIR})
 	(cd ${WRKSRC} && ${INSTALL_DATA} LICENSE.txt NOTICE.txt \
 		RELEASE-NOTES.txt ${STAGEDIR}${DOCSDIR})
+.endif
 
 .include <bsd.port.mk>

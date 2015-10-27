@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	categories
-PORTVERSION=	1.0.7
+PORTVERSION=	1.0.6
+PORTREVISION=	1
 CATEGORIES=	math haskell
 
 MAINTAINER=	haskell@FreeBSD.org

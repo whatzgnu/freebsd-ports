@@ -18,7 +18,6 @@ RUN_DEPENDS=	p5-IO-String>=0:${PORTSDIR}/devel/p5-IO-String
 
 USES=		perl5
 USE_PERL5=	configure
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	TEXTDIFF
 TEXTDIFF_DESC=	Text::Diff support for ptardiff

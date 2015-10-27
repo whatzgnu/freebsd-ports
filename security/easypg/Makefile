@@ -8,7 +8,7 @@ CATEGORIES=	security elisp
 MASTER_SITES=	SFJP/epg/29289
 DISTNAME=	epg-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	iwazaki8@yahoo.co.jp
 COMMENT=	EasyPG is yet another GnuPG interface for Emacs
 
 RUN_DEPENDS=	gpg:${PORTSDIR}/security/gnupg1

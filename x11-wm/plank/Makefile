@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	plank
-PORTVERSION=	0.10.0
+PORTVERSION=	0.9.1
 CATEGORIES=	x11-wm
-MASTER_SITES=	https://launchpadlibrarian.net/216557335/ \
+MASTER_SITES=	https://launchpadlibrarian.net/205431962/ \
 	https://launchpad.net/${PORTNAME}/1.0/${PORTVERSION}/+download/
 
 MAINTAINER=	olivierd@FreeBSD.org
@@ -17,7 +17,7 @@ BUILD_DEPENDS=	vapigen:${PORTSDIR}/lang/vala
 LIB_DEPENDS=	libbamf3.so:${PORTSDIR}/sysutils/bamf \
 		libgee-0.8.so:${PORTSDIR}/devel/libgee
 
-USES=		gmake libtool pathfix pkgconfig tar:xz
+USES=		tar:xz pkgconfig gmake pathfix libtool
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib

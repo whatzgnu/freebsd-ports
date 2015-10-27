@@ -10,13 +10,15 @@ MASTER_SITES=	RG
 MAINTAINER=	komarov@valerka.net
 COMMENT=	Ruby interface to thrift
 
-LICENSE=	APACHE20
-
-BROKEN_RUBY22=	yes
-
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 
 .include "../thrift/bsd.thrift.mk"
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${RUBY_VER} >= 2.2
+BROKEN=		Does not build
+.endif
+
+.include <bsd.port.post.mk>

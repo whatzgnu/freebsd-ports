@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	stm
-PORTVERSION=	2.4.4
+PORTVERSION=	2.4.2
+PORTREVISION=	6
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

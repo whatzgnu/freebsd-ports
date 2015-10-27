@@ -3,7 +3,6 @@
 
 PORTNAME=	winrm
 PORTVERSION=	1.3.3
-PORTREVISION=	1
 CATEGORIES=	sysutils rubygems
 MASTER_SITES=	RG
 
@@ -27,7 +26,5 @@ NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
-
-PLIST_FILES=	bin/rwinrm
 
 .include <bsd.port.mk>

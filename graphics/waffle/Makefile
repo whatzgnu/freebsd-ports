@@ -29,7 +29,11 @@ CMAKE_ARGS+=	-Dwaffle_has_glx=ON
 
 PLIST_SUB+=	PORTVERSION=${PORTVERSION}
 
-post-install-DOCS-off:
+.include <bsd.port.options.mk>
+
+.if ! ${PORT_OPTIONS:MDOCS}
+post-install:
 	${RM} -rf ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

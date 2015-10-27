@@ -44,6 +44,8 @@ ASM_BUILD_DEPENDS=	nasm:${PORTSDIR}/devel/nasm
 NOT_FOR_ARCHS=	ia64
 NOT_FOR_ARCHS_REASON_ia64=	does not compile
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's/x86_64\*/amd64\* | \*ia64\*/g; \
 		/CPPFLAGS=/ d; s/ \*linux\*)/ \*bsd\*)/' ${WRKSRC}/configure
@@ -53,7 +55,8 @@ post-patch:
 		${WRKSRC}/src/mixaudio16.h
 	@${REINPLACE_CMD} -e 's|@requirements@||' \
 		${WRKSRC}/admin/pkgconfig/openal.pc.in
-post-patch-ASM-off:
+.if ! ${PORT_OPTIONS:MASM}
 	@${REINPLACE_CMD} -e '/^NASM=/ s|=.*|=no|' ${WRKSRC}/configure
+.endif
 
 .include <bsd.port.mk>

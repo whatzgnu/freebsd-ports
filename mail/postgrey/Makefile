@@ -21,7 +21,6 @@ RUN_DEPENDS=	p5-Net-Server>=0:${PORTSDIR}/net/p5-Net-Server \
 USE_PERL5=	run
 USE_RC_SUBR=	${PORTNAME}
 NO_BUILD=	yes
-NO_ARCH=	yes
 POD2MAN?=	pod2man
 PORTDOCS=	README Changes README.exim
 
@@ -51,6 +50,8 @@ SHEBANG_FILES=	postgrey policy-test contrib/postgreyreport
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's#nogroup#${PG_GROUP}#' \
 		-e 's#/etc/main.cf#/etc/postfix/main.cf#' ${WRKSRC}/postgrey
@@ -73,11 +74,12 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/postgrey_${i} \
 		${STAGEDIR}${PREFIX}/etc/postfix/postgrey_${i}.sample
 .endfor
-	cd ${WRKSRC} && \
-		${INSTALL_MAN} ${MANPAGES} ${STAGEDIR}${MANPREFIX}/man/man1
 
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	@cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
+	@cd ${WRKSRC} && \
+		${INSTALL_MAN} ${MANPAGES} ${STAGEDIR}${MANPREFIX}/man/man1
 
 .include <bsd.port.mk>

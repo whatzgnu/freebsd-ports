@@ -3,7 +3,6 @@
 
 PORTNAME=	stellarium
 PORTVERSION=	0.13.3
-PORTREVISION=	1
 CATEGORIES=	astro
 MASTER_SITES=	SF/${PORTNAME}/Stellarium-sources/${PORTVERSION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
@@ -16,7 +15,7 @@ LICENSE=	GPLv2
 
 CONFLICTS_INSTALL=	${PORTNAME}-qt4-0.12.*
 
-USES=		cmake gettext
+USES=		cmake gettext iconv
 USE_QT5=	qmake_build buildtools_build linguisttools_build \
 		core concurrent declarative
 

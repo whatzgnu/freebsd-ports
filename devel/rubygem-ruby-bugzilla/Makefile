@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ruby-bugzilla
-PORTVERSION=	0.6.3
+PORTVERSION=	0.6.2
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 

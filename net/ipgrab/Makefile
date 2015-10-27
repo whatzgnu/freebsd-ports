@@ -24,13 +24,15 @@ PORTDOCS=	README AUTHORS COPYING ChangeLog DEVELOPER-HOWTO \
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 do-install:
 	${INSTALL_MAN} ${WRKSRC}/doc/ipgrab.8 ${STAGEDIR}${MANPREFIX}/man/man8/
 	${INSTALL_DATA} ${WRKSRC}/doc/ipgrab.info ${STAGEDIR}${PREFIX}/info/
 	${INSTALL_PROGRAM} ${WRKSRC}/src/ipgrab ${STAGEDIR}${PREFIX}/bin/
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}/
+.endif
 
 .include <bsd.port.mk>

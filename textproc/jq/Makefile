@@ -24,7 +24,11 @@ PLIST_FILES=	bin/${PORTNAME} \
 		man/man1/${PORTNAME}.1.gz
 PORTDOCS=	*
 
-DOCS_MAKE_ARGS_OFF=	docdir=
+.include <bsd.port.options.mk>
+
+.if !${PORT_OPTIONS:MDOCS}
+MAKE_ARGS=	docdir=
+.endif
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libjq.so.1.0.4

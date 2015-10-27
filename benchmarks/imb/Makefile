@@ -32,12 +32,17 @@ OPTIONS_DEFINE=	CHECK_RESULTS DOCS OPENMPI
 CHECK_RESULTS_DESC=	Check results (not valid as real benchmark data)
 CHECK_RESULTS_CFLAGS=	-DCHECK
 
-OPENMPI_BUILD_DEPENDS=	${LOCALBASE}/mpi/openmpi/lib/libmpi.so:${PORTSDIR}/net/openmpi
-OPENMPI_RUN_DEPENDS=	${LOCALBASE}/mpi/openmpi/bin/mpirun:${PORTSDIR}/net/openmpi
-OPENMPI_MAKE_ENV=	MPI_HOME=${LOCALBASE}/mpi/openmpi
-OPENMPI_BUILD_DEPENDS_OFF=	${LOCALBASE}/bin/mpicc:${PORTSDIR}/net/mpich2
-OPENMPI_RUN_DEPENDS_OFF=	${LOCALBASE}/bin/mpirun:${PORTSDIR}/net/mpich2
-OPENMPI_MAKE_ENV_OFF=	MPI_HOME=${LOCALBASE}
+.include <bsd.port.pre.mk>
+
+.if ${PORT_OPTIONS:MOPENMPI}
+BUILD_DEPENDS+=	${LOCALBASE}/mpi/openmpi/lib/libmpi.so:${PORTSDIR}/net/openmpi
+RUN_DEPENDS+=	${LOCALBASE}/mpi/openmpi/bin/mpirun:${PORTSDIR}/net/openmpi
+MAKE_ENV+=	MPI_HOME=${LOCALBASE}/mpi/openmpi
+.else
+BUILD_DEPENDS+=	${LOCALBASE}/bin/mpicc:${PORTSDIR}/net/mpich2
+RUN_DEPENDS+=	${LOCALBASE}/bin/mpirun:${PORTSDIR}/net/mpich2
+MAKE_ENV+=	MPI_HOME=${LOCALBASE}
+.endif
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
@@ -48,4 +53,4 @@ do-install:
 	(cd ${WRKSRC} && ${INSTALL_PROGRAM} IMB-EXT IMB-IO IMB-MPI1 \
 		${STAGEDIR}${PREFIX}/bin)
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

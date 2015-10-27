@@ -23,6 +23,8 @@ GMPY_DESC=	Multiprecision arithmetic
 M2CRYPTO_DESC=	Cryptography and SSL toolkit
 PYCRYPTO_DESC=	Cryptography toolkit
 
+OPTIONSFILE?=	${PORT_DBDIR}/py-${PORTNAME}/options
+
 EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 
 .include <bsd.port.options.mk>

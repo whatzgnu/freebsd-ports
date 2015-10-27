@@ -15,11 +15,16 @@ USES=		libtool
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 
+check:  build
+	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_FLAGS} ${MAKEFILE} ${MAKE_ARGS} check)
+
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libxds.so
 
-regression-test: build
-	@${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_FLAGS} ${MAKEFILE} \
-		${MAKE_ARGS} check -C ${WRKSRC}
+.include <bsd.port.pre.mk>
 
-.include <bsd.port.mk>
+.if ${ARCH} == "powerpc"
+BROKEN=		Does not compile on powerpc
+.endif
+
+.include <bsd.port.post.mk>

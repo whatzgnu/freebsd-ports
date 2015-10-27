@@ -2,6 +2,7 @@
 
 PORTNAME=	ImageMagick
 DISTVERSION=	7.0.0-0~beta${DATE}
+PORTREVISION=	1
 CATEGORIES=	graphics perl5
 MASTER_SITES=	http://www.imagemagick.org/download/ \
 		http://www.imagemagick.org/download/beta/ \
@@ -36,7 +37,7 @@ COMMENT=	Image processing tools (unstable version)
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-DATE=		20150902
+DATE=		20150715
 WRKSRC=		${WRKDIR}/${PORTNAME}-7.0.0-0
 
 LIB_DEPENDS=	libltdl.so:${PORTSDIR}/devel/libltdl
@@ -226,9 +227,9 @@ PLIST_SUB+=		TIFF="@comment "
 .if ${PORT_OPTIONS:MGSLIB}
 CONFIGURE_ARGS+=	--with-gslib
 . if ${PORT_OPTIONS:MX11}
-USES+=		ghostscript:x11
-. else
 USES+=		ghostscript
+. else
+USES+=		ghostscript:nox11
 . endif
 .else
 CONFIGURE_ARGS+=	--without-gslib
@@ -363,9 +364,9 @@ PLIST_SUB+=		PANGO="@comment "
 # PDF (Adobe Portable Document Format) support
 .if ${PORT_OPTIONS:MPDF}
 . if ${PORT_OPTIONS:MX11}
-USES+=		ghostscript:x11
-. else
 USES+=		ghostscript
+. else
+USES+=		ghostscript:nox11
 . endif
 .endif
 
@@ -390,9 +391,9 @@ INSTALL_TARGET=	install-strip
 
 .if ${PORT_OPTIONS:MTESTS}
 . if ${PORT_OPTIONS:MX11}
-USES+=		ghostscript:x11,build
-. else
 USES+=		ghostscript:build
+. else
+USES+=		ghostscript:build,nox11
 . endif
 .endif
 

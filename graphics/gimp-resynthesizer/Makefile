@@ -30,14 +30,15 @@ PLIST_SUB=	PLUGIN_DIR=${PLUGIN_DIR}
 
 OPTIONS_DEFINE=	THREADS
 THREADS_DESC=	Threading support (produces nondeterministic results)
-THREADS_LIBS=	`pkg-config --libs gthread-2.0`
+
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|^\(GIMP_LIBDIR=\).*|\1"$${prefix}/${PLUGIN_DIR:H}"|; \
 		s|^\(gimpplugindir=\).*|\1"$$GIMP_LIBDIR"|' ${WRKSRC}/configure.in
-
-post-patch-THREADS-off:
+.if ! ${PORT_OPTIONS:MTHREADS}
 	@${REINPLACE_CMD} -e '/^#define SYNTH_THREADED/ d' \
 		${WRKSRC}/src/buildSwitches.h
+.endif
 
 .include <bsd.port.mk>

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	ObjectName
-PORTVERSION=	1.1.0.0
+PORTVERSION=	1.0.0.0
+PORTREVISION=	14
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

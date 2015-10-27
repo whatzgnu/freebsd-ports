@@ -16,7 +16,10 @@ MAKEFILE=	Makefile.bsd
 
 OPTIONS_DEFINE=	DOCS
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/users-manual
 	${INSTALL_DATA} ${WRKSRC}/docs/users-manual/*.html ${STAGEDIR}${DOCSDIR}/users-manual/
@@ -24,5 +27,6 @@ post-install-DOCS-on:
 .for doc in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${doc} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

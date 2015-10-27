@@ -7,7 +7,7 @@ CATEGORIES=	audio
 MASTER_SITES=	ftp://ccrma-ftp.stanford.edu/pub/Lisp/ \
 		SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}
 
-MAINTAINER=	portmaster@bsdforge.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Multitracking sound editor and utilities
 
 LICENSE=	snd

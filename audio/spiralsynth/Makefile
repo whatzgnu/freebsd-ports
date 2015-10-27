@@ -23,6 +23,8 @@ DOC_FILES=	CHANGES COPYING README
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 .for ii in \
 	Makefile.in \
@@ -68,10 +70,11 @@ pre-install:
 .else
 	${ECHO_CMD} bin/SpiralSynth > ${PLIST}
 .endif
-pre-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 .for ii in ${DOC_FILES}
 	${ECHO_CMD} share/doc/spiralsynth/${ii} >> ${PLIST}
 .endfor
+.endif
 
 do-install:
 .if defined(PLUGIN)
@@ -80,10 +83,11 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/SpiralSynth ${STAGEDIR}${PREFIX}/bin
 .endif
 
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for ii in ${DOC_FILES}
 	${INSTALL_DATA} ${WRKSRC}/${ii} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

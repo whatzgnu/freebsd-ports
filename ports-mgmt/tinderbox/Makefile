@@ -3,7 +3,6 @@
 
 PORTNAME=	tinderbox
 PORTVERSION=	4.2.0
-PORTREVISION=	1
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://tinderbox.marcuscom.com/
 DIST_SUBDIR=	${PORTNAME}
@@ -36,11 +35,8 @@ OPTIONS_DEFAULT=	MYSQL APACHE CHECK_ROOT EMAILS LSOF \
 			LOG_COMPRESS
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 WANT_PERL=	yes
 SUB_FILES=	pkg-message
-USES=		shebangfix
-SHEBANG_FILES=	lib/makemake
 
 .include <bsd.port.options.mk>
 

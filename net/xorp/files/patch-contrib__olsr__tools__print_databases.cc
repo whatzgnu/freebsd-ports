@@ -1,6 +1,6 @@
---- contrib/olsr/tools/print_databases.cc.orig	2012-01-11 17:56:10 UTC
-+++ contrib/olsr/tools/print_databases.cc
-@@ -161,7 +161,8 @@ private:
+--- ./contrib/olsr/tools/print_databases.cc.orig	2011-03-16 21:16:01.000000000 +0000
++++ ./contrib/olsr/tools/print_databases.cc	2014-02-26 21:17:13.000000000 +0000
+@@ -161,7 +161,8 @@
  };
  
  void
@@ -10,7 +10,7 @@
  {
      XrlOlsr4V0p1Client cl(&this->_xr);
  
-@@ -172,8 +173,8 @@ GetExternals::get(int argc, char *argv[]
+@@ -172,8 +173,8 @@
      if (! success)
  	XLOG_WARNING("Failed to get external route list.");
  
@@ -21,7 +21,7 @@
  }
  
  void
-@@ -309,7 +310,8 @@ private:
+@@ -309,7 +310,8 @@
  };
  
  void
@@ -31,7 +31,7 @@
  {
      XrlOlsr4V0p1Client cl(&this->_xr);
  
-@@ -320,8 +322,8 @@ GetInterfaces::get(int argc, char *argv[
+@@ -320,8 +322,8 @@
      if (! success)
  	XLOG_WARNING("Failed to get interface list.");
  
@@ -42,7 +42,7 @@
  }
  
  void
-@@ -476,7 +478,8 @@ private:
+@@ -476,7 +478,8 @@
  };
  
  void
@@ -52,7 +52,7 @@
  {
      XrlOlsr4V0p1Client cl(&this->_xr);
  
-@@ -487,8 +490,8 @@ GetLinks::get(int argc, char *argv[])
+@@ -487,8 +490,8 @@
      if (! success)
  	XLOG_WARNING("Failed to get link list.");
  
@@ -63,7 +63,7 @@
  }
  
  void
-@@ -649,7 +652,8 @@ private:
+@@ -649,7 +652,8 @@
  };
  
  void
@@ -73,7 +73,7 @@
  {
      XrlOlsr4V0p1Client cl(&this->_xr);
  
-@@ -660,8 +664,8 @@ GetMids::get(int argc, char *argv[])
+@@ -660,8 +664,8 @@
      if (! success)
  	XLOG_WARNING("Failed to get MID list.");
  
@@ -84,7 +84,7 @@
  }
  
  void
-@@ -803,7 +807,8 @@ private:
+@@ -803,7 +807,8 @@
  };
  
  void
@@ -94,7 +94,7 @@
  {
      XrlOlsr4V0p1Client cl(&this->_xr);
  
-@@ -814,8 +819,8 @@ GetNeighbors::get(int argc, char *argv[]
+@@ -814,8 +819,8 @@
      if (! success)
  	XLOG_WARNING("Failed to get neighbor list.");
  
@@ -105,7 +105,7 @@
  }
  
  void
-@@ -979,7 +984,8 @@ private:
+@@ -979,7 +984,8 @@
  };
  
  void
@@ -115,7 +115,7 @@
  {
      XrlOlsr4V0p1Client cl(&this->_xr);
  
-@@ -990,8 +996,8 @@ GetTopology::get(int argc, char *argv[])
+@@ -990,8 +996,8 @@
      if (! success)
  	XLOG_WARNING("Failed to get topology list.");
  
@@ -126,7 +126,7 @@
  }
  
  void
-@@ -1126,7 +1132,8 @@ private:
+@@ -1126,7 +1132,8 @@
  };
  
  void
@@ -136,7 +136,7 @@
  {
      XrlOlsr4V0p1Client cl(&this->_xr);
  
-@@ -1137,8 +1144,8 @@ GetTwohopLinks::get(int argc, char *argv
+@@ -1137,8 +1144,8 @@
      if (! success)
  	XLOG_WARNING("Failed to get neighbor list.");
  
@@ -147,7 +147,7 @@
  }
  
  void
-@@ -1271,7 +1278,8 @@ private:
+@@ -1271,7 +1278,8 @@
  };
  
  void
@@ -157,7 +157,7 @@
  {
      XrlOlsr4V0p1Client cl(&this->_xr);
  
-@@ -1283,8 +1291,8 @@ GetTwohopNeighbors::get(int argc, char *
+@@ -1283,8 +1291,8 @@
      if (! success)
  	XLOG_WARNING("Failed to get two-hop neighbor list.");
  

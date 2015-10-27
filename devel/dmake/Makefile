@@ -2,20 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	dmake
-PORTVERSION=	4.12.20150309
+PORTVERSION=	4.12.2
 CATEGORIES=	devel
+MASTER_SITES=	http://dmake.apache-extras.org.codespot.com/files/
 
 MAINTAINER=	office@FreeBSD.org
 COMMENT=	Another hyper make utility
 
 LICENSE=	GPLv1
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	mohawk2
-GH_PROJECT=	dmake
-GH_TAGNAME=	e5588b0
+USES=        tar:bzip2
 
-USES=		autoreconf:autoconf
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--datarootdir=${DATADIR}
 

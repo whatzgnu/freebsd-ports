@@ -7,7 +7,7 @@ CATEGORIES=	security
 MASTER_SITES=	http://lockdown.trunet.dk/ \
 		http://lockdown.loproc.dk/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	db@TruNet.dk
 COMMENT=	Hardening script for FreeBSD
 
 USE_LDCONFIG=	yes

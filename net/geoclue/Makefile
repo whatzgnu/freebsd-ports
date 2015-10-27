@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	geoclue
-PORTVERSION=	2.2.0
+PORTVERSION=	2.1.10
 CATEGORIES=	net devel gnome
-MASTER_SITES=	http://www.freedesktop.org/software/geoclue/releases/${PORTVERSION:R}/
+MASTER_SITES=	http://www.freedesktop.org/software/geoclue/releases/2.1/
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	D-Bus service that provides location information

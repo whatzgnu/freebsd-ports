@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	AnyEvent-HTTP
-PORTVERSION=	2.22
+PORTVERSION=	2.15
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
@@ -16,7 +17,6 @@ BUILD_DEPENDS=	p5-AnyEvent>=5.33:${PORTSDIR}/devel/p5-AnyEvent \
 		p5-common-sense>=3.3:${PORTSDIR}/devel/p5-common-sense
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 

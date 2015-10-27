@@ -18,7 +18,11 @@ GNU_CONFIGURE=	yes
 OPTIONS_DEFINE=	IDENT_PATCH
 IDENT_PATCH_DESC=	Disable libwrap ident lookups
 
-IDENT_PATCH_EXTRA_PATCHES=${FILESDIR}/libwrap_ident_patch-srvrsnpp.c
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MIDENT_PATCH}
+EXTRA_PATCHES=${FILESDIR}/libwrap_ident_patch-srvrsnpp.c
+.endif
 
 .if !defined(WITH_QPAGE_SYSLOG_FACILITY) || !defined(WITH_QPAGE_USER)
 .if !defined(WITH_QPAGE_SYSLOG_FACILITY) && !defined(WITH_QPAGE_USER)

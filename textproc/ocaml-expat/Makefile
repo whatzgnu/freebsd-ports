@@ -3,7 +3,7 @@
 
 PORTNAME=	expat
 PORTVERSION=	0.9.1
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	textproc
 MASTER_SITES=	http://www.xs4all.nl/~mmzeeman/ocaml/
 PKGNAMEPREFIX=	ocaml-

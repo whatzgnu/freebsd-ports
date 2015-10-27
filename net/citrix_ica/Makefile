@@ -3,12 +3,12 @@
 
 PORTNAME=	citrix_ica
 PORTVERSION=	13.2.0
-PORTREVISION=	3
+PORTREVISION=	1
 CATEGORIES=	net comms linux
 MASTER_SITES=	#
 DISTNAME=	linuxx86-13.2.0.322243
 
-MAINTAINER=	ehaupt@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Citrix(R) Presentation Server(TM) client
 
 ONLY_FOR_ARCHS=	i386 amd64
@@ -26,7 +26,6 @@ CDIR=		${PREFIX}/ICAClient
 CERTDIR=	${CDIR}/keystore/cacerts
 
 PLIST_SUB=	MOZILLA_HOME=${MOZILLA_HOME}
-
 .if defined(ICA_CERTS)
 PLIST_SUB+=	HAVE_ICA_CERTS="" ICA_CERTS="${ICA_CERTS}" CERTDIR="${CERTDIR}"
 .else
@@ -42,14 +41,6 @@ SUB_LIST=	CDIR=${CDIR}
 IGNORE=May not be redistributed due to licensing. Please visit http://www.citrix.com/downloads/citrix-receiver/linux/receiver-for-linux-13-2.html accept their license and download ${DISTFILES} into ${DISTDIR}
 .endif
 
-.if defined(ICA_CERTS)
-.for f in ${ICA_CERTS}
-PLIST_FILES+=	${CERTDIR}/${f}
-HASH_${f}!=	openssl x509 -noout -hash -in ${DISTDIR}/${f}
-PLIST_FILES+=	${CERTDIR}/${HASH_${f}}.0
-.endfor
-.endif
-
 pre-fetch:
 .if defined(ICA_CERTS)
 .for f in ${ICA_CERTS}
@@ -60,11 +51,6 @@ pre-fetch:
 .endif
 .endfor
 .endif
-
-post-patch:
-# linux syscall epoll_create is not yet implemented
-	@${REINPLACE_CMD} -e 's|^ClientAudio=On|ClientAudio=Off|' \
-		${WRKSRC}/linuxx86/linuxx86.cor/nls/*/module.ini
 
 do-install:
 	@${REINPLACE_CMD} -e 's|%%PREFIX%%|${STAGEDIR}${PREFIX}|g' ${WRKDIR}/linuxx86/hinst
@@ -85,13 +71,12 @@ do-install:
 	${MKDIR} ${STAGEDIR}${CDIR}
 	${MKDIR} ${STAGEDIR}${CDIR}/config
 	cd ${WRKDIR}/linuxx86/linuxx86.cor/ && ${COPYTREE_SHARE} . ${STAGEDIR}${CDIR}
-	${CP} ${WRKDIR}/setupwfc ${STAGEDIR}${CDIR}
+	cp ${WRKDIR}/setupwfc ${STAGEDIR}${CDIR}
 
 .if defined(ICA_CERTS)
 	${MKDIR} ${STAGEDIR}${CERTDIR}
 .for f in ${ICA_CERTS}
 	${INSTALL_DATA} ${DISTDIR}/${f} ${STAGEDIR}${CERTDIR}
-	${LN} -sf ${f} ${STAGEDIR}${CERTDIR}/$$(openssl x509 -noout -hash -in ${DISTDIR}/${f}).0
 .endfor
 .endif
 

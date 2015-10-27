@@ -2,13 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	zsh
-DISTVERSION=	5.1
+PORTVERSION=	5.0.8
+PORTREVISION=	3
 CATEGORIES=	shells
 MASTER_SITES=	\
-		http://www.zsh.org/pub/:doc \
-		http://www.zsh.org/pub/ \
 		SF/${PORTNAME}/${PORTNAME}/${PORTVERSION} \
-		SF/${PORTNAME}/${PORTNAME}-doc/${PORTVERSION}:doc
+		SF/${PORTNAME}/${PORTNAME}-doc/${PORTVERSION}:doc \
+		http://www.zsh.org/pub/:doc \
+		http://www.zsh.org/pub/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	bapt@FreeBSD.org
@@ -23,7 +24,7 @@ MAKE_JOBS_UNSAFE=	yes
 
 ZSH_VER=	${PORTVERSION}
 
-USES=		iconv ncurses shebangfix tar:xz
+USES=		iconv ncurses shebangfix tar:bzip2
 SHEBANG_FILES=	Functions/Calendar/calendar_add \
 		Functions/Misc/checkmail \
 		Functions/Misc/run-help \

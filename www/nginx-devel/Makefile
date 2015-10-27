@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nginx
-PORTVERSION=	1.9.4
+PORTVERSION=	1.9.3
 CATEGORIES=	www
 MASTER_SITES=	http://nginx.org/download/
 MASTER_SITES+=	LOCAL/osa
@@ -52,7 +52,6 @@ OPTIONS_DEFINE=	\
 	MAIL_SMTP \
 	MAIL_SSL \
 	SPDY \
-	HTTPV2 \
 	STREAM \
 	STREAM_SSL \
 	THREADS \
@@ -79,7 +78,6 @@ OPTIONS_DEFINE=	\
 	HTTP_REDIS \
 	HTTP_RESPONSE \
 	HTTP_SUBS_FILTER \
-	HTTP_TARANTOOL \
 	HTTP_UPLOAD \
 	HTTP_UPLOAD_PROGRESS \
 	HTTP_UPSTREAM_FAIR \
@@ -105,7 +103,6 @@ OPTIONS_DEFINE=	\
 	RTMP \
 	SET_MISC \
 	SFLOW \
-	SHIBBOLETH \
 	SLOWFS_CACHE \
 	SMALL_LIGHT \
 	SRCACHE \
@@ -148,7 +145,6 @@ MAIL_POP3_DESC=			Enable POP3 proxy module
 MAIL_SMTP_DESC=			Enable SMTP proxy module
 MAIL_SSL_DESC=			Enable mail_ssl module
 SPDY_DESC=			Enable SPDY protocol support (SSL req.)
-HTTPV2_DESC=			Enable HTTP/2 protocol support (SSL req.)
 STREAM_DESC=			Enable stream module
 STREAM_SSL_DESC=		Enable stream_ssl module (SSL req.)
 THREADS_DESC=			Enable threads support
@@ -176,7 +172,6 @@ HTTP_PUSH_STREAM_DESC=		3rd party push stream module
 HTTP_REDIS_DESC=		3rd party http_redis module
 HTTP_RESPONSE_DESC=		3rd party http_response module
 HTTP_SUBS_FILTER_DESC=		3rd party subs filter module
-HTTP_TARANTOOL_DESC=		3rd party tarantool upstream module
 HTTP_UPLOAD_DESC=		3rd party upload module
 HTTP_UPLOAD_PROGRESS_DESC=	3rd party uploadprogress module
 HTTP_UPSTREAM_FAIR_DESC=	3rd party upstream fair module
@@ -202,7 +197,6 @@ REDIS2_DESC=			3rd party redis2 module
 RTMP_DESC=			3rd party rtmp module
 SET_MISC_DESC=			3rd party set_misc module
 SFLOW_DESC=			3rd party sflow module
-SHIBBOLETH_DESC=		3rd party shibboleth module
 SLOWFS_CACHE_DESC=		3rd party slowfs_cache module
 SMALL_LIGHT_DESC=		3rd party small_light module
 SRCACHE_DESC=			3rd party srcache module
@@ -370,12 +364,12 @@ JAVA_VERSION=	1.8
 JAVA_VENDOR=	openjdk
 JAVA_BUILD=	yes
 JAVA_RUN=	yes
-NGINX_CLOJURE_VERSION=	0.4.2
+NGINX_CLOJURE_VERSION=	0.4.0
 GH_ACCOUNT+=	nginx-clojure:clojure
 GH_PROJECT+=	nginx-clojure:clojure
 GH_TAGNAME+=	v${NGINX_CLOJURE_VERSION}:clojure
-CONFIGURE_ENV+=	"JNI_INCS=-I${LOCALBASE}/openjdk8/include -I${LOCALBASE}/openjdk8/include/freebsd"
 CONFIGURE_ARGS+=--add-module=${WRKSRC_clojure}/src/c
+EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-nginx-clojure-src-c-config
 .endif
 
 .if ${PORT_OPTIONS:MECHO}
@@ -532,17 +526,6 @@ GH_ACCOUNT+=	yaoweibin:subs_filter
 GH_PROJECT+=	ngx_http_substitutions_filter_module:subs_filter
 GH_TAGNAME+=	${NGINX_HTTP_SUBS_FILTER_VERSION}:subs_filter
 CONFIGURE_ARGS+=--add-module=${WRKSRC_subs_filter}
-.endif
-
-.if ${PORT_OPTIONS:MHTTP_TARANTOOL}
-LIB_DEPENDS+=	libmsgpuck.so:${PORTSDIR}/devel/msgpuck \
-		libyajl.so:${PORTSDIR}/devel/yajl
-GH_ACCOUNT+=	tarantool:nginx_tarantool
-GH_PROJECT+=	nginx_upstream_module:nginx_tarantool
-GH_TAGNAME+=	966f2f5:nginx_tarantool
-CFLAGS+=	-I${LOCALBASE}/include/msgpuck
-CONFIGURE_ARGS+=--add-module=${WRKSRC_nginx_tarantool}
-EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-ngx_http_tarantool-config
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_SECURE_LINK}
@@ -704,7 +687,7 @@ CONFIGURE_ARGS+=--without-http_rewrite_module \
 .endif
 
 .if ${PORT_OPTIONS:MPASSENGER}
-PASSENGER_VERSION=	5.0.16
+PASSENGER_VERSION=	5.0.14
 MASTER_SITES+=	http://s3.amazonaws.com/phusion-passenger/releases/:passenger
 DISTFILES+=	passenger-${PASSENGER_VERSION}.tar.gz:passenger
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/passenger-${PASSENGER_VERSION}/ext/nginx
@@ -777,14 +760,6 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-ngx_http_sflow_config.c \
 		${PATCHDIR}/extra-patch-ngx_http_sflow_module.c
 .endif
 
-.if ${PORT_OPTIONS:MSHIBBOLETH}
-GIT_SHIBBOLETH_VERSION=	20150121
-GH_ACCOUNT+=	nginx-shib:shib
-GH_PROJECT+=	nginx-http-shibboleth:shib
-GH_TAGNAME+=	v${GIT_SHIBBOLETH_VERSION}:shib
-CONFIGURE_ARGS+=--add-module=${WRKSRC_shib}
-.endif
-
 .if ${PORT_OPTIONS:MSLOWFS_CACHE}
 NGINX_SLOWFS_CACHE_VERSION=	1.10
 MASTER_SITES+=	http://labs.frickle.com/files/:slowfs_cache
@@ -843,25 +818,10 @@ GH_TAGNAME+=	v${NGINX_XSS_VERSION}:xss
 CONFIGURE_ARGS+=--add-module=${WRKSRC_xss}
 .endif
 
-.if ${PORT_OPTIONS:MSPDY} && ${PORT_OPTIONS:MHTTPV2}
-IGNORE=		current HTTP/2 implementation replaces SPDY module support, please disable SPDY
-.endif
-
 .if ${PORT_OPTIONS:MSPDY}
 NGINX_OPENSSL=	yes
 USE_HTTP_SSL=	yes
 CONFIGURE_ARGS+=--with-http_spdy_module
-.endif
-
-.if ${PORT_OPTIONS:MHTTPV2}
-NGINX_OPENSSL=	yes
-USE_HTTP_SSL=	yes
-CONFIGURE_ARGS+=--with-http_v2_module
-USE_OPENSSL_PORT=	yes
-NGINX_HTTPV2_VERSION=	4
-PATCH_SITES+=	http://nginx.org/patches/http2/:httpv2
-PATCHFILES+=	patch.http2-v${NGINX_HTTPV2_VERSION}_${PORTVERSION}.txt:httpv2
-PATCH_DIST_STRIP=	-p1
 .endif
 
 .if ${PORT_OPTIONS:MSTREAM}
@@ -988,7 +948,7 @@ post-patch:
 .endif
 .if ${PORT_OPTIONS:MCLOJURE}
 	@${REINPLACE_CMD} \
-		'45,47d' \
+		's!%%JAVA_HOME%%!${JAVA_HOME}!g' \
 		${WRKSRC_clojure}/src/c/config
 .endif
 .if ${PORT_OPTIONS:MDRIZZLE}
@@ -1044,11 +1004,6 @@ post-patch:
 	@${REINPLACE_CMD} \
 		's!%%PREFIX%%!${LOCALBASE}!g' \
 		${WRKDIR}/modsecurity-${NGINX_MODSECURITY_VERSION}/configure
-.endif
-.if ${PORT_OPTIONS:MHTTP_TARANTOOL}
-	@${REINPLACE_CMD} \
-		's!%%PREFIX%%!${LOCALBASE}!g' \
-		${WRKSRC_nginx_tarantool}/config
 .endif
 
 pre-configure:

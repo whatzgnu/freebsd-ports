@@ -3,7 +3,7 @@
 
 PORTNAME=	flpsed
 PORTVERSION=	0.7.2
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	print
 MASTER_SITES=	http://www.ecademix.com/JohannesHofmann/
 
@@ -15,7 +15,7 @@ LICENSE=	GPLv3
 LIB_DEPENDS+=	libfltk.so:${PORTSDIR}/x11-toolkits/fltk
 
 GNU_CONFIGURE=	yes
-USES=		desktop-file-utils ghostscript:x11 gmake
+USES=		desktop-file-utils ghostscript gmake
 PLIST_FILES=	bin/flpsed \
 		man/man1/flpsed.1.gz \
 		share/applications/flpsed.desktop \
@@ -33,10 +33,10 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/flpsed.desktop ${STAGEDIR}${PREFIX}/share/applications
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/icons
 	${INSTALL_DATA} ${WRKSRC}/flpsed.png ${WRKSRC}/flpsed.svg ${STAGEDIR}${PREFIX}/share/icons
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
+.endif
 
 post-install:
 .if !exists(${LOCALBASE}/bin/pdftops)

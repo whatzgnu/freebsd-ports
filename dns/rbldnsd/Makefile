@@ -23,6 +23,8 @@ SUB_FILES=	pkg-message
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 do-install:
 	if [ ! -d ${ROOTDIR} ]; then \
 		${INSTALL} -d -m 710 ${ROOTDIR}; \
@@ -31,8 +33,7 @@ do-install:
 		${FILESDIR}/example ${ROOTDIR}
 	${INSTALL_PROGRAM} ${WRKSRC}/rbldnsd ${STAGEDIR}${PREFIX}/sbin
 	${INSTALL_MAN} ${WRKSRC}/rbldnsd.8 ${STAGEDIR}${PREFIX}/man/man8
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${INSTALL} -d ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/CHANGES-0.81 ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/TODO ${STAGEDIR}${DOCSDIR}
@@ -42,5 +43,6 @@ do-install-DOCS-on:
 	${INSTALL_DATA} ${WRKSRC}/debian/rbldnsd.default ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/debian/rbldnsd.init ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/rbldnsd.spec ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

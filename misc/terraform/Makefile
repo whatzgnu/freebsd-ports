@@ -3,11 +3,11 @@
 
 PORTNAME=	terraform
 PORTVERSION=	0.9.5
+PORTREVISION=	1
 DISTVERSIONPREFIX=	src-
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	misc gnome
 MASTER_SITES=	GOOGLE_CODE
-PKGNAMEPREFIX=	gnome-
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Interactive height field generation and manipulation program
@@ -19,7 +19,7 @@ BUILD_DEPENDS=	${LOCALBASE}/lib/libtrio.a:${PORTSDIR}/devel/trio
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-USES=		autoreconf gettext gmake pathfix pkgconfig tar:tgz
+USES=		autoreconf pathfix gettext gmake pkgconfig tar:tgz
 USE_GCC=	yes
 USE_GNOME=	libgnomeprintui libgnomeui
 GNU_CONFIGURE=	yes

@@ -24,12 +24,16 @@ PORTDOCS=	AUTHORS COPYING ChangeLog README TODO
 
 OPTIONS_DEFINE=	DOCS
 
-post-patch:
+.include <bsd.port.options.mk>
+
+pre-configure:
 	${REINPLACE_CMD} -e "/^icondir =/s,icons,pixmaps," \
 		${WRKSRC}/resources/Makefile.in
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR} && \
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

@@ -1,1 +1,0 @@
-PERL_VERSION=	5.20.2

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lacaml
-PORTVERSION=	7.2.6
+PORTVERSION=	7.1.5
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 PKGNAMEPREFIX=	ocaml-
@@ -26,11 +26,11 @@ USES=		blaslapack fortran
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--prefix ${PREFIX} --disable-docs --disable-examples \
 		--override conf_ccopt "${CFLAGS}" \
-		--override conf_cclib "${LDFLAGS}"
+		--override conf_cclib "${LDFLAGS:S,^.*[[:space:]],,}"
 MAKE_JOBS_UNSAFE=yes
 
 CFLAGS+=	-fPIC -DEXTERNAL_EXP10
-LDFLAGS+=	-L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/lib ${BLASLIB} ${LAPACKLIB}
 
 DOCSDIR=	${OCAML_DOCSDIR}/${PORTNAME}
 EXAMPLESDIR=	${OCAML_EXAMPLESDIR}/${PORTNAME}
@@ -39,12 +39,6 @@ PORTDOCS=	*
 PORTEXAMPLES=	*
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
-
-post-patch:
-	@${REINPLACE_CMD} -e \
-		's|%%BLASLIB%%|${BLASLIB}| ; \
-		 s|%%LAPACKLIB%%|${LAPACKLIB}| ; \
-		 s|%%LOCALBASE%%|${LOCALBASE}|' ${WRKSRC}/myocamlbuild.ml
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

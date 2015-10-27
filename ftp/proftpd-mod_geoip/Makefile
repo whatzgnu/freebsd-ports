@@ -14,6 +14,7 @@ LIB_DEPENDS=	libGeoIP.so:${PORTSDIR}/net/GeoIP
 
 DESCR=		${.CURDIR}/pkg-descr
 
+LATEST_LINK=	${PKGNAMEPREFIX}-${PORTNAME}
 MASTERDIR=	${.CURDIR}/../../ftp/proftpd
 
 INCLUDEDIRS=	${LOCALBASE}/include

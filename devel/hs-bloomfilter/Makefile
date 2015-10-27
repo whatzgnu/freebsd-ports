@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	bloomfilter
-PORTVERSION=	2.0.1.0
+PORTVERSION=	2.0.0.0
+PORTREVISION=	1
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

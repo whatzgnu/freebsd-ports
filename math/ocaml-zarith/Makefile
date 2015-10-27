@@ -32,10 +32,14 @@ DOCSDIR=	${OCAML_DOCSDIR}/${PORTNAME}
 
 OPTIONS_DEFINE=	DOCS
 
-DOCS_ALL_TARGET=doc
+.include <bsd.port.options.mk>
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+ALL_TARGET+= doc
+
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${MV} ${WRKSRC}/html ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

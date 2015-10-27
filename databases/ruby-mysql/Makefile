@@ -13,11 +13,6 @@ DIST_SUBDIR=	ruby
 MAINTAINER=	knu@FreeBSD.org
 COMMENT=	Ruby module for accessing MySQL databases with a C API like interface
 
-LICENSE=	BSD2CLAUSE RUBY
-LICENSE_COMB=	dual
-
-BROKEN_RUBY22=	yes
-
 OPTIONS_DEFINE=	DOCS
 
 USE_MYSQL=	yes
@@ -41,4 +36,10 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/README_ja.html ${STAGEDIR}${DOCSDIR}/ja/
 	${LN} -fs ../tommy.css ${STAGEDIR}${DOCSDIR}/ja/
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${RUBY_VER} >= 2.2
+BROKEN=		Does not build
+.endif
+
+.include <bsd.port.post.mk>

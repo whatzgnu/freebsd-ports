@@ -18,6 +18,9 @@ LICENSE=	MIT
 USES=		python
 USE_PYTHON=	distutils autoplist
 
+# bypass infrastructure bug
+OPTIONSFILE=	${PORT_DBDIR}/py-${PORTNAME}/options
+
 OPTIONS_DEFINE=	CEXTENSIONS DOCS EXAMPLES NOSE
 
 OPTIONS_MULTI=	BACKEND

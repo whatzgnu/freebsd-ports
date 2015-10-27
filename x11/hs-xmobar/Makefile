@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	xmobar
-PORTVERSION=	0.23.1
+PORTVERSION=	0.21
+PORTREVISION=	1
 CATEGORIES=	x11 haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -10,9 +11,8 @@ COMMENT=	Minimalistic text-based status bar
 
 LICENSE=	BSD3CLAUSE
 
-USE_CABAL=	HTTP>=4000.2.4 mtl>=2.1 parsec>=3.1 regex-compat stm>=2.3 \
-		X11>=1.6.1
-USE_XORG=	xpm
+USE_CABAL=	HTTP>=4000 mtl>=2.0 parsec regex-compat stm>=2.3 \
+		utf8-string X11>=1.6.1
 
 EXECUTABLE=	xmobar
 

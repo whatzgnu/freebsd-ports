@@ -19,9 +19,13 @@ PORTDOCS=	AUTHORS NEWS README THANKS TODO
 PLIST_FILES=	bin/tnef \
 		man/man1/tnef.1.gz
 
-post-install-DOCS-on:
+.include <bsd.port.pre.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 # This target is intended to be run by the port maintainer.
 x-test: build
@@ -29,4 +33,4 @@ x-test: build
 	@cd ${WRKSRC}/tests/${dir} && ${MAKE} check-TESTS
 .endfor
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

@@ -6,7 +6,7 @@ PORTVERSION=	3.6.0
 CATEGORIES=	misc
 MASTER_SITES=	http://www.digitemp.com/software/linux/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	ea@zaib.as
 COMMENT=	Dallas Semiconductor 1-wire device reading console application
 
 LICENSE=	GPLv2
@@ -35,18 +35,20 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/digitemp_DS9097U ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 ${STAGEDIR}${PREFIX}/man/man1
 
-post-install:
-	${INSTALL_DATA} ${FILESDIR}/digitemp.conf.sample ${STAGEDIR}${PREFIX}/etc/
-	@${ECHO_MSG} ""
-	@${ECHO_MSG} "Sample config installed at ${PREFIX}/etc/digitemp.conf.sample"
-	@${ECHO_MSG} ""
+.include <bsd.port.options.mk>
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOCFILES:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
 .for dir in perl python/gui python/mysql rrdb
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/${dir}
 	${FIND} ${WRKSRC}/${dir}/ -maxdepth 1 -type f -exec ${INSTALL_DATA} \{\} ${STAGEDIR}${DOCSDIR}/${dir} \;
 .endfor
+.endif
+	${INSTALL_DATA} ${FILESDIR}/digitemp.conf.sample ${STAGEDIR}${PREFIX}/etc/
+	@${ECHO_MSG} ""
+	@${ECHO_MSG} "Sample config installed at ${PREFIX}/etc/digitemp.conf.sample"
+	@${ECHO_MSG} ""
 
 .include <bsd.port.mk>

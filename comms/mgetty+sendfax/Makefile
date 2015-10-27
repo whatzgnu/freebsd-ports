@@ -28,9 +28,15 @@ OPTIONS_DEFINE=	FIDO
 
 FIDO_DESC=	Enable FIDO EMSI support
 
+.include <bsd.port.options.mk>
+
 CFLAGS+=	-DAUTO_PPP
 
-FIDO_CFLAGS=	-DFIDO
+.if ${PORT_OPTIONS:MFIDO}
+CFLAGS+=	-DFIDO
+.endif
+
+.include <bsd.port.pre.mk>
 
 pre-install:
 	@(cd ${WRKSRC}/doc; ${MAKE} manpages)
@@ -50,4 +56,4 @@ post-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/mgettycfg ${STAGEDIR}${PREFIX}/bin
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/mgetty+sendfax/faxq-helper
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

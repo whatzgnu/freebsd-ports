@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	froxlor
-PORTVERSION=	0.9.33.2
+PORTVERSION=	0.9.32
+PORTREVISION=	3
 CATEGORIES=	sysutils www
 MASTER_SITES=	http://files.froxlor.org/releases/
 
@@ -13,17 +14,17 @@ LICENSE=	GPLv2
 
 WRKSRC=		${WRKDIR}
 
+NO_BUILD=	YES
+
 SUB_FILES+=	pkg-message pkg-deinstall
 SUB_LIST+=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 PLIST_SUB+=	${SUB_LIST}
 
 USE_PHP=	bcmath curl filter ftp json mysql mysqli pdo_mysql posix session xml
 
-WANT_PHP_CLI=	yes
+WANT_PHP_CLI=	YES
 
 USES=		shebangfix
-NO_ARCH=	yes
-NO_BUILD=	yes
 
 SHEBANG_FILES=	froxlor/install/tsmarty2c.php
 
@@ -32,7 +33,7 @@ OPTIONS_DEFINE=	LIBNSS LOGROTATE MYSQLS DKIM PCNTL NLS
 OPTIONS_RADIO=	WEB SMTP IMAPPOP3 FTP DNS
 OPTIONS_RADIO_WEB=	APACHE LIGHTTPD NGINX
 OPTIONS_RADIO_SMTP=	POSTFIX EXIM
-OPTIONS_RADIO_IMAPPOP3=	DOVECOT DOVECOT2 COURIER
+OPTIONS_RADIO_IMAPPOP3=	DOVECOT COURIER
 OPTIONS_RADIO_FTP=	PROFTPD PUREFTPD
 OPTIONS_RADIO_DNS=	POWERDNS ISCDNS
 OPTIONS_MULTI=	WWWST
@@ -44,7 +45,7 @@ SMTP_DESC=	SMTP server dependency
 IMAPPOP3_DESC=	IMAP/POP3 server dependency
 DNS_DESC=	DNS server dependency
 FTP_DESC=	FTP server dependency
-APACHE_DESC=	Apache as HTTP/HTTPS server
+APACHE_DESC=	Apache (2.2) as HTTP/HTTPS server
 LIGHTTPD_DESC=	Lighttpd as HTTP/HTTPS server
 NGINX_DESC=	Nginx as HTTP/HTTPS server
 MYSQLC_DESC=	MySQL database client only
@@ -52,8 +53,7 @@ MYSQLS_DESC=	MySQL database server and client
 POSTFIX_DESC=	Postfix as SMTP server
 EXIM_DESC=	Exim as SMTP server
 DKIM_DESC=	OpenDKIM for DomainKeys Identified Mail
-DOVECOT_DESC=	Dovecot 1.x as IMAP/POP3 server
-DOVECOT2_DESC=	Dovecot 2.x as IMAP/POP3 server
+DOVECOT_DESC=	Dovecot as IMAP/POP3 server
 COURIER_DESC=	Courier as IMAP/POP3 server
 PROFTPD_DESC=	ProFTPd as FTP server
 PUREFTPD_DESC=	Pure-FTPd as FTP server
@@ -75,9 +75,7 @@ EXIM_RUN_DEPENDS=	exim:${PORTSDIR}/mail/exim
 
 DKIM_RUN_DEPENDS=	opendkim:${PORTSDIR}/mail/opendkim
 
-DOVECOT_RUN_DEPENDS=	dovecot>1:${PORTSDIR}/mail/dovecot
-
-DOVECOT2_RUN_DEPENDS=	dovecot2>=2:${PORTSDIR}/mail/dovecot2
+DOVECOT_RUN_DEPENDS=	dovecot:${PORTSDIR}/mail/dovecot
 
 COURIER_RUN_DEPENDS=	courier:${PORTSDIR}/mail/courier
 
@@ -101,7 +99,7 @@ LIGHTTPD_RUN_DEPENDS=	lighttpd:${PORTSDIR}/www/lighttpd
 
 NGINX_RUN_DEPENDS=	nginx:${PORTSDIR}/www/nginx
 
-APACHE_USE=	yes
+APACHE_USE=	APACHE_RUN=22
 
 MYSQLS_USE=	MYSQL=server
 
@@ -113,7 +111,7 @@ NLS_USE=	PHP=gettext
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAPACHE}
-WANT_PHP_MOD=	yes
+WANT_PHP_MOD=	YES
 .endif
 
 do-install:

@@ -5,4 +5,3 @@ lib/geany/pohelper.so
 %%DOCSDIR%%/pohelper/NEWS
 %%DOCSDIR%%/pohelper/README
 %%DATADIR%%/pohelper/menus.ui
-%%DATADIR%%/pohelper/stats.ui

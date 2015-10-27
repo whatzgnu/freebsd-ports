@@ -5,8 +5,7 @@ PORTNAME=	nevow
 PORTVERSION=	0.10.0
 PORTREVISION=	3
 CATEGORIES=	www python devel
-MASTER_SITES=	http://divmod.org/trac/attachment/wiki/SoftwareReleases/ \
-		https://pypi.python.org/packages/source/N/Nevow/
+MASTER_SITES=	http://divmod.org/trac/attachment/wiki/SoftwareReleases/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	Nevow-${PORTVERSION}
 EXTRACT_SUFX=	.tar.gz?format=raw
@@ -14,9 +13,10 @@ EXTRACT_SUFX=	.tar.gz?format=raw
 MAINTAINER=	nivit@FreeBSD.org
 COMMENT=	Web application templating system, based on the Twisted Woven
 
+BROKEN=		Unfetchable
+
 USE_PYTHON=	distutils autoplist
 USES=		gettext python twisted:web
-NO_ARCH=	yes
 
 SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKSRC}/pkg-message

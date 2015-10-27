@@ -55,6 +55,8 @@ DOCS_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen \
 OPTIONS_SUB=	yes
 PORTDOCS=	*
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${GREP} -lr /dev/ttyS0 ${WRKSRC} | ${GREP} -v .bak | ${GREP} -v .orig | ${XARGS} \
 		${REINPLACE_CMD} -e 's|/dev/ttyS0|/dev/ttyu0|'
@@ -68,11 +70,12 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/lib|${PREFIX}/lib|' \
 		${WRKSRC}/src/doc/man/svxlink.conf.5 \
 		${WRKSRC}/src/svxlink/svxlink/svxlink.conf.in
-post-patch-OSS-on:
+.if ${PORT_OPTIONS:MOSS}
 	@${GREP} -lr alsa:default ${WRKSRC} | ${GREP} -v .bak | ${GREP} -v .orig | ${XARGS} \
 		${REINPLACE_CMD} -e 's|alsa:default|oss:/dev/dsp|'
 	@${GREP} -lr alsa:plughw:0 ${WRKSRC} | ${GREP} -v .bak | ${GREP} -v .orig | ${XARGS} \
 		${REINPLACE_CMD} -e 's|alsa:plughw:0|oss:/dev/dsp|'
+.endif
 
 .if ${PORTNAME}==svxlink
 post-stage:

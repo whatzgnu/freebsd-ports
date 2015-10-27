@@ -167,7 +167,6 @@ PLIST_FILES+=	${d}/${l}
 .endfor
 .endfor
 
-_USES_install+=	600:webplugin-post-install
 webplugin-post-install:
 .for d in ${_WEBPLUGIN_LINKFARMS}
 	${MKDIR} ${STAGEDIR}${d}

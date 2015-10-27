@@ -26,5 +26,6 @@ LDAP_PATCH_DATE=	20120221
 MASTERDIR=	${.CURDIR}/../qmail
 DESCR=		${.CURDIR}/pkg-descr
 PATCHDIR=	${.CURDIR}/files
+LATEST_LINK=	${PORTNAME}-ldap
 
 .include "${MASTERDIR}/Makefile"

@@ -3,7 +3,7 @@
 
 PORTNAME=	qdbm
 PORTVERSION=	1.8.78
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	databases
 MASTER_SITES=	http://fallabs.com/qdbm/
 PKGNAMESUFFIX=	-plus
@@ -17,8 +17,7 @@ LICENSE_FILE=	${WRKDIR}/${PORTNAME}-${PORTVERSION}/COPYING
 LIB_DEPENDS=	liblzo2.so:${PORTSDIR}/archivers/lzo2 \
 		libqdbm.so:${PORTSDIR}/databases/qdbm
 
-USES=		iconv shebangfix
-SHEBANG_FILES=	xapidoc/installdox
+USES=		iconv
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/plus
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes

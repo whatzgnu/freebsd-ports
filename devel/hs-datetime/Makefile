@@ -2,15 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	datetime
-PORTVERSION=	0.3.1
+PORTVERSION=	0.2.1
+PORTREVISION=	12
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
-COMMENT=	Utilities to make Data.Time.* easier to use
+COMMENT=	Utilities to make Data.Time.* easier to use in Haskell
 
 LICENSE=	GPLv3
 
-USE_CABAL=	old-locale>=1.0.0.1 old-time>=1.0.0.1
+USE_CABAL=	QuickCheck>=2
 
 .include "${.CURDIR}/../../lang/ghc/bsd.cabal.mk"
 .include <bsd.port.mk>

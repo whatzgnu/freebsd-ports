@@ -1,4 +1,6 @@
---- mkedimaximg.c.orig	2011-12-22 14:21:03 UTC
+diff --git a/mkedimaximg.c b/mkedimaximg.c
+index d8a017e..6d504e5 100644
+--- mkedimaximg.c
 +++ mkedimaximg.c
 @@ -15,7 +15,9 @@
  #include <getopt.h>

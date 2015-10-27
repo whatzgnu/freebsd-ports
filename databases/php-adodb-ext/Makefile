@@ -9,7 +9,7 @@ MASTER_SITES=	http://phplens.com/lens/dl/
 PKGNAMEPREFIX=	php-
 DISTNAME=	${PORTNAME}-${PORTVERSION:S/.//}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	joehorn@gmail.com
 COMMENT=	ADOdb Extension
 
 WRKSRC=		${WRKDIR}/adodb-${PORTVERSION:S/.//}

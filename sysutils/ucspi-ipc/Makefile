@@ -19,6 +19,8 @@ WRKSRC=		${WRKDIR}/host/superscript.com/net/${DISTNAME}
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 do-configure:
 	${ECHO_CMD} "${CC} ${CFLAGS}" > ${WRKSRC}/src/conf-cc
 	${ECHO_CMD} "${CC} ${CFLAGS}" > ${WRKSRC}/src/conf-ld
@@ -34,9 +36,9 @@ do-install:
 	ipcexecrules ipcexecrulescheck ipcperl ipcrules ipcrulescheck ipcserver
 	${INSTALL_PROGRAM} ${WRKSRC}/command/${x} ${STAGEDIR}${PREFIX}/bin
 .endfor
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/src && ${INSTALL_DATA} ${DOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

@@ -20,13 +20,16 @@ GNU_CONFIGURE=	yes
 PORTDOCS=	admesh.doc
 PLIST_FILES=	bin/admesh
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|-O2||' ${WRKSRC}/configure
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/admesh ${STAGEDIR}${PREFIX}/bin/
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/ADMESH.DOC ${STAGEDIR}${DOCSDIR}/admesh.doc
+.endif
 
 .include <bsd.port.mk>

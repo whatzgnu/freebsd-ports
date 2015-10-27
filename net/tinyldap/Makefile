@@ -30,6 +30,8 @@ TINYLDAP_DATA?=	${PREFIX}/tinyldap/data
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	${TOUCH} ${WRKSRC}/alloca.h
 	${REINPLACE_CMD} -e "s|\"data\"|\"${TINYLDAP_DATA}\"|" \
@@ -44,11 +46,11 @@ do-install:
 .for i in ${SBINFILES}
 	${INSTALL_PROGRAM} ${WRKSRC}/${i} ${STAGEDIR}${PREFIX}/sbin/
 .endfor
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in ${DOCFILES}
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}/
 .endfor
+.endif
 
 .include <bsd.port.mk>

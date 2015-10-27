@@ -16,6 +16,7 @@ LICENSE=	APACHE20
 USES=		python:2
 USE_PYTHON=	distutils autoplist
 
+OPTIONSFILE=	${PORT_DBDIR}/${PORTNAME}/options
 OPTIONS_DEFINE=	CJSON
 CJSON_DESC=	Use cjson instead of json or simplejson
 

@@ -15,9 +15,8 @@ LIB_PC_DEPENDS=	hal.pc:${PORTSDIR}/sysutils/hal
 BUILD_DEPENDS+=	${LIB_PC_DEPENDS:C|^|${LOCALBASE}/libdata/pkgconfig/|g}
 RUN_DEPENDS+=	${LIB_PC_DEPENDS:C|^|${LOCALBASE}/libdata/pkgconfig/|g}
 
-USES=		gmake
+USES=	gmake
 GNU_CONFIGURE=	yes
-NO_ARCH=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 

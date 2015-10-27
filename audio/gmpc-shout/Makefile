@@ -3,16 +3,13 @@
 
 PORTNAME=	gmpc-shout
 PORTVERSION=	0.20.0
-PORTREVISION=	6
+PORTREVISION=	5
 CATEGORIES=	audio
 MASTER_SITES=	http://download.sarine.nl/Programs/gmpc/${PORTVERSION}/ \
 		http://freebsd.unixfreunde.de/sources/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Shoutcast stream for gmpc
-
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libmpd.so:${PORTSDIR}/audio/libmpd \
 		libcairo.so:${PORTSDIR}/graphics/cairo
@@ -25,6 +22,5 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 USES=		gettext gmake libtool pkgconfig
 USE_GNOME=	intltool glib20 gtk20 libxml2
-INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

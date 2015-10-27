@@ -5,35 +5,37 @@ PORTNAME=	usbutils
 PORTVERSION=	0.86
 PORTREVISION=	2
 CATEGORIES=	sysutils
-MASTER_SITES=	SF/linux-usb/${PORTNAME} \
-		http://pkgs.fedoraproject.org/repo/pkgs/usbutils/usbutils-0.86.tar.gz/34979f675d2bcb3e1b45012fa830a53f/ \
-		http://ftp.be.debian.org/pub/linux/utils/usb/usbutils/
+MASTER_SITES=	SF/linux-usb/${PORTNAME}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	brix@FreeBSD.org
 COMMENT=	Utility for listing USB devices
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		gmake pkgconfig
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS=	--datadir=${DATADIR} --enable-zlib
-CONFIGURE_ENV=	LIBUSB_CFLAGS="-I/usr/include" \
-		LIBUSB_LIBS="-L/usr/lib -lusb"
+USES=		gmake pkgconfig
 
 PORTDOCS=	AUTHORS ChangeLog NEWS README
 
 OPTIONS_DEFINE=	DOCS
+
+.include <bsd.port.options.mk>
+
+CONFIGURE_ENV+=	LIBUSB_CFLAGS="-I/usr/include" \
+		LIBUSB_LIBS="-L/usr/lib -lusb"
 
 post-patch:
 	@${REINPLACE_CMD} -i '' \
 		-e 's|/bin/bash|/bin/sh|' \
 		${WRKSRC}/usb-devices
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S@^@${WRKSRC}/@} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

@@ -8,7 +8,7 @@ PKGNAMESUFFIX=	-fppkg
 MAINTAINER=	freebsd-fpc@FreeBSD.org
 COMMENT=	Free Pascal package unit
 
-USE_FPC=	fcl-base fcl-net fcl-passrc fcl-process fcl-web fcl-xml fpmkunit
+USE_FPC=	fcl-base fcl-process fcl-web fcl-xml
 
 MASTERDIR=	${.CURDIR}/../../lang/fpc
 WRKUNITDIR=	${FPCSRCDIR}/packages/${PKGNAMESUFFIX:S/-//}

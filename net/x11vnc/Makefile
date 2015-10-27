@@ -33,13 +33,17 @@ NLS_USES=	gettext
 AVAHI_LIB_DEPENDS=	libavahi-common.so:${PORTSDIR}/net/avahi-app
 AVAHI_CONFIGURE_OFF=	--without-avahi
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	${REINPLACE_CMD} -e 's|include_HEADERS = |noinst_HEADERS = |' \
 		-e 's|am__include_HEADERS_DIST|am__noinst_HEADERS_DIST|' \
 		-e 's|/include/rfb|/include|' ${WRKSRC}/Makefile.in
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}/
+.endif
 
 .include <bsd.port.mk>

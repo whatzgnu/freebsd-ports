@@ -14,7 +14,6 @@ COMMENT=	Interface with the 'rar' command
 BUILD_DEPENDS=	rar:${PORTSDIR}/archivers/rar \
 		p5-IPC-Run>=0:${PORTSDIR}/devel/p5-IPC-Run
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 

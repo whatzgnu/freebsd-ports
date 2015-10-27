@@ -19,16 +19,20 @@ WRKSRC=		${WRKDIR}/src
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} 's|exit(1)|exit(0)|' \
 		${WRKSRC}/daa2iso.c
 	@${REINPLACE_CMD} 's|/usr/local|${STAGEDIR}${PREFIX}|' \
 		${WRKSRC}/Makefile
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for doc in COPYING daa2iso.txt
 	${INSTALL_DATA} ${WRKDIR}/${doc} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

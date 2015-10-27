@@ -2,19 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	Data-Integer
-PORTVERSION=	0.005
+PORTVERSION=	0.004
+PORTREVISION=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	Details of the native integer data type
+MAINTAINER=	brix@FreeBSD.org
+COMMENT=	Perl module for details of the native integer data type
 
-LICENSE=	ART10 GPLv1
-LICENSE_COMB=	dual
-
-NO_ARCH=	yes
-USE_PERL5=	modbuild
 USES=		perl5
+USE_PERL5=	modbuild
 
 .include <bsd.port.mk>

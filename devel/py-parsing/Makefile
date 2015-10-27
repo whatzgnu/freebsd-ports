@@ -13,7 +13,7 @@ COMMENT=	General parsing module for Python
 
 LICENSE=	MIT
 
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 USES=		python
 
 .include <bsd.port.mk>

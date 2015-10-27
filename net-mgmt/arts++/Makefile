@@ -20,6 +20,8 @@ USE_LDCONFIG=	yes
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's/make_pair/std::make_pair/' \
 		${WRKSRC}/classes/include/Ipv4PrefixPatricia.hh.in
@@ -32,12 +34,12 @@ post-patch:
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libArts.so
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html
 .for f in ChangeLog INSTALL WishList
 	@${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
 	@${INSTALL_DATA} ${WRKSRC}/doc/*.html ${STAGEDIR}${DOCSDIR}/html
+.endif
 
 .include <bsd.port.mk>

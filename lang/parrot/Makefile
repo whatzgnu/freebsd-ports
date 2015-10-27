@@ -3,7 +3,6 @@
 
 PORTNAME=	parrot
 PORTVERSION=	7.6.0
-PORTREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	ftp://ftp.parrot.org/pub/parrot/releases/supported/${PORTVERSION}/ \
 		LOCAL/sunpoet
@@ -34,12 +33,7 @@ CONFIGURE_SCRIPT=	Configure.pl
 INSTALL_TARGET=	install-dev
 MAKE_JOBS_UNSAFE=	yes
 USE_LDCONFIG=	yes
-USES=		bison gmake perl5 shebangfix tar:bzip2
-SHEBANG_FILES=	tools/dev/create_language.pl \
-		tools/dev/gen_makefile.pl \
-		tools/dev/pprof2cg.pl \
-		tools/dev/reconfigure.pl
-perl_OLD_CMD=	perl
+USES=		bison gmake perl5 tar:bzip2
 
 DOCSDIR=	share/doc/${PORTNAME}/${PORTVERSION}
 PLIST_SUB=	PARROT_VER="${PORTVERSION}"

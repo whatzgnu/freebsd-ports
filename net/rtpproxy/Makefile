@@ -2,19 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	rtpproxy
-PORTVERSION=	2.0.0
-DISTVERSIONPREFIX=	v
+PORTVERSION=	1.2.1
+PORTREVISION=	1
 CATEGORIES=	net
+MASTER_SITES=	http://www.rtpproxy.org/chrome/site/
 
-MAINTAINER=	farrokhi@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	High-performance RTP proxy server for the SIP Express Router (SER)
 
 LICENSE=	BSD2CLAUSE
 
 LIB_DEPENDS=	libgsm.so:${PORTSDIR}/audio/gsm
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	sippy
 
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -25,7 +23,7 @@ GROUPS=		${PORTNAME}
 
 post-build:
 	${SED} 's|%%PREFIX%%|${PREFIX}|g ; s|%%RC_SUBR%%|/etc/rc.subr|g' \
-	    ${WRKSRC}/scripts/rtpproxy.in.freebsd > ${WRKDIR}/rtpproxy
+	    ${WRKSRC}/freebsd/rtpproxy.in > ${WRKDIR}/rtpproxy
 
 post-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/rtpproxy ${STAGEDIR}${PREFIX}/etc/rc.d/rtpproxy

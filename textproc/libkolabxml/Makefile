@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libkolabxml
-PORTVERSION=	1.1.1
+PORTVERSION=	1.0.3
 CATEGORIES=	textproc
 MASTER_SITES=	http://mirror.kolabsys.com/pub/releases/
 
@@ -20,7 +20,6 @@ LIB_DEPENDS=	libboost_system.so:${PORTSDIR}/devel/boost-libs \
 
 # TODO: Conditionally enable the bindings based on OPTIONs.
 CMAKE_ARGS=	-DBUILD_TESTS:BOOL=OFF \
-		-DBUILD_UTILS:BOOL=OFF \
 		-DCSHARP_BINDINGS:BOOL=OFF \
 		-DDIST_ONLY:BOOL=OFF \
 		-DJAVA_BINDINGS:BOOL=OFF \

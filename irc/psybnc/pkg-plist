@@ -1,5 +1,7 @@
 bin/psybnc
-@sample etc/psybnc.conf.sample
+@unexec cmp -s %D/etc/psybnc.conf.sample %D/etc/psybnc.conf && rm -f %D/etc/psybnc.conf || true
+etc/psybnc.conf.sample
+@exec cp -np %D/%F %B/psybnc.conf
 %%PSYBASE%%/lang/INFO
 %%PSYBASE%%/lang/english.lng
 %%PSYBASE%%/lang/german.lng

@@ -1,8 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	path.py
-PORTVERSION=	8.1
+PORTVERSION=	6.0
 CATEGORIES=	devel python
+MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	wg@FreeBSD.org
@@ -10,15 +11,7 @@ COMMENT=	Module wrapper for os.path
 
 LICENSE=	MIT
 
-USES=		python
+USES=		python zip
 USE_PYTHON=	autoplist distutils
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	jaraco
-
-post-patch:
-	@${REINPLACE_CMD} -e '/setuptools_scm/d' \
-		-e 's/use_scm_version=True,/version=${PORTVERSION},/' \
-		${WRKSRC}/${PYSETUP}
 
 .include <bsd.port.mk>

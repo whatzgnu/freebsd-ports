@@ -20,6 +20,8 @@ COMMENT=	Database server - drop-in replacement for MySQL
 
 LICENSE=	GPLv2
 
+UNIQUENAME=	${PORTNAME}${PKGNAMESUFFIX}
+
 CONFLICTS?=	mariadb5[4-9]-server-* \
 		mariadb1[0-9][0-9]-server-* \
 		mysql*-server-* \

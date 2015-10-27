@@ -21,6 +21,8 @@ PLIST_DIRSTRY=	%%ETCDIR%%/logs/ %%ETCDIR%%/dat/ %%ETCDIR%%
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 pre-configure:
 	${CP} ${WRKSRC}/configure ${WRKSRC}/config
 
@@ -45,9 +47,9 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/$s ${STAGEDIR}${ETCDIR}
 	${ECHO_CMD} ${ETCDIR_REL}/$s >> ${TMPPLIST}
 .endfor
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/docs/README ${STAGEDIR}${DOCSDIR}/
+.endif
 
 .include <bsd.port.mk>

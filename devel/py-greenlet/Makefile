@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	greenlet
-PORTVERSION=	0.4.9
+PORTVERSION=	0.4.7
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -13,8 +13,8 @@ COMMENT=	Light-weight microthreads for Python
 LICENSE=	MIT
 
 ONLY_FOR_ARCHS=	amd64 i386
-USE_PYTHON=	autoplist concurrent distutils
-USES=		python
+USE_PYTHON=	autoplist distutils
+USES=		python zip
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/greenlet.so

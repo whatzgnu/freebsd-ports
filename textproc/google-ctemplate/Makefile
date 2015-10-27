@@ -14,27 +14,26 @@ COMMENT=	Simple but powerful template language for C++
 
 OPTIONS_DEFINE=	DOCS
 
-USES=		libtool pathfix pkgconfig shebangfix
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-silent-rules
+USES=		libtool pathfix pkgconfig shebangfix
 SHEBANG_FILES=	src/template-converter
 USE_LDCONFIG=	yes
+
+BROKEN_powerpc=	Does not compile on powerpc
+
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e \
 		's|$$(prefix)/share/doc/$$(PACKAGE)-$$(VERSION)|${DOCSDIR}|' \
 		${WRKSRC}/Makefile.in
-# XXX: undefining BSWAP32 breaks builds on big-endian systems for some reason
-	@${REINPLACE_CMD} -e 's|# undef BSWAP32|//&|' \
-		${WRKSRC}/src/base/macros.h
-
-post-patch-DOCS-off:
+.if empty(PORT_OPTIONS:MDOCS)
 	@${REINPLACE_CMD} -e \
 		'/install-data-am/ s|install-dist_docDATA||' \
 		${WRKSRC}/Makefile.in
+.endif
 
-regression-test: build
-	@${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_FLAGS} ${MAKEFILE} \
-		${MAKE_ARGS} check -C ${WRKSRC}
+tests: build
+	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_FLAGS} ${MAKEFILE} ${MAKE_ARGS} check)
 
 .include <bsd.port.mk>

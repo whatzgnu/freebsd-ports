@@ -2,32 +2,31 @@
 # $FreeBSD$
 
 PORTNAME=	ftpsync
-PORTVERSION=	1.3.06
+PORTVERSION=	1.3.03
 PORTEPOCH=	1
 CATEGORIES=	ftp
-MASTER_SITES=	http://download.clazzes.org/ftpsync/
-DISTNAME=	${PORTNAME}-${PORTVERSION}-0
+MASTER_SITES=	http://ftpsync.sourceforge.net/ \
+		http://mirror.mcx2.org/
 
 MAINTAINER=	rodrigO@FreeBSD.org
 COMMENT=	Synchronizes a local and a remote FTP directory trees
 
-LICENSE=	GPLv2
+BROKEN=		No public distfiles
 
 RUN_DEPENDS=	p5-libwww>=5.805:${PORTSDIR}/www/p5-libwww
 
-USES=		perl5 shebangfix tar:bzip2
+USES=		perl5 tar:bzip2 shebangfix
 NO_BUILD=	yes
 
 PLIST_FILES=	bin/${PORTNAME}.pl
 SHEBANG_FILES=	ftpsync.pl
-PORTDOCS=	*
+PORTDOCS=	README
 
 OPTIONS_DEFINE=	DOCS
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/${PORTNAME}.pl ${STAGEDIR}${PREFIX}/bin
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} Changes_1.00-1.3.04.txt License.txt \
-	    ReadMe.txt ToDo.txt changelog  ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

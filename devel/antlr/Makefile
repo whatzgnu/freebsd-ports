@@ -13,6 +13,7 @@ CONFLICTS=	pccts-[0-9]*
 
 USES=		gmake
 USE_JAVA=	yes
+JAVA_VERSION=	1.6+
 
 HAS_CONFIGURE=	yes
 CONFIGURE_ENV=	JAVAC="${JAVAC}" JAR="${JAR}" JAVA="${JAVA}" CLASSPATH="${PORT_CLASSPATH}"
@@ -34,18 +35,33 @@ PORTDOCS=	ANTLRException.gif closure.gif cpp-runtime.html \
 OPTIONS_DEFINE=	PYTHON DOCS
 OPTIONS_SUB=	yes
 
-PYTHON_USES=		python
-PYTHON_PORTDOCS=	python-runtime.html
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MPYTHON}
+USES+=		python
+PORTDOCS+=	python-runtime.html
+ANTLR_PYTHON=	${WRKSRC}/lib/python
+.endif
 
 post-extract:
 	(cd ${WRKSRC} && ${CP} antlr.jar antlrall.jar)
 
-post-configure-PYTHON-on:
-	(cd ${WRKSRC}/lib/python && ${PYTHON_CMD} setup.py config)
+post-configure:
+.if ${PORT_OPTIONS:MPYTHON}
+	(cd ${ANTLR_PYTHON} && ${PYTHON_CMD} setup.py config)
+.endif
 
-post-build-PYTHON-on:
-	(cd ${WRKSRC}/lib/python && ${PYTHON_CMD} setup.py build && \
-	${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py ${WRKSRC}/lib/python)
+.if defined(WITH_BUILT_JAVA_LIB)
+pre-build:
+	(cd ${WRKSRC} && ${JAVA} -classpath "${PORT_CLASSPATH}" antlr.build.Tool build)
+	(cd ${WRKSRC} && ${JAVA} -classpath "${PORT_CLASSPATH}" antlr.build.Tool jar)
+.endif
+
+.if ${PORT_OPTIONS:MPYTHON}
+post-build:
+	(cd ${ANTLR_PYTHON} && ${PYTHON_CMD} setup.py build && \
+	${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py ${ANTLR_PYTHON})
+.endif
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${JAVAJARDIR}
@@ -55,12 +71,10 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/lib/cpp/antlr/*.hpp \
 		${STAGEDIR}${PREFIX}/include/${PORTNAME}
 	${INSTALL_DATA} ${WRKSRC}/lib/cpp/src/libantlr.a ${STAGEDIR}${PREFIX}/lib
-
-do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC}/doc && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR})
-
-do-install-PYTHON-on:
-	@(cd ${WRKSRC}/lib/python && ${PYTHON_CMD} setup.py install --root=${STAGEDIR})
+.if ${PORT_OPTIONS:MPYTHON}
+	@(cd ${ANTLR_PYTHON} && ${PYTHON_CMD} setup.py install --root=${STAGEDIR})
+.endif
 
 .include <bsd.port.mk>

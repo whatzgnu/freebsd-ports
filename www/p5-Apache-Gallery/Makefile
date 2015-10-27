@@ -10,7 +10,7 @@ MASTER_SITES=	http://apachegallery.dk/download/ \
 		CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	perl@FreeBSD.org
+MAINTAINER=	brix@FreeBSD.org
 COMMENT=	Apache::Gallery - mod_perl handler to create an image gallery
 
 LICENSE=	ART10
@@ -27,7 +27,6 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 USES=		perl5
 USE_PERL5=	configure
 USE_APACHE=	22+
-NO_ARCH=	yes
 
 DOC_FILES=	INSTALL LICENSE README TODO UPGRADE
 

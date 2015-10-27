@@ -8,11 +8,8 @@ CATEGORIES=	net-p2p
 MASTER_SITES=	SF \
 		http://lopster.sourceforge.net/download/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	conrads@cox.net
 COMMENT=	GTK+ client for Napster and free alternatives
-
-LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 GNU_CONFIGURE=	yes
 USES=		gmake
@@ -24,11 +21,26 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 OPTIONS_DEFINE=	FLAC OGG ZLIB
 OPTIONS_DEFAULT=	FLAC OGG ZLIB
 
-FLAC_LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac
-FLAC_CONFIGURE_WITH=	flac
-OGG_LIB_DEPENDS=	libogg.so:${PORTSDIR}/audio/libogg
-OGG_CONFIGURE_WITH=	ogg
-ZLIB_CONFIGURE_WITH=	zlib
+.include <bsd.port.options.mk>
+
+# --with-flac is on by default
+.if ${PORT_OPTIONS:MFLAC}
+LIB_DEPENDS+=		libFLAC.so:${PORTSDIR}/audio/flac
+.else
+CONFIGURE_ARGS+=	--without-flac
+.endif
+
+# --with-ogg is on by default
+.if ${PORT_OPTIONS:MOGG}
+LIB_DEPENDS+=		libogg.so:${PORTSDIR}/audio/libogg
+.else
+CONFIGURE_ARGS+=	--without-ogg
+.endif
+
+# --with-zlib is on by default
+.if ! ${PORT_OPTIONS:MZLIB}
+CONFIGURE_ARGS+=	--without-zlib
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e "s/www.naplist.com/www.gotnap.com/" \

@@ -20,6 +20,7 @@ LIB_DEPENDS=	libInspector.so:${PORTSDIR}/deskutils/gworkspace \
 		libAddresses.so:${PORTSDIR}/mail/addresses
 USE_LDCONFIG=	${GNUSTEP_LOCAL_LIBRARIES}
 
+UNIQUENAME=	${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 WRKSRC=		${WRKDIR}/Addresses-${PORTVERSION}/Goodies
 
 post-patch:

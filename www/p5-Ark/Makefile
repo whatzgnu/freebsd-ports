@@ -4,7 +4,8 @@ PORTNAME=	Ark
 PORTVERSION=	0.1.r1
 PORTREVISION=	2
 CATEGORIES=	www perl5
-MASTER_SITES=	GHC LOCAL/kuriyama
+MASTER_SITES=	http://cloud.github.com/downloads/typester/ark-perl/ \
+		LOCAL/kuriyama
 PKGNAMEPREFIX=	p5-
 DISTNAME=	Ark-0.001000_001
 
@@ -33,9 +34,5 @@ RUN_DEPENDS=	\
 
 USES=		perl5
 USE_PERL5=	configure
-USE_GITHUB=	yes
-GH_ACCOUNT=	typester
-GH_PROJECT=	ark-perl
-WRKSRC=		${WRKDIR}/${DISTNAME}
 
 .include <bsd.port.mk>

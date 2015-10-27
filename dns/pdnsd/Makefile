@@ -33,8 +33,12 @@ CFLAGS+=	-pthread
 
 IPV6_CONFIGURE_ENABLE=	ipv6
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	@${INSTALL_DATA} ${DOC_FILES:S@^@${DOCSRCDIR}/@} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

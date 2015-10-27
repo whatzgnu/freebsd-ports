@@ -1,4 +1,6 @@
---- mkcsysimg.c.orig	2011-12-22 14:21:03 UTC
+diff --git a/mkcsysimg.c b/mkcsysimg.c
+index 4f2352a..b0c16c6 100644
+--- mkcsysimg.c
 +++ mkcsysimg.c
 @@ -32,11 +32,13 @@
  #include <stdarg.h>

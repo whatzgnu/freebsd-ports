@@ -22,8 +22,13 @@ OPTIONS_SUB=	yes
 
 CCSUTIL_DESC=	Install Coded character set (CCS) util
 
-CCSUTIL_USE=	PERL5=run
-CCSUTIL_EXTRA_PATCHES_OFF=	${FILESDIR}/extra-patch-ccs_Makefile
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MCCSUTIL}
+USE_PERL5+=	run
+.else
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-ccs_Makefile
+.endif
 
 .if defined(NO_PROFILE)
 PLIST_SUB+=	PROFILE="@comment "

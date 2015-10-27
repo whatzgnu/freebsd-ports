@@ -4,10 +4,10 @@
 PORTNAME=	rhino
 DISTVERSION=	1_7R4
 CATEGORIES=	lang java
-MASTER_SITES=	GHC \
+MASTER_SITES=	http://cloud.github.com/downloads/mozilla/rhino/:rhino \
 		LOCAL/nivit/${PORTNAME}/:swingex \
 		APACHE/xmlbeans/binaries/:xmlbeans
-DISTFILES=	${PORTNAME}${DISTVERSION}.zip \
+DISTFILES=	${PORTNAME}${DISTVERSION}.zip:rhino \
 		src.zip:swingex \
 		xmlbeans-2.5.0.zip:xmlbeans
 DIST_SUBDIR=	${PORTNAME}
@@ -35,8 +35,6 @@ OPTIONS_DEFAULT=	LINEDIT
 OPTIONS_DEFINE=	LINEDIT
 
 USES=		zip
-USE_GITHUB=	yes
-GH_ACCOUNT=	mozilla
 
 .include <bsd.port.options.mk>
 

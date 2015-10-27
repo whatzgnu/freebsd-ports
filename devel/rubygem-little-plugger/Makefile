@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	little-plugger
-PORTVERSION=	1.1.4
+PORTVERSION=	1.1.3
+PORTREVISION=	1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 

@@ -14,8 +14,6 @@ COMMENT=	Implementation of the Opendap/DODS protocol
 
 LICENSE=	MIT
 
-BROKEN=		does not build
-
 BUILD_DEPENDS=	paver:${PORTSDIR}/devel/py-paver \
 		${PYNUMPY}
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}httplib2>0:${PORTSDIR}/www/py-httplib2 \

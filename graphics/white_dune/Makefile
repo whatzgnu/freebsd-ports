@@ -36,6 +36,8 @@ REINPLACE_ARGS=	-i ''
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 # Try to fix parallel builds (-jX) by calling submakes correctly
 post-patch:
 	@${FIND} ${WRKSRC} -name Makefile\* | ${XARGS} ${REINPLACE_CMD} -E \
@@ -46,8 +48,8 @@ do-install:
 	cd ${WRKSRC}/bin && ${INSTALL_SCRIPT} dune4kids illegal2vrml \
 		${STAGEDIR}${PREFIX}/bin
 	cd ${WRKSRC}/man && ${INSTALL_MAN} dune.1 illegal2vrml.1 ${STAGEDIR}${MAN1PREFIX}/man/man1
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@cd ${WRKSRC}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

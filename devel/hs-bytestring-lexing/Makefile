@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	bytestring-lexing
-PORTVERSION=	0.5.0.2
+PORTVERSION=	0.4.3.2
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Parse and produce literals from strict or lazy bytestrings
 
-LICENSE=	BSD2CLAUSE
+LICENSE=	BSD3CLAUSE
 
 USE_ALEX=	yes
 

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	xml
-PORTVERSION=	1.3.14
+PORTVERSION=	1.3.13
+PORTREVISION=	6
 CATEGORIES=	textproc haskell
 
 MAINTAINER=	haskell@FreeBSD.org

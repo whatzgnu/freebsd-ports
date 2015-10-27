@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mkvtoolnix
-PORTVERSION=	8.3.0
+PORTVERSION=	7.9.0
 CATEGORIES=	multimedia audio
 MASTER_SITES=	http://www.bunkus.org/videotools/mkvtoolnix/sources/ \
 		LOCAL/ehaupt
@@ -19,19 +19,21 @@ LIB_DEPENDS=	libvorbis.so:${PORTSDIR}/audio/libvorbis \
 		libboost_regex.so:${PORTSDIR}/devel/boost-libs \
 		libmatroska.so:${PORTSDIR}/multimedia/libmatroska
 
-USES=		compiler:c++11-lib gettext iconv pkgconfig tar:xz
+USES=		pkgconfig gettext iconv compiler:c++11-lib tar:xz
 GNU_CONFIGURE=	yes
 USE_RUBY=	yes
 RUBY_NO_RUN_DEPENDS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ENV+=	ac_cv_path_PO4A=no ZLIB_CFLAGS=-I/usr/include ZLIB_LIBS=-lz
-CONFIGURE_ARGS=	--with-boost=${LOCALBASE} \
+CONFIGURE_ARGS=	--disable-qt \
+		--with-boost=${LOCALBASE} \
 		--with-boost-filesystem=boost_filesystem \
 		--with-boost-system=boost_system \
-		--with-boost-regex=boost_regex
+		--with-boost-regex=boost_regex \
+		--without-curl
 
-OPTIONS_DEFINE=	WXGTK FLAC QT5
+OPTIONS_DEFINE=	WXGTK FLAC
 OPTIONS_DEFAULT=WXGTK FLAC
 
 BROKEN_sparc64=	Does not install on sparc64
@@ -54,14 +56,6 @@ MAKE_ENV+=	V=1
 
 .if ${PORT_OPTIONS:MWXGTK}
 INSTALLS_ICONS=	yes
-.endif
-
-.if ${PORT_OPTIONS:MQT5}
-USE_QT5=	buildtools core widgets quick
-LIB_DEPENDS+=	libcurl.so:${PORTSDIR}/ftp/curl
-CONFIGURE_ARGS+=	--enable-qt --with-curl
-.else
-CONFIGURE_ARGS+=	--disable-qt --without-curl
 .endif
 
 .if ${OSVERSION} < 1000000

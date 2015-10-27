@@ -3,15 +3,12 @@
 
 PORTNAME=	otter
 PORTVERSION=	3.3f
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	misc
 MASTER_SITES=	http://www-unix.mcs.anl.gov/AR/otter/dist33/
 
 MAINTAINER=	wollman@FreeBSD.org
 COMMENT=	Theorem prover and finite model searcher
-
-USES=		shebangfix
-SHEBANG_FILES=	examples-mace2/Perl-examples/commute4_filter
 
 MAKE_ARGS=	CC="${CC}" CFLAGS="${CFLAGS}"
 
@@ -21,6 +18,8 @@ PORTDOCS=	README anldp.pdf mace2.pdf otter33.pdf
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 MAKE_JOBS_UNSAFE=	yes
+
+.include <bsd.port.options.mk>
 
 post-patch:
 # Change "cd foo && $(MAKE)" into "$(MAKE) -C foo"
@@ -34,14 +33,14 @@ post-patch:
 
 do-install:
 	${INSTALL_PROGRAM} ${PROGRAMS:S,^,${WRKSRC}/bin/,} ${STAGEDIR}${PREFIX}/bin
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/documents/,} ${STAGEDIR}${DOCSDIR}
-
-do-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR} ${STAGEDIR}${PREFIX}/share/examples/mace2
 	(cd ${WRKSRC}/examples; ${PAX} -rw . ${STAGEDIR}${EXAMPLESDIR})
 	(cd ${WRKSRC}/examples-mace2; ${PAX} -rw . ${STAGEDIR}${PREFIX}/share/examples/mace2)
+.endif
 
 .include <bsd.port.mk>

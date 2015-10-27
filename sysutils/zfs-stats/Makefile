@@ -5,7 +5,7 @@ PORTNAME=	zfs-stats
 PORTVERSION=	1.2.2
 PORTREVISION=	1
 CATEGORIES=	sysutils
-MASTER_SITES=	GHC
+MASTER_SITES=	http://cloud.github.com/downloads/mmatuska/zfs-stats/
 
 MAINTAINER=	mm@FreeBSD.org
 COMMENT=	Display human-readable ZFS statistics
@@ -13,8 +13,6 @@ COMMENT=	Display human-readable ZFS statistics
 LICENSE=	BSD2CLAUSE
 
 USES=		perl5 shebangfix
-USE_GITHUB=	yes
-GH_ACCOUNT=	mmatuska
 
 NO_BUILD=	yes
 SHEBANG_FILES=	zfs-*

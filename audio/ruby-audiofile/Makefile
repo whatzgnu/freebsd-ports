@@ -3,47 +3,48 @@
 
 PORTNAME=	audiofile
 PORTVERSION=	0.2.4
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	audio ruby
-MASTER_SITES=	SF/ruby-${PORTNAME}/ruby-${PORTNAME}/${PORTVERSION}:audiofile \
-		SF/ruby-${PORTNAME}/cddb/${CDDB_VER}:cddb
+MASTER_SITES=	SF/ruby-${PORTNAME}/ruby-${PORTNAME}/${PORTVERSION}
 PKGNAMEPREFIX=	${RUBY_PKGNAMEPREFIX}
 DISTNAME=	ruby-${PORTNAME}-${PORTVERSION}
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:audiofile \
-		cddb-${CDDB_VER}${EXTRACT_SUFX}:cddb
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${CDDB_DISTNAME}${EXTRACT_SUFX}
 DIST_SUBDIR=	ruby
 
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Ruby binding to the audiofile library
 
+BROKEN=		Unfetchable
 LIB_DEPENDS=	libaudiofile.so:${PORTSDIR}/audio/libaudiofile
-
-BROKEN_RUBY22=	yes
-
-OPTIONS_DEFINE=	DOCS EXAMPLES
 
 USE_RUBY=	yes
 USE_RUBY_EXTCONF=	yes
 
-CDDB_VER=	0.2
+CDDB_DISTNAME=	cddb-0.2
 CDDB_WRKSRC=	${WRKDIR}/example
 
 INSTALL_TARGET=	site-install
 REINPLACE_ARGS=	-i ""
 
+DOCS=		audiofile.rd
+
+OPTIONS_DEFINE=	DOCS
+
 post-patch:
-	@${REINPLACE_CMD} -E -e "s,/home/jaredj/ruby-lib/(cddb),\1,g" ${CDDB_WRKSRC}/wavcddb
+	${REINPLACE_CMD} -E -e "s,/home/jaredj/ruby-lib/(cddb),\1,g" \
+		${CDDB_WRKSRC}/wavcddb
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${RUBY_SITEARCHLIBDIR}/audiofile.so
-
-post-install-DOCS-on:
-	${MKDIR} ${STAGEDIR}${RUBY_MODDOCDIR}/
-	${INSTALL_DATA} ${WRKSRC}/audiofile.rd ${STAGEDIR}${RUBY_MODDOCDIR}/
-
-post-install-EXAMPLES-on:
-	${MKDIR} ${STAGEDIR}${RUBY_MODEXAMPLESDIR}/cddb/
+	${MKDIR} ${STAGEDIR}${RUBY_MODEXAMPLESDIR}/cddb
 	${INSTALL_DATA} ${WRKSRC}/test.rb ${STAGEDIR}${RUBY_MODEXAMPLESDIR}/
 	${INSTALL_DATA} ${CDDB_WRKSRC}/* ${STAGEDIR}${RUBY_MODEXAMPLESDIR}/cddb/
+	${MKDIR} ${STAGEDIR}${RUBY_MODDOCDIR}
+	${INSTALL_DATA} ${DOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${RUBY_MODDOCDIR}/
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${RUBY_VER} >= 2.2
+BROKEN=		Does not build
+.endif
+
+.include <bsd.port.post.mk>

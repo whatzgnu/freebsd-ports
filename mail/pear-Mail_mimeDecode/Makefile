@@ -6,7 +6,7 @@ PORTVERSION=	1.5.5
 CATEGORIES=	mail www pear
 DISTNAME=	Mail_mimeDecode-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	joehorn@gmail.com
 COMMENT=	Provides a class to decode mime messages
 
 BUILD_DEPENDS=	${PEARDIR}/Mail/mime.php:${PORTSDIR}/mail/pear-Mail_Mime

@@ -9,8 +9,6 @@ MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/Sabbu%20${PORTVERSION}
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Program used to time subtitles
 
-LICENSE=	GPLv2
-
 LIB_DEPENDS=	libavcodec0.so:${PORTSDIR}/multimedia/ffmpeg0 \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile
 
@@ -19,7 +17,7 @@ GNU_CONFIGURE=	yes
 
 USE_GNOME=	gtk20
 CFLAGS+=	-I${LOCALBASE}/include/ffmpeg0 -I${LOCALBASE}/include
-LDFLAGS+=	-lpthread -L${LOCALBASE}/lib/ffmpeg0 -L${LOCALBASE}/lib
+LDFLAGS+=	-lpthread -L${LOCALBASE}/lib/ffmpeg0 -L${LOCALBASE}/lib 
 LDFLAGS+=	-lswscale0 -lgmodule-2.0
 
 OPTIONS_DEFINE=	GTKSPELL
@@ -35,6 +33,10 @@ PLIST_SUB+=	WITH_NLS=""
 .else
 CONFIGURE_ARGS+=	--disable-nls
 PLIST_SUB+=	WITH_NLS="@comment "
+.endif
+
+.if ${ARCH} == "powerpc"
+BROKEN=		Does not configure on powerpc
 .endif
 
 post-patch:

@@ -2,12 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	ocre
-PORTVERSION=	0.043
+PORTVERSION=	0.042
+PORTREVISION=	3
 CATEGORIES=	graphics
 MASTER_SITES=	ftp://lem.eui.upm.es/pub/ocre/
 DISTNAME=	${PORTNAME}_v${PORTVERSION:S/./_/}
 
-MAINTAINER=	w.schwarzenfeld@utanet.at
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Simple optical character recognition solution
 
 LICENSE=	GPLv2

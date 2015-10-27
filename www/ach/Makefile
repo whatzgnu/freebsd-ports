@@ -4,7 +4,7 @@
 PORTNAME=	ACH
 PORTVERSION=	1.0.3
 CATEGORIES=	www
-MASTER_SITES=	GHC
+MASTER_SITES=	http://cloud.github.com/downloads/Burton/Analysis-of-Competing-Hypotheses/
 EXTRACT_SUFX=	-alpha.tar
 
 MAINTAINER=	danilo@FreeBSD.org
@@ -14,9 +14,6 @@ LICENSE=	GPLv3
 
 USE_MYSQL=	yes
 USE_PHP=	yes
-USE_GITHUB=	yes
-GH_ACCOUNT=	Burton
-GH_PROJECT=	Analysis-of-Competing-Hypotheses
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}-alpha
 NO_BUILD=	yes

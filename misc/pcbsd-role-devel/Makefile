@@ -16,7 +16,8 @@ RUN_DEPENDS=	eclipse>=0:${PORTSDIR}/java/eclipse \
 		git>=0:${PORTSDIR}/devel/git \
 		ninja-ide>=0:${PORTSDIR}/devel/ninja-ide \
 		qtcreator>=0:${PORTSDIR}/devel/qtcreator \
-		subversion>=0:${PORTSDIR}/devel/subversion
+		subversion>=0:${PORTSDIR}/devel/subversion \
+		hs-haskell-platform>=0:${PORTSDIR}/devel/hs-haskell-platform
 
 NO_BUILD=	yes
 

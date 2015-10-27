@@ -21,12 +21,20 @@ USE_GNOME=	gconfmm26 gnomeprefix intltool
 CONFIGURE_ARGS=	--disable-lynx
 
 OPTIONS_DEFINE=	PK NLS
-OPTIONS_SUB=	yes
 PK_DESC=	Force dependency on PackageKit
 
-PK_LIB_DEPENDS=	libpackagekit-glib2.so:${PORTSDIR}/ports-mgmt/packagekit
+.include <bsd.port.options.mk>
 
-NLS_USES=		gettext
-NLS_CONFIGURE_ENABLE=	nls
+.if ${PORT_OPTIONS:MPK}
+LIB_DEPENDS+=	libpackagekit-glib2.so:${PORTSDIR}/ports-mgmt/packagekit
+.endif
+
+.if ${PORT_OPTIONS:MNLS}
+USES+=		gettext
+PLIST_SUB+=	NLS=""
+.else
+CONFIGURE_ARGS+=	--disable-nls
+PLIST_SUB+=	NLS="@comment "
+.endif
 
 .include <bsd.port.mk>

@@ -14,7 +14,6 @@ LICENSE=	GPLv2
 
 USES=		zip
 NO_BUILD=	yes
-NO_ARCH=	yes
 USE_PHP=	ftp
 WRKSRC=		${WRKDIR}/${PORTNAME}
 

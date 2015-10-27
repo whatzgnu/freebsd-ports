@@ -10,8 +10,6 @@ MASTER_SITES=	SF
 MAINTAINER=	maho@FreeBSD.org
 COMMENT=	Enhanced Metafile Library
 
-LICENSE=	LGPL21
-
 OPTIONS_DEFINE=	DOCS
 
 USES=		libtool

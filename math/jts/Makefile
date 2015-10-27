@@ -15,7 +15,6 @@ RUN_DEPENDS=	${JAVALIBDIR}/jdom.jar:${PORTSDIR}/java/jdom		\
 
 USES=		zip
 NO_BUILD=	yes
-NO_ARCH=	yes
 USE_JAVA=	yes
 NO_WRKSUBDIR=	yes
 
@@ -24,16 +23,18 @@ JARFILES=	JTS_Test acme jts-${VER}
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 do-install:
 .for jar in ${JARFILES}
 	${INSTALL_DATA} ${WRKSRC}/lib/${jar}.jar	\
 		${STAGEDIR}${JAVAJARDIR}/${jar:S|-${VER}||}.jar
 .endfor
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	@cd ${WRKDIR}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 	@${ECHO_MSG} "===> Documentation installed in ${DOCSDIR}."
+.endif
 
 .if defined(MAINTAINER_MODE)
 regression-test:	install

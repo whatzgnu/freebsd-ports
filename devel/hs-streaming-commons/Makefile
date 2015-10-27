@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	streaming-commons
-PORTVERSION=	0.1.12.1
+PORTVERSION=	0.1.4.1
+PORTREVISION=	1
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

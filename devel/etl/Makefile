@@ -2,19 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	etl
-PORTVERSION=	0.04.18
+PORTVERSION=	0.04.17
+PORTREVISION=	1
 CATEGORIES=	devel lang
 MASTER_SITES=	SF/synfig/releases/${SYNFIG_VERSION}/source/
 DISTNAME=	ETL-${PORTVERSION}
 
-MAINTAINER=	woodsb02@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Voria Extended Class and Template Library
-
-WRKSRC=		${WRKDIR}/${DISTNAME}
 
 OPTIONS_DEFINE=	DOCS
 
-SYNFIG_VERSION=	1.0
+SYNFIG_VERSION=	0.64.1
 
 USES=	gmake pathfix pkgconfig
 GNU_CONFIGURE=	yes

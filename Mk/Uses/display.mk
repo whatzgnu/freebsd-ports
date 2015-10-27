@@ -26,7 +26,11 @@ XVFBPORT!=	port=0; while test -S /tmp/.X11-unix/X$${port} ; do port=$$(( port + 
 XVFBPIDFILE=	/tmp/.xvfb-${XVFBPORT}.pid
 MAKE_ENV+=	DISPLAY=":${XVFBPORT}"
 
-_USES_${display_ARGS}+=	290:start-display 860:stop-display
+.PHONY: start-display stop-display
+pre-${display_ARGS}: start-display
+
+post-${display_ARGS}: stop-display
+
 start-display:
 	daemon -p ${XVFBPIDFILE} Xvfb :${XVFBPORT}
 

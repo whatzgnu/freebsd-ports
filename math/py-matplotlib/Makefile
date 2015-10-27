@@ -32,6 +32,7 @@ TKAGGBACKEND_DESC=	TKAgg backend support
 WXAGGBACKEND_DESC=	WXAgg backend support
 
 PORTEXAMPLES=	*
+UNIQUENAME=	${PORTNAME}
 
 .include <bsd.port.options.mk>
 

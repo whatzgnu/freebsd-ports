@@ -25,6 +25,12 @@ MAKE_JOBS_UNSAFE=yes
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} < 900042
+IGNORE=		is supported only on 9.0 and later
+.endif
+
 post-extract:
 	${INSTALL_DATA} ${WRKSRC}/examples/ipext/ipext_verify.conf \
 	    ${WRKSRC}/examples/ipext/ca/ipext.conf \
@@ -38,9 +44,9 @@ post-install:
 		${INSTALL_DATA} ${WRKSRC}/examples/$$F \
 		    ${STAGEDIR}${PREFIX}/etc/sendd/$${F}-dist; \
 	done
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

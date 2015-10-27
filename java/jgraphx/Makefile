@@ -2,40 +2,54 @@
 
 PORTNAME=	jgraphx
 PORTVERSION=	2.5.1.0
-DISTVERSIONPREFIX=	v
 CATEGORIES=	java graphics
+MASTER_SITES=	https://codeload.github.com/jgraph/jgraphx/tar.gz/v${PORTVERSION}?dummy=/
 
 MAINTAINER=	makc@FreeBSD.org
 COMMENT=	The Java Graph Diagram Component version X (jgraph v6+)
 
-LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/license.txt
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	jgraph
-USE_JAVA=	yes
-
-PLIST_FILES=	%%JAVAJARDIR%%/${PORTNAME}.jar
-PORTDOCS=	*
+#LICENSE=	jgraph
+#LICENSE_PERMS=	# none
+#LICENSE_NAME=	JGraph Ltd License
+#LICENSE_FILE=	${WRKSRC}/license.txt
+#MANUAL_PACKAGE_BUILD=	needs interactive license confirmation
 
 OPTIONS_DEFINE=	COMPILE DOCS
 
 COMPILE_DESC=	Compile from source instead of using provided binary
-COMPILE_USE=	ANT=yes
+
+USE_JAVA=	yes
+JAVA_RUN=	yes
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MCOMPILE} || ${PORT_OPTIONS:MDOCS}
+BUILD_DEPENDS+=	${ANT_CMD}:${PORTSDIR}/devel/apache-ant
+ANT_CMD?=	${LOCALBASE}/bin/ant
+ANT=		${SETENV} JAVA_HOME=${JAVA_HOME} ${ANT_CMD}
+.  if ${PORT_OPTIONS:MCOMPILE}
+JAVA_BUILD=	yes
+.  endif
+.endif
+
+PLIST_FILES=	%%JAVAJARDIR%%/${PORTNAME}.jar
+PORTDOCS=	*
 
 do-build:
-	@${DO_NADA}
+.if ${PORT_OPTIONS:MCOMPILE} || ${PORT_OPTIONS:MDOCS}
+	cd ${WRKSRC} && ${ANT} ${ANT_TARGETS}
+.endif
 
-do-build-COMPILE-on:
-	@(cd ${BUILD_WRKSRC}; \
-		${SETENV} ${MAKE_ENV} ${ANT} ${MAKE_ARGS} ${ALL_TARGET})
+do-install: do-install-jar do-install-javadoc
 
-do-install:
+do-install-jar:
 	${INSTALL_DATA} ${WRKSRC}/lib/${PORTNAME}.jar \
 		${STAGEDIR}${JAVAJARDIR}/${PORTNAME}.jar
 
-do-install-DOCS-on:
+do-install-javadoc:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/docs && ${COPYTREE_SHARE} \* ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	eaglemode
-PORTVERSION=	0.89.1
+PORTVERSION=	0.89.0
+PORTREVISION=	1
 CATEGORIES=	x11
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -34,15 +35,8 @@ PORTDATA=	*
 
 OPTIONS_DEFINE=	XINE RSVG PDF
 OPTIONS_DEFAULT=XINE RSVG PDF
-OPTIONS_SUB=	yes
-
 RSVG_DESC=	SVG support through librsvg
 PDF_DESC=	PDF support through poppler-glib
-
-XINE_LIB_DEPENDS=	libxine.so:${PORTSDIR}/multimedia/libxine
-RSVG_USE=		GNOME=librsvg2
-PDF_LIB_DEPENDS=	libpoppler-glib.so:${PORTSDIR}/graphics/poppler-glib
-PDF_USE=		GNOME=gtk20
 
 .include <bsd.port.pre.mk>
 
@@ -51,24 +45,43 @@ USE_GCC=	yes
 .endif
 
 .if ${PORT_OPTIONS:MXINE}
+LIB_DEPENDS+=	libxine.so:${PORTSDIR}/multimedia/libxine
 BUILD_ARGS+=	xine-inc-dir="${LOCALBASE}/include" \
 		xine-lib-dir="${LOCALBASE}/lib"
+PLIST_SUB+=	EMAV=""
+.else
+PLIST_SUB+=	EMAV="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MRSVG}
+USE_GNOME+=	librsvg2
+PLIST_SUB+=	EMSVG=""
+.else
+PLIST_SUB+=	EMSVG="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MPDF}
+LIB_DEPENDS+=	libpoppler-glib.so:${PORTSDIR}/graphics/poppler-glib
+USE_GNOME+=	gtk20
+PLIST_SUB+=	EMPDF=""
+.else
+PLIST_SUB+=	EMPDF="@comment "
 .endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|gcc|${CC}|; s|"-O2"|"${CFLAGS}"|' \
 		${WRKSRC}/makers/unicc/plugins/unicc_gnu.pm
+.if ! ${PORT_OPTIONS:MXINE}
+	@${RM} -f ${WRKSRC}/makers/emAv.maker.pm
+.endif
+.if ! ${PORT_OPTIONS:MRSVG}
+	@${RM} -f ${WRKSRC}/makers/emSvg.maker.pm
+.endif
+.if ! ${PORT_OPTIONS:MPDF}
+	@${RM} -f ${WRKSRC}/makers/emPdf.maker.pm
+.endif
 	@${FIND} ${WRKSRC} -name "*.pl" | ${XARGS} \
 		${REINPLACE_CMD} -e '1s|${perl_OLD_CMD}|${perl_CMD}|'
-
-post-patch-XINE-off:
-	@${RM} -f ${WRKSRC}/makers/emAv.maker.pm
-
-post-patch-RSVG-off:
-	@${RM} -f ${WRKSRC}/makers/emSvg.maker.pm
-
-post-patch-PDF-off:
-	@${RM} -f ${WRKSRC}/makers/emPdf.maker.pm
 
 do-build:
 	(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} \
@@ -82,14 +95,14 @@ do-install:
 		${STAGEDIR}${PREFIX}/lib/eaglemode/lib/*.so \
 		${STAGEDIR}${PREFIX}/lib/eaglemode/lib/emClock/emTimeZonesProc \
 		${STAGEDIR}${PREFIX}/lib/eaglemode/lib/emTmpConv/emTmpConvProc
-
-do-install-XINE-on:
+.if ${PORT_OPTIONS:MXINE}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/eaglemode/lib/emAv/emAvServerProc_xine
-
-do-install-RSVG-on:
+.endif
+.if ${PORT_OPTIONS:MRSVG}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/eaglemode/lib/emSvg/emSvgServerProc
-
-do-install-PDF-on:
+.endif
+.if ${PORT_OPTIONS:MPDF}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/eaglemode/lib/emPdf/emPdfServerProc
+.endif
 
 .include <bsd.port.post.mk>

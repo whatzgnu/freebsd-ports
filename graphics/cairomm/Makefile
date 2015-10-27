@@ -25,8 +25,12 @@ OPTIONS_DEFINE=	DOCS
 
 DOCS_CONFIGURE_ARGS_OFF=	--disable-documentation
 
-post-configure-DOCS-off:
+.include <bsd.port.options.mk>
+
+.if empty(PORT_OPTIONS:MDOCS)
+post-configure:
 	@${TOUCH} -f ${WRKSRC}/docs/reference/html/index.html
+.endif
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libcairomm-1.0.so.1.4.0

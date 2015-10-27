@@ -1,4 +1,4 @@
-# Created by: Fukang Chen <loader@FreeBSD.org>
+# Created by: loader <loader@freebsdmall.com>
 # $FreeBSD$
 
 PORTNAME=	File-Tempdir
@@ -8,7 +8,7 @@ CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	loader@FreeBSD.org
+MAINTAINER=	loader@freebsdmall.com
 COMMENT=	Perl5 module to provide an object interface for File::Temp
 
 USES=		perl5

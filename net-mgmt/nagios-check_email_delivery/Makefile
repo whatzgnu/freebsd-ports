@@ -29,7 +29,6 @@ SCRIPTS=	check_email_delivery check_email_delivery_epn \
 SHEBANG_FILES=	${SCRIPTS}
 USE_PERL5=	run
 NO_BUILD=	yes
-NO_ARCH=	yes
 DOC_FILES=	check_email_delivery.html check_email_delivery.pod \
 		check_imap_receive.html check_imap_receive.pod \
 		check_smtp_send.html check_smtp_send.pod \
@@ -39,6 +38,8 @@ DOC_FILES=	check_email_delivery.html check_email_delivery.pod \
 PORTSCOUT=	ignore:1
 
 OPTIONS_DEFINE=	DOCS
+
+.include <bsd.port.pre.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e \
@@ -50,11 +51,11 @@ do-install:
 .for file in ${SCRIPTS}
 	${INSTALL_SCRIPT} ${WRKSRC}/${file} ${STAGEDIR}${PREFIX}/libexec/nagios/
 .endfor
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for docfile in ${DOC_FILES}
 	${INSTALL_DATA} ${WRKSRC}/docs/${docfile} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

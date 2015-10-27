@@ -1,6 +1,7 @@
---- apricots/sampleio.cpp.orig	2015-08-19 14:00:09 UTC
-+++ apricots/sampleio.cpp
-@@ -74,28 +74,21 @@ void sampleio :: init(int nsamples, char
+Patch to build with newer openal. Not sure whether it doesn't leak memory
+--- apricots/sampleio.cpp.orig	2003-08-06 03:21:22.000000000 +0400
++++ apricots/sampleio.cpp	2010-04-07 18:32:05.000000000 +0400
+@@ -74,28 +74,21 @@
    alListenerfv(AL_ORIENTATION, front );
  
    // Load in samples
@@ -34,7 +35,7 @@
    }
  
    // Generate Sources
-@@ -107,8 +100,6 @@ void sampleio :: init(int nsamples, char
+@@ -107,8 +100,6 @@
      alSourcefv(sources[j], AL_ORIENTATION, back );
    }
    

@@ -13,9 +13,6 @@ DISTNAME=	Bitten-${PORTVERSION}
 MAINTAINER=	tim@niemueller.de
 COMMENT=	Continuous integration for Trac
 
-LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 .if defined(MAINTAINER_MODE)
 UID_FILES+=	../../UIDs
 GID_FILES+=	../../GIDs
@@ -33,9 +30,8 @@ OPTIONS_DEFAULT=	BITTEN_MASTER
 BITTEN_MASTER_RUN_DEPENDS=	tracd:${PORTSDIR}/www/trac
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 SUB_LIST+=	PYTHON_CMD=${PYTHON_CMD} TOUCH=${TOUCH} CHOWN=${CHOWN} \
 		RM=${RM:Q} USERS=${USERS}
 SUB_FILES+=	pkg-message

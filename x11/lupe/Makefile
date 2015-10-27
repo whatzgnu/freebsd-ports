@@ -23,6 +23,8 @@ LDFLAGS+=	-L${LOCALBASE}/lib -lX11 -lXext -lm
 PORTDOCS=	${PORTNAME}.doc
 PLIST_FILES=	bin/${PORTNAME} man/man1/${PORTNAME}.1.gz
 
+.include <bsd.port.options.mk>
+
 post-extract:
 	@${LN} -sf ${PORTNAME}.man ${WRKSRC}/${PORTNAME}.1
 
@@ -33,9 +35,9 @@ do-build:
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 ${STAGEDIR}${MANPREFIX}/man/man1
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}.doc ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

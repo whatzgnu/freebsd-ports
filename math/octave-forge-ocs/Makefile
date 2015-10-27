@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	octave-forge-ocs
-PORTVERSION=	0.1.5
+PORTVERSION=	0.1.4
 CATEGORIES=	math
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	stephen@FreeBSD.org
 COMMENT=	Octave-forge package ${OCTAVE_PKGNAME}

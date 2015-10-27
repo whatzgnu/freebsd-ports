@@ -7,17 +7,16 @@ CATEGORIES=	shells
 MASTER_SITES=	http://m.a.tt/er/
 DISTNAME=	${PORTNAME}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	sklauder@trimind.de
 COMMENT=	Extended bash brace expansion to expand hostnames or commands
 
-LICENSE=	GPLv3 # or later
+LICENSE=	GPLv3
 
 RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 
 USES=		tar:tgz
 AMBITDIR?=	/var/spool/${PORTNAME}
 NO_BUILD=	yes
-NO_ARCH=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 PLIST_SUB=	AMBITDIR=${AMBITDIR}

@@ -1,6 +1,6 @@
---- src/uGlobsPaths.pas.orig	2015-08-17 15:35:25 UTC
-+++ src/uGlobsPaths.pas
-@@ -3,14 +3,15 @@ unit uGlobsPaths;
+--- ./src/uGlobsPaths.pas.orig	2013-06-30 19:29:19.097919000 +0200
++++ ./src/uGlobsPaths.pas	2013-06-30 19:22:37.387062000 +0200
+@@ -3,14 +3,15 @@
  interface
  
  var
@@ -16,9 +16,9 @@
 +  gpDocsDir : String = '%%DOCSDIR%%'; // directory for help files
 +
  procedure LoadPaths;
- procedure UpdateEnvironmentVariable;
  
-@@ -32,7 +33,7 @@ end;
+ implementation
+@@ -26,7 +27,7 @@
  procedure LoadPaths;
  begin
    OnGetApplicationName := @GetAppName;

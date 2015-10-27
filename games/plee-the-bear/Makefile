@@ -35,13 +35,15 @@ PORTDATA=	*
 OPTIONS_DEFINE=	NLS
 OPTIONS_SUB=	yes
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|share/man|man|' ${WRKSRC}/CMakeLists.txt
-
-post-patch-NLS-off:
+.if ! ${PORT_OPTIONS:MNLS}
 	@${REINPLACE_CMD} -e 's|locale||' \
 		${WRKSRC}/bear-factory/desktop/CMakeLists.txt \
 		${WRKSRC}/bear-engine/desktop/CMakeLists.txt \
 		${WRKSRC}/plee-the-bear/desktop/CMakeLists.txt
+.endif
 
 .include <bsd.port.mk>

@@ -24,19 +24,23 @@ GRAPHVIZ_BUILD_DEPENDS=	graphviz>=2.22:${PORTSDIR}/graphics/graphviz
 GRAPHVIZ_RUN_DEPENDS=	graphviz>=2.22:${PORTSDIR}/graphics/graphviz
 GRAPHVIZ_CMAKE_OFF=	-DQFSM_AVOID_GRAPHVIZ:BOOL=ON
 
+.include <bsd.port.options.mk>
+
 pre-configure:
 	${REINPLACE_CMD} -e \
 		'/\/usr\//d' ${WRKSRC}/FindGraphViz.cmake
 	${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|'			\
 		-e '/examples/s|share/qfsm|share/examples/${PORTNAME}|'	\
 		${WRKSRC}/CMakeLists.txt
-pre-configure-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${REINPLACE_CMD} -e 's|%%PD%%||' ${WRKSRC}/CMakeLists.txt
-pre-configure-DOCS-off:
+.else
 	${REINPLACE_CMD} -e 's|%%PD%%|#|' ${WRKSRC}/CMakeLists.txt
-pre-configure-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	${REINPLACE_CMD} -e 's|%%PE%%||' ${WRKSRC}/CMakeLists.txt
-pre-configure-EXAMPLES-off:
+.else
 	${REINPLACE_CMD} -e 's|%%PE%%|#|' ${WRKSRC}/CMakeLists.txt
+.endif
 
 .include <bsd.port.mk>

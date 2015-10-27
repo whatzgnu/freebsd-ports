@@ -24,6 +24,8 @@ PORTDOCS=	COPYING Changelog README TODO \
 		alternative_programs.txt
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-extract:
 	@${CHMOD} a+x ${WRKSRC}/${CONFIGURE_SCRIPT}
 
@@ -54,12 +56,14 @@ post-configure:
 		${WRKSRC}/Makefile
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/vobcopy ${STAGEDIR}${PREFIX}/bin/vobcopy
-	${INSTALL_MAN} ${WRKSRC}/vobcopy.1${MAN1_SUFX} \
+	@${INSTALL_PROGRAM} ${WRKSRC}/vobcopy ${STAGEDIR}${PREFIX}/bin/vobcopy
+	@${INSTALL_MAN} ${WRKSRC}/vobcopy.1${MAN1_SUFX} \
 		${STAGEDIR}${MANPREFIX}/man/man1/vobcopy.1
 
-do-install-DOCS-on:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
+	@${INSTALL} -d ${STAGEDIR}${DOCSDIR}
+	@cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

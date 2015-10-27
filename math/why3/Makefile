@@ -52,6 +52,8 @@ OPTIONS_DEFINE=	DOCS
 
 MAKE_JOBS_UNSAFE=	yes
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|/bin/bash|/bin/sh|g' \
 		${WRKSRC}/src/util/sysutil.ml \
@@ -61,9 +63,9 @@ post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/why3* \
 		${STAGEDIR}${PREFIX}/lib/why3/plugins/*.cmxs \
 		${STAGEDIR}${PREFIX}/lib/why3/why3-cpulimit
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/manual.pdf ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

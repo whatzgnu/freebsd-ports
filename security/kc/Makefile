@@ -3,19 +3,18 @@
 
 PORTNAME=	kc
 PORTVERSION=	2.3.2
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	security
 
 MAINTAINER=	leva@ecentrum.hu
 COMMENT=	Console based password storing application
 
 LICENSE=	BSD2CLAUSE
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libxml2.so:${PORTSDIR}/textproc/libxml2 \
 		libpcre.so:${PORTSDIR}/devel/pcre
 
-USES=		libedit pkgconfig uidfix
+USES=		pkgconfig uidfix
 USE_GITHUB=	yes
 GH_ACCOUNT=	levaidaniel
 

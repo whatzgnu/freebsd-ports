@@ -20,6 +20,7 @@ USE_PYTHON=	autoplist distutils
 
 DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 
+OPTIONSFILE=	${PORT_DBDIR}/py-${PORTNAME}/options
 OPTIONS_DEFINE=	DJANGO PDF WORD
 DJANGO_DESC=	Enable Django
 PDF_DESC=	PDF Thumbnails

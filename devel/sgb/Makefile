@@ -3,7 +3,6 @@
 
 PORTNAME=	sgb
 PORTVERSION=	20090810
-PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	ftp://ftp.cs.stanford.edu/pub/sgb/ \
 		GENTOO
@@ -17,8 +16,11 @@ BUILD_DEPENDS=	ctangle:${PORTSDIR}/devel/cweb
 NO_WRKSUBDIR=	yes
 ALL_TARGET=	lib tests
 MAKE_JOBS_UNSAFE=	yes
+MAKE_ENV+=	STAGEDIR=${STAGEDIR}
+
+.include <bsd.port.pre.mk>
 
 post-extract:
 	${CP} ${WRKSRC}/PROTOTYPES/* ${WRKSRC}
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

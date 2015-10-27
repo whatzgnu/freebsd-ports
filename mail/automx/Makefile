@@ -8,8 +8,7 @@ CATEGORIES=	mail
 MAINTAINER=	crees@FreeBSD.org
 COMMENT=	Handles mail account profile requests from mail clients
 
-LICENSE=	GPLv3 # or later
-LICENSE_FILE=	${WRKSRC}/LICENSE
+LICENSE=	GPLv3
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dateutil>=0:${PORTSDIR}/devel/py-dateutil \
 		${PYTHON_PKGNAMEPREFIX}ipaddr>=0:${PORTSDIR}/devel/py-ipaddr \
@@ -23,7 +22,6 @@ GH_ACCOUNT=	sys4
 USES=		python
 USE_GITHUB=	yes
 NO_BUILD=	yes
-NO_ARCH=	yes
 PORTDATA=	*
 PORTDOCS=	*
 
@@ -46,7 +44,7 @@ do-install:
 .endfor
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} "[^m]*" ${STAGEDIR}${DOCSDIR})
-	${INSTALL_DATA} ${WRKSRC}/INSTALL ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/BASIC_CONFIGURATION_README ${STAGEDIR}${DOCSDIR}
+	${INSTALL_MAN} ${WRKSRC}/INSTALL ${STAGEDIR}${DOCSDIR}
+	${INSTALL_MAN} ${WRKSRC}/BASIC_CONFIGURATION_README ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

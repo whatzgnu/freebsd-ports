@@ -5,6 +5,7 @@ PORTNAME=	Geo-Coder-Geocoder-US
 PORTVERSION=	0.005
 CATEGORIES=	misc geography perl5
 MASTER_SITES=	CPAN
+MASTER_SITE_SUBDIR=	CPAN:WYANT
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -20,7 +21,6 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 PORTSCOUT=	limit:^[0-9\.]*$$
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

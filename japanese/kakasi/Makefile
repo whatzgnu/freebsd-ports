@@ -26,17 +26,19 @@ DOCS=		NEWS README README-ja TODO \
 		doc/ChangeLog.lib doc/JISYO \
 		doc/README.lib doc/README.wakati
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's/-Wno-unused-result//' ${WRKSRC}/configure
 
 post-install:
 	${INSTALL_MAN} ${WRKSRC}/man/kakasi.1.ja \
 		${STAGEDIR}${MAN1PREFIX}/man/ja/man1/kakasi.1
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${DOCS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

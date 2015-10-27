@@ -1,7 +1,7 @@
 # $FreeBSD: head/x11/guake/Makefile 339634 2014-01-13 21:00:02Z rene $
 
 PORTNAME=	guake
-PORTVERSION=	0.8.0
+PORTVERSION=	0.7.2
 PORTREVISION=	0
 CATEGORIES=	x11
 
@@ -15,8 +15,7 @@ BUILD_DEPENDS=	gnome-common>=3.14.0:${PORTSDIR}/devel/gnome-common \
 		py${PYTHON_SUFFIX}-notify>=0.1.1_9:${PORTSDIR}/devel/py-notify \
 		py${PYTHON_SUFFIX}-vte>=0.26.2_1:${PORTSDIR}/x11-toolkits/py-vte \
 		py${PYTHON_SUFFIX}-xdg>=0.19:${PORTSDIR}/devel/py-xdg
-RUN_DEPENDS=	keybinder>=0.3.0:${PORTSDIR}/x11/keybinder \
-		py${PYTHON_SUFFIX}-dbus>=0.84.0:${PORTSDIR}/devel/py-dbus \
+RUN_DEPENDS=	py${PYTHON_SUFFIX}-dbus>=0.84.0:${PORTSDIR}/devel/py-dbus \
 		py${PYTHON_SUFFIX}-notify>=0.1.1_9:${PORTSDIR}/devel/py-notify \
 		py${PYTHON_SUFFIX}-vte>=0.26.2_1:${PORTSDIR}/x11-toolkits/py-vte \
 		py${PYTHON_SUFFIX}-xdg>=0.19:${PORTSDIR}/devel/py-xdg
@@ -55,6 +54,9 @@ REINPLACE_FILES+=	../../configure
 
 pre-configure:
 	@(cd ${CONFIGURE_WRKSRC} ; ${SETENV} ${CONFIGURE_ENV} ./autogen.sh)
+
+post-build:
+	@${STRIP_CMD} ${WRKSRC}/src/guake/globalhotkeys/.libs/globalhotkeys.so
 
 .include <bsd.port.pre.mk>
 

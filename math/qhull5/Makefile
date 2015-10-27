@@ -24,10 +24,14 @@ GNU_CONFIGURE=	yes
 
 OPTIONS_DEFINE=	DOCS
 
-pre-configure-DOCS-off:
+.include <bsd.port.options.mk>
+
+pre-configure:
+.if empty(PORT_OPTIONS:MDOCS)
 	@${REINPLACE_CMD} -e "s|src html eg config|src config|"		\
 		${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} -e "s|install-docDATA install-examplesDATA||"	\
 		${WRKSRC}/src/Makefile.in
+.endif
 
 .include <bsd.port.mk>

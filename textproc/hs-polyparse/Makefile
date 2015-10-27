@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	polyparse
-PORTVERSION=	1.11
+PORTVERSION=	1.9
+PORTREVISION=	6
 CATEGORIES=	textproc haskell
 
 MAINTAINER=	haskell@FreeBSD.org

@@ -2,19 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	Net_SMTP
-PORTVERSION=	1.7.1
+PORTVERSION=	1.6.2
 CATEGORIES=	net mail www pear
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PEAR class that provides an implementation of the SMTP protocol
 
-LICENSE=	PHP301
-
 BUILD_DEPENDS=	${PEARDIR}/Net/Socket.php:${PORTSDIR}/net/pear-Net_Socket
 RUN_DEPENDS=	${PEARDIR}/Net/Socket.php:${PORTSDIR}/net/pear-Net_Socket
 
-NO_ARCH=	yes
-USES=		pear
+USES=	pear
 
 OPTIONS_DEFINE=	PEAR_AUTH_SASL
 PEAR_AUTH_SASL_DESC=	PEAR::Auth_SASL support

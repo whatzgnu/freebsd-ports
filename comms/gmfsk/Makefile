@@ -33,12 +33,18 @@ OPTIONS_DEFINE=	HAMLIB
 HAMLIB_DESC=	Enable HAMLIB Support
 OPTIONS_DEFAULT=	HAMLIB
 
-HAMLIB_LIB_DEPENDS=	libhamlib.so:${PORTSDIR}/comms/hamlib
-HAMLIB_CONFIGURE_ENABLE=	hamlib
-HAMLIB_CONFIGURE_ENV=	PKG_CONFIG_PATH=${LOCALBASE}/lib/pkgconfig
+.include <bsd.port.pre.mk>
+
+.if ${PORT_OPTIONS:MHAMLIB}
+LIB_DEPENDS+=	libhamlib.so:${PORTSDIR}/comms/hamlib
+CONFIGURE_ARGS+=	--enable-hamlib
+CONFIGURE_ENV+=	PKG_CONFIG_PATH=${LOCALBASE}/lib/pkgconfig
+.else
+CONFIGURE_ARGS+=	--disable-hamlib
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|[$$][(]localstatedir[)]/lib/scrollkeeper|${SCROLLKEEPER_DIR}|g' \
 		${WRKSRC}/omf.make ${WRKSRC}/help/gmfsk/C/Makefile.in
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

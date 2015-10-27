@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	spoofer
-PORTVERSION=	0.8b
+PORTVERSION=	0.8a
 CATEGORIES=	net
 MASTER_SITES=	http://spoofer.caida.org/
 
@@ -16,13 +16,16 @@ HAS_CONFIGURE=	yes
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

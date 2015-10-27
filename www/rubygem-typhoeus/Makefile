@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	typhoeus
-PORTVERSION=	0.7.3
+PORTVERSION=	0.7.2
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 

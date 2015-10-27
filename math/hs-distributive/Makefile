@@ -2,7 +2,7 @@
 
 PORTNAME=	distributive
 PORTVERSION=	0.4.4
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	math haskell
 
 MAINTAINER=	haskell@FreeBSD.org

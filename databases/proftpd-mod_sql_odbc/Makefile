@@ -14,6 +14,7 @@ LIB_DEPENDS=	libiodbc.so:${PORTSDIR}/databases/libiodbc
 
 DESCR=		${.CURDIR}/pkg-descr
 
+LATEST_LINK=	${PKGNAMEPREFIX}-${PORTNAME}
 MASTERDIR=	${.CURDIR}/../../ftp/proftpd
 
 CONFIGURE_ARGS=	LIBS=-liodbc \

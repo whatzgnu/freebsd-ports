@@ -3,7 +3,6 @@
 
 PORTNAME=	libsbml
 PORTVERSION=	5.11.4
-PORTREVISION=	1
 CATEGORIES=	biology devel
 MASTER_SITES=	SF/sbml/${PORTNAME}/${PORTVERSION}/stable
 DISTNAME=	libSBML-${PORTVERSION}-core-src
@@ -15,7 +14,7 @@ LICENSE=	LGPL21
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
-USES=		cmake:outsource iconv:build
+USES=		cmake:outsource iconv
 USE_GNOME=	libxml2
 USE_LDCONFIG=	yes
 

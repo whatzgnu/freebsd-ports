@@ -19,6 +19,8 @@ OPTIONS_DEFINE=	EXAMPLES
 
 CFLAGS+=	-Wno-return-type
 
+.include <bsd.port.options.mk>
+
 pre-patch:
 	@${CP} -f ${WRKSRC}/spice/common/lib/helpdir/spice.txt \
 		${WRKSRC}/cider/common/lib/helpdir/spice.txt
@@ -69,11 +71,12 @@ do-install:
 		${STAGEDIR}${DATADIR}/spice3/scripts
 	${INSTALL_SCRIPT} ${WRKSRC}/spice/common/lib/scripts/spinit \
 		${STAGEDIR}${DATADIR}/cider/scripts
-do-install-EXAMPLES-on:
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/spice3
 	${INSTALL_DATA} ${WRKSRC}/spice/common/examples/*.cir \
 		${STAGEDIR}${EXAMPLESDIR}/spice3
 	cd ${WRKSRC}/cider/common/examples && \
 		${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
+.endif
 
 .include <bsd.port.mk>

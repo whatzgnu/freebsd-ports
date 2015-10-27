@@ -15,6 +15,7 @@ LICENSE=	APACHE20
 MANUAL_PACKAGE_BUILD=	needs apr and apache with DBD options enabled
 
 USE_APACHE=	22+
+UNIQUENAME=	${PORTNAME}
 
 PORTDOCS=	changelog.html documentation.html download.html \
 		index.html my.css

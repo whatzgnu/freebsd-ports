@@ -18,20 +18,21 @@ USES=		compiler:c++11-lang
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	${REINPLACE_CMD} -e \
 		's|^pkgconfigdir = .*|pkgconfigdir = ${LOCALBASE}/libdata/pkgconfig|' \
 		${WRKSRC}/Makefile.in
-
-post-patch-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${REINPLACE_CMD} -e \
 		's|^docdir = .*|docdir = ${DOCSDIR}|' \
 		${WRKSRC}/Makefile.in
-
-post-patch-DOCS-off:
+.else
 	${REINPLACE_CMD} -e \
 		'/install-data-am/ s|install-dist_docDATA||' \
 		${WRKSRC}/Makefile.in
+.endif
 
 regression-test: check
 

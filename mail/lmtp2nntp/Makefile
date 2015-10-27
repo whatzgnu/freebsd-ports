@@ -24,14 +24,18 @@ PORTDOCS=	INSTALL README
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 # Try to fix parallel builds (-jX)
 post-patch:
 	@${REINPLACE_CMD} -e '/^all:/s, _SUBDIRS_all,, ; \
 		/^$$(PROG)/s,$$, _SUBDIRS_all,' ${WRKSRC}/Makefile.in
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+.endif
 
 check: build
 	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_FLAGS} \

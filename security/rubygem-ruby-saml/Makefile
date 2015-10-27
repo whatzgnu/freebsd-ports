@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ruby-saml
-PORTVERSION=	1.0.0
+PORTVERSION=	0.9.2
 CATEGORIES=	security rubygems
 MASTER_SITES=	RG
 

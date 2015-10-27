@@ -19,6 +19,8 @@ RUN_DEPENDS=	${PYNUMPY}
 USES=		python
 USE_PYTHON=	distutils autoplist
 
+OPTIONSFILE?=	${PORT_DBDIR}/py-${PORTNAME}/options
+
 OPTIONS_DEFINE=	LIBSVM PP SCIPY
 
 LIBSVM_DESC=	Provide the LibSVMClassifier node

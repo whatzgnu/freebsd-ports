@@ -3,7 +3,7 @@
 
 PORTNAME=	cssutils
 PORTVERSION=	1.0
-PORTREVISION=	2
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
@@ -15,14 +15,15 @@ COMMENT=	CSS Cascading Style Sheets library for Python
 LICENSE=	LGPL3
 
 OPTIONS_DEFINE=	EXAMPLES
+OPTIONSFILE=	${PORT_DBDIR}/py-${PORTNAME}/options
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 USES=		python zip
 
+EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 PORTEXAMPLES=	*
 
-post-install-EXAMPLES-on:
+post-install:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/
 	${INSTALL_DATA} ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}/
 

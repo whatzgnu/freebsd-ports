@@ -3,7 +3,6 @@
 
 PORTNAME=	diff-lcs
 PORTVERSION=	1.2.5
-PORTREVISION=	1
 CATEGORIES=	textproc rubygems
 MASTER_SITES=	RG
 
@@ -18,9 +17,6 @@ NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
-USES=		shebangfix
-ruby_OLD_CMD=	ruby
-SHEBANG_FILES=	bin/htmldiff bin/ldiff
 
 PLIST_FILES=	bin/htmldiff bin/ldiff
 

@@ -4,7 +4,7 @@
 PORTNAME=	cconv
 PORTVERSION=	0.6.1
 DISTVERSIONPREFIX=	perl-
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	chinese converters perl5
 MASTER_SITES=	GOOGLE_CODE
 PKGNAMEPREFIX=	p5-
@@ -19,8 +19,5 @@ LIB_DEPENDS=	libcconv.so:${PORTSDIR}/chinese/cconv
 CFLAGS+=	-I${LOCALBASE}/include
 USE_PERL5=	configure
 USES=		perl5
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/cconv/cconv.so
 
 .include <bsd.port.mk>

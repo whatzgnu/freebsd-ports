@@ -20,7 +20,6 @@ USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 XJAVADOC_VER=	1.1
 
@@ -36,6 +35,6 @@ do-install:
 	${INSTALL_DATA} \
 	    ${WRKSRC}/xjavadoc-${XJAVADOC_VER}/xjavadoc-${XJAVADOC_VER}.jar \
 	    ${STAGEDIR}${JAVAJARDIR}
-	cd ${WRKSRC}/xdoclet-${PORTVERSION}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR} "-not -empty"
+	cd ${WRKSRC}/xdoclet-${PORTVERSION}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

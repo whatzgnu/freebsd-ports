@@ -28,6 +28,8 @@ BAHAMUT_DESC=	Enable Bahamut protocol (P10 is default)
 DEBUG_CONFIGURE_ON=	--enable-debug
 BAHAMUT_CONFIGURE_ON=	--with-protocol=bahamut
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|srvx\.conf|${PREFIX}/etc/srx.conf|' \
 		${WRKSRC}/src/main.c
@@ -35,9 +37,9 @@ post-patch:
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/src/srvx ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_DATA} ${WRKSRC}/*.conf.example ${STAGEDIR}${PREFIX}/etc
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/src/*.help ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

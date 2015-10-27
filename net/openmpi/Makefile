@@ -24,7 +24,7 @@ USES=		fortran gmake libtool:keepla perl5 pkgconfig tar:bzip2
 USE_PERL5=	build
 
 MPIBASE?=	mpi
-MPIDIR?=	${MPIBASE}/${PKGBASE}
+MPIDIR?=	${MPIBASE}/${UNIQUENAME}
 
 PLIST_SUB+=	MPIBASE=${MPIBASE}
 PLIST_SUB+=	MPIDIR=${MPIDIR}

@@ -1,6 +1,6 @@
---- Converter.hs.orig	2013-02-12 19:23:45 UTC
-+++ Converter.hs
-@@ -28,7 +28,7 @@ import System.Directory (getTemporaryDir
+--- ./Converter.hs.orig	2013-02-12 20:23:45.000000000 +0100
++++ ./Converter.hs	2013-12-27 18:34:37.000000000 +0100
+@@ -28,7 +28,7 @@
  
  import Control.Monad
  import Data.List
@@ -9,7 +9,7 @@
  
  ----------------------------------
  
-@@ -206,7 +206,7 @@ preprocessForSlides x = case span (not .
+@@ -206,7 +206,7 @@
  ------------------------------------
  
  rawHtml :: String -> Block
@@ -18,13 +18,7 @@
  
  showBlockSimple :: Language -> String -> String -> Int -> String -> [Block]
  
-@@ -244,13 +244,13 @@ mkImport m d 
-         , HSyn.importSrc = False
-         , HSyn.importPkg = Nothing
-         , HSyn.importAs = Nothing
--        , HSyn.importSpecs = Just (True, map (HSyn.IVar . mkName) d)
-+        , HSyn.importSpecs = Just (True, map (HSyn.IVar HSyn.NoNamespace . mkName) d)
-         }
+@@ -249,8 +249,8 @@
  
  mkName :: String -> HSyn.Name
  mkName n@(c:_)

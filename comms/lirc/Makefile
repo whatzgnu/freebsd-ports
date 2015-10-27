@@ -35,6 +35,8 @@ PORTDOCS=	html images irxevent.keys lirc.css lirc.hwdb
 PORTEXAMPLES=	remotes
 SUB_FILES=	pkg-message lircd.conf
 
+.include <bsd.port.pre.mk>
+
 .if exists(${LOCALBASE}/lib/libvga.so.1)
 LIB_DEPENDS+=	libvga.so:${PORTSDIR}/graphics/svgalib
 PLIST_SUB+=	SMODE2=
@@ -42,14 +44,21 @@ PLIST_SUB+=	SMODE2=
 PLIST_SUB+=	SMODE2="@comment "
 .endif
 
-MINIMAL_LIB_DEPENDS_OFF=		libftdi.so:${PORTSDIR}/devel/libftdi \
+.if empty(PORT_OPTIONS:MMINIMAL)
+LIB_DEPENDS+=		libftdi.so:${PORTSDIR}/devel/libftdi \
 			libirman.so:${PORTSDIR}/comms/libirman
-MINIMAL_CONFIGURE_OFF=	--with-driver=userspace
-MINIMAL_CONFIGURE_ON=	--with-driver=dvico
+CONFIGURE_ARGS+=	--with-driver=userspace
+.else
+CONFIGURE_ARGS+=	--with-driver=dvico
+.endif
 
-DEBUG_CONFIGURE_ENABLE=	debug
+.if ${PORT_OPTIONS:MDEBUG}
+CONFIGURE_ARGS+=	--enable-debug
+.endif
 
-UARTLIRC_RUN_DEPENDS=		uartlirc>=0.3:${PORTSDIR}/comms/uartlirc
+.if ${PORT_OPTIONS:MUARTLIRC}
+RUN_DEPENDS+=		uartlirc>=0.3:${PORTSDIR}/comms/uartlirc
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} \
@@ -57,14 +66,16 @@ post-patch:
 		-e 's/`$${LIBUSB_CONFIG} --cflags`//' \
 		${WRKSRC}/configure.ac
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} html ${STAGEDIR}${DOCSDIR}/)
 	@(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} images ${STAGEDIR}${DOCSDIR}/)
 	@(cd ${WRKSRC}/doc && ${INSTALL_DATA} irxevent.keys lirc.css lirc.hwdb ${STAGEDIR}${DOCSDIR}/)
-post-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@(cd ${WRKSRC} && ${COPYTREE_SHARE} remotes ${STAGEDIR}${EXAMPLESDIR}/)
-post-install:
+.endif
 	@${INSTALL_DATA} ${WRKDIR}/lircd.conf ${STAGEDIR}${PREFIX}/etc/lircd.conf.sample
 	@${MKDIR} ${STAGEDIR}/var/run/lirc
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

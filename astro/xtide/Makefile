@@ -85,12 +85,14 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	(cd ${HARM_WRKSRC} && ${INSTALL_DATA} harmonics.tcd \
 		${STAGEDIR}${DATADIR})
-post-install-WVS-on:
+.if ${PORT_OPTIONS:MWVS}
 	@${MKDIR} ${STAGEDIR}${DATADIR}/wvs
 	(cd ${WRKDIR} && ${INSTALL_DATA} wvs*.dat \
 		${STAGEDIR}${DATADIR}/wvs)
-post-install-X11-on:
+.endif
+.if ${PORT_OPTIONS:MX11}
 	(cd ${WRKSRC}/iconsrc && ${INSTALL_DATA} xtide.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps)
+.endif
 
 .include <bsd.port.mk>

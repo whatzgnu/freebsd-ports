@@ -2,19 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	elementary
-PORTVERSION=	3.2.2
+PORTVERSION=	3.1
 CATEGORIES=	x11-themes gnome
-MASTER_SITES=	https://launchpadlibrarian.net/215062034/ \
+MASTER_SITES=	https://launchpadlibrarian.net/147829592/ \
 	https://launchpad.net/elementaryicons/3.x/${PORTVERSION}/+download/
 PKGNAMEPREFIX=	gnome-icons-
-DISTNAME=	${PORTNAME}-icon-theme-${PORTVERSION}
+DISTNAME=	${PORTNAME}icons${PORTVERSION}
 
 MAINTAINER=	root@cooltrainer.org
 COMMENT=	Elementary icon set
 
 LICENSE=	GPLv3
 
-USES=	tar:xz
 NO_BUILD=	yes
 INSTALLS_ICONS=	yes
 

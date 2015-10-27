@@ -29,10 +29,15 @@ OPTIONS_DEFINE=	NAS DOCS
 
 .endif
 
+.include <bsd.port.options.mk>
+
 .if ${PKGNAMEPREFIX} == ""
 
-NAS_LIB_DEPENDS=	libaudio.so:${PORTSDIR}/audio/nas
-NAS_CONFIGURE_ENABLE=	nas
+.if ${PORT_OPTIONS:MNAS}
+LIB_DEPENDS+=	libaudio.so:${PORTSDIR}/audio/nas
+.else
+CONFIGURE_ARGS+=	--disable-nas
+.endif
 
 .endif
 

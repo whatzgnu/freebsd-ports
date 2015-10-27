@@ -64,6 +64,10 @@ NONE_CONFIGURE_ENV=	WISH=/usr/bin/true
 ONLY_FOR_ARCHS=	i386 amd64
 ONLY_FOR_ARCHS_REASON=	Uses x86 specific libc functions and has not been ported
 
-DOCS_INFO=		pcb
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+INFO=		pcb
+.endif
 
 .include <bsd.port.mk>

@@ -33,5 +33,8 @@ share/gnubiff/tux-jump(64x64).png
 share/gnubiff/tux-sleep(64x64).png
 share/gnubiff/tux-sleep.png
 share/pixmaps/gnubiff.png
-@dir %%BONOBODIR%%/servers
-@comment @dir share/gnome-2.0/ui
+@dirrmtry %%BONOBODIR%%/servers
+@dirrmtry %%BONOBODIR%%
+%%NLS%%@dirrmtry share/locale/fr_CA/LC_MESSAGES
+%%NLS%%@dirrmtry share/locale/fr_CA
+@dirrm share/gnubiff

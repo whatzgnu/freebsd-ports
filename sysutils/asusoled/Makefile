@@ -27,15 +27,17 @@ FONTDIR?=	${LOCALBASE}/share/fonts
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/asusoled ${STAGEDIR}${PREFIX}/sbin
+	@${INSTALL_PROGRAM} ${WRKSRC}/asusoled ${STAGEDIR}${PREFIX}/sbin
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 .for i in ${PORTDATA}
-	${INSTALL_DATA} ${WRKSRC}/data/${i} ${STAGEDIR}${DATADIR}
+	@${INSTALL_DATA} ${WRKSRC}/data/${i} ${STAGEDIR}${DATADIR}
 .endfor
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${PKGMESSAGE} ${STAGEDIR}${DOCSDIR}/README.FreeBSD
+	@${INSTALL_DATA} ${PKGMESSAGE} ${STAGEDIR}${DOCSDIR}/README.FreeBSD
+.endif
 
 .include <bsd.port.mk>

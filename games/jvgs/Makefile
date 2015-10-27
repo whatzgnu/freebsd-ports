@@ -28,6 +28,8 @@ PORTDATA=	*
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|main.lua|${DATADIR}/&|' ${WRKSRC}/src/main.cpp
 
@@ -36,9 +38,9 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/jvgs ${STAGEDIR}${PREFIX}/bin/
 	${MKDIR} ${STAGEDIR}${DATADIR}
 	cd ${WRKSRC} && ${COPYTREE_SHARE} "resources main.lua" ${STAGEDIR}${DATADIR}/
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/AUTHORS ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	cpphs
-PORTVERSION=	1.19
+PORTVERSION=	1.18.5
+PORTREVISION=	1
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -10,7 +11,7 @@ COMMENT=	Liberalised re-implementation of cpp, the C pre-processor
 
 LICENSE=	LGPL21
 
-USE_CABAL=	old-locale old-time polyparse>=1.9
+USE_CABAL=	polyparse>=1.9
 
 EXECUTABLE=	cpphs
 

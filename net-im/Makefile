@@ -29,7 +29,6 @@
     SUBDIR += gale
     SUBDIR += gloox
     SUBDIR += hotot
-    SUBDIR += hs-haskell-xmpp
     SUBDIR += icb
     SUBDIR += icmpchat
     SUBDIR += icqlib

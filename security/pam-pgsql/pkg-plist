@@ -4,3 +4,4 @@ lib/pam_pgsql.so
 %%PORTDOCS%%%%DOCSDIR%%/COPYRIGHT
 %%PORTDOCS%%%%DOCSDIR%%/CREDITS
 %%PORTDOCS%%%%DOCSDIR%%/sample.sql
+%%PORTDOCS%%@dirrm %%DOCSDIR%%

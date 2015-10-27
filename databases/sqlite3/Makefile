@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	sqlite3
-PORTVERSION=	3.8.11.1
+PORTVERSION=	3.8.10.2
 CATEGORIES=	databases
-MASTER_SITES=	https://www.sqlite.org/2015/ http://www2.sqlite.org/2015/ http://www3.sqlite.org/2015/
-DISTNAME=	sqlite-autoconf-${PORTVERSION:S|8.|8|:S|.|0|g}
+MASTER_SITES=	http://www.sqlite.org/2015/ http://www2.sqlite.org/2015/ http://www3.sqlite.org/2015/
+DISTNAME=	sqlite-autoconf-${PORTVERSION:S|.10|10|:S|.|0|g}
 
 MAINTAINER=	pavelivolkov@gmail.com
 COMMENT=	SQL database engine in a C library
@@ -17,11 +17,10 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 CONFLICTS=	sqlite34-[0-9]* sqlcipher-[0-9]*
 
-USES=		libtool ncurses pathfix
+USES=		pathfix libtool ncurses
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-CFLAGS+=	-Os
 
 MAKE_JOBS_UNSAFE=	yes
 
@@ -147,7 +146,6 @@ READLINE_USES=	readline
 post-configure:
 	@${ECHO_MSG} "===> CONFIGURE_ARGS=${CONFIGURE_ARGS}"
 	@${ECHO_MSG} "===> CPPFLAGS=${CPPFLAGS}"
-	@${ECHO_MSG} "===> CFLAGS=${CFLAGS}"
 	@${ECHO_MSG} "===> LDFLAGS=${LDFLAGS}"
 
 post-build:

@@ -1,4 +1,4 @@
-# Created by: Fukang Chen <loader@FreeBSD.org>
+# Created by: loader <loader@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	cov-core

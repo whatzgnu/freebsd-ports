@@ -22,10 +22,14 @@ PLIST_FILES=	bin/mutt_vc_query man/man1/mutt_vc_query.1.gz
 
 OPTIONS_DEFINE=	DOCS
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for DOC in AUTHORS ChangeLog NEWS README THANKS
 	${INSTALL_DATA} ${WRKSRC}/${DOC} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

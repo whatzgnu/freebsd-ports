@@ -6,14 +6,13 @@ PORTVERSION=	0.98
 CATEGORIES=	security
 
 MAINTAINER=	vg@FreeBSD.org
-COMMENT=	Implementation of OAuth 1.0 in C++ for Qt
+COMMENT=	Implimentation of OAuth 1.0 in C++ for Qt
 
 LICENSE=	LGPL21
 
-USES=		pkgconfig qmake
-USE_QT4=	corelib network gui moc_build qtestlib_build
+USES=		qmake pkgconfig
+USE_QT4=	corelib gui linguist_build moc_build qtestlib
 USE_LDCONFIG=	yes
-MAKE_JOBS_UNSAFE=yes
 QMAKE_SOURCE_PATH=	${PORTNAME}.pro
 
 USE_GITHUB=	yes

@@ -2,6 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mysql
+PORTREVISION=	2
 PKGNAMESUFFIX=	56-client
 
 COMMENT=	Multithreaded SQL database (client)

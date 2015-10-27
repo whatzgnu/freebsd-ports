@@ -37,16 +37,20 @@ CXXFLAGS+=	-L${LOCALBASE}/lib
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-OPTIONS_DEFINE=	GLUT EXAMPLES
+OPTIONS_DEFINE=	GLUT
 OPTIONS_DEFAULT=	GLUT
 
 GLUT_CONFIGURE_ON=	--with-glut=yes
 GLUT_USE=	GL=glut
 GLUT_CONFIGURE_OFF=	--with-glut=no
 
-post-install-EXAMPLES-on:
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MEXAMPLES}
+post-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	cd ${WRKSRC}/examples ; \
 		${COPYTREE_SHARE} .  ${STAGEDIR}${EXAMPLESDIR} "! -name .cvsignore"
+.endif
 
 .include <bsd.port.mk>

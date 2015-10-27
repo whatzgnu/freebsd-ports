@@ -3,7 +3,7 @@
 
 PORTNAME=	gmpc-albumview
 PORTVERSION=	11.8.16
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	audio
 MASTER_SITES=	http://download.sarine.nl/Programs/gmpc/${PORTVERSION}/
 
@@ -17,6 +17,5 @@ RUN_DEPENDS=	gmpc:${PORTSDIR}/audio/gmpc
 GNU_CONFIGURE=	yes
 USE_GNOME=	glib20 gtk20 intltool
 USES=		gettext gmake libtool pkgconfig
-INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

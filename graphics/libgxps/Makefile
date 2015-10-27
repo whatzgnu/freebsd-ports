@@ -1,8 +1,10 @@
 # Created by: Gustau Perez <gustau.perez@gmail.com>
 # $FreeBSD$
+#   $MCom: ports/trunk/graphics/libgxps/Makefile 19811 2014-08-14 12:45:34Z gusi $
 
 PORTNAME=	libgxps
-PORTVERSION=	0.2.3.2
+PORTVERSION=	0.2.2
+PORTREVISION=	2
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -18,8 +20,8 @@ USES=		gettext gmake jpeg libtool libarchive pathfix pkgconfig tar:xz
 USE_LDCONFIG=	yes
 USE_GNOME=	cairo gnomeprefix glib20 intlhack
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-introspection \
-		--disable-compile-warnings
+MAKE_ARGS+=	V=1
+CONFIGURE_ARGS+=	--enable-introspection=no
 INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

@@ -46,7 +46,11 @@ SUB_FILES=	pkg-message
 OPTIONS_DEFINE=	BASH DOCS
 OPTIONS_SUB=	yes
 
-BASH_VARS=	LICENSE+=MIT # debian/copyright
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MBASH}
+LICENSE+=	MIT # debian/copyright
+.endif
 
 post-extract:
 	@${CP} ${_DISTDIR}/${DISTFILES:M*\:manpage:C/:.*//} \

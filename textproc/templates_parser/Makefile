@@ -30,14 +30,16 @@ PORTDOCS=	html
 OPTIONS_DEFINE=		DOCS
 DOCS_BUILD_DEPENDS=	sphinx-build:${PORTSDIR}/textproc/py-sphinx
 
+.include <bsd.port.options.mk>
+
 do-build:
 	# Override build target to avoid -jX getting passed to makefile
 	# Parallel builds are handled with PROCESSORS setting
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} build
-
-do-build-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	cd ${WRKSRC}/docs && ${SETENV} ${MAKE_ENV} \
 		${MAKE_CMD} ${MAKE_ARGS} html
+.endif
 
 post-install:
 	${RM} -rf ${STAGEDIR}${PREFIX}/share/gpr/manifests

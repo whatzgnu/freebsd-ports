@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	duktape
-PORTVERSION=	1.2.3
+PORTVERSION=	1.2.2
 CATEGORIES=	lang devel
 MASTER_SITES=	http://duktape.org/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	bapt@FreeBSD.org
 COMMENT=	Embeddable Javascript engine
 
 LICENSE=	MIT

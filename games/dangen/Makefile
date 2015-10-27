@@ -11,9 +11,6 @@ MASTER_SITES=	http://www.interq.or.jp/libra/oohara/dangen/ \
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Shoot'em up game where accurate shooting matters
 
-LICENSE=	GPLv2 ART20
-LICENSE_COMB=	dual
-
 GNU_CONFIGURE=	yes
 USES=		gmake
 USE_SDL=	sdl image
@@ -31,14 +28,18 @@ PORTDATA=	*
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|sdl-config|${SDL_CONFIG}|' ${WRKSRC}/Makefile.in \
 		${WRKSRC}/libtenm/Makefile.in ${WRKSRC}/spqr/Makefile.in
 	@${REINPLACE_CMD} -e 's|$$(datadir)/games/|$$(datadir)/|' ${WRKSRC}/spqr/image/Makefile.in
 	@${REINPLACE_CMD} -e 's|/games||' ${WRKSRC}/util.c
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}/
+.endif
 
 .include <bsd.port.mk>

@@ -20,8 +20,8 @@ RUN_DEPENDS=	${PKGNAMEPREFIX}pillow>=2.2.1:${PORTSDIR}/graphics/py-pillow \
 USES=	python
 USE_PYTHON=	autoplist distutils
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGBASE}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGBASE}
+DOCSDIR=	${PREFIX}/share/doc/${UNIQUENAME}
+EXAMPLESDIR=	${PREFIX}/share/examples/${UNIQUENAME}
 
 PORTDOCS=	README.rst
 PORTEXAMPLES=	*

@@ -4,6 +4,7 @@
 PORTNAME=	findmaildirs
 PORTVERSION=	0.2
 CATEGORIES=	mail
+MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Simple utility to create list of maildirs for mutt

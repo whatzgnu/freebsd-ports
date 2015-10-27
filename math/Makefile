@@ -11,7 +11,6 @@
     SUBDIR += R-cran-KFAS
     SUBDIR += R-cran-LearnBayes
     SUBDIR += R-cran-MCMCpack
-    SUBDIR += R-cran-NMF
     SUBDIR += R-cran-RHmm
     SUBDIR += R-cran-RSvgDevice
     SUBDIR += R-cran-RcppArmadillo
@@ -29,7 +28,6 @@
     SUBDIR += R-cran-gtable
     SUBDIR += R-cran-igraph
     SUBDIR += R-cran-inline
-    SUBDIR += R-cran-irlba
     SUBDIR += R-cran-labeling
     SUBDIR += R-cran-memisc
     SUBDIR += R-cran-minqa
@@ -171,9 +169,7 @@
     SUBDIR += hexcalc
     SUBDIR += hfst
     SUBDIR += hs-Agda
-    SUBDIR += hs-Agda-stdlib
     SUBDIR += hs-NumInstances
-    SUBDIR += hs-adjunctions
     SUBDIR += hs-categories
     SUBDIR += hs-comonad
     SUBDIR += hs-contravariant
@@ -182,9 +178,9 @@
     SUBDIR += hs-distributive
     SUBDIR += hs-erf
     SUBDIR += hs-ieee754
-    SUBDIR += hs-kan-extensions
     SUBDIR += hs-math-functions
     SUBDIR += hs-mwc-random
+    SUBDIR += hs-nats
     SUBDIR += hs-pointed
     SUBDIR += hs-probability
     SUBDIR += hs-semigroupoids

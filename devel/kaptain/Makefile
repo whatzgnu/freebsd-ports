@@ -10,7 +10,8 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tool for building/running Qt GUIs for command line programs
 
 LICENSE=	GPLv2 # (or later)
-LICENSE_FILE=	${WRKSRC}/COPYING
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 USES=		qmake tar:tgz
 USE_QT4=	qt3support moc_build
@@ -21,7 +22,7 @@ PORTEXAMPLES=	*
 PLIST_FILES=	bin/kaptain \
 		man/man1/kaptain.1.gz
 
-OPTIONS_DEFINE=	DOCS EXAMPLES
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e \
@@ -34,16 +35,16 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/kaptain ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/man/kaptain.1 ${STAGEDIR}${MANPREFIX}/man/man1
 	${INSTALL_DATA} ${WRKSRC}/doc/kaptain.info ${STAGEDIR}${PREFIX}/${INFO_PATH}
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC}/doc \
 		&& ${INSTALL_DATA} *.gif *.html *.png *.tgz ${STAGEDIR}${DOCSDIR})
-
-do-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	(cd ${WRKSRC}/examples \
 		&& ${INSTALL_DATA} *.kaptn *.tgz ${STAGEDIR}${EXAMPLESDIR})
+.endif
 
 .include <bsd.port.mk>

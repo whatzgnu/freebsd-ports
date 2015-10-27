@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	actor-framework
-PORTVERSION=	0.14.1
+PORTVERSION=	0.14.0
 CATEGORIES=	devel
 
 MAINTAINER=	vallentin@icir.org

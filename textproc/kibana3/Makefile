@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	kibana
-PORTVERSION=	3.1.3
+PORTVERSION=	3.1.2
 CATEGORIES=	textproc www
 MASTER_SITES=	http://download.elasticsearch.org/kibana/kibana/
 PKGNAMESUFFIX=	3

@@ -3,15 +3,12 @@
 
 PORTNAME=	gmpc-magnatune
 PORTVERSION=	11.8.16
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	audio
 MASTER_SITES=	http://download.sarine.nl/Programs/gmpc/${PORTVERSION}/
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	Magnatune plugin lets you preview music from Magnatune
-
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
+COMMENT=	The Magnatune plugin let's you preview music from Magnatune
 
 LIB_DEPENDS=	libmpd.so:${PORTSDIR}/audio/libmpd \
 		libsqlite3.so:${PORTSDIR}/databases/sqlite3
@@ -21,6 +18,5 @@ RUN_DEPENDS=	gmpc:${PORTSDIR}/audio/gmpc
 GNU_CONFIGURE=	yes
 USE_GNOME=	intltool glib20 gtk20 libglade2
 USES=		gettext gmake libtool pkgconfig
-INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

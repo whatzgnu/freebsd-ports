@@ -2,7 +2,6 @@
 
 PORTNAME=	supertux
 PORTVERSION=	0.3.5
-PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	https://github.com/SuperTux/supertux/releases/download/v${PORTVERSION}/
 PKGNAMESUFFIX=	-devel
@@ -17,7 +16,8 @@ LIB_DEPENDS=	libphysfs.so:${PORTSDIR}/devel/physfs \
 
 USE_SDL=	sdl2 image2
 USE_GL=		glew
-USES=		cmake:outsource compiler:c++11-lib openal:al pkgconfig tar:bzip2
+USES=		cmake:outsource compiler:c++11-lib iconv openal:al pkgconfig tar:bzip2
+LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 # Unhide std::to_string() to fix build with GCC (see ports/193528 for details)
 CFLAGS+=	-D_GLIBCXX_USE_C99
 

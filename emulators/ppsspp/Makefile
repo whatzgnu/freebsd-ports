@@ -33,7 +33,6 @@ CMAKE_ARGS=	-DUSE_SYSTEM_FFMPEG=on
 QMAKE_SOURCE_PATH=	${WRKSRC}/Qt/PPSSPPQt.pro
 QMAKE_ARGS=	CONFIG+="system_ffmpeg" LREL_TOOL="${LRELEASE}"
 NINJA_VERBOSE=	yes
-NO_INSTALL=	yes # ports/202949
 
 OPTIONS_DEFAULT=QT5
 OPTIONS_SINGLE=	GUI
@@ -47,7 +46,12 @@ SDL_USES=	cmake:outsource ninja
 SDL_BUILD_DEPENDS=	png>=1.6:${PORTSDIR}/graphics/png
 SDL_LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
 SDL_LDFLAGS=	-L${LOCALBASE}/lib # ffmpeg
-SDL_VARS=	PORTDATA+="assets ${PORTNAME}"
+
+.include <bsd.port.options.mk>
+
+.if ! ${PORT_OPTIONS:MQT*}
+PORTDATA+=	assets ${PORTNAME}
+.endif
 
 post-extract:
 # Convert USE_GITHUB groups to git-submodule(1) paths
@@ -65,21 +69,8 @@ post-patch:
 		${WRKSRC}/git-version.cmake \
 		${WRKSRC}/Qt/Settings.pri
 
-do-install-SDL-on:
-# cmake doesn't pack assets into the app unlike qmake
-# XXX Convert to ${PORTDATA:N${PORTNAME}} once fmake is EOL
-	(cd ${INSTALL_WRKSRC} && ${COPYTREE_SHARE} \
-		"${PORTDATA:Nppsspp}" ${STAGEDIR}${DATADIR})
-# Install the app alongside assets to avoid warnings with GetExeDirectory()
-	${INSTALL_PROGRAM} ${INSTALL_WRKSRC}/${PORTNAME:tu}* \
-		${STAGEDIR}${DATADIR}/${PORTNAME}
-	${LN} -sf ${DATADIR}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
-
-do-install-SDL-off:
-	${INSTALL_PROGRAM} ${INSTALL_WRKSRC}/${PORTNAME} \
-		${STAGEDIR}${PREFIX}/bin
-
-post-install:
+do-install:
+# XXX Vendor install is incomplete
 	${INSTALL_DATA} ${WRKSRC}/debian/${PORTNAME}.desktop \
 		${STAGEDIR}${DESKTOPDIR}
 	${INSTALL_MAN} ${WRKSRC}/debian/${PORTNAME}.1 \
@@ -89,5 +80,19 @@ post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/scalable/apps
 	${INSTALL_DATA} ${WRKSRC}/assets/unix-icons/icon-512.svg \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/scalable/apps/${PORTNAME}.svg
+
+post-install-SDL-on:
+# cmake doesn't pack assets into the app unlike qmake
+# XXX Convert to ${PORTDATA:N${PORTNAME}} once fmake is EOL
+	(cd ${INSTALL_WRKSRC} && ${COPYTREE_SHARE} \
+		"${PORTDATA:Nppsspp}" ${STAGEDIR}${DATADIR})
+# Install the app alongside assets to avoid warnings with GetExeDirectory()
+	${INSTALL_PROGRAM} ${INSTALL_WRKSRC}/${PORTNAME:tu}* \
+		${STAGEDIR}${DATADIR}/${PORTNAME}
+	${LN} -sf ${DATADIR}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+
+post-install-SDL-off:
+	${INSTALL_PROGRAM} ${INSTALL_WRKSRC}/${PORTNAME} \
+		${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>

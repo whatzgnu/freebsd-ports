@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	libzip
-PORTVERSION=	1.0.1
+PORTVERSION=	0.11.2
+PORTREVISION=	2
 CATEGORIES=	archivers devel
 MASTER_SITES=	http://www.nih.at/libzip/
 
@@ -13,8 +14,7 @@ CPE_VENDOR=	nih
 
 GNU_CONFIGURE=	yes
 MAKE_ENV=	LC_ALL="C"
-USES=		cpe libtool pathfix perl5 tar:xz
-USE_PERL5=	build
+USES=		cpe libtool pathfix tar:xz
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 

@@ -21,7 +21,12 @@ PLIST_SUB=	INCLUDEDIR=include/qwt6 \
 		SHLIB_SHVER=${PORTVERSION:R} \
 		QT_MKSPECDIR=share/qt4/mkspecs
 
+STRIP_FILES=	lib/libqwt6.so.${PORTVERSION} \
+		lib/libqwtmathml.so.${PORTVERSION}
+
 OPTIONS_DEFINE=	DOCS
+
+.include <bsd.port.options.mk>
 
 post-patch:
 	cd ${WRKSRC} && \
@@ -29,7 +34,10 @@ post-patch:
 		qwt.prf textengines/textengines.pri && \
 	${REINPLACE_CMD} -e '/INSTALLS.*doc/d' doc/doc.pro
 
-post-install-DOCS-on:
+post-install:
+	${STRIP_CMD} ${STRIP_FILES:S,^,${STAGEDIR}${PREFIX}/,}
+.if ${PORT_OPTIONS:MDOCS}
 	(cd ${WRKSRC}/doc/html/ && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
+.endif
 
 .include <bsd.port.mk>

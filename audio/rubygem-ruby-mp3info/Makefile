@@ -6,10 +6,8 @@ PORTVERSION=	0.8
 CATEGORIES=	audio rubygems
 MASTER_SITES=	RG
 
-MAINTAINER=	ruby@FreeBSD.org
+MAINTAINER=	tha_walka@hotmail.com
 COMMENT=	Ruby library to access information on mp3 files
-
-LICENSE=	MIT
 
 NO_ARCH=	yes
 

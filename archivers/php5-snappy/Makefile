@@ -23,10 +23,16 @@ PHP_MODNAME=	snappy
 WRKSRC=		${WRKDIR}/${PROJECTHOST}
 OPTIONS_DEFINE=	TEST
 
-post-build-TEST-on:
+.include <bsd.port.options.mk>
+test: build
 	@(cd ${WRKSRC} && ${MAKE} ${MAKE_ENV} NO_INTERACTION=yes ${.TARGET})
 
+.if !empty(${PORT_OPTIONS:MTEST})
+post-stage: test
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/php/${PHP_EXT_DIR}/snappy.so
+.else
 post-stage:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/php/${PHP_EXT_DIR}/snappy.so
+.endif
 
 .include <bsd.port.mk>

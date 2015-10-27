@@ -147,6 +147,7 @@
     SUBDIR += gtk-youtube-viewer
     SUBDIR += gxine
     SUBDIR += handbrake
+    SUBDIR += hs-gstreamer
     SUBDIR += imagination
     SUBDIR += iriverter
     SUBDIR += iso2mkv

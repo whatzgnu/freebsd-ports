@@ -23,8 +23,13 @@ USE_GNOME=	gtk20
 GNU_CONFIGURE=	yes
 LDFLAGS+=	-lm
 
-LASH_LIB_DEPENDS=	liblash.so:${PORTSDIR}/audio/lash
-LASH_CONFIGURE_OFF=	--disable-lash
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MLASH}
+LIB_DEPENDS+=	liblash.so:${PORTSDIR}/audio/lash
+.else
+CONFIGURE_ARGS+=--disable-lash
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e \

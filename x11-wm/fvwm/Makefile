@@ -11,6 +11,8 @@ PKGNAMESUFFIX=	1${PKGNAMESUFFIX2}
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	The fvwm window manager
 
+NO_LATEST_LINK=	yes
+
 USES=		imake
 USE_XORG=	xbitmaps xpm xext x11 xmu
 

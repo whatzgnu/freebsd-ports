@@ -3,7 +3,7 @@
 
 PORTNAME=	treeline
 PORTVERSION=	1.4.1
-PORTREVISION=	9
+PORTREVISION=	8
 CATEGORIES=	deskutils python
 MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}/:treeline \
 		http://treeline.bellz.org/plugins/:plugins \
@@ -25,7 +25,6 @@ WRKSRC=		${WRKDIR}/TreeLine
 USE_QT4=	# empty
 USES=		python:2
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 DESKTOP_ENTRIES=	"TreeLine" "" "${DATADIR}/icons/tree/treeline.png" \
 			"${PORTNAME}" "Utility;" false
@@ -36,13 +35,15 @@ OPTIONS_SUB=		yes
 HTTPLOAD_DESC=		httpLoad plugin
 HTTPLOAD_DISTFILES=	httpload2.py:plugins
 
+.include <bsd.port.options.mk>
+
 do-install:
 	(cd ${WRKSRC} && ${PYTHON_CMD} install.py -b ${STAGEDIR} -p ${PREFIX} \
 		-d ${DOCSDIR} -i ${DATADIR}/icons)
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/plugins
-
-do-install-HTTPLOAD-on:
+.if ${PORT_OPTIONS:MHTTPLOAD}
 	${INSTALL_DATA} ${DISTDIR}/httpload2.py \
 		${STAGEDIR}${PREFIX}/lib/${PORTNAME}/plugins
+.endif
 
 .include <bsd.port.mk>

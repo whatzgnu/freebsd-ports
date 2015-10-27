@@ -44,8 +44,12 @@ SDL_CONFIGURE_OFF=	--without-libsdl --without-sdlgfx
 
 .include <bsd.port.options.mk>
 
-.if ${ARCH} == i386 || ${ARCH} == powerpc
+.if ${ARCH} == "i386"
 USES+=		compiler:c++11-lang
+.endif
+
+.if ${ARCH} == "powerpc" && ${OSVERSION} > 900000
+BROKEN=		Does not build on powerpc-9
 .endif
 
 post-patch:

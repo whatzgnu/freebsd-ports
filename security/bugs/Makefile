@@ -22,6 +22,8 @@ DOCSDIR=	${PREFIX}/${DISTNAME}/doc
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 # Sanitize permissions so "make clean" can work
 	@${CHMOD} +x ${WRKSRC}/lib/unix ${WRKSRC}/lib/windows
@@ -48,10 +50,10 @@ post-install:
 .for file in bchat bcrypt bhide bkey block blogin bmore bpass bpassdel bunlock
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/${DISTNAME}/${file}
 .endfor
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	@(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
+.endif
 
 test: build
 	${MAKE_CMD} -C ${WRKSRC} test

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mono
-PORTVERSION=	4.0.3.20
+PORTVERSION=	4.0.1.28
 CATEGORIES=	lang
 MASTER_SITES=	http://download.mono-project.com/sources/${PORTNAME}/
 
@@ -10,6 +10,7 @@ PATCHFILES=	#
 PATCH_SITES=	https://github.com/mono/mono/commit/
 PATCH_DIST_STRIP=-p1
 
+WRKSRC=	${WRKDIR}/mono-4.0.1
 MAINTAINER=	mono@FreeBSD.org
 COMMENT=	Open source implementation of .NET Development Framework
 
@@ -21,7 +22,6 @@ USE_GNOME=	glib20
 USE_PERL5=	build
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-WRKSRC=		${WRKDIR}/mono-4.0.3
 
 MAKE_JOBS_UNSAFE=yes
 

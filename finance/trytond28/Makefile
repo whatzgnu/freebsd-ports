@@ -11,8 +11,7 @@ PKGNAMESUFFIX=	28
 MAINTAINER=	matthias@petermann-it.de
 COMMENT=	Tryton Application Platform (Server)
 
-LICENSE=	GPLv3 # or later
-LICENSE_FILE=	${WRKSRC}/LICENSE
+LICENSE=	GPLv3
 
 BUILD_DEPENDS=	${PYTHON_SITELIBDIR}/mx/__init__.py:${PORTSDIR}/lang/py-mx-base \
 		${PYTHON_PKGNAMEPREFIX}psycopg2>0:${PORTSDIR}/databases/py-psycopg2 \
@@ -43,7 +42,7 @@ PIDDIR?=	/var/run
 LOGDIR?=	/var/log
 
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%PIDDIR%%|${PIDDIR}|g' -e 's|%%LOGDIR%%|${LOGDIR}|g' \
@@ -68,6 +67,6 @@ RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}pytz>=0:${PORTSDIR}/devel/py-pytz
 .endif
 
 post-install:
-	${INSTALL_DATA} ${WRKSRC}/etc/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
+	${CP} -p ${WRKSRC}/etc/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
 .include <bsd.port.mk>

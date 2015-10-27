@@ -21,6 +21,7 @@ USES=		perl5
 USE_PERL5=	configure
 
 OPTIONS_DEFINE=	EXAMPLES
+OPTIONSFILE=	${PORT_DBDIR}/ja-p5-${PORTNAME}/options
 
 .include <bsd.port.pre.mk>
 

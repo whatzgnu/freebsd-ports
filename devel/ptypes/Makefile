@@ -20,6 +20,10 @@ OPTIONS_DEFINE=	DEBUG OPTIMIZED_CFLAGS DOCS
 
 .include <bsd.port.options.mk>
 
+.if ${ARCH} == "powerpc"
+BROKEN=		Does not install on powerpc
+.endif
+
 .if ${PORT_OPTIONS:MDEBUG}
 DEBUG_FLAGS=	"-DDEBUG -g"
 .endif

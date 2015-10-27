@@ -24,7 +24,7 @@ DESKTOP_ENTRIES="${PORTNAME}" \
 		false
 
 USES=		cmake
-CONFIGURE_ENV+=	_ALLEGRO_LIBS="`allegro-config --libs`" \
+CMAKE_ENV+=	_ALLEGRO_LIBS="`allegro-config --libs`" \
 		_ALLEGRO_VERSION="`allegro-config --version`"
 
 CFLAGS+=	-I${LOCALBASE}/include

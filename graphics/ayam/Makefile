@@ -33,6 +33,8 @@ MAKE_JOBS_UNSAFE=	yes
 AYAM_PLUGINS=	csphere mfio
 PLUGINS_DIR=	${PREFIX}/lib/${PORTNAME}
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%DATADIR%%|${DATADIR}|' ${WRKSRC}/tcl/ayam.tcl
 	@${REINPLACE_CMD} -e 's|^MF3DCFLAGS =|MF3DCFLAGS = -fPIC|g' \
@@ -90,7 +92,7 @@ do-install:
 	${INSTALL_DATA} ${WRKDIR}/${PORTNAME}/lib/ayam-splash.gif ${STAGEDIR}${DATADIR}
 
 # docs
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKDIR}/${PORTNAME}/Setup.txt ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKDIR}/${PORTNAME}/doc/ayam.pdf ${STAGEDIR}${DOCSDIR}
@@ -101,5 +103,6 @@ do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html/pics
 	${INSTALL_DATA} ${WRKDIR}/${PORTNAME}/doc/html/pics/* \
 		${STAGEDIR}${DOCSDIR}/html/pics
+.endif
 
 .include <bsd.port.mk>

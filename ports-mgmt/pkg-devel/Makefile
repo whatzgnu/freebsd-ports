@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	pkg
-DISTVERSION=	1.5.99.12
+DISTVERSION=	1.5.99.6
 _PKG_VERSION=	${DISTVERSION}
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	\
@@ -34,10 +34,12 @@ EXTRA_PATCHES=	${FILESDIR}/extra-patch-docs_pkg.8
 
 .if defined(WITH_PKG)
 .if ${WITH_PKG} != devel
+NO_LATEST_LINK=	yes
 .	if !defined(PACKAGE_BUILDING)
 IGNORE=	WITH_PKG is not defined to 'devel', this version is the devel one
 .	endif
 .else
+LATEST_LINK=	pkg
 PKGNAMESUFFIX=
 #define PKG_DEPENDS to nothing to avoid infinite loop looking for pkg :)
 PKG_DEPENDS=
@@ -65,6 +67,8 @@ pre-everything::
 
 .endif
 .endif
+.else
+LATEST_LINK=	pkg-devel
 .endif
 
 .undef INSTALLS_DEPENDS

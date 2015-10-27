@@ -2,7 +2,7 @@
 
 PORTNAME=	openfts
 PORTVERSION=	0.40
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	textproc perl5
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/OpenFTS-perl%2C%20v${PORTVERSION}
 DISTNAME=	Search-OpenFTS-${PORTVERSION}
@@ -12,8 +12,7 @@ COMMENT=	Open Source Full Text Search engine
 
 RUN_DEPENDS=	p5-DBD-Pg>=0:${PORTSDIR}/databases/p5-DBD-Pg
 
-USES+=		perl5 pgsql shebangfix
-SHEBANG_FILES=	examples/*.pl examples/parser/*.pl
+USES+=		perl5 pgsql
 USE_PERL5=	configure
 WANT_PGSQL=	contrib
 

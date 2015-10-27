@@ -38,7 +38,6 @@
     SUBDIR += clang34
     SUBDIR += clang35
     SUBDIR += clang36
-    SUBDIR += clang37
     SUBDIR += clojure
     SUBDIR += clojure-mode.el
     SUBDIR += cloudabi-clang
@@ -106,7 +105,6 @@
     SUBDIR += gnu-cobol
     SUBDIR += gnustep-base
     SUBDIR += go
-    SUBDIR += go14
     SUBDIR += gprolog
     SUBDIR += groovy
     SUBDIR += gscheme
@@ -116,6 +114,7 @@
     SUBDIR += hla
     SUBDIR += hope
     SUBDIR += hs-brainfuck
+    SUBDIR += hs-epic
     SUBDIR += hs-unlambda
     SUBDIR += huc
     SUBDIR += hugs
@@ -136,7 +135,6 @@
     SUBDIR += kturtle
     SUBDIR += lafontaine
     SUBDIR += lci
-    SUBDIR += lfe
     SUBDIR += libhx
     SUBDIR += libjit
     SUBDIR += libobjc2
@@ -265,11 +263,9 @@
     SUBDIR += python32
     SUBDIR += python33
     SUBDIR += python34
-    SUBDIR += python35
     SUBDIR += qore
     SUBDIR += qscheme
     SUBDIR += qt5-qml
-    SUBDIR += quack
     SUBDIR += racket
     SUBDIR += racket-minimal
     SUBDIR += ratfor

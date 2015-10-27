@@ -24,6 +24,8 @@ LIBDIRS=	libipv6
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-extract:
 	@cd ${WRKSRC} && ${MKDIR} ${PROGDIRS} ${LIBDIRS}
 
@@ -39,9 +41,9 @@ post-patch: apply-slist
 post-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/tools/blackhole6 ${WRKSRC}/tools/script6 \
 	    ${STAGEDIR}${PREFIX}/sbin
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

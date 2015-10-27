@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	MonadCatchIO-transformers
-PORTVERSION=	0.3.1.3
+PORTVERSION=	0.3.1.0
+PORTREVISION=	1
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

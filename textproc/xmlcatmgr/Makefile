@@ -37,6 +37,10 @@ CATALOG_PORTS_XML?=	${PREFIX}/share/xml/catalog.ports
 
 OPTIONS_DEFINE=	DOCS
 
-DOCS_CONFIGURE_OFF=	--disable-docs
+.include <bsd.port.options.mk>
+
+.if ! ${PORT_OPTIONS:MDOCS}
+CONFIGURE_ARGS+=	--disable-docs
+.endif
 
 .include <bsd.port.mk>

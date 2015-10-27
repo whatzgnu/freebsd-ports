@@ -2,46 +2,35 @@
 # $FreeBSD$
 
 PORTNAME=	ratpoison
-PORTVERSION=	1.4.8
+PORTVERSION=	1.4.6
 CATEGORIES=	x11-wm
-MASTER_SITES=	SAVANNAH
+MASTER_SITES=	SAVANNAH http://mirror.4bit.ws/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Simple window manager with no fat library dependencies
 
-LICENSE=	GPLv2 # (or later)
-
-USES=		pkgconfig
-USE_XORG=	ice x11 xext xinerama xtst
+USE_XORG=	xext xinerama xtst
 GNU_CONFIGURE=	yes
 
-SUB_FILES=	ratpoison.desktop
+OPTIONS_DEFINE=	GDM_SUPPORT DOCS
+GDM_SUPPORT_DESC=	Install session data files for GDM
 
 INFO=		ratpoison
-
-OPTIONS_DEFINE=		DOCS GDM_SUPPORT READLINE XFT
-OPTIONS_DEFAULT=	READLINE XFT
-OPTIONS_SUB=		yes
-
-GDM_SUPPORT_DESC=	Install session data files for GDM
-READLINE_USES=		readline
-READLINE_CONFIGURE_ENABLE=	history
-XFT_USE=		xorg=xft
-XFT_CONFIGURE_WITH=	xft
+SUB_FILES=	ratpoison.desktop
 
 .include <bsd.port.options.mk>
 
 post-patch:
-	@${REINPLACE_CMD} -e \
-		'/^doc_DATA/s|COPYING||' ${WRKSRC}/Makefile.in
-	@${REINPLACE_CMD} -e \
-		's|$$(lispdir)|$$(pkgdatadir)|' ${WRKSRC}/contrib/Makefile.in
+	${REINPLACE_CMD} -e 's|bash|sh|g' ${WRKSRC}/contrib/allwindows.sh
+
+.if ${PORT_OPTIONS:MGDM_SUPPORT}
+PLIST_SUB+=	WITH_GDM=""
 
 post-install:
-.if ${PORT_OPTIONS:MGDM_SUPPORT}
-	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/dm/Sessions
-	(cd ${WRKDIR} && ${INSTALL_DATA} ratpoison.desktop \
-		${STAGEDIR}${PREFIX}/etc/dm/Sessions)
+	@${MKDIR} ${PREFIX}/etc/dm/Sessions
+	${INSTALL_DATA} ${WRKDIR}/ratpoison.desktop ${STAGEDIR}${PREFIX}/etc/dm/Sessions
+.else
+PLIST_SUB+=	WITH_GDM="@comment "
 .endif
 
 .include <bsd.port.mk>

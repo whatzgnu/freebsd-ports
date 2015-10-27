@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	pivotx
-PORTVERSION=	2.3.11
+PORTVERSION=	2.3.7
 CATEGORIES=	www
-MASTER_SITES=	http://pivotx.net/files/ \
+MASTER_SITES=	SF/pivot-weblog/PivotX \
+		http://pivotx.net/files/ \
 		http://pivotx.net/files/archived/
 DISTNAME=	pivotx_${PORTVERSION}
 
@@ -27,7 +28,7 @@ PHPDOM_DESC=	Use PHP:DOM instead of SimpleXML
 
 WANT_PHP_WEB=	yes
 USE_PHP=	session gettext xml tokenizer gd pcre
-USES+=		cpe tar:tgz
+USES+=		cpe gettext tar:tgz
 
 .if ${PORT_OPTIONS:MPHPDOM}
 USE_PHP+=	dom
@@ -78,11 +79,11 @@ post-patch:
 do-install:
 	@${MKDIR} '${STAGEDIR}${DOCSDIR}'
 .for FILES in ${PORTDOCS}
-	${INSTALL_DATA} '${TEMP_WRKSRC}/${FILES}' '${STAGEDIR}${DOCSDIR}'
+	@${INSTALL_DATA} '${TEMP_WRKSRC}/${FILES}' '${STAGEDIR}${DOCSDIR}'
 .endfor
 	@${MKDIR} '${STAGEDIR}${EXAMPLESDIR}'
 .for FILES in ${PORTEXAMPLES}
-	${INSTALL_DATA} '${TEMP_WRKSRC}/${FILES}' '${STAGEDIR}${EXAMPLESDIR}'
+	@${INSTALL_DATA} '${TEMP_WRKSRC}/${FILES}' '${STAGEDIR}${EXAMPLESDIR}'
 .endfor
 	@${MKDIR} '${STAGEDIR}${WWWDIR}'
 	@cd '${WRKSRC}' && ${COPYTREE_SHARE} . '${STAGEDIR}${WWWDIR}'

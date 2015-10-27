@@ -28,6 +28,7 @@ CONFIGURE_ARGS= --prefix=${PREFIX} \
 OPTIONS_DEFINE=	DOCS
 
 .include "${.CURDIR}/Makefile.version"
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e '/for Object_Dir/d' ${WRKSRC}/gnat/apq.gpr.in
@@ -47,9 +48,9 @@ do-install:
 		${STAGEDIR}${PREFIX}/lib/apq/static
 	${INSTALL_DATA} ${WRKPATH}/lib/gnat/apq.gpr \
 		${STAGEDIR}${PREFIX}/lib/gnat
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${INSTALL_DATA} ${WRKSRC}/README ${WRKSRC}/HISTORY \
 		${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

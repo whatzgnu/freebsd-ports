@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Pod-Coverage-Moose
-PORTVERSION=	0.07
+PORTVERSION=	0.05
+PORTREVISION=	1
 CATEGORIES=	devel textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -13,15 +14,14 @@ COMMENT=	Pod::Coverage extension for Moose
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-BUILD_DEPENDS=	p5-Moose>=2.1300:${PORTSDIR}/devel/p5-Moose \
+BUILD_DEPENDS=	p5-Moose>=2:${PORTSDIR}/devel/p5-Moose \
 		p5-Pod-Coverage>=0:${PORTSDIR}/devel/p5-Pod-Coverage \
-		p5-namespace-autoclean>=0.08:${PORTSDIR}/devel/p5-namespace-autoclean
+		p5-namespace-autoclean>=0:${PORTSDIR}/devel/p5-namespace-autoclean
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-MooseX-AttributeHelpers>=0:${PORTSDIR}/devel/p5-MooseX-AttributeHelpers \
 		p5-MooseX-Role-WithOverloading>=0:${PORTSDIR}/devel/p5-MooseX-Role-WithOverloading \
 		p5-Test-Requires>=0:${PORTSDIR}/devel/p5-Test-Requires
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	modbuildtiny
 

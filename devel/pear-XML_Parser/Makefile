@@ -2,13 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	XML_Parser
-PORTVERSION=	1.3.5
+PORTVERSION=	1.3.4
 CATEGORIES=	devel pear
 
-MAINTAINER=	bofh@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PEAR XML parsing class based on PHP's bundled expat
-
-LICENSE=	BSD2CLAUSE
 
 USES=		pear
 

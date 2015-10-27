@@ -8,13 +8,9 @@ CATEGORIES=	net-mgmt
 MAINTAINER=	kimor79@yahoo.com
 COMMENT=	Simple daemon for easy stats aggregation
 
-LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/LICENSE
-
 RUN_DEPENDS=	node:${PORTSDIR}/www/node
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 USERS=		statsd
 GROUPS=		statsd
@@ -34,12 +30,12 @@ do-install:
 	(cd ${WRKSRC}/backends/ && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/backends)
 	${MKDIR} ${STAGEDIR}${DATADIR}/lib
 	(cd ${WRKSRC}/lib/ && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/lib)
-	${INSTALL_DATA} ${WRKSRC}/exampleConfig.js ${STAGEDIR}${DATADIR}/
-	${INSTALL_DATA} ${WRKSRC}/exampleProxyConfig.js ${STAGEDIR}${DATADIR}/
-	${INSTALL_DATA} ${WRKSRC}/stats.js ${STAGEDIR}${DATADIR}/
+	${CP} ${WRKSRC}/exampleConfig.js ${STAGEDIR}${DATADIR}/exampleConfig.js
+	${CP} ${WRKSRC}/exampleProxyConfig.js ${STAGEDIR}${DATADIR}/exampleProxyConfig.js
+	${CP} ${WRKSRC}/stats.js ${STAGEDIR}${DATADIR}/stats.js
 
 post-install:
-	${INSTALL_DATA} ${WRKSRC}/exampleConfig.js \
+	@${INSTALL_DATA} ${WRKSRC}/exampleConfig.js \
 		${STAGEDIR}${PREFIX}/etc/statsd.js.sample
 
 .include <bsd.port.mk>

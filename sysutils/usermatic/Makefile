@@ -14,7 +14,6 @@ COMMENT=	Scripts to automate the maintenance of accounts
 RUN_DEPENDS=	${PREFIX}/sbin/userneu.pl:${PORTSDIR}/sysutils/userneu
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 USES=		perl5 shebangfix
 SHEBANG_FILES=	digestion/digestion.pl hunter-seeker/hunter-seeker.pl \
 		newusers/newusers.pl reaper/reaper.pl
@@ -25,6 +24,8 @@ DOCS=		Artistic COPYING README CHANGES \
 EXAMPLES=	digestion/list_digested digestion/list_raw \
 		newusers/sums_to_ignore
 OPTIONS_DEFINE=	DOCS
+
+.include <bsd.port.options.mk>
 
 do-install:
 	cd ${WRKSRC}/doc && ${INSTALL_MAN} digestion.pl.1 ${STAGEDIR}${MANPREFIX}/man/man1
@@ -37,9 +38,9 @@ do-install:
 	cd ${WRKSRC}/newusers && ${INSTALL_SCRIPT} newusers.pl ${STAGEDIR}${PREFIX}/sbin
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${EXAMPLES} ${STAGEDIR}${EXAMPLESDIR}
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${DOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

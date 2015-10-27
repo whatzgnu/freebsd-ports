@@ -26,10 +26,14 @@ PORTDOCS=	*
 
 OPTIONS_DEFINE=	DOCS
 
-DOCS_ALL_TARGET=	doc
+.include <bsd.port.options.mk>
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+ALL_TARGET+=	doc
+
+post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/*.html ${WRKSRC}/*.css ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

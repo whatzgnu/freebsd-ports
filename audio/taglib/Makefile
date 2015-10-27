@@ -35,12 +35,15 @@ RCC_EXTRA_PATCHES=	${FILESDIR}/extrapatch-rcc
 RCC_CFLAGS=		-I${LOCALBASE}/include
 RCC_LDFLAGS=		-L${LOCALBASE}/lib
 
-post-patch-RCC-on:
+.include <bsd.port.options.mk>
+
+post-patch:
+.if ${PORT_OPTIONS:MRCC}
 	@${REINPLACE_CMD} -e 's|-ltag|-ltag -lrcc|g' \
 		${WRKSRC}/taglib.pc.cmake ${WRKSRC}/taglib-config.cmake
 	@${REINPLACE_CMD} -e 's|-ltag_c|-ltag_c -lrcc|g' \
 		${WRKSRC}/bindings/c/taglib_c.pc.cmake
-post-patch:
+.endif
 	${REINPLACE_CMD} -e 's|$${LIB_INSTALL_DIR}/pkgconfig|libdata/pkgconfig|' \
 		${WRKSRC}/CMakeLists.txt ${WRKSRC}/bindings/c/CMakeLists.txt
 

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	soundtouch
-PORTVERSION=	1.9.0
+PORTVERSION=	1.8.0
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://www.surina.net/soundtouch/
 
@@ -20,21 +21,17 @@ USE_LDCONFIG=	yes
 USES=			autoreconf libtool pathfix
 PATHFIX_MAKEFILEIN=	Makefile.am
 
-OPTIONS_DEFINE=	INTEGER_SAMPLES DOCS OPENMP
+OPTIONS_DEFINE=	INTEGER_SAMPLES DOCS
 OPTIONS_DEFINE_amd64=	SSE
 OPTIONS_DEFINE_i386=	SSE
-OPTIONS_DEFAULT_amd64=	SSE
-OPTIONS_DEFAULT_i386=	${MACHINE_CPU:tu:MSSE}
 
 INTEGER_SAMPLES_DESC=	Use integer sample format
 INTEGER_SAMPLES_CONFIGURE_ENABLE=	integer-samples
-OPENMP_CONFIGURE_ENABLE=openmp
-OPENMP_USES=		compiler:openmp
 SSE_CONFIGURE_ENABLE=	x86-optimizations
 
 post-patch:
 	@${REINPLACE_CMD} -e \
-		'/^dist_doc_DATA/s|COPYING.TXT||' \
+		'/^pkgdoc_DATA/s|COPYING.TXT||' \
 		${WRKSRC}/Makefile.am
 	@${REINPLACE_CMD} -e \
 		's|^INCLUDES|AM_CPPFLAGS| ; \

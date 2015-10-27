@@ -9,11 +9,8 @@ CATEGORIES=	sysutils audio
 MASTER_SITES=	https://github.com/khenriks/${PORTNAME}/releases/download/v${PORTVERSION}/
 PKGNAMEPREFIX=	fusefs-
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	sterum@overrider.at
 COMMENT=	FUSE-based filesystem for transcoding flac to mp3 on the fly
-
-LICENSE=	GPLv3 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libmp3lame.so:${PORTSDIR}/audio/lame \
 		libFLAC.so:${PORTSDIR}/audio/flac \

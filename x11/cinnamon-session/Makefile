@@ -3,7 +3,6 @@
 
 PORTNAME=	cinnamon-session
 PORTVERSION=	2.4.3
-PORTREVISION=	1
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome3
 

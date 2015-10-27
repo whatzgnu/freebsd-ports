@@ -10,10 +10,10 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Command line interface to iRiver music players
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		autoreconf iconv
-GNU_CONFIGURE=	yes
+USES=		iconv
+USE_AUTOTOOLS=	aclocal autoheader automake autoconf
+ACLOCAL_ARGS=	-I m4
 MAKE_JOBS_UNSAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include

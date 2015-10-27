@@ -8,11 +8,10 @@ CATEGORIES=	palm comms graphics
 MASTER_SITES=	SF/${PORTNAME}/source%20code/${PORTVERSION}
 PKGNAMEPREFIX=	jpilot-
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	sklauder@trimind.de
 COMMENT=	JPilot plugin to download photos and videos
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE=	GPLv2
 
 RUN_DEPENDS=	jpilot:${PORTSDIR}/palm/jpilot
 BUILD_DEPENDS=	jpilot:${PORTSDIR}/palm/jpilot

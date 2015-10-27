@@ -36,6 +36,8 @@ LZO_CONFIGURE_OFF=	--disable-liblzo2-linking
 NLS_USES=		gettext
 NLS_CONFIGURE_ENABLE=	nls
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e \
 		's|(char \*\*) \(\&inptr,\)|\1| ; \
@@ -43,5 +45,8 @@ post-patch:
 	@${FIND} ${WRKSRC}/doc -name "Makefile.in" | ${XARGS} \
 		${REINPLACE_CMD} -e \
 		's|$$(pkgdatadir)|$$(docdir)|g'
+.if !${PORT_OPTIONS:MDOCS}
+	@${REINPLACE_CMD} -e 's|src doc|src|' ${WRKSRC}/Makefile.in
+.endif
 
 .include <bsd.port.mk>

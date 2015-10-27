@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	Net-Nmsg
-PORTVERSION=	0.15
+PORTVERSION=	0.13
+PORTREVISION=	1
 CATEGORIES=	net perl5
 MASTER_SITES=	https://tools.netsa.cert.org/confluence/download/attachments/12320770/ \
 		CPAN
@@ -26,11 +27,13 @@ OPTIONS_DEFINE=	EXAMPLES
 
 PORTEXAMPLES=	*
 
+.include <bsd.port.options.mk>
+
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Net/Nmsg/Nmsg.so
-
-post-install-EXAMPLES-on:
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	(cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
+.endif
 
 .include <bsd.port.mk>

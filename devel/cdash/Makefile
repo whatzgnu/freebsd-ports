@@ -11,24 +11,23 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Web-based software testing server
 
 LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/License.txt
-
-USES=		dos2unix cmake:outsource zip
-DOS2UNIX_GLOB=	*.php *.xml *.xsl *.txt
-CMAKE_ARGS=	-DCDASH_DB_NAME:STRING=cdash \
-   		-DCDASH_DB_LOGIN:STRING=cdash \
-   		-DCDASH_DB_TYPE:STRING=${DB_TYPE}
-USE_PHP=	curl gd pdo session xsl zlib
-NO_ARCH=	yes
-
-WRKSRC=		${WRKDIR}/${DISTNAME:S/./-/g}
-PLIST_SUB=	WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
-SUB_FILES=	pkg-message
-SUB_LIST=	DB_TYPE=${DB_TYPE}
 
 OPTIONS_MULTI=	DB
 OPTIONS_MULTI_DB=	MYSQL PGSQL
 OPTIONS_DEFAULT=MYSQL
+
+USES=		dos2unix cmake:outsource zip
+DOS2UNIX_GLOB=	*.php *.xml *.xsl *.txt
+
+CMAKE_ARGS+=	-DCDASH_DB_NAME:STRING=cdash \
+   		-DCDASH_DB_LOGIN:STRING=cdash \
+   		-DCDASH_DB_TYPE:STRING=${DB_TYPE}
+USE_PHP=	curl gd pdo session xsl zlib
+
+WRKSRC=		${WRKDIR}/${DISTNAME:S/./-/g}
+PLIST_SUB=	WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
+SUB_FILES=	pkg-message
+SUB_LIST+=	DB_TYPE=${DB_TYPE}
 
 .include <bsd.port.options.mk>
 

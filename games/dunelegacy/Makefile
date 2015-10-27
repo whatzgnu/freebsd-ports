@@ -14,8 +14,8 @@ COMMENT=	Open source clone of Dune II
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		autoreconf compiler:c++11-lib tar:bzip2
-GNU_CONFIGURE=	yes
+USES=		tar:bzip2 compiler:c++11-lib
+USE_AUTOTOOLS=	autoconf
 USE_SDL=	sdl mixer
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 MAKE_JOBS_UNSAFE=	yes

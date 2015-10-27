@@ -3,7 +3,7 @@
 PORTNAME=	openra
 PORTVERSION=	20150614
 DISTVERSIONPREFIX=	release-
-PORTREVISION=	5
+PORTREVISION=	3
 CATEGORIES=	games
 # XXX Convert to USES=nuget or package dependencies instead
 MASTER_SITES=	https://nuget.org/api/v2/package/StyleCopPlus.MSBuild/4.7.49.5?dummy=/:StyleCopPlus \
@@ -49,13 +49,12 @@ USE_GITHUB=	yes
 GH_PROJECT=	OpenRA
 
 NO_ARCH=	yes
-USES=		desktop-file-utils gmake lua:51,run mono openal:soft \
-		shared-mime-info shebangfix
+USES=		gmake lua:51,run mono openal:soft shebangfix
 SHEBANG_FILES=	launch-dedicated.sh
 USE_SDL=	sdl2
 MAKE_ENV=	prefix="${PREFIX}"
 MAKE_ARGS=	VERSION="${GH_TAGNAME}"
-INSTALL_TARGET=	install-all install-linux-mime install-linux-shortcuts
+INSTALL_TARGET=	install-all install-linux-shortcuts
 DATADIR=	${PREFIX}/lib/${PORTNAME}
 PORTDATA=	*
 PORTDOCS=	*.html

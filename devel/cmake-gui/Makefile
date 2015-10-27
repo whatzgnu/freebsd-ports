@@ -1,9 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	cmake
-PORTVERSION=	3.3.1
+PORTVERSION=	3.2.3
+PORTREVISION=	1
 CATEGORIES=	devel
-MASTER_SITES=	http://www.cmake.org/files/v3.3/
+MASTER_SITES=	http://www.cmake.org/files/v3.2/
 PKGNAMESUFFIX=	-gui
 
 MAINTAINER=	kde@FreeBSD.org
@@ -16,7 +17,7 @@ LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
 		libexpat.so:${PORTSDIR}/textproc/expat2
 
 USE_QT5=	core gui widgets buildtools_build qmake_build
-USES=		cmake:run desktop-file-utils libarchive shared-mime-info
+USES=		cmake:run desktop-file-utils shared-mime-info
 CMAKE_ARGS=	-DBUILD_QtDialog:bool=on \
 		-DBUILD_CursesDialog:BOOL=OFF \
 		-DSPHINX_MAN:BOOL=ON \
@@ -28,6 +29,14 @@ ALL_TARGET=	cmake-gui documentation
 INSTALL_WRKSRC=	${WRKSRC}/Source/QtDialog
 
 DISTINFO_FILE=	${.CURDIR}/../cmake/distinfo
+
+.include <bsd.port.pre.mk>
+
+# CMake >= 3.1.0 needs libarchive3 because it calls
+# archive_entry_copy_sourcepath_w and archive_write_set_format_7zip.
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000009
+LIB_DEPENDS+=	libarchive.so.13:${PORTSDIR}/archivers/libarchive
+.endif
 
 post-patch:
 	@(${FIND} ${WRKSRC}/Modules -name "*.cmake" -print0; \
@@ -42,4 +51,4 @@ post-install:
 	${INSTALL_MAN} ${WRKSRC}/Utilities/Sphinx/man/cmake-gui.1 \
 		${STAGEDIR}${PREFIX}/man/man1
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

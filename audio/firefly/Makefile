@@ -51,9 +51,13 @@ USE_GCC=	any
 OPTIONS_DEFINE=	JAPANESE DOCS
 JAPANESE_DESC=	Japanese support in ID3 tags
 
-JAPANESE_EXTRA_PATCHES=	${FILESDIR}/extra-patch-src_scan-mp3.c
-JAPANESE_USES=		iconv
-JAPANESE_CONFIGURE_ON=	--enable-iconv
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MJAPANESE}
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-src_scan-mp3.c
+USES+=		iconv
+CONFIGURE_ARGS+=	--enable-iconv
+.endif
 
 pre-everything::
 	@${ECHO_CMD} "Define vars below if you need:"
@@ -62,17 +66,17 @@ pre-everything::
 	@${ECHO_CMD} "DAAPD_DBDIR=${DAAPD_DBDIR} (default: /var/db/${PORTNAME})"
 
 post-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/${PORTNAME}
-	${INSTALL_DATA} ${WRKSRC}/contrib/mt-daapd.conf \
-		${STAGEDIR}${PREFIX}/etc/${PORTNAME}/mt-daapd.conf.sample
-	@${MKDIR} ${STAGEDIR}${DAAPD_DBDIR}
-	@${MKDIR} ${STAGEDIR}${DATADIR}
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in README AUTHORS COPYING CREDITS \
 	ChangeLog INSTALL NEWS TODO
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
-
+.endif
+	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/${PORTNAME}
+	${INSTALL_DATA} ${WRKSRC}/contrib/mt-daapd.conf \
+		${STAGEDIR}${PREFIX}/etc/${PORTNAME}/mt-daapd.conf.sample
+	@${MKDIR} ${STAGEDIR}${DAAPD_DBDIR}
+	@${MKDIR} ${STAGEDIR}${DATADIR}
 
 .include <bsd.port.mk>

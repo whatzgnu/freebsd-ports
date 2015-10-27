@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Mojo-Pg
-PORTVERSION=	2.09
+PORTVERSION=	2.07
 CATEGORIES=	databases www perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:SRI
@@ -25,7 +25,7 @@ USE_PERL5=	configure
 
 PORTEXAMPLES=	*
 
-post-install-EXAMPLES-on:
+post-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	(cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
 

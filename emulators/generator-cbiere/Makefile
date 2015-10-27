@@ -19,14 +19,14 @@ USES=		gmake jpeg tar:bzip2
 USE_GNOME=	gtk12
 USE_SDL=	sdl
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--program-transform-name=s/${PORTNAME}/${PORTNAME}/ \
+CONFIGURE_ARGS=	--program-transform-name=s/${PORTNAME}/${UNIQUENAME}/ \
 		--with-gtk
 MAKE_JOBS_UNSAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-PLIST_FILES=	bin/${PORTNAME}-gtk
+PLIST_FILES=	bin/${UNIQUENAME}-gtk
 
 OPTIONS_DEFINE=		OPTIMIZED_CFLAGS SDL
 OPTIONS_DEFINE_i386=	RAZE

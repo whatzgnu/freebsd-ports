@@ -19,6 +19,8 @@ WRKSRC=		${WRKDIR}/src
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} 's|exit(1)|exit(0)|' \
 		${WRKSRC}/uif2iso.c
@@ -26,10 +28,12 @@ post-patch:
 		s|$$(DESTDIR)||' \
 		${WRKSRC}/Makefile
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for doc in README uif2iso.txt
 	${INSTALL_DATA} ${WRKDIR}/${doc} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

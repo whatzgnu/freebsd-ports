@@ -11,12 +11,16 @@ COMMENT=	Ruby interface to Berkeley DB revision 1.8x with full feature support
 LICENSE=	BSD2CLAUSE RUBY
 LICENSE_COMB=	dual
 
-BROKEN_RUBY21=	yes
-BROKEN_RUBY22=	yes
-
 USES=		execinfo
+
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${RUBY_VER} >= 2.1
+BROKEN=		Does not build
+.endif
+
+.include <bsd.port.post.mk>

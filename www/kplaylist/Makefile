@@ -19,10 +19,9 @@ USE_PHP=	curl mysql session iconv
 
 WRKSRC=		${WRKDIR}
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 PLIST_FILES=	"@(${WWWOWN},${WWWGRP},) %%WWWDIR%%/index.php" \
-		"@dir(${WWWOWN},${WWWGRP},) %%WWWDIR%%"
+		"@dirrm(${WWWOWN},${WWWGRP},) %%WWWDIR%%"
 
 do-install:
 	${MKDIR} ${STAGEDIR}${WWWDIR}

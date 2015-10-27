@@ -20,6 +20,7 @@ LICENSE_PERMS=	auto-accept
 
 USES=		zip
 NO_BUILD=	yes
+LATEST_LINK=	openttd-${PORTNAME}
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/openttd/baseset/opensfx

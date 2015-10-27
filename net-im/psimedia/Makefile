@@ -29,13 +29,15 @@ OPTIONS_SUB=	yes
 DEBUG_CONFIGURE_ON=	--debug
 DEBUG_CONFIGURE_OFF=	--release
 
+.include <bsd.port.options.mk>
+
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/${PSI_PLUGIN_DIR}
 	${INSTALL_LIB} ${WRKSRC}/gstprovider/libgstprovider.so \
 		${STAGEDIR}${PREFIX}/${PSI_PLUGIN_DIR}
-
-do-install-DEBUG-on:
+.if ${PORT_OPTIONS:MDEBUG}
 	${INSTALL_DATA} ${WRKSRC}/gstprovider/libgstprovider.so.debug \
 		${STAGEDIR}${PREFIX}/${PSI_PLUGIN_DIR}
+.endif
 
 .include <bsd.port.mk>

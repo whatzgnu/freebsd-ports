@@ -34,10 +34,15 @@ TOSTRIP=	bin/adnsheloex \
 		lib/libadns.so.1
 
 OPTIONS_DEFINE=		DOCS
+OPTIONS_DEFAULT=	DOCS
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC} && ${INSTALL_DATA} ${DOCS} ${STAGEDIR}${DOCSDIR})
+.endif
 
 post-stage:
 .for f in ${TOSTRIP}

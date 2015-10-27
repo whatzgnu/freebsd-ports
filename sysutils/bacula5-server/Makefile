@@ -3,7 +3,7 @@
 
 PORTNAME=	bacula
 DISTVERSION=	5.2.12
-PORTREVISION?=	2
+PORTREVISION?=	1
 CATEGORIES?=	sysutils
 MASTER_SITES=	SF/bacula/bacula/${PORTVERSION}
 PKGNAMEPREFIX?=	#
@@ -12,9 +12,7 @@ PKGNAMESUFFIX?=	5-server
 MAINTAINER=	dan@langille.org
 COMMENT?=	Network backup solution (server)
 
-USES+=		libtool:keepla shebangfix
-SHEBANG_FILES=	scripts/dvd-handler.in
-python_OLD_CMD=	@PYTHON@
+USES+=		libtool:keepla
 
 CONFLICTS?=	bacula-server-*
 

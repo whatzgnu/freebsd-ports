@@ -1,13 +1,14 @@
 # $FreeBSD$
 
 PORTNAME=	ConfigFile
-PORTVERSION=	1.1.4
+PORTVERSION=	1.1.2
+PORTREVISION=	1
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Configuration file reading and writing
 
-LICENSE=	BSD3CLAUSE
+LICENSE=	LGPL21
 
 USE_CABAL=	MissingH>=1.0.0 mtl parsec
 

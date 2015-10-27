@@ -1,3 +1,5 @@
-@sample etc/usb_modeswitch.conf.sample
-man/man1/usb_modeswitch.1.gz
 sbin/usb_modeswitch
+man/man1/usb_modeswitch.1.gz
+@unexec if cmp -s %D/etc/usb_modeswitch.conf.sample %D/etc/usb_modeswitch.conf; then rm -f %D/etc/usb_modeswitch.conf ; fi
+etc/usb_modeswitch.conf.sample
+@exec if [ ! -f %D/etc/usb_modeswitch.conf ] ; then cp -p %D/%F %B/usb_modeswitch.conf; fi

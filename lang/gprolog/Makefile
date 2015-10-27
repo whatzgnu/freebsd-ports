@@ -6,7 +6,7 @@ PORTVERSION=	1.4.4
 CATEGORIES=	lang
 MASTER_SITES=	http://www.gprolog.org/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	nsmoot@make.sh
 COMMENT=	Free Prolog compiler
 
 LICENSE=	GPLv2

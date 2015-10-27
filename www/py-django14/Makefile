@@ -2,17 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	django
-PORTVERSION=	1.4.22
+PORTVERSION=	1.4.21
 CATEGORIES=	www python
-MASTER_SITES=	CHEESESHOP \
-		https://www.djangoproject.com/m/releases/${PORTVERSION:R}/		
+MASTER_SITES=	https://www.djangoproject.com/m/releases/${PORTVERSION:R}/ \
+		CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 PKGNAMESUFFIX=	14
 DISTNAME=	Django-${PORTVERSION}
 DIST_SUBDIR=	python
 
 MAINTAINER=	python@FreeBSD.org
-COMMENT=	High-level Python Web Framework (1.4.x LTS)
+COMMENT=	High-level Python Web framework
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
@@ -20,17 +20,15 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USES=		cpe python:2
 USE_PYTHON=	autoplist distutils
 
-CONFLICTS_INSTALL=	py??-django-devel-* py??-django-1.[012356789].*
-CPE_VENDOR=		djangoproject
+CONFLICTS=	py[23][0-9]-django-devel-[0-9]* py[23][0-9]-django-1.[0-35-9].*
+CPE_VENDOR=	djangoproject
 
 DOCSDIR=	${PREFIX}/share/doc/py-django
 
-OPTIONS_DEFINE=		FASTCGI HTMLDOCS
-OPTIONS_DEFAULT=	SQLITE
-
-OPTIONS_GROUP=		DATABASE
+OPTIONS_DEFINE=	FASTCGI HTMLDOCS
+OPTIONS_DEFAULT=SQLITE
+OPTIONS_GROUP=	DATABASE
 OPTIONS_GROUP_DATABASE=	PGSQL MYSQL SQLITE
-
 HTMLDOCS_DESC=	Install HTML documentation (requires Sphinx)
 
 PLIST_FILES=	man/man1/daily_cleanup.1.gz \
@@ -45,7 +43,7 @@ FASTCGI_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}flup>0:${PORTSDIR}/www/py-flup
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MHTMLDOCS}
-.	if empty(PORT_OPTIONS:MDOCS)
+.	if ! ${PORT_OPTIONS:MDOCS}
 IGNORE=	you cannot build documentation with DOCS option disabled
 .	endif
 BUILD_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}sphinx>0:${PORTSDIR}/textproc/py-sphinx

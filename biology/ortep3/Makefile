@@ -30,7 +30,11 @@ PORTEXAMPLES=	*
 OPTIONS_DEFINE=	DOCS EXAMPLES PGPLOT
 PGPLOT_DESC=	Fortran subroutine package for drawing graphs
 
-PGPLOT_EXTRA_PATCHES=	${FILESDIR}/extra-patch-aa
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MPGPLOT}
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-aa
+.endif
 
 post-extract:
 	${MV} ${WRKSRC}/ortep.f ${WRKSRC}/ortep.f-1.0
@@ -41,13 +45,15 @@ pre-build:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/ortep3 ${STAGEDIR}${PREFIX}/bin
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/src
 	${INSTALL_DATA} ${WRKSRC}/../README.1st ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/../man/* ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/000readme.txt ${STAGEDIR}${DOCSDIR}/src
-do-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/../examples/* ${STAGEDIR}${EXAMPLESDIR}
+.endif
 
 .include <bsd.port.mk>

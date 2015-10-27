@@ -7,11 +7,8 @@ PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	ftp://ftp.hlfl.org/pub/hlfl/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	alaunay@hlfl.org
 COMMENT=	High Level Firewall Language
-
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--datadir=${LOCALBASE}/share/doc

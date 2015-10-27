@@ -1,8 +1,9 @@
-# Created by: Johan Strom <johan@stromnet.se>
+# Created by: Johan Strom <johna@stromnet.se>
 # $FreeBSD$
 
 PORTNAME=	owfs
-PORTVERSION=	3.1p0
+PORTVERSION=	2.9p8
+PORTREVISION=	2
 CATEGORIES=	comms
 MASTER_SITES=	SF/owfs/owfs/${PORTVERSION}
 
@@ -11,7 +12,7 @@ COMMENT=	OWFS -- 1-Wire file system
 
 LICENSE=	GPLv2
 
-USES=		autoreconf gmake libtool pkgconfig
+USES=		autoreconf libtool gmake
 
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
@@ -65,7 +66,7 @@ OWTCL_USES=			tcl
 # XXX Broken due to -lgcc_p
 PROFILING_CONFIGURE_ENABLE=	profiling
 
-# work on 10.1 amd64, USB DS9097, --passive=/dev/cuaU0
+# XXX: Not tested, it compiles, but not sure if fusefs actually works
 OWFS_CONFIGURE_ENABLE=		owfs
 OWFS_USES=			fuse
 
@@ -112,21 +113,19 @@ CONFIGURE_ARGS+=		--enable-owtcl --with-tcl=${TCL_LIBDIR}
 
 # This takes a few seconds so give the user some notice
 pre-configure:
-	@${MKDIR} ${WRKSRC}/m4
+	${MKDIR} ${WRKSRC}/m4
 	@echo "Preparing build using autotools..."
 
 # Workarounds for different problems
-post-install-OWPYTHON-on:
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/python2.7/site-packages/ow/_OW.so
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/*.so.*
+post-install:
+.if ${PORT_OPTIONS:MOWPYTHON}
 	(cd ${STAGEDIR}${PREFIX} \
-		&& ${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py \
-		-d ${PYTHONPREFIX_SITELIBDIR} -f ${PYTHONPREFIX_SITELIBDIR:S;${PREFIX}/;;})
-	(cd ${STAGEDIR}${PREFIX} \
-		&& ${PYTHON_CMD} -O ${PYTHON_LIBDIR}/compileall.py \
-		-d ${PYTHONPREFIX_SITELIBDIR} -f ${PYTHONPREFIX_SITELIBDIR:S;${PREFIX}/;;})
-
-post-install-OWPERL-on:
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/OW/OW.so
+	 && ${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py \
+	 -d ${PYTHONPREFIX_SITELIBDIR} -f ${PYTHONPREFIX_SITELIBDIR:S;${PREFIX}/;;})
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/python2.7/site-packages/ow/_OW.so
+.endif
+.if ${PORT_OPTIONS:MOWPERL}
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/OW/OW.so
+.endif
 
 .include <bsd.port.mk>

@@ -10,7 +10,7 @@ MASTER_SITES=	ftp://ftp.jssac.org/pub/distfiles/asir/ \
 DISTFILES=	${ASIR_SRC} ${ASIR_DOC} ${GC_SRC}
 EXTRACT_ONLY=	${ASIR_SRC}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	saito@asir.org
 COMMENT=	The system Risa/Asir is a general computer algebra system
 
 LICENSE=	RALUL
@@ -42,9 +42,11 @@ OPTIONS_DEFINE=	DOCS
 PORTDOCS=	*
 PORTDATA=	*
 
-BROKEN_ia64=	does not compile
-BROKEN_powerpc=	does not compile
-BROKEN_sparc64=	does not compile
+.include <bsd.port.pre.mk>
+
+.if ${ARCH} == "ia64" || ${ARCH} == "powerpc" || ${ARCH} == "sparc64"
+BROKEN=		Does not compile on ia64, powerpc, or sparc64
+.endif
 
 post-extract:
 	@( cd ${WRKSRC}; ${TAR} xfz ${DISTDIR}/${GC_SRC} )
@@ -69,9 +71,9 @@ post-install:
 	${LN} -fs ${PREFIX}/bin/asir ${STAGEDIR}${DATADIR}/ox_launch
 	${LN} -fs ${DATADIR} ${STAGEDIR}${PREFIX}/lib/asir
 	${INSTALL_MAN} ${WRKDIR}/asirdoc/${PORTNAME}.1 ${STAGEDIR}${MAN1PREFIX}/man/man1
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKDIR}/asirdoc/ && ${COPYTREE_SHARE} \* ${STAGEDIR}${DOCSDIR})
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

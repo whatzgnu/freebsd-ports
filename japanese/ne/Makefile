@@ -7,31 +7,36 @@ CATEGORIES=	japanese editors
 MASTER_SITES=	http://hp.vector.co.jp/authors/VA018758/archive/
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	VZ-like full-screen text editor with Japanese support
+COMMENT=	VZ like full-screen text editor with Japanese support
 
 LICENSE=	GPLv2
 
+WRKSRC=		${WRKDIR}/${PORTNAME}
+
 GNU_CONFIGURE=	yes
 
-CFLAGS+=	-Wno-error=return-type		# required for Clang
+CFLAGS+=	-Wno-error=return-type
 
-WRKSRC=		${WRKDIR}/${PORTNAME}
+BROKEN_powerpc=	Does not compile on powerpc
 
 OPTIONS_DEFINE=	DOCS
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/src/ne ${STAGEDIR}${PREFIX}/bin
-	${INSTALL_MAN} ${WRKSRC}/src/ne_en.1 ${STAGEDIR}${PREFIX}/man/man1/ne.1
-	${INSTALL_MAN} ${WRKSRC}/src/ne.1 ${STAGEDIR}${PREFIX}/man/ja/man1
+	(cd ${WRKSRC}/src && ${INSTALL_PROGRAM} ne \
+		${STAGEDIR}${PREFIX}/bin)
+	(cd ${WRKSRC}/src && ${INSTALL_MAN} ne_en.1 \
+		${STAGEDIR}${MANPREFIX}/man/man1/ne.1)
+	(cd ${WRKSRC}/src && ${INSTALL_MAN} ne.1 \
+		${STAGEDIR}${MANPREFIX}/man/ja/man1/ne.1)
 	@${MKDIR} ${STAGEDIR}${ETCDIR}
 .for i in key* nerc* term*
-	${INSTALL_DATA} ${WRKSRC}/etc/${i} ${STAGEDIR}${ETCDIR}
+	(cd ${WRKSRC}/etc && ${INSTALL_DATA} ${i} \
+		${STAGEDIR}${ETCDIR})
 .endfor
-
-do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in BUGS.jp CHANGES.jp HISTORY.jp INSTALL.jp README.jp TODO.jp
-	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
+	(cd ${WRKSRC} && ${INSTALL_DATA} ${i} \
+		${STAGEDIR}${DOCSDIR})
 .endfor
 
 .include <bsd.port.mk>

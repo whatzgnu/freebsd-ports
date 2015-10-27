@@ -26,11 +26,17 @@ PROJECTHOST=	ibus
 
 OPTIONS_DEFINE=	NLS
 OPTIONS_DEFAULT=	NLS
-OPTIONS_SUB=	yes
 
-NLS_USES=	gettext
-NLS_USE=	GNOME=intltool
-NLS_CONFIGURE_ENABLE=	nls
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MNLS}
+USES+=		gettext
+USE_GNOME+=	intltool
+PLIST_SUB+=	NLS=""
+.else
+CONFIGURE_ARGS+=	--disable-nls
+PLIST_SUB+=	NLS="@comment "
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|DATADIRNAME=lib|DATADIRNAME=share|' ${WRKSRC}/configure

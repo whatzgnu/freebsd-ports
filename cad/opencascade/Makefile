@@ -3,7 +3,7 @@
 
 PORTNAME=	opencascade
 PORTVERSION=	6.8.0
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	cad science
 MASTER_SITES=	http://files.opencascade.com/OCCT/OCC_${PORTVERSION}_release/
 
@@ -67,18 +67,22 @@ VIS_LIB_DEPENDS=	libftgl.so:${PORTSDIR}/graphics/ftgl		\
 			libgl2ps.so:${PORTSDIR}/print/gl2ps		\
 			libfreeimageplus.so:${PORTSDIR}/graphics/freeimage
 
-VIS_CMAKE_ON=	-D3RDPARTY_FREETYPE_DIR=${LOCALBASE}	\
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MVIS}
+CMAKE_ARGS+=	-D3RDPARTY_FREETYPE_DIR=${LOCALBASE}	\
 		-D3RDPARTY_FREEIMAGE_DIR=${LOCALBASE}	\
 		-D3RDPARTY_GL2PS_DIR=${LOCALBASE}
+.endif
 
-DOCS_USE=	TEX=latex:build
-DOCS_BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash		\
-			doxygen:${PORTSDIR}/devel/doxygen	\
-			dot:${PORTSDIR}/graphics/graphviz	\
-			inkscape:${PORTSDIR}/graphics/inkscape
-DOCS_RUN_DEPENDS=	${LOCALBASE}/www/MathJax/MathJax.js:${PORTSDIR}/www/mathjax
-
-.include <bsd.port.options.mk>
+.if ${PORT_OPTIONS:MDOCS}
+USE_TEX+=	latex:build
+BUILD_DEPENDS+=	bash:${PORTSDIR}/shells/bash		\
+		doxygen:${PORTSDIR}/devel/doxygen	\
+		dot:${PORTSDIR}/graphics/graphviz	\
+		inkscape:${PORTSDIR}/graphics/inkscape
+RUN_DEPENDS+=	${LOCALBASE}/www/MathJax/MathJax.js:${PORTSDIR}/www/mathjax
+.endif
 
 .if ${ARCH} == "i386"
 BITS=	32
@@ -102,8 +106,10 @@ pre-configure:
 	${REINPLACE_CMD} -e 's|lin|bsd|' ${WRKSRC}/${es}
 .endfor
 
-post-build-DOCS-on:
+post-build:
+.if ${PORT_OPTIONS:MDOCS}
 	(cd ${WRKSRC} && ./gendoc -overview)
+.endif
 
 post-install:
 	${MV} ${STAGEDIR}${OCCROOT}/bsd${BITS}/${COMPILER_TYPE}/bin/DRAWEXE	\
@@ -123,10 +129,11 @@ post-install:
 	${RM} -rf ${STAGEDIR}${OCCROOT}/inc
 	${LN} -sf ${PREFIX}/include/OpenCASCADE ${STAGEDIR}${OCCROOT}/inc
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} tests ${STAGEDIR}${OCCROOT})
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC}/doc/overview && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
 	${RMDIR} ${STAGEDIR}${DOCSDIR}/latex
+.endif
 
 .if defined(MAINTAINER_MODE)
 regression-test:	install

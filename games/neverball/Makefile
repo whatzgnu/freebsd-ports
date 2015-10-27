@@ -27,9 +27,15 @@ PORTDATA=	*
 
 OPTIONS_DEFINE=	DOCS NLS
 OPTIONS_SUB=	yes
-NLS_USES=		gettext
-NLS_MAKE_ENV_ON=	ENABLE_NLS=1
-NLS_MAKE_ENV_OFF=	ENABLE_NLS=0
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MNLS}
+USES+=		gettext
+MAKE_ENV+=	ENABLE_NLS=1
+.else
+MAKE_ENV+=	ENABLE_NLS=0
+.endif
 
 do-install:
 	cd ${WRKSRC}/data && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/
@@ -41,11 +47,9 @@ do-install:
 		${STAGEDIR}${PREFIX}/share/pixmaps/${f}.png
 	${INSTALL_PROGRAM} ${WRKSRC}/${f} ${STAGEDIR}${PREFIX}/bin/
 .endfor
-
-do-install-NLS-on:
+.if ${PORT_OPTIONS:MNLS}
 	cd ${WRKSRC}/locale && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/locale/
-
-do-install-DOCS-on:
+.endif
 	cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}/
 
 .include <bsd.port.mk>

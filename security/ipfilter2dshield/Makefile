@@ -9,7 +9,7 @@ MASTER_SITES=	http://www.dshield.org/clients/
 DISTNAME=	dshield-freebsd.pl
 EXTRACT_SUFX=	.txt
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	fbsd_user@a1poweruser.com
 COMMENT=	Official DShield client for ipfilter firewall logs
 
 RUN_DEPENDS=	p5-Net-Netmask>=0:${PORTSDIR}/net-mgmt/p5-Net-Netmask
@@ -21,7 +21,6 @@ PKGMESSAGE=	${WRKDIR}/pkg-message
 PKGDEINSTALL=	${WRKDIR}/pkg-deinstall
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 NO_WRKSUBDIR=	yes
 
 do-extract:

@@ -20,8 +20,7 @@ LIB_DEPENDS=	libenchant.so:${PORTSDIR}/textproc/enchant \
 		libharfbuzz.so:${PORTSDIR}/print/harfbuzz \
 		libwebp.so:${PORTSDIR}/graphics/webp \
 		libcurl.so:${PORTSDIR}/ftp/curl \
-		libsoup-2.4.so:${PORTSDIR}/devel/libsoup \
-		libnotify.so.4:${PORTSDIR}/devel/libnotify
+		libsoup-2.4.so:${PORTSDIR}/devel/libsoup
 RUN_DEPENDS=	geoclue>=0:${PORTSDIR}/net/geoclue
 
 PORTSCOUT=	limit:1.4.*$$

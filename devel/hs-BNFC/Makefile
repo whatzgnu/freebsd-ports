@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	BNFC
-PORTVERSION=	2.8
+PORTVERSION=	2.6.0.3
+PORTREVISION=	8
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -15,6 +16,10 @@ USE_ALEX=	yes
 USE_HAPPY=	yes
 
 EXECUTABLE=	bnfc
+
+# Force regeneration of the lexer and parser.
+post-patch::
+	@${RM} -rf ${WRKSRC}/dist
 
 .include "${.CURDIR}/../../lang/ghc/bsd.cabal.mk"
 .include <bsd.port.mk>

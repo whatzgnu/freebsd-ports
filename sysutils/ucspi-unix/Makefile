@@ -27,6 +27,8 @@ OPTIONS_DEFINE=	DOCS
 
 MAKE_JOBS_UNSAFE=yes
 
+.include <bsd.port.options.mk>
+
 post-patch: .SILENT
 	${ECHO_CMD} "${STAGEDIR}${PREFIX}"		> ${WRKSRC}/conf-home
 	${ECHO_CMD} "${STAGEDIR}${PREFIX}/bin"	> ${WRKSRC}/conf-bin
@@ -38,9 +40,9 @@ post-patch: .SILENT
 
 do-install:
 	cd ${WRKSRC} && ./installer
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

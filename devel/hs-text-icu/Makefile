@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	text-icu
-PORTVERSION=	0.7.0.1
+PORTVERSION=	0.6.3.7
+PORTREVISION=	2
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

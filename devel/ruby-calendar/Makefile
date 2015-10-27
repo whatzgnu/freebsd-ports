@@ -3,7 +3,6 @@
 
 PORTNAME=	calendar
 PORTVERSION=	1.11.4r
-PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	devel ruby
 MASTER_SITES=	http://www.funaba.org/archive/
@@ -13,10 +12,6 @@ DIST_SUBDIR=	ruby
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Ruby modules to handle various calendars
 
-BROKEN_RUBY22=	yes
-
-OPTIONS_DEFINE=	DOCS EXAMPLES
-
 USE_RUBY=	yes
 USE_RUBY_SETUP=	yes
 RUBY_SETUP=	install.rb
@@ -25,16 +20,25 @@ DOCS_EN=	README.en ext/sdn/README.sdncal20
 DOCS_JA=	README
 EXAMPLES_EN=	ext/calendar/cal*.rb
 
+OPTIONS_DEFINE=	DOCS
+
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${RUBY_SITEARCHLIBDIR}/*.so
+	${MKDIR} ${STAGEDIR}${RUBY_MODEXAMPLESDIR}
+.for f in ${EXAMPLES_EN}
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${RUBY_MODEXAMPLESDIR}/
+.endfor
+	${MKDIR} ${STAGEDIR}${RUBY_MODDOCDIR}/ja
+.for f in ${DOCS_EN}
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${RUBY_MODDOCDIR}/
+.endfor
+.for f in ${DOCS_JA}
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${RUBY_MODDOCDIR}/ja/
+.endfor
 
-post-install-DOCS-on:
-	${MKDIR} ${STAGEDIR}${RUBY_MODDOCDIR}/ja/
-	cd ${WRKSRC}/ && ${INSTALL_DATA} ${DOCS_EN} ${STAGEDIR}${RUBY_MODDOCDIR}/
-	cd ${WRKSRC}/ && ${INSTALL_DATA} ${DOCS_JA} ${STAGEDIR}${RUBY_MODDOCDIR}/ja/
+.include <bsd.port.pre.mk>
 
-post-install-EXAMPLES-on:
-	${MKDIR} ${STAGEDIR}${RUBY_MODEXAMPLESDIR}/
-	cd ${WRKSRC}/ && ${INSTALL_DATA} ${EXAMPLES_EN} ${STAGEDIR}${RUBY_MODEXAMPLESDIR}/
+.if ${RUBY_VER} >= 2.2
+BROKEN=		Does not build
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

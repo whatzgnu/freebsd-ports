@@ -1,9 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	pgpool-II
-PORTVERSION=	3.3.7
+PORTVERSION=	3.3.3
+PORTREVISION=	1
 CATEGORIES=	databases
-MASTER_SITES=	http://www.pgpool.net/mediawiki/images/
+MASTER_SITES=	http://www.pgpool.net/mediawiki/images/ \
+		LOCAL/matthew/${PORTNAME}
 PKGNAMESUFFIX=	33
 
 MAINTAINER=	michelle@sorbs.net
@@ -13,7 +15,7 @@ LICENSE=	MIT
 
 RUN_DEPENDS=	rsync:${PORTSDIR}/net/rsync
 
-USES=		gmake libtool perl5 pgsql
+USES=		gmake libtool pgsql perl5
 WANT_PGSQL=	client
 USE_PERL5=	run
 GNU_CONFIGURE=	yes

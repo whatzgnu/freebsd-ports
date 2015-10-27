@@ -10,8 +10,6 @@ MASTER_SITES=	SF/${PORTNAME}/Blinkensisters%20-%20Lost%20Pixels/LostPixels%20${P
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Parallax-style 2D scrolling platform game
 
-BROKEN_sparc64=	does not compile on sparc64
-
 USE_SDL=	sdl image ttf
 USE_PERL5=	build
 USES=		cmake perl5 compiler:c++11-lang # actually, old gcc fails in theora.h
@@ -51,6 +49,10 @@ THEORA_LIB_DEPENDS=	libtheora.so:${PORTSDIR}/multimedia/libtheora
 
 .include <bsd.port.options.mk>
 
+.if ${ARCH} == "sparc64"
+BROKEN=		Does not compile on sparc64
+.endif
+
 .if ${PORT_OPTIONS:MADDONS}
 DISTNAME=	LostPixels-${PORTVERSION}-source-with-addons
 PKGNAMESUFFIX=	-with-addons
@@ -62,16 +64,18 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|share/blinkensisters|${DATADIR:S,${PREFIX}/,,}|; \
 		s|share/doc/blinkensisters|${DOCSDIR:S,${PREFIX}/,,}|' \
 		${WRKSRC}/CMakeLists.txt
-
-post-patch-ADDONS-on:
+.if ${PORT_OPTIONS:MADDONS}
 	@${FIND} ${ADDONS_WRKSRC} -name "Makefile" | ${XARGS} \
 		${REINPLACE_CMD} -e 's|bmfcompress|${WRKSRC}/&|'
+.endif
 
-post-build-ADDONS-on:
+.if ${PORT_OPTIONS:MADDONS}
+post-build:
 	cd ${ADDONS_WRKSRC} && ${MAKE}
 
-post-install-ADDONS-on:
+post-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${ADDONS_WRKSRC}/for_upload/*.bmf ${STAGEDIR}${DATADIR}/
+.endif
 
 .include <bsd.port.mk>

@@ -24,8 +24,13 @@ DOCSDIR=	${PREFIX}/share/doc/librtlsdr
 
 OPTIONS_DEFINE=	DOCS
 
-DOCS_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen
-DOCS_EXTRA_PATCHES_OFF=	${FILESDIR}/extra-patch-Makefile.am
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+BUILD_DEPENDS+=	doxygen:${PORTSDIR}/devel/doxygen
+.else
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-Makefile.am
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} 's|^pkgdocdir=.*|pkgdocdir=${DOCSDIR}|' \

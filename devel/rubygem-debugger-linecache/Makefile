@@ -6,12 +6,13 @@ PORTVERSION=	1.2.0
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
-MAINTAINER=	ruby@FreeBSD.org
-COMMENT=	Ruby module for reading and caching lines
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Caches(Ruby source) Files as Might Be Used in a Debugger
 
 LICENSE=	MIT
 
 NO_ARCH=	yes
+
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

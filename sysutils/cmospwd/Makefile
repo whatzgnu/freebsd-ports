@@ -21,9 +21,13 @@ ONLY_FOR_ARCHS=	i386 amd64
 
 OPTIONS_DEFINE=	DOCS
 
-post-patch-DOCS-on:
+.include <bsd.port.options.mk>
+
+post-patch:
+.if ${PORT_OPTIONS:MDOCS}
 	@${REINPLACE_CMD} -e "s/`${ECHO_CMD} -e '\r'`*$$//" \
 		${WRKSRC}/cmospwd.txt
+.endif
 
 do-build:
 	${CC} ${CFLAGS} ${WRKSRC}/src/${PORTNAME}.c -o ${WRKSRC}/${PORTNAME}

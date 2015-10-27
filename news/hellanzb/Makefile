@@ -21,7 +21,6 @@ RUN_DEPENDS=	par2:${PORTSDIR}/archivers/par2cmdline \
 USE_PYTHON=	distutils
 USES=		python:2 twisted:run,web
 PORTDOCS=	CHANGELOG CREDITS README
-NO_ARCH=	yes
 
 OPTIONS_DEFINE=	DOCS
 
@@ -34,10 +33,12 @@ RUN_DEPENDS+=	rar:${PORTSDIR}/archivers/rar
 RUN_DEPENDS+=	unrar:${PORTSDIR}/archivers/unrar
 .endif
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for doc in ${PORTDOCS}
 	@${INSTALL_DATA} ${WRKSRC}/${doc} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

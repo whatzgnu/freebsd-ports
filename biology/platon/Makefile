@@ -28,6 +28,8 @@ OPTIONS_DEFINE=	DOCS
 
 MAKEFILE=	${FILESDIR}/Makefile
 
+.include <bsd.port.pre.mk>
+
 pre-patch:
 	${GUNZIP_CMD} ${WRKSRC}/platon.f.gz ${WRKSRC}/xdrvr.c.gz
 
@@ -35,7 +37,7 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/${DISTNAME}/platon \
 		${STAGEDIR}${PREFIX}/bin
 	${LN} -fs platon ${STAGEDIR}${PREFIX}/bin/pluton
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${MV} ${WRKDIR}/${DISTNAME}/README* ${STAGEDIR}${DOCSDIR}/
 	${MV} ${SAMPLES:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}/
@@ -44,5 +46,6 @@ do-install-DOCS-on:
 	${MV} ${WRKSRC}/TEST ${STAGEDIR}${DOCSDIR}/
 	${FIND} ${STAGEDIR}${DOCSDIR} -type f -print0 |	\
 		${XARGS} -0 ${CHMOD} ${_SHAREMODE}
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

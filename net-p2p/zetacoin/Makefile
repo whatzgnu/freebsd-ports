@@ -13,8 +13,6 @@ LICENSE=	MIT
 BUILD_DEPENDS=	pkg-config:${PORTSDIR}/devel/pkgconf
 LIB_DEPENDS=	libboost_date_time.so:${PORTSDIR}/devel/boost-libs
 
-BROKEN_armv6=	AtomicPointer not implemented
-
 USE_GITHUB=	yes
 GH_TAGNAME=	22ddb9b
 

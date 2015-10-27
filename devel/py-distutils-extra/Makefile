@@ -14,8 +14,7 @@ COMMENT=	Add support for i18n, documentation, and icons to distutils
 
 LICENSE=	GPLv2
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 USES=		python
 
 .include <bsd.port.mk>

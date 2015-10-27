@@ -35,7 +35,12 @@ PORTDOCS=	*.txt *.TXT
 OPTIONS_DEFINE=	BASH DOCS
 OPTIONS_SUB=	yes
 
-BASH_VARS=	LICENSE+=MIT LICENSE_COMB=multi # debian/copyright
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MBASH}
+LICENSE+=	MIT # debian/copyright
+LICENSE_COMB=	multi
+.endif
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/${PLIST_FILES:M%%BASH%%*:C/%%.*%%//:H}

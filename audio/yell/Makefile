@@ -9,19 +9,25 @@ MASTER_SITES=	LOCAL/ehaupt
 MAINTAINER=	ehaupt@FreeBSD.org
 COMMENT=	Command-line pc speaker bell
 
+PLIST_FILES=	bin/yell
+
 ONLY_FOR_ARCHS=	i386 amd64
 
 OPTIONS_DEFINE=	SUID
 SUID_DESC=	Use suid to allow execution as non root
 
-SUID_PLIST_FILES=	"@(,,4110) bin/yell"
-SUID_PLIST_FILES_OFF=	"@(,,0100) bin/yell"
+.include <bsd.port.options.mk>
 
 do-build:
 	${CC} ${WRKSRC}/yell.c ${CFLAGS} -o ${WRKSRC}/${PORTNAME}
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} \
+.if ${PORT_OPTIONS:MSUID}
+	${INSTALL_PROGRAM} -m 4110 ${WRKSRC}/${PORTNAME} \
 		${STAGEDIR}/${PREFIX}/bin
+.else
+	${INSTALL_PROGRAM} -m 0100 ${WRKSRC}/${PORTNAME} \
+		${STAGEDIR}/${PREFIX}/bin
+.endif
 
 .include <bsd.port.mk>

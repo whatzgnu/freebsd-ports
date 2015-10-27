@@ -34,6 +34,8 @@ MMX_CONFIGURE_ENABLE=	mmx
 
 BUILD_DEPENDS+=	xa65:${PORTSDIR}/devel/xa65
 
+.include <bsd.port.options.mk>
+
 SIDPLAYFP_SHLIB_VERSION=	3.2.0
 STILVIEW_SHLIB_VERSION=	0.0.2
 PLIST_SUB+=	\
@@ -42,13 +44,17 @@ PLIST_SUB+=	\
 	STILVIEW_SHLIB_VER=${STILVIEW_SHLIB_VERSION:C/\.[[:digit:].]+//} \
 	STILVIEW_SHLIB_VERSION=${STILVIEW_SHLIB_VERSION}
 
-post-build-DOXYGEN-on:
+post-build:
+.if ${PORT_OPTIONS:MDOXYGEN}
 	cd ${WRKSRC} && ${MAKE} doc
+.endif
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR} ; \
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-post-install-DOXYGEN-on:
+.endif
+.if ${PORT_OPTIONS:MDOXYGEN}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html ; \
 	${INSTALL_MAN} ${WRKSRC}/docs/html/* ${STAGEDIR}${DOCSDIR}/html ; \
 	${RM} -f ${WRKDIR}/PLIST.doc ; \
@@ -56,5 +62,6 @@ post-install-DOXYGEN-on:
 		${SED} 's|${STAGEDIR}${PREFIX}/||' \
 		>> ${WRKDIR}/PLIST.doc
 	cd ${WRKDIR} ; ${SED} -i -e '/PLIST.doc/ r PLIST.doc' ${TMPPLIST}
+.endif
 
 .include <bsd.port.mk>

@@ -28,6 +28,7 @@ STRIFE_DESC=	Install Strife shareware data
 
 SUB_FILES=	pkg-message
 
+LATEST_LINK=	${PKGNAMEPREFIX}${PORTNAME}
 DATADIR=	${DMDIR}
 
 DOOM_DISTFILES=	doom1.wad.bz2

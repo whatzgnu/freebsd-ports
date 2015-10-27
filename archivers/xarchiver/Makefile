@@ -27,9 +27,14 @@ NLS_USES=	gettext
 NLS_CPPFLAGS+=	-I${LOCALBASE}/include
 NLS_LDFLAGS+=	-L${LOCALBASE}/lib
 
-post-patch-DOCS-off:
+.include <bsd.port.options.mk>
+
+post-patch:
+.if empty(PORT_OPTIONS:MDOCS)
 	@${REINPLACE_CMD} -e 's|doc||g' ${WRKSRC}/Makefile.in
-post-patch-NLS-off:
+.endif
+.if empty(PORT_OPTIONS:MNLS)
 	@${REINPLACE_CMD} -e 's| po | |g' ${WRKSRC}/Makefile.in
+.endif
 
 .include <bsd.port.mk>

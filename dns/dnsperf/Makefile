@@ -30,6 +30,9 @@ PORTDOCS=	caching-dns-performance.pdf \
 CFLAGS+=	-I.
 
 OPTIONS_DEFINE=	DOCS
+OPTIONS_DEFAULT=DOCS
+
+.include <bsd.port.options.mk>
 
 # This is a workaround for broken isc/stat.h.
 pre-build:
@@ -37,8 +40,10 @@ pre-build:
 	${ECHO_CMD} "#include <sys/types.h>" > ${WRKSRC}/isc/stat.h
 	${ECHO_CMD} "#include <sys/stat.h>" >> ${WRKSRC}/isc/stat.h
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/doc && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

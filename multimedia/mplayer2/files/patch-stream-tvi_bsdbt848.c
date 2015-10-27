@@ -1,6 +1,6 @@
---- stream/tvi_bsdbt848.c.orig	2013-07-09 16:33:36 UTC
-+++ stream/tvi_bsdbt848.c
-@@ -368,11 +368,11 @@ static int control(priv_t *priv, int cmd
+--- stream/tvi_bsdbt848.c.orig	2009-05-12 21:58:57.000000000 -0500
++++ stream/tvi_bsdbt848.c	2009-07-23 20:39:13.536681248 -0500
+@@ -352,11 +352,11 @@
          int req_mode = *(int *)arg;
  	u_short tmp_fps;
  
@@ -14,7 +14,7 @@
              priv->maxheight = PAL_HEIGHT;
              priv->maxwidth = PAL_WIDTH;
              priv->maxfps = PAL_FPS;
-@@ -393,7 +393,7 @@ static int control(priv_t *priv, int cmd
+@@ -377,7 +377,7 @@
  
          if(req_mode == TV_NORM_NTSC)
              {
@@ -23,7 +23,7 @@
              priv->maxheight = NTSC_HEIGHT;
              priv->maxwidth = NTSC_WIDTH;
              priv->maxfps = NTSC_FPS;
-@@ -417,9 +417,28 @@ static int control(priv_t *priv, int cmd
+@@ -401,9 +401,28 @@
                  }
              }
  
@@ -35,8 +35,7 @@
 +            priv->maxwidth = PAL_WIDTH;
 +            priv->maxfps = PAL_FPS;
 +            priv->fps = PAL_FPS;
- 
--        if(ioctl(priv->btfd, METEORSFMT, &priv->iformat) < 0)
++
 +            if(priv->fps > priv->maxfps) priv->fps = priv->maxfps;
 +
 +            if(priv->geom.rows > priv->maxheight)
@@ -49,12 +48,13 @@
 +                priv->geom.columns = priv->maxwidth;
 +                }
 +            }
-+
+ 
+-        if(ioctl(priv->btfd, METEORSFMT, &priv->iformat) < 0)
 +        if(ioctl(priv->btfd, BT848SFMT, &priv->iformat) < 0)
              {
-             mp_tmsg(MSGT_TV, MSGL_ERR, "tvi_bsdbt848: Call to %s ioctl failed. Error: %s\n", "METEORSFMT", strerror(errno));
+             mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848IoctlFailed, "METEORSFMT", strerror(errno));
              return TVI_CONTROL_FALSE;
-@@ -548,8 +567,9 @@ G_private = priv; /* Oooh, sick */
+@@ -532,8 +551,9 @@
  /* Video Configuration */
  
  priv->videoready = TRUE;
@@ -65,12 +65,12 @@
  priv->maxheight = PAL_HEIGHT;
  priv->maxwidth = PAL_WIDTH;
  priv->maxfps = PAL_FPS;
-@@ -574,7 +594,7 @@ if(priv->btfd < 0)
+@@ -558,7 +578,7 @@
      }
  
  if(priv->videoready == TRUE &&
 -   ioctl(priv->btfd, METEORSFMT, &priv->iformat) < 0)
 +   ioctl(priv->btfd, BT848SFMT, &priv->iformat) < 0)
      {
-     mp_tmsg(MSGT_TV, MSGL_ERR, "tvi_bsdbt848: Call to %s ioctl failed. Error: %s\n", "SETEORSFMT", strerror(errno));
+     mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848IoctlFailed, "SETEORSFMT", strerror(errno));
      }

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	double-conversion
-PORTVERSION=	2.0.1.0
+PORTVERSION=	0.2.0.6
+PORTREVISION=	7
 CATEGORIES=	textproc haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -12,11 +13,4 @@ LICENSE=	BSD3CLAUSE
 USE_CABAL=	text>=0.11.0.8
 
 .include "${.CURDIR}/../../lang/ghc/bsd.cabal.mk"
-
-.if ${PORT_OPTIONS:MPCLANG} || ${PORT_OPTIONS:MBCLANG}
-EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-double-conversion.cabal
-LIB_DEPENDS+=	libcxxrt.so:${PORTSDIR}/devel/libcxxrt
-.endif
-
 .include <bsd.port.mk>
-

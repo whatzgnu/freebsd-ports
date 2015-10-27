@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	ReadArgs
-PORTVERSION=	1.2.2
+PORTVERSION=	1.2.1
+PORTREVISION=	8
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

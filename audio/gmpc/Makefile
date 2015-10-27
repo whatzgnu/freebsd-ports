@@ -31,9 +31,17 @@ LIBS+=		-L${LOCALBASE}/lib -lm
 OPTIONS_DEFINE=	MMKEYS XSPF
 OPTIONS_DEFAULT=	MMKEYS
 
-MMKEYS_CONFIGURE_ON=--disable-mmkeys
+.include <bsd.port.options.mk>
 
-XSPF_LIB_DEPENDS=	libxspf.so:${PORTSDIR}/multimedia/libxspf
-XSPF_CONFIGURE_ENABLE=	libxspf
+.if ${PORT_OPTIONS:MMMKEYS}
+CONFIGURE_ARGS+=--disable-mmkeys
+.endif
+
+.if ${PORT_OPTIONS:MXSPF}
+LIB_DEPENDS+=	libxspf.so:${PORTSDIR}/multimedia/libxspf
+CONFIGURE_ARGS+=--enable-libxspf
+.else
+CONFIGURE_ARGS+=--disable-libxspf
+.endif
 
 .include <bsd.port.mk>

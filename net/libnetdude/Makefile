@@ -23,6 +23,9 @@ USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 
 PLIST_SUB=	PORTVERSION=${PORTVERSION}
+PORTDOCS=	*
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|netinet/if_fddi.h|net/fddi.h|g" \
@@ -32,8 +35,5 @@ post-patch:
 	@${FIND} ${WRKSRC} -name Makefile.in | ${XARGS} ${REINPLACE_CMD} \
 		-e 's,-I$$(top_srcdir)/libltdl,@INCLTDL@,' \
 		-e '/LIBADD/s,$$(top_builddir)/libltdl/libltdlc.la,@LIBLTDL@,'
-
-post-install:
-	@${RMDIR} ${STAGEDIR}${DOCSDIR}/images ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

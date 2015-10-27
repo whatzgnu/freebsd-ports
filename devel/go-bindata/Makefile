@@ -21,6 +21,8 @@ STRIP=		# stripping can break go binaries
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@cd ${WRKSRC} ; ${MKDIR} src/github.com/${GH_ACCOUNT}/${GH_PROJECT} ; \
 	${MV} CONTRIBUTING.md LICENSE README.md asset.go bytewriter.go \
@@ -36,11 +38,11 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/${PORTNAME} \
 		${STAGEDIR}${PREFIX}/bin/
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 .for x in ${PORTDOCS}
-	${INSTALL_DATA} ${WRKSRC}/src/github.com/${GH_ACCOUNT}/${GH_PROJECT}/${x} \
+	${INSTALL_MAN} ${WRKSRC}/src/github.com/${GH_ACCOUNT}/${GH_PROJECT}/${x} \
 		${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

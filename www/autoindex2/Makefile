@@ -16,6 +16,7 @@ USES=		dos2unix
 USE_PHP=	session
 DEFAULT_VERSIONS+=	php=5
 CONFLICTS=	AutoIndex-1*
+LATEST_LINK=	AutoIndex2
 NO_BUILD=	yes
 
 INSTALLDIR?=	${WWWDIR}

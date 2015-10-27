@@ -71,12 +71,13 @@ pre-configure:
 	s,%%SUPERLU%%,${SUPERLU},g ; \
 	s,%%BLAS_LIBS%%,-L${LOCALBASE}/lib ${BLAS_LIBS},g' \
 	${WRKSRC}/makefile
-pre-configure-THREADS-on:
+.if ${PORT_OPTIONS:MTHREADS}
 	${REINPLACE_CMD} -e 's,SUPERLU_MT_USE 0,SUPERLU_MT_USE 1,' \
 	${WRKSRC}/tnsuplu.h
-pre-configure-THREADS-off:
+.else	# Serial
 	${REINPLACE_CMD} -e 's,SUPERLU_USE 0,SUPERLU_USE 1,' \
 	${WRKSRC}/tnsuplu.h
+.endif
 
 post-build:
 	(cd ${WRKDIR}/Sources/tools && ${CXX} ${CXXFLAGS} -o aba2tn aba2tn.cc)
@@ -92,9 +93,10 @@ do-install:
 	  ${STAGEDIR}${GID_PTYPES}/tochnog.gid
 	${INSTALL_SCRIPT} ${WRKDIR}/Sources/gid/tochnog.gid/tochnog.ba*	\
 	  ${STAGEDIR}${GID_PTYPES}/tochnog.gid
-do-install-EXAMPLES-on:
+.if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${RM} -f ${WRKDIR}/Sources/test/*.orig
 	${INSTALL_DATA} ${WRKDIR}/Sources/test/* ${STAGEDIR}${EXAMPLESDIR}
+.endif
 
 .include <bsd.port.mk>

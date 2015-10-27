@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	network-protocol-xmpp
-PORTVERSION=	0.4.8
+PORTVERSION=	0.4.6
+PORTREVISION=	2
 CATEGORIES=	net haskell
 
 MAINTAINER=	haskell@FreeBSD.org

@@ -1,7 +1,7 @@
 #!/bin/sh
 # $FreeBSD$
 
-FONTSDIR=%%FONTSDIR%%
+FONTSDIR=%%FONTSDIR%%/TTF
 
 catfontsdir ()
 {

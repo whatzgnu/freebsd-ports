@@ -28,7 +28,11 @@ CONFIGURE_ENV=	LTLIB_CFLAGS="-I${LOCALBASE}/include" \
 
 PORTDOCS=	*
 
-DOCS_CONFIGURE_ON=	--enable-doc
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MDOCS}
+CONFIGURE_ARGS+=--enable-doc
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} 's|(libdir)/pkgconfig|(prefix)/libdata/pkgconfig|' \
@@ -36,7 +40,7 @@ post-patch:
 	@${REINPLACE_CMD} 's|install-data-am: install-apidocDATA install-dist_docDATA|install-data-am: install-dist_docDATA|' \
 		${WRKSRC}/doc/Makefile.in
 
-post-install-EXAMPLES-on:
+post-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA}	${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
 

@@ -28,7 +28,11 @@ PORTDOCS=	*
 
 OPTIONS_DEFINE=	DOCS
 
-DOCS_MAKE_ENV_OFF=	NOPORTDOCS=1
+.include <bsd.port.options.mk>
+
+.if ! ${PORT_OPTIONS:MDOCS}
+MAKE_ENV+=	NOPORTDOCS=1
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|<stdint\.h>|<inttypes.h>|' \

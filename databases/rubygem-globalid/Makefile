@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	globalid
-PORTVERSION=	0.3.6
+PORTVERSION=	0.3.5
 CATEGORIES=	databases rubygems
 MASTER_SITES=	RG
 

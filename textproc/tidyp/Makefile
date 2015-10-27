@@ -5,7 +5,8 @@ PORTNAME=	tidyp
 PORTVERSION=	1.04
 PORTREVISION=	2
 CATEGORIES=	textproc www
-MASTER_SITES=	GHC LOCAL/sunpoet
+MASTER_SITES=	http://cloud.github.com/downloads/petdance/tidyp/ \
+		LOCAL/sunpoet
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Library and program to validate and fix HTML
@@ -15,8 +16,6 @@ GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 USES=		libtool
-USE_GITHUB=	yes
-GH_ACCOUNT=	petdance
 
 OPTIONS_DEFINE=	ACCESS DEBUG
 ACCESS_DESC=	Accessibility checks

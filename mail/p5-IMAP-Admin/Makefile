@@ -14,7 +14,7 @@ COMMENT=	Perl module for basic IMAP server administration
 USES=		perl5
 USE_PERL5=	configure
 
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGBASE}
+EXAMPLESDIR=	${PREFIX}/share/examples/${UNIQUENAME}
 
 OPTIONS_DEFINE=	EXAMPLES
 

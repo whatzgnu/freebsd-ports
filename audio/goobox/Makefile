@@ -33,7 +33,13 @@ GLIB_SCHEMAS=	org.gnome.Goobox.gschema.xml
 OPTIONS_DEFINE=	NOTIFY
 OPTIONS_DEFAULT=NOTIFY
 
-NOTIFY_LIB_DEPENDS=	libnotify.so:${PORTSDIR}/devel/libnotify
-NOTIFY_CONFIGURE_ENABLE=notification
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MNOTIFY}
+LIB_DEPENDS+=	libnotify.so:${PORTSDIR}/devel/libnotify
+CONFIGURE_ARGS+=--enable-notification
+.else
+CONFIGURE_ARGS+=--disable-notification
+.endif
 
 .include <bsd.port.mk>

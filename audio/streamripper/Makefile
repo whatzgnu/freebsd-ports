@@ -38,11 +38,19 @@ LDFLAGS+=	-Lcdk-${CDK_VERSION} -L${LOCALBASE}/lib
 
 CDK_VERSION=	5.0-20060507
 
-FAAD_CONFIGURE_OFF=	ac_cv_lib_faad_NeAACDecDecode2=no
-FAAD_LIB_DEPENDS=	libfaad.so:${PORTSDIR}/audio/faad
+.include <bsd.port.options.mk>
 
-VORBIS_CONFIGURE_WITH=	ogg
-VORBIS_LIB_DEPENDS=	libvorbis.so:${PORTSDIR}/audio/libvorbis
+.if ! ${PORT_OPTIONS:MFAAD}
+CONFIGURE_ARGS+=ac_cv_lib_faad_NeAACDecDecode2=no
+.else
+LIB_DEPENDS+=	libfaad.so:${PORTSDIR}/audio/faad
+.endif
+
+.if ! ${PORT_OPTIONS:MVORBIS}
+CONFIGURE_ARGS+=--without-ogg
+.else
+LIB_DEPENDS+=	libvorbis.so:${PORTSDIR}/audio/libvorbis
+.endif
 
 post-extract:
 	${MV} ${WRKDIR}/cdk-${CDK_VERSION} ${WRKSRC}

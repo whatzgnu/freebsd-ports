@@ -2,7 +2,6 @@
 
 PORTNAME=	fxlinuxprint
 PORTVERSION=	1.0.1
-PORTREVISION=	1
 CATEGORIES=	print
 MASTER_SITES=	ftp://download.fujixerox.co.jp/pub/exe/apeosport/c4300series/
 PKGNAMEPREFIX=	cups-

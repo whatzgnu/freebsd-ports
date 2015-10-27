@@ -10,8 +10,6 @@ DISTNAME=	OpenIPMI-${PORTVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Complex IPMI management software
 
-LICENSE=	GPLv2
-
 LIB_DEPENDS=	libpopt.so:${PORTSDIR}/devel/popt
 
 GNU_CONFIGURE=	yes
@@ -19,7 +17,7 @@ INSTALL_TARGET=	install-strip
 USES=		execinfo gmake libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 
-CPPFLAGS+=	-I../include -I${LOCALBASE}/include
+CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 OPTIONS_DEFINE=	SSL SNMP PERL PYTHON TCL TKINTER GDBM
