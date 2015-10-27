@@ -1,4 +1,4 @@
-# $FreeBSD: head/Mk/Uses/pkgconfig.mk 399326 2015-10-15 07:36:38Z bapt $
+# $FreeBSD$
 #
 # handle dependency on the pkgconf port
 #

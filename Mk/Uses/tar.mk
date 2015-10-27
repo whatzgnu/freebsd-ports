@@ -1,4 +1,4 @@
-# $FreeBSD: head/Mk/Uses/tar.mk 369465 2014-09-28 16:36:31Z tijl $
+# $FreeBSD$
 #
 # handle tar archives
 #
