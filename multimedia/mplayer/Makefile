@@ -3,7 +3,7 @@
 
 PORTNAME=	mplayer
 PORTVERSION=	${MPLAYER_PORT_VERSION}
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	multimedia audio
 
 MAINTAINER=	riggs@FreeBSD.org
@@ -162,9 +162,11 @@ post-patch:
 		's|/usr/\\:local/\\:etc/\\:mplayer|${DATADIR:S/\//\/\\\:/g}|g ; \
 		 s|/dev/\\:(dvd[[:alnum:]]*[[:>:]])|${DEFAULT_DVD_DEVICE:S/dev\//dev\/\\\:/}|g ; \
 		 s|/dev/\\:(cdrom[[:alnum:]]*[[:>:]])|${DEFAULT_CDROM_DEVICE:S/dev\//dev\/\\\:/}|g'
-
-post-patch-RTC-on:
-	@${REINPLACE_CMD} -e 's|irqp = 1024|irqp = ${DEFAULT_KERN_HZ}|' ${WRKSRC}/mplayer.c
+.if ${PORT_OPTIONS:MRTC}
+	@${REINPLACE_CMD} -e \
+		's|irqp = 1024|irqp = ${DEFAULT_KERN_HZ}|' \
+		${WRKSRC}/mplayer.c
+.endif
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}

@@ -3,7 +3,6 @@
 
 PORTNAME=	rye
 PORTVERSION=	0.9.13
-PORTREVISION=	1
 CATEGORIES=	net rubygems
 MASTER_SITES=	RG
 
@@ -11,7 +10,6 @@ MAINTAINER=	swills@FreeBSD.org
 COMMENT=	Safely run SSH commands on a bunch of machines at the same time
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	rubygem-annoy>=0:${PORTSDIR}/devel/rubygem-annoy \
 		rubygem-docile>=1.0.1:${PORTSDIR}/devel/rubygem-docile \
@@ -24,7 +22,5 @@ NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
-USES=		shebangfix
-SHEBANG_FILES=	try/*.rb tst/*.rb
 
 .include <bsd.port.mk>

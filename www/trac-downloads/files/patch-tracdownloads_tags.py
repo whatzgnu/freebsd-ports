@@ -1,3 +1,6 @@
+
+$FreeBSD: ports/www/trac-downloads/files/no-sets-module.diff,v 1.1 2011/01/12 00:47:17 brooks Exp $
+
 --- tracdownloads/tags.py.orig
 +++ tracdownloads/tags.py
 @@ -1,11 +1,5 @@

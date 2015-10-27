@@ -25,6 +25,7 @@ USES=		python:2 shebangfix
 USE_PYTHON=	distutils
 PYDISTUTILS_PKGNAME=	Djblets
 
+python_OLD_CMD=	/usr/bin/env python
 SHEBANG_FILES=	contrib/internal/build-media.py
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	preppy
-PORTVERSION=	2.3.4
+PORTVERSION=	2.3.2
 CATEGORIES=	print python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,9 +12,7 @@ COMMENT=	ReportLab's templating system
 
 LICENSE=	BSD3CLAUSE
 
-NO_ARCH=	yes
-
-USES=		python
-USE_PYTHON=	autoplist distutils
+USES=		python:2.7-3.3
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

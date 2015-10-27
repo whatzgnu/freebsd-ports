@@ -1,10 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	fldigi
-PORTVERSION=	3.23.03
+PORTVERSION=	3.22.13
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://www.w1hkj.com/downloads/fldigi/\
-		LOCAL/db
+		LOCAL/shurd
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Digital decoder for psk, cw, psk31, olivia
@@ -54,19 +54,15 @@ HAMLIB_LIB_DEPENDS=		libhamlib.so:${PORTSDIR}/comms/hamlib
 NLS_CONFIGURE_ENABLE=		nls
 NLS_USES=			gettext
 
-.include <bsd.port.pre.mk>
+BROKEN_sparc64=		Fails to install
 
-.if ${ARCH} == "sparc64"
-BROKEN=		Fails to install
-.endif
-.if ${PORT_OPTIONS:MFLARQ}
-MAN1+=		flarq.1
-.endif
 PLIST_SUB+=	XMLRPC=""
 # Always need asciidoc for man pages
 CONFIGURE_ARGS+=--with-asciidoc
 
 post-patch:
+	@${REINPLACE_CMD} -e 's|png_infopp_NULL|NULL|' \
+		 ${WRKSRC}/src/widgets/picture.cxx
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|' \
 		${WRKSRC}/Makefile.in
 
@@ -77,10 +73,8 @@ post-configure:
 	${RM} ${WRKSRC}/doc/*.1
 
 post-install:
-.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/guide.html ${STAGEDIR}${DOCSDIR}
-.endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

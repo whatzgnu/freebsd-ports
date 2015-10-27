@@ -3,7 +3,6 @@
 
 PORTNAME=	flac
 PORTVERSION=	1.3.1
-PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://downloads.xiph.org/releases/flac/
 
@@ -22,8 +21,6 @@ CONFIGURE_ARGS=	--enable-static \
 		--disable-silent-rules \
 		--disable-thorough-tests \
 		--disable-xmms-plugin
-INSTALL_TARGET=	install-strip
-TEST_TARGET=	check
 
 .include <bsd.port.options.mk>
 
@@ -36,5 +33,8 @@ post-install:
 	${REINPLACE_CMD} 's:%%PREFIX%%:${PREFIX}:' \
 	    ${STAGEDIR}${PREFIX}/man/man1/flac.1
 	${RM} ${STAGEDIR}${PREFIX}/man/man1/flac.1.bak
+
+regression-test: build
+	@cd ${WRKSRC}; ${SETENV} ${MAKE_ENV} ${MAKE_CMD} check
 
 .include <bsd.port.mk>

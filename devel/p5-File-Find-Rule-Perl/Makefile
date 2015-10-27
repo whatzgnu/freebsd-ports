@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	File-Find-Rule-Perl
-PORTVERSION=	1.15
+PORTVERSION=	1.13
+PORTREVISION=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -17,5 +18,8 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USES=		perl5
 USE_PERL5=	configure
+
+regression-test: build
+	cd ${WRKSRC}/ && ${MAKE} test
 
 .include <bsd.port.mk>

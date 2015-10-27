@@ -13,7 +13,7 @@ COMMENT=	100% Java PDF renderer and viewer
 
 LICENSE=	LGPL21
 
-USES=		dos2unix zip
+USES=		zip
 NO_WRKSUBDIR=	yes
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
@@ -26,18 +26,11 @@ PLIST_FILES=	%%JAVAJARDIR%%/${PORTNAME}.jar
 PORTDOCS=	*
 
 OPTIONS_DEFINE=	DOCS
-DOS2UNIX_FILES=	swinglabs-build-impl.xml
 
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
 ALL_TARGET+=	javadoc
-.endif
-
-.include <bsd.port.pre.mk>
-
-.if ${JAVA_PORT_VERSION:M1.8.*}
-EXTRA_PATCHES=	${PATCHDIR}/extra-patch-swinglabs-build-impl.xml
 .endif
 
 do-install:
@@ -53,4 +46,4 @@ do-install:
 	@${ECHO_MSG} " [DONE]"
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

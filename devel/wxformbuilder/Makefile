@@ -6,13 +6,12 @@ CATEGORIES=	devel
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-nightly/${DISTVERSION}
 DISTNAME=	wxFormBuilder_v${DISTVERSION}-source
 
-MAINTAINER=	shurd@FreeBSD.org
+MAINTAINER=	shurd@freebsd.org
 COMMENT=	WYSIWYG GUI Designer and Code Generator for wxWidgets
 
 LICENSE=	GPLv2
 
-USES=		compiler:c++11-lib dos2unix gmake zip
-USE_CSTD=	c++11
+USES=		dos2unix gmake zip
 USE_LDCONFIG=	yes
 USE_WX=		3.0+
 WANT_UNICODE=	yes

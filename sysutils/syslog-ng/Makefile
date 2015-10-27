@@ -41,7 +41,7 @@ SUB_FILES=	pkg-message
 INSTALL_TARGET=	install-strip
 
 CONFIGURE_ARGS=	--sysconfdir=${LOCALBASE}/etc --localstatedir=/var/db \
-		--enable-dynamic-linking --disable-linux-caps \
+		--enable-dynamic-linking \
 		--enable-debug --enable-manpages \
 		--datadir=${PREFIX}/share/syslog-ng/
 
@@ -125,6 +125,12 @@ PLIST_FILES+= 		lib/syslog-ng/libjson-plugin.so
 CONFIGURE_ARGS+=        --disable-json
 .endif
 
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} >= 900034
+CONFIGURE_ARGS+=        --disable-linux-caps
+.endif
+
 post-patch:
 	@${REINPLACE_CMD} -e 's:libnet-config:libnet11-config:g' \
 		${WRKSRC}/configure
@@ -148,4 +154,4 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/lib/ivykis/src/include/iv*.h \
 		${STAGEDIR}${PREFIX}/include/syslog-ng/
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

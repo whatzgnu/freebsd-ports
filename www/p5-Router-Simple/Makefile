@@ -17,7 +17,6 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-Class-Accessor-Lite>=0.05:${PORTSDIR}/devel/p5-Class-Accessor-Lite
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USE_PERL5=	modbuild
 USES=		perl5
 

@@ -2,12 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	getdns
-PORTVERSION=	0.3.3
+PORTVERSION=	0.2.0
+PORTREVISION=	1
 CATEGORIES=	dns ipv6
-MASTER_SITES=	https://getdnsapi.net/dist/ \
-    		https://mirrors.rit.edu/zi/ \
-		http://getdnsapi.net/dist/ \
-		http://mirrors.rit.edu/zi/
+MASTER_SITES=	http://getdnsapi.net/dist/ \
+    		http://mirrors.rit.edu/zi/
 
 MAINTAINER=	zi@FreeBSD.org
 COMMENT=	Modern asynchronous DNS API

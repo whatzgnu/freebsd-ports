@@ -1,6 +1,6 @@
---- drToolBarDialog.py.orig	2014-04-20 17:50:40 UTC
+--- drToolBarDialog.py.orig
 +++ drToolBarDialog.py
-@@ -36,7 +36,7 @@ def GetToolBarLabels(filename, frame):
+@@ -36,7 +36,7 @@
          text = f.read()
          f.close()
      except:

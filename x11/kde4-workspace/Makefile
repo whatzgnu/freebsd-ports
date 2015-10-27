@@ -104,6 +104,8 @@ WALLPAPERS_DESC=	Install official KDE wallpapers
 WALLPAPERS_RUN_DEPENDS=	${KDE4_PREFIX}/share/wallpapers/Horos/metadata.desktop:${PORTSDIR}/x11-themes/kde4-wallpapers \
 			${KDE4_PREFIX}/share/wallpapers/stripes-freebsd-blue/metadata.desktop:${PORTSDIR}/x11-themes/kde4-wallpapers-freebsd
 
+.include <bsd.port.options.mk>
+
 .if !exists(/usr/lib/libutempter.so)
 LIB_DEPENDS+=	libutempter.so:${PORTSDIR}/sysutils/libutempter
 .endif
@@ -127,12 +129,9 @@ pre-configure:
 
 post-install:
 	${LN} -sf ${PREFIX}/bin/startkde ${STAGEDIR}${PREFIX}/bin/startkde4
-
-post-install-GSTREAMER-on:
-	@${HEAD} -1 ${PKGMESSAGE} >> ${PKGMESSAGE}
-
-post-install-GSTREAMER-off:
+.if ! ${PORT_OPTIONS:MGSTREAMER}
 	@${CAT} ${FILESDIR}/pkg-message.gstreamer >> ${PKGMESSAGE}
+.endif
 	@${HEAD} -1 ${PKGMESSAGE} >> ${PKGMESSAGE}
 
 .include <bsd.port.mk>

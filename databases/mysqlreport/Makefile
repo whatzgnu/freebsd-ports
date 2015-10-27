@@ -7,7 +7,7 @@ PORTREVISION=	3
 CATEGORIES=	databases
 MASTER_SITES=	http://hackmysql.com/scripts/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	lippe@FreeBSD.org
 COMMENT=	Mysqlreport makes a friendly report of important MySQL status values
 
 LICENSE=	GPLv3

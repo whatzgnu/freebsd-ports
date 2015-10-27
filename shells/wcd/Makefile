@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wcd
-PORTVERSION=	5.3.0
+PORTVERSION=	5.2.7
 CATEGORIES=	shells
 MASTER_SITES=	SF
 
@@ -20,7 +20,12 @@ OPTIONS_DEFINE=	DOCS NLS
 OPTIONS_SUB=	yes
 
 NLS_USES=	gettext
-NLS_MAKE_ARGS_OFF=	ENABLE_NLS=
+
+.include <bsd.port.options.mk>
+
+.if ! ${PORT_OPTIONS:MNLS}
+MAKE_ARGS+=	ENABLE_NLS=
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e '/manfile/ s|datarootdir|prefix|' \

@@ -3,7 +3,7 @@
 
 PORTNAME=	fkiss
 PORTVERSION=	0.33a
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	games
 MASTER_SITES=	http://www2s.biglobe.ne.jp/~yav/soft/fkiss/
 DISTNAME=	${PORTNAME}-${PORTVERSION:S/a//}
@@ -30,14 +30,17 @@ PLIST_FILES=	bin/fkiss man/man1/fkiss.1.gz
 PORTDOCS=	*
 PORTEXAMPLES=	*
 
-OPTIONS_DEFINE=	DOCS EXAMPLES ESOUND
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
-ESOUND_USES=	pkgconfig
-ESOUND_USE=	GNOME=esound
-ESOUND_CPPFLAGS=	`pkgconf --cflags-only-I esound`
-ESOUND_LDFLAGS=		`pkgconf --libs-only-L esound `
-ESOUND_CONFIGURE_ENV_OFF=	ac_cv_lib_esd_esd_open_sound=no \
-				ac_cv_header_esd_h=no
+.include <bsd.port.pre.mk>
+
+# XXX should be converted to OptionsNG
+.if ${HAVE_GNOME:Mesound}
+USES+=		pkgconfig
+USE_GNOME+=	esound
+CPPFLAGS+=	`pkg-config --cflags-only-I esound`
+LDFLAGS+=	`pkg-config --libs-only-L esound `
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|= @X_LIBS@|= @LDFLAGS@ @X_LIBS@|g' \
@@ -49,16 +52,12 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/fkiss ${STAGEDIR}${PREFIX}/bin/fkiss
 	${INSTALL_MAN} ${WRKSRC}/fkiss.man \
 		${STAGEDIR}${MANPREFIX}/man/man1/fkiss.1
-
-do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README.euc \
 		${STAGEDIR}${DOCSDIR}/README.ja_JP.eucJP
-
-do-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/frkismi4.lzh \
 		${STAGEDIR}${EXAMPLESDIR}/frkismi4.lzh
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

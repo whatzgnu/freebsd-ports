@@ -2,25 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	firebird
-PORTVERSION=	2.5.4
-PORTREVISION=	1
+PORTVERSION=	2.5.3
+PORTREVISION=	2
 CATEGORIES?=	databases
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION:S/.0//}-Release/
 PKGNAMESUFFIX?=	${PORTVERSION:R:S/.//}-server
-DISTNAME=	${PORTNAME:S/f/F/}-${PORTVERSION}.26856-0
+DISTNAME=	${PORTNAME:S/f/F/}-${PORTVERSION}.26780-0
 DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT?=	Firebird-2 relational database (server)
-
-LICENSE=	IDPL IPL
-LICENSE_COMB=	multi
-LICENSE_NAME_IDPL=	Initial Developer's Public License
-LICENSE_NAME_IPL=	InterBase Public License
-LICENSE_FILE_IDPL=	${WRKSRC}/builds/install/misc/IDPLicense.txt
-LICENSE_FILE_IPL=	${WRKSRC}/builds/install/misc/IPLicense.txt
-LICENSE_PERMS_IDPL=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
-LICENSE_PERMS_IPL=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 CONFLICTS?=	${PORTNAME}20-client-* \
 		${PORTNAME}21-client-* \
@@ -29,7 +20,7 @@ CONFLICTS?=	${PORTNAME}20-client-* \
 
 LIB_DEPENDS=	libicuuc.so:${PORTSDIR}/devel/icu
 
-USES=		gmake pkgconfig tar:bzip2
+USES=		bison tar:bzip2 gmake
 GNU_CONFIGURE=	yes
 MAKE_JOBS_UNSAFE=	yes
 
@@ -47,10 +38,10 @@ CONFIGURE_ARGS=	--with-system-editline \
 		--with-fbsbin=${PREFIX}/sbin \
 		--with-fbsecure-db=${LOCALSTATEDIR} \
 		--with-fbudf=${LIBEXECDIR}/UDF
-CONFIGURE_ENV+=	PTHREAD_LIBS="-lpthread" \
-		ac_cv_header_atomic_ops_h="no" \
-		ac_cv_lib_atomic_ops_main="no" \
-		ac_cv_lib_edit_readline="yes"
+CONFIGURE_ENV+=	PTHREAD_LIBS="-lpthread"
+
+CFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 LOCALSTATEDIR=	/var/db/firebird
 CONFDIR=	etc/firebird
@@ -79,7 +70,6 @@ IGNORE=		your system does not support sysvipc
 
 .if !defined(CLIENT_ONLY)
 # Server part stuff
-BUILD_DEPENDS=	${LOCALBASE}/lib/libedit.so:${PORTSDIR}/devel/libedit
 LIB_DEPENDS+=	libfbembed.so:${PORTSDIR}/databases/firebird25-client
 
 CONFIGURE_ARGS+=--enable-superserver
@@ -98,25 +88,29 @@ UDF_SQL=	src/extlib/ib_udf2.sql src/extlib/fbudf/fbudf.sql
 PKGINSTALL?=	${PKGDIR}/pkg-install-server
 .else
 # Client part stuff
-LIB_DEPENDS+=	libedit.so.0:${PORTSDIR}/devel/libedit
-
 ALL_TARGET=	firebird_basic libfbembed libfbclient embed_isql embed_gpre \
 		embed_gdef embed_qli extlib
 
 USE_LDCONFIG=	yes
 CLIENT_BIN=	gpre isql-fb qli
 
-OPTIONS_DEFINE=	DOCS
+.include <bsd.port.options.mk>
 
-DOCS_PORTDOCS=	*
-
+.if ${PORT_OPTIONS:MDOCS}
+PORTDOCS=	*
 FB_DOCS_FILES=	WhatsNew README.* Firebird* ReleaseNotes.pdf ambiguity.txt \
 		ods11-index-structure.html
 FB_DOCS_DIRS=	sql.extensions license upgrade
 .endif
+.endif
 
 MAKE_ENV+=	FIREBIRD_TMP="${WRKDIR}" FIREBIRD_LOCK="${WRKDIR}"
 MAKE_ARGS+=	PREFIX="${STAGEDIR}${PREFIX}"
+
+OPTIONS_DEFINE=	DOCS
+
+post-extract:
+	@${RM} -rf ${WRKSRC}/extern/icu
 
 post-patch:
 	${FIND} ${WRKSRC} -name "*.sh" -exec ${CHMOD} +x {} \+
@@ -208,7 +202,7 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/gen/firebird/*.msg ${STAGEDIR}${DATADIR}
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${ECHO_MSG} "===>   Installing documentation for ${PKGNAME}"
 	@${MKDIR} ${FB_DOCS_DIRS:S!^!${STAGEDIR}${DOCSDIR}/!}
 	@${INSTALL_DATA} ${FB_DOCS_FILES:S!^!${WRKSRC}/doc/!} ${STAGEDIR}${DOCSDIR}
@@ -216,6 +210,7 @@ post-install-DOCS-on:
 	@${INSTALL_DATA} ${WRKSRC}/doc/sql.extensions/* ${STAGEDIR}${DOCSDIR}/sql.extensions
 	@${INSTALL_DATA} ${WRKSRC}/doc/license/* ${STAGEDIR}${DOCSDIR}/license
 	@${INSTALL_DATA} ${WRKSRC}/src/misc/upgrade/v2/* ${STAGEDIR}${DOCSDIR}/upgrade
+.endif
 .endif
 
 .include <bsd.port.post.mk>

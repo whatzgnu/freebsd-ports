@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Catalyst-Plugin-SmartURI
-PORTVERSION=	0.041
+PORTVERSION=	0.039
+PORTREVISION=	1
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -20,7 +21,6 @@ BUILD_DEPENDS=	p5-Catalyst-Runtime>=0:${PORTSDIR}/www/p5-Catalyst-Runtime	\
 		p5-URI-SmartURI>=0:${PORTSDIR}/net/p5-URI-SmartURI
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 

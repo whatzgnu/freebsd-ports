@@ -12,7 +12,7 @@ DISTNAME=	script-fu-jagged-border.scm
 EXTRACT_SUFX=
 EXTRACT_ONLY=
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	lioux@FreeBSD.org
 COMMENT=	GIMP script to create a jagged border around an image
 
 LICENSE=	GPLv3

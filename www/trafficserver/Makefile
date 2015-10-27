@@ -77,7 +77,7 @@ CONFIGURE_ARGS+=	--disable-freelist
 IGNORE=	no allocation strategy selected
 .endif
 
-.if exists(/usr/bin/clang)
+.if ${OSVERSION} >= 900033 && exists(/usr/bin/clang)
 CC=		clang
 CXX=		clang++
 .endif

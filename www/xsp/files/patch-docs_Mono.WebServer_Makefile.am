@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- docs/Mono.WebServer/Makefile.am.orig
 +++ docs/Mono.WebServer/Makefile.am
 @@ -8,7 +8,7 @@

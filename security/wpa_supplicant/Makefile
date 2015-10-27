@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	wpa_supplicant
-PORTVERSION=	2.5
+PORTVERSION=	2.4
+PORTREVISION=	4
 CATEGORIES=	security net
 MASTER_SITES=	http://w1.fi/releases/
 
@@ -13,7 +14,7 @@ USE_OPENSSL=	yes
 BUILD_WRKSRC=	${WRKSRC}/wpa_supplicant
 INSTALL_WRKSRC=	${WRKSRC}/src
 CFLAGS+=	${CPPFLAGS} # USES=readline only augments CPPFLAGS and LDFLAGS
-LDFLAGS+=	-lutil
+LDFLAGS=	-lutil
 
 SUB_FILES=	pkg-message
 PORTDOCS=	README ChangeLog

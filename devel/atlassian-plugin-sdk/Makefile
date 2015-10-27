@@ -13,7 +13,6 @@ RUN_DEPENDS=	mvn:${PORTSDIR}/devel/maven-wrapper
 
 USE_JAVA=	yes
 JAVA_VERSION=	1.7+
-NO_ARCH=	yes
 
 EXTRACT_AFTER_ARGS=${DISTNAME}/bin ${DISTNAME}/apache-maven*/conf/settings.xml
 
@@ -42,7 +41,7 @@ do-install:
 	${TAR} --strip-components 1 -C ${STAGEDIR}${DATADIR} -xv	\
 	    --no-same-permissions --no-same-owner --exclude maven	\
 	    -f ${DISTDIR}/${DISTFILES} ${DISTNAME}/repository 2>&1 | \
-		${SED} -e 's,^x ,${DATADIR_REL}/,' -e 's,.*/$$,@dir &,' | \
+		${SED} -e 's,^x ,${DATADIR_REL}/,' -e 's,.*/$$,@dirrm &,' | \
 		${SORT} -r >> ${TMPPLIST}
 	${FIND} ${STAGEDIR}${DATADIR}/repository -type f | ${XARGS} ${CHMOD} ${_SHAREMODE}
 

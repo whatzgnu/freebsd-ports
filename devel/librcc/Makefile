@@ -3,16 +3,13 @@
 
 PORTNAME=	librcc
 PORTVERSION=	0.2.12
-PORTREVISION=	8
+PORTREVISION=	7
 CATEGORIES=	devel
 MASTER_SITES=	http://dside.dyndns.org/files/rusxmms/ \
 		LOCAL/fluffy
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	Library used by rusxmms for language autodetection
-
-LICENSE=	LGPL21 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	librcd.so:${PORTSDIR}/devel/librcd \
 		libenca.so:${PORTSDIR}/converters/enca \
@@ -22,7 +19,6 @@ GNU_CONFIGURE=	yes
 USE_GNOME=	libxml2
 USES=		gmake iconv libtool pathfix pkgconfig tar:bzip2
 USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

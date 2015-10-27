@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- eglib/src/gfile-posix.c.orig
 +++ eglib/src/gfile-posix.c
 @@ -170,7 +170,7 @@

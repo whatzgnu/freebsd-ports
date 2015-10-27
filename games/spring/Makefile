@@ -52,9 +52,6 @@ LEI_PREFIX=	${LOCALBASE}
 # Do not exctract bundled copies of header files for 3rd-party packages:
 EXTRACT_AFTER_ARGS=--no-same-owner --no-same-permissions --exclude ${WRKSRC:T}/include
 
-# The check-target fails right now: https://springrts.com/mantis/view.php?id=4736
-TEST_TARGET=	check
-
 PORTDOCS=	*
 PORTDATA=	*
 
@@ -77,6 +74,10 @@ MANPAGES_DOCS_OFF=	-DUSERDOCS_PLAIN:BOOL=false
 CXXFLAGS+=	-Wno-deprecated		# Too much noise
 
 PR_DOWNLOADER_LIB_DEPENDS=libcurl.so:${PORTSDIR}/ftp/curl
+
+# The check-target fails right now: https://springrts.com/mantis/view.php?id=4736
+check test xregression-test: build
+	${MAKE} -C ${WRKSRC} check
 
 .include <bsd.port.pre.mk>
 

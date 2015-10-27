@@ -3,15 +3,12 @@
 
 PORTNAME=	krusader
 DISTVERSION=	2.4.0-beta3
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	x11-fm kde
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${DISTVERSION}/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	Twin panel file manager for KDE, like midnight or norton commander
-
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 USES=		cmake:outsource gettext tar:bzip2
 USE_KDE4=	kdelibs kdeprefix automoc4

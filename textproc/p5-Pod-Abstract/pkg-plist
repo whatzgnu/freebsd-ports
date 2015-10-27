@@ -35,4 +35,4 @@ bin/paf
 %%SITE_PERL%%/Pod/Abstract/Path.pm
 %%SITE_PERL%%/Pod/Abstract/Serial.pm
 %%SITE_PERL%%/Pod/Abstract/Tree.pm
-%%PERL5_MAN1%%/paf.1.gz
+man/man1/paf.1.gz

@@ -35,11 +35,10 @@ CONFFILES+=	dma.conf auth.conf
 
 .include <bsd.port.pre.mk>
 
-# 11.x has dma imported into base and /var/spool/dma added to mtree
-.if ${OSVERSION} < 1100009
-PLIST_SUB+=	VARDIR=""
+.if ${OSVERSION} < 900000
+EXTRA_PATCHES=	${FILESDIR}/extrapatch-8-spool.c
 .else
-PLIST_SUB+=	VARDIR="@comment "
+EXTRA_PATCHES=	${FILESDIR}/extrapatch-else-spool.c
 .endif
 
 pre-patch:

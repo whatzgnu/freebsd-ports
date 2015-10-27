@@ -22,12 +22,17 @@ USE_PYTHON=	distutils pythonprefix
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-post-install-DOCS-on:
+.include <bsd.port.options.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/docs/Web && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
-post-install-EXAMPLES-on:
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	cd ${WRKSRC}/scripts && ${INSTALL_DATA} ${PORTEXAMPLES} ${STAGEDIR}${EXAMPLESDIR}
+.endif
 
 .include <bsd.port.mk>

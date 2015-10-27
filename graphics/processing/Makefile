@@ -7,6 +7,7 @@ PORTEPOCH=	1
 CATEGORIES=	graphics cad java
 MASTER_SITES=	GOOGLE_CODE
 DISTNAME=	${PORTNAME}-${PORTVERSION}-linux
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	skreuzer@FreeBSD.org
 COMMENT=	Programming environment for images, animation, and interactions
@@ -16,7 +17,6 @@ LICENSE=	GPLv2
 RUN_DEPENDS=	jikes>=1.22:${PORTSDIR}/java/jikes \
 		${JAVA_HOME}/jre/lib/ext/RXTXcomm.jar:${PORTSDIR}/comms/rxtx
 
-USES=		tar:tgz
 USE_JAVA=	1.6+
 NO_BUILD=	yes
 

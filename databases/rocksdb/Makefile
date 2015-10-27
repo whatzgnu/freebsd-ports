@@ -10,22 +10,22 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Persistent key-value store for fast storage environments
 
 LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libgflags.so:${PORTSDIR}/devel/gflags \
 		libsnappy.so:${PORTSDIR}/archivers/snappy
 
 ALL_TARGET=	shared_lib all
+CFLAGS+=	-I${WRKSRC}/include -I${LOCALBASE}/include
 CPPFLAGS+=	-DOS_FREEBSD
+LDFLAGS+=	-L${LOCALBASE}/lib
 USE_CXXSTD=	c++11
 USE_LDCONFIG=	yes
-USES=		compiler:c++11-lib gmake localbase
+USES=		compiler:c++11-lib gmake
 
 GH_ACCOUNT=	facebook
 USE_GITHUB=	yes
 
 BROKEN_DragonFly=	does not build on DragonFly BSD using GCC with -Werror
-BROKEN_sparc64=	cannot build: uses unknown compiler flags
 
 PROGRAMS=	db_bench db_repl_stress db_sanity_test db_stress ldb sst_dump table_reader_bench
 

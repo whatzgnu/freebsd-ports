@@ -3,7 +3,7 @@
 
 PORTNAME=	lldb
 PORTVERSION=	3.7
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	devel
 PKGNAMESUFFIX=	${LLVM_SUFFIX}
 
@@ -14,12 +14,6 @@ RUN_DEPENDS+=	lldb${LLVM_SUFFIX}:${PORTSDIR}/devel/llvm${LLVM_SUFFIX}
 
 LLVM_SUFFIX=	37
 
-USES=		metaport compiler:c++11-lib
+USES=		metaport
 
-.include <bsd.port.pre.mk>
-
-.if ${OPSYS} == "FreeBSD" && ${COMPILER_TYPE} != clang
-IGNORE=	The devel/llvm${LLVM_SUFFIX} port does not build lldb on this platform
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

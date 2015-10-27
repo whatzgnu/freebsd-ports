@@ -2,6 +2,7 @@
 
 PORTNAME=	wsjt
 DISTVERSION=	${VERSION}.r${SVN_REV}
+PORTREVISION=	12
 CATEGORIES=	comms hamradio
 MASTER_SITES=	LOCAL/db
 DISTNAME=	wsjt-r${SVN_REV}
@@ -15,12 +16,12 @@ LIB_DEPENDS=	libfftw3.so:${PORTSDIR}/math/fftw3 \
 		libfftw3f.so:${PORTSDIR}/math/fftw3-float \
 		libsamplerate.so:${PORTSDIR}/audio/libsamplerate \
 		libportaudio.so:${PORTSDIR}/audio/portaudio
-WSJT_DEPENDS=	${PYTHON_LIBDIR}/lib-dynload/_tkinter.so:${PORTSDIR}/x11-toolkits/py-tkinter \
+WSJT_DEPENDS=	${PYTHON_LIBDIR}/tkinter:${PORTSDIR}/x11-toolkits/py-tkinter \
 		${PYTHON_SITELIBDIR}/scipy:${PORTSDIR}/science/py-scipy \
 		${PYTHON_SITELIBDIR}/PIL:${PORTSDIR}/graphics/py-pillow \
 		${PYNUMPY}
 BUILD_DEPENDS=	${WSJT_DEPENDS}
-RUN_DEPENDS=	${LOCALBASE}/bin/kvasd:${PORTSDIR}/comms/kvasd \
+RUN_DEPENDS=	kvasd:${PORTSDIR}/comms/kvasd \
 		${WSJT_DEPENDS}
 
 USE_GCC=	yes
@@ -28,13 +29,15 @@ USES=		autoreconf fortran gmake python:3.3+ tar:bzip2
 SHEBANG_FILES=	${WRKSRC}/wsjt
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--prefix=${STAGEDIR}${LOCALBASE} \
+		--with-python=${PYTHON_CMD} \
+		--with-gfortran=${FC} \
 		--with-portaudio-include-dir=${LOCALBASE}/include \
 		--with-portaudio-lib-dir=${LOCALBASE}/lib
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 # Adding this breaks configure
 #LDFLAGS+=	-shared
-VERSION=	10
+VERSION=	9.1
 PLIST_SUB=	PYVER=${PYTHON_VERSION:S/python//} \
 		VERSION=${VERSION}
 

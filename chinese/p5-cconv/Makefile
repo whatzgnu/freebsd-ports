@@ -16,8 +16,9 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libcconv.so:${PORTSDIR}/chinese/cconv
 
+CFLAGS+=	-I${LOCALBASE}/include
 USE_PERL5=	configure
-USES=		localbase perl5
+USES=		perl5
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/cconv/cconv.so

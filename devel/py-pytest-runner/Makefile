@@ -12,7 +12,7 @@ COMMENT=	Test support for pytest runner in setup.py
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}hgtools>=0:${PORTSDIR}/devel/py-hgtools
 
-USES=		python zip
+USES=		python:2 zip
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

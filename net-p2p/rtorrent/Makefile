@@ -1,9 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	rtorrent
-PORTVERSION=	0.9.6
+PORTVERSION=	0.9.4
+PORTREVISION=	2
 CATEGORIES=	net-p2p
-MASTER_SITES=	http://rtorrent.net/downloads/
+MASTER_SITES=	http://libtorrent.rakshasa.no/downloads/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	BitTorrent Client written in C++
@@ -12,7 +13,7 @@ LICENSE=	GPLv2 # or later
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
-		libtorrent.so:${PORTSDIR}/net-p2p/libtorrent
+		libtorrent.so.18:${PORTSDIR}/net-p2p/libtorrent
 
 BROKEN_arm=	does not configure on arm
 

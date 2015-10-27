@@ -186,12 +186,6 @@ CONFIGURE_ARGS+=	--disable-video-x11 \
 			--disable-video-x11-vm
 .endif
 
-.include <bsd.port.pre.mk>
-
-.if !empty(ICONV_LIB)
-CONFIGURE_ARGS+=	ac_cv_lib_iconv_iconv_open=yes ac_cv_func_iconv=yes
-.endif
-
 post-patch:
 	 @${REINPLACE_CMD} -e '/ CheckInputEvents$$/d' \
 		-e 's/-liconv/${ICONV_LIB}/g' ${WRKSRC}/configure
@@ -199,4 +193,4 @@ post-patch:
 	@${REINPLACE_CMD} 's/_m_prefetch/__builtin_prefetch/' \
 		${WRKSRC}/configure ${WRKSRC}/src/video/SDL_blit_A.c
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

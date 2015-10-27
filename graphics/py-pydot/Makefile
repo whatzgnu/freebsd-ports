@@ -10,14 +10,13 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Python interface to the Graphviz Dot language
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}parsing>=0:${PORTSDIR}/devel/py-parsing
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}parsing>=0:${PORTSDIR}/devel/py-parsing \
 		dot:${PORTSDIR}/graphics/graphviz
 
 NO_ARCH=	yes
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 USES=		python
 
 GH_ACCOUNT=	erocarrera

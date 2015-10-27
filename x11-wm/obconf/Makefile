@@ -27,15 +27,23 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 PORTDOCS=	ABOUT-NLS AUTHORS README TODO
 
 OPTIONS_DEFINE=	DOCS NLS
-OPTIONS_SUB=	yes
 
-NLS_USES=		gettext
-NLS_CONFIGURE_ENABLE=	nls
+.include <bsd.port.options.mk>
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MNLS}
+USES+=		gettext
+PLIST_SUB+=		NLS=""
+.else
+CONFIGURE_ARGS+=	--disable-nls
+PLIST_SUB+=		NLS="@comment "
+.endif
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for file in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${file} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.mk>

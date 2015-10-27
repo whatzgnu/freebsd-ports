@@ -2,7 +2,7 @@
 
 PORTNAME=	qmake
 DISTVERSION=	${QT5_VERSION}
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	devel
 PKGNAMEPREFIX=	qt5-
 
@@ -10,8 +10,7 @@ MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt Makefile generator
 
 USE_QT5=	# empty
-USES=		pkgconfig shebangfix
-SHEBANG_FILES=	mkspecs/macx-ios-clang/rename_main.sh
+USES=		pkgconfig
 QT_DIST=	base
 REINPLACE_ARGS=	-i ""
 HAS_CONFIGURE=	yes

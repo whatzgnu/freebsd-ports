@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	cmdliner
-PORTVERSION=	0.9.8
+PORTVERSION=	0.9.7
 CATEGORIES=	devel
 MASTER_SITES=	http://erratique.ch/software/cmdliner/releases/
 PKGNAMEPREFIX=	ocaml-

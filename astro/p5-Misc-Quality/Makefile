@@ -12,7 +12,6 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Class for handling quality flags for astronomical objects
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

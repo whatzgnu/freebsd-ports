@@ -8,15 +8,14 @@ MASTER_SITES=	http://bitbucket.org/multicoreware/${PORTNAME}/get/
 DISTNAME=	${PORTVERSION}
 DIST_SUBDIR=	${PORTNAME}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	adamw@FreeBSD.org
 COMMENT=	H.265/High Efficiency Video Coding (HEVC) format
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/../COPYING
+LICENSE=	GPLv2
 
 BUILD_DEPENDS=	yasm:${PORTSDIR}/devel/yasm
 
-USES=		cmake tar:bz2
+USES=		tar:bz2 cmake
 USE_LDCONFIG=	yes
 
 WRKSRC=		${WRKDIR}/multicoreware-${PORTNAME}-8425278def1e/source

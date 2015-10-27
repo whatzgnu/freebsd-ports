@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	bacula
-DISTVERSION=	7.2.0
+DISTVERSION=	7.0.5
+PORTREVISION?=	4
 CATEGORIES?=	sysutils
 MASTER_SITES=	SF/bacula/bacula/${PORTVERSION}
 PKGNAMEPREFIX?=	#
@@ -174,6 +175,7 @@ post-patch:
 		${WRKSRC}/src/stored/Makefile.in \
 		${WRKSRC}/src/tools/Makefile.in
 .endif
+
 
 .if !target(post-install)
 post-install:

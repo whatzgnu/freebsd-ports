@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME?=	postgresql
-DISTVERSION?=	9.2.14
+DISTVERSION?=	9.2.13
+PORTREVISION?=	1
 CATEGORIES?=	databases
 MASTER_SITES=	PGSQL/source/v${DISTVERSION}
 PKGNAMESUFFIX?=	${DISTVERSION:R:S/.//}${COMPONENT}
@@ -73,7 +74,7 @@ CONFIGURE_ENV+=	PATH=${PREFIX}/bin:${PATH}
 .endif
 
 .if defined(SERVER_ONLY)
-OPTIONS_DEFINE=	DTRACE LDAP INTDATE TZDATA XML
+OPTIONS_DEFINE=	DTRACE LDAP INTDATE TZDATA
 LDAP_DESC=	Build with LDAP authentication support
 DTRACE_DESC=	Build with DTrace probes
 TZDATA_DESC=	Use internal timezone database
@@ -167,6 +168,9 @@ PATCH_DIST_STRIP=-p1
 .  if ${PORT_OPTIONS:MDTRACE}
 CONFIGURE_ARGS+=--enable-dtrace
 LDFLAGS+=-lelf
+.    if ${OSVERSION} < 900021
+IGNORE=	need userland DTrace support found in FreeBSD 9.0
+.    endif
 .  endif
 
 .if ${PORT_OPTIONS:MGSSAPI}

@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	libva-intel-driver
-PORTVERSION=	1.6.1
+PORTVERSION=	1.5.1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.freedesktop.org/software/vaapi/releases/${PORTNAME}/
 
-MAINTAINER=	madpilot@FreeBSD.org
+MAINTAINER=	manuel.creach@me.com
 COMMENT=	VAAPI intel driver
 
 LICENSE=	MIT

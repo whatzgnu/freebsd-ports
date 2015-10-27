@@ -20,7 +20,9 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ENV=	PYTHON=${LOCALBASE}/bin/${PYTHON_CMD} \
 		PREFIX=${PREFIX}
 
-SHEBANG_FILES=	examples/*.py examples/*/*.py test/*.py
+python_OLD_CMD?=	/usr/bin/env python
+python_CMD?=		${LOCALBASE}/bin/python2
+SHEBANG_FILES=		examples/*.py examples/*/*.py test/*.py
 
 post-install:
 	@cd ${STAGEDIR}${PREFIX} && ${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py \

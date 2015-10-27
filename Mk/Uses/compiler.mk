@@ -158,6 +158,10 @@ CPP=	${LOCALBASE}/bin/clang-cpp36
 CC=	${LOCALBASE}/bin/clang36
 CXX=	${LOCALBASE}/bin/clang++36
 CHOSEN_COMPILER_TYPE=	clang
+.if ${OSVERSION} < 900033
+USE_BINUTILS=	yes
+LDFLAGS+=	-B${LOCALBASE}/bin
+.endif
 .endif
 .endif
 .endif
@@ -180,6 +184,10 @@ CPP=	${LOCALBASE}/bin/clang-cpp34
 CC=	${LOCALBASE}/bin/clang34
 CXX=	${LOCALBASE}/bin/clang++34
 CHOSEN_COMPILER_TYPE=	clang
+.if ${OSVERSION} < 900033
+USE_BINUTILS=	yes
+LDFLAGS+=	-B${LOCALBASE}/bin
+.endif
 .endif
 .endif
 .endif
@@ -202,6 +210,10 @@ CHOSEN_COMPILER_TYPE=	clang
 CPP=	${LOCALBASE}/bin/clang-cpp34
 CC=	${LOCALBASE}/bin/clang34
 CXX=	${LOCALBASE}/bin/clang++34
+.if ${OSVERSION} < 900033
+USE_BINUTILS=	yes
+LDFLAGS+=	-B${LOCALBASE}/bin
+.endif
 .endif
 .endif
 .endif
@@ -224,6 +236,10 @@ CHOSEN_COMPILER_TYPE=	clang
 CPP=	${LOCALBASE}/bin/clang-cpp34
 CC=	${LOCALBASE}/bin/clang34
 CXX=	${LOCALBASE}/bin/clang++34
+.if ${OSVERSION} < 900033
+USE_BINUTILS=	yes
+LDFLAGS+=	-B${LOCALBASE}/bin
+.endif
 .endif
 .endif
 .endif

@@ -7,10 +7,11 @@ PORTREVISION=	2
 CATEGORIES=	misc
 MASTER_SITES=	http://0xcc.net/ttyrec/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	lippe@FreeBSD.org
 COMMENT=	Tty recorder
 
-LICENSE=	BSD4CLAUSE
+MANPAGE=	ttyplay.1 ttyrec.1
+BINS=		ttyplay ttyrec ttytime
 
 OPTIONS_DEFINE=	OPENPTY
 OPENPTY_DESC=	Use openpty instead
@@ -18,13 +19,19 @@ OPENPTY_DESC=	Use openpty instead
 PLIST_FILES=	bin/ttyplay bin/ttyrec bin/ttytime \
 		man/man1/ttyplay.1.gz man/man1/ttyrec.1.gz
 
-OPENPTY_CFLAGS=	-DHAVE_openpty -lutil
+.include <bsd.port.options.mk>
 
 post-patch:
-	@${REINPLACE_CMD} -e "s|^CC|#CC|g" -e "s|^CFLAGS|#CFLAGS|g" ${WRKSRC}/Makefile
+	@${REINPLACE_CMD} -e "s|^CC|#CC|g" -e "s|^CFLAGS|#CFLAGS|g" \
+		${WRKSRC}/Makefile
 
 do-install:
-	cd ${WRKSRC}/ && ${INSTALL_PROGRAM} ttyplay ttyrec ttytime ${STAGEDIR}${PREFIX}/bin/
-	cd ${WRKSRC}/ && ${INSTALL_MAN} ttyplay.1 ttyrec.1 ${STAGEDIR}${MANPREFIX}/man/man1/
+	${INSTALL_PROGRAM} ${BINS:S,^,${WRKSRC}/,} ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_MAN} ${MANPAGE:S,^,${WRKSRC}/,} \
+		${STAGEDIR}${MANPREFIX}/man/man1
+
+.if ${PORT_OPTIONS:MOPENPTY}
+CFLAGS+=	-DHAVE_openpty -lutil
+.endif
 
 .include <bsd.port.mk>

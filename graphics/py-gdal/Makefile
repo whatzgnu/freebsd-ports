@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
-PORTVERSION=	2.0.1
+PORTVERSION=	2.0.0
+PORTREVISION=	1
 CATEGORIES=	graphics python
 MASTER_SITES=	http://download.osgeo.org/gdal/${PORTVERSION}/ \
 		ftp://ftp.remotesensing.org/pub/gdal/${PORTVERSION}/ \
@@ -13,7 +14,6 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Python binding for GDAL
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/../../LICENSE.TXT
 
 LIB_DEPENDS=	libgdal.so:${PORTSDIR}/graphics/gdal
 
@@ -26,6 +26,7 @@ USES=		python shebangfix tar:xz
 WRKSRC=		${WRKDIR}/${DISTNAME}/swig/python
 
 SHEBANG_FILES=	scripts/*.py
+python_OLD_CMD=	/usr/bin/env python
 
 NUMPY_BUILD_DEPENDS=	${PKGNAMEPREFIX}numpy>=1.0.0:${PORTSDIR}/math/py-numpy
 NUMPY_RUN_DEPENDS=	${PKGNAMEPREFIX}numpy>=1.0.0:${PORTSDIR}/math/py-numpy

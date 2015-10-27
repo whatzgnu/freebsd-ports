@@ -9,9 +9,6 @@ MASTER_SITES=	ftp://ftp.dinoex.de/pub/FreeBSD/distfiles/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Web Based Email Client and Scheduler
 
-DEPRECATED=	Upstream vanished, php3 and php4 are long unsupported
-EXPIRATION_DATE=	2015-10-24
-
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 

@@ -9,7 +9,7 @@ MASTER_SITES=	http://registry.gimp.org/files/
 PKGNAMEPREFIX=	gimp-
 PKGNAMESUFFIX=	-plugin
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	lioux@FreeBSD.org
 COMMENT=	GIMP plugin to sharpen by increasing contrast in high frequency space
 
 LICENSE=	GPLv2

@@ -3,16 +3,17 @@
 
 PORTNAME=	lmms
 PORTVERSION=	0.4.15
-DISTVERSIONPREFIX=	v
-PORTREVISION=	5
+PORTREVISION=	4
 PORTEPOCH=	2
 CATEGORIES=	audio
+MASTER_SITES=	SF
 
 MAINTAINER=	rodrigo@FreeBSD.org
 COMMENT=	All-in-one sequencer, drum machine, sampler, and more
 
 LICENSE=	GPLv2
 
+BROKEN=		Unfetchable
 BUILD_DEPENDS=	${LOCALBASE}/include/ladspa.h:${PORTSDIR}/audio/ladspa
 LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac \
 		libfluidsynth.so:${PORTSDIR}/audio/fluidsynth \
@@ -24,7 +25,7 @@ LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac \
 RUN_DEPENDS=	${LOCALBASE}/share/ladspa/rdf/caps.rdf:${PORTSDIR}/audio/caps-plugins \
 		${LOCALBASE}/lib/ladspa/cmt.so:${PORTSDIR}/audio/cmt \
 		${LOCALBASE}/share/ladspa/rdf/swh-plugins.rdf:${PORTSDIR}/audio/swhplugins \
-		${LOCALBASE}/share/ladspa/rdf/tap-plugins.rdf:${PORTSDIR}/audio/tap-plugins
+		${LOCALBASE}/share/ladspa/rdf/tap-plugins.rdf:${PORTSDIR}/audio/tap-plugins \
 
 OPTIONS_DEFINE=	JACK PULSEAUDIO SDL
 
@@ -32,9 +33,7 @@ USE_LDCONFIG=	yes
 USE_XORG=	xft
 USE_QT4=	corelib gui xml moc_build uic_build rcc_build \
 		qmake_build
-USE_GITHUB=	yes
-GH_ACCOUNT=	LMMS
-USES=		cmake desktop-file-utils dos2unix pkgconfig shared-mime-info
+USES=		cmake pkgconfig tar:bzip2 desktop-file-utils shared-mime-info dos2unix
 CMAKE_ARGS=	-DWANT_ALSA:BOOL=OFF \
 		-DWANT_CALF:BOOL=OFF \
 		-DWANT_CAPS:BOOL=OFF \
@@ -44,7 +43,6 @@ CMAKE_ARGS=	-DWANT_ALSA:BOOL=OFF \
 		-DWANT_TAP:BOOL=OFF \
 		-DWANT_VST:BOOL=OFF \
 		-DHAVE_STRTOLL=ON
-
 DOS2UNIX_FILES=	plugins/midi_import/portsmf/allegrowr.cpp plugins/midi_import/portsmf/mfmidi.cpp CMakeLists.txt
 
 JACK_LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack
@@ -81,5 +79,6 @@ post-install:
 		${STAGEDIR}${PREFIX}/share/pixmaps/lmms.png
 	# make it setuid-root to be able to set realtime priority
 	# (root privileges are dropped in the main routine)
+	${CHMOD} u+s ${STAGEDIR}${PREFIX}/bin/lmms
 
 .include <bsd.port.mk>

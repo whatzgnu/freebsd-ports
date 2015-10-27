@@ -3,7 +3,6 @@
 
 PORTNAME=	libtermkey
 PORTVERSION=	0.17
-PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://www.leonerd.org.uk/code/libtermkey/
 
@@ -15,9 +14,8 @@ LICENSE=	MIT
 USES=		gmake libtool:build
 LIB_DEPENDS=	libunibilium.so:${PORTSDIR}/devel/unibilium
 USE_LDCONFIG=	yes
-MAKE_ARGS=	MANDIR=${MANPREFIX}/man
 
-post-patch:
+pre-build:
 	${REINPLACE_CMD} -e 's|$$(LIBDIR)/pkgconfig|${PREFIX}/libdata/pkgconfig|g' ${WRKSRC}/Makefile
 
 post-stage:

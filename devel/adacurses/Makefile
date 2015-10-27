@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	adacurses
-PORTVERSION=	20150808
+PORTVERSION=	20110404
+PORTREVISION=	3
 CATEGORIES=	devel
 MASTER_SITES=	ftp://invisible-island.net/AdaCurses/
 DISTNAME=	AdaCurses-${PORTVERSION}
@@ -18,8 +19,6 @@ CONFIGURE_ARGS=	--with-ada-include=${PREFIX}/include/adacurses \
 		--with-ada-objects=${PREFIX}/lib/adacurses \
 		--libdir=${PREFIX}/lib/adacurses \
 		--enable-widec
-PORTDOCS=	ada Ada95.html
-PLIST_SUB=	atic=adacurses/terminal_interface-curses
 
 OPTIONS_DEFINE=	DOCS
 
@@ -38,8 +37,8 @@ USES+=	ncurses
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} -e '/(INSTALL_PROG)/d' -e 's|@ADAGEN_LDFLAGS@||' \
-		${WRKSRC}/gen/Makefile.in
+	@${REINPLACE_CMD} -e 's|#if A|#ifdef A|g' ${WRKSRC}/gen/gen.c
+	@${REINPLACE_CMD} -e '/(INSTALL_PROG)/d' ${WRKSRC}/gen/Makefile.in
 
 post-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/gen/adacurses-config \
@@ -49,7 +48,9 @@ post-install:
 		${STAGEDIR}${PREFIX}/lib/gnat/adacurses.gpr
 .if ${PORT_OPTIONS:MDOCS}
 	(cd ${WRKSRC}/doc && ${SETENV} ${MAKE_ENV} \
-		${MAKE_CMD} ${MAKE_ARGS} THIS=${PORTNAME} install.html)
+		${MAKE_CMD} ${MAKE_ARGS} install.html)
+.else
+	${RM} ${STAGEDIR}${PREFIX}/man/man1/adacurses-config.1
 .endif
 
 .include <bsd.port.mk>

@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	typetools
-PORTVERSION=	2.105
+PORTVERSION=	2.104
 CATEGORIES=	print
 MASTER_SITES=	http://www.lcdf.org/type/
 DISTNAME=	lcdf-${PORTNAME}-${PORTVERSION}
 
-MAINTAINER=	bofh@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tools for manipulating fonts
 
 LICENSE=	GPLv2

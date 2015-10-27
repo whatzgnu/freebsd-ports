@@ -28,7 +28,7 @@ POD2MAN?=	pod2man
 
 PLIST_FILES=	bin/${PORTNAME} \
 		"@sample etc/${PORTNAME}.conf.sample" \
-		${SITE_MAN1}/${PORTNAME}.1.gz
+		man/man1/${PORTNAME}.1.gz
 
 .include <bsd.port.options.mk>
 

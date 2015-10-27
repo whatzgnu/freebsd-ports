@@ -16,10 +16,18 @@ OPTIONS_DEFAULT=	SQLITE3
 MONGO_DESC=	mongo backend support
 SQLITE3_DESC=	sqlite3 backend support
 
-MONGO_RUN_DEPENDS=	rubygem-mongo>=0:${PORTSDIR}/devel/rubygem-mongo
-SQLITE3_RUN_DEPENDS=	rubygem-sqlite3>=0:${PORTSDIR}/databases/rubygem-sqlite3
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MSQLITE3}
+RUN_DEPENDS+=	rubygem-sqlite3>=0:${PORTSDIR}/databases/rubygem-sqlite3
+.endif
+
+.if ${PORT_OPTIONS:MMONGO}
+RUN_DEPENDS+=	rubygem-mongo>=0:${PORTSDIR}/devel/rubygem-mongo
+.endif
 
 NO_ARCH=	yes
+
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

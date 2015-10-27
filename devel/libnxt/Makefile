@@ -10,12 +10,11 @@ MASTER_SITES=	GOOGLE_CODE \
 MAINTAINER=	jwbacon@tds.net
 COMMENT=	Lego NXT library
 
-BUILD_DEPENDS=	scons:${PORTSDIR}/devel/scons
+BUILD_DEPENDS=	scons:${PORTSDIR}/devel/scons \
+		python:${PORTSDIR}/lang/python
 
 SUB_FILES=	pkg-message
-USES=		python:build shebangfix
 USE_LDCONFIG=	yes
-SHEBANG_FILES=	make_flash_header.py
 
 do-build:
 	(cd ${WRKSRC}; scons)

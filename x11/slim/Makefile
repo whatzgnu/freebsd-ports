@@ -3,7 +3,7 @@
 
 PORTNAME=	slim
 PORTVERSION=	1.3.6
-PORTREVISION=	10
+PORTREVISION=	9
 CATEGORIES=	x11
 MASTER_SITES=	ftp://ftp.berlios.de/pub/slim/ \
 		SF/slim.berlios
@@ -32,22 +32,33 @@ CMAKE_ARGS=	-DUSE_CONSOLEKIT=yes \
 
 OPTIONS_DEFINE=		PAM UTF8 CONSOLEKIT
 OPTIONS_DEFAULT=	PAM CONSOLEKIT
-OPTIONS_SUB=	yes
 
 UTF8_DESC=	Support UTF-8 characters
 CONSOLEKIT_DESC=Enable support for consolekit
 
 PLIST_SUB+=	VERSION="${PORTVERSION}"
 
-PAM_CMAKE_ON=	-DUSE_PAM=yes
-PAM_CMAKE_OFF=	-DUSE_PAM=no
+.include <bsd.port.options.mk>
 
+.if ${PORT_OPTIONS:MPAM}
+CMAKE_ARGS+=	-DUSE_PAM=yes
+PLIST_SUB+=	PAM=""
+.else
+CMAKE_ARGS+=	-DUSE_PAM=no
+PLIST_SUB+=	PAM="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MUTF8}
 # patch taken from slim-unicode in Arch User Repository
-UTF8_EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-utf8
+EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-utf8
+.endif
 
-CONSOLEKIT_CMAKE_ON=	-DUSE_CONSOLEKIT=yes
-CONSOLEKIT_LIB_DEPENDS=	libck-connector.so:${PORTSDIR}/sysutils/consolekit
-CONSOLEKIT_CMAKE_OFF=	-DUSE_CONSOLEKIT=no
+.if ${PORT_OPTIONS:MCONSOLEKIT}
+CMAKE_ARGS+=	-DUSE_CONSOLEKIT=yes
+LIB_DEPENDS+=	libck-connector.so:${PORTSDIR}/sysutils/consolekit
+.else
+CMAKE_ARGS+=	-DUSE_CONSOLEKIT=no
+.endif
 
 post-patch:
 	@${CP} ${WRKSRC}/slim.conf ${WRKSRC}/slim.conf.sample
@@ -56,7 +67,9 @@ post-patch:
 	@${REINPLACE_CMD} -e 's,%%PREFIX%%,${PREFIX},' \
 		${WRKSRC}/slim.1
 
-post-install-PAM-on:
-	${INSTALL_DATA} ${FILESDIR}/pam.conf ${STAGEDIR}${PREFIX}/etc/pam.d/slim.sample
+post-install:
+.	if ${PORT_OPTIONS:MPAM}
+	${INSTALL_DATA} ${FILESDIR}/pam.conf ${STAGEDIR}${PREFIX}/etc/pam.d/slim.default
+.	endif
 
 .include <bsd.port.mk>

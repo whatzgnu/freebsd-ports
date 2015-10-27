@@ -30,8 +30,13 @@ BASH_CONFIGURE_OFF=	--without-bash-completion
 EMACS_CONFIGURE_OFF=	--without-emacs
 EMACS_CONFIGURE_ON=	--emacslispdir=${PREFIX}/${EMACS_SITE_LISPDIR} \
 			--emacsetcdir=${PREFIX}/${EMACS_SITE_LISPDIR}
-EMACS_USE=		EMACS=yes
 ZSH_CONFIGURE_OFF=	--without-zsh-completion
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MEMACS}
+USE_EMACS=	yes
+.endif
 
 HAS_CONFIGURE=	yes
 USES=		gmake pkgconfig python:build
@@ -44,4 +49,10 @@ post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/notmuch
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libnotmuch.so.4.2.0
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} < 900044
+IGNORE=	requires zlib at least 1.2.5
+.endif
+
+.include <bsd.port.post.mk>

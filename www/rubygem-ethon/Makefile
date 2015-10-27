@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ethon
-PORTVERSION=	0.8.0
+PORTVERSION=	0.7.4
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 

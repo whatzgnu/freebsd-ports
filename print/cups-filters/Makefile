@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	cups-filters
-PORTVERSION=	1.0.76
+PORTVERSION=	1.0.71
+PORTREVISION=	2
 CATEGORIES=	print
 MASTER_SITES=	http://www.openprinting.org/download/cups-filters/
 
@@ -22,6 +23,7 @@ LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
 		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
 		libpoppler.so:${PORTSDIR}/graphics/poppler
 
+MAKE_JOBS_UNSAFE=YES
 USES=		compiler:c++11-lib cpe ghostscript jpeg libtool pathfix \
 		pkgconfig shebangfix tar:xz
 CPE_VENDOR=	linuxfoundation

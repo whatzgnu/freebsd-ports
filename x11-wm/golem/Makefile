@@ -12,34 +12,52 @@ COMMENT=	Small window manager with themes and plugins
 
 LICENSE=	BSD3CLAUSE
 
-USES=		gmake perl5 tar:bzip2
+OPTIONS_DEFINE=	ESOUND XINERAMA
+OPTIONS_DEFAULT=	XINERAMA
+
+USES=		perl5 gmake tar:bzip2
 USE_PERL5=	build
 USE_XORG=	xpm
+WANT_GNOME=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-i18n
 MAKE_ARGS=	DEVEL=1
 
-CFLAGS_amd64=	-fPIC
+.include <bsd.port.pre.mk>
 
-OPTIONS_DEFINE=	ESOUND XINERAMA
-OPTIONS_DEFAULT=	XINERAMA
-OPTIONS_SUB=	yes
+.if ${ARCH} == "amd64" || ${ARCH} == "ia64"
+CFLAGS+=	-fPIC
+.endif
+.if ${ARCH} == "ia64" || ${ARCH} == "powerpc" || ${ARCH} == "sparc64"
+BROKEN=		Does not compile on ia64, powerpc, or sparc64
+.endif
 
-ESOUND_USE=	GNOME=esound
-ESOUND_CONFIGURE_ON=	--enable-sound
+.if ${PORT_OPTIONS:MESOUND}
+USE_GNOME+=	esound
+CONFIGURE_ARGS+=--enable-sound
+PLIST_SUB+=	ESOUND=""
+.else
+PLIST_SUB+=	ESOUND="@comment "
+.endif
 
-XINERAMA_USE=	XORG=xinerama
-XINERAMA_CONFIGURE_ON=	--enable-xinerama
+.if ${PORT_OPTIONS:MXINERAMA}
+USE_XORG+=	xinerama
+CONFIGURE_ARGS+=--enable-xinerama
+.endif
 
 post-patch:
-	@${REINPLACE_CMD} -e '/cl_thread\.c/d' ${WRKSRC}/complib/user/Makefile
-	@${REINPLACE_CMD} -e 's,^#include.*,typedef struct { \
-		int counter; } atomic_t;,' \
-			${WRKSRC}/complib/asm-generic/cl_atomic_asm.h \
-			${WRKSRC}/complib/asm-ppc/cl_atomic_asm.h
+	@${REINPLACE_CMD} -e \
+		'/cl_thread.c/d' ${WRKSRC}/complib/user/Makefile
 
-post-install:
+# avoid using standard MAKE_ENV
+do-build:
+	@cd ${BUILD_WRKSRC}; \
+		${MAKE_CMD} ${MAKE_FLAGS} ${MAKEFILE} ${MAKE_ARGS} ${ALL_TARGET}
+
+do-install:
+	@cd ${INSTALL_WRKSRC}; \
+		${MAKE_CMD} ${MAKE_FLAGS} ${MAKEFILE} ${MAKE_ARGS} ${INSTALL_TARGET}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/golem
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/golem/plugins/*.so
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

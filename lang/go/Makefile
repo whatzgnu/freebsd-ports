@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	go
-PORTVERSION=	1.5.1
+PORTVERSION=	1.5
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	lang
 MASTER_SITES=	http://golang.org/dl/
@@ -21,7 +22,7 @@ SHEBANG_FILES=	${WRKSRC}/src/*.bash \
 		${WRKSRC}/doc/articles/wiki/*.bash \
 		${WRKSRC}/test/bench/shootout/timing.sh
 
-sh_OLD_CMD=	"/usr/bin/env bash"
+sh_OLD_CMD=	${SETENV} bash
 sh_CMD=		${SH}
 
 WRKSRC=		${WRKDIR}/go
@@ -39,9 +40,9 @@ GOARCH=arm
 IGNORE=		unknown arch ${ARCH}
 .endif
 
-PLIST_SUB+=	opsys_ARCH=${OPSYS:tl}_${GOARCH}
+PLIST_SUB+=	ARCH=${GOARCH}
 
-.if ${OPSYS} == FreeBSD && (${OSVERSION} >= 1100000)
+.if (${OSVERSION} >= 1100000)
 EXTRA_PATCHES+=	${FILESDIR}/struct-if_data-patch
 .endif
 

@@ -3,7 +3,7 @@
 
 PORTNAME=	scrypt
 PORTVERSION=	1.2
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	security pear
 MASTER_SITES=	http://pecl.php.net/get/
 PKGNAMEPREFIX=	pecl-
@@ -17,26 +17,23 @@ USES=		compiler tar:tgz
 USE_PHP=	hash
 USE_PHPEXT=	yes
 USE_PHP_BUILD=	yes
-INSTALL_TARGET=	install-strip
 
 DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	README.md
 
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
-PORTEXAMPLES=	scrypt.php
+OPTIONS_DEFINE=	DOCS
+OPTIONS_DEFAULT=STACKPROTECTOR
 
-TESTDIR=	${PREFIX}/tests/${PKGNAMEPREFIX}${PORTNAME}
-PORTTEST=	run-tests.php tests/params.phpt tests/vectors.phpt
+OPTIONS_RADIO=	BUFFER_OVERFLOW_PROTECTION
+OPTIONS_RADIO_BUFFER_OVERFLOW_PROTECTION=	STACKPROTECTOR STACKPROTECTORALL
 
-OPTIONS_DEFINE=	DOCS EXAMPLES TEST
+STACKPROTECTOR_DESC=	Protect functions with vulnerable objects
+STACKPROTECTORALL_DESC=	Protect all functions
 
-TEST_PLIST_FILES=	${PORTTEST:S|^|${TESTDIR:S|${PREFIX}/||:S|$|/|}|}
+STACKPROTECTOR_CFLAGS=	-fstack-protector
+STACKPROTECTORALL_CFLAGS=	-fstack-protector-all
 
 .include <bsd.port.pre.mk>
-
-.if ${ARCH} == i386 && ${OSVERSION} < 1000036
-CFLAGS+=	-fstack-protector
-.endif
 
 .if ${ARCH} != amd64 && ${COMPILER_TYPE} == gcc
 post-patch:
@@ -44,16 +41,9 @@ post-patch:
 .endif
 
 post-install:
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/php/${PHP_EXT_DIR}/${PORTNAME}.so
+
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
-
-	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	${INSTALL_DATA} ${PORTEXAMPLES:S|^|${WRKSRC}/|} ${STAGEDIR}${EXAMPLESDIR}
-
-.if ${PORT_OPTIONS:MTEST}
-	@${MKDIR} ${STAGEDIR}${TESTDIR}
-	${INSTALL_DATA} ${PORTTEST:M*.php:S|^|${WRKSRC}/|} ${STAGEDIR}${TESTDIR}
-	(cd ${WRKSRC} && ${COPYTREE_SHARE} tests ${STAGEDIR}${TESTDIR})
-.endif
 
 .include <bsd.port.post.mk>

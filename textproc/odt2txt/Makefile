@@ -10,9 +10,10 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Simple converter from OpenDocument Text to plain text
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/GPL-2
 
-USES=		gmake iconv localbase
+CPPFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
+USES=		gmake iconv
 
 PLIST_FILES=	bin/odt2txt man/man1/odt2txt.1.gz
 

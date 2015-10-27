@@ -3,7 +3,6 @@
 
 PORTNAME=	nut
 PORTVERSION=	2.7.3
-PORTREVISION=	3
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.networkupstools.org/source/${PORTVERSION:R}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${DISTNAME}${EXTRACT_SUFX}.sig
@@ -124,7 +123,6 @@ PLIST_SUB+=	NUT_PDU="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MBASH}
-BUILD_DEPENDS+=	${LOCALBASE}/share/bash-completion/bash_completion.sh:${PORTSDIR}/shells/bash-completion
 RUN_DEPENDS+=	${LOCALBASE}/share/bash-completion/bash_completion.sh:${PORTSDIR}/shells/bash-completion
 PLIST_SUB+=	BASH=""
 .else
@@ -133,7 +131,6 @@ PLIST_SUB+=	BASH="@comment "
 
 .if ${PORT_OPTIONS:MAVAHI}
 BUILD_DEPENDS+=	${LOCALBASE}/include/avahi-ui/avahi-ui.h:${PORTSDIR}/net/avahi-header
-BUILD_DEPENDS+=	avahi-daemon:${PORTSDIR}/net/avahi-app
 RUN_DEPENDS+=	avahi-daemon:${PORTSDIR}/net/avahi-app
 CONFIGURE_ARGS+=	--with-avahi
 .else
@@ -150,7 +147,6 @@ PLIST_SUB+=	NUT_FREEIPMI="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MIPMIPSU}
-LIB_DEPENDS+=	libfreeipmi.so:${PORTSDIR}/sysutils/freeipmi
 CONFIGURE_ARGS+=	--with-ipmi
 PLIST_SUB+=	NUT_IPMIPSU=""
 .else
@@ -169,9 +165,8 @@ pre-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/libexec/nut
 	@${REINPLACE_CMD} -e 's/device-name\*/cdev/g' ${WRKSRC}/scripts/devd/nut-usb.conf
 
-post-install:
-	@${MKDIR} ${STAGEDIR}${STATEDIR}
 .if ${PORT_OPTIONS:MDOCS}
+post-install:
 .if ${PORT_OPTIONS:MBASH}
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d/
 	${INSTALL_DATA} ${WRKSRC}/scripts/misc/nut.bash_completion ${STAGEDIR}${PREFIX}/etc/bash_completion.d/

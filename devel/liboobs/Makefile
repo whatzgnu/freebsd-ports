@@ -25,4 +25,14 @@ CONFIGURE_ARGS=	--with-hal
 CPPFLAGS+=	-I${LOCALBASE}/include
 INSTALL_TARGET=	install-strip
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+# disable utmpx detection on early 9.x and below.
+# We still have only utmp there
+post-patch:
+.if ${OSVERSION} < 900007
+	@${REINPLACE_CMD} -e 's|utmpx|utmp|g' \
+		${WRKSRC}/configure
+.endif
+
+.include <bsd.port.post.mk>

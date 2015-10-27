@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	urllib3
-PORTVERSION=	1.12
+PORTVERSION=	1.11
 CATEGORIES=	net python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -17,7 +17,6 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}certifi>=0:${PORTSDIR}/security/py-certifi
 
 USES=	python
 USE_PYTHON=	distutils autoplist
-NO_ARCH=	yes
 
 .include <bsd.port.pre.mk>
 

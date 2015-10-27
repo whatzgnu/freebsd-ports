@@ -6,13 +6,12 @@ DISTVERSION=	1.10.0
 PORTREVISION=	6
 CATEGORIES=	graphics
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	VIGRA stands for "Vision with Generic Algorithms"
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-USE_GITHUB=	yes
+USE_GITHUB=
 GH_ACCOUNT=     ukoethe
 GH_TAGNAME=     e6c21f3
 

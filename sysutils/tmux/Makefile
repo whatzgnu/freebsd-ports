@@ -3,10 +3,9 @@
 
 PORTNAME=	tmux
 PORTVERSION=	2.0
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	sysutils
-MASTER_SITES=	https://github.com/tmux/tmux/releases/download/${PORTVERSION}/ \
-		SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION:S/a$//}
+MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION:S/a$//}
 
 MAINTAINER=	mat@FreeBSD.org
 COMMENT=	Terminal Multiplexer
@@ -36,14 +35,24 @@ BACKSPACE_EXTRA_PATCHES=	${PATCHDIR}/extra-patch-tty-keys.c
 
 LIBEVENT_STATIC_LIB_DEPENDS_OFF=	libevent.so:${PORTSDIR}/devel/libevent2
 LIBEVENT_STATIC_BUILD_DEPENDS=	${LOCALBASE}/lib/libevent.a:${PORTSDIR}/devel/libevent2
-LIBEVENT_STATIC_VARS=	LESTATIC=${LOCALBASE}/lib/libevent.a
+
+.include <bsd.port.options.mk>
+
+.if ${OSVERSION} < 900004
+LIB_DEPENDS+=   libutempter.so:${PORTSDIR}/sysutils/libutempter
+CFLAGS+=        -I${LOCALBASE}/include
+LDFLAGS+=       -L${LOCALBASE}/lib
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/etc/tmux.conf|${PREFIX}/etc/tmux.conf|g' ${WRKSRC}/CHANGES
 
-post-configure-LIBEVENT_STATIC-on:
+.if ${PORT_OPTIONS:MLIBEVENT_STATIC}
+LESTATIC=	${LOCALBASE}/lib/libevent.a
+post-configure:
 	${REINPLACE_CMD} -e '/LIBS/s|-levent[^[:blank:]]*|${LESTATIC}|' \
 		${WRKSRC}/${MAKEFILE}
+.endif
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/tmux ${STAGEDIR}${PREFIX}/bin

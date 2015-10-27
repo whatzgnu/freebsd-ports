@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	wxlauncher
-PORTVERSION=	0.10.0
+PORTVERSION=	0.9.6
 DISTVERSIONPREFIX=	release-
+PORTREVISION=	2
 CATEGORIES=	games
 
 MAINTAINER=	lightside@gmx.com
@@ -16,11 +17,11 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}markdown>0:${PORTSDIR}/textproc/py-markdow
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	scp-fs2open
-GH_PROJECT=	wxLauncher
+GH_ACCOUNT=	wxLauncher
 
-USES=		cmake:outsource openal pkgconfig python:2,build
-USE_SDL=	sdl2
+USES=		cmake:outsource openal python:2,build
+USE_SDL=	sdl
+WX_UNICODE=	yes
 CMAKE_ARGS+=	-DRESOURCES_PATH:STRING="${DATADIR}"
 
 PORTDATA=	*
@@ -44,13 +45,20 @@ WX3_CXXFLAGS=	-std=c++11
 WX3_USES=	compiler:c++11-lib
 WX3_USE=	WX=3.0+
 WX3_USE_OFF=	WX=2.8
-WX3_CMAKE_ON=	-DWXVER:STRING="3.0"
-WX3_CMAKE_OFF=	-DWXVER:STRING="2.8"
+
+.include <bsd.port.options.mk>
+
+# Allow to build with using concrete wxWidgets version
+.if ${PORT_OPTIONS:MWX3}
+SED_RE_WX3=	wxWidgets 2\./,+1d
+.else
+SED_RE_WX3=	NOT wxWidgets_FOUND/,+3d
+.endif
 
 post-patch: .SILENT
 # Change version_strings.cpp.in file, based on GH_TAGNAME, without using git
 	${REINPLACE_CMD} -e '/find_program(GIT_EXECUTABLE/d ; \
-		/version_strings.cpp will be generated/d' \
+		/version_strings.cpp will be generated/d ; /${SED_RE_WX3}' \
 		${WRKSRC}/CMakeLists.txt
 	${REINPLACE_CMD} -e 's|123456789abc+ unknown custom tip|${GH_TAGNAME}|' \
 		${WRKSRC}/code/global/version_strings.cpp.in

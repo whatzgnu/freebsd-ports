@@ -2,19 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	xfstt
-PORTVERSION=	1.9.2
+PORTVERSION=	1.9.1
+PORTREVISION=	1
 CATEGORIES=	x11-servers
-MASTER_SITES=	http://archive.hadrons.org/software/xfstt/ \
-		http://www.skysmurf.nl/comp/FreeBSD/distfiles/
+MASTER_SITES=	http://archive.hadrons.org/software/xfstt/
 
-MAINTAINER=	freebsd@skysmurf.nl
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	TrueType font server for X11
-
-LICENSE=	GPLv2
 
 OPTIONS_DEFINE=	DOCS
 
-USES=		pkgconfig tar:xz
+USES=		tar:xz pkgconfig
 USE_XORG=	fontsproto xproto
 USE_RC_SUBR=	xfstt
 GNU_CONFIGURE=	yes

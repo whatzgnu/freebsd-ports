@@ -2,23 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	ghmm
-DISTVERSION=	0.9-rc3
+PORTVERSION=	0.7.0b
+PORTREVISION=	1
 CATEGORIES=	science math
-MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}%20${DISTVERSION}
+MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}%20${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	General Hidden Markov Model Library in C
 
-LICENSE=	GPLv3
-
-#BUILD_DEPENDS=	swig:${PORTSDIR}/devel/swig13
-
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-USE_GNOME=	libxml2
-USES=		autoreconf libtool pkgconfig
-CONFIGURE_ARGS+=	--without-python
-
+USES=		libtool
 USE_LDCONFIG=	yes
+WRKSRC=	${WRKDIR}/${PORTNAME}-0.7.0
+
+post-patch:
+	@${REINPLACE_CMD} 's|tests doc VisualC|tests VisualC|' ${WRKSRC}/configure
 
 .include <bsd.port.mk>

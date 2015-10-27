@@ -25,7 +25,11 @@ CONFIGURE_ARGS+=	--with-db-prefix=${LOCALBASE} \
 			--program-prefix=n
 CONFIGURE_SCRIPT=	../dist/configure
 
-WIDECHAR_CONFIGURE_ON=	--enable-widechar
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MWIDECHAR}
+CONFIGURE_ARGS+=	--enable-widechar
+.endif
 
 CPPFLAGS+=		-I${BDB_INCLUDE_DIR} -I${LOCALBASE}/include
 LDFLAGS+=		-L${BDB_LIB_DIR} -L${LOCALBASE}/lib
@@ -37,8 +41,5 @@ post-patch:
 	@${REINPLACE_CMD} -e 's,-ldb,-l${BDB_LIB_NAME},g' \
 		${WRKSRC}/../dist/configure
 	@${CHMOD} 755 ${WRKSRC}/../dist/configure
-
-post-install:
-	@${RM} ${STAGEDIR}${PREFIX}/man/cat1/*.0
 
 .include <bsd.port.mk>

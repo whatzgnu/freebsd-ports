@@ -42,15 +42,12 @@ IGNORE=	Incorrect 'USES+=perl5:${perl5_ARGS}' perl5 takes no arguments
 
 USE_PERL5?=	run build
 
-# remove when 5.20 goes away.
-.if !defined(_PORTS_ENV_CHECK)
+.if exists(${LOCALBASE}/bin/perl5)
 .sinclude "${LOCALBASE}/etc/perl5_version"
+.if !defined(PERL_VERSION)
+PERL_VERSION!=	perl -e 'printf "%vd\n", $$^V;'
 .endif
-.if defined(PERL_VERSION)
-PERL5_DEPEND=	${PERL5}
-THIS_IS_OLD_PERL=	yes
 .else
-# end of remove
 .include "${PORTSDIR}/Mk/bsd.default-versions.mk"
 .if ${PERL5_DEFAULT} == 5.16
 .include "${PORTSDIR}/lang/perl5.16/version.mk"
@@ -108,12 +105,6 @@ SITE_ARCH_REL?=	${SITE_PERL_REL}/${PERL_ARCH}/${PERL_VER}
 SITE_ARCH?=	${LOCALBASE}/${SITE_ARCH_REL}
 SITE_MAN3_REL?=	${SITE_PERL_REL}/man/man3
 SITE_MAN3?=	${PREFIX}/${SITE_MAN3_REL}
-.if defined(THIS_IS_OLD_PERL)
-SITE_MAN1_REL?=	share/man/man1
-.else
-SITE_MAN1_REL?=	${SITE_PERL_REL}/man/man1
-.endif
-SITE_MAN1?=	${PREFIX}/${SITE_MAN1_REL}
 
 PERL5=		${LOCALBASE}/bin/perl${PERL_VERSION}
 PERL=		${LOCALBASE}/bin/perl
@@ -174,7 +165,6 @@ _INCLUDE_USES_PERL5_POST_MK=	yes
 
 PLIST_SUB+=	PERL_VERSION=${PERL_VERSION} \
 		PERL_VER=${PERL_VER} \
-		PERL5_MAN1=${SITE_MAN1_REL} \
 		PERL5_MAN3=${SITE_MAN3_REL} \
 		SITE_PERL=${SITE_PERL_REL} \
 		SITE_ARCH=${SITE_ARCH_REL}
@@ -228,19 +218,19 @@ CONFIGURE_ENV+=	PERL_MM_USE_DEFAULT="YES"
 .endif # configure
 
 .if ${_USE_PERL5:Mextract}
-EXTRACT_DEPENDS+=	${PERL5_DEPEND}:${PORTSDIR}/lang/${PERL_PORT}
+EXTRACT_DEPENDS+=	${PERL5}:${PORTSDIR}/lang/${PERL_PORT}
 .endif
 
 .if ${_USE_PERL5:Mpatch}
-PATCH_DEPENDS+=		${PERL5_DEPEND}:${PORTSDIR}/lang/${PERL_PORT}
+PATCH_DEPENDS+=		${PERL5}:${PORTSDIR}/lang/${PERL_PORT}
 .endif
 
 .if ${_USE_PERL5:Mbuild}
-BUILD_DEPENDS+=		${PERL5_DEPEND}:${PORTSDIR}/lang/${PERL_PORT}
+BUILD_DEPENDS+=		${PERL5}:${PORTSDIR}/lang/${PERL_PORT}
 .endif
 
 .if ${_USE_PERL5:Mrun}
-RUN_DEPENDS+=		${PERL5_DEPEND}:${PORTSDIR}/lang/${PERL_PORT}
+RUN_DEPENDS+=		${PERL5}:${PORTSDIR}/lang/${PERL_PORT}
 .endif
 
 .if ${_USE_PERL5:Mconfigure}
@@ -248,9 +238,6 @@ CONFIGURE_ARGS+=	CC="${CC}" CCFLAGS="${CFLAGS}" PREFIX="${PREFIX}" \
 			INSTALLPRIVLIB="${PREFIX}/lib" INSTALLARCHLIB="${PREFIX}/lib"
 CONFIGURE_SCRIPT?=	Makefile.PL
 MAN3PREFIX?=		${PREFIX}/${SITE_PERL_REL}
-.if !defined(THIS_IS_OLD_PERL)
-MAN1PREFIX?=		${PREFIX}/${SITE_PERL_REL}
-.endif
 .undef HAS_CONFIGURE
 
 .if !target(do-configure)
@@ -310,14 +297,19 @@ fix-perl-things:
 	@${RM} -f ${STAGEDIR}${PREFIX}/lib/perl5/${PERL_VER}/${PERL_ARCH}/perllocal.pod* || :
 	@${RMDIR} -p ${STAGEDIR}${PREFIX}/lib/perl5/${PERL_VER}/${PERL_ARCH} 2>/dev/null || :
 
-.if !target(do-test) && (!empty(USE_PERL5:Mmodbuild*) || !empty(USE_PERL5:Mconfigure))
+.if !target(regression-test)
+TEST_ARGS?=	${MAKE_ARGS}
+TEST_ENV?=	${MAKE_ENV}
 TEST_TARGET?=	test
 TEST_WRKSRC?=	${BUILD_WRKSRC}
-do-test:
+.if !target(test)
+test: regression-test
+.endif # test
+regression-test: build
 .if ${USE_PERL5:Mmodbuild*}
-	cd ${TEST_WRKSRC}/ && ${SETENV} ${TEST_ENV} ${PERL5} ${PL_BUILD} ${TEST_TARGET} ${TEST_ARGS}
+	-cd ${TEST_WRKSRC}/ && ${SETENV} ${TEST_ENV} ${PERL5} ${PL_BUILD} ${TEST_TARGET} ${TEST_ARGS}
 .elif ${USE_PERL5:Mconfigure}
-	cd ${TEST_WRKSRC}/ && ${SETENV} ${TEST_ENV} ${MAKE_CMD} ${TEST_ARGS} ${TEST_TARGET}
+	-cd ${TEST_WRKSRC}/ && ${SETENV} ${TEST_ENV} ${MAKE_CMD} ${TEST_ARGS} ${TEST_TARGET}
 .endif # USE_PERL5:Mmodbuild*
-.endif # do-test
+.endif # regression-test
 .endif # defined(_POSTMKINCLUDED)

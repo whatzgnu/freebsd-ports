@@ -5,35 +5,27 @@ PORTNAME=	bind
 PORTVERSION=	${ISCVERSION:S/-P/P/}
 .if defined(BIND_TOOLS_SLAVE)
 # dns/bind-tools here
-PORTREVISION=	1
+PORTREVISION=	0
 .else
 # dns/bind910 here
-PORTREVISION=	1
+PORTREVISION=	0
 .endif
 CATEGORIES=	dns net ipv6
 MASTER_SITES=	ISC/bind9/${ISCVERSION}
-.if defined(BIND_TOOLS_SLAVE)
-PKGNAMESUFFIX=	-tools
-.else
-PKGNAMESUFFIX=	910
-.endif
+PKGNAMESUFFIX?=	910
 DISTNAME=	${PORTNAME}-${ISCVERSION}
 
 MAINTAINER=	mat@FreeBSD.org
-.if defined(BIND_TOOLS_SLAVE)
-COMMENT=	Command line tools from BIND: delv, dig, host, nslookup...
-.else
-COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
-.endif
+COMMENT?=	BIND DNS suite with updated DNSSEC and DNS64
 
 LICENSE=	ISCL
 
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.10.3
+ISCVERSION=	9.10.2-P4
 
 MAKE_JOBS_UNSAFE=	yes
 
-USES=	cpe libedit
+USES=	cpe
 
 CPE_VENDOR=	isc
 CPE_VERSION=	${ISCVERSION:C/-.*//}
@@ -48,11 +40,7 @@ CONFIGURE_ARGS+=	--localstatedir=/var --disable-linux-caps \
 		--disable-symtable \
 		--with-randomdev=/dev/random \
 		--with-libxml2=${LOCALBASE} \
-		--with-readline=-ledit \
 		--sysconfdir=${ETCDIR}
-.if defined(BIND_TOOLS_SLAVE)
-CONFIGURE_ARGS+=	--disable-shared
-.endif
 ETCDIR=		${PREFIX}/etc/namedb
 
 CONFLICTS+=	bind9*-9.[456789].* bind9*-sdb-9.[456789].*
@@ -71,7 +59,7 @@ OPTIONS_RADIO_GOSTDEF=	GOST GOST_ASN1
 .if !defined(BIND_TOOLS_SLAVE)
 OPTIONS_DEFAULT+=	RRL
 OPTIONS_DEFINE+=	LINKS RPZ_NSIP RPZ_NSDNAME RRL DOCS NEWSTATS GEOIP \
-			MINCACHE PORTREVISION FETCHLIMIT QUERYTRACE
+			MINCACHE PORTREVISION
 OPTIONS_GROUP=		DLZ
 OPTIONS_GROUP_DLZ=	DLZ_POSTGRESQL DLZ_MYSQL DLZ_BDB \
 			DLZ_LDAP DLZ_FILESYSTEM DLZ_STUB
@@ -96,8 +84,6 @@ PYTHON_DESC=		Build with Python utilities
 START_LATE_DESC=	Start BIND late in the boot process
 MINCACHE_DESC=		Use the mincachettl patch
 PORTREVISION_DESC=	Show PORTREVISION in the version string
-FETCHLIMIT_DESC=	Enable the query quotas for resolvers
-QUERYTRACE_DESC=	Enable the very verbose query tracelogging
 
 LINKS_DESC=		Create conf file symlinks in ${PREFIX}
 NEWSTATS_DESC=		Enable alternate xml statistics channel format
@@ -116,12 +102,8 @@ GSSAPI_HEIMDAL_DESC=	Using security/heimdal
 GSSAPI_MIT_DESC=	Using security/krb5
 GSSAPI_NONE_DESC=	Disable
 MINCACHE_EXTRA_PATCHES=	${FILESDIR}/extrapatch-bind-min-override-ttl
-FETCHLIMIT_CONFIGURE_ENABLE=	fetchlimit
-QUERYTRACE_CONFIGURE_ENABLE=	querytrace
 
-.if defined(BIND_TOOLS_SLAVE)
-CONFLICTS+=		bind910-9.10.*
-.else
+.if !defined(BIND_TOOLS_SLAVE)
 CONFLICTS+=		bind-tools-9.*
 .endif	# BIND_TOOLS_SLAVE
 
@@ -186,13 +168,13 @@ START_LATE_SUB_LIST_OFF=NAMED_REQUIRE="NETWORKING ldconfig syslogd" \
 
 GSSAPI_BASE_USES=	gssapi
 GSSAPI_BASE_CONFIGURE_ON= \
-	--with-gssapi=${GSSAPIBASEDIR} KRB5CONFIG="${KRB5CONFIG}"
+	--with-gssapi=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
 GSSAPI_HEIMDAL_USES=	gssapi:heimdal
 GSSAPI_HEIMDAL_CONFIGURE_ON= \
-	--with-gssapi=${GSSAPIBASEDIR} KRB5CONFIG="${KRB5CONFIG}"
+	--with-gssapi=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
 GSSAPI_MIT_USES=	gssapi:mit
 GSSAPI_MIT_CONFIGURE_ON= \
-	--with-gssapi=${GSSAPIBASEDIR} KRB5CONFIG="${KRB5CONFIG}"
+	--with-gssapi=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
 GSSAPI_NONE_CONFIGURE_ON=	--without-gssapi
 
 .include <bsd.port.options.mk>
@@ -235,35 +217,19 @@ PKGDEINSTALL=	${PKGINSTALL}
 
 PORTDOCS=	*
 
+.if !defined(BIND_TOOLS_SLAVE)
 post-patch:
-	@${REINPLACE_CMD} -e 's|readline/readline.h|editline/readline.h|; \
-		s|readline/history.h|histedit.h|' \
-		${WRKSRC}/bin/dig/nslookup.c ${WRKSRC}/bin/nsupdate/nsupdate.c
-.if defined(BIND_TOOLS_SLAVE)
-	@${REINPLACE_CMD} -e 's#^SUBDIRS.*#SUBDIRS = lib bin#' \
-		-e 's#isc-config.sh installdirs#installdirs#' \
-		-e 's#.*INSTALL.*isc-config.*##' \
-		-e 's#.*INSTALL.*bind.keys.*##' \
-		${WRKSRC}/Makefile.in
-	@${REINPLACE_CMD} -e 's#^SUBDIRS.*#SUBDIRS = delv dig dnssec nsupdate \\#' \
-		-e 's#^	.*check confgen ##' \
-		${WRKSRC}/bin/Makefile.in
-.else
-.  for FILE in check/named-checkconf.8 named/named.8 nsupdate/nsupdate.1 \
+.for FILE in check/named-checkconf.8 named/named.8 nsupdate/nsupdate.1 \
 	rndc/rndc.8
 	@${REINPLACE_CMD} -e 's#/etc/named.conf#${ETCDIR}/named.conf#g' \
 		-e 's#/etc/rndc.conf#${ETCDIR}/rndc.conf#g' \
 		-e "s#/var\/run\/named\/named.pid#/var/run/named/pid#" \
 		${WRKSRC}/bin/${FILE}
-.  endfor
-.endif
+.endfor
 
-.if !defined(BIND_TOOLS_SLAVE)
-.if ${PORTREVISION:N0}
 post-patch-PORTREVISION-on:
 	@${REINPLACE_CMD} -e '/EXTENSIONS/s#=$$#=_${PORTREVISION}#' \
 		${WRKSRC}/version
-.endif
 
 post-install:
 .if ${PORT_OPTIONS:MDOCS}

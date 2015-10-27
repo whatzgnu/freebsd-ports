@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#define TRACE_TAG USB
+#define TRACE_TAG TRACE_USB
 
 #include "sysdeps.h"
 

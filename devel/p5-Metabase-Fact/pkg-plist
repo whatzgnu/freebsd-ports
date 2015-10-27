@@ -1,5 +1,5 @@
 bin/metabase-profile
-%%PERL5_MAN1%%/metabase-profile.1.gz
+man/man1/metabase-profile.1.gz
 %%SITE_PERL%%/Metabase/Report.pm
 %%SITE_PERL%%/Metabase/Fact.pm
 %%SITE_PERL%%/Metabase/User/Secret.pm

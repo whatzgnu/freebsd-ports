@@ -2,7 +2,7 @@
 
 PORTNAME=	sazanami
 PORTVERSION=	20040629
-PORTREVISION=	6
+PORTREVISION=	4
 CATEGORIES=	japanese x11-fonts
 MASTER_SITES=	SFJP/efont/10087
 PKGNAMEPREFIX=	ja-font-
@@ -10,9 +10,7 @@ PKGNAMEPREFIX=	ja-font-
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	Sazanami Japanese TrueType fonts
 
-USES=		fonts:fc tar:bzip2
-FONTNAME=	TTF
-NO_ARCH=	yes
+USES=		fonts tar:bzip2
 NO_BUILD=	yes
 PKGINSTALL=	${WRKDIR}/pkg-install
 PKGDEINSTALL=	${WRKDIR}/pkg-install
@@ -20,6 +18,7 @@ SUB_FILES=	pkg-install
 DATADIR=	${PREFIX}/share/font-${PORTNAME}
 PORTDOCS=	README doc
 
+FONTNAME=	TTF
 OPTIONS_DEFINE=	DOCS
 
 do-install:
@@ -37,8 +36,7 @@ do-install:
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/20-unhint-${PORTNAME}.conf
 	${LN} -s -f ../conf.avail/62-fonts-${PORTNAME}.conf \
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/62-fonts-${PORTNAME}.conf
-
-post-install-DOCS-on:
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${CP} -R ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 

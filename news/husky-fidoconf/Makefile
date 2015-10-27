@@ -1,7 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	husky-fidoconf
+CATEGORIES=	news mail
 
+MAINTAINER=	osharoiko@gmail.com
 COMMENT=	Husky FTN configuration library
 
 LIB_DEPENDS=	libsmapi.so:${PORTSDIR}/news/husky-smapi
@@ -37,4 +39,4 @@ post-install:
 	${LN} -sf fconf2.1 ${STAGEDIR}${PREFIX}/man/man1/fconf2tornado.1
 	${LN} -sf fconf2.1 ${STAGEDIR}${PREFIX}/man/man1/fecfg2fconf.1
 
-.include "${MASTERDIR}/Makefile"
+.include <bsd.port.mk>

@@ -2,12 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	pgbadger
-PORTVERSION=	7.1
-DISTVERSIONPREFIX=v
+PORTVERSION=	6.2
+PORTREVISION=	1
 CATEGORIES=	databases
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	dalibo
+MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}
 
 MAINTAINER=	girgen@FreeBSD.org
 COMMENT=	Very competent log analyzer for PostgreSQL

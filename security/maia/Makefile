@@ -338,6 +338,7 @@ post-patch:
 do-install:
 	${MKDIR} ${STAGEDIR}${WWWDIR}
 	@cd ${WRKSRC}/php && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}
+	${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}${WWWDIR}/
 	${LN} -s ${PREFIX}/share/smarty ${STAGEDIR}${WWWDIR}/libs/Smarty
 	${MKDIR} -p ${STAGEDIR}${DATADIR}
 	@cd ${WRKSRC}/scripts && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/scripts
@@ -349,10 +350,11 @@ do-install:
 	${INSTALL} -m 640 ${WRKSRC}/maiad.conf.dist ${STAGEDIR}${ETCDIR}/maiad.conf.dist
 	${INSTALL} -m 640 ${WRKSRC}/maia.conf.dist ${STAGEDIR}${ETCDIR}/maia.conf.dist
 
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in ${DOCS}
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
+.endif
 
 .include <bsd.port.post.mk>

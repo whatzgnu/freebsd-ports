@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Math-BigInt-FastCalc
-PORTVERSION=	0.34
+PORTVERSION=	0.31
+PORTREVISION=	1
 CATEGORIES=	math perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,18 +11,12 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Math::BigInt::Calc with some XS for more speed
 
-LICENSE=	ART10 GPLv1
-LICENSE_COMB=	dual
-
-BUILD_DEPENDS=	p5-Math-BigInt>=1.999703:${PORTSDIR}/math/p5-Math-BigInt
+BUILD_DEPENDS=	p5-Math-BigInt>=1.9993:${PORTSDIR}/math/p5-Math-BigInt
 RUN_DEPENDS:=	${BUILD_DEPENDS}
-
-PORTSCOUT=	skipv:0.251
 
 USES=		perl5
 USE_PERL5=	configure
 
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/BigInt/FastCalc/FastCalc.so
+PORTSCOUT=	skipv:0.251
 
 .include <bsd.port.mk>

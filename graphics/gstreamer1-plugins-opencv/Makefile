@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	graphics
 
 COMMENT=	Gstreamer opencv real time computer vision plugin
@@ -9,8 +9,5 @@ GST_PLUGIN=	opencv
 DIST=		bad
 
 MASTERDIR=	${.CURDIR}/../../multimedia/gstreamer1-plugins
-
-# Clang has issues with Overloaded stuff inside OpenCV
-CXXFLAGS+=	-Wno-overloaded-virtual
 
 .include "${MASTERDIR}/Makefile"

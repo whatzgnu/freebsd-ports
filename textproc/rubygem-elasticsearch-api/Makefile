@@ -5,7 +5,7 @@
 # and textproc/rubygem-elasticsearch-transport
 
 PORTNAME=	elasticsearch-api
-PORTVERSION=	1.0.14
+PORTVERSION=	1.0.12
 CATEGORIES=	textproc rubygems
 MASTER_SITES=	RG
 
@@ -13,7 +13,6 @@ MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Ruby API for Elasticsearch
 
 LICENSE=	APACHE20
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	rubygem-multi_json>=0:${PORTSDIR}/devel/rubygem-multi_json
 

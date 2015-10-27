@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- doc/eukleides.texi.orig
 +++ doc/eukleides.texi
 @@ -6,12 +6,14 @@

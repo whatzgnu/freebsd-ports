@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libinotify
-PORTVERSION=	20150910
+PORTVERSION=	20150516
 CATEGORIES=	devel
 
 MAINTAINER=	delphij@FreeBSD.org
@@ -13,11 +13,15 @@ LICENSE=	MIT
 USE_GITHUB=	yes
 GH_ACCOUNT=	dmatveev
 GH_PROJECT=	libinotify-kqueue
-GH_TAGNAME=	b2873cf
+GH_TAGNAME=	f4a092a
 
-USES=		autoreconf libtool
-GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
+
+post-patch:
+	@${CP} ${FILESDIR}/Makefile ${WRKSRC}
+	@${TOUCH} ${WRKSRC}/config.h
+	@echo "#define HAVE_PTHREAD_BARRIER 1" >> ${WRKSRC}/config.h
+	@echo "#define BUILD_LIBRARY 1" >> ${WRKSRC}/config.h
+	@echo "#include <sys/tree.h>" >> ${WRKSRC}/config.h
 
 .include <bsd.port.mk>

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	ZendFramework
-PORTVERSION=	1.12.16
+PORTVERSION=	1.12.7
+PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	https://packages.zendframework.com/releases/${DISTNAME}/
 PKGNAMESUFFIX=	1
@@ -52,8 +53,8 @@ INSTALL_DIRS=	library extras/library externals/dojo/dijit \
 # for a table of what PHP extensions are required for what ZF classes.
 
 .if ${PORT_OPTIONS:MREQPHP}
-USE_PHP+=	ctype curl dom gd hash iconv mbstring ldap mcrypt \
-		opcache pcre pdo session simplexml soap \
+USE_PHP+=	apc ctype curl dom gd hash iconv mbstring ldap mcrypt \
+		pcre pdo session simplexml soap \
 		wddx xml zlib
 .if ${PHP_VER} == 52
 USE_PHP+=	sqlite

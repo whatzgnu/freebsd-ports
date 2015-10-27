@@ -2,17 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	xvid
-PORTVERSION=	1.3.4
+PORTVERSION=	1.3.2
 PORTEPOCH=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://downloads.xvid.org/downloads/
 DISTNAME=	${PORTNAME}core-${PORTVERSION}
 
-MAINTAINER=	riggs@FreeBSD.org
+MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	Opensource MPEG-4 codec, based on OpenDivx
-
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKDIR}/xvidcore/LICENSE
 
 USES=		gmake
 GNU_CONFIGURE=	yes
@@ -24,8 +21,7 @@ CONFIGURE_ENV+=	ac_cv_prog_ac_yasm=no
 PLIST_FILES=	include/xvid.h \
 		lib/libxvidcore.a \
 		lib/libxvidcore.so \
-		lib/libxvidcore.so.4 \
-		lib/libxvidcore.so.4.3
+		lib/libxvidcore.so.4
 
 WRKSRC=		${WRKDIR}/xvidcore/build/generic
 
@@ -41,11 +37,10 @@ BUILD_DEPENDS+=	nasm:${PORTSDIR}/devel/nasm
 .endif
 
 .if ${PORT_OPTIONS:MOPTIMIZED_CFLAGS}
-# let xvid's build system override CFLAGS
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-cflags
+CFLAGS=		# let xvid's build system decide about those
 .endif
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libxvidcore.so
+	@ ${LN} -sf ${PREFIX}/lib/libxvidcore.so.4 ${STAGEDIR}${PREFIX}/lib/libxvidcore.so
 
 .include <bsd.port.post.mk>

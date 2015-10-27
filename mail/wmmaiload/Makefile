@@ -12,7 +12,6 @@ COMMENT=	Incoming mail monitor dockapp with a similar look to wmcpuload
 
 OPTIONS_DEFINE=	GTK2
 
-BROKEN=		Does not fetch
 USES=		gmake pkgconfig
 USE_XORG=	xpm
 USE_OPENSSL=	yes
@@ -38,6 +37,10 @@ MAKE_ENV+=	GTK_CFLAGS="pkg-config --cflags gtk+-2.0" \
 USE_GNOME+=	gtk12
 MAKE_ENV+=	GTK_CFLAGS="pkg-config --cflags gtk+" \
 		GTK_LIBS="pkg-config --libs gtk+"
+.endif
+
+.if ${ARCH} == "ia64" || ${ARCH} == "powerpc" || ${ARCH} == "sparc64"
+BROKEN=		Does not compile on ia64, powerpc, or sparc64
 .endif
 
 post-patch:

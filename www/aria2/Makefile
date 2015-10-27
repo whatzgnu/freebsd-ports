@@ -2,15 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	aria2
-PORTVERSION=	1.19.2
+PORTVERSION=	1.19.0
 CATEGORIES=	www
-MASTER_SITES=	https://github.com/tatsuhiro-t/${PORTNAME}/releases/download/release-${PORTVERSION}/
+MASTER_SITES=	SF/${PORTNAME}/stable/${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Yet another download tool
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 OPTIONS_DEFINE=	CA_BUNDLE DOCS NLS SQLITE
 OPTIONS_DEFAULT=SQLITE
@@ -44,10 +43,9 @@ PORTDOCS=	*
 CA_BUNDLE_CONFIGURE_OFF=--without-ca-bundle
 CA_BUNDLE_CONFIGURE_ON=	--with-ca-bundle=${LOCALBASE}/share/certs/ca-root-nss.crt
 CA_BUNDLE_RUN_DEPENDS=	${LOCALBASE}/share/certs/ca-root-nss.crt:${PORTSDIR}/security/ca_root_nss
-NLS_CONFIGURE_OFF=	--disable-nls --without-libintl-prefix
+NLS_CONFIGURE_OFF=	--disable-nls
 NLS_CONFIGURE_ON=	--with-libintl-prefix=${LOCALBASE}
-NLS_LDFLAGS=		-lintl
-NLS_USES=		gettext localbase
+NLS_USES=		gettext
 SQLITE_CONFIGURE_OFF=	--without-sqlite3
 SQLITE_CONFIGURE_ON=	--with-sqlite3
 SQLITE_USE=		SQLITE=yes

@@ -8,7 +8,7 @@ CATEGORIES=	comms
 MASTER_SITES=	http://dl.cihar.com/gammu/releases/ \
 		http://dl.cihar.com.nyud.net/gammu/releases/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	bsam@FreeBSD.org
 COMMENT=	GNU All Mobile Management Utilities
 
 LICENSE=	GPLv2

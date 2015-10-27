@@ -6,17 +6,12 @@
 # Usage:	USES=jpeg or USES=jpeg:ARGS
 # Valid ARGS:	lib (default, implicit), build, run, both
 #
-# User defined variables:
-# JPEG_PORT		- jpeg implementation
-#			Valid values: graphics/jpeg and graphics/jpeg-turbo
-#			Default value: graphics/jpeg-turbo
-#
 # MAINTAINER: portmgr@FreeBSD.org
 
 .if !defined(_INCLUDE_USES_JPEG_MK)
 
 _INCLUDE_USES_JPEG_MK=	yes
-JPEG_PORT?=	graphics/jpeg-turbo
+JPEG_PORT?=	graphics/jpeg
 
 .if empty(jpeg_ARGS)
 jpeg_ARGS=	lib

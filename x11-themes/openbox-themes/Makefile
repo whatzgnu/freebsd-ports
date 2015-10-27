@@ -11,19 +11,15 @@ DISTNAME=	${PORTNAME}_${PORTVERSION}
 MAINTAINER=	novel@FreeBSD.org
 COMMENT=	Themes for Openbox
 
-LICENSE=	GPLv2
-
 RUN_DEPENDS=	openbox:${PORTSDIR}/x11-wm/openbox
 
 NO_BUILD=	yes
-NO_ARCH=	yes
-WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
-
-post-extract:
-	@${RM} -rf ${WRKSRC}/debian
+WRKSRC=		${PORTNAME}-${PORTVERSION}
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/themes
-	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/themes
+	@for i in `${LS} ${WRKDIR}/${WRKSRC}`; do \
+		${CP} -r ${WRKDIR}/${WRKSRC}/$$i ${STAGEDIR}${PREFIX}/share/themes/; \
+	done
 
 .include <bsd.port.mk>

@@ -13,6 +13,10 @@ VERBOSE_BUILD_DESC=	Show compiler messages
 
 .include "${.CURDIR}/../boost-all/compiled.mk"
 
+.if ${ARCH} == "sparc64"
+CXXFLAGS=	-O0
+.endif
+
 MAKE_ENV+=	PYTHON_ROOT="${LOCALBASE}"\
 		PYTHON_VERSION="${PYTHON_VERSION}"\
 		PYTHON_INCLUDES="${PYTHON_INCLUDEDIR}"\
@@ -49,4 +53,4 @@ post-install:
 		-e "s|%%PYTHON_LIBDIR%%|${PYTHON_LIBDIR}|g" \
 		-e "s|%%PYTHON_VERSION%%|${PYTHON_VERSION}|g" ${PKGMESSAGE}
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

@@ -21,7 +21,6 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Test-Number-Delta>=0:${PORTSDIR}/devel/p5-Test-Number-Delta \
 		p5-Test-Pod>=1:${PORTSDIR}/devel/p5-Test-Pod
 
-NO_ARCH=	yes
 USE_PERL5=	modbuild
 USES=		perl5
 

@@ -30,12 +30,16 @@ MAKE_FLAGS=	OSVER="${OSVERSION}" HASH_TYPE=openssl
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-post-install-EXAMPLES-on:
+.include <bsd.port.options.mk>
+
+post-install:
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	cd ${WRKSRC}/samples && ${INSTALL_DATA} ${PORTEXAMPLES} ${STAGEDIR}${EXAMPLESDIR}
-
-post-install-DOCS-on:
+.endif
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/doc && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

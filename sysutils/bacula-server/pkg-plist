@@ -13,6 +13,7 @@ sbin/bacula-sd
 sbin/bcopy
 sbin/bextract
 sbin/bls
+sbin/bpluginfo
 sbin/bregex
 sbin/bscan
 sbin/bsmtp

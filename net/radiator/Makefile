@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Radiator
-PORTVERSION=	4.14
+PORTVERSION=	4.13
+PORTREVISION=	2
 CATEGORIES=	net
 MASTER_SITES=	# fetch manually
 DIST_SUBDIR=	${PORTNAME}
@@ -15,7 +16,6 @@ MYSQL_DESC=	MySQL support
 
 USES=		perl5 tar:tgz
 USE_PERL5=	configure
-USE_RC_SUBR=	radiator
 
 RESTRICTED=	Commercial software
 
@@ -39,16 +39,5 @@ pre-configure:
 .if exists(${DISTDIR}/${DIST_SUBDIR}/patches-${PORTVERSION}.tar.gz)
 	${TAR} -xvzf ${DISTDIR}/${DIST_SUBDIR}/patches-${PORTVERSION}.tar.gz -C ${WRKSRC}
 .endif
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|' ${WRKSRC}/radius.cfg
-
-post-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/radiator
-	${INSTALL_DATA} ${WRKSRC}/radius.cfg ${STAGEDIR}${PREFIX}/etc/radiator/radius.cfg.sample
-	${INSTALL_DATA} ${WRKSRC}/dictionary ${STAGEDIR}${PREFIX}/etc/radiator
-	${INSTALL_DATA} ${WRKSRC}/dictionary.ascend ${STAGEDIR}${PREFIX}/etc/radiator
-	${INSTALL_DATA} ${WRKSRC}/dictionary.cisco-vpn ${STAGEDIR}${PREFIX}/etc/radiator
-	${INSTALL_DATA} ${WRKSRC}/dictionary.sip ${STAGEDIR}${PREFIX}/etc/radiator
 
 .include <bsd.port.post.mk>

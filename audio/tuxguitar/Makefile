@@ -3,7 +3,7 @@
 
 PORTNAME=	tuxguitar
 PORTVERSION=	1.2
-PORTREVISION=	10
+PORTREVISION=	9
 CATEGORIES=	audio java
 MASTER_SITES=	SF/${PORTNAME}/TuxGuitar/TuxGuitar-${PORTVERSION}:src \
 		LOCAL/gahr/:fluid \
@@ -43,10 +43,11 @@ WRKSRC_SUBDIR=	TuxGuitar
 
 OPTIONS_DEFINE=	DOCS
 
+.include <bsd.port.pre.mk>
 PLUGINS=	ascii browser-ftp compat converter fluidsynth gervill gtp \
 		jsa lilypond midi musicxml oss pdf ptb tef tray tuner
 
-SUB_FILES=	pkg-message tuxguitar
+SUB_FILES=	tuxguitar
 SUB_LIST=	DATADIR=${DATADIR} \
 		PREFIX=${PREFIX} \
 		JAVALIBDIR=${JAVALIBDIR} \
@@ -114,8 +115,16 @@ do-install:
 	# MAN page
 	${INSTALL_MAN} ${WRKSRC}/../misc/tuxguitar.1 ${STAGEDIR}${PREFIX}/man/man1
 
-do-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/doc && ${COPYTREE_SHARE} \* ${STAGEDIR}${DOCSDIR}
+.endif
+	@${ECHO}
+	@${ECHO} "SoundFonts for the FluidSynth plugin are available at:"
+	@${ECHO} "${DATADIR}/8MBGMSFX.SF2"
+	@${ECHO} "Add this path in the FluidSynth plugin configuration to"
+	@${ECHO} "enable them."
+	@${ECHO}
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

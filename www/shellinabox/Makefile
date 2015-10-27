@@ -33,6 +33,8 @@ SUB_LIST=	USERS=${USERS} GROUPS=${GROUPS}
 
 NOLOGIN_CONFIGURE_ON=	--disable-login
 
+BROKEN_powerpc=	Does not load on powerpc
+
 .include <bsd.port.options.mk>
 
 post-patch:

@@ -8,7 +8,7 @@ CATEGORIES=		deskutils
 MASTER_SITES=		http://dl.cihar.com/wammu/v0/ \
 			http://dl.cihar.com.nyud.net/wammu/v0/
 
-MAINTAINER=		ports@FreeBSD.org
+MAINTAINER=		bsam@FreeBSD.org
 COMMENT=		GUI manager of contacts, todos, calendar, and messages in your phone
 
 LICENSE=		GPLv2

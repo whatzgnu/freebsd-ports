@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# PROVIDE: xfstt
-# REQUIRE: login
-# KEYWORD: shutdown
-
 PREFIX=%%PREFIX%%
 
 case "$1" in

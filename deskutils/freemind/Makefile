@@ -3,7 +3,6 @@
 
 PORTNAME=	freemind
 PORTVERSION=	1.0.1
-PORTEPOCH=	1
 CATEGORIES=	deskutils editors java
 MASTER_SITES=	SF
 DISTNAME=	${PORTNAME}-bin-max-${PORTVERSION}

@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	varnish
-PORTVERSION=	4.1.0
-PORTREVISION=	0
+PORTVERSION=	4.0.3
+PORTREVISION=	7
 CATEGORIES=	www
 MASTER_SITES=	http://repo.varnish-cache.org/source/
 PKGNAMESUFFIX=	4
@@ -19,6 +19,7 @@ CONFLICTS=	varnish-2.* varnish-3.*
 
 USES=		autoreconf cpe gmake libtool pkgconfig python:2,build readline shebangfix
 SHEBANG_FILES=	lib/libvcc/vmodtool.py
+python_OLD_CMD=	/usr/bin/env python
 CPE_VENDOR=	varnish-cache
 CFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
@@ -26,9 +27,6 @@ CONFIGURE_ARGS=	--localstatedir=${PREFIX} --enable-tests
 CONFIGURE_ENV=	RST2MAN=true
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
-
-USERS=		varnish varnishlog
-GROUPS=		varnish
 
 USE_RC_SUBR=	varnishd varnishlog varnishncsa
 SUB_FILES=	pkg-message

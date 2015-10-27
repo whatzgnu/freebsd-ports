@@ -3,20 +3,16 @@
 
 PORTNAME=	libunibreak
 PORTVERSION=	1.1
-PORTREVISION=	3
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	textproc
 MASTER_SITES=	SF/vimgadgets/${PORTNAME}/${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	Implementation of the line and word breaking algorithm for Unicode
 
-LICENSE=	ZLIB
-LICENSE_FILE=	${WRKSRC}/LICENCE
-
-USES=		libtool pathfix
 GNU_CONFIGURE=	yes
-INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
+USES=		pathfix libtool
 
 .include <bsd.port.mk>

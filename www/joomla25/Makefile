@@ -16,10 +16,10 @@ GH_PROJECT=	${PORTNAME}-cms
 NO_BUILD=	yes
 
 PLIST_SUB=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
-
-USES=		shebangfix
 php_OLD_CMD=	C:\\\xampp\\\php\\\.\\\php.exe
-SHEBANG_FILES=	tests/unit/phpunit.php tests/system/phpunit.php
+
+REINPLACE_ARGS=	-i '' -e 's,${php_OLD_CMD},${LOCALBASE}/bin/php,g'
+REINPLACE_FILES=	tests/unit/phpunit.php tests/system/phpunit.php
 
 SUB_FILES=	pkg-message
 
@@ -28,7 +28,10 @@ USE_MYSQL=	yes
 USE_PHP=	gd json mbstring mysql mysqli pcre pdf session simplexml xml zip zlib
 
 WANT_PHP_WEB=	yes
-WWWDIR=		${PREFIX}/www/${PORTNAME}${PORTVERSION:R:R}
+WWWDIR=	${PREFIX}/www/${PORTNAME}${PORTVERSION:R:R}
+
+pre-patch:
+	@(cd ${WRKSRC} && ${REINPLACE_CMD} ${REINPLACE_FILES})
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}

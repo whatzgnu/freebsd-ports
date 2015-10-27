@@ -11,7 +11,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Server framework
 
 LICENSE=	GPLv3 # (or later)
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libguile.so:${PORTSDIR}/lang/guile
 
@@ -20,8 +19,6 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-libserveez-install
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
-
-MAKE_JOBS_UNSAFE=	yes
 
 INFO=		serveez
 

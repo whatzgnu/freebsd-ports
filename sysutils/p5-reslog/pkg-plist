@@ -1,2 +1,2 @@
 bin/reslog
-%%PERL5_MAN1%%/reslog.1.gz
+man/man1/reslog.1.gz

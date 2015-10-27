@@ -14,14 +14,13 @@ COMMENT=	Minimalist version of gnu make
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-GNU_CONFIGURE=	yes
+GNU_CONFIGURE=  yes
 CONFIGURE_ARGS+=	--program-prefix=g \
 			--program-suffix=-lite \
 			--without-guile \
 			--disable-nls
 
-USES=	cpe tar:bzip2
-CPE_VENDOR=	gnu
+USES=	tar:bzip2
 
 PLIST_FILES=	bin/gmake-lite \
 		man/man1/gmake-lite.1.gz

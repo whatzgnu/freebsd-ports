@@ -5,8 +5,7 @@ PORTNAME=	eijiro-fpw
 PORTVERSION=	1.0b
 PORTREVISION=	5
 CATEGORIES=	japanese
-MASTER_SITES=	http://openlab.ring.gr.jp/edict/fpw/dist/eijiro/ \
-		ftp://relay1.tomsk.gov.ru/pub/FreeBSD/ports/distfiles/
+MASTER_SITES=	http://openlab.ring.gr.jp/edict/fpw/dist/eijiro/
 DISTNAME=	${PORTNAME}${PORTVERSION}-src
 
 MAINTAINER=	ports@FreeBSD.org

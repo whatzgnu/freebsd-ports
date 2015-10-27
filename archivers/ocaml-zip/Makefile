@@ -2,17 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	zip
-PORTVERSION=	1.05
+PORTVERSION=	1.04
+PORTREVISION=	1
 CATEGORIES=	archivers
-MASTER_SITES=	http://forge.ocamlcore.org/frs/download.php/1037/
+MASTER_SITES=	http://caml.inria.fr/distrib/bazar-ocaml/
 PKGNAMEPREFIX=	ocaml-
 DISTNAME=	caml${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	OCaml library to manipulate ZIP/GZIP/JAR archives
-
-LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USE_OCAML=	yes
 USE_OCAML_LDCONFIG=yes
@@ -34,6 +32,5 @@ post-install:
 	${INSTALL_DATA} ${FILESDIR}/META ${STAGEDIR}${OCAMLFIND_DESTDIR}/${PORTNAME}
 	@${FIND} ${STAGEDIR}${OCAMLFIND_DESTDIR}/${PORTNAME} -type f | \
 		${SED} "s,^${STAGEDIR}${PREFIX}/,," >> ${TMPPLIST}
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ocaml/site-lib/zip/dllcamlzip.so
 
 .include <bsd.port.mk>

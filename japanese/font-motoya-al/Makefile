@@ -1,25 +1,23 @@
 # $FreeBSD$
 
-PORTNAME=	motoya-al
+PORTNAME=	font-motoya-al
 PORTVERSION=	0.0.20100921
-PORTREVISION=	5
+PORTREVISION=	3
 CATEGORIES=	japanese x11-fonts
 MASTER_SITES=	LOCAL/hrs
-PKGNAMEPREFIX=	ja-font-
-DISTNAME=	${PORTNAME}-fonts-${PORTVERSION:S,^0.0.,,}
+DISTNAME=	motoya-al-fonts-${PORTVERSION:S,^0.0.,,}
 
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	Free Japanese fonts by MOTOYA
 
-USES=		fonts:fc tar:bzip2
-FONTNAME=	TTF
-NO_ARCH=	yes
+USES=	fonts tar:bzip2
 NO_BUILD=	yes
 PKGINSTALL=	${WRKDIR}/pkg-install
 PKGDEINSTALL=	${WRKDIR}/pkg-install
 SUB_FILES=	pkg-install
 PORTDOCS=	newsrelease20100921.pdf
 
+FONTNAME=	TTF
 OPTIONS_DEFINE=	DOCS
 
 do-install:
@@ -37,8 +35,6 @@ do-install:
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/20-unhint-motoya-al.conf
 	${LN} -s -f ../conf.avail/62-fonts-motoya-al.conf \
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/62-fonts-motoya-al.conf
-
-post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 

@@ -3,7 +3,6 @@
 
 PORTNAME=	xhippo
 PORTVERSION=	3.5
-PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	GNU
 
@@ -26,11 +25,11 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 INFO=		xhippo
 
 post-extract:
-	@${LN} -sf xhippo.config ${WRKSRC}/xhippo.config.sample
+	@${LN} -sf xhippo.config ${WRKSRC}/xhippo.config.default
 
 post-patch:
 	@${REINPLACE_CMD} -e \
-		'/^sysconf_DATA/s|=.*|= xhippo.config.sample|' \
+		'/^sysconf_DATA/s|=.*|= xhippo.config.default|' \
 			${WRKSRC}/Makefile.in
 
 .include <bsd.port.mk>

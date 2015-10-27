@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	lldpd
-PORTVERSION=	0.7.18
+PORTVERSION=	0.7.16
 CATEGORIES=	net-mgmt
-MASTER_SITES=	http://media.luffy.cx/files/${PORTNAME}/ \
-		http://mirror.1labs.ch/${PORTNAME}/
+MASTER_SITES=	http://media.luffy.cx/files/${PORTNAME}/
 
 MAINTAINER=	freebsd@simweb.ch
 COMMENT=	LLDP (802.1ab)/CDP/EDP/SONMP/FDP daemon and SNMP subagent

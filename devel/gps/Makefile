@@ -3,7 +3,6 @@
 
 PORTNAME=	gps
 PORTVERSION=	6.1.1.0
-PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://downloads.dragonlace.net/src/
 DISTNAME=	gps-6.1.1-src
@@ -14,7 +13,8 @@ COMMENT=	GNAT Programming Studio - IDE for Ada and many other languages
 
 LICENSE=	GPLv3
 
-BUILD_DEPENDS=	gprbuild:${PORTSDIR}/devel/gprbuild \
+BUILD_DEPENDS=	gprbuild>=20140417:${PORTSDIR}/devel/gprbuild \
+		gnat_util>=20140422_2:${PORTSDIR}/lang/gnat_util \
 		xmlada>=4.4:${PORTSDIR}/textproc/xmlada \
 		gnatcoll>=2015:${PORTSDIR}/devel/gnatcoll \
 		templates_parser>11:${PORTSDIR}/textproc/templates_parser
@@ -22,7 +22,6 @@ LIB_DEPENDS=	libgtkada.so:${PORTSDIR}/x11-toolkits/gtkada3
 RUN_DEPENDS=	rsvg-convert:${PORTSDIR}/graphics/librsvg2 \
 		gnatinspect:${PORTSDIR}/devel/gnatcoll \
 		gdb${PORTGDB}:${PORTSDIR}/devel/gdb \
-		gprbuild:${PORTSDIR}/devel/gprbuild \
 		${PYTHON_PKGNAMEPREFIX}pep8>0:${PORTSDIR}/devel/pep8 \
 		${PYTHON_PKGNAMEPREFIX}jedi>0:${PORTSDIR}/devel/py-jedi
 
@@ -36,7 +35,7 @@ GPSVER=		GPS_VERSION=${PORTVERSION}
 ALL_TARGET=	default
 NO_MTREE=	yes
 SUB_FILES=	gps
-PORTGDB=	${GDBVER:S/.//}
+PORTGDB=	791
 
 # note: librsvg2 is needed to display the svg icons in the menu.  Actually
 # needed is lib/gdk-pixbuf-2.0/%%GTK2_VER%%/loaders/libpixbufloader-svg.so ,
@@ -59,8 +58,6 @@ PORTEXAMPLES=		demo python remote tutorial xml
 .include <bsd.port.options.mk>
 
 SUB_LIST=		ADA_PATH=${PREFIX}/${ADAXX}-aux/bin
-GDBVER!=		${GREP} ^PORTVERSION ${.CURDIR}/../gdb/Makefile | \
-			${AWK} '{print $$2}'
 
 .if ${PORT_OPTIONS:MDEBUG}
 MAKE_ARGS+=		Build=Debug

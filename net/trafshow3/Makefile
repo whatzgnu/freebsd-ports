@@ -3,7 +3,7 @@
 
 PORTNAME=	trafshow
 PORTVERSION=	3.1
-PORTREVISION=	7
+PORTREVISION=	6
 PORTEPOCH=	1
 CATEGORIES=	net
 MASTER_SITES=	LOCAL/sem
@@ -31,6 +31,9 @@ post-patch:
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/trafshow ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/trafshow.1 ${STAGEDIR}${PREFIX}/man/man1
-	${INSTALL_DATA} ${WRKSRC}/.trafshow ${STAGEDIR}${PREFIX}/etc/trafshow.sample
+	${INSTALL_DATA} ${WRKSRC}/.trafshow ${STAGEDIR}${PREFIX}/etc/trafshow.dist
+	if [ ! -f ${STAGEDIR}${PREFIX}/etc/trafshow ]; then \
+		${CP} ${STAGEDIR}${PREFIX}/etc/trafshow.dist ${STAGEDIR}${PREFIX}/etc/trafshow; \
+	fi
 
 .include <bsd.port.mk>

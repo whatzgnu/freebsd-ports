@@ -9,7 +9,7 @@ libexec/xpdf/pdftops
 libexec/xpdf/pdftotext
 %%X11%%libexec/xpdf/xpdf
 %%X11%%bin/xpdf
-etc/man.d/xpdf.conf
+etc/xpdfrc
 %%DATADIR%%/man/man1/pdfdetach.1.gz
 %%DATADIR%%/man/man1/pdffonts.1.gz
 %%DATADIR%%/man/man1/pdfimages.1.gz
@@ -25,4 +25,3 @@ etc/man.d/xpdf.conf
 %%PORTDOCS%%%%DOCSDIR%%/CHANGES
 %%PORTDOCS%%%%DOCSDIR%%/README
 %%PORTDOCS%%%%DOCSDIR%%/hello.pdf
-@sample etc/xpdfrc.sample

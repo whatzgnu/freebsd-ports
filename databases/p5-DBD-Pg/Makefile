@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	DBD-Pg
-PORTVERSION=	3.5.3
+PORTVERSION=	3.5.1
 CATEGORIES=	databases perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -15,7 +15,7 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-DBI>=1.614:${PORTSDIR}/databases/p5-DBI
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5 pgsql
+USES=		pgsql perl5
 USE_PERL5=	configure
 
 post-stage:

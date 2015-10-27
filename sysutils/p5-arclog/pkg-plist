@@ -1,2 +1,2 @@
 bin/arclog
-%%PERL5_MAN1%%/arclog.1.gz
+man/man1/arclog.1.gz

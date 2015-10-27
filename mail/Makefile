@@ -222,7 +222,6 @@
     SUBDIR += mailgraph
     SUBDIR += mailman
     SUBDIR += mailmgr
-    SUBDIR += mailpile
     SUBDIR += mailscanner
     SUBDIR += mailsync
     SUBDIR += mailtray
@@ -285,7 +284,6 @@
     SUBDIR += offlineimap
     SUBDIR += opendkim
     SUBDIR += opendmarc
-    SUBDIR += openemm2013
     SUBDIR += opensmtpd
     SUBDIR += opensmtpd-devel
     SUBDIR += openwebmail

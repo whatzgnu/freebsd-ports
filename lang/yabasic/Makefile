@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	yabasic
-PORTVERSION=	2.769
+PORTVERSION=	2.768
 CATEGORIES=	lang
 MASTER_SITES=	http://www.yabasic.de/download/
 
@@ -12,9 +12,9 @@ COMMENT=	Yet another Basic for Unix and Windows
 LICENSE=	ART10 GPLv2
 LICENSE_COMB=	multi
 
-USES=		bison ncurses
+USES=		bison
 GNU_CONFIGURE=	yes
-USE_XORG=	ice sm x11
+USE_XORG=	x11 ice sm
 
 PORTDOCS=	yabasic.htm
 PLIST_FILES=	bin/yabasic man/man1/yabasic.1.gz
@@ -28,18 +28,14 @@ BROKEN=		all tests end up with segfault on FreeBSD < 10.x amd64
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} -e \
-		's|= -DUNIX|= @X_CFLAGS@ -DUNIX|g' ${WRKSRC}/Makefile.in
-	@${REINPLACE_CMD} -e \
-		's|-R$$x_libraries||' ${WRKSRC}/configure
-	@${REINPLACE_CMD} -e \
-		'/Intrinsic.h/d' ${WRKSRC}/yabasic.h
+	@${REINPLACE_CMD} -e 's|-DUNIX|@X_CFLAGS@ &|' ${WRKSRC}/Makefile.in
+	@${REINPLACE_CMD} -e '/Intrinsic\.h/d' ${WRKSRC}/yabasic.h
 
 post-build test:
-	@(cd ${WRKSRC} && ${DO_MAKE_BUILD} check)
+	${SETENV} ${MAKE_ENV} ${MAKE_CMD} check -C ${WRKSRC}
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	(cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR})
+	${INSTALL_DATA} ${WRKSRC}/yabasic.htm ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

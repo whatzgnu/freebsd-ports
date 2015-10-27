@@ -2,34 +2,39 @@
 # $FreeBSD$
 
 PORTNAME=	sgwi
-PORTVERSION=	1.1.8
+PORTVERSION=	1.1.6
 CATEGORIES=	mail www
 MASTER_SITES=	http://www.vanheusden.com/sgwi/ \
 		http://lukasz.wasikowski.net/files/
 DISTNAME=	sqlgreywebinterface-${PORTVERSION}
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	lukasz@wasikowski.net
 COMMENT=	PHP web interface to SQLGrey
 
 LICENSE=	GPLv2
 
-USES=		tar:tgz
 NO_BUILD=	yes
 SUB_FILES+=	pkg-message pkg-install
 SUB_LIST=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 
 OPTIONS_SINGLE=	BACKEND
-OPTIONS_SINGLE_BACKEND=	MYSQL PGSQL SQLITE3
+OPTIONS_SINGLE_BACKEND=	MYSQL PGSQL
 
 MYSQL_DESC=	MySQL back-end (use mysql PHP extension)
 PGSQL_DESC=	PostgreSQL back-end (use pgsql PHP extension)
-SQLITE3_DESC=	SQLite3 back-end (use pgsql PHP extension)
 
 OPTIONS_DEFAULT=MYSQL
 
-MYSQL_USE=	PHP=mysql
-PGSQL_USE=	PHP=pgsql
-SQLITE3_USE=	PHP=sqlite3
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MMYSQL}
+USE_PHP+=	mysql
+.endif
+
+.if ${PORT_OPTIONS:MPGSQL}
+USE_PHP+=	pgsql
+.endif
 
 WANT_PHP_WEB=	yes
 

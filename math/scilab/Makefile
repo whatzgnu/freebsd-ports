@@ -115,12 +115,6 @@ TK_USE=		XORG=x11
 CONFIGURE_ARGS+=	--without-openmp
 .endif
 
-.include <bsd.port.pre.mk>
-
-.if ${JAVA_PORT_VERSION:M1.8.*}
-EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-Makefile.in
-.endif
-
 post-patch:
 	@# Configure fixes
 	@${REINPLACE_CMD} -e 's|-ldl | |' ${WRKSRC}/configure
@@ -167,4 +161,4 @@ check test regression-test: build
 	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${_MAKE_JOBS} \
 		${MAKE_ARGS} check)
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

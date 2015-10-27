@@ -1,5 +1,5 @@
 bin/physics-unit
-%%PERL5_MAN1%%/physics-unit.1.gz
+man/man1/physics-unit.1.gz
 %%SITE_PERL%%/Physics/Unit.pm
 %%SITE_PERL%%/Physics/Unit/Implementation.pod
 %%SITE_PERL%%/Physics/Unit/UnitsByName.pod

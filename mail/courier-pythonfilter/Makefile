@@ -13,7 +13,6 @@ BUILD_DEPENDS=	courier-config:${PORTSDIR}/mail/courier
 
 USES=		python
 USE_PYTHON=	distutils
-NO_ARCH=	yes
 
 MAILOWN=	courier
 MAILGRP=	courier

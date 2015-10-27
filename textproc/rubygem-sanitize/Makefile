@@ -11,7 +11,6 @@ MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Whitelist based HTML sanitizer
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	rubygem-crass>=1.0.2:${PORTSDIR}/www/rubygem-crass \
 		rubygem-nokogiri>=1.4.4:${PORTSDIR}/textproc/rubygem-nokogiri \

@@ -13,13 +13,10 @@ PATCH_SITES=	http://www.nagilum.org/nstx/  \
 PATCH_DIST_STRIP=	-p1
 PATCHFILES=	nstx_1.1-beta6-4.diff.gz
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	freebsd@nagilum.org
 COMMENT=	DNS tunnel server
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
-
-USE_RC_SUBR=	nstxd
+USE_RC_SUBR+=	nstxd
 
 WRKSRC=		${WRKDIR}/nstx-1.1-beta6
 SUB_FILES=	pkg-message
@@ -31,9 +28,7 @@ OPTIONS_DEFINE=	DOCS
 
 post-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/nstxd ${STAGEDIR}${PREFIX}/sbin
-	${INSTALL_MAN} ${WRKSRC}/nstxd.8 ${STAGEDIR}${MAN8PREFIX}/man/man8/
-
-post-install-DOCS-on:
+	${INSTALL_MAN} ${WRKSRC}/nstxd.8 ${STAGEDIR}${PREFIX}/man/man8/
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}/
 

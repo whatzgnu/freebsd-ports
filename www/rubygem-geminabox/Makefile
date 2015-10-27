@@ -11,7 +11,6 @@ MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Sinatra based gem hosting app
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
 RUN_DEPENDS=	rubygem-builder32>=0:${PORTSDIR}/devel/rubygem-builder32 \
 		rubygem-faraday>=0:${PORTSDIR}/www/rubygem-faraday \
@@ -20,6 +19,7 @@ RUN_DEPENDS=	rubygem-builder32>=0:${PORTSDIR}/devel/rubygem-builder32 \
 		rubygem-sinatra>=1.2.7:${PORTSDIR}/www/rubygem-sinatra
 
 NO_ARCH=	yes
+
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

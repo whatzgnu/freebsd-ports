@@ -62,12 +62,14 @@ pre-install:
 		${STAGEDIR}${DOCSDIR}/gatebau
 .endif
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${TAR} -C ${WRKSRC}/doc -cf - ${DOCLIST} | ${TAR} -C ${STAGEDIR}${DOCSDIR} -xf -
-
-post-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${TAR} -C ${WRKSRC}/examples -cf - . | ${TAR} -C ${STAGEDIR}${EXAMPLESDIR} -xf -
+.endif
 
 .include <bsd.port.mk>

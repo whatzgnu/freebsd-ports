@@ -2,7 +2,7 @@
 
 PORTNAME=	transmission
 PORTVERSION=	2.84
-PORTREVISION?=	4
+PORTREVISION?=	3
 CATEGORIES?=	net-p2p
 #MASTER_SITES=	http://download.m0k.org/${PORTNAME}/files/
 MASTER_SITES=	http://transmission.cachefly.net/
@@ -40,11 +40,12 @@ GEN_LIB_DEPENDS=libcurl.so:${PORTSDIR}/ftp/curl \
 		libevent.so:${PORTSDIR}/devel/libevent2
 GEN_RUN_DEPENDS=${LOCALBASE}/share/transmission/web/index.html:${PORTSDIR}/www/transmission-web
 
-# This is master port of transmission-*, so don't override USES definition
-USES+=		gmake iconv libtool localbase pkgconfig
+# This is master port of transmission-*, so don't override USES definition 
+USES+=		gmake iconv libtool pkgconfig
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-DWITH_UTP=1
+CPPFLAGS+=	-I${LOCALBASE}/include -DWITH_UTP=1
+LDFLAGS+=	-L${LOCALBASE}/lib
 LIBS+=		${ICONV_LIB}
 CONFIGURE_ARGS=--with-zlib=/usr \
 		 --without-inotify \
@@ -72,12 +73,6 @@ EXTRA_PATCHES=	${PATCHDIR}/disable-web
 
 DOCS=		AUTHORS NEWS README
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
-
-.include <bsd.port.pre.mk>
-
-.if !empty(ICONV_LIB)
-CONFIGURE_ARGS+=ac_cv_func_iconv_open=yes
-.endif
 
 general-patch:
 	@${FIND} ${WRKSRC} -name Makefile.in | ${XARGS} ${REINPLACE_CMD} -e \
@@ -115,4 +110,4 @@ general-install:
 
 post-install: general-install
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

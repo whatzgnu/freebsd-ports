@@ -3,7 +3,6 @@
 
 PORTNAME=	debhelper
 PORTVERSION=	9.20150101
-PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	DEBIAN
 DISTNAME=	${PORTNAME}_${PORTVERSION}
@@ -19,8 +18,5 @@ USES=		gmake perl5 shebangfix
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
 SHEBANG_FILES=	dh*
-
-post-patch:
-	@${RM} ${WRKSRC}/*.orig
 
 .include <bsd.port.mk>

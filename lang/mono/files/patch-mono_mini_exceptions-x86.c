@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- mono/mini/exceptions-x86.c.orig
 +++ mono/mini/exceptions-x86.c
 @@ -12,6 +12,7 @@

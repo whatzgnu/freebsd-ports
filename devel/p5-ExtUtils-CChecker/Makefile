@@ -15,7 +15,6 @@ LICENSE_COMB=	dual
 
 TEST_DEPENDS=	p5-Test-Fatal>=0:${PORTSDIR}/devel/p5-Test-Fatal
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

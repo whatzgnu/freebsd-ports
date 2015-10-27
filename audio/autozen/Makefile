@@ -3,7 +3,7 @@
 
 PORTNAME=	autozen
 PORTVERSION=	2.1
-PORTREVISION=	7
+PORTREVISION=	6
 CATEGORIES=	audio
 MASTER_SITES=	http://www.sourcefiles.org/Miscellaneous/
 
@@ -12,9 +12,9 @@ COMMENT=	Adjust brain waves with sound
 
 LICENSE=	GPLv2
 
-OPTIONS_DEFINE=	DOCS
+OPTIONS_DEFINE=	GTK2 DOCS
 
-USES=		shebangfix perl5 pkgconfig
+USES=		shebangfix perl5
 SHEBANG_FILES=	zentime
 USE_PERL5=	run
 
@@ -27,8 +27,10 @@ DESKTOP_ENTRIES="AutoZen" \
 
 PORTDOCS=	*
 
-USE_GNOME=	gtk20
-MAKE_ENV=	GTK_CONFIG="pkg-config gtk+-2.0"
+GTK2_USES=	pkgconfig
+GTK2_USE=	GNOME=gtk20
+GTK2_MAKE_ENV=	GTK_CONFIG="pkg-config gtk+-2.0"
+GTK2_USE_OFF=	GNOME=gtk12
 
 post-extract:
 	@cd ${WRKSRC} && ${RM} -f autozen seq2wav
@@ -40,8 +42,7 @@ post-patch:
 		 /^PREFIX/s| =| ?=| ; \
 		 s|share/AutoZen|${DATADIR_REL}| ; \
 		 s|gtk-config|$${GTK_CONFIG}|g ; \
-		 s|$$(CC) seq2wav|$$(CC) $$(CFLAGS) seq2wav| ; \
-		 s|-pthread|-lm -pthread|g' \
+		 s|$$(CC) seq2wav|$$(CC) $$(CFLAGS) seq2wav|' \
 		${WRKSRC}/Makefile
 
 do-install:
@@ -50,8 +51,6 @@ do-install:
 	${INSTALL_MAN} ${WRKSRC}/doc/autozen.1 ${STAGEDIR}${MANPREFIX}/man/man1
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/*.seq ${STAGEDIR}${DATADIR}
-
-do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/doc && ${COPYTREE_SHARE} HTML ${STAGEDIR}${DOCSDIR}
 

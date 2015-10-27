@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	robotframework-ride
-PORTVERSION=	1.4.1
+PORTVERSION=	1.3
+PORTREVISION=	2
 CATEGORIES=	devel www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -16,9 +17,8 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}robotframework>=2.7.5:${PORTSDIR}/devel/py-r
 		${PYTHON_PKGNAMEPREFIX}robotframework-selenium2library>=1.1.0:${PORTSDIR}/devel/py-robotframework-selenium2library \
 		${PYTHON_PKGNAMEPREFIX}pygments>0:${PORTSDIR}/textproc/py-pygments
 
-NO_ARCH=	yes
 USES=		python:2
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 USE_WX=		3.0+
 WX_COMPS=	python:run
 

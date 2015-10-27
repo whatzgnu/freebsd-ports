@@ -8,7 +8,7 @@ CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	culot@FreeBSD.org
+MAINTAINER=	lippe@FreeBSD.org
 COMMENT=	Test::Portability::Files Check file names portability
 
 USES=		perl5

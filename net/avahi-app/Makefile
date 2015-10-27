@@ -144,10 +144,10 @@ avahi-post-install:
 .for f in ${AVAHI_PKGCONFIG}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${PREFIX}/libdata/pkgconfig
 .endfor
-.for f in ${DAEMON_CONFIG_FILES}
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/avahi
+.for f in ${DAEMON_CONFIG_FILES}
 	${INSTALL_DATA} ${WRKSRC}/avahi-daemon/${f} \
-		${STAGEDIR}${PREFIX}/etc/avahi/${f}.sample
+		${STAGEDIR}${PREFIX}/etc/avahi/${f}.dist
 .endfor
 .if ${AVAHI_SLAVE}==no
 	${INSTALL_DATA} ${FILESDIR}/org.freedesktop.Avahi.service \

@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- vm/builtin/io.cpp.orig
 +++ vm/builtin/io.cpp
 @@ -165,7 +165,7 @@

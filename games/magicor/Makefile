@@ -12,7 +12,7 @@ DISTFILES=	${PORTNAME}-source-${PORTVERSION}${EXTRACT_SUFX} \
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Old-school, puzzle game similar to Solomon's Key
 
-LICENSE=	PD
+LICENSE=	unknown
 LICENSE_NAME=	Public Domain
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 LICENSE_FILE=	${WRKSRC}/LICENSE
@@ -21,7 +21,6 @@ RUN_DEPENDS=	${PYTHON_SITELIBDIR}/pygame/__init__.py:${PORTSDIR}/devel/py-game
 
 USES=		python
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 PORTDOCS=	*
 PORTDATA=	*
@@ -56,12 +55,12 @@ do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/magicor
 	${INSTALL_SCRIPT} ${WRKSRC}/Magicor.py ${STAGEDIR}${PREFIX}/bin/magicor
 	${INSTALL_DATA} ${WRKSRC}/etc/magicor.conf \
-		${STAGEDIR}${PREFIX}/etc/magicor/magicor.conf.sample
+		${STAGEDIR}${PREFIX}/etc/magicor/magicor.conf.dist
 
 do-install-EDITOR-on:
 	${INSTALL_SCRIPT} ${WRKSRC}/Magicor-LevelEditor.py ${STAGEDIR}${PREFIX}/bin/magicor-editor
 	${INSTALL_DATA} ${WRKSRC}/etc/magicor-editor.conf \
-		${STAGEDIR}${PREFIX}/etc/magicor/magicor-editor.conf.sample
+		${STAGEDIR}${PREFIX}/etc/magicor/magicor-editor.conf.dist
 
 do-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

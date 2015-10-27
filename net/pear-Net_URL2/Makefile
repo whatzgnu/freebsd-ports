@@ -10,7 +10,6 @@ COMMENT=	PEAR Class for parsing and handling URL
 
 LICENSE=	BSD3CLAUSE
 
-USES=		pear
-NO_ARCH=	yes
+USES=	pear
 
 .include <bsd.port.mk>

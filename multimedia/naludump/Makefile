@@ -11,7 +11,7 @@ COMMENT=	Delete NALU fill data from h.264 TS files
 
 LICENSE=	GPLv2
 
-USES=		alias gmake iconv:wchar_t tar:tgz
+USES=		gmake iconv:wchar_t tar:tgz
 PATCH_STRIP=	-p1
 CFLAGS+=	"-I${LOCALBASE}/include"
 CFLAGS+=	"-L${LOCALBASE}/lib"

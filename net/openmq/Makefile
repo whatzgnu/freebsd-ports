@@ -43,11 +43,7 @@ USE_RC_SUBR=	imq
 SUB_FILES=	pkg-message
 .endif
 
-.include <bsd.port.pre.mk>
- 
-.if ${JAVA_PORT_VERSION:M1.8.*}
-BROKEN=		Does not build with JDK 1.8
-.endif
+.include <bsd.port.options.mk>
 
 # Get the bootstrap jars in place before the build starts, because
 # pointyhat doesn't allow them to be downloaded by the "bootstrap"
@@ -125,4 +121,4 @@ do-install:
 		@${INSTALL_DATA} ${WRKSRC}/dist/mq/lib/imqxm.jar ${STAGEDIR}${JAVAJARDIR}
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

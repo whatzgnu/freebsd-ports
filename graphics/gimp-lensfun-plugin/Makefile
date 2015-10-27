@@ -8,7 +8,7 @@ CATEGORIES=	graphics
 PKGNAMEPREFIX=	gimp-
 PKGNAMESUFFIX=	-plugin
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	lioux@FreeBSD.org
 COMMENT=	Gimp plugin to correct lens distortion using the lensfun library
 
 LICENSE=	GPLv3

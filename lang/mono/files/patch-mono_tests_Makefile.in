@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- mono/tests/Makefile.in.orig
 +++ mono/tests/Makefile.in
 @@ -1509,7 +1509,7 @@

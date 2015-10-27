@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mpv
-PORTVERSION=	0.11.0
+PORTVERSION=	0.10.0
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
 
@@ -19,7 +18,7 @@ BUILD_DEPENDS=	rst2man:${PORTSDIR}/textproc/py-docutils
 USE_GITHUB=	yes
 GH_ACCOUNT=	mpv-player waf-project:waf
 GH_PROJECT=	waf:waf
-GH_TAGNAME=	waf-1.8.14:waf
+GH_TAGNAME=	waf-1.8.12:waf
 
 WAF_CMD=	${WRKSRC_waf}/waf-light
 
@@ -37,10 +36,9 @@ CONFIGURE_ARGS=	--docdir=${EXAMPLESDIR} \
 		--disable-pdf \
 		--enable-libmpv-shared
 
-OPTIONS_DEFINE=		ASS DOCS ENCA LCMS2 \
+OPTIONS_DEFINE=		ASS BS2B DOCS ENCA LADSPA LCMS2 \
 			LIBGUESS LUAJIT UCHARDET ZSH
-OPTIONS_DEFAULT=	ASS DVDREAD DVDNAV ENCA OPENGL \
-			V4L VAAPI VDPAU X11 XINERAMA ZSH
+OPTIONS_DEFAULT=	ASS DVDREAD DVDNAV ENCA X11
 OPTIONS_GROUP=		IN VO AO
 OPTIONS_GROUP_IN=	CDIO DVDREAD DVDNAV LIBBLURAY V4L SMB
 OPTIONS_GROUP_VO=	CACA OPENGL VAAPI VDPAU X11 XINERAMA
@@ -48,6 +46,7 @@ OPTIONS_GROUP_AO=	ALSA JACK PULSEAUDIO
 OPTIONS_SUB=		yes
 
 ASS_DESC=	ASS/SSA subtitle and OSD rendering
+BS2B_DESC=	Enable Bauer Stereophonic-to-Binaural DSP support
 DVDREAD_DESC=	DVD Playback support
 DVDNAV_DESC=	DVD menu navigation
 ENCA_DESC=	Enable encoding detection support
@@ -63,6 +62,9 @@ ALSA_CONFIGURE_OFF=		--disable-alsa
 
 ASS_LIB_DEPENDS=		libass.so:${PORTSDIR}/multimedia/libass
 ASS_CONFIGURE_OFF=		--disable-libass
+
+BS2B_LIB_DEPENDS=		libbs2b.so:${PORTSDIR}/audio/libbs2b
+BS2B_CONFIGURE_OFF=		--disable-libbs2b
 
 CACA_LIB_DEPENDS=		libcaca.so:${PORTSDIR}/graphics/libcaca
 CACA_CONFIGURE_OFF=		--disable-caca
@@ -81,6 +83,10 @@ ENCA_CONFIGURE_OFF=		--disable-enca
 
 JACK_LIB_DEPENDS=		libjack.so:${PORTSDIR}/audio/jack
 JACK_CONFIGURE_OFF=		--disable-jack
+
+LADSPA_BUILD_DEPENDS=		${LOCALBASE}/lib/ladspa/amp.so:${PORTSDIR}/audio/ladspa
+LADSPA_RUN_DEPENDS=		${LOCALBASE}/lib/ladspa/amp.so:${PORTSDIR}/audio/ladspa
+LADSPA_CONFIGURE_OFF=		--disable-ladspa
 
 LCMS2_LIB_DEPENDS=		liblcms2.so:${PORTSDIR}/graphics/lcms2
 LCMS2_CONFIGURE_OFF=		--disable-lcms2

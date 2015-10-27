@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	vile
-PORTVERSION=	9.8q
+PORTVERSION=	9.8o
 CATEGORIES=	editors
 MASTER_SITES=	ftp://dickey.his.com/vile/current/ \
 		ftp://invisible-island.net/vile/current/ \
@@ -25,18 +25,15 @@ USE_XORG=	x11 xext xpm
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	cf_cv_crypt_works=yes
 CONFIGURE_ARGS=	--disable-imake \
-		--disable-desktop \
 		--enable-fontset \
-		--with-icon-theme \
 		--with-xpm \
-		--with-icondir=${PREFIX}/share/icons \
 		--with-pixmapdir=${PREFIX}/share/pixmaps
 MAKEFILE=	makefile
 INSTALL_TARGET=	install install-doc install-html
 
 CONFLICTS_INSTALL=	vile-[0-9]*
 
-OPTIONS_DEFINE=		DOCS FILTERS ICONV PERL
+OPTIONS_DEFINE=		DOCS FILTERS FREETYPE ICONV PERL
 OPTIONS_RADIO=		MENUS
 OPTIONS_RADIO_MENUS=	MOTIF XAW XAW3D
 OPTIONS_DEFAULT=	ICONV
@@ -49,8 +46,7 @@ ICONV_CONFIGURE_ON=	--with-iconv ${ICONV_CONFIGURE_ARG}
 ICONV_CONFIGURE_OFF=	--without-iconv --without-locale
 MENUS_DESC=		Support for menus
 MOTIF_USES=		motif
-MOTIF_CONFIGURE_ON=	--enable-colored-menus \
-			--with-screen=motif
+MOTIF_CONFIGURE_ON=	--with-screen=motif
 PERL_USES=		perl5
 PERL_CONFIGURE_WITH=	perl
 XAW_DESC=		X Athena Widgets
@@ -70,6 +66,10 @@ PLIST_SUB+=	SO_EXT=".so"
 PLIST_SUB+=	SO_EXT=""
 .endif
 
+.if empty(PORT_OPTIONS:MICONV)
+BROKEN=		Does not build if ICONV support is disabled
+.endif
+
 .if empty(PORT_OPTIONS:MMOTIF) && empty(PORT_OPTIONS:MXAW) && empty(PORT_OPTIONS:MXAW3D)
 CONFIGURE_ARGS+=	--with-screen=x11
 .endif
@@ -81,11 +81,12 @@ post-patch:
 		 s|\($$(DOCDIR)\) \($$(MANDIR)\)|\1 $$(HTMLDIR) \2|' \
 		${WRKSRC}/makefile.in
 	@${REINPLACE_CMD} -e \
-		'/^Categories/s|Application;||' \
+		'/^Icon/s|=.*|=${PREFIX}/share/pixmaps/vile.xpm| ; \
+		 /^Categories/s|Application;||' \
 		${WRKSRC}/macros/*.desktop
 
 post-install:
 	(cd ${WRKSRC}/macros && ${INSTALL_DATA} *.desktop \
-		${STAGEDIR}${PREFIX}/share/applications)
+		${STAGEDIR}${DESKTOPDIR})
 
 .include <bsd.port.mk>

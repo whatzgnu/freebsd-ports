@@ -13,7 +13,7 @@ COMMENT=	XKB keyboard layout indicator and switcher
 
 LICENSE=	ART10
 
-USES=		iconv imake pkgconfig
+USES=		iconv imake
 USE_XORG=	xpm
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
@@ -21,8 +21,12 @@ PORTDOCS=	README CHANGES.ru README.ru
 
 OPTIONS_DEFINE=	LIBRSVG2 DOCS
 
-LIBRSVG2_LIB_DEPENDS=	librsvg-2.so:${PORTSDIR}/graphics/librsvg2
-LIBRSVG2_VARS=		XMKMF_ARGS=-DWITH_SVG_SUPPORT
+.include <bsd.port.pre.mk>
+
+.if ${PORT_OPTIONS:MLIBRSVG2}
+LIB_DEPENDS+=	librsvg-2.so:${PORTSDIR}/graphics/librsvg2
+XMKMF_ARGS=	-DWITH_SVG_SUPPORT
+.endif
 
 post-build:
 # Convert Russian language docs from archaic KOI8-R to modern UTF-8
@@ -30,8 +34,10 @@ post-build:
 	iconv -f koi8-r -t utf-8 ${WRKSRC}/${f}.koi8 > ${WRKSRC}/${f}.ru
 .endfor
 
-post-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+.endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

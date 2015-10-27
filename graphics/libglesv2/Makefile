@@ -3,7 +3,7 @@
 
 PORTNAME=	libglesv2
 PORTVERSION=	${MESAVERSION}
-PORTREVISION=	0
+PORTREVISION=	${LIBGLES_REVISION}
 CATEGORIES=	graphics
 
 COMMENT=	OpenGL ES v2 library
@@ -17,12 +17,28 @@ USE_XORG+=	glproto dri2proto xext xdamage xfixes presentproto \
 		xshmfence
 
 .include <bsd.port.options.mk>
-.include "${.CURDIR}/../../graphics/libGL/Makefile.common"
+.include "${.CURDIR}/../../graphics/libGL/bsd.mesalib.mk"
 
+.if defined(WITH_NEW_MESA)
+LIBGLES_REVISION=	3
+.else
+LIBGLES_REVISION=	4
+.endif
+
+.if defined(WITH_NEW_MESA)
 BUILD_WRKSRC=	${WRKSRC}/src/mapi
 INSTALL_WRKSRC=	${WRKSRC}/src/mapi
+.else
+BUILD_WRKSRC=	${WRKSRC}/src/mapi/es2api
+INSTALL_WRKSRC=	${WRKSRC}/src/mapi/es2api
+.endif
 
-.include "${.CURDIR}/../../graphics/libGL/Makefile.targets"
+.if !defined(WITH_NEW_MESA)
+pre-build:
+	@cd ${WRKSRC}/src/mapi/shared-glapi && ${MAKE_CMD} ${_MAKE_JOBS}
+.endif
+
+post-install:
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/.mesa

@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	musicpc
-PORTVERSION=	0.27
+PORTVERSION=	0.26
 CATEGORIES=	audio ipv6
-MASTER_SITES=	http://www.musicpd.org/download/mpc/0/
+MASTER_SITES=	http://musicpd.org/download/mpc/0/
 DISTNAME=	mpc-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
@@ -17,7 +17,7 @@ LIB_DEPENDS=	libmpdclient.so:${PORTSDIR}/audio/libmpdclient
 OPTIONS_DEFINE=	EXAMPLES DOCS ICONV
 OPTIONS_DEFAULT=	ICONV
 
-USES=		pkgconfig tar:xz
+USES=		tar:xz pkgconfig
 GNU_CONFIGURE=	yes
 LDFLAGS+=	-L${LOCALBASE}/lib
 CFLAGS+=	-I${LOCALBASE}/include

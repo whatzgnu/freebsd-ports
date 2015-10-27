@@ -23,6 +23,7 @@ PLIST_FILES=	bin/lysdr
 
 post-patch:
 	${CP} ${FILESDIR}/Makefile ${WRKSRC}
+	${CP} ${FILESDIR}/cexp.c ${WRKSRC}
 
 do-install:
 	@${INSTALL_PROGRAM} ${WRKSRC}/lysdr ${STAGEDIR}${PREFIX}/bin/lysdr

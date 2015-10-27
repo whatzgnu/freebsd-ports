@@ -27,7 +27,16 @@ MAKE_JOBS_UNSAFE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 
+.include <bsd.port.pre.mk>
+
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/*.so.* ${STAGEDIR}${PREFIX}/lib/daq/*.so
 
-.include <bsd.port.mk>
+.if ${OSVERSION} < 901000
+CONFIGURE_ARGS+=--disable-netmap-module
+PLIST_SUB+=	NETMAP="@comment "
+.else
+PLIST_SUB+=	NETMAP=""
+.endif
+
+.include <bsd.port.post.mk>

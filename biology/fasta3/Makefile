@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	fasta3
-PORTVERSION=	36.3.8
+PORTVERSION=	36.3.7a
 CATEGORIES=	biology
 MASTER_SITES=	http://faculty.virginia.edu/wrpearson/fasta/fasta36/
 DISTNAME=	fasta-${PORTVERSION}
 DIST_SUBDIR=	fasta3/2014-01-29
 
-MAINTAINER=	wendell@bsd.com.br
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Collection of programs for searching DNA and protein databases
 
 LICENSE=	Fasta

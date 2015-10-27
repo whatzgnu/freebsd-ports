@@ -22,9 +22,8 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 OPTIONS_DEFINE=	X11
 X11_DESC=	X11 Clipboard support
 
-NO_ARCH=	yes
 USE_PERL5=	configure
-USES=		perl5 shebangfix
+USES=		shebangfix perl5
 
 SHEBANG_FILES=	nopaste
 

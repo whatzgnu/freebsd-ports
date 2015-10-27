@@ -11,7 +11,6 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	CGI search application built on Xapian
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre \
 		libxapian.so:${PORTSDIR}/databases/xapian-core
@@ -25,9 +24,11 @@ PORTSCOUT=	limitw:1,even
 CONFIGURE_ARGS=	--datarootdir=${DATADIR} --docdir=${DOCSDIR}
 CONFIGURE_ENV=	PCRE_CONFIG=${LOCALBASE}/bin/pcre-config \
 		XAPIAN_CONFIG=${LOCALBASE}/bin/xapian-config
+CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
+LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
-USES=		libtool localbase perl5 shebangfix tar:xz
+USES=		libtool perl5 shebangfix tar:xz
 
 MORE_PORTDOCS=	AUTHORS ChangeLog NEWS README TODO
 PORTDATA=	*
@@ -36,8 +37,8 @@ PORTEXAMPLES=	omega.conf
 
 SHEBANG_FILES=	dbi2omega htdig2omega mbox2omega
 
-ICONV_CONFIGURE_ON=	ac_cv_search_iconv=${ICONV_LIB}
 ICONV_CONFIGURE_WITH=	iconv
+ICONV_LDFLAGS=		${ICONV_LIB}
 ICONV_USES=		iconv
 
 post-patch:

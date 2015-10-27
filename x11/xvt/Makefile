@@ -47,40 +47,93 @@ OPTIONS_DEFAULT=256_COLOR GB LINESPACE MENUBAR NEXT XVT SMART TRANSPARENCY \
 
 CONFIGURE_ARGS=	--enable-utmp --enable-lastlog \
 		--with-xpm --enable-xpm-background --enable-shared \
-		--enable-mousewheel --disable-languages \
-		--disable-wtmp
+		--enable-mousewheel --disable-languages
 LIBS+=		-lutil
 
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} >= 900007
+CONFIGURE_ARGS+=	--disable-wtmp
+EXTRA_PATCHES+=	${FILESDIR}/extra-utmpx_patch-src__logging.c
+.else
+CONFIGURE_ARGS+=	--enable-wtmp
+EXTRA_PATCHES+=	${FILESDIR}/extra-utmp_patch-src__logging.c
+.endif
+
 # enable 256 color
-256_COLOR_CONFIGURE_ON=	--enable-256-color
+.if ${PORT_OPTIONS:M256_COLOR}
+CONFIGURE_ARGS+=	--enable-256-color
+.endif
+
 # enable big5 support
-BIG5_CONFIGURE_ON=	--with-encoding=big5 --enable-languages
+.if ${PORT_OPTIONS:MBIG5}
+CONFIGURE_ARGS+=	--with-encoding=big5 --enable-languages
+.endif
+
 # enable euc japanese support
-EUCJ_CONFIGURE_ON=	--with-encoding=eucj --enable-languages
+.if ${PORT_OPTIONS:MEUCJ}
+CONFIGURE_ARGS+=	--with-encoding=eucj --enable-languages
+.endif
+
 # enable gb support
-GB_CONFIGURE_ON=	--with-encoding=gb --enable-languages
+.if ${PORT_OPTIONS:MGB}
+CONFIGURE_ARGS+=	--with-encoding=gb --enable-languages
+.endif
+
 # enable greek keyboard support
-GREEK_CONFIGURE_ON=	--enable-greek
+.if ${PORT_OPTIONS:MGREEK}
+CONFIGURE_ARGS+=	--enable-greek
+.endif
+
 # enable euc korean support
-KR_CONFIGURE_ON=	--with-encoding=kr --enable-languages
+.if ${PORT_OPTIONS:MKR}
+CONFIGURE_ARGS+=	--with-encoding=kr --enable-languages
+.endif
+
 # enable line-spacing
-LINESPACE_CONFIGURE_ON=	--enable-linespace
+.if ${PORT_OPTIONS:MLINESPACE}
+CONFIGURE_ARGS+=	--enable-linespace
+.endif
+
 # enable menubar
-MENUBAR_CONFIGURE_ON=	--enable-menubar
+.if ${PORT_OPTIONS:MMENUBAR}
+CONFIGURE_ARGS+=	--enable-menubar
+.endif
+
 # enable NeXT style scrollbar
-NEXT_CONFIGURE_ON=	--enable-next-scroll
+.if ${PORT_OPTIONS:MNEXT}
+CONFIGURE_ARGS+=	--enable-next-scroll
+.endif
+
 # enable xvt style scrollbar
-XVT_CONFIGURE_ON=	--enable-xvt-scroll
+.if ${PORT_OPTIONS:MXVT}
+CONFIGURE_ARGS+=	--enable-xvt-scroll
+.endif
+
 # enable shift jis support
-SJIS_CONFIGURE_ON=	--with-encoding=sjis --enable-languages
+.if ${PORT_OPTIONS:MSJIS}
+CONFIGURE_ARGS+=	--with-encoding=sjis --enable-languages
+.endif
+
 # enable smart resize
-SMART_CONFIGURE_ON=	--enable-smart-resize
+.if ${PORT_OPTIONS:MSMART}
+CONFIGURE_ARGS+=	--enable-smart-resize
+.endif
+
 # enable transparency support
-TRANSPARENCY_CONFIGURE_ON=	--enable-transparency
+.if ${PORT_OPTIONS:MTRANSPARENCY}
+CONFIGURE_ARGS+=	--enable-transparency
+.endif
+
 # XIM (X Input Method) protocol support
-XIM_CONFIGURE_ON=	--enable-xim
+.if ${PORT_OPTIONS:MXIM}
+CONFIGURE_ARGS+=	--enable-xim
+.endif
+
 # enable Xterm style scrollbar
-XTERM_CONFIGURE_ON=	--enable-xterm-scroll
+.if ${PORT_OPTIONS:MXTERM}
+CONFIGURE_ARGS+=	--enable-xterm-scroll
+.endif
 
 post-patch:
 	@${PERL} -pi -e 's|(PTYCHAR2\s+"[^"]+)"|\1ghijklmnopqrstuv"|' \
@@ -89,6 +142,6 @@ post-patch:
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/xvt; \
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libxvt.so.1.0.0 ;\
-	${INSTALL_DATA} ${WRKSRC}/W11/wrap/xvt.png ${STAGEDIR}${PREFIX}/share/pixmaps/xvt.png
+	${CP} ${WRKSRC}/W11/wrap/xvt.png ${STAGEDIR}${PREFIX}/share/pixmaps/xvt.png
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

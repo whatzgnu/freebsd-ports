@@ -15,7 +15,7 @@ COMMENT=	Full-screen curses-based remote login to IBM mainframes
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION:C/([0-9]\.[0-9])(\..*)/\1/}
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	ac_cv_search_libiconv=${ICONV_LIB}
+CONFIGURE_ARGS=	ac_cv_search_libiconv=no
 
 USES=		iconv readline gmake
 USE_OPENSSL=	yes

@@ -2,7 +2,7 @@
 
 PORTNAME=	ipa
 PORTVERSION=	00303
-PORTREVISION=	6
+PORTREVISION=	3
 CATEGORIES=	japanese x11-fonts
 MASTER_SITES=	http://info.openlab.ipa.go.jp/ipafont/fontdata/
 PKGNAMEPREFIX=	ja-font-
@@ -13,9 +13,7 @@ COMMENT=	IPA Japanese fonts
 
 CONFLICTS=	ja-ipa-ttfonts-[0-9]*
 
-USES=		fonts:fc zip
-FONTNAME=	OTF
-NO_ARCH=	yes
+USES=		fonts zip
 NO_BUILD=	yes
 PKGINSTALL=	${WRKDIR}/pkg-install
 PKGDEINSTALL=	${WRKDIR}/pkg-install
@@ -24,6 +22,7 @@ DATADIR=	${PREFIX}/share/font-${PORTNAME}
 PORTDOCS=	IPA_Font_License_Agreement_v1.0.txt \
 		Readme_IPAfont${PORTVERSION}.txt
 
+FONTNAME=	OTF
 OPTIONS_DEFINE=	DOCS
 
 post-extract:
@@ -44,8 +43,6 @@ do-install:
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/20-unhint-${PORTNAME}.conf
 	${LN} -s -f ../conf.avail/62-fonts-${PORTNAME}.conf \
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/62-fonts-${PORTNAME}.conf
-
-post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 

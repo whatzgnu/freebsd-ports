@@ -26,4 +26,5 @@ include/omapip/isclib.h
 include/omapip/result.h
 lib/libdhcpctl.a
 lib/libomapi.a
+lib/libdst.a
 %%LDAP%%%%SCHEMA_DIR%%/dhcp.schema

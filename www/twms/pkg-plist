@@ -1,5 +1,7 @@
 bin/twms
-@sample etc/twms.conf.default etc/twms.conf
+@unexec if cmp -s %D/etc/twms.conf.default %D/etc/twms.conf; then rm -f %D/etc/twms.conf; fi
+etc/twms.conf.default
+@exec if [ ! -f %D/etc/twms.conf ] ; then cp -p %D/%F %B/twms.conf; fi
 %%PYTHON_SITELIBDIR%%/twms/__init__.py
 %%PYTHON_SITELIBDIR%%/twms/bbox.py
 %%PYTHON_SITELIBDIR%%/twms/canvas.py

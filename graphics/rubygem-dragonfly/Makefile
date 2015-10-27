@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dragonfly
-PORTVERSION=	1.0.12
-PORTREVISION=	1
+PORTVERSION=	1.0.11
 CATEGORIES=	graphics rubygems
 MASTER_SITES=	RG
 
@@ -20,8 +19,5 @@ NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes
-
-post-patch:
-	@${REINPLACE_CMD} -e '1s|#!env|#!/usr/bin/env|' ${WRKSRC}/dev/test_rails
 
 .include <bsd.port.mk>

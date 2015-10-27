@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	rainloop
-PORTVERSION=	1.9.3
+PORTVERSION=	1.9.2
 CATEGORIES?=	mail www
 MASTER_SITES=	http://repository.rainloop.net/v2/webmail/${PORTVERSION}/
 DISTNAME=	${PORTNAME}${PKGNAMESUFFIX}-${PORTVERSION}.${RBUILD}-${RHASH}
@@ -10,31 +10,27 @@ MAINTAINER=	loic.blot@unix-experience.fr
 COMMENT=	Modern and interactive webmail
 
 .if !defined(PKGNAMESUFFIX)
-LICENSE=	RainLoop
-LICENSE_NAME=	RainLoop Software License
-LICENSE_TEXT=	License can be found at: http://www.rainloop.net/licensing/
-LICENSE_PERMS=	auto-accept
+LICENSE=	CCbyNCSA3
+LICENSE_NAME=	Attribution-NonCommercial-ShareAlike 3.0 Unported
+LICENSE_TEXT=	License can be found at: https://github.com/RainLoop/rainloop-webmail/blob/master/LICENSE
+LICENSE_PERMS=	dist-mirror pkg-mirror auto-accept
 .endif
 
 .if !defined(PKGNAMESUFFIX)
 # Refresh using info from http://repository.rainloop.net/v2/core.stable.json
-RHASH=		e5a505507a5bf04426aa8578dd85c6d1
+RHASH=		b21276cc22a92698f5813079b046334c
 .endif
 
 .if defined(PKGNAMESUFFIX)
 # Refresh using info from http://repository.rainloop.net/v2/core.open.json
-RHASH=		4903b60f0199347bca03c1a26125e907
+RHASH=		1579e1f742ef7a4fa87e55c201416e30
 .endif
 
 # Refresh using info from http://repository.rainloop.net/v2/core.(stable|open).json
-RBUILD=		363
+RBUILD=		343
 
-.if !defined(PKGNAMESUFFIX)
-RESTRICTED=	Redistribution in any form is prohibited
-.endif
 USES=		zip
 NO_BUILD=	yes
-NO_ARCH=	yes
 NO_WRKSUBDIR=	yes
 WANT_PHP_WEB=	yes
 USE_PHP=	curl iconv json xml dom openssl pcre spl zlib

@@ -27,8 +27,12 @@ GNEE_CONFIGURE_ENABLE=	gui
 GNEE_USES=	pkgconfig
 GNEE_USE=	GNOME=gtk20
 
-GNEE_DESKTOP_ENTRIES=	"Gnee" "" "${PORTNAME}.png" \
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MGNEE}
+DESKTOP_ENTRIES=	"Gnee" "" "${PORTNAME}.png" \
 			"gnee" "Development;" true
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e \

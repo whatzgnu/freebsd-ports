@@ -26,6 +26,4 @@ PLIST_SUB=	VERSION="1.0"
 
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
 
-OPTIONS_DEFINE=	DOCS
-
 .include <bsd.port.mk>

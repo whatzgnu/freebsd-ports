@@ -11,15 +11,12 @@ MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Amateur Radio control front-end
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libhamlib.so:${PORTSDIR}/comms/hamlib
 
 USE_GNOME=	gtk20 intltool
 GNU_CONFIGURE=	yes
 USES=		gettext gmake pkgconfig
-
-LIBS+=		-lm
 
 post-patch:
 	@${FIND} ${WRKSRC} -name Makefile.* | ${XARGS} ${REINPLACE_CMD} -e \

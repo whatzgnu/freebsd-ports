@@ -12,7 +12,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	API Library for Working with SBML File
 
 LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/COPYING.txt
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
@@ -44,7 +43,7 @@ post-patch:
 		s|$${CMAKE_INSTALL_LIBDIR}/pkgconfig|libdata/pkgconfig| ; \
 		/$${DOCUMENTATION_FILES}/s|^|#|' ${WRKSRC}/CMakeLists.txt
 
-post-install-EXAMPLES-on:
+post-install:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	@${TAR} -C ${WRKSRC}/examples --exclude "*Makefile*" -cf - . | \
 		${TAR} -C ${STAGEDIR}${EXAMPLESDIR} --unlink -xf -

@@ -33,6 +33,7 @@
     SUBDIR += aria2
     SUBDIR += aria2fe
     SUBDIR += arora
+    SUBDIR += asp2php
     SUBDIR += asql
     SUBDIR += asterisk-stat
     SUBDIR += atutor
@@ -350,6 +351,7 @@
     SUBDIR += imgsizer
     SUBDIR += impresscms
     SUBDIR += interchange
+    SUBDIR += iojs
     SUBDIR += itop
     SUBDIR += iwebcal
     SUBDIR += jawstats
@@ -538,6 +540,7 @@
     SUBDIR += monast
     SUBDIR += mongoose
     SUBDIR += mongrel2
+    SUBDIR += moodle27
     SUBDIR += moodle28
     SUBDIR += moodle29
     SUBDIR += mozplugger
@@ -563,13 +566,11 @@
     SUBDIR += node
     SUBDIR += node-devel
     SUBDIR += node010
-    SUBDIR += node012
     SUBDIR += nostromo
     SUBDIR += npapi-vlc
     SUBDIR += npapi-xine
     SUBDIR += npc
     SUBDIR += npm
-    SUBDIR += npm012
     SUBDIR += nspluginwrapper
     SUBDIR += ocaml-net
     SUBDIR += ocsigen
@@ -1138,7 +1139,6 @@
     SUBDIR += p5-Plack-Middleware-Debug
     SUBDIR += p5-Plack-Middleware-Deflater
     SUBDIR += p5-Plack-Middleware-Expires
-    SUBDIR += p5-Plack-Middleware-ExtDirect
     SUBDIR += p5-Plack-Middleware-File-Sass
     SUBDIR += p5-Plack-Middleware-FixMissingBodyInRedirect
     SUBDIR += p5-Plack-Middleware-ForceEnv
@@ -1337,7 +1337,6 @@
     SUBDIR += p5-Web-Scraper-Config
     SUBDIR += p5-Web-oEmbed
     SUBDIR += p5-WebDAO
-    SUBDIR += p5-WebDriver-Tiny
     SUBDIR += p5-WebService-Basecamp
     SUBDIR += p5-WebService-Bloglines
     SUBDIR += p5-WebService-BuzzurlAPI
@@ -2034,7 +2033,6 @@
     SUBDIR += smarty3
     SUBDIR += smb_auth
     SUBDIR += snarf
-    SUBDIR += sogo
     SUBDIR += spawn-fcgi
     SUBDIR += spdylay
     SUBDIR += speedtest-mini

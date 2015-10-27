@@ -17,8 +17,7 @@ LICENSE_COMB=	dual
 TEST_DEPENDS=	p5-Test-Output>=0:${PORTSDIR}/devel/p5-Test-Output \
 		p5-Test-Warn>=0:${PORTSDIR}/devel/p5-Test-Warn
 
-NO_ARCH=	yes
-USE_PERL5=	configure
 USES=		perl5
+USE_PERL5=	configure
 
 .include <bsd.port.mk>

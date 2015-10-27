@@ -26,14 +26,18 @@ CONFLICTS_INSTALL=	qstat-[0-9]* zh-qterm-[0-9]*
 
 OPTIONS_DEFINE=	EXAMPLES
 
+.include <bsd.port.options.mk>
+
 pre-configure:
 	@${REINPLACE_CMD} -E 's|ps[ \t]+-ef|ps -ax|g' ${WRKSRC}/torque.setup
 	@${REINPLACE_CMD} -E 's|%%LOCALBASE%%|${LOCALBASE}|g' ${WRKSRC}/configure
 
 post-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/torque-config ${STAGEDIR}${PREFIX}/bin
-
-post-install-EXAMPLES-on:
+.if ${PORT_OPTIONS:MEXAMPLES}
 	${INSTALL_SCRIPT} ${WRKSRC}/torque.setup ${STAGEDIR}${EXAMPLESDIR}
+.else
+	${RM} -rf ${STAGEDIR}${EXAMPLESDIR}
+.endif
 
 .include <bsd.port.mk>

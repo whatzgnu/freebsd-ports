@@ -54,7 +54,9 @@ OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
 
-.if exists(${CC})
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 900014
+WITH_PORTS_CLANG=	yes
+.elif exists(${CC})
 CCVERSION!=	${CC} --version
 COMPILER_VERSION=	${CCVERSION:M[0-9].[0-9]*:C/([0-9]).?/\1/g}
 COMPILER_IS_CLANG=	${CCVERSION:Mclang}

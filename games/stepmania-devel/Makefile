@@ -2,11 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	stepmania
-PORTVERSION=	5.0.9
-DISTVERSIONPREFIX=	v
+PORTVERSION=	5.0.a3
+PORTREVISION=	4
 PORTEPOCH=	1
 CATEGORIES=	games
+MASTER_SITES=	GOOGLE_CODE
+PROJECTHOST=	sm-ssc
 PKGNAMESUFFIX=	-devel
+DISTNAME=	${PORTNAME}-SM5-alpha3-src
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Rrhythm game simulator
@@ -14,90 +17,77 @@ COMMENT=	Rrhythm game simulator
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/Docs/Licenses.txt
 
-LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre \
-		libpng.so:${PORTSDIR}/graphics/png
+BUILD_DEPENDS=	zip:${PORTSDIR}/archivers/zip
+LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad \
+		libGLEW.so:${PORTSDIR}/graphics/glew
 
-USE_GITHUB=	yes
+OPTIONS_DEFINE=	PULSEAUDIO VORBIS DOCS
+OPTIONS_DEFAULT=VORBIS
 
-USES=		autoreconf gmake iconv jpeg pathfix perl5 pkgconfig shebangfix
-USE_XORG=	x11 xrandr xtst
-USE_GL=		glew
+WRKSRC=		${WRKDIR}/${PORTNAME}-SM5-alpha3
+
+USES=		iconv pathfix perl5 pkgconfig shebangfix tar:bzip2
+USE_XORG=	x11 xau xdmcp xext xrandr xrender xtst
+USE_GL=		gl glu
+USE_GNOME=	gtk20
 USE_PERL5=	build
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-system-pcre \
-		${ICONV_CONFIGURE_ARG}
+CONFIGURE_ARGS=	--without-ffmpeg
 INSTALLS_ICONS=	yes
 SHEBANG_FILES=	Utils/*.pl \
 		extern/zlib/zlib2ansi
 
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/lib -lX11 -lpthread
 
-OPTIONS_DEFINE=		ALSA DOCS FFMPEG GTK2 JACK MAD PULSEAUDIO VORBIS
-OPTIONS_DEFAULT=	GTK2 MAD VORBIS
-OPTIONS_SUB=		yes
-
-ALSA_LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
-ALSA_CONFIGURE_ENV_OFF=	ac_cv_lib_asound_snd_ctl_open=no
-FFMPEG_LIB_DEPENDS=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
-FFMPEG_CONFIGURE_ON=	--with-system-ffmpeg
-FFMPEG_CONFIGURE_WITH=	ffmpeg
-GTK2_USE=		gnome=gtk20
-GTK2_CONFIGURE_ENABLE=	gtk2
-JACK_LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack
-JACK_CONFIGURE_WITH=	jack
-MAD_LIB_DEPENDS=	libmad.so:${PORTSDIR}/audio/libmad
-MAD_CONFIGURE_WITH=	mp3
-PULSEAUDIO_LIB_DEPENDS=	libpulse.so:${PORTSDIR}/audio/pulseaudio
-PULSEAUDIO_CONFIGURE_ENV_OFF=	ac_cv_lib_pulse_pa_stream_new=no
 VORBIS_LIB_DEPENDS=	libvorbis.so:${PORTSDIR}/audio/libvorbis
 VORBIS_CONFIGURE_WITH=	vorbis
 
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MPULSEAUDIO}
+LIB_DEPENDS+=	libpulse.so:${PORTSDIR}/audio/pulseaudio
+.else
+CONFIGURE_ENV+=	ac_cv_lib_pulse_pa_stream_new=no
+.endif
+
 post-patch:
 	@${REINPLACE_CMD} -e \
-		's|^\(x86_64\)|amd64*\|\1| ; \
-		 s|-lpthread|-pthread|' ${WRKSRC}/configure.ac
+		's|-lpthread |-pthread |' ${WRKSRC}/configure
 	@${REINPLACE_CMD} -e \
-		's|XLIBS+="-l|XLIBS="$$XLIBS -l|' ${WRKSRC}/autoconf/m4/x11.m4
-	@${REINPLACE_CMD} -e \
-		's|-rdynamic|-Wl,-export-dynamic| ; \
-		 s|-finline-limit=300||' ${WRKSRC}/src/Makefile.am
+		'/^LIBS/s|-lpthread|${ICONV_LIB}| ; \
+		 s|-finline-limit=300||g' ${WRKSRC}/src/Makefile.in
 
 pre-build:
-	@${MKDIR} ${WRKDIR}/wrappers
-	@${ECHO_CMD} -n \
-		> ${WRKDIR}/wrappers/stepmania
-	@${ECHO_CMD} '#!${SH}' \
-		>> ${WRKDIR}/wrappers/stepmania
-	@${ECHO_CMD} 'cd ${PREFIX}/lib/stepmania' \
-		>> ${WRKDIR}/wrappers/stepmania
-	@${ECHO_CMD} 'exec ./stepmania $$@' \
-		>> ${WRKDIR}/wrappers/stepmania
+	@${ECHO_CMD} -n > ${WRKDIR}/stepmania.sh
+	@${ECHO_CMD} '#!${SH}' >> ${WRKDIR}/stepmania.sh
+	@${ECHO_CMD} 'cd ${PREFIX}/lib/stepmania; ./stepmania $$@' >> ${WRKDIR}/stepmania.sh
+
+post-build:
+	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_FLAGS} \
+		${MAKEFILE} ${MAKE_ARGS} SMData)
 
 do-install:
-	(cd ${WRKDIR}/wrappers && ${INSTALL_SCRIPT} stepmania \
-		${STAGEDIR}${PREFIX}/bin)
-	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/stepmania
-.for i in Announcers BGAnimations BackgroundEffects BackgroundTransitions \
-	Characters Courses Data NoteSkins Scripts Themes
-	@(cd ${WRKSRC} && ${COPYTREE_SHARE} ${i} \
-		${STAGEDIR}${PREFIX}/lib/stepmania)
+	${INSTALL_SCRIPT} ${WRKDIR}/stepmania.sh ${STAGEDIR}${PREFIX}/bin/stepmania
+	${INSTALL_DATA} ${WRKSRC}/stepmania.desktop ${STAGEDIR}${PREFIX}/share/applications
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/scalable/apps
+	cd ${WRKSRC}/icons/hicolor/scalable/apps && ${INSTALL_DATA} \
+		stepmania-ssc.svg ${STAGEDIR}${PREFIX}/share/icons/hicolor/scalable/apps
+.for i in 16 22 24 32 36 48 64 72 96 128 192 256
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/${i}x${i}/apps
+	cd ${WRKSRC}/icons/hicolor/${i}x${i}/apps && ${INSTALL_DATA} \
+		stepmania-ssc.png ${STAGEDIR}${PREFIX}/share/icons/hicolor/${i}x${i}/apps
 .endfor
-	(cd ${WRKSRC}/src && ${INSTALL_PROGRAM} stepmania \
-		${STAGEDIR}${PREFIX}/lib/stepmania)
-	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/stepmania/Songs
-	(cd ${WRKSRC} && ${INSTALL_DATA} stepmania.desktop \
-		${STAGEDIR}${PREFIX}/share/applications)
-	@(cd ${WRKSRC} && ${COPYTREE_SHARE} icons \
-		${STAGEDIR}${PREFIX}/share)
-
-post-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/stepmania
+	${INSTALL_PROGRAM} ${WRKSRC}/src/stepmania ${STAGEDIR}${PREFIX}/lib/stepmania
+	${INSTALL_DATA} ${WRKSRC}/src/GtkModule.so ${STAGEDIR}${PREFIX}/lib/stepmania
+	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/stepmania/Packages
+	${INSTALL_DATA} ${WRKSRC}/GameData.smzip ${STAGEDIR}${PREFIX}/lib/stepmania/Packages
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	@(cd ${WRKSRC}/Docs && ${COPYTREE_SHARE} . \
-		${STAGEDIR}${DOCSDIR} "! -name Licenses.txt")
+	@(${TAR} -C ${WRKSRC}/Docs --exclude "Licenses.txt" -cf - . | \
+		${TAR} -C ${STAGEDIR}${DOCSDIR} --unlink -xf -)
 
-post-install-GTK2-on:
-	(cd ${WRKSRC}/src && ${INSTALL_LIB} GtkModule.so \
-		${STAGEDIR}${PREFIX}/lib/stepmania)
+post-install:
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/stepmania/GtkModule.so
 
 .include <bsd.port.mk>

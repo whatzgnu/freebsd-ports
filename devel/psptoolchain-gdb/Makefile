@@ -31,7 +31,4 @@ post-patch:
 	@${REINPLACE_CMD} -E 's/^(install.*:.*)install-info(.*)/\1\2/' ${WRKSRC}/etc/Makefile.in
 	@${REINPLACE_CMD} -E 's/^(install:)(.*)/\1#\2/' ${WRKSRC}/libiberty/Makefile.in
 
-post-install:
-	@${RMDIR} ${STAGEDIR}${PREFIX}/share/info
-
 .include <bsd.port.mk>

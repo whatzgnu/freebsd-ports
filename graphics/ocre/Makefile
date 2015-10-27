@@ -10,7 +10,7 @@ DISTNAME=	${PORTNAME}_v${PORTVERSION:S/./_/}
 MAINTAINER=	w.schwarzenfeld@utanet.at
 COMMENT=	Simple optical character recognition solution
 
-LICENSE=	GPLv3
+LICENSE=	GPLv2
 
 LIB_DEPENDS=	libaspell.so:${PORTSDIR}/textproc/aspell
 RUN_DEPENDS=	display:${PORTSDIR}/graphics/ImageMagick \

@@ -1,4 +1,3 @@
-@(,,4755) bin/op
-@sample(,,600) etc/op.conf.sample
 man/man1/op.1.gz
-@dir etc/op.d
+@sample etc/op.conf.sample
+bin/op

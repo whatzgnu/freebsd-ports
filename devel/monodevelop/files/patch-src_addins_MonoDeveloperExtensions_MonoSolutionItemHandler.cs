@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/addins/MonoDeveloperExtensions/MonoSolutionItemHandler.cs.orig
 +++ src/addins/MonoDeveloperExtensions/MonoSolutionItemHandler.cs
 @@ -185,7 +185,7 @@

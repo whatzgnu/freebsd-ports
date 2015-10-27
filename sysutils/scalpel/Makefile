@@ -14,7 +14,6 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libtre.so:${PORTSDIR}/textproc/libtre
 
-USES=		alias
 GNU_CONFIGURE=	yes
 SUB_FILES=	pkg-message
 

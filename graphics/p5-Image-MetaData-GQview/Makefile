@@ -15,7 +15,6 @@ COMMENT=	Perl extension for GQview image metadata
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

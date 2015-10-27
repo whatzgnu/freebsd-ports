@@ -9,13 +9,17 @@ MASTER_SITES=	http://opencircuitdesign.com/~tim/programs/dclock/archive/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	7-segment digital clock with some optional features
 
+OPTIONS_DEFINE=	SOX XFT DOCS
+OPTIONS_DEFAULT=SOX XFT
+SOX_DESC=	Install SOX to play audio
+
+WRKSRC=		${WRKDIR}/${PORTNAME}
+
 USE_XORG=	x11 xt
 USES=		pkgconfig tar:tgz
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib -lX11 -lXt -lm
-
-WRKSRC=		${WRKDIR}/${PORTNAME}
 
 PORTDOCS=	README TODO
 PLIST_FILES=	bin/dclock \
@@ -24,14 +28,17 @@ PLIST_FILES=	bin/dclock \
 		%%DATADIR%%/sounds/bell.wav \
 		%%DATADIR%%/sounds/digital.wav
 
-OPTIONS_DEFINE=	SOX XFT DOCS
-OPTIONS_DEFAULT=SOX XFT
-SOX_DESC=	Install SOX to play audio
-SOX_RUN_DEPENDS=	play:${PORTSDIR}/audio/sox
+.include <bsd.port.options.mk>
 
-XFT_USE=	XORG=xft
-XFT_CPPFLAGS=	$$(freetype-config --cflags) -DXFT_SUPPORT
-XFT_LDFLAGS=	$$(freetype-config --libs) -lXft
+.if ${PORT_OPTIONS:MSOX}
+RUN_DEPENDS+=	play:${PORTSDIR}/audio/sox
+.endif
+
+.if ${PORT_OPTIONS:MXFT}
+USE_XORG+=	xft
+CPPFLAGS+=	$$(freetype-config --cflags) -DXFT_SUPPORT
+LDFLAGS+=	$$(freetype-config --libs) -lXft
+.endif
 
 post-patch:
 .for i in Dclock.c Dclock.ad dclock.1
@@ -52,11 +59,11 @@ do-install:
 			${STAGEDIR}${PREFIX}/lib/X11/app-defaults/DClock)
 	@${MKDIR} ${STAGEDIR}${DATADIR}/sounds
 	(cd ${WRKSRC}/sounds && ${INSTALL_DATA} *.wav ${STAGEDIR}${DATADIR}/sounds)
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${PORTDOCS}
 	(cd ${WRKSRC} && ${INSTALL_DATA} ${f} ${STAGEDIR}${DOCSDIR})
 .endfor
+.endif
 
 .include <bsd.port.mk>

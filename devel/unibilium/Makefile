@@ -3,7 +3,6 @@
 
 PORTNAME=	unibilium
 PORTVERSION=	1.1.2
-PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
@@ -19,9 +18,8 @@ GH_ACCOUNT=	mauke
 USES=		gmake libtool:build perl5 pkgconfig
 USE_PERL5=	build
 USE_LDCONFIG=	yes
-MAKE_ARGS=	MANDIR=${MANPREFIX}/man
 
-post-patch:
+pre-build:
 	${REINPLACE_CMD} -e 's|$$(LIBDIR)/pkgconfig|${PREFIX}/libdata/pkgconfig|g' ${WRKSRC}/Makefile
 
 post-install:

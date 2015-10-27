@@ -3,7 +3,6 @@
 
 PORTNAME=	thebridge
 PORTVERSION=	1.09
-PORTREVISION=	1
 CATEGORIES=	comms hamradio
 MASTER_SITES=	SF/cqinet/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -11,9 +10,6 @@ MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Amateur Radio Echolink conference bridge
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
-
-RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
 
 USES=		gmake shebangfix tar:tgz
 GNU_CONFIGURE=	yes
@@ -22,6 +18,7 @@ USE_RC_SUBR=	tbd
 MAKE_ARGS=	AUTOMAKE="${TRUE}"
 
 SHEBANG_FILES=	addons/usermgmt.cgi
+SHEBANG_LANG=	bash
 
 INSTALL_TARGET=	install-strip
 

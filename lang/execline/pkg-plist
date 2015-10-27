@@ -20,7 +20,6 @@ bin/forbacktickx
 bin/foreground
 bin/forstdin
 bin/forx
-bin/getcwd
 bin/getpid
 bin/heredoc
 bin/homeof
@@ -43,15 +42,14 @@ bin/tryexec
 bin/umask
 bin/unexport
 bin/wait
-bin/withstdinas
 include/execline/config.h
 include/execline/execline.h
 lib/execline/libexecline.a
 lib/libexecline.so
 lib/libexecline.so.2
 lib/libexecline.so.2.1
-lib/libexecline.so.2.1.4
-lib/libexecline.so.2.1.4.2
+lib/libexecline.so.2.1.3
+lib/libexecline.so.2.1.3.1
 %%PORTDOCS%%%%DOCSDIR%%/AUTHORS
 %%PORTDOCS%%%%DOCSDIR%%/COPYING
 %%PORTDOCS%%%%DOCSDIR%%/INSTALL
@@ -86,7 +84,6 @@ lib/libexecline.so.2.1.4.2
 %%PORTDOCS%%%%DOCSDIR%%/foreground.html
 %%PORTDOCS%%%%DOCSDIR%%/forstdin.html
 %%PORTDOCS%%%%DOCSDIR%%/forx.html
-%%PORTDOCS%%%%DOCSDIR%%/getcwd.html
 %%PORTDOCS%%%%DOCSDIR%%/getpid.html
 %%PORTDOCS%%%%DOCSDIR%%/grammar.html
 %%PORTDOCS%%%%DOCSDIR%%/heredoc.html
@@ -112,4 +109,3 @@ lib/libexecline.so.2.1.4.2
 %%PORTDOCS%%%%DOCSDIR%%/unexport.html
 %%PORTDOCS%%%%DOCSDIR%%/upgrade.html
 %%PORTDOCS%%%%DOCSDIR%%/wait.html
-%%PORTDOCS%%%%DOCSDIR%%/withstdinas.html

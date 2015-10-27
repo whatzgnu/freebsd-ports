@@ -3,11 +3,11 @@
 
 PORTNAME=	dk-milter
 PORTVERSION=	1.0.2
-PORTREVISION=	3
+PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	SF/${PORTNAME}/DomainKeys%20Milter/${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Domainkeys milter for Sendmail
 
 USE_RC_SUBR=	milter-dk
@@ -32,6 +32,7 @@ RUN_DEPENDS+=	${LOCALBASE}/libexec/postfix/smtpd:${PORTSDIR}/mail/postfix
 .endif
 
 WCONF=		${WRKSRC}/devtools/Site
+MAN8=		dk-filter.8
 DOCSFILES=	FEATURES INSTALL KNOWNBUGS LICENSE README RELEASE_NOTES \
 		rfc4870.txt dk-filter/autorespond.csh
 
@@ -101,21 +102,21 @@ pre-configure:
 		${SITE} > ${WCONF}/site.config.m4
 
 post-install:
-	${CHMOD} u+w ${STAGEDIR}${PREFIX}/libexec/dk-filter
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/libexec/dk-filter
-	${CHMOD} u-w ${STAGEDIR}${PREFIX}/libexec/dk-filter
+.if !defined(WITH_DEBUG)
+	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/libexec/dk-filter
+.endif
 	${INSTALL_SCRIPT} ${WRKSRC}/dk-filter/gentxt.csh \
 		${STAGEDIR}${PREFIX}/sbin/gentxt-dk
-.for i in dk-filter.8
+.for i in ${MAN8}
 	@${RM} -f ${STAGEDIR}${PREFIX}/man/cat8/${i} \
 		${STAGEDIR}${PREFIX}/man/cat8/${i}.gz
 	${INSTALL_MAN} ${WRKSRC}/*/${i} ${STAGEDIR}${PREFIX}/man/man8/
 .endfor
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in ${DOCSFILES}
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}/
 .endfor
+.endif
 
 .include <bsd.port.post.mk>

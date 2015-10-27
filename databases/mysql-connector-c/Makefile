@@ -1,5 +1,5 @@
 # Created by: gahr
-# $FreeBSD: head/databases/mysql-connector-c/Makefile 390160 2015-06-20 10:45:13Z bofh $
+# $FreeBSD$
 
 PORTNAME=	mysql-connector-c
 PORTVERSION=	6.1.6
@@ -16,7 +16,7 @@ USE_MYSQL=	51+
 USE_OPENSSL=	yes
 WITH_OPENSSL_PORT=yes
 USES=		cmake:outsource compiler:features
-CMAKE_ARGS+=	WITH_SSL=${OPENSSLBASE} \
+CMAKE_ARGS+=	-DWITH_SSL=system \
 		-DOPENSSL_INCLUDE_DIR=${LOCALBASE}/include/openssl
 USE_LDCONFIG=	${PREFIX}/lib/${PORTNAME}
 

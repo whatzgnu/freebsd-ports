@@ -36,4 +36,6 @@ bin/atlas-unit-test
 bin/atlas-update
 bin/atlas-version
 @exec %D/%F
-@sample %%MAVEN_SETTINGS%%.dist %%MAVEN_SETTINGS%%
+%%MAVEN_SETTINGS%%.dist
+@unexec cmp -s %D/%F %D/%%MAVEN_SETTINGS%% && rm -f %D/%%MAVEN_SETTINGS%% && rmdir %D/%B || true
+@exec [ -f %D/%%MAVEN_SETTINGS%% ] || cp -p %D/%F %D/%%MAVEN_SETTINGS%%

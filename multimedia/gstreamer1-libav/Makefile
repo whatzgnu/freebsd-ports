@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gstreamer1-libav
-PORTVERSION=	1.6.0
+PORTVERSION=	1.4.5
 CATEGORIES=	multimedia
 MASTER_SITES=	http://gstreamer.freedesktop.org/src/gst-libav/
 DISTNAME=	gst-libav-${PORTVERSION}
@@ -15,8 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	yasm:${PORTSDIR}/devel/yasm \
 		orc>=0.4.16:${PORTSDIR}/devel/orc
-LIB_DEPENDS=	liborc-0.4.so:${PORTSDIR}/devel/orc \
-		libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
+LIB_DEPENDS=	liborc-0.4.so:${PORTSDIR}/devel/orc
 
 PORTSCOUT=	limitw:1,even
 
@@ -24,7 +23,10 @@ USES=		compiler:features gmake libtool pkgconfig tar:xz
 USE_LDCONFIG=	yes
 USE_GSTREAMER1=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-system-libav
+LIBAV_CONFIG=	--cc=${CC} \
+		--enable-runtime-cpudetect \
+		--enable-pic
+LDFLAGS+=	-Wl,-Bsymbolic
 
 INSTALL_TARGET=	install-strip
 
@@ -34,7 +36,7 @@ INSTALL_TARGET=	install-strip
 CONFIGURE_ENV+=	ASFLAGS=-no-integrated-as
 .endif
 
-.if ${ARCH} == ia64
+.if ${OSVERSION} < 900033 || ${ARCH} == ia64
 BUILD_DEPENDS+=	${LOCALBASE}/bin/as:${PORTSDIR}/devel/binutils
 MAKE_ENV=	COMPILER_PATH=${LOCALBASE}/bin
 .endif

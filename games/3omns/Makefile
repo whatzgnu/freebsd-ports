@@ -25,7 +25,7 @@ LIB_DEPENDS=	libxml2.so:${PORTSDIR}/textproc/libxml2
 USE_GITHUB=	yes
 GH_ACCOUNT=	chazomaticus
 GH_PROJECT=	3omns
-GH_TAGNAME=	21292f0
+GH_TAGNAME=	84f4b60
 
 USES=		autoreconf compiler:c++11-lang gmake pkgconfig lua:52
 USE_SDL=	image2 sdl2 ttf2
@@ -41,8 +41,5 @@ OPTIONS_DEFINE=	DOCS
 post-install:
 	${INSTALL_DATA} ${_DISTDIR}/${PORTNAME}.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps/
-
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

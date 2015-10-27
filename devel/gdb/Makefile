@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gdb
-PORTVERSION=	7.10
-PORTREVISION=	3
+PORTVERSION=	7.9.1
 CATEGORIES=	devel
 MASTER_SITES=	GNU
 
@@ -18,7 +17,7 @@ CPE_VENDOR=	gnu
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	CONFIGURED_M4=m4 CONFIGURED_BISON=byacc
 CONFIGURE_ARGS=	--program-suffix=${PORTVERSION:S/.//g} \
-		--enable-targets=all --enable-64-bit-bfd \
+		--enable-targets=all \
 		--with-gdb-datadir=${PREFIX}/share/gdb${PORTVERSION:S/.//g} \
 		--with-separate-debug-dir=/usr/lib/debug \
 		${ICONV_CONFIGURE_ARG} \
@@ -27,21 +26,26 @@ CFLAGS:=	${CFLAGS:C/ +$//}	# blanks at EOL creep in sometimes
 CFLAGS+=	-DRL_NO_COMPAT -Wno-unused-function -Wno-unused-variable
 EXCLUDE=	dejagnu expect sim texinfo intl
 EXTRACT_AFTER_ARGS=	${EXCLUDE:S/^/--exclude /}
+EXTRA_PATCHES=	${FILESDIR}/commit-c5cb74e \
+		${FILESDIR}/commit-cf424ae \
+		${FILESDIR}/commit-773eacf \
+		${FILESDIR}/commit-2526815 \
+		${FILESDIR}/commit-3ce5b6e \
+		${FILESDIR}/commit-97de354
 
 VER=		${PORTVERSION:S/.//g}
 PLIST_SUB=	VER=${VER}
 
 ONLY_FOR_ARCHS=	i386 amd64 powerpc powerpc64	# untested elsewhere, might work
 
-OPTIONS_DEFINE=	DEBUG EXPAT GDB_LINK GUILE KGDB PYTHON THREADS TUI
+OPTIONS_DEFINE=	DEBUG EXPAT GDB_LINK GUILE PYTHON THREADS TUI
 
-OPTIONS_DEFAULT=	GDB_LINK KGDB THREADS TUI PORT_READLINE
+OPTIONS_DEFAULT=	GDB_LINK THREADS TUI PORT_READLINE
 
 OPTIONS_SINGLE=	READLINE
 OPTIONS_SINGLE_READLINE=	BASE_READLINE BUNDLED_READLINE PORT_READLINE
 
 GDB_LINK_DESC=		Create ${PREFIX}/bin/gdb symlink
-KGDB_DESC=		Kernel Debugging Support
 BASE_READLINE_DESC=	from base system (experimental)
 BUNDLED_READLINE_DESC=	from gdb distfile
 PORT_READLINE_DESC=	from devel/readline port
@@ -59,10 +63,10 @@ EXPAT_LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2
 GUILE_CONFIGURE_ON=	--with-guile
 GUILE_USES=		pkgconfig
 GUILE_LIB_DEPENDS=	libguile-2.0.so:${PORTSDIR}/lang/guile2
-PORT_READLINE_USES=	readline:port
 PYTHON_CONFIGURE_ON=	--with-python=${PYTHON_CMD}
 PYTHON_CONFIGURE_OFF=	--without-python
 PYTHON_USES=		python:2
+PORT_READLINE_USES=	readline:port
 TUI_CONFIGURE_ENABLE=	tui
 
 .include <bsd.port.options.mk>
@@ -82,17 +86,6 @@ post-patch:
 	@${CP} ${FILESDIR}/fbsd-threads.c ${WRKSRC}/gdb/
 	@${PATCH} ${PATCH_ARGS} < ${FILESDIR}/extrapatch-threads
 .endif
-.if ${PORT_OPTIONS:MKGDB}
-	@${CP} -r ${FILESDIR}/kgdb/*.[ch] ${WRKSRC}/gdb/
-	@${PATCH} ${PATCH_ARGS} < ${FILESDIR}/extrapatch-kgdb
-.if ${PORT_OPTIONS:MTHREADS}
-	@${PATCH} ${PATCH_ARGS} < \
-	    ${FILESDIR}/extrapatch-kgdb-configure.tgt-threads
-.else
-	@${PATCH} ${PATCH_ARGS} < \
-	    ${FILESDIR}/extrapatch-kgdb-configure.tgt-plain
-.endif
-.endif
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/gdb/gdb \
@@ -100,30 +93,30 @@ do-install:
 	${INSTALL_MAN} ${WRKSRC}/gdb/doc/gdb.1 \
 		${STAGEDIR}${MAN1PREFIX}/man/man1/gdb${VER}.1
 
-do-install-KGDB-on:
-	${INSTALL_PROGRAM} ${WRKSRC}/gdb/kgdb \
-		${STAGEDIR}${PREFIX}/bin/kgdb${VER}
-
-do-install-TUI-on:
+.if ${PORT_OPTIONS:MTUI}
 	${LN} -sf gdb${VER} ${STAGEDIR}${PREFIX}/bin/gdbtui${VER}
-
-do-install-GDB_LINK-on:
-	${LN} -sf gdb${VER} ${STAGEDIR}${PREFIX}/bin/gdb
-.if ${PORT_OPTIONS:MKGDB}
-	${LN} -sf kgdb${VER} ${STAGEDIR}${PREFIX}/bin/kgdb
 .endif
 
-do-install-PYTHON-on:
+.if ${PORT_OPTIONS:MGDB_LINK}
+	${LN} -sf gdb${VER} ${STAGEDIR}${PREFIX}/bin/gdb
+.endif
+
+.if ${PORT_OPTIONS:MPYTHON}
 	(cd ${WRKSRC}/gdb; ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} install-python )
 	(cd ${WRKSRC}/gdb/data-directory ; \
 		${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} install-python )
-. for f in gdb gdb/command gdb/function
-	@(cd ${STAGEDIR}${PREFIX}/share/gdb${VER}/python/${f} ; ${CHMOD} 644 *.py* )
-. endfor
+.endif
 
-do-install-GUILE-on:
+.if ${PORT_OPTIONS:MGUILE}
 	(cd ${WRKSRC}/gdb; ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} install-guile )
 	(cd ${WRKSRC}/gdb/data-directory ; \
 		${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} install-guile )
+.endif
+
+.if ${PORT_OPTIONS:MPYTHON}
+. for f in gdb gdb/command gdb/function
+	@(cd ${STAGEDIR}${PREFIX}/share/gdb${VER}/python/${f} ; ${CHMOD} 644 *.py* )
+. endfor
+.endif
 
 .include <bsd.port.mk>

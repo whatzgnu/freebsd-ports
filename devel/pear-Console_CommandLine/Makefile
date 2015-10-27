@@ -8,9 +8,6 @@ CATEGORIES=	devel www pear
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Full featured command line options and arguments parser
 
-LICENSE=	MIT
-
-NO_ARCH=	yes
-USES=		pear
+USES=	pear
 
 .include <bsd.port.mk>

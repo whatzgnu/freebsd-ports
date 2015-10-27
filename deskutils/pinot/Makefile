@@ -3,7 +3,7 @@
 
 PORTNAME=	pinot
 PORTVERSION=	1.06
-PORTREVISION=	11
+PORTREVISION=	10
 CATEGORIES=	deskutils
 MASTER_SITES=	GOOGLE_CODE
 #MASTER_SITES=	http://colinf.chez.com/pinot/
@@ -35,8 +35,7 @@ RUN_DEPENDS=	update-mime-database:${PORTSDIR}/misc/shared-mime-info	\
 		catppt:${PORTSDIR}/textproc/catdoc			\
 		unzip:${PORTSDIR}/archivers/unzip			\
 		unrtf:${PORTSDIR}/textproc/unrtf			\
-		catdvi:${PORTSDIR}/print/catdvi				\
-		bash:${PORTSDIR}/shells/bash
+		catdvi:${PORTSDIR}/print/catdvi
 
 PROJECTHOST=	${PORTNAME}-search
 
@@ -47,11 +46,12 @@ CONFIGURE_ENV=	MKDIR_P="${MKDIR}"
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 
-USES=		gettext libarchive libtool pkgconfig python shebangfix
+USES=		gettext libtool pkgconfig python shebangfix
 USE_OPENSSL=	yes
 USE_SQLITE=	3
 USE_XORG=	pixman
 USE_LDCONFIG=	${PREFIX}/lib/pinot/backends ${PREFIX}/lib/pinot/filters
+SHEBANG_LANG=	bash
 SHEBANG_FILES=	scripts/bash/*.sh
 
 OPTIONS_DEFINE=	DEBUG CHMLIB DOCS
@@ -94,8 +94,6 @@ pre-configure:
 
 post-install:
 	${TOUCH} ${STAGEDIR}${DATADIR}/stopwords/.empty_file
-
-post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
 

@@ -3,16 +3,14 @@
 
 PORTNAME=	irrd
 PORTVERSION=	2.3.10
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	net ipv6
 MASTER_SITES=	http://www.irrd.net/
 DISTNAME=	${PORTNAME}${PORTVERSION}
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ume@FreeBSD.org
 COMMENT=	Internet Routing Registry database server
-
-LICENSE=	BSD4CLAUSE
-LICENSE_FILE=	${WRKDIR}/${PORTNAME}${PORTVERSION}/COPYRIGHT
 
 RUN_DEPENDS=	wget:${PORTSDIR}/ftp/wget
 
@@ -20,16 +18,19 @@ WRKSRC=		${WRKDIR}/${PORTNAME}${PORTVERSION}/src
 
 IRRD_CONFDIR=	${PREFIX}/etc
 
-USES=		shebangfix tar:tgz
+USES=		shebangfix
 USE_RC_SUBR=	irrd
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	YACC="${YACC}"
 MAKE_JOBS_UNSAFE=	yes
+#CONFIGURE_ARGS+=	--disable-thread
 DESTDIRNAME=	STAGEDIR
 
-OPTIONS_DEFINE=		IPV6
-OPTIONS_DEFAULT=	IPV6
-IPV6_CONFIGURE_ENABLE=	ipv6
+.if defined(WITHOUT_IPV6)
+CONFIGURE_ARGS+=	--disable-ipv6
+.else
+CONFIGURE_ARGS+=	--enable-ipv6
+.endif
 
 SHEBANG_FILES=	programs/irrdcacher/irrdcacher \
 		programs/irrdcacher/ripe2rpsl
@@ -62,13 +63,13 @@ post-patch:
 		${WRKSRC}/programs/irr_rpsl_submit/Makefile
 
 post-install:
-	${INSTALL_SCRIPT} ${WRKSRC}/programs/irrdcacher/irrdcacher \
+	@${INSTALL_SCRIPT} ${WRKSRC}/programs/irrdcacher/irrdcacher \
 		${STAGEDIR}${PREFIX}/sbin
-	${INSTALL_SCRIPT} ${WRKSRC}/programs/irrdcacher/ripe2rpsl \
+	@${INSTALL_SCRIPT} ${WRKSRC}/programs/irrdcacher/ripe2rpsl \
 		${STAGEDIR}${PREFIX}/sbin
-	${INSTALL_DATA} ${WRKSRC}/../samples/irrd.conf.sample \
+	@${INSTALL_DATA} ${WRKSRC}/../samples/irrd.conf.sample \
 		${STAGEDIR}${IRRD_CONFDIR}
-	${INSTALL_DATA} ${WRKSRC}/programs/IRRd/irrd.8 \
+	@${INSTALL_DATA} ${WRKSRC}/programs/IRRd/irrd.8 \
 		${STAGEDIR}${PREFIX}/man/man8
 
 .include <bsd.port.mk>

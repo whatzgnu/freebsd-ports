@@ -1,20 +1,18 @@
 # $FreeBSD$
 
 PORTNAME=	polarssl
-PORTVERSION=	1.3.14
+PORTVERSION=	1.3.11
 DISTVERSIONSUFFIX=	-gpl
 CATEGORIES=	security devel
 MASTER_SITES=	https://polarssl.org/download/
 PKGNAMESUFFIX=	13
 DISTNAME=	mbedtls-${DISTVERSIONPREFIX}${DISTVERSION}${DISTVERSIONSUFFIX}
 
-MAINTAINER=	tijl@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	SSL/TLS and cryptography library
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
-
-BROKEN_sparc64=	fails to compile: relocation error
 
 ALL_TARGET=	no_test
 MAKE_ENV=	SHARED=1

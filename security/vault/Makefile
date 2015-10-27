@@ -1,14 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	vault
-PORTVERSION=	0.3.0
+PORTVERSION=	0.2.0
+PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	security
 
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	Tool for securely accessing secrets
-
-LICENSE=	MPL
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/go:${PORTSDIR}/lang/go
 

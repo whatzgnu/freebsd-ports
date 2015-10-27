@@ -11,9 +11,6 @@
     SUBDIR += biococoa
     SUBDIR += biojava
     SUBDIR += blat
-    SUBDIR += bwa
-    SUBDIR += cd-hit
-    SUBDIR += cdbfasta
     SUBDIR += chemeq
     SUBDIR += clustalw
     SUBDIR += consed
@@ -22,9 +19,6 @@
     SUBDIR += fasta
     SUBDIR += fasta3
     SUBDIR += fastdnaml
-    SUBDIR += fastool
-    SUBDIR += fasttree
-    SUBDIR += fastx-toolkit
     SUBDIR += fluctuate
     SUBDIR += garlic
     SUBDIR += gff2ps
@@ -37,7 +31,6 @@
     SUBDIR += jalview
     SUBDIR += lagan
     SUBDIR += lamarc
-    SUBDIR += libgtextutils
     SUBDIR += libsbml
     SUBDIR += linux-foldingathome
     SUBDIR += mafft

@@ -148,6 +148,10 @@ NOT_FOR_ARCH=	ia64
 
 .include <bsd.port.pre.mk>
 
+.if ${OSVERSION} < 900000
+BROKEN=	GCC failing on 8.x
+.endif
+
 .if ${PORT_OPTIONS:MCMAKE} && ${COMPILER_TYPE} != clang
 BROKEN=	CMake support only works with clang
 .endif

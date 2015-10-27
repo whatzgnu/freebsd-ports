@@ -15,11 +15,13 @@ USES=		libtool pathfix tar:xz
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-TEST_TARGET=	check
 
 OPTIONS_DEFINE=	DOCS
 
 post-stage:
 	${LN} -s libogg.so.0 ${STAGEDIR}${PREFIX}/lib/libogg.so.8
+
+regression-test: build
+	@cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} check
 
 .include <bsd.port.mk>

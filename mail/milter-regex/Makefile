@@ -3,7 +3,7 @@
 
 PORTNAME=	milter-regex
 PORTVERSION=	2.0
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	http://www.benzedrine.cx/
 
@@ -40,6 +40,5 @@ post-patch:
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/milter-regex ${STAGEDIR}${PREFIX}/libexec/
 	${INSTALL_MAN} ${WRKSRC}/milter-regex.8 ${STAGEDIR}${PREFIX}/man/man8/
-	${MKDIR} ${STAGEDIR}${SPOOLDIR}
 
 .include <bsd.port.post.mk>

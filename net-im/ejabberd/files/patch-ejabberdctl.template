@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- ejabberdctl.template.orig
 +++ ejabberdctl.template
 @@ -71,10 +71,10 @@

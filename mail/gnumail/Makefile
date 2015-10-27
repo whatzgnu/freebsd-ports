@@ -3,7 +3,6 @@
 
 PORTNAME=	gnumail
 PORTVERSION=	1.2.2
-PORTREVISION=	2
 CATEGORIES=	mail gnustep
 MASTER_SITES=	http://download.gna.org/gnustep-nonfsf/
 DISTNAME=	GNUMail-${PORTVERSION}
@@ -18,6 +17,8 @@ CPE_VENDOR=	gnu
 USE_GNUSTEP=	back build
 LIB_DEPENDS=	libPantomime.so:${PORTSDIR}/mail/pantomime \
 		libAddresses.so:${PORTSDIR}/mail/addresses
-USE_LDCONFIG=	${GNUSTEP_SYSTEM_LIBRARIES}
+USE_LDCONFIG=	${GNUSTEP_LOCAL_LIBRARIES}
+
+MAKE_ENV+=	GNUSTEP_INSTALLATION_DIR=${GNUSTEP_LOCAL_ROOT}
 
 .include <bsd.port.mk>

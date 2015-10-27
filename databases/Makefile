@@ -55,7 +55,6 @@
     SUBDIR += elixir-calecto
     SUBDIR += elixir-ecto
     SUBDIR += elixir-ecto_migrate
-    SUBDIR += elixir-exredis
     SUBDIR += elixir-geo
     SUBDIR += elixir-mariaex
     SUBDIR += elixir-mongo
@@ -93,7 +92,6 @@
     SUBDIR += gnats4
     SUBDIR += gnatsweb4
     SUBDIR += godis
-    SUBDIR += gomdb
     SUBDIR += gosqlite3
     SUBDIR += gqlplus
     SUBDIR += grass
@@ -124,7 +122,6 @@
     SUBDIR += jdbc-oracle8i
     SUBDIR += jdbc-oracle9i
     SUBDIR += jdbm2
-    SUBDIR += jlog
     SUBDIR += jrobin
     SUBDIR += jrrd
     SUBDIR += kbibtex
@@ -162,7 +159,6 @@
     SUBDIR += libmemcache
     SUBDIR += libmemcached
     SUBDIR += libmongo-client
-    SUBDIR += libnvpair
     SUBDIR += libodbc++
     SUBDIR += libpbl
     SUBDIR += libpqtypes
@@ -758,7 +754,6 @@
     SUBDIR += py-pyPgSQL
     SUBDIR += py-pyhs
     SUBDIR += py-pylibmc
-    SUBDIR += py-pymssql
     SUBDIR += py-pymysql
     SUBDIR += py-pypuppetdb
     SUBDIR += py-pytc
@@ -785,10 +780,10 @@
     SUBDIR += py-tarantool
     SUBDIR += py-umemcache
     SUBDIR += py-whisper
-    SUBDIR += pydbx
-    SUBDIR += pymongo
     SUBDIR += pypy-gdbm
     SUBDIR += pypy-sqlite3
+    SUBDIR += pydbx
+    SUBDIR += pymongo
     SUBDIR += pyspatialite
     SUBDIR += qdbm
     SUBDIR += qdbm-plus
@@ -814,7 +809,6 @@
     SUBDIR += redis
     SUBDIR += redis-devel
     SUBDIR += riak
-    SUBDIR += riak2
     SUBDIR += rocksdb
     SUBDIR += rrdman
     SUBDIR += rrdmerge
@@ -835,11 +829,11 @@
     SUBDIR += rubygem-activemodel4
     SUBDIR += rubygem-activemodel41
     SUBDIR += rubygem-activerecord
+    SUBDIR += rubygem-activerecord41
     SUBDIR += rubygem-activerecord-jdbc-adapter
     SUBDIR += rubygem-activerecord-jdbcmysql-adapter
     SUBDIR += rubygem-activerecord-mysql-adapter
     SUBDIR += rubygem-activerecord4
-    SUBDIR += rubygem-activerecord41
     SUBDIR += rubygem-amalgalite
     SUBDIR += rubygem-arel
     SUBDIR += rubygem-arel-helpers

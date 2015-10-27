@@ -15,4 +15,3 @@ man/man3/Munin::Common::Timeout.3.gz
 @dir(%%USER%%,%%GROUP%%,) %%LOGDIR%%
 @dir(%%USER%%,%%GROUP%%,) %%STATEDIR%%
 @dir(%%USER%%,%%GROUP%%,) %%SPOOLDIR%%
-@dir(%%USER%%,%%GROUP%%,) %%DBDIR%%

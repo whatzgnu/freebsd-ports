@@ -2,7 +2,6 @@
 
 PORTNAME=	usb
 PORTVERSION=	1.0.0b1
-PORTREVISION=	1
 CATEGORIES=	devel python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -12,18 +11,19 @@ COMMENT=	Python wrapper around libusb
 LICENSE=	BSD3CLAUSE
 
 USES=		python
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	distutils autoplist
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	walac
 GH_PROJECT=	py${PORTNAME}
 GH_TAGNAME=	0546cad
 
+DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX:C/...$//}-${PORTNAME}
 PORTDOCS=	*.rst
 
 OPTIONS_DEFINE=	DOCS
 
-do-install-DOCS-on:
+post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/docs/,} ${STAGEDIR}${DOCSDIR}

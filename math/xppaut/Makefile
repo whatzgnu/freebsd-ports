@@ -14,17 +14,23 @@ COMMENT=	Graphical tool for solving differential equations, etc
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USE_XORG=	x11 xbitmaps xproto
+USE_XORG=	xbitmaps x11 xproto
 CFLAGS+=	-w -Wno-return-type
 WRKSRC=		${WRKDIR}
 ALL_TARGET=	xppaut
 
-OPTIONS_DEFINE=	DOCS EXAMPLES
-
-DOCS_MAKE_ENV_OFF=	NOPORTDOCS=yes
-EXAMPLES_MAKE_ENV_OFF=	NOPORTEXAMPLES=yes
-
 post-build:
 	${RM} -f ${WRKSRC}/ode/._*
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+.include <bsd.port.options.mk>
+
+.if !${PORT_OPTIONS:MDOCS}
+MAKE_ENV+=	NOPORTDOCS=yes
+.endif
+.if !${PORT_OPTIONS:MEXAMPLES}
+MAKE_ENV+=	NOPORTEXAMPLES=yes
+.endif
 
 .include <bsd.port.mk>

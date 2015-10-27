@@ -2,7 +2,7 @@
 
 PORTNAME=	takao
 PORTVERSION=	003.02.01
-PORTREVISION=	5
+PORTREVISION=	3
 CATEGORIES=	japanese x11-fonts
 MASTER_SITES=	http://launchpadlibrarian.net/40218948/
 PKGNAMEPREFIX=	ja-font-
@@ -11,9 +11,7 @@ DISTNAME=	${PORTNAME}-fonts-ttf-${PORTVERSION}
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	Improved IPA Japanese fonts
 
-USES=		fonts:fc
-FONTNAME=	OTF
-NO_ARCH=	yes
+USES=		fonts
 NO_BUILD=	yes
 PKGINSTALL=	${WRKDIR}/pkg-install
 PKGDEINSTALL=	${WRKDIR}/pkg-install
@@ -24,7 +22,10 @@ PORTDOCS=	IPA_Font_License_Agreement_v1.0.txt \
 		README.ja \
 		ChangeLog
 
+FONTNAME=	OTF
 OPTIONS_DEFINE=	DOCS
+
+.include <bsd.port.options.mk>
 
 post-extract:
 	cd ${WRKSRC} && for F in *.ttf; do ${MV} $${F} $${F%.ttf}.otf; done
@@ -44,8 +45,6 @@ do-install:
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/20-unhint-${PORTNAME}.conf
 	${LN} -s -f ../conf.avail/62-fonts-${PORTNAME}.conf \
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/62-fonts-${PORTNAME}.conf
-
-post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 

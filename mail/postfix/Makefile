@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	postfix
-PORTVERSION=	2.11.7
+PORTVERSION=	2.11.6
 PORTEPOCH=	1
 CATEGORIES=	mail ipv6
 MASTER_SITES=	ftp://ftp.porcupine.org/mirrors/postfix-release/ \
@@ -33,6 +33,7 @@ CONFLICTS_INSTALL?=	courier-0.* opensmtpd-[0-9]* \
 USERS=		postfix
 GROUPS=		mail maildrop postfix
 USES=		perl5 shebangfix cpe
+SHEBANG_LANG=	perl
 SHEBANG_FILES=	auxiliary/qshape/qshape.pl
 
 USE_RC_SUBR=	postfix
@@ -297,22 +298,22 @@ post-patch:
 	@${ECHO} '$$html_directory/$f:f:root:-:644' \
 		>> ${WRKSRC}/conf/postfix-files
 .endfor
-	@${ECHO} '$$manpage_directory/man1/posttls-finger.1:f:root:-:644' \
-		>> ${WRKSRC}/conf/postfix-files
-	@${ECHO} '$$command_directory/posttls-finger:f:root:-:755' \
-		>> ${WRKSRC}/conf/postfix-files
-
-post-patch-SPF-on:
+.if ${PORT_OPTIONS:MSPF}
 	@${ECHO} '$$readme_directory/SPF_README:f:root:-:644' \
 		>> ${WRKSRC}/conf/postfix-files
 	@${REINPLACE_CMD} -E -e '${REINPLACE}' \
 		${WRKSRC}/README_FILES/SPF_README
-
-post-patch-VDA-on:
+.endif
+.if ${PORT_OPTIONS:MVDA}
 	@${ECHO} '$$readme_directory/VDA_README:f:root:-:644' \
 		>> ${WRKSRC}/conf/postfix-files
 	@${REINPLACE_CMD} -E -e '${REINPLACE}' \
 		${WRKSRC}/README_FILES/VDA_README
+.endif
+	@${ECHO} '$$manpage_directory/man1/posttls-finger.1:f:root:-:644' \
+		>> ${WRKSRC}/conf/postfix-files
+	@${ECHO} '$$command_directory/posttls-finger:f:root:-:755' \
+		>> ${WRKSRC}/conf/postfix-files
 
 do-configure:
 	(cd ${WRKSRC} && ${MAKE} -f Makefile.init makefiles \
@@ -320,8 +321,10 @@ do-configure:
 	AUXLIBS="${POSTFIX_AUXLIBS}" && \
 	${ECHO} "all: default" >> Makefile)
 
-pre-install-INST_BASE-on:
+pre-install:
+.if ${PORT_OPTIONS:MINST_BASE}
 	${MKDIR} ${STAGEDIR}/etc/rc.d
+.endif
 
 do-install:
 	@(cd ${WRKSRC} && ${MAKE} non-interactive-package \
@@ -339,10 +342,10 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/auxiliary/rmail/rmail ${STAGEDIR}${PREFIX}/bin/rmail
 	${INSTALL_SCRIPT} ${WRKSRC}/auxiliary/qshape/qshape.pl ${STAGEDIR}${PREFIX}/bin/qshape
 	${INSTALL_MAN} ${WRKSRC}/man/man1/qshape.1 ${STAGEDIR}${MANPREFIX}/man/man1
-
-do-install-TEST-on:
+.if ${PORT_OPTIONS:MTEST}
 	${INSTALL_PROGRAM} ${BINTEST:S|^|${WRKSRC}/bin/|} ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${MANTEST:S|^|${WRKSRC}/man/man1/|} ${STAGEDIR}${MANPREFIX}/man/man1
+.endif
 
 post-stage:
 # == do not overwrite existing config

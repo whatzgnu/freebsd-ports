@@ -88,13 +88,10 @@
     SUBDIR += chryzodus
     SUBDIR += clarence
     SUBDIR += clasp
-    SUBDIR += clblas
-    SUBDIR += clfft
     SUBDIR += clipper
     SUBDIR += cln
     SUBDIR += cloog
     SUBDIR += clp
-    SUBDIR += clrng
     SUBDIR += cminpack
     SUBDIR += cmlib
     SUBDIR += coinmp
@@ -244,7 +241,6 @@
     SUBDIR += ltl
     SUBDIR += ltl2ba
     SUBDIR += lybniz
-    SUBDIR += math77
     SUBDIR += mathomatic
     SUBDIR += matio
     SUBDIR += matlab-installer
@@ -490,7 +486,6 @@
     SUBDIR += p5-Math-SymbolicX-Statistics-Distributions
     SUBDIR += p5-Math-TrulyRandom
     SUBDIR += p5-Math-Units
-    SUBDIR += p5-Math-Utils
     SUBDIR += p5-Math-Vec
     SUBDIR += p5-Math-VecStat
     SUBDIR += p5-Math-VectorReal
@@ -690,6 +685,5 @@
     SUBDIR += xppaut
     SUBDIR += xspread
     SUBDIR += yacas
-    SUBDIR += z3
 
 .include <bsd.port.subdir.mk>

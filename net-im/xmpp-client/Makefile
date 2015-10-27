@@ -1,9 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	xmpp-client
-PORTVERSION=	20150822
+PORTVERSION=	20150208
 CATEGORIES=	net-im
 MASTER_SITES=	http://c-s.li/ports/
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
+		xmpp-20150105.tar.gz
 
 MAINTAINER=	cs@FreeBSD.org
 COMMENT=	XMPP client with OTR support
@@ -19,6 +21,7 @@ GO_PKGNAME=	github.com/agl/${PORTNAME}
 post-extract:
 	@${MKDIR} ${GO_WRKSRC:H}
 	@${LN} -sf ${WRKSRC} ${GO_WRKSRC}
+	@${LN} -sf ${WRKDIR}/xmpp-20150105 ${GO_WRKDIR_SRC}/github.com/agl/xmpp
 
 
 .include <bsd.port.pre.mk>

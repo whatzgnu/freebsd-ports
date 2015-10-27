@@ -188,7 +188,6 @@
     SUBDIR += gtknetcat
     SUBDIR += gupnp
     SUBDIR += gupnp-av
-    SUBDIR += gupnp-dlna
     SUBDIR += gupnp-igd
     SUBDIR += gupnp-ui
     SUBDIR += gutenfetch
@@ -249,7 +248,6 @@
     SUBDIR += ipsumdump
     SUBDIR += ipsvd
     SUBDIR += irrd
-    SUBDIR += isboot-kmod
     SUBDIR += isc-dhcp41-client
     SUBDIR += isc-dhcp41-relay
     SUBDIR += isc-dhcp41-server
@@ -356,6 +354,8 @@
     SUBDIR += libzmq3
     SUBDIR += libzmq4
     SUBDIR += liferea
+    SUBDIR += linc
+    SUBDIR += linc-reference
     SUBDIR += linknx
     SUBDIR += linphone
     SUBDIR += linux-c6-avahi-libs
@@ -448,7 +448,6 @@
     SUBDIR += ntopng
     SUBDIR += ntp
     SUBDIR += ntp-devel
-    SUBDIR += ntp-rc
     SUBDIR += ntraceroute
     SUBDIR += nusoap
     SUBDIR += nxproxy
@@ -464,7 +463,6 @@
     SUBDIR += opal
     SUBDIR += openafs
     SUBDIR += openbgpd
-    SUBDIR += openbsc
     SUBDIR += opendpi
     SUBDIR += openggsn
     SUBDIR += openh323
@@ -479,7 +477,6 @@
     SUBDIR += openospfd
     SUBDIR += openpgm
     SUBDIR += openradius
-    SUBDIR += opensips
     SUBDIR += openslp
     SUBDIR += opentracker
     SUBDIR += openvswitch
@@ -759,7 +756,6 @@
     SUBDIR += p5-SOAP-Data-Builder
     SUBDIR += p5-SOAP-Lite
     SUBDIR += p5-SOAP-MySOAP
-    SUBDIR += p5-SOAP-XML-Client
     SUBDIR += p5-Samba-LDAP
     SUBDIR += p5-Server-Starter
     SUBDIR += p5-Socket
@@ -947,7 +943,6 @@
     SUBDIR += py-netlib
     SUBDIR += py-netstring
     SUBDIR += py-novaclient
-    SUBDIR += py-ntplib
     SUBDIR += py-oauth
     SUBDIR += py-oauth2
     SUBDIR += py-paho-mqtt
@@ -1049,6 +1044,7 @@
     SUBDIR += ruby-tcpsocketpipe
     SUBDIR += ruby-tserver
     SUBDIR += rubygem-amazon-ec2
+    SUBDIR += rubygem-amq-client
     SUBDIR += rubygem-amq-protocol
     SUBDIR += rubygem-amqp
     SUBDIR += rubygem-amqp-utils
@@ -1353,7 +1349,6 @@
     SUBDIR += zebra
     SUBDIR += zebra-server
     SUBDIR += zeroconf-ioslave
-    SUBDIR += zerotier
     SUBDIR += zillion
     SUBDIR += zsync
 

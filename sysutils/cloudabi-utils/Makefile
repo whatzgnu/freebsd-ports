@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cloudabi-utils
-PORTVERSION=	0.5
+PORTVERSION=	0.4
 CATEGORIES=	sysutils
 MASTER_SITES=	https://nuxi.nl/distfiles/cloudabi-utils/
 
@@ -11,6 +11,7 @@ COMMENT=	Utilities for running CloudABI programs
 
 LICENSE=	BSD2CLAUSE
 
+BUILD_DEPENDS=	cloudabi-toolchain>=0:${PORTSDIR}/devel/cloudabi-toolchain
 LIB_DEPENDS=	libyaml.so:${PORTSDIR}/textproc/libyaml
 
 ONLY_FOR_ARCHS=	amd64
@@ -28,8 +29,8 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 do-build:
 	@cd ${WRKSRC} && \
 		${SETENV} ${MAKE_ENV} \
-		PREBUILT_ARCH=x86_64 \
 		PREFIX=${PREFIX} \
+		CLOUDABI_CC=${LOCALBASE}/bin/x86_64-unknown-cloudabi-cc \
 		${SH} build
 
 do-install:

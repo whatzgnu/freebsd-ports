@@ -3,7 +3,6 @@
 
 PORTNAME=	diakonos
 PORTVERSION=	0.9.4
-PORTREVISION=	1
 CATEGORIES=	editors ruby
 MASTER_SITES=	http://diakonos.pist0s.ca/archives/
 
@@ -30,12 +29,10 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/installation.rb \
 		${STAGEDIR}${RUBY_SITELIBDIR}/${PORTNAME}
 	${INSTALL_DATA} ${WRKSRC}/diakonos.conf \
-		${STAGEDIR}${PREFIX}/etc/diakonos.conf.sample
+		${STAGEDIR}${PREFIX}/etc/diakonos.conf.dist
 	${INSTALL_DATA} ${WRKSRC}/diakonos-256-colour.conf \
-		${STAGEDIR}${PREFIX}/etc/diakonos-256-colour.conf.sample
+		${STAGEDIR}${PREFIX}/etc/diakonos-256-colour.conf.dist
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/help
-
-post-install-DOCS-on:
 	(cd ${WRKSRC} && ${INSTALL_DATA} CHANGELOG LICENCE README.rdoc \
 		${STAGEDIR}${DOCSDIR})
 	${INSTALL_DATA} ${WRKSRC}/help/*.dhf ${STAGEDIR}${DOCSDIR}/help

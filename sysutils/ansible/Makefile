@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	ansible
-PORTVERSION=	1.9.4
+PORTVERSION=	1.9.2
+PORTREVISION=	1
 CATEGORIES=	sysutils python
 MASTER_SITES=	http://releases.ansible.com/ansible/
 
@@ -19,7 +20,6 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}yaml>0:${PORTSDIR}/devel/py-yaml \
 
 OPTIONS_DEFINE=	EXAMPLES
 
-NO_ARCH=	yes
 USES=		cpe python:2 shebangfix
 USE_PYTHON=	autoplist distutils
 python_CMD=	${LOCALBASE}/bin/python

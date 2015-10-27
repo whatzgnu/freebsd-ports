@@ -3,7 +3,6 @@
 
 PORTNAME=	wolfpack
 PORTVERSION=	4.3.33
-PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	SF/empserver/${DISTNAME}
 DISTNAME=	empire-${PORTVERSION}
@@ -42,6 +41,6 @@ post-install:
 	${LN} -s ${BINDIR}/empire ${STAGEDIR}${PREFIX}/bin/emp_client
 	${MKDIR} ${STAGEDIR}${ETCDIR}
 	${STAGEDIR}${PREFIX}/lib/wolfpack/pconfig > \
-		${STAGEDIR}${ETCDIR}/econfig.sample
+		${STAGEDIR}${ETCDIR}/econfig.orig
 
 .include <bsd.port.post.mk>

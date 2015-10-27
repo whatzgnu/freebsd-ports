@@ -1,4 +1,9 @@
+$FreeBSD$
+
 Fixes to make it work with Erlang R17
+
+
+$FreeBSD$
 
 --- ../deps/riak_pb/src/riak_pb_kv_codec.erl.orig
 +++ ../deps/riak_pb/src/riak_pb_kv_codec.erl
@@ -15,6 +20,8 @@ Fixes to make it work with Erlang R17
  
  %% @doc Convert a list of object {MetaData,Value} pairs to protocol
 
+$FreeBSD$
+
 --- ../deps/riak_pb/rebar.config.orig
 +++ ../deps/riak_pb/rebar.config
 @@ -1,5 +1,5 @@
@@ -24,6 +31,8 @@ Fixes to make it work with Erlang R17
  {deps, [
          {protobuffs, "0.8.1", {git, "git://github.com/basho/erlang_protobuffs.git", {tag, "0.8.1p1"}}}
         ]}.
+
+$FreeBSD$
 
 --- ../deps/esip/src/esip_listener.erl.orig
 +++ ../deps/esip/src/esip_listener.erl
@@ -40,6 +49,8 @@ Fixes to make it work with Erlang R17
  %%%===================================================================
  %%% API
 
+$FreeBSD$
+
 --- ../deps/esip/rebar.config.orig
 +++ ../deps/esip/rebar.config
 @@ -1,4 +1,5 @@
@@ -49,6 +60,8 @@ Fixes to make it work with Erlang R17
  	    {i, "deps/p1_stun/include"},
  	    {i, "../p1_stun/include"}]}.
  
+
+$FreeBSD$
 
 --- ../deps/p1_stun/src/turn.erl.orig
 +++ ../deps/p1_stun/src/turn.erl
@@ -91,6 +104,8 @@ Fixes to make it work with Erlang R17
  %%====================================================================
  %% API
 
+$FreeBSD$
+
 --- ../deps/p1_stun/rebar.config.orig
 +++ ../deps/p1_stun/rebar.config
 @@ -1,4 +1,5 @@
@@ -100,6 +115,8 @@ Fixes to make it work with Erlang R17
  
  {deps, [{p1_tls, ".*", {git, "git://github.com/processone/tls.git"}},
  	{p1_utils, ".*", {git, "git://github.com/processone/p1_utils.git"}}]}.
+
+$FreeBSD$
 
 --- ../deps/p1_stun/src/stun_listener.erl.orig
 +++ ../deps/p1_stun/src/stun_listener.erl

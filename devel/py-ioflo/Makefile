@@ -17,5 +17,6 @@ USE_PYTHON=	distutils
 NO_ARCH=	yes
 
 SHEBANG_FILES=	scripts/ioflo
+python_OLD_CMD=	/usr/bin/env python
 
 .include <bsd.port.mk>

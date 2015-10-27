@@ -1,4 +1,4 @@
-# Created by: Pakhom Golynga <pakhom@pakhom.spb.ru>
+# Created by: Pakhom Golynga <pakhom706@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	zabbix24

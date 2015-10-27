@@ -3,24 +3,23 @@
 
 PORTNAME=	bsh
 DISTVERSION=	2.0b5
-PORTREVISION=	1
 CATEGORIES=	lang java
+MASTER_SITES=	http://svn.codespot.com/a/apache-extras.org/beanshell/src_releases/
+DISTNAME=	${PORTNAME}-${DISTVERSION}-src
 
-MAINTAINER=	pfg@FreeBSD.org
-COMMENT=	Beanshell java scripting language
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	Java scripting language
 
 LICENSE=	APACHE20
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	beanshell
-GH_PROJECT=	beanshell
-GH_TAGNAME=	f299e2b
-
+USES=		zip
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 
 USE_ANT=	yes
 ALL_TARGET=	jarall
+
+WRKSRC=		${WRKDIR}/BeanShell-${PORTVERSION:S/.b/b/}
 
 SUB_FILES=	${PORTNAME}.sh
 SUB_LIST=	JARNAME=${PORTNAME}.jar

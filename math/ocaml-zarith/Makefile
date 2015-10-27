@@ -27,8 +27,6 @@ CPPFLAGS+=		-I${LOCALBASE}/include
 LDFLAGS+=		-L${LOCALBASE}/lib
 
 MAKE_JOBS_UNSAFE=	yes
-
-BROKEN_armv6=	binary /nxb-bin/usr/bin/cc: not found
 PORTDOCS=	html
 DOCSDIR=	${OCAML_DOCSDIR}/${PORTNAME}
 

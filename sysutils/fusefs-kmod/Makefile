@@ -27,7 +27,11 @@ SUB_FILES=	pkg-message
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} < 1000000
+.if ${OSVERSION} < 900000
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-8-fuse_vfsops.c
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-8-fuse_vnops.c
+.endif
+.if ${OSVERSION} >= 900000 && ${OSVERSION} < 1000000
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-9-fuse_main.c
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-9-fuse_vfsops.c
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-9-fuse_vnops.c

@@ -41,6 +41,9 @@ BITSUF=	.32
 .endif
 
 .if ${CHOSEN_COMPILER_TYPE} == clang
+.if ${OSVERSION} < 900000
+BROKEN=	clang fails to link on 8.x
+.endif
 LLSUF=	.llvm
 MAKE_ARGS+=	use_llvm=yes
 .else  # clang
@@ -67,10 +70,10 @@ do-install:
 		${STAGEDIR}/${PREFIX}/bin/godot.x11${BINSUFFIX}
 	@${LN} ${STAGEDIR}/${PREFIX}/bin/godot.x11${BINSUFFIX} \
 		${STAGEDIR}/${PREFIX}/bin/godot
-
-do-install-EXAMPLES-on:
+.if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${STAGEDIR}${DATADIR}
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} demos ${STAGEDIR}${DATADIR})
 	${RM} ${STAGEDIR}${DATADIR}/demos/2d/hexamap/.fscache
+.endif
 
 .include <bsd.port.post.mk>

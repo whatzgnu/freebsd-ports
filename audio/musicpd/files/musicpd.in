@@ -14,7 +14,6 @@
 
 name=musicpd
 rcvar=musicpd_enable
-desc="Music Player Daemon"
 
 load_rc_config $name
 

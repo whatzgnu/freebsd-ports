@@ -13,7 +13,7 @@ COMMENT=	Utility for capturing audio streams from programs with OSS output
 BUILD_DEPENDS=	sox:${PORTSDIR}/audio/sox
 RUN_DEPENDS=	sox:${PORTSDIR}/audio/sox
 
-USES=		alias libtool
+USES=		libtool
 GNU_CONFIGURE=	yes
 
 OPTIONS_DEFINE=	DOCS

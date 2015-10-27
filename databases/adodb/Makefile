@@ -6,29 +6,34 @@ PORTVERSION=	4.99.2
 CATEGORIES=	databases www
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-php-4-and-5/${PORTNAME}-${PORTVERSION:S/.//g}-for-php
 DISTNAME=	${PORTNAME}${PORTVERSION:S/.//g}
+EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Database library for PHP
 
-LICENSE=	BSD4CLAUSE LGPL21
-LICENSE_COMB=	dual
+LICENSE=	BSD4CLAUSE
 
-USES=		tar:tgz
 USE_PHP=	pcre
 
 CONFLICTS=	adodb-5.*
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
-NO_BUILD=	yes
-NO_ARCH=	yes
-SUB_FILES=	pkg-message
+NO_BUILD=	YES
 
 ADODB_SUBDIRS=	contrib datadict drivers lang pear perf session xsl
 
 OPTIONS_DEFINE=	TESTS DOCS
-OPTIONS_SUB=	yes
-
 TESTS_DESC=	Install tests
+
+.include <bsd.port.options.mk>
+
+SUB_FILES+=	pkg-message
+
+.if ${PORT_OPTIONS:MTESTS}
+PLIST_SUB+=	TESTS=
+.else
+PLIST_SUB+=	TESTS="@comment "
+.endif
 
 post-patch:
 	@cd ${WRKSRC}; ${RM} -f cute_icons_for_site/Thumbs.db
@@ -42,18 +47,21 @@ do-install:
 	@cd ${WRKSRC}; ${FIND} ${ADODB_SUBDIRS} -type f \
 		-exec ${INSTALL_DATA} ${WRKSRC}/{} ${STAGEDIR}${DATADIR}/{} \;
 
-do-install-TESTS-on:
+.if ${PORT_OPTIONS:MTESTS}
 	@${MKDIR} ${STAGEDIR}${DATADIR}/tests
 	@cd ${WRKSRC}; ${FIND} tests -type f \
 		-exec ${INSTALL_DATA} ${WRKSRC}/{} ${STAGEDIR}${DATADIR}/{} \;
+.endif
 
-do-install-DOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR} ${STAGEDIR}${DOCSDIR}/cute_icons_for_site
 	@cd ${WRKSRC}; ${FIND} . ! -path './*/*' -type f -name '*.txt' \
-		-exec ${INSTALL_DATA} ${WRKSRC}/{} ${STAGEDIR}${DOCSDIR}/{} \;
+		-exec ${INSTALL_MAN} ${WRKSRC}/{} ${STAGEDIR}${DOCSDIR}/{} \;
 	@cd ${WRKSRC}/docs; ${FIND} . -type f \
-		-exec ${INSTALL_DATA} ${WRKSRC}/docs/{} ${STAGEDIR}${DOCSDIR}/{} \;
+		-exec ${INSTALL_MAN} ${WRKSRC}/docs/{} ${STAGEDIR}${DOCSDIR}/{} \;
 	@cd ${WRKSRC}; ${FIND} cute_icons_for_site -type f \
-		-exec ${INSTALL_DATA} ${WRKSRC}/{} ${STAGEDIR}${DOCSDIR}/{} \;
+		-exec ${INSTALL_MAN} ${WRKSRC}/{} ${STAGEDIR}${DOCSDIR}/{} \;
+.endif
 
 .include <bsd.port.mk>

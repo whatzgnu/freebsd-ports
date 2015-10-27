@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Net-DNS
-PORTVERSION=	1.02
+PORTVERSION=	1.01
 CATEGORIES=	dns net perl5 ipv6
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -12,7 +12,8 @@ COMMENT=	Perl5 interface to the DNS resolver, and dynamic updates
 
 LICENSE=	MIT
 
-BUILD_DEPENDS=	p5-Digest-HMAC>=1.03:${PORTSDIR}/security/p5-Digest-HMAC
+BUILD_DEPENDS=	p5-Digest-HMAC>=1.03:${PORTSDIR}/security/p5-Digest-HMAC \
+		p5-MIME-Base32>=1.01:${PORTSDIR}/converters/p5-MIME-Base32
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Digest-BubbleBabble>=0:${PORTSDIR}/security/p5-Digest-BubbleBabble \
 		p5-Test-Pod>=0:${PORTSDIR}/devel/p5-Test-Pod

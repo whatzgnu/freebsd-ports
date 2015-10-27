@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gstreamer1-vaapi
-PORTVERSION=	0.6.1
+PORTVERSION=	0.5.10
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.freedesktop.org/software/vaapi/releases/gstreamer-vaapi/
 DISTNAME=	gstreamer-vaapi-${PORTVERSION}
@@ -15,7 +16,7 @@ LICENSE=	LGPL21
 LIB_DEPENDS=	libva.so:${PORTSDIR}/multimedia/libva
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-wayland \
+CONFIGURE_ARGS=	--disable-wayland --with-gstreamer-api=1.4 \
 		--disable-builtin-libvpx --disable-silent-rules
 INSTALL_TARGET=	install-strip
 USES=		compiler:c11 gmake libtool pkgconfig tar:bzip2
@@ -24,7 +25,7 @@ USE_GSTREAMER1=	yes
 USE_GL=		gl
 USE_XORG=	x11 xrandr xrender xproto:build
 
-PLIST_SUB=	VERSION=1.0 LIBVER=1.6
+PLIST_SUB=	VERSION=1.0 LIBVER=1.4
 
 # manual since pathfix doesn't work.
 post-patch:

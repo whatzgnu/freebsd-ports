@@ -4,7 +4,7 @@
 PORTNAME=	jfbterm
 PORTVERSION=	0.6.1
 DISTVERSIONPREFIX=FreeBSD-
-PORTREVISION=	8
+PORTREVISION=	7
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.ac.auone-net.jp/~baba/jfbterm/
 
@@ -17,13 +17,14 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 ONLY_FOR_ARCHS=	i386 amd64
 ONLY_FOR_ARCHS_REASON=	requires VESA support in kernel
 
-USES=		terminfo
 MAKEFILE=	${FILESDIR}/BSDmakefile
 MAKE_ENV+=	VERSION=${PORTVERSION} GUNZIP=${GUNZIP_CMD:N-*}
 PLIST_SUB+=	TERMCAP_ADD_RECORD="@exec ${TERMCAP_ADD_RECORD:S,^${PREFIX},%D,}" \
-		TERMCAP_DEL_RECORD="@unexec ${TERMCAP_DEL_RECORD}"
+		TERMCAP_DEL_RECORD="@unexec ${TERMCAP_DEL_RECORD}" \
+		TIC="@exec ${TIC} ${TERMINFO_FILE:S,^${PREFIX},%D,} 2>/dev/null || ${TRUE}"
 
 CAP_MKDB?=	/usr/bin/cap_mkdb
+TIC?=		${LOCALBASE}/bin/tic
 TERMINFO_FILE?=	${PREFIX}/share/misc/jfbterm.terminfo
 
 OPTIONS_DEFINE=		ICONV PNG SETUID TERMCAP UNIFONT
@@ -40,6 +41,8 @@ PLIST_SUB+=	SETUID=""
 .else
 PLIST_SUB+=	SETUID="@comment "
 .endif
+
+ONLY_FOR_ARCHS+=amd64
 
 .if !defined(INSTALL_AS_USER)
 TERMCAP_FILE?=	/usr/share/misc/termcap
@@ -98,13 +101,13 @@ post-extract:	.SILENT
 		${WRKSRC}/jfbterm.conf.sample
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|/usr/local|${PREFIX}|g' \
+	${REINPLACE_CMD} -e 's|/usr/local|${PREFIX}|g' \
 		-e 's|\(share\)/jfbterm/\(fonts\)|\1/misc/\2|' \
 		${WRKSRC}/*.[0-9] ${WRKSRC}/*.conf.sample
-
-post-patch-TERMCAP-off:
-	@${REINPLACE_CMD} '/^term/s/:.*/: xterm/' \
+.if !${PORT_OPTIONS:MTERMCAP}
+	${REINPLACE_CMD} '/^term/s/:.*/: xterm/' \
 		${WRKSRC}/jfbterm.conf.sample
+.endif
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/jfbterm ${STAGEDIR}${PREFIX}/bin

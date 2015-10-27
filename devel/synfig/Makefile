@@ -2,16 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	synfig
-PORTVERSION=	1.0.2
+PORTVERSION=	1.0
 CATEGORIES=	devel graphics multimedia
 MASTER_SITES=	SF/${PORTNAME}/releases/${PORTVERSION}/source
 
 MAINTAINER=	woodsb02@gmail.com
 COMMENT=	Vector based 2D animation package
 
-LICENSE=	GPLv2 # (or later)
+LICENSE=	GPLv3
 
-BUILD_DEPENDS=	etl>=0.04.19_1:${PORTSDIR}/devel/etl
+BUILD_DEPENDS=	etl>=0.04.17:${PORTSDIR}/devel/etl
 LIB_DEPENDS=	libboost_program_options.so:${PORTSDIR}/devel/boost-libs \
 		libltdl.so:${PORTSDIR}/devel/libltdl \
 		libMagickWand-6.so:${PORTSDIR}/graphics/ImageMagick \
@@ -23,7 +23,7 @@ LIB_DEPENDS=	libboost_program_options.so:${PORTSDIR}/devel/boost-libs \
 		libavcodec.so:${PORTSDIR}/multimedia/ffmpeg \
 		libdv.so:${PORTSDIR}/multimedia/libdv
 
-USES=		iconv jpeg libtool pathfix pkgconfig
+USES=		gettext iconv jpeg libtool pathfix pkgconfig
 USE_GNOME=	cairo glibmm libxml++26
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	${ICONV_CONFIGURE_ARG}
@@ -34,12 +34,6 @@ WRKSRC=		${WRKDIR}/${DISTNAME}
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=	DOCS NLS
-OPTIONS_SUB=	yes
-
-NLS_USES=		gettext
-NLS_CONFIGURE_ENABLE=	nls
-
 post-patch:
 	@${REINPLACE_CMD} -e \
 		'/optimization_flags/s|CXXFLAGS=|#CXXFLAGS=| ; \
@@ -49,7 +43,9 @@ post-patch:
 		 s|no_NO|no| ; \
 		 s|pl_PL|pl| ; \
 		 s|sk_SK|sk| ; \
-		 s|sv_SE|sv|' \
+		 s|sv_SE|sv| ; \
+		 s|<tr1/|<| ; \
+		 s|::tr1||' \
 		${WRKSRC}/configure
 
 post-build:

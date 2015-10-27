@@ -3,7 +3,6 @@
 
 PORTNAME=	webcheck
 PORTVERSION=	1.10.3
-PORTREVISION=	1
 CATEGORIES=	www python
 MASTER_SITES=	http://arthurdejong.org/webcheck/
 EXTRACT_SUFX=	.tar.gz
@@ -30,13 +29,8 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}/fancytooltips
 	${INSTALL_DATA} ${WRKSRC}/fancytooltips/* ${STAGEDIR}${DATADIR}/fancytooltips
 	${INSTALL_SCRIPT} ${WRKSRC}/webcheck.py ${STAGEDIR}${DATADIR}
-	${LN} -sf ${DATADIR}/webcheck.py ${STAGEDIR}${PREFIX}/bin
-	cd ${STAGEDIR}${DATADIR}; ${PYTHON_CMD} -m compileall .
-	cd ${STAGEDIR}${DATADIR}; ${PYTHON_CMD} -O -m compileall .
-
-post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
-	${INSTALL_MAN} ${WRKSRC}/webcheck.1 ${STAGEDIR}${MANPREFIX}/man/man1
+	@${INSTALL_MAN} ${WRKSRC}/webcheck.1 ${STAGEDIR}${MANPREFIX}/man/man1
 
 .include <bsd.port.mk>

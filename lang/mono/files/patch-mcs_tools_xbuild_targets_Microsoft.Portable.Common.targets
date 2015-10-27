@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- /dev/null
 +++ mcs/tools/xbuild/targets/Microsoft.Portable.Common.targets
 @@ -0,0 +1,4 @@

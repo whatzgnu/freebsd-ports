@@ -1,5 +1,7 @@
 bin/xfractint
-man/man1/xfractint.1.gz
+man/man1/xfractint.man.gz
+%%DATADIR%%/fractint.hlp
+%%DATADIR%%/sstools.ini
 %%DATADIR%%/formulas/fract001.frm
 %%DATADIR%%/formulas/fract002.frm
 %%DATADIR%%/formulas/fract003.frm
@@ -11,7 +13,6 @@ man/man1/xfractint.1.gz
 %%DATADIR%%/formulas/julitile.frm
 %%DATADIR%%/formulas/new_if.frm
 %%DATADIR%%/formulas/newton.frm
-%%DATADIR%%/fractint.hlp
 %%DATADIR%%/ifs/fract205.ifs
 %%DATADIR%%/ifs/fractint.ifs
 %%DATADIR%%/lsystem/fract205.l
@@ -36,7 +37,6 @@ man/man1/xfractint.1.gz
 %%DATADIR%%/maps/green.map
 %%DATADIR%%/maps/grey.map
 %%DATADIR%%/maps/grid.map
-%%DATADIR%%/maps/headach2.map
 %%DATADIR%%/maps/headache.map
 %%DATADIR%%/maps/landscap.map
 %%DATADIR%%/maps/lyapunov.map
@@ -58,4 +58,3 @@ man/man1/xfractint.1.gz
 %%DATADIR%%/pars/newphoen.par
 %%DATADIR%%/pars/orbits.par
 %%DATADIR%%/pars/phoenix.par
-%%DATADIR%%/sstools.ini

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	drood
-PORTVERSION=	5.6
-PORTREVISION=	1
+PORTVERSION=	5.5.6
 CATEGORIES=	www
 MASTER_SITES=	http://www.mammothcheese.ca/
 
@@ -27,7 +26,7 @@ PLIST_FILES=	bin/drood \
 		man/man8/drood.8.gz \
 		man/man8/humdinger.8.gz \
 		etc/rc.d/drood \
-		"@(,,4550) etc/rc.d/humdinger" \
+		etc/rc.d/humdinger \
 		etc/drood/types.tab \
 		etc/drood/types.tab.dist
 

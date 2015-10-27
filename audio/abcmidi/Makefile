@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	abcmidi
-DISTVERSION=	2015-09-28
+DISTVERSION=	2015-03-27
 CATEGORIES=	audio
 MASTER_SITES=	http://ifdo.pugmarks.com/~seymour/runabc/
-DISTNAME=	abcMIDI-${DISTVERSION:S/-/./g}
+DISTNAME=	abcMIDI-${DISTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Convert abc music files to MIDI and PostScript

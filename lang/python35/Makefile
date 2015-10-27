@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	python
-DISTVERSION=	3.5.0
+DISTVERSION=	3.5.0rc3
 CATEGORIES=	lang python ipv6
 MASTER_SITES=	PYTHON/ftp/python/${DISTVERSION:C/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/}
 PKGNAMESUFFIX=	35

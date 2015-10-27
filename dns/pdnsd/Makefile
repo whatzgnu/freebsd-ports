@@ -33,9 +33,6 @@ CFLAGS+=	-pthread
 
 IPV6_CONFIGURE_ENABLE=	ipv6
 
-post-install:
-	@${RM} ${STAGEDIR}${PDNSDB}/pdnsd.cache
-
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	@${INSTALL_DATA} ${DOC_FILES:S@^@${DOCSRCDIR}/@} ${STAGEDIR}${DOCSDIR}

@@ -3,11 +3,10 @@
 
 PORTNAME=	mupdf
 PORTVERSION=	1.7
-DISTVERSIONSUFFIX=	-source
 PORTEPOCH=	1
 CATEGORIES=	graphics
-MASTER_SITES=	http://www.mupdf.com/download/ \
-		http://www.mupdf.com/download/archive/
+MASTER_SITES=	http://www.mupdf.com/download/
+EXTRACT_SUFX=	-source.tar.gz
 
 MAINTAINER=	udvzsolt@gmail.com
 COMMENT=	Lightweight PDF viewer and toolkit
@@ -34,9 +33,16 @@ OPTIONS_DEFAULT=SCROLL
 SCROLL_DESC=	Build with scroll hacks
 JS_DESC=	JavaScript support (V8 engine)
 
-SCROLL_EXTRA_PATCHES=	${FILESDIR}/scroll_hack-platform__x11__pdfapp.c
-JS_LIB_DEPENDS=		libv8.so:${PORTSDIR}/lang/v8
-JS_MAKE_ARGS=		V8_PRESENT=1 V8LIBS=-lv8
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MSCROLL}
+EXTRA_PATCHES+=	${FILESDIR}/scroll_hack-platform__x11__pdfapp.c
+.endif
+
+.if ${PORT_OPTIONS:MJS}
+LIB_DEPENDS+=	libv8.so:${PORTSDIR}/lang/v8
+MAKE_ARGS+=	V8_PRESENT=1 V8LIBS=-lv8
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's/-pipe -O2 //' \

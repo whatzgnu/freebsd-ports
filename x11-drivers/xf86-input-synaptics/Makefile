@@ -2,7 +2,6 @@
 
 PORTNAME=	xf86-input-synaptics
 PORTVERSION=	1.8.2
-PORTREVISION=	1
 CATEGORIES=	x11-drivers
 
 MAINTAINER=	x11@FreeBSD.org

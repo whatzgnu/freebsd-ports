@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Games-Bingo
-PORTVERSION=	0.18
+PORTVERSION=	0.17
 CATEGORIES=	games perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -15,6 +15,5 @@ USE_PERL5=	modbuild
 
 post-patch:
 	@${REINPLACE_CMD} -i '' '/Test::/d' ${WRKSRC}/Build.PL
-	@${REINPLACE_CMD} -i '' '/Pod::/d' ${WRKSRC}/Build.PL
 
 .include <bsd.port.mk>

@@ -1,5 +1,4 @@
 bin/raggle
-man/man1/raggle.1.gz
 %%PORTDOCS%%%%DOCSDIR%%/AUTHORS
 %%PORTDOCS%%%%DOCSDIR%%/BUGS
 %%PORTDOCS%%%%DOCSDIR%%/COPYING

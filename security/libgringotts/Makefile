@@ -5,7 +5,7 @@ PORTNAME=	libgringotts
 PORTVERSION=	1.2.1
 PORTREVISION=	2
 CATEGORIES=	security
-MASTER_SITES=	BERLIOS/gringotts.berlios
+MASTER_SITES=	BERLIOS/gringotts
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Library for encapsulating/safekeeping data in encrypted/compressed form

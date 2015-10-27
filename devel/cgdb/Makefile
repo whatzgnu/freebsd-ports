@@ -6,7 +6,7 @@ PORTVERSION=	0.6.8
 CATEGORIES=	devel
 MASTER_SITES=	http://cgdb.me/files/
 
-MAINTAINER=	serio.jeffrey@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Curses-based interface to the GNU Debugger
 
 LICENSE=	GPLv2

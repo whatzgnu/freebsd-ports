@@ -3,7 +3,7 @@
 
 PORTNAME=	vlgothic
 PORTVERSION=	20141206
-PORTREVISION=	3
+PORTREVISION=	1
 CATEGORIES=	japanese x11-fonts
 MASTER_SITES=	SFJP/vlgothic/62375
 PKGNAMEPREFIX=	ja-font-
@@ -12,9 +12,7 @@ DISTNAME=	VLGothic-${PORTVERSION}
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	VLGothic Japanese TrueType fonts
 
-USES=		fonts:fc tar:xz
-FONTNAME=	TTF
-NO_ARCH=	yes
+USES=		fonts tar:xz
 NO_BUILD=	yes
 PKGINSTALL=	${WRKDIR}/pkg-install
 PKGDEINSTALL=	${WRKDIR}/pkg-install
@@ -24,6 +22,7 @@ PORTDOCS=	Changelog LICENSE LICENSE.en LICENSE_E.mplus LICENSE_J.mplus \
 		README README.sazanami README_J.mplus
 WRKSRC=		${WRKDIR}/VLGothic
 
+FONTNAME=	TTF
 OPTIONS_DEFINE=	DOCS
 
 do-install:
@@ -41,8 +40,6 @@ do-install:
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/20-unhint-${PORTNAME}.conf
 	${LN} -s -f ../conf.avail/62-fonts-${PORTNAME}.conf \
 	    ${STAGEDIR}${PREFIX}/etc/fonts/conf.d/62-fonts-${PORTNAME}.conf
-
-post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 

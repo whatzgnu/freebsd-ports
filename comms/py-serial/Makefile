@@ -3,7 +3,6 @@
 
 PORTNAME=	serial
 PORTVERSION=	2.7
-PORTREVISION=	1
 CATEGORIES=	comms python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,18 +11,18 @@ DISTNAME=	py${PORTNAME}-${PORTVERSION}
 MAINTAINER=	sbz@FreeBSD.org
 COMMENT=	Serial port encapsulation library for Python
 
-USES=			dos2unix python
-USE_PYTHON=		concurrent distutils py3kplist pythonprefix
+USES=			python
+USE_PYTHON=		distutils pythonprefix
 PYDISTUTILS_PKGNAME=	py${PORTNAME}
-DOS2UNIX_FILES=		serial/tools/list_ports_posix.py
+
+DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
+EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-do-install-DOCS-on:
+post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/*.txt ${STAGEDIR}${DOCSDIR}
-
-do-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
 

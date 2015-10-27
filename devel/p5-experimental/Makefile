@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	experimental
-PORTVERSION=	0.016
+PORTVERSION=	0.013
+PORTREVISION=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:LEONT
@@ -14,7 +15,6 @@ COMMENT=	Experimental features made easy
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
 
-NO_ARCH=	yes
 USE_PERL5=	modbuildtiny
 USES=		perl5
 

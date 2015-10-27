@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- wscript.orig
 +++ wscript
 @@ -14,7 +14,7 @@

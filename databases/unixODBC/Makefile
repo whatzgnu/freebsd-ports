@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	unixODBC
-PORTVERSION=	2.3.4
+PORTVERSION=	2.3.2
+PORTREVISION=	2
 CATEGORIES=	databases
-MASTER_SITES=	ftp://ftp.unixodbc.org/pub/unixODBC/
+MASTER_SITES=	http://www.unixodbc.org/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	ODBC library suite for Unix
@@ -26,11 +27,12 @@ USE_LDCONFIG=	yes
 PORTDOCS=	*
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|\.ini$$|.ini.sample|' ${WRKSRC}/Makefile.in
+	@${REINPLACE_CMD} -e \
+		'/\.ini/s|^|#|' ${WRKSRC}/Makefile.in
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR} \
-	    "-not -name 'Makefile*'"
+	cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
+	@${FIND} ${STAGEDIR}${DOCSDIR} -type f -name "*Makefile*" -delete
 
 .include <bsd.port.mk>

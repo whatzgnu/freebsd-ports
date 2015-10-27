@@ -3,7 +3,7 @@
 
 PORTNAME=	navi2ch
 PORTVERSION=	2.0.0.d
-PORTREVISION=	2
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	japanese www elisp
 MASTER_SITES=	http://people.allbsd.org/~hrs/FreeBSD/ LOCAL/hrs
@@ -31,7 +31,7 @@ LISPDIR=	${EMACS_VERSION_SITE_LISPDIR}
 
 OPTIONS_DEFINE=	DOCS X11
 OPTIONS_DEFAULT=DOCS X11
-X11_RUN_DEPENDS=${LOCALBASE}/share/mona/monak12.pcf.gz:${PORTSDIR}/japanese/font-mona
+X11_RUN_DEPENDS=${LOCALBASE}/share/fonts/monafonts/monak12.pcf.gz:${PORTSDIR}/japanese/monafonts
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

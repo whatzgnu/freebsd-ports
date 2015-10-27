@@ -1,9 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	libtorrent
-PORTVERSION=	0.13.6
+PORTVERSION=	0.13.4
+PORTREVISION=	2
 CATEGORIES=	net-p2p
-MASTER_SITES=	http://rtorrent.net/downloads/
+MASTER_SITES=	http://libtorrent.rakshasa.no/downloads/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	BitTorrent Library written in C++

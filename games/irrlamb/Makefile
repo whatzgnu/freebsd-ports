@@ -16,8 +16,7 @@ BUILD_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht
 RUN_DEPENDS=	${LOCALBASE}/lib/libIrrlicht.so:${PORTSDIR}/x11-toolkits/irrlicht
 
 USES=		scons dos2unix lua:51
-DOS2UNIX_FILES=	src/engine/save.h src/objects/orb.cpp src/objects/player.cpp \
-		src/engine/state.h
+DOS2UNIX_FILES=	src/engine/save.h src/objects/orb.cpp src/objects/player.cpp
 
 CPPPATH=	${LOCALBASE}/include ${LUA_INCDIR}
 LIBPATH=	${LOCALBASE}/lib ${LUA_LIBDIR}

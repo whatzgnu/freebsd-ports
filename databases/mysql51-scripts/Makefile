@@ -14,6 +14,5 @@ PLIST=		${PKGDIR}/pkg-plist.scripts
 
 SCRIPTS_ONLY=	yes
 USES=		perl5
-NO_ARCH=	yes
 
 .include "${MASTERDIR}/Makefile"

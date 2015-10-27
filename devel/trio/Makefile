@@ -2,19 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	trio
-PORTVERSION=	1.16
+PORTVERSION=	1.14
 CATEGORIES=	devel
-MASTER_SITES=	SF/c${PORTNAME}/${PORTNAME}
+MASTER_SITES=	SF/c${PORTNAME}/${PORTNAME}/${PORTVERSION}
 
 MAINTAINER=	rodrigo@FreeBSD.org
 COMMENT=	Fully matured and stable set of printf and string functions
 
-LICENSE=	BSD2CLAUSE
-
 GNU_CONFIGURE=	yes
 
 OPTIONS_DEFINE=	DOCS
-USES=	gmake
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

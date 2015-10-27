@@ -2,14 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	libvirt
-PORTVERSION=	1.2.20
+PORTVERSION=	1.2.18
 CATEGORIES=	devel
 MASTER_SITES=	http://libvirt.org/sources/python/ \
 		ftp://libvirt.org/libvirt/python/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	${PORTNAME}-python-${PORTVERSION}
 
-MAINTAINER=	novel@FreeBSD.org
+MAINTAINER=	jgh@FreeBSD.org
 COMMENT=	Python bindings for Libvirt virtualization API
 
 LICENSE=	GPLv2

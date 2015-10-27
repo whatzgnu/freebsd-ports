@@ -17,7 +17,6 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	freeminer
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 DATADIR=	${PREFIX}/share/freeminer/games/${PORTNAME}
 PORTDATA=	*
 

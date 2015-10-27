@@ -1,5 +1,7 @@
 Hack for lack of strdupa() in BSD libc
 
+$FreeBSD$
+
 --- action.c.orig
 +++ action.c
 @@ -44,6 +44,12 @@

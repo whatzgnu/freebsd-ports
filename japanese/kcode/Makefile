@@ -15,6 +15,7 @@ USE_PERL5=	extract run
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
 SHEBANG_FILES=	kcode
+perl_OLD_CMD=	/usr/bin/env perl
 
 PLIST_FILES=	bin/kcode man/ja/man1/kcode.1.gz
 

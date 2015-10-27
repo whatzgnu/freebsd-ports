@@ -12,7 +12,6 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	CACert.org CA root certificate in PEM format
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

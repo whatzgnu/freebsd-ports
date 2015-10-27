@@ -3,7 +3,6 @@
 
 PORTNAME=	xf86-input-egalax
 PORTVERSION=	0.3
-PORTREVISION=	1
 CATEGORIES=	x11-drivers
 
 MAINTAINER=	glebius@FreeBSD.org
@@ -19,8 +18,7 @@ LICENSE=	BSD2CLAUSE
 GNU_CONFIGURE=	yes
 USES=		autoreconf libtool pkgconfig
 USE_XORG=	xorg-server xproto xi inputproto xf86driproto glproto \
-		randrproto renderproto resourceproto scrnsaverproto \
-		xorg-macros presentproto
+		randrproto renderproto resourceproto scrnsaverproto xorg-macros
 CONFIGURE_ENV=	DRIVER_MAN_SUFFIX=4x DRIVER_MAN_DIR='$$(mandir)/man4'
 INSTALL_TARGET=	install-strip
 

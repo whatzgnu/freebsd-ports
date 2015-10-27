@@ -15,7 +15,4 @@ USE_RC_SUBR=	mbgsvcd
 
 USES=		kmod uidfix
 
-BROKEN_arm=	cannot compile: unused variables
-BROKEN_sparc64=	cannot compile: error in structure definitions
-
 .include <bsd.port.mk>

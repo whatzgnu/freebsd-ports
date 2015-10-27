@@ -25,9 +25,6 @@ OPTIONS_DEFINE=	DEBUG PLUGINS TEST
 OPTIONS_DEFAULT=PLUGINS
 OPTIONS_SUB=	yes
 
-DEBUG_BUILD_DEPENDS_OFF=	${DEBUG_BUILD_DEPENDS_OFF_${ARCH}}
-DEBUG_BUILD_DEPENDS_OFF_amd64=	nasm:${PORTSDIR}/devel/nasm
-DEBUG_BUILD_DEPENDS_OFF_i386=	nasm:${PORTSDIR}/devel/nasm
 DEBUG_MAKE_ARGS=BUILDTYPE=Debug
 PLUGINS_BUILD_DEPENDS=gmp-api>=34.0:${PORTSDIR}/multimedia/gmp-api
 #			gmp-api<36.0:${PORTSDIR}/multimedia/gmp-api
@@ -45,6 +42,14 @@ TEST_CFLAGS=	-I${LOCALBASE}/include
 TEST_MAKE_ARGS=	HAVE_GTEST=Yes
 TEST_ALL_TARGET=test
 
+.include <bsd.port.options.mk>
+
+.if ! ${PORT_OPTIONS:MDEBUG}
+. if ${ARCH} == amd64 || ${ARCH} == i386
+BUILD_DEPENDS+=	nasm:${PORTSDIR}/devel/nasm
+. endif
+.endif
+
 post-patch:
 	${REINPLACE_CMD} -e '/gtest-targets\.mk/d' \
 		-e '/pkgconfig/s/lib/libdata/' \
@@ -57,11 +62,11 @@ pre-build:
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/lib${PORTNAME}.so.0
-
-post-install-PLUGINS-on:
+.if ${PORT_OPTIONS:MPLUGINS}
 	${MKDIR} ${STAGEDIR}${WEBPLUGIN_DIR}
 	${INSTALL_DATA} ${WRKSRC}/gmp${PORTNAME}.info ${STAGEDIR}${WEBPLUGIN_DIR}
 	${INSTALL_LIB} ${WRKSRC}/libgmp${PORTNAME}.so ${STAGEDIR}${WEBPLUGIN_DIR}
 	${INSTALL_DATA} ${WRKDIR}/gmp${PORTNAME}.js ${STAGEDIR}${WEBPLUGIN_DIR}
+.endif
 
 .include <bsd.port.mk>

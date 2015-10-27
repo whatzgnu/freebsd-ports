@@ -10,8 +10,6 @@ DISTNAME=	GRAPPA20
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Genome Rearrangements Analysis and Phylogeny Software
 
-LICENSE=	GPLv2
-
 USES=		gmake
 
 PLIST_FILES=	bin/grappa bin/invdist bin/distmat

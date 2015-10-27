@@ -17,7 +17,6 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-BerkeleyDB>=0:${PORTSDIR}/databases/p5-BerkeleyDB
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

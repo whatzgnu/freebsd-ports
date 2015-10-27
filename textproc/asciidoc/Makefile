@@ -30,10 +30,11 @@ CONF_FILES=	asciidoc.conf docbook45.conf filters/code/code-filter.conf \
 SHEBANG_FILES=	a2x.py \
 		asciidoc.py \
 		asciidocapi.py \
-		filters/code/code-filter.py \
-		filters/graphviz/graphviz2png.py \
 		filters/latex/latex2png.py \
-		filters/music/music2png.py
+		filters/graphviz/graphviz2png.py \
+		filters/music/music2png.py \
+		filters/code/code-filter.py
+python_OLD_CMD=	/usr/bin/env python
 
 post-patch:
 	@${REINPLACE_CMD} -e '/^INSTALL_PROG/ s|INSTALL_PROGRAM|INSTALL_SCRIPT|; s|\.conf|&.sample|' ${WRKSRC}/Makefile.in
@@ -44,5 +45,10 @@ post-patch:
 post-install:
 	${MKDIR} ${STAGEDIR}${PYTHON_SITELIBDIR}/
 	${INSTALL_DATA} ${WRKSRC}/asciidocapi.py ${STAGEDIR}${PYTHON_SITELIBDIR}/
+.for conf_file in ${CONF_FILES}
+	@if [ ! -f ${ETCDIR}/${conf_file} ]; then \
+		${CP} -p ${STAGEDIR}${ETCDIR}/${conf_file}.sample ${STAGEDIR}${ETCDIR}/${conf_file}; \
+	fi
+.endfor
 
 .include <bsd.port.mk>

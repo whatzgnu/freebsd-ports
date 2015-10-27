@@ -6,6 +6,9 @@ CFLAGS+=        `pkg-config -cflags ${PACKAGES}`
 LDFLAGS+=       `pkg-config -libs ${PACKAGES}` -lm
 
 SRCS=           gui.c sdr.c filter.c audio_jack.c smeter.c waterfall.c lysdr.c
+.if	${OSVERSION} < 900000
+SRCS+=		cexp.c
+.endif
 PROG=           lysdr
 WITHOUT_MAN=    yes
 

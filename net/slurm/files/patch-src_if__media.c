@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- src/if_media.c.orig
 +++ src/if_media.c
 @@ -95,8 +95,13 @@

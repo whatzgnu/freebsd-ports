@@ -7,7 +7,7 @@ PORTREVISION=	6
 CATEGORIES=	mail security
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	lippe@FreeBSD.org
 COMMENT=	Fast Content/Anti-virus Scanner for qmail Written in C
 
 USES=		qmail:build

@@ -20,4 +20,3 @@ sbin/ircd
 %%SYSLOGFILE%%/var/log/ircd-ru/syslog
 @unexec rmdir /var/log/ircd-ru
 @unexec rmdir /var/run/ircd-ru
-@dir %%DATADIR%%/modules

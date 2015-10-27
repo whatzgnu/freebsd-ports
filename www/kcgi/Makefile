@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	kcgi
-PORTVERSION=	0.7.3
+PORTVERSION=	0.7.2
 CATEGORIES=	www devel
 MASTER_SITES=	http://kristaps.bsd.lv/kcgi/snapshots/
 
@@ -13,8 +13,6 @@ LICENSE=	ISCL
 USES=		tar:tgz
 
 OPTIONS_DEFINE=	EXAMPLES
-
-BROKEN_FreeBSD_9=	Requires capsicum
 
 HAS_CONFIGURE=	yes
 MAKE_ARGS=	DATADIR=${EXAMPLESDIR}

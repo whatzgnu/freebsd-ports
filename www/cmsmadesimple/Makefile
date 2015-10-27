@@ -26,6 +26,8 @@ CMS_FILES=	favicon_cms.ico fileloc.php include.php \
 WRITABLE_DIRS=	tmp tmp/templates_c tmp/cache \
 		uploads uploads/images modules
 
+.include <bsd.port.pre.mk>
+
 post-extract:
 	cd ${WRKSRC} && ${RM} -f config.php
 
@@ -37,7 +39,9 @@ do-install:
 	cd ${WRKSRC} && ${CP} ${i} ${STAGEDIR}${WWWDIR}/${i}
 .endfor
 
+	${FIND} ${STAGEDIR}${WWWDIR} -type d -print0 | ${XARGS} -0 ${CHOWN} ${WWWOWN}:${WWWGRP}
+
 	if [ ! -f ${STAGEDIR}${WWWDIR}/config.php ]; then \
 	${TOUCH} ${STAGEDIR}${WWWDIR}/config.php ; fi
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

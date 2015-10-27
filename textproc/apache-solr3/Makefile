@@ -22,11 +22,10 @@ PORTEXAMPLES=	*
 USES=		cpe tar:tgz
 CPE_PRODUCT=	solr
 CPE_VENDOR=	apache
-NO_ARCH=	yes
 
 do-install:
 	cd ${WRKSRC}/dist && ${COPYTREE_SHARE} . ${STAGEDIR}${JAVAJARDIR}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	cd ${WRKSRC}/example && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR} "-not -empty"
+	cd ${WRKSRC}/example && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	hitimes
-PORTVERSION=	1.2.3
+PORTVERSION=	1.2.2
 CATEGORIES=	devel ruby
 MASTER_SITES=	RG
 

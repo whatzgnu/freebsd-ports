@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	quimup
-PORTVERSION=	1.4.0
+PORTVERSION=	1.3.2
 CATEGORIES=	audio
 MASTER_SITES=	SF/musicpd/Quimup/${PORTVERSION}
 DISTNAME=	${PORTNAME}_${PORTVERSION}_src
@@ -15,24 +15,29 @@ LICENSE=	GPLv2 # (or later)
 LIB_DEPENDS=	libmpdclient.so:${PORTSDIR}/audio/libmpdclient \
 		libtag.so:${PORTSDIR}/audio/taglib
 
-WRKSRC=		${WRKDIR}/${PORTNAME}\ ${PORTVERSION}
+WRKSRC=		${WRKDIR}/${PORTNAME}_${PORTVERSION}
 
 USES=		pkgconfig qmake
-USE_QT5=	core gui network widgets buildtools_build
+USE_QT4=	corelib gui network \
+		moc_build rcc_build uic_build
 
-PLIST_FILES=	bin/quimup \
-		share/pixmaps/quimup.png
+PLIST_FILES=	bin/${PORTNAME} \
+		share/pixmaps/${PORTNAME}.png
 
-DESKTOP_ENTRIES="Quimup" "MPD client" "quiump" "quiump" \
+DESKTOP_ENTRIES="Quimup" "MPD client" \
+		"${PREFIX}/share/pixmaps/${PORTNAME}.png" "${PORTNAME}" \
 		"Audio;AudioVideo;Qt;" true
 
 post-patch:
 	@${REINPLACE_CMD} -e \
+		'/^CONFIG/s|-O2|| ; \
+		 s|^QMAKE_|#QMAKE_|' ${WRKSRC}/${PORTNAME}.pro
+	@${REINPLACE_CMD} -e \
 		'/^#define get_time/d' ${WRKSRC}/src/qm_playlistview.h
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/quimup ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_DATA} ${WRKSRC}/src/resources/mn_icon.png \
-		${STAGEDIR}${PREFIX}/share/pixmaps/quimup.png
+		${STAGEDIR}${PREFIX}/share/pixmaps/${PORTNAME}.png
 
 .include <bsd.port.mk>

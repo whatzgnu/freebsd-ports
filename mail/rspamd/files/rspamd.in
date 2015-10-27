@@ -32,7 +32,6 @@ load_rc_config $name
 pidfile=${rspamd_pidfile:-"/var/run/rspamd/rspamd.pid"}
 
 command=%%PREFIX%%/bin/rspamd
-command_adm=%%PREFIX%%/bin/rspamadm
 restart_precmd="rspamd_checkconfig"
 reload_precmd="rspamd_checkconfig"
 configtest_cmd="rspamd_checkconfig"
@@ -47,7 +46,7 @@ stop_postcmd="rm -f $pidfile"
 rspamd_checkconfig()
 {
 	echo "Performing sanity check on rspamd configuration:"
-	eval ${command_adm} configtest ${rspamd_flags}
+	eval ${command} ${command_args} -t
 }
 
 reopenlog_cmd()

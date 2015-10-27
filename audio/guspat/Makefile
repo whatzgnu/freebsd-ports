@@ -14,7 +14,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Izumo collection of Gravis Ultrasound MIDI patches
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 NO_CDROM=	Some of the patches are marked no-commercial-use
 PLIST_SUB=	TIMIDITY_DATADIR=${TIMIDITY_DATADIR}
 WRKSRC=		${WRKDIR}/timidity

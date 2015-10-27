@@ -22,11 +22,10 @@ GLPI_VER=	0.85
 FUNV_VER=	1.2
 WRKSRC=		${WRKDIR}
 NO_BUILD=	yes
-NO_ARCH=	yes
-
-PLIST_SUB=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 
 GLPIPLUGINDIR?=	www/glpi/plugins
+
+.include <bsd.port.pre.mk>
 
 do-install:
 .for i in get_agent_jobs.php cleanup_repository.php prepare_jobs.php get_job_logs.php
@@ -38,5 +37,6 @@ do-install:
 	@${CHMOD} -x ${WRKSRC}/fusioninventory/lib/mustache.js-2.0.0/hooks/install-hooks.sh
 	@${MKDIR} -m 0755 ${STAGEDIR}${PREFIX}/${GLPIPLUGINDIR}
 	@${CP} -R ${WRKSRC}/fusioninventory ${STAGEDIR}${PREFIX}/${GLPIPLUGINDIR}
+	@${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}${PREFIX}/${GLPIPLUGINDIR}/fusioninventory
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

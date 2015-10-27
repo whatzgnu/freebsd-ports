@@ -11,7 +11,6 @@ COMMENT=	Linux-DECnet project LAT protocol suite
 
 LICENSE=	GPLv2
 
-USES=		alias
 GNU_CONFIGURE=	yes
 
 PLIST_FILES=	bin/llogin etc/latd.conf.sample \

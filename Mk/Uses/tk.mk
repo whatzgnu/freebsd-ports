@@ -7,4 +7,4 @@ tcl_ARGS=	${tk_ARGS}
 
 _TCLTK_PORT=	tk
 
-.include "${USESDIR}/tcl.mk"
+.include "${PORTSDIR}/Mk/Uses/tcl.mk"

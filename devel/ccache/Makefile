@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ccache
-PORTVERSION=	3.2.4
+PORTVERSION=	3.2.3
 PORTREVISION=	0
 CATEGORIES=	devel
 MASTER_SITES=	http://www.samba.org/ftp/ccache/ \
@@ -69,13 +69,15 @@ SUB_LIST+=	CCACHE_COMPILERS="${CCACHE_COMPILERS}" \
 		ICCPREFIX="${LOCALBASE}/intel_cc_80/bin" \
 		HOWTO="${HOWTO}"
 
-post-build-TINDERBOX-on:
+post-build:
+.if ${PORT_OPTIONS:MTINDERBOX}
 	@${MKDIR} ${WRKDIR}/tb/opt
 	@${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${WRKDIR}/tb/opt
 .for l in ${CCACHE_COMPILERS}
 	@${LN} -sf ${PORTNAME} ${WRKDIR}/tb/opt/${l}
 .endfor
 	@${TAR} -C ${WRKDIR}/tb -cpf ${WRKSRC}/${PORTNAME}.tar opt
+.endif
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/ccache ${STAGEDIR}${PREFIX}/bin
@@ -85,14 +87,14 @@ do-install:
 		${STAGEDIR}${PREFIX}/${CCLINKDIR}/world/ccache
 	${INSTALL_SCRIPT} ${WRKDIR}/ccache-update-links.sh \
 		${STAGEDIR}${PREFIX}/bin/ccache-update-links
-
-do-install-TINDERBOX-on:
+.if ${PORT_OPTIONS:MTINDERBOX}
 	${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}.tar ${STAGEDIR}${DATADIR}
-
-do-install-DOCS-on:
+.endif
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/MANUAL.html ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKDIR}/${HOWTO} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.post.mk>

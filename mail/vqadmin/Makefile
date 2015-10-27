@@ -24,10 +24,12 @@ CONFIGURE_ARGS=	--enable-cgibindir=${STAGEDIR}${PREFIX}/${CGIBINDIR} \
 		--enable-htmldir=${STAGEDIR}${PREFIX}/${WEBDATADIR} \
 		--enable-qmaildir=${QMAIL_PREFIX}
 
+.include <bsd.port.pre.mk>
+
 PLIST_SUB+=	CGIBINDIR=${CGIBINDIR} WEBDATADIR=${WEBDATADIR}
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|%%LOCALBASE%%|${LOCALBASE}|g" \
 		${WRKSRC}/Makefile.in
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

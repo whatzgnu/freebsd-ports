@@ -2,7 +2,6 @@
 
 PORTNAME=	pructl
 PORTVERSION=	0.2
-PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	https://bitbucket.org/rpaulo/pructl/get/
 
@@ -13,7 +12,7 @@ LICENSE=	BSD2CLAUSE
 
 LIB_DEPENDS=	libpru.so:${PORTSDIR}/devel/libpru
 
-USES=		cmake libedit
+USES=		cmake
 
 WRKSRC=		${WRKDIR}/rpaulo-pructl-ef9fa544e6a3
 

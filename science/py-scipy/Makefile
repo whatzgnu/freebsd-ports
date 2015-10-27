@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	scipy
-PORTVERSION=	0.16.0
+PORTVERSION=	0.15.1
 PORTREVISION=	1
 CATEGORIES=	science python
 MASTER_SITES=	http://docs.scipy.org/doc/${DISTNAME}/:doc \
@@ -22,10 +22,12 @@ RUN_DEPENDS=	${PYNUMPY} \
 		swig:${PORTSDIR}/devel/swig13
 
 USES=		fortran python
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	distutils autoplist concurrent
+
+PYDISTUTILS_CONFIGUREARGS+=	--fcompiler=gnu95
+PYDISTUTILS_BUILDARGS+=	--fcompiler=gnu95
+
 LDFLAGS+=	-shared
-PYDISTUTILS_BUILDARGS=	--fcompiler=gnu95
-PYDISTUTILS_CONFIGUREARGS=	--fcompiler=gnu95
 
 OPTIONS_DEFINE=	DOCS
 
@@ -35,9 +37,6 @@ post-extract:
 	@${CP} ${DISTDIR}/scipy-ref-${PORTVERSION}.pdf ${WRKDIR}
 
 post-install:
-	${FIND} ${STAGEDIR}${PYTHON_SITELIBDIR}/scipy/ -name '*.so' | ${XARGS} ${STRIP_CMD}
-
-post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKDIR}/scipy-ref-${PORTVERSION}.pdf ${STAGEDIR}${DOCSDIR}
 

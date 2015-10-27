@@ -19,7 +19,6 @@ TEST_DEPENDS=	p5-File-Which>=0:${PORTSDIR}/sysutils/p5-File-Which  \
 		p5-Test-Pod>=1.00:${PORTSDIR}/devel/p5-Test-Pod \
 		p5-Test-Pod-Coverage>=1.00:${PORTSDIR}/devel/p5-Test-Pod-Coverage
 
-NO_ARCH=	yes
 USE_PERL5=	modbuild
 USES=		perl5
 

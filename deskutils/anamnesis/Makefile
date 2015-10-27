@@ -18,7 +18,8 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
 USES=		python
 PORTDOCS=	ChangeLog README
 OPTIONS_DEFINE=	DOCS
-NO_ARCH=	yes
+
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} 's|cfg_files.reverse()|cfg_files += [os.path.join("'${PREFIX}/etc/'",cfg_filename)]; cfg_files.reverse()|' \
@@ -39,10 +40,10 @@ do-install:
 	${LN} -sf ${PREFIX}/share/anamnesis/anamnesis.py ${STAGEDIR}${PREFIX}/bin/anamnesis
 	${INSTALL_DATA} ${WRKSRC}/anamnesis.cfg ${STAGEDIR}${PREFIX}/etc/anamnesis.cfg.sample
 	${INSTALL_MAN} ${WRKSRC}/man/anamnesis.1 ${STAGEDIR}${MAN1PREFIX}/man/man1
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/ChangeLog ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

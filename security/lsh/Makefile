@@ -10,15 +10,11 @@ MASTER_SITES=	GNU
 MAINTAINER=	johans@FreeBSD.org
 COMMENT=	Secure (encrypted) remote shell compatible with ssh 2
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/COPYING
-
 LIB_DEPENDS=	liboop.so:${PORTSDIR}/devel/liboop \
 		libgmp.so:${PORTSDIR}/math/gmp \
 		libnettle.so:${PORTSDIR}/security/nettle
 
 BROKEN_FreeBSD_9=	does not build
-BROKEN_sparc64=	fails to compile: unexpected identifier
 
 USE_CSTD=	c89
 GNU_CONFIGURE=	yes
@@ -40,4 +36,12 @@ test:
 	(cd ${WRKSRC}/src/testsuite && ${SETENV} ${MAKE_ENV} \
 	${MAKE} ${MAKE_FLAGS} ${MAKEFILE} ${MAKE_ARGS} check)
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} >= 900000
+PLIST_SUB+=	KRB=""
+.else
+PLIST_SUB+=	KRB="@comment "
+.endif
+
+.include <bsd.port.post.mk>

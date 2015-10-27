@@ -3,7 +3,7 @@
 
 PORTNAME=	meandmyshadow
 PORTVERSION=	0.4.1
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-src
@@ -15,7 +15,7 @@ LICENSE=	GPLv3
 
 LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 
-USES=		cmake libarchive
+USES=		cmake
 USE_SDL=	sdl ttf image mixer image gfx
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}

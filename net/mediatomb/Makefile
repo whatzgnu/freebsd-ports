@@ -10,30 +10,39 @@ MASTER_SITES=	SF/${PORTNAME}/MediaTomb/${PORTVERSION}
 MAINTAINER=	leo@mediatomb.cc
 COMMENT=	UPnP AV MediaServer
 
-LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
+BROKEN=		Fails to configure, does not use USERS/GROUPS
 
 LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2
 
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-lpthread -L${LOCALBASE}/lib ${ICONV_LIB}
+LDFLAGS+=	-lpthread
 CONFIGURE_ARGS=	--with-search="${LOCALBASE}" \
 		--disable-inotify
 CONFIGURE_ENV=	PTHREAD_LIBS="-lpthread"
-USES=		compiler:gcc-c++11-lib iconv
+USES=		iconv
 USE_RC_SUBR=	mediatomb
 
-USERS=		mediatomb
-GROUPS=		${USERS}
+# --- configurable variables ---
+MEDIATOMB_USER?=	mediatomb
+MEDIATOMB_GROUP?=	mediatomb
+MEDIATOMB_DIR?=		/var/mediatomb
+MEDIATOMB_MASK?=	750
+# ---
 
 SUB_FILES=	config.xml.dist \
 		pkg-install \
 		pkg-deinstall
 
-SUB_LIST=	MEDIATOMB_USER=${USERS} \
-		MEDIATOMB_GROUP=${GROUPS} \
-		MEDIATOMB_DIR=${DESTDIR}/var/db/mediatomb
+SUB_LIST=	MEDIATOMB_USER=${MEDIATOMB_USER} \
+		MEDIATOMB_GROUP=${MEDIATOMB_GROUP} \
+		MEDIATOMB_DIR=${MEDIATOMB_DIR} \
+		MEDIATOMB_MASK=${MEDIATOMB_MASK}
+
+PLIST_SUB=	MEDIATOMB_USER=${MEDIATOMB_USER} \
+		MEDIATOMB_GROUP=${MEDIATOMB_GROUP} \
+		MEDIATOMB_DIR=${MEDIATOMB_DIR} \
+		MEDIATOMB_MASK=${MEDIATOMB_MASK} \
 
 OPTIONS_DEFINE=	JS LIBEXIF FFMPEGTHUMBNAILER \
 		EXTERNAL_TRANSCODING CURL DEBUG
@@ -155,10 +164,11 @@ CONFIGURE_ARGS+=	--enable-tombdebug
 CONFIGURE_ARGS+=	--disable-tombdebug
 .endif
 
+pre-install:
+		PKG_PREFIX=${PREFIX} ${SH} ${PKGINSTALL} ${PKGNAME} PRE-INSTALL
+
 post-install:
-	${MKDIR} ${STAGEDIR}${PREFIX}/etc/mediatomb
-	${MKDIR} ${STAGEDIR}/var/log/mediatomb
-	${MKDIR} ${STAGEDIR}/var/db/mediatomb
+	@${MKDIR} -m ${MEDIATOMB_MASK} -p ${STAGEDIR}${PREFIX}/etc/mediatomb
 	@${INSTALL} ${COPY} ${WRKDIR}/config.xml.dist ${STAGEDIR}${PREFIX}/etc/mediatomb/config.xml.dist
 
 .include <bsd.port.post.mk>

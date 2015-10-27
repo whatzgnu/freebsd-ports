@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	luxrender
-DISTVERSION?=	1.5
+DISTVERSION=	1.4
 CATEGORIES=	graphics
 MASTER_SITES=	https://bitbucket.org/luxrender/lux/get/ \
 		https://bitbucket.org/luxrender/luxrays/get/:lr
@@ -19,9 +19,6 @@ LIB_DEPENDS=	libboost_python.so:${PORTSDIR}/devel/boost-python-libs \
 		libfftw3.so:${PORTSDIR}/math/fftw3 \
 		libfreeimage.so:${PORTSDIR}/graphics/freeimage \
 		libOpenImageIO.so:${PORTSDIR}/graphics/openimageio
-.if ${DISTVERSION} > 1.4
-LIB_DEPENDS+=	libembree.so:${PORTSDIR}/graphics/embree
-.endif
 
 ONLY_FOR_ARCHS=	i386 amd64
 ONLY_FOR_ARCHS_REASON=	uses SSE instructions
@@ -39,8 +36,8 @@ CMAKE_ARGS=	-DLUXCORE_INCLUDE_DIRS:PATH="${LUXRAYS_WRKSRC}/include" \
 		-DSLG_LIBRARY:PATH="${LUXRAYS_WRKSRC}/lib/libsmallluxgpu.a" \
 		-DLUXRAYS_DISABLE_OPENCL:BOOL=ON
 
-LUX_REV?=	216e294b59e3
-LUXRAYS_REV?=	3674460aa1da
+LUX_REV=	dfd211d6faa0
+LUXRAYS_REV=	7c7127ee1fa4
 
 OPTIONS_DEFINE=	X11
 OPTIONS_DEFAULT=	X11

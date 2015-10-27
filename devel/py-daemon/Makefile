@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	daemon
-PORTVERSION=	2.0.6
+PORTVERSION=	1.6
+PORTREVISION=	1
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -11,14 +12,10 @@ DISTNAME=	python-daemon-${PORTVERSION}
 MAINTAINER=	jessekempf@gmail.com
 COMMENT=	Well-behaved daemon framework for Python
 
-LICENSE=	APACHE20
-
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}docutils>=0:${PORTSDIR}/textproc/py-docutils \
-		${PYTHON_PKGNAMEPREFIX}lockfile>=0.10:${PORTSDIR}/devel/py-lockfile
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}lockfile>=0.9:${PORTSDIR}/devel/py-lockfile
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist concurrent distutils
-USES=		python
+USE_PYTHON=	autoplist distutils
+USES=		python:2
 
 .include <bsd.port.mk>

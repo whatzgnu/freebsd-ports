@@ -16,7 +16,6 @@ COMMENT=	IRC client framework for Ruby
 USE_RUBY=	yes
 
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 DOCS_EN=	BUGS		ChangeLog	MANIFEST \
 		NEWS		README		TODO

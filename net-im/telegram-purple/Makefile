@@ -20,8 +20,6 @@ USE_GNOME=	glib20 libxml2
 USE_GCC=	yes
 GNU_CONFIGURE=	yes
 
-BROKEN_sparc64=	cannot compile: assertion fails
-
 pre-configure:
 	@${REINPLACE_CMD} -e 's|/etc/telegram-purple/server.pub|${PREFIX}/etc/telegram-purple/server.pub|g' \
 		 ${WRKSRC}/telegram-purple.c

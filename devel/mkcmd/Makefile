@@ -3,7 +3,6 @@
 
 PORTNAME=	mkcmd
 PORTVERSION=	8.14
-PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	ftp://ftp.physics.purdue.edu/pub/pundits/ \
 		http://www.komquats.com/distfiles/ \
@@ -17,17 +16,12 @@ BUILD_DEPENDS=	makeme:${PORTSDIR}/devel/msrc0
 
 MAKE_FLAGS=
 MAKEFILE=
-USES=		desthack shebangfix tar:tgz
-SHEBANG_LANG=	mkcmd
-mkcmd_OLD_CMD=	mkcmd
-mkcmd_CMD=	${PREFIX}/bin/mkcmd
-SHEBANG_FILES=	${WRKSRC}/lib/mkcmd/*.m
+USES=		desthack tar:tgz
 
 post-patch:
 .for f in bin/mkcmd/machine.h bin/mkcmd/mkcmd.man lib/mkcmd/mkcmd.man
 	@${REINPLACE_CMD} -e "s|%%PREFIX%%|${PREFIX}|g" ${WRKSRC}/${f}
 .endfor
-	@${REINPLACE_CMD} -e "1s|/mkcmd|${mkcmd_CMD}|" ${WRKSRC}/lib/mkcmd/std_filter.m
 
 do-build:
 	@(cd ${WRKSRC}/bin/mkcmd && ${SETENV} ${MAKE_ENV} makeme \

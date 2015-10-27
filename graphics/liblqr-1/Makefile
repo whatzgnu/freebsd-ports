@@ -23,15 +23,23 @@ USE_CSTD=	gnu89
 PORTEXAMPLES=	*
 
 OPTIONS_DEFINE=	EXAMPLES HTMLDOCS
-OPTIONS_SUB=	yes
 HTMLDOCS_DESC=	Build and install HTML documentation
 
-EXAMPLES_SUB_FILES=	pkg-message
-EXAMPLES_SUB_LIST=	PORTSDIR=${PORTSDIR}
+.include <bsd.port.options.mk>
 
-HTMLDOCS_BUILD_DEPENDS=	xsltproc:${PORTSDIR}/textproc/libxslt \
-			${LOCALBASE}/share/xsl/docbook/xhtml/chunk.xsl:${PORTSDIR}/textproc/docbook-xsl \
-			docbook-xml>0:${PORTSDIR}/textproc/docbook-xml
+.if ${PORT_OPTIONS:MEXAMPLES}
+SUB_FILES=	pkg-message
+SUB_LIST=	PORTSDIR=${PORTSDIR}
+.endif
+
+.if ${PORT_OPTIONS:MHTMLDOCS}
+BUILD_DEPENDS+=	xsltproc:${PORTSDIR}/textproc/libxslt \
+		${LOCALBASE}/share/xsl/docbook/xhtml/chunk.xsl:${PORTSDIR}/textproc/docbook-xsl \
+		docbook-xml>0:${PORTSDIR}/textproc/docbook-xml
+PLIST_SUB=	HTMLDOCS=""
+.else
+PLIST_SUB=	HTMLDOCS="@comment "
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e '/^lqr_pkgconfigdir/ s|$$(libdir)|$${exec_prefix}/libdata|' \
@@ -41,15 +49,17 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|/usr.*docbookx.dtd|${LOCALBASE}/share/xml/docbook/4.5/docbookx.dtd|' \
 		${WRKSRC}/docs/liblqr_manual.docbook
 
-post-build-HTMLDOCS-on:
+.if ${PORT_OPTIONS:MHTMLDOCS}
+post-build:
 	cd ${WRKSRC}/docs && ${SETENV} ${MAKE_ENV} ${MAKE} html
+.endif
 
-post-install-EXAMPLES-on:
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	${INSTALL_DATA} ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
-
-post-install-HTMLDOCS-on:
+post-install:
+.if ${PORT_OPTIONS:MHTMLDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/docs/html/* ${STAGEDIR}${DOCSDIR}
+.endif
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>

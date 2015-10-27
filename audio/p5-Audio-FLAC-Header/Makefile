@@ -8,7 +8,7 @@ CATEGORIES=	audio perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	perl@FreeBSD.org
+MAINTAINER=	lippe@FreeBSD.org
 COMMENT=	Interface to FLAC header metadata
 
 LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac

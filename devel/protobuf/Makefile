@@ -16,12 +16,14 @@ GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 ONLY_FOR_ARCHS=	amd64 armv6 i386
 PATHFIX_MAKEFILEIN=	Makefile.am
-TEST_TARGET=	check
 USE_CSTD=	c99	# for audio/clementine-player support
 USE_LDCONFIG=	yes
 USES=		autoreconf gmake libtool pathfix pkgconfig tar:bzip2
 
 GH_ACCOUNT=	google
 USE_GITHUB=	yes
+
+regression-test test: build
+	cd ${WRKSRC}/ && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} check
 
 .include <bsd.port.mk>

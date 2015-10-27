@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libebur128
-PORTVERSION=	1.0.3
+PORTVERSION=	1.0.2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	audio
 
@@ -19,6 +19,5 @@ GH_ACCOUNT=	jiixyj
 
 USES=		cmake:outsource pkgconfig
 USE_LDCONFIG=	yes
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.mk>

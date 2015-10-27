@@ -24,6 +24,7 @@ USES=		perl5 shebangfix tar:bzip2
 NO_BUILD=	yes
 USE_PERL5=	run
 SHEBANG_FILES=	ripit.pl
+perl_OLD_CMD=	/usr/bin/env perl
 
 OPTIONS_DEFINE=	EXAMPLES
 

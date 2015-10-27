@@ -1,3 +1,6 @@
+
+$FreeBSD$
+
 --- cmake/CMakeLists.txt.orig
 +++ cmake/CMakeLists.txt
 @@ -1,5 +1,5 @@

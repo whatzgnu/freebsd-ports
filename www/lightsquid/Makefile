@@ -7,35 +7,38 @@ PORTREVISION=	3
 CATEGORIES=	www
 MASTER_SITES=	SF
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	Light and fast web based squid proxy traffic analyser
 
-LICENSE=	GPLv2 # or later
-LICENSE_FILE=	${WRKSRC}/doc/gnugpl.txt
+OPTIONS_DEFINE=		GD DOCS
+OPTIONS_DEFAULT=	GD
 
-USES=		perl5 shebangfix tar:tgz
+USES=		perl5 tar:tgz shebangfix
 SHEBANG_FILES=	*.cgi *.pl tools/SiteAggregator/*.pl lang/*.pl tools/*.pl \
 		lightsquid.cfg
 USE_PERL5=	run
 NO_BUILD=	yes
-NO_ARCH=	yes
 
 PLIST_SUB+=	WWWOWN="${WWWOWN}" \
 		WWWGRP="${WWWGRP}" \
 		CHOWN="${CHOWN}"
+
+.include <bsd.port.options.mk>
 
 CONFIGS=	lightsquid.cfg realname.cfg skipuser.cfg group.cfg
 REINPLACE_ARGS=	-i ""
 PORTDOCS=	gnugpl.txt install.txt readme.txt thanks.txt graph.txt logformat.txt \
 		templates.txt version.txt
 SUB_FILES=	pkg-message
+.if ${PORT_OPTIONS:MDOCS}
+SUB_LIST+=	NOTEWORK="Read ${DOCSDIR}/readme.txt."
+.else
+SUB_LIST+=	NOTEWORK=""
+.endif
 
-OPTIONS_DEFINE=		GD DOCS
-OPTIONS_DEFAULT=	GD
-
-GD_RUN_DEPENDS=	p5-GD>=0:${PORTSDIR}/graphics/p5-GD
-DOCS_SUB_LIST=	NOTEWORK="Read ${DOCSDIR}/readme.txt."
-DOCS_SUB_LIST_OFF=NOTEWORK=
+.if ${PORT_OPTIONS:MGD}
+RUN_DEPENDS+=	p5-GD>=0:${PORTSDIR}/graphics/p5-GD
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/var/www/html/${PORTNAME}/lang|${DATADIR}/lang| ; \
@@ -73,11 +76,15 @@ do-install:
 	${FIND} -E . -maxdepth 1 -regex '.*\.(cgi|pl)' -exec \
 		${INSTALL_SCRIPT} "{}" "${STAGEDIR}/${WWWDIR}/{}" \; && \
 		${INSTALL_DATA} .htaccess ${STAGEDIR}/${WWWDIR}/
-
-do-install-DOCS-on:
+#	@${CHOWN} -R ${WWWOWN}:${WWWGRP} ${STAGEDIR}/${WWWDIR}
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}/${DOCSDIR}
 .for i in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/doc/${i} ${STAGEDIR}/${DOCSDIR}
 .endfor
+.endif
+
+post-install:
+	@${CAT} ${PKGMESSAGE}
 
 .include <bsd.port.mk>

@@ -3,7 +3,7 @@
 
 PORTNAME=	gbm
 PORTVERSION=	${MESAVERSION}
-PORTREVISION=	0
+PORTREVISION=	${GBM_REVISION}
 CATEGORIES=	graphics
 
 COMMENT=	gbm library
@@ -19,12 +19,23 @@ USE_XORG=	x11 xau xcb xdmcp
 USE_XORG+=	glproto dri2proto xext xdamage xfixes presentproto \
 		xshmfence
 
+BUILD_WRKSRC=	${WRKSRC}/src/gbm
+INSTALL_WRKSRC=	${WRKSRC}/src/gbm
+
 .include <bsd.port.options.mk>
-.include "${.CURDIR}/../../graphics/libGL/Makefile.common"
+.include "${.CURDIR}/../../graphics/libGL/bsd.mesalib.mk"
 
-MESA_BUILD_WRKSRC=	src/mapi src/gbm
-MESA_INSTALL_WRKSRC=	src/gbm
+.if defined(WITH_NEW_MESA)
+GBM_REVISION=	0
+.else
+GBM_REVISION=	0
+.endif
 
-.include "${.CURDIR}/../../graphics/libGL/Makefile.targets"
+pre-build:
+.if defined(WITH_NEW_MESA)
+	@cd ${WRKSRC}/src/mapi/ && ${MAKE_CMD} ${_MAKE_JOBS}
+.else
+	@cd ${WRKSRC}/src/mapi/shared-glapi && ${MAKE_CMD} ${_MAKE_JOBS}
+.endif
 
 .include <bsd.port.mk>

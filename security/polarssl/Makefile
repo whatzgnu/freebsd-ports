@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	polarssl
-PORTVERSION=	1.2.17
+PORTVERSION=	1.2.14
 DISTVERSIONSUFFIX=	-gpl
 CATEGORIES=	security devel
 MASTER_SITES=	https://polarssl.org/download/
@@ -56,5 +56,7 @@ post-install-DOCS-on:
 .endfor
 
 TEST_USES=	perl5
+
+BROKEN_powerpc=		Does not compile on powerpc
 
 .include <bsd.port.mk>

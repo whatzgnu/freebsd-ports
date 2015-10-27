@@ -79,7 +79,6 @@ _HEIMDAL_DEPENDS=${GSSAPILIBDIR}/libgssapi.so:${PORTSDIR}/security/heimdal
 _MITKRB5_DEPENDS=${GSSAPILIBDIR}/libkrb5support.so:${PORTSDIR}/security/krb5
 _HEADERS=	sys/types.h sys/stat.h stdint.h
 
-.undef _FIXUP_KRB5CONFIG
 .if empty(gssapi_ARGS)
 gssapi_ARGS=	base
 .endif
@@ -92,11 +91,10 @@ GSSAPILIBDIR=	${GSSAPIBASEDIR}/lib
 GSSAPIINCDIR=	${GSSAPIBASEDIR}/include
 _HEADERS+=	gssapi/gssapi.h gssapi/gssapi_krb5.h krb5.h
 GSSAPICPPFLAGS=	-I"${GSSAPIINCDIR}"
-GSSAPILIBS=	-lkrb5 -lgssapi -lgssapi_krb5
+GSSAPILIBS=	-lgssapi -lgssapi_krb5 -lheimntlm -lkrb5 -lhx509 \
+		-lcom_err -lcrypto -lasn1 -lwind -lheimbase -lroken \
+		-lcrypt -pthread
 GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
-.if empty(OSREL:N9.3)
-_FIXUP_KRB5CONFIG=	yes
-.endif
 .elif ${_local} == "heimdal"
 HEIMDAL_HOME?=	${LOCALBASE}
 GSSAPIBASEDIR=	${HEIMDAL_HOME}
@@ -110,7 +108,10 @@ RUN_DEPENDS+=	${_HEIMDAL_DEPENDS}
 PREFIX=		${HEIMDAL_HOME}
 .endif
 GSSAPICPPFLAGS=	-I"${GSSAPIINCDIR}"
-GSSAPILIBS=	-lkrb5 -lgssapi
+GSSAPILIBS=	-lgssapi -lheimntlm -lkrb5 -lhx509 \
+		-lcom_err -lcrypto -lasn1 -lwind -lheimbase -lroken \
+		-lcrypt -pthread
+GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 _RPATH=		${GSSAPILIBDIR}
 .elif ${_local} == "mit"
@@ -125,7 +126,7 @@ RUN_DEPENDS+=	${_MITKRB5_DEPENDS}
 .else
 PREFIX=		${KRB5_HOME}
 .endif
-GSSAPILIBS=	-lkrb5 -lgssapi_krb5
+GSSAPILIBS=	-lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err
 GSSAPICPPFLAGS=	-I"${GSSAPIINCDIR}"
 GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 _RPATH=		${GSSAPILIBDIR}
@@ -138,18 +139,7 @@ IGNORE=	USES=gssapi - invalid args: [${_local}] specified
 .endif
 .endfor
 
-# Fix up krb5-config if broken.  This script included in 9.X prior to
-# r271474 and in 10.X prior to r271473 are broken because
-# libgssapi_krb5 for some interfaces of GSS-API is missing.
-.if defined(_FIXUP_KRB5CONFIG)
-KRB5CONFIG=${WRKDIR}/krb5-config
-_USES_configure+=	290:krb5config-fix
-krb5config-fix:
-	${SED} -e 's,\$$lib_flags -lgssapi -lheimntlm,\$$lib_flags -lgssapi -lgssapi_krb5 -lheimntlm,' < ${GSSAPIBASEDIR}/bin/krb5-config > ${KRB5CONFIG}
-	${CHMOD} a+rx ${KRB5CONFIG}
-.else
 KRB5CONFIG=${GSSAPIBASEDIR}/bin/krb5-config
-.endif
 
 # Fix up -Wl,-rpath in LDFLAGS
 .if defined(_RPATH) && !empty(_RPATH)

@@ -2,4 +2,4 @@
 %%SITE_PERL%%/Net/NIS/Listgroup.pm
 bin/listgroup
 bin/make_cron
-%%PERL5_MAN1%%/listgroup.1.gz
+man/man1/listgroup.1.gz

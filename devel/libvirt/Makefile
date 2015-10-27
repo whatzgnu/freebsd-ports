@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	libvirt
-PORTVERSION=	1.2.20
+PORTVERSION=	1.2.18
 CATEGORIES=	devel
 MASTER_SITES=	http://libvirt.org/sources/ \
 		ftp://libvirt.org/libvirt/
 
-MAINTAINER=	novel@FreeBSD.org
+MAINTAINER=	jgh@FreeBSD.org
 COMMENT=	Toolkit to interact with virtualization capabilities
 
 LICENSE=	LGPL3
@@ -23,14 +23,12 @@ RUN_DEPENDS=	dnsmasq:${PORTSDIR}/dns/dnsmasq \
 		dmidecode:${PORTSDIR}/sysutils/dmidecode
 
 OPTIONS_DEFINE=	DOCS NLS QEMU SASL
-OPTIONS_DEFINE_amd64=	XEN
 .if exists(/usr/sbin/bhyve)
-OPTIONS_DEFINE_amd64+=	BHYVE
-OPTIONS_DEFAULT_amd64+=	BHYVE
+OPTIONS_DEFINE_amd64=	BHYVE
+OPTIONS_DEFAULT_amd64=	BHYVE
 .endif
 QEMU_DESC=	QEMU driver
 BHYVE_DESC=	bhyve driver
-XEN_DESC=	Xen support via libxl
 
 OPTIONS_SUB=	yes
 
@@ -47,10 +45,6 @@ NLS_CONFIGURE_ON=	--with-libintl-prefix=${LOCALBASE}
 SASL_CONFIGURE_WITH=	sasl
 SASL_LIB_DEPENDS=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
 
-XEN_CONFIGURE_WITH=	libxl
-XEN_CFLAGS=	-I${LOCALBASE}/include
-XEN_LIB_DEPENDS=	libxenlight.so:${PORTSDIR}/sysutils/xen-tools
-
 VARDIR=		/var
 
 USE_RC_SUBR=	libvirtd
@@ -64,7 +58,6 @@ CONFIGURE_ARGS=	--without-avahi \
 		--without-sysctl \
 		--without-lxc \
 		--without-uml \
-		--without-xen \
 		--with-ssh2 \
 		--localstatedir=${VARDIR}
 
@@ -99,11 +92,11 @@ STRIP_FILES+=	lib/libvirt/connection-driver/libvirt_driver_bhyve.so
 PLIST_FILES+=	lib/libvirt/connection-driver/libvirt_driver_bhyve.so
 .endif
 
-.if !${PLIST_SUB:MXEN}
-PLIST_SUB+=     XEN="@comment "
-.endif
-
 post-patch:
+.if ${OSVERSION} < 900000
+	@${REINPLACE_CMD} -e 's|-Wmissing-include-dirs||' \
+		${WRKSRC}/configure
+.endif
 	@${MV} ${WRKSRC}/daemon/libvirtd.conf ${WRKSRC}/daemon/libvirtd.conf.sample
 	@${REINPLACE_CMD} -e 's|libvirtd\.conf|libvirtd.conf.sample|' \
 		${WRKSRC}/daemon/Makefile.in
@@ -116,12 +109,6 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|qemu.conf |qemu.conf.sample |' \
 		${WRKSRC}/src/Makefile.in
 	@${REINPLACE_CMD} -e 's|qemu.conf$$|qemu.conf.sample|' \
-		${WRKSRC}/src/Makefile.in
-
-	@${MV} ${WRKSRC}/src/libxl/libxl.conf ${WRKSRC}/src/libxl/libxl.conf.sample
-	@${REINPLACE_CMD} -e 's|libxl.conf |libxl.conf.sample |' \
-		${WRKSRC}/src/Makefile.in
-	@${REINPLACE_CMD} -e 's|libxl.conf$$|libxl.conf.sample|' \
 		${WRKSRC}/src/Makefile.in
 
 	@${REINPLACE_CMD} -e 's|cp $$(DESTDIR)|cp -f $$(DESTDIR)|' \

@@ -19,4 +19,7 @@ NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 
+regression-test: build
+	@cd ${WRKSRC} && ${MAKE} test
+
 .include <bsd.port.mk>

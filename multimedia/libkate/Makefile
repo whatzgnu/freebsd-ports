@@ -3,7 +3,7 @@
 
 PORTNAME=	libkate
 PORTVERSION=	0.4.1
-PORTREVISION=	6
+PORTREVISION=	5
 CATEGORIES=	multimedia
 MASTER_SITES=	GOOGLE_CODE
 
@@ -42,7 +42,6 @@ CONFIGURE_ARGS+=	--disable-doc
 RUN_DEPENDS=	${LOCALBASE}/bin/oggz:${PORTSDIR}/audio/liboggz
 USES+=		python
 USE_WX=		2.8
-WX_UNICODE=	yes
 WX_COMPS=	wx contrib python:lib
 MANPAGE+=	KateDJ.1
 PLIST_SUB+=	KATEDJ=""

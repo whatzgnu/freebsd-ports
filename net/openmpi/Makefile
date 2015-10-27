@@ -4,9 +4,9 @@
 #  - etc/*.sample support
 
 PORTNAME=	openmpi
-PORTVERSION=	1.10.0
+DISTVERSION=	1.8.8
 CATEGORIES=	net parallel
-MASTER_SITES=	http://www.open-mpi.org/software/ompi/v${PORTVERSION:R}/downloads/
+MASTER_SITES=	http://www.open-mpi.org/software/ompi/v1.8/downloads/
 
 MAINTAINER=	danilo@FreeBSD.org
 COMMENT=	High Performance Message Passing Library
@@ -14,6 +14,8 @@ COMMENT=	High Performance Message Passing Library
 LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo \
 		libhwloc.so:${PORTSDIR}/devel/hwloc \
 		libltdl.so:${PORTSDIR}/devel/libltdl
+
+CONFLICTS=	openmpi-devel-1.7.*
 
 HAS_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
@@ -42,7 +44,7 @@ OPTIONS_DEFINE=	IPV6 SLURM TORQUE VT
 TORQUE_DESC=	Enable Torque support
 SLURM_DESC=	Enable SLURM support
 VT_DESC=		Enable VampirTrace support
-OPTIONS_DEFAULT=	IPV6 SLURM
+OPTIONS_DEFAULT=	IPV6
 OPTIONS_SUB=	yes
 
 IPV6_CONFIGURE_ENABLE=	ipv6

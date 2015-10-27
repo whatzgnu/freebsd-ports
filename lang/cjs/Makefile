@@ -29,5 +29,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 CONFIGURE_ARGS+=--enable-compile-warnings=no
 
+python_OLD_CMD=	/usr/bin/env python
 
 .include <bsd.port.mk>

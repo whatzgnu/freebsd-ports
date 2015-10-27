@@ -1,14 +1,14 @@
-# Created by: Pakhom Golynga <pakhom@pakhom.spb.ru>
+# Created by: Pakhom Golynga <pakhom706@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	zabbix22
-PORTVERSION=	2.2.10
+PORTVERSION=	2.2.9
 CATEGORIES=	net-mgmt
 MASTER_SITES=	SF/zabbix/ZABBIX%20Latest%20Stable/${PORTVERSION}
 PKGNAMESUFFIX?=	-server
 DISTNAME=	zabbix-${PORTVERSION}
 
-MAINTAINER=	pakhom@pakhom.spb.ru
+MAINTAINER=	pakhom706@gmail.com
 COMMENT=	Enterprise-class open source distributed monitoring (${PKGNAMESUFFIX:S/^-//})
 
 LICENSE=	GPLv2

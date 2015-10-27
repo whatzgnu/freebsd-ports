@@ -14,19 +14,22 @@ COMMENT=	TeX/LaTeX package to generate Arabic writing
 
 LICENSE=	LPPL10
 
-USE_TEX=	base texmf
+ARABTEXDIRS=	fonts tex
+
+MKTEXLSR=	${LOCALBASE}/bin/mktexlsr
 
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
 
-ARABTEXDIRS=	fonts tex
-MKTEXLSR=	${LOCALBASE}/bin/mktexlsr
+OPTIONS_DEFINE=	DOCS
+.include <bsd.port.options.mk>
+.if ${PORT_OPTIONS:MDOCS}
+ARABTEXDIRS+=	doc
+.endif
 
 PLIST_SUB=	MKTEXLSR=${MKTEXLSR}
 
-OPTIONS_DEFINE=	DOCS
-
-DOCS_VARS=	ARABTEXDIRS+=doc
+USE_TEX=	base texmf
 
 do-install:
 .for dir in ${ARABTEXDIRS}

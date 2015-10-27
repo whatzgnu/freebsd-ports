@@ -15,8 +15,9 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libcconv.so:${PORTSDIR}/chinese/cconv
 
+CFLAGS+=	-I${LOCALBASE}/include
 USE_PYTHON=	autoplist concurrent distutils
-USES=		localbase python
+USES=		python
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/cconv.so

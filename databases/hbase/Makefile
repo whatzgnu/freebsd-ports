@@ -52,13 +52,6 @@ PLIST_SUB=	HBASE_USER=${HBASE_USER} \
 		HBASE_RUNDIR=${HBASE_RUNDIR} \
 		PORTVERSION="${PORTVERSION}"
 
-.include <bsd.port.pre.mk>
-
-.if ${JAVA_PORT_VERSION:M1.8.*}
-EXTRA_PATCHES=	${FILESDIR}/extra-patch-PoolMap.java \
-		${FILESDIR}/extra-patch-pom.xml
-.endif
-
 post-patch:
 	${REINPLACE_CMD} -e "s#%%ETCDIR%%#${ETCDIR}#" ${WRKSRC}/conf/hbase-env.sh ${WRKSRC}/bin/hbase
 	${RM} ${WRKSRC}/conf/hbase-env.sh.bak ${WRKSRC}/conf/hbase-env.sh.orig
@@ -84,4 +77,4 @@ do-install:
 	${MKDIR} ${STAGEDIR}${HBASE_LOGDIR}
 	${MKDIR} ${STAGEDIR}${HBASE_RUNDIR}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

@@ -39,22 +39,24 @@ DOCS_DISTFILES=	${DISTNAME}_4_1_Version_Report.rtf:sans \
 EXAMPLES_DISTFILES=	${DISTNAME}UFO_beta${PORTVERSION:S|.||}${EXTRACT_SUFX}:sans \
 			${DISTNAME}MonoUFO_beta${MONO_VERSION}${EXTRACT_SUFX}:mono
 
+.include <bsd.port.options.mk>
+
 do-install:
 	@${MKDIR} ${STAGEDIR}${FONTSDIR}
 	${INSTALL_DATA} ${WRKSRC}/${DISTNAME}*Fonts*/OTF/*.otf \
 		${STAGEDIR}${FONTSDIR}
-
-do-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${CP} ${DISTDIR}/${DISTFILES:C|:[^:]+$||:M*.rtf} ${WRKSRC}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|:M*.rtf} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/${DISTNAME}*PDF*/|:M*.pdf} \
 		${STAGEDIR}${DOCSDIR}
-
-do-install-EXAMPLES-on:
+.endif
+.if ${PORT_OPTIONS:MEXAMPLES}
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-.for e in ${EXAMPLES_DISTFILES:R:C|:[^:]+$||}
+. for e in ${EXAMPLES_DISTFILES:R:C|:[^:]+$||}
 	(cd ${WRKDIR}/${e} && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
-.endfor
+. endfor
+.endif
 
 .include <bsd.port.mk>

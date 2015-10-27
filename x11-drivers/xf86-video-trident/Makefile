@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	xf86-video-trident
-PORTVERSION=	1.3.7
+PORTVERSION=	1.3.6
+PORTREVISION=	6
 CATEGORIES=	x11-drivers
 
 MAINTAINER=	x11@FreeBSD.org

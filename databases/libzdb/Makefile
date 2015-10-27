@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	libzdb
-PORTVERSION=	3.1
+PORTVERSION=	3.0
+PORTREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	http://www.tildeslash.com/libzdb/dist/
 

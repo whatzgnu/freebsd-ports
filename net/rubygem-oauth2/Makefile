@@ -11,7 +11,6 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Ruby wrapper for the OAuth 2.0 protocol
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
 RUN_DEPENDS=	rubygem-faraday>=0.8:${PORTSDIR}/www/rubygem-faraday \
 		rubygem-jwt>=1:${PORTSDIR}/www/rubygem-jwt \

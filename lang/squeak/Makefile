@@ -63,9 +63,13 @@ IMAGES=		Squeak${IMAGE_FULL_VERSION}.image \
 		Squeak${IMAGE_FULL_VERSION}.changes \
 		${SQUEAK_SRC}
 
+.include <bsd.port.pre.mk>
+
 post-patch:
+.if ${OSVERSION} > 900007
 	@${REINPLACE_CMD} -e 's,<utmp\.h>,<utmpx.h>,' \
 		${WRKSRC}/unix/plugins/PseudoTTYPlugin/openpty.h
+.endif
 	@${REINPLACE_CMD} -e 's,return;,return 0;,' \
 		${WRKSRC}/Cross/plugins/Mpeg3Plugin/libmpeg/video/idct.c \
 		${WRKSRC}/Cross/plugins/Mpeg3Plugin/libmpeg/audio/layer3.c
@@ -85,4 +89,4 @@ post-install:
 	${INSTALL_DATA} ${IMAGES:S,^,${WRKDIR}/,} \
 		${STAGEDIR}${PREFIX}/lib/squeak
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

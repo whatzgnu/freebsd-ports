@@ -25,12 +25,14 @@ MIMEFILE?=	${LOCALBASE}/etc/mime.types
 
 USE_RC_SUBR=	webfsd
 
+.include <bsd.port.options.mk>
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|/etc/mime.types|${MIMEFILE}|' ${WRKSRC}/GNUmakefile
 	@${REINPLACE_CMD} -e 's|/etc/mime.types|${MIMEFILE}|' ${WRKSRC}/webfsd.man
-
-post-patch-OPENSSL-off:
+.if empty(PORT_OPTIONS:MOPENSSL)
 	@${REINPLACE_CMD} -e '/^USE_SSL.*:=/s/:=.*/:= no/' ${WRKSRC}/GNUmakefile
+.endif
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/webfsd ${STAGEDIR}${PREFIX}/sbin

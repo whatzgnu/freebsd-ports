@@ -25,9 +25,6 @@ GH_ACCOUNT=	t6
 IGNORE=		does not support FreeBSD versions older than 10.1
 .endif
 
-ONLY_FOR_ARCHS=	amd64 i386
-ONLY_FOR_ARCHS_REASON=	specific to one machine
-
 do-install:
 	${INSTALL_MAN} ${WRKSRC}/${KMODNAME}.4 ${STAGEDIR}${MANDIR}
 	${INSTALL_KLD} ${WRKSRC}/${KMODNAME}.ko ${STAGEDIR}${KMODDIR}

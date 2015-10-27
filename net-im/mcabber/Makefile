@@ -3,7 +3,6 @@
 
 PORTNAME=	mcabber
 PORTVERSION=	1.0.0
-PORTREVISION=	1
 CATEGORIES=	net-im
 MASTER_SITES=	http://www.lilotux.net/~mikael/mcabber/files/
 
@@ -18,7 +17,7 @@ LIB_DEPENDS=	libloudmouth-1.so:${PORTSDIR}/net-im/loudmouth
 USES=		gettext iconv libtool ncurses pathfix pkgconfig tar:bzip2
 USE_GNOME=	glib20
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-hgcset
+CONFIGURE_ARGS=	--disable-hgcset --enable-sigwinch
 INSTALL_TARGET=	install-strip
 
 CPPFLAGS+=	-I${LOCALBASE}/include

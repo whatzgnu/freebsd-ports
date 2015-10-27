@@ -8,7 +8,7 @@ CATEGORIES=	devel java
 MASTER_SITES=	http://libvirt.org/sources/java/ \
 		ftp://libvirt.org/libvirt/java/
 
-MAINTAINER=	novel@FreeBSD.org
+MAINTAINER=	jgh@FreeBSD.org
 COMMENT=	Java bindings for Libvirt virtualization API
 
 LICENSE=	MIT

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pcbsd-utils-qt5
-PORTVERSION=	1444236547
+PORTVERSION=	1438365531
 PORTREVISION=	1
 CATEGORIES=	sysutils
 
@@ -31,9 +31,7 @@ ONLY_FOR_ARCHS=	amd64
 USE_LDCONFIG=	yes
 USE_QT5=	core gui network svg linguist \
 		buildtools x11extras
-USES=		desktop-file-utils python qmake shebangfix tar:xz
-SHEBANG_FILES=	pc-netmanager/src/NetworkManager/resources/umts_stick \
-		pc-sysmanager/scripts/fastest_cvsup
+USES=		desktop-file-utils python qmake tar:xz
 
 WRKSRC_SUBDIR=	src-qt5
 
@@ -42,7 +40,7 @@ QMAKE_ARGS=	CONFIG+="configure"
 USE_GITHUB=	yes
 GH_ACCOUNT=	pcbsd
 GH_PROJECT=	pcbsd
-GH_TAGNAME=	3c4d2b
+GH_TAGNAME=	2c5a0c
 
 .include <bsd.port.options.mk>
 

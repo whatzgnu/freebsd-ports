@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PKGNAMESUFFIX=	-gtk
-PORTREVISION=	5
+PORTREVISION=	4
 
 MAINTAINER=	crees@FreeBSD.org
 COMMENT=	Fast and lightweight GTK+3 BitTorrent client

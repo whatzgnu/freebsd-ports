@@ -18,7 +18,6 @@ BUILD_DEPENDS=	p5-Moose>=0:${PORTSDIR}/devel/p5-Moose \
 		p5-Net-HTTP-Spore>=0:${PORTSDIR}/net/p5-Net-HTTP-Spore
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USE_PERL5=	modbuild
 USES=		perl5
 

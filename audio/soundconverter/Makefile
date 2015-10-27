@@ -2,33 +2,27 @@
 # $FreeBSD$
 
 PORTNAME=	soundconverter
-PORTVERSION=	2.1.5
+PORTVERSION=	1.5.4
+PORTREVISION=	1
 CATEGORIES=	audio python
-MASTER_SITES=	https://launchpad.net/soundconverter/trunk/2.1.5/+download/ \
-		http://BSDforge.com/projects/source/audio/soundconverter/
+MASTER_SITES=	BERLIOS
 
-MAINTAINER=	portmaster@BSDforge.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Sound conversion application for the GNOME environment
 
 LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}gstreamer>=0.10:${PORTSDIR}/multimedia/py-gstreamer
 
-NO_ARCH=	yes
-USES=		desktop-file-utils gmake python:2 shebangfix tar:xz
+USES=		gettext gmake desktop-file-utils python:2 shebangfix
 
-SHEBANG_FILES=	bin/soundconverter.py
+SHEBANG_FILES=	src/soundconverter.py
+python_OLD_CMD=	/usr/bin/python -tt
 
 GNU_CONFIGURE=	yes
 USE_GNOME=	intltool pygtk2 pygnome2
 MAKE_ENV=	MAKE=${MAKE_CMD}
 INSTALLS_ICONS=	yes
-
-OPTIONS_DEFINE=		NLS
-OPTIONS_SUB=		yes
-NLS_CONFIGURE_ENABLE=	nls
-NLS_USES=		gettext
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|@GMSGFMT@|${LOCALBASE}/bin/msgfmt|; \

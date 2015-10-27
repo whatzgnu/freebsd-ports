@@ -13,8 +13,10 @@ COMMENT=	Fluxbox utility to create and manage icons on the desktop
 
 LICENSE=	MIT
 
-LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png \
-		libImlib2.so:${PORTSDIR}/graphics/imlib2
+LIB_DEPENDS=	libpng.so:${PORTSDIR}/graphics/png
+
+OPTIONS_DEFINE=	IMLIB2 DOCS
+OPTIONS_DEFAULT=	IMLIB2
 
 USE_XORG=	xext xft xpm xrender
 USES=		pkgconfig
@@ -23,10 +25,18 @@ GNU_CONFIGURE=	yes
 PORTDOCS=	ChangeLog INSTALL README
 PLIST_FILES=	bin/fbdesk
 
-OPTIONS_DEFINE=	DOCS
+.include <bsd.port.options.mk>
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MIMLIB2}
+LIB_DEPENDS+=	libImlib2.so:${PORTSDIR}/graphics/imlib2
+.else
+CONFIGURE_ARGS+=	--disable-imlib2
+.endif
+
+post-install:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+.endif
 
 .include <bsd.port.mk>

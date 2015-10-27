@@ -3,7 +3,7 @@
 
 PORTNAME=	netxms
 PORTVERSION=	1.2.17
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://www.netxms.org/download/ \
 		http://www.netxms.org/download/archive/
@@ -77,9 +77,6 @@ USE_RC_SUBR+=	nxagentd
 .if ${PORT_OPTIONS:MAGENT}
 USE_RC_SUBR+=	nxagentd
 .endif
-
-post-patch:
-	@${REINPLACE_CMD} 's/-liconv/${ICONV_LIB}/' ${WRKSRC}/configure
 
 post-install:
 .if ${PORT_OPTIONS:MSERVER}

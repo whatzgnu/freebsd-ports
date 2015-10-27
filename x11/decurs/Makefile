@@ -5,6 +5,7 @@ PORTNAME=	decurs
 PORTVERSION=	0.55.1
 PORTREVISION=	12
 CATEGORIES=	x11
+EXTRACT_SUFX=	_.tar.gz	# prevent clobbering of the original distfile
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Simple X11 mouse cursor editor

@@ -20,7 +20,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS=	--enable-shared --enable-static
 USE_LDCONFIG=	yes
 
-OPTIONS_DEFINE=	OPENGL UUID DOCS
+OPTIONS_DEFINE= OPENGL UUID DOCS
 UUID_DESC=	UUID support (required by GDAL)
 
 .include <bsd.port.options.mk>
@@ -39,8 +39,10 @@ PLIST_SUB+=	OPENGL="@comment "
 EXTRA_PATCHES+=	${FILESDIR}/uuid.patch
 .endif
 
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
+post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/* ${STAGEDIR}${DOCSDIR}/
+.endif
 
 .include <bsd.port.mk>

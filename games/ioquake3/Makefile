@@ -221,7 +221,7 @@ PLIST_DIRS+=	${LIBDIR}
 .endif
 .if ${PORT_OPTIONS:MDOCS}
 PLIST_DIRS+=	${DOCSDIR}
-. for doc in ${Q3DOCS:O:u}
+. for doc in ${Q3DOCS}
 IOQ3_INST+=	DATA;../../${doc};${DOCSDIR}/${doc}
 . endfor
 .endif
@@ -240,6 +240,11 @@ do-install: ${Q3INSTALL}
 	${INSTALL_${inst:C/;.*//}} ${BUILDDIR}/${inst:C/[^;]*;//:C/;.*//} \
 		${STAGEDIR}${PREFIX}/${inst:C/.*;//}
 .endfor
+
+post-install:
+	@${JOT} -s '' -b= 78
+	@${CAT} ${PKGMESSAGE}
+	@${JOT} -s '' -b= 78
 
 .if !defined(Q3TOTALCONV)
 .include "${.CURDIR}/../quake3-data/Makefile.include"

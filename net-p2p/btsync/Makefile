@@ -1,11 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	btsync
-PORTVERSION=	2.2.0
+PORTVERSION=	1.4.111
 CATEGORIES=	net-p2p
-MASTER_SITES=	https://download-cdn.getsyncapp.com/${PORTVERSION}/FreeBSD-${CONFIG_ARCH}/ \
-		http://download-cdn.getsyncapp.com/${PORTVERSION}/FreeBSD-${CONFIG_ARCH}/
-DISTNAME=	BitTorrent-Sync_freebsd_${CONFIG_ARCH}
+MASTER_SITES=	http://syncapp.bittorrent.com/${PORTVERSION}/
+DISTNAME=	${PORTNAME}_freebsd_${CONFIG_ARCH}-${PORTVERSION}
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Distributed peer-to-peer file syncing application

@@ -11,15 +11,16 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	SDK which contains an implementation of DAP 2.0 and 3.1
 
 LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
 		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid \
 		libxml2.so:${PORTSDIR}/textproc/libxml2
 
+CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
+LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
-USES=		bison charsetfix gmake libtool localbase pathfix
+USES=		charsetfix gmake libtool pathfix
 
 .include <bsd.port.mk>

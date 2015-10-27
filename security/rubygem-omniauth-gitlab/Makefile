@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	omniauth-gitlab
-PORTVERSION=	1.0.1
+PORTVERSION=	1.0.0
 CATEGORIES=	security rubygems
 MASTER_SITES=	RG
 

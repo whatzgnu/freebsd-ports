@@ -3,7 +3,6 @@
 
 PORTNAME=	mybb
 PORTVERSION=	1.6.9
-PORTREVISION=	1
 CATEGORIES=	www
 
 MAINTAINER=	ports@FreeBSD.org
@@ -14,18 +13,25 @@ GH_TAGNAME=	${PORTNAME}_1609
 
 USES=		cpe
 NO_BUILD=	yes
-NO_ARCH=	yes
 USE_PHP=	xsl mysql iconv gd xml
 USE_MYSQL=	yes
 SUB_FILES=	pkg-message
 WWWDIR?=	${PREFIX}/www/${PORTNAME}
-PLIST_SUB=	WWWOWN=${WWWOWN}
+
+.include <bsd.port.pre.mk>
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
 	${CP} -R ${WRKSRC}/ ${STAGEDIR}${WWWDIR}
-	${TOUCH} ${STAGEDIR}${WWWDIR}/inc/config.php.sample
-	${MV} ${STAGEDIR}${WWWDIR}/inc/settings.php \
-		${STAGEDIR}${WWWDIR}/inc/settings.php.sample
+	${TOUCH} ${STAGEDIR}${WWWDIR}/inc/config.php
+	@${CHOWN} ${WWWOWN} ${STAGEDIR}${WWWDIR}/inc/config.php ${STAGEDIR}${WWWDIR}/inc/settings.php
 
-.include <bsd.port.mk>
+create-plist:
+	@${FIND} -s ${WRKSRC}/${file} -not -type d \
+		| ${SED} -e 's,^${WRKSRC},%%WWWDIR%%,' > ${PLIST}
+	@${ECHO_CMD} '@exec touch %D/%%WWWDIR%%/inc/config.php;chown ${WWWOWN} %D/%%WWWDIR%%/inc/config.php' >> ${PLIST}
+	@${ECHO_CMD} '@unexec if [ ! -s %D/%%WWWDIR%%/inc/config.php ];then rm -f %D/%%WWWDIR%%/inc/config.php;fi' >> ${PLIST}
+	@${FIND} -ds ${WRKSRC}/${file} -type d \
+	| ${SED} -e 's,^${WRKSRC},@dirrm %%WWWDIR%%,' >> ${PLIST}
+
+.include <bsd.port.post.mk>

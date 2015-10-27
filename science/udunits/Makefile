@@ -15,11 +15,12 @@ LIB_DEPENDS=	libexpat.so:${PORTSDIR}/textproc/expat2
 OPTIONS_DEFINE=	DOCS
 
 CONFIGURE_ENV=	ac_cv_header_CUnit_CUnit_h=no
+CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-TEST_TARGET=	check
+LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
-USES=		libtool localbase
+USES=		libtool
 
 INFO=		udunits2 udunits2lib udunits2prog
 PORTDATA=	*
@@ -27,5 +28,8 @@ PORTDOCS=	*
 
 post-patch:
 	@${REINPLACE_CMD} -e '/install-data-hook$$/d' ${WRKSRC}/lib/Makefile.in
+
+regression-test test: build
+	cd ${WRKSRC}/ && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} check
 
 .include <bsd.port.mk>

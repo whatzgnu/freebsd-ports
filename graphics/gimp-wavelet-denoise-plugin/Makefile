@@ -9,7 +9,7 @@ MASTER_SITES=	http://registry.gimp.org/files/
 PKGNAMEPREFIX=	gimp-
 PKGNAMESUFFIX=	-plugin
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	lioux@FreeBSD.org
 COMMENT=	GIMP plugin to reduce noise in each channel of an image separately
 
 LICENSE=	GPLv2

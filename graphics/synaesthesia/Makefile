@@ -12,7 +12,7 @@ COMMENT=	Real-time graphical music representation program
 
 LICENSE=	GPLv2
 
-USES=		alias gmake
+USES=		gmake
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-sdl-prefix=${LOCALBASE}
 USE_SDL=	sdl

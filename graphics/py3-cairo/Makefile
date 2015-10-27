@@ -18,7 +18,9 @@ USE_GNOME=	cairo
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-SHEBANG_FILES=	examples/*.py examples/*/*.py test/*.py
+python_OLD_CMD?=	/usr/bin/env python
+python_CMD?=		${LOCALBASE}/bin/python${PYTHON_VER}
+SHEBANG_FILES=		examples/*.py examples/*/*.py test/*.py
 
 PLIST_SUB+=	PYTVER=${PYTHON_VER:S/.//}
 

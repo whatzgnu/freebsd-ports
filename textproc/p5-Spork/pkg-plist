@@ -15,4 +15,4 @@ bin/spork
 %%SITE_PERL%%/Spork/Registry.pm
 %%SITE_PERL%%/Spork/Slides.pm
 %%SITE_PERL%%/Spork/Template/TT2.pm
-%%PERL5_MAN1%%/spork.1.gz
+man/man1/spork.1.gz

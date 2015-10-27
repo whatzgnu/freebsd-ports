@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Test-Strict
-PORTVERSION=	0.28
+PORTVERSION=	0.27
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -16,7 +16,6 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-Devel-Cover>=0.43:${PORTSDIR}/devel/p5-Devel-Cover
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 

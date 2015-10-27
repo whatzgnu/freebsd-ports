@@ -26,7 +26,6 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-legacy-GNS3-${PORTVERSION}
 USES=		cpe python
 USE_PYTHON=	distutils
 PYDISTUTILS_PKGNAME=	GNS3
-NO_ARCH=	yes
 
 DESKTOP_ENTRIES=	"GNS3" "${COMMENT}" "" "${PORTNAME}" "System;Emulator;" true
 

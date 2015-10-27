@@ -23,7 +23,6 @@ RUN_DEPENDS=	buffer:${PORTSDIR}/misc/buffer \
 SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
-USES=		alias
 WRKSRC=		${WRKDIR}/${PORTNAME}
 VAMPSRC=	vamps.c requant.c
 LXDVDRIPSRC=	cputest.c \

@@ -1,5 +1,5 @@
 bin/validxml.pl
-%%PERL5_MAN1%%/validxml.pl.1.gz
+man/man1/validxml.pl.1.gz
 %%SITE_PERL%%/XML/Validate.pm
 %%SITE_PERL%%/XML/Validate/Base.pm
 %%SITE_PERL%%/XML/Validate/LibXML.pm

@@ -27,6 +27,7 @@ IGNORE=		is for FreeBSD 10.x and newer
 .endif
 
 .if ${ARCH} == amd64
+PLIST_SUB+=	LDCONFIG_LIB32="${LDCONFIG} -32"
 USE_LDCONFIG32=	${TARGET32_DIR}
 .endif
 

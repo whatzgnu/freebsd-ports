@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	instead
-PORTVERSION=	2.3.0
+PORTVERSION=	2.2.5
 CATEGORIES=	games
 MASTER_SITES=	SF/instead/instead/${PORTVERSION}/
 DISTNAME=	instead_${PORTVERSION}
@@ -13,7 +13,7 @@ COMMENT=	Simple Text Adventure, The Interpreter
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		cmake:outsource iconv lua:51 pkgconfig
+USES=		cmake:outsource pkgconfig iconv lua:51
 CMAKE_ARGS=	-DMANDIR=man
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}

@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	serendipity
-PORTVERSION=	2.0.2
+PORTVERSION=	1.7.8
+PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	SF/php-blog/${PORTNAME}/${PORTVERSION}
 
-MAINTAINER=	ports@toco-domains.de
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PHP based weblog software
 
 LICENSE=	BSD3CLAUSE
@@ -17,8 +18,10 @@ RUN_DEPENDS=	${LOCALBASE}/share/pear/File/Archive.php:${PORTSDIR}/archivers/pear
 WRKSRC=		${WRKDIR}/${PORTNAME}
 NO_BUILD=	YES
 SERENDIPITY?=	www/${PORTNAME}
+#PLIST_SUB+=	SERENDIPITY=${SERENDIPITY}
 PLIST_SUB+=	WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 USE_PHP=	session pcre gd openssl mbstring iconv zlib xml
+#SUB_LIST+=	SERENDIPITY=${SERENDIPITY}
 SUB_FILES=	pkg-message
 USES=		cpe tar:bzip2
 CPE_VENDOR=	s9y
@@ -37,7 +40,7 @@ USE_PHP+=	pgsql
 .endif
 
 .if ${PORT_OPTIONS:MSQLITE}
-USE_PHP+=	sqlite3
+USE_PHP+=	sqlite
 .endif
 
 .if ${PORT_OPTIONS:MMAGICK}

@@ -20,7 +20,7 @@ BUILD_DEPENDS=	p5-PPI>=1.206:${PORTSDIR}/textproc/p5-PPI \
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-Test-Weaken>=3.004000:${PORTSDIR}/devel/p5-Test-Weaken
 
-NO_ARCH=	yes
+# PERL_CONFIGURE failed on Perl 5.12.4
 USE_PERL5=	modbuild
 USES=		perl5
 

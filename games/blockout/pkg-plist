@@ -1,4 +1,5 @@
 bin/blockout
+%%DATADIR%%/images/allPieces.png
 %%DATADIR%%/images/background.png
 %%DATADIR%%/images/background2.png
 %%DATADIR%%/images/background3.png
@@ -27,9 +28,8 @@ bin/blockout
 %%DATADIR%%/sounds/level2.wav
 %%DATADIR%%/sounds/line.wav
 %%DATADIR%%/sounds/line2.wav
-%%DATADIR%%/sounds/music.ogg
+%%DATADIR%%/sounds/music.mp3
 %%DATADIR%%/sounds/tchh.wav
 %%DATADIR%%/sounds/welldone.wav
 %%DATADIR%%/sounds/welldone2.wav
 %%DATADIR%%/sounds/wozz.wav
-%%PORTDOCS%%%%DOCSDIR%%/README.txt

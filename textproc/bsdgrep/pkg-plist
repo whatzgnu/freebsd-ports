@@ -1,4 +1,7 @@
-bin/bsdgrep
+@unexec rm -f %D/bin/bsdgrep
+@exec /bin/ln -s %D/bin/grep %D/bin/bsdgrep
+@unexec rm -f %D/bin/gnugrep
+@exec /bin/ln -s /usr/bin/grep %D/bin/gnugrep
 bin/bzegrep
 bin/bzfgrep
 bin/bzgrep

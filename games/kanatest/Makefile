@@ -12,7 +12,7 @@ COMMENT=	Japanese kana (Hiragana and Katakana) simple flashcard tool
 
 BROKEN=		runtime segfault (PR 196452)
 
-USES=		gettext gmake pkgconfig desktop-file-utils
+USES=		gettext gmake pkgconfig
 USE_GNOME=	gtk20 libxml2
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes

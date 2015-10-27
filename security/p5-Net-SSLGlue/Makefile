@@ -16,7 +16,6 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	p5-IO-Socket-SSL>=1.190:${PORTSDIR}/security/p5-IO-Socket-SSL
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

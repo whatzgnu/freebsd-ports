@@ -2,19 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	haproxy
-PORTVERSION=	1.6.0
+DISTVERSION=	1.6-dev4
 CATEGORIES=	net www
-MASTER_SITES=	http://haproxy.1wt.eu/download/1.6/src/
+MASTER_SITES=	http://haproxy.1wt.eu/download/1.6/src/devel/
 PKGNAMESUFFIX=	-devel
 DISTFILES=	${PORTNAME}-${DISTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	demon@FreeBSD.org
-COMMENT=	Reliable, High Performance TCP/HTTP Load Balancer
+COMMENT=	The Reliable, High Performance TCP/HTTP Load Balancer
 
 LICENSE=	GPLv2 LGPL21
 LICENSE_COMB=	multi
-
-IGNORE=		no devel version available yet
 
 USES=		cpe gmake
 CONFLICTS=	haproxy-[1234567890]\*

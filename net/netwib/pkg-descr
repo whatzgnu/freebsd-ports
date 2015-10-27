@@ -1,7 +1,7 @@
 Netwib is a network library providing :
   - network features :
     + address conversion
-    + UDP/TCP clients/servers
+    + udp/tcp clients/servers
     + packet encoding/decoding/displaying
     + spoofing
     + sniffing

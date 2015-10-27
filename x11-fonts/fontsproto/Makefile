@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fontsproto
-PORTVERSION=	2.1.3
+PORTVERSION=	2.1.2
 PORTEPOCH=	1
 CATEGORIES=	x11-fonts
 

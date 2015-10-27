@@ -8,10 +8,6 @@ CATEGORIES=	databases www pear
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PEAR database abstraction layer
 
-LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/LICENSE
-
-NO_ARCH=	yes
-USES=		pear
+USES=	pear
 
 .include <bsd.port.mk>

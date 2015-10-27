@@ -10,7 +10,6 @@ MAINTAINER=	danilo@FreeBSD.org
 COMMENT=	Amateur Radio logging application
 
 LICENSE=	GPLv3
-LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libhamlib.so:${PORTSDIR}/comms/hamlib
 
@@ -20,8 +19,6 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-mime-update
 CONFIGURE_ENV+=	ac_cv_c_compiler_gnu=no
 MAKE_ARGS=	PREFIX=/${PREFIX}
-
-LIBS+=		-lm
 
 OPTIONS_DEFINE=	NLS DOCS
 OPTIONS_SUB=	yes
