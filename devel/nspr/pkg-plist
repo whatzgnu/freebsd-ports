@@ -82,11 +82,8 @@ include/nspr/prvrsion.h
 include/nspr/prwin16.h
 lib/libnspr4.a
 lib/libnspr4.so
-lib/libnspr4.so.1
 lib/libplc4.a
 lib/libplc4.so
-lib/libplc4.so.1
 lib/libplds4.a
 lib/libplds4.so
-lib/libplds4.so.1
 libdata/pkgconfig/nspr.pc

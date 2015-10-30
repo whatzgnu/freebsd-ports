@@ -21,7 +21,7 @@ CONFIGURE_ARGS=	--srcdir=${WRKSRC:H}
 
 MAKE_ENV=	DIST=${WRKSRC}/dist
 
-LIBRARIES=	libnspr4.so.1 libplc4.so.1 libplds4.so.1
+LIBRARIES=	libnspr4.so libplc4.so libplds4.so
 
 OPTIONS_DEFINE=	DEBUG
 
