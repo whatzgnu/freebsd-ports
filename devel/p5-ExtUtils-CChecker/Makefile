@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ExtUtils-CChecker
-PORTVERSION=	0.09
+PORTVERSION=	0.10
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -15,6 +15,7 @@ LICENSE_COMB=	dual
 
 TEST_DEPENDS=	p5-Test-Fatal>=0:${PORTSDIR}/devel/p5-Test-Fatal
 
+NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5
 

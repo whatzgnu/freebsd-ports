@@ -1,9 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	llvm
-DISTVERSION=	3.6.0
+DISTVERSION=	3.6.2
+PORTREVISION=	2
 CATEGORIES=	devel lang
-MASTER_SITES=	http://llvm.org/releases/3.6.0/
+MASTER_SITES=	http://llvm.org/releases/3.6.2/
 DISTNAME=	${PORTNAME}-${DISTVERSION}.src
 PKGNAMESUFFIX=	${LLVM_SUFFIX}
 
@@ -15,11 +16,10 @@ LLVM_RELEASE=	${PORTVERSION:C/([0-9]\.[0-9].[0-9]).*/\1/}
 LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
-UNIQUENAME=	${PORTNAME}${LLVM_SUFFIX}
 
 WRKSRC=		${WRKDIR}/llvm-${DISTVERSION}.src
 
-USES=		compiler:c++11-lib execinfo gmake perl5 tar:xz
+USES=		compiler:c++11-lib execinfo gmake perl5 tar:xz libedit
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_PREFIX=	${LLVM_PREFIX}
 USE_LDCONFIG=	${LLVM_PREFIX}/lib
@@ -148,10 +148,6 @@ NOT_FOR_ARCH=	ia64
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} < 900000
-BROKEN=	GCC failing on 8.x
-.endif
-
 .if ${PORT_OPTIONS:MCMAKE} && ${COMPILER_TYPE} != clang
 BROKEN=	CMake support only works with clang
 .endif
@@ -177,14 +173,18 @@ post-patch:
 	    ${WRKSRC}/utils/lit/lit.py ${WRKSRC}/utils/lit/lit/*.py \
 	    ${WRKSRC}/utils/lit/lit/formats/*.py
 
-.if ${PORT_OPTIONS:MCMAKE}
 post-configure:
+.if ${PORT_OPTIONS:MCMAKE}
 	${MKDIR} ${WRKDIR}/cmake
 	cd ${WRKDIR}/cmake && cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER:STRING="${CC}" -DCMAKE_CXX_COMPILER:STRING="${CXX}" ${WRKSRC}
 	${REINPLACE_CMD} -e 's|${WRKDIR}/cmake|${LLVM_PREFIX}|' \
 	    -e 's|${WRKSRC}/cmake/modules|${DATADIR}/cmake|' \
 	    ${WRKDIR}/cmake/share/llvm/cmake/LLVMConfig.cmake
 .endif
+	@${REINPLACE_CMD} -e 's|HAVE_MACH_MACH_H|NOHAVE_MACH_MACH_H|g' \
+		${WRKSRC}/include/llvm/Config/config.h.cmake
+	@${REINPLACE_CMD} -e 's|HAVE_MACH_MACH_H|NOHAVE_MACH_MACH_H|g' \
+		${WRKSRC}/cmake/config-ix.cmake
 
 post-build:
 .if ${PORT_OPTIONS:MMANPAGES}

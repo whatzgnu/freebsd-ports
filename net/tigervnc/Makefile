@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	tigervnc
-PORTVERSION=	1.4.3
+PORTVERSION=	1.5.0
+DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	net x11-servers
-MASTER_SITES=	https://github.com/TigerVNC/tigervnc/archive/v${PORTVERSION}${EXTRACT_SUFX}?dummy=/
 
 MAINTAINER=	meta+ports@vmeta.jp
 COMMENT=	High-performance, platform-neutral implementation of VNC
@@ -28,11 +29,13 @@ USES=		autoreconf:build cmake cpe gmake libtool pkgconfig python
 USE_GL=		gl
 USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
+USE_GITHUB=	yes
+GH_ACCOUNT=	TigerVNC
 
 USE_XORG+=	bigreqsproto compositeproto damageproto fixesproto fontsproto glproto \
 		inputproto kbproto pixman randrproto renderproto resourceproto \
 		scrnsaverproto videoproto xau xdmcp xext xkbfile xcmiscproto xextproto \
-		xfont xproto xrandr xtrans xtst xorg-macros
+		xfont xproto xrandr xtrans xtst xorg-macros presentproto
 
 CFLAGS+=	-fPIC
 
@@ -90,7 +93,7 @@ PLIST_SUB+=	VIEWER="@comment "
 .if ${PORT_OPTIONS:MHPJPG}
 LIB_DEPENDS+=	libturbojpeg.so:${PORTSDIR}/graphics/libjpeg-turbo
 .else
-LIB_DEPENDS+=	libjpeg.so:${PORTSDIR}/graphics/jpeg
+USES+=		jpeg
 .endif
 
 MAKE_ARGS+=	TIGERVNC_SRCDIR=${WRKSRC}
@@ -111,7 +114,7 @@ CONFIGURE_ARGS+=	\
 
 .include <bsd.port.pre.mk>
 
-TIGERVNC_XORG_PATCH_VER=	114
+TIGERVNC_XORG_PATCH_VER=	117
 
 # import from x11-server/xorg-server/Makefile
 .ifdef WITH_OPENSSL_BASE

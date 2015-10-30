@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	openshadinglanguage
-PORTVERSION=	1.5.12
+PORTVERSION=	1.6.6
 DISTVERSIONPREFIX=	Release-
 CATEGORIES=	graphics devel
 
@@ -22,7 +22,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	imageworks
 GH_PROJECT=	OpenShadingLanguage
 
-CMAKE_ARGS=	-DLLVM_CONFIG:STRING="${LOCALBASE}/bin/llvm-config34"
+CMAKE_ARGS=	-DLLVM_CONFIG:STRING="${LOCALBASE}/bin/llvm-config34" \
+		-DENABLERTTI:BOOL=ON
 USE_LDCONFIG=	yes
 USES=		bison cmake:outsource
 
@@ -37,11 +38,5 @@ CXXFLAGS+=	-I${LOCALBASE}/include/flex
 post-patch:
 	@${REINPLACE_CMD} -e 's,/bin/bash,/bin/sh,' \
 		${WRKSRC}/src/liboslexec/serialize-bc.bash
-
-post-install:
-.for LNAME in oslcomp oslexec oslquery testshade
-	${MV} ${STAGEDIR}${PREFIX}/lib/lib${LNAME}.so ${STAGEDIR}${PREFIX}/lib/lib${LNAME}.so.1
-	${LN} -s lib${LNAME}.so.1 ${STAGEDIR}${PREFIX}/lib/lib${LNAME}.so
-.endfor
 
 .include <bsd.port.mk>

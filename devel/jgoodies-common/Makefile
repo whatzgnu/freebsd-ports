@@ -14,6 +14,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 BUILD_DEPENDS=	${JAVALIBDIR}/junit.jar:${PORTSDIR}/java/junit
 
+BROKEN=		does not build: "Test com.jgoodies.common.base.ObjectsTest failed"
+
 USES=		dos2unix zip
 USE_JAVA=	yes
 JAVA_VERSION=	1.6
@@ -55,7 +57,7 @@ do-install:
 .if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC} && ${INSTALL_DATA} README.html RELEASE-NOTES.txt \
-		${STAGEDIR}${DOCSDIR})	
+		${STAGEDIR}${DOCSDIR})
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} docs ${STAGEDIR}${DOCSDIR})
 	(cd ${WRKSRC}/build/docs && ${COPYTREE_SHARE} api \
 		${STAGEDIR}${DOCSDIR}/docs)

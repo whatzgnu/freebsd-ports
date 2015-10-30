@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	cutmp3
-PORTVERSION=	2.0.3
+PORTVERSION=	3.0.1
 CATEGORIES=	audio
 MASTER_SITES=	http://www.puchalla-online.de/ \
 		http://mirror.mcx2.org/
 
-MAINTAINER=	dhn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Small and fast command line MP3 editor
 
 USES=		tar:bzip2 readline

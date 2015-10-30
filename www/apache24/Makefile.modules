@@ -1,4 +1,4 @@
-# $FreeBSD: head/www/apache24/Makefile.modules 378215 2015-01-31 15:22:51Z ohauer $
+# $FreeBSD$
 #
 # Note by Clement Laforet: (to generate PLIST_SUB entries for modules)
 #	gsed 's/^\(.*\)mod\(.*\)\.so/%%\MOD\U\2%%\L\1mod\2\.so/' pkg-plist > tmp
@@ -9,7 +9,7 @@
 # Maintainer note for OPTION handling:
 # To set additional option use
 #    PORT_OPTIONS+=
-# To unset an OPTION, even the OPTION is set in OPTIONSFILE use
+# To unset an OPTION, even the OPTION is set in OPTIONS_FILE use
 #    WITHOUT_MODULES+=
 #  Using OPTIONS_EXCLUDE and OPTIONS_OVERRIDE do not work as expected
 #  if the OPTION is enabled by the user, therefore we calculate

@@ -2,7 +2,7 @@
 
 PORTNAME=	mariadb
 PORTVERSION=	5.3.12
-PORTREVISION=	6
+PORTREVISION?=	6
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://ftp.osuosl.org/pub/mariadb/${PORTNAME}-${PORTVERSION}/kvm-tarbake-jaunty-x86/ \
 		http://mirrors.supportex.net/mariadb/${PORTNAME}-${PORTVERSION}/kvm-tarbake-jaunty-x86/ \
@@ -19,8 +19,6 @@ MAINTAINER=	spil.oss@gmail.com
 COMMENT=	Database server - drop-in replacement for MySQL
 
 LICENSE=	GPLv2
-
-UNIQUENAME=	${PORTNAME}${PKGNAMESUFFIX}
 
 CONFLICTS?=	mariadb5[4-9]-server-* \
 		mariadb1[0-9][0-9]-server-* \
@@ -88,7 +86,7 @@ OPTIONS_DEFAULT+=	ARIADB ARCHIVE BLACKHOLE SPHINX FEDX XTRADB HANDLERSOCKET
 
 .include <bsd.port.options.mk>
 
-.if ${OSVERSION} > 900000 && ${PORT_OPTIONS:MSTATIC}
+.if ${PORT_OPTIONS:MSTATIC}
 BROKEN=	WITH_STATIC is not functional on 9-current
 .endif
 

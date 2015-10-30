@@ -1,4 +1,4 @@
-# $FreeBSD: head/Mk/Uses/libedit.mk 392507 2015-07-19 14:36:00Z bapt $
+# $FreeBSD$
 #
 # handle dependency on the libedit port
 #

@@ -1,7 +1,8 @@
 # $FreeBSD: head/ports-mgmt/pkg/Makefile 366286 2014-08-26 23:12:10Z bdrewery $
 
 PORTNAME=	pkg
-DISTVERSION=	1.5.2
+DISTVERSION=	1.6.1
+PORTREVISION=	1
 _PKG_VERSION=	${DISTVERSION}
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	\
@@ -37,7 +38,6 @@ MAKE_ARGS+=	DEBUG_FLAGS="${DEBUG_FLAGS}"
 
 .if defined(WITH_PKG)
 .if ${WITH_PKG} == devel
-NO_LATEST_LINK=	yes
 IGNORE=	WITH_PKG is defined to 'devel', this version is the stable one
 .endif
 .if exists(${LOCALBASE}/sbin/pkg_info) || exists(/usr/sbin/pkg_info)
@@ -72,6 +72,7 @@ PKG_DEPENDS=
 PKG_BIN=	${WRKSRC}/src/pkg-static
 
 post-install:
+	${LN} -sf ${PREFIX}/sbin/pkg ${STAGEDIR}${PREFIX}/sbin/bapt-get
 	@${MV} ${STAGEDIR}${PREFIX}/lib/libpkg_static.a \
 		${STAGEDIR}${PREFIX}/lib/libpkg.a
 

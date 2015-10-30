@@ -1,4 +1,4 @@
-# $FreeBSD: head/security/gnutls/Makefile 394256 2015-08-14 20:38:38Z feld $
+# $FreeBSD$
 
 PORTNAME=	gnutls
 PORTVERSION=	3.3.17.1

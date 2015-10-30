@@ -40,7 +40,6 @@ CONFIGURE_ARGS+=--verbose --wine-path=${LOCALBASE}/bin/wine --win32-prebuilt \
 USE_XORG=	x11
 USES=		compiler:gcc-c++11-lib gmake shebangfix
 MAKE_JOBS_UNSAFE=yes
-bash_OLD_CMD=	/usr/bin/env bash
 SHEBANG_FILES=	configure \
 		share/install-dependency
 
@@ -49,16 +48,19 @@ SUB_FILES=	pipelight-mkufs
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "i386"
-BUILD_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/wine-compholio
-RUN_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/wine-compholio
+BUILD_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/wine-staging
+RUN_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/wine-staging
 .elif ${ARCH} == "amd64"
-BUILD_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/i386-wine-compholio
-RUN_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/i386-wine-compholio
+BUILD_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/i386-wine-staging
+RUN_DEPENDS+=	${LOCALBASE}/bin/wine:${PORTSDIR}/emulators/i386-wine-staging
 .endif
 
 pre-configure:
-		${LN} -s ${DISTDIR}/${DIST_SUBDIR}/pluginloader.tar.gz ${WRKSRC}/pluginloader-v${DISTVERSION}.tar.gz
-		${LN} -s ${DISTDIR}/${DIST_SUBDIR}/pluginloader.tar.gz.sig ${WRKSRC}/pluginloader-v${DISTVERSION}.tar.gz.sig
+	${LN} -s ${DISTDIR}/${DIST_SUBDIR}/pluginloader.tar.gz \
+		${WRKSRC}/pluginloader-v${DISTVERSION}.tar.gz
+	${LN} -s ${DISTDIR}/${DIST_SUBDIR}/pluginloader.tar.gz.sig \
+		${WRKSRC}/pluginloader-v${DISTVERSION}.tar.gz.sig
+	${MKDIR} ${WRKDIR}/.gnupg
 
 post-stage:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/pipelight/libpipelight.so

@@ -3,15 +3,15 @@
 
     COMMENT = Ports for managing, installing, and developing FreeBSD ports and packages
 
-    SUBDIR += bpm
     SUBDIR += chucky
     SUBDIR += dialog4ports
     SUBDIR += dialog4ports-static
     SUBDIR += distilator
     SUBDIR += fastest_sites
     SUBDIR += fbsdmon
+    SUBDIR += freebsd-bugzilla-cli
+    SUBDIR += genpatch
     SUBDIR += genplist
-    SUBDIR += gnome-packagekit
     SUBDIR += hs-porte
     SUBDIR += jailaudit
     SUBDIR += kpackagekit
@@ -42,7 +42,6 @@
     SUBDIR += port-maintenance-tools
     SUBDIR += portconf
     SUBDIR += portdowngrade
-    SUBDIR += porteasy
     SUBDIR += portell
     SUBDIR += portfind
     SUBDIR += portless
@@ -66,7 +65,6 @@
     SUBDIR += symports
     SUBDIR += tinderbox
     SUBDIR += tinderbox-devel
-    SUBDIR += vulnerability-test-port
     SUBDIR += wanted-ports
     SUBDIR += xps
 

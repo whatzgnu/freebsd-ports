@@ -3,10 +3,9 @@
 
 PORTNAME=	kicad
 DISTVERSION=	r${BZR_SRC_REV}
-PORTREVISION=	1
+#PORTREVISION=	1
 CATEGORIES=	cad
-MASTER_SITES=	${MASTER_SITE_LOCAL}
-MASTER_SITE_SUBDIR=	mr
+MASTER_SITES=	LOCAL/mr
 PKGNAMESUFFIX=	-devel
 DIST_SUBDIR=		${PORTNAME}
 
@@ -40,7 +39,7 @@ EXTRAS2RM=	linux-non_unicode linux wings3d LINUX.README	\
 		contrib_makefiles.txt running_kicad_under_W98.txt
 USES=		desktop-file-utils shared-mime-info compiler:c++11-lib tar:bzip2 cmake \
 		gettext python
-		
+
 CMAKE_ARGS=	-DLOCALBASE="${LOCALBASE}" \
 		-DCMAKE_VERBOSE_MAKEFILE=ON \
 		-DCMAKE_BUILD_TYPE="Debug" \
@@ -159,23 +158,6 @@ PLIST_DIR_LIST=		lib/kicad
 PLIST_SHAREDDIR_LIST=	share/mimelnk/application \
 			share/mimelnk
 
-build-plist:
-	${RM} -f ${PLIST}
-	cd ${STAGEDIR}${PREFIX} && \
-		(ls ${PLIST_FILE_LIST}; ${FIND} ${PLIST_DIR_LIST} -type f) | \
-		${SORT} >> ${PLIST}
-	${FIND} ${STAGEDIR}${DATADIR} ${DOCSDIR} -type f | \
-		${SED} -e 's|${STAGEDIR}${DATADIR}|%%DATADIR%%|' \
-		-e 's|${STAGEDIR}${DOCSDIR}|%%DOCSDIR%%|' | ${SORT} >> ${PLIST}
-	cd ${STAGEDIR}${PREFIX} && \
-		${FIND} ${PLIST_DIR_LIST} -type d | \
-		${SORT} -r | ${SED} -e 's|^|@dirrm |' >> ${PLIST}
-.for subdir in ${PLIST_SHAREDDIR_LIST}
-	@${ECHO_CMD} '@unexec ${RMDIR} %D/${subdir} 2> /dev/null || true' >> ${PLIST}
-.endfor
-	${FIND} ${STAGEDIR}${DATADIR} ${STAGEDIR}${DOCSDIR} -type d | ${SORT} -r | \
-		${SED} -e 's|${STAGEDIR}${DATADIR}|%%DATADIR%%|' \
-			-e 's|${STAGEDIR}${DOCSDIR}|%%DOCSDIR%%|' \
-			-e 's|^|@dirrm |' >> ${PLIST}
+BROKEN_FreeBSD_8=	does not build: absence of strtoll(3)
 
 .include <bsd.port.mk>

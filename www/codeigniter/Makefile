@@ -2,22 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	codeigniter
-PORTVERSION=	2.1.4
-PORTREVISION=	1
+PORTVERSION=	2.2.5
 CATEGORIES=	www
-MASTER_SITES=	http://downloads.codeigniter.com/reactor/ \
-		http://www.codeigniter.org.tw/download_files/
-DISTNAME=	CodeIgniter_${PORTVERSION}
 
 MAINTAINER=	appleboy.tw@gmail.com
 COMMENT=	Framework for developing PHP web applications
 
-USES=		zip
+USES=		tar:tgz
+USE_GITHUB=	yes
+GH_ACCOUNT=	bcit-ci
 
 CONFLICTS=	codeigniter-1.[0-9]*
 
+NO_ARCH=	yes
 NO_BUILD=	yes
-USE_PHP=	session pcre
+USE_PHP=	mcrypt pcre session
 WANT_PHP_WEB=	yes
 PLIST_SUB=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 
@@ -61,13 +60,13 @@ STD_BITS=	${CI_CONF_DIR}/index.html \
 		${CI_SYS_DIR}/language \
 		${CI_SYS_DIR}/libraries
 
-OPTIONS_DEFINE=	APACHE MSSQL MYSQL MYSQLI ODBC PGSQL SQLITE DOCS
+OPTIONS_DEFINE=	APACHE DOCS MSSQL MYSQL MYSQLI ODBC PGSQL SQLITE
 
 APACHE_DESC=	Configure for Apache-2.x
 MSSQL_DESC=	Install MSSQL support for PHP
 MYSQL_DESC=	Install MySQL support for PHP
 MYSQLI_DESC=	Install MySQLi support for PHP
-ODBC=	Install ODBC support for PHP
+ODBC_DESC=	Install ODBC support for PHP
 PGSQL_DESC=	Install PostgreSQL support for PHP
 SQLITE_DESC=	Install SQLite support for PHP
 
@@ -83,8 +82,6 @@ CONFDIR_REL=	${APACHEETCDIR}/Includes
 PLIST_SUB+=	NOAPACHE="@comment "
 .endif
 PLIST_SUB+=	ECHO_MSG=${ECHO_MSG} CI_CONF_DIR=${CI_CONF_DIR}
-
-DEFAULT_PHP_VER=5
 
 .if ${PORT_OPTIONS:MMSSQL}
 USE_PHP+=	mssql
@@ -107,7 +104,7 @@ USE_PHP+=	pgsql
 .endif
 
 .if ${PORT_OPTIONS:MSQLITE}
-USE_PHP+=	sqlite
+USE_PHP+=	sqlite3
 .endif
 
 .if ${PORT_OPTIONS:MDOCS}

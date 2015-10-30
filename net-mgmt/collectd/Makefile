@@ -3,7 +3,7 @@
 
 PORTNAME=	collectd
 PORTVERSION=	4.10.9
-PORTREVISION=	20
+PORTREVISION=	21
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://collectd.org/files/
 
@@ -12,10 +12,13 @@ COMMENT=	Systems & network statistics collection daemon
 
 LICENSE=	GPLv2
 
+DEPRECATED=		Please move to collectd5 - collect4 is not developed/patched
+EXPIRATION_DATE=	2015-10-31
+
 LIB_DEPENDS=	libltdl.so:${PORTSDIR}/devel/libltdl
 
 GNU_CONFIGURE=	yes
-USES=		autoreconf gmake libtool
+USES=		autoreconf gmake libtool shebangfix
 INSTALL_TARGET=	install-strip
 
 OPTIONS_DEFINE=		CGI BIND DEBUG GCRYPT LIBVIRT
@@ -431,6 +434,8 @@ PLIST_SUB+=	XMMS=""
 CONFIGURE_ARGS+=--disable-xmms
 PLIST_SUB+=	XMMS="@comment "
 .endif
+
+SHEBANG_FILES=	contrib/collection.cgi
 
 post-patch:
 	@${RM} -r ${WRKSRC}/libltdl

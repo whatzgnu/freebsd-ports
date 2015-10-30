@@ -6,8 +6,7 @@ PORTVERSION=	${SNAPSHOT}
 PORTREVISION=	${MAIN_PR}
 CATEGORIES=	lang
 MASTER_SITES=	http://downloads.dragonlace.net/src/:boot \
-		LOCAL/marino:boot ${MASTER_SITE_GCC}
-MASTER_SITE_SUBDIR=	${MS_SUBDIR}
+		LOCAL/marino:boot GCC/${MS_SUBDIR}
 DISTFILES=	${IDENTIFICATION}.tar.bz2
 
 MAINTAINER=	marino@FreeBSD.org
@@ -53,11 +52,7 @@ BOOTSTRAP_DESC=		Create bootstrap compiler (overrides other options)
 .if ${OPSYS} == FreeBSD
 ONLY_FOR_ARCHS=		amd64 i386
 MODERN_BINUTILS=	yes
-.  if ${OSVERSION} < 900000
-BOOTSTRAP_COMPILER=	ada-bootstrap.${GARCH}.freebsd.84.tar.bz2
-.  else
 BOOTSTRAP_COMPILER=	ada-bootstrap.${GARCH}.freebsd.100B.tar.bz2
-.  endif
 .endif
 .if ${OPSYS} == DragonFly
 ONLY_FOR_ARCHS=		x86_64
@@ -80,6 +75,7 @@ BUILDDIR=		${WRKDIR}/build
 NEWBSDIR=		${WRKDIR}/newbs/bootstrap
 CFG_SCRIPT=		${WRKSRC}/configure
 REVFILE=		${WRKSRC}/gcc/REVISION
+PHASEFILE=		${WRKSRC}/gcc/DEV-PHASE
 BOOTSTRAP_PREFIX=	${WRKDIR}/bootstrap
 PKG_PREFIX=		${PREFIX}/${PORTNAME}
 MANPREFIX=		${PREFIX}/${PORTNAME}/share
@@ -112,10 +108,8 @@ DISTFILES+=	${BOOTSTRAP_COMPILER}:boot
 .if defined(PLUS_BOOTSTRAPS)
 DISTFILES=	\
    ${IDENTIFICATION}.tar.bz2 \
-   ada-bootstrap.i386.freebsd.84.tar.bz2:boot \
    ada-bootstrap.i386.freebsd.100B.tar.bz2:boot \
    ada-bootstrap.x86_64.dragonfly.41.tar.bz2:boot \
-   ada-bootstrap.x86_64.freebsd.84.tar.bz2:boot \
    ada-bootstrap.x86_64.freebsd.100B.tar.bz2:boot
 .endif
 
@@ -195,6 +189,7 @@ ADA_CONFIG_ARGS+=	${EXTRA_CONFIG}
 post-extract:
 	# Personalize GNAT for each different machine
 	@${ECHO} "-=> GNAT AUX ${OS_LABEL4VERS}" > ${REVFILE}
+	@${ECHO} ${PHASE} > ${PHASEFILE}
 
 	# Apply required composite diff files
 .for suffix in ${APPLY_DIFFS}
@@ -254,22 +249,22 @@ test-ada:
 test-cxx:
 	# libstdc++ testsuite will break every time, for TRUE to continue
 	cd ${BUILDDIR} && ${SETENV} ${ADA_MAKE_ENV} \
-		${MAKE_CMD} -sk check-c++ || true
+		${MAKE_CMD} -j${MAKE_JOBS_NUMBER} -sk check-c++ || true
 
 test-c:
 	cd ${BUILDDIR} && ${SETENV} ${ADA_MAKE_ENV} \
-		${MAKE_CMD} -sk check-c
+		${MAKE_CMD} -j${MAKE_JOBS_NUMBER} -sk check-c
 
 test-fortran:
 .  if ${PORT_OPTIONS:MFORT}
 	cd ${BUILDDIR} && ${SETENV} ${ADA_MAKE_ENV} \
-		${MAKE_CMD} -sk check-fortran
+		${MAKE_CMD} -j${MAKE_JOBS_NUMBER} -sk check-fortran
 .  endif
 
 test-objc:
 .  if ${PORT_OPTIONS:MOBJC}
 	cd ${BUILDDIR} && ${SETENV} ${ADA_MAKE_ENV} \
-		${MAKE_CMD} -sk check-objc
+		${MAKE_CMD} -j${MAKE_JOBS_NUMBER} -sk check-objc
 .  endif
 .endif
 
@@ -279,6 +274,7 @@ do-install:
 	${MV} ${STAGEDIR}${PKG_PREFIX}/share ${WRKDIR}/moved_share
 #	Don't activate until this port builds gnatdroid
 #	Otherwise it will conflict with lang/gcc-aux
+#	Add "share" after {PORTNAME} on 3rd line of post-stage target
 #	${MKDIR} ${STAGEDIR}${PREFIX}/share/dejagnu/baseboards \
 #		${STAGEDIR}${PREFIX}/share/dejagnu/config
 #	${INSTALL_DATA} ${FILESDIR}/android.exp \
@@ -289,7 +285,7 @@ do-install:
 post-stage:
 	(cd ${STAGEDIR}${PKG_PREFIX}; ${FIND} * -type d -empty | \
 		${SORT} -dr | ${XARGS} ${RMDIR})
-	(cd ${STAGEDIR}${PREFIX}; ${FIND} ${PORTNAME} share \
+	(cd ${STAGEDIR}${PREFIX}; ${FIND} ${PORTNAME} \
 		\( -type f -or -type l \) | ${SORT} | ${SED} \
 		-e 's/\/man\/man[1578]\/.*[1578]$$/&.gz/' >> ${TMPPLIST})
 .if ${PORT_OPTIONS:MBOOTSTRAP}

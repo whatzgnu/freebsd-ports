@@ -1,9 +1,11 @@
+# Created by: Ben Woods <woodsb02@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	plexhometheater
-PORTVERSION=	1.3.6
+PORTVERSION=	1.4.1
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
-DISTVERSIONSUFFIX=.441-309e72d1
+DISTVERSIONSUFFIX=.469-47a90f01
 CATEGORIES=	multimedia
 
 MAINTAINER=	woodsb02@gmail.com
@@ -32,10 +34,8 @@ LIB_DEPENDS=	libass.so:${PORTSDIR}/multimedia/libass \
 		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libfribidi.so:${PORTSDIR}/converters/fribidi \
-		libGLEW.so:${PORTSDIR}/graphics/glew \
 		libhal.so:${PORTSDIR}/sysutils/hal \
 		libjasper.so:${PORTSDIR}/graphics/jasper \
-		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		liblzo2.so:${PORTSDIR}/archivers/lzo2 \
 		libmad.so:${PORTSDIR}/audio/libmad \
 		libmicrohttpd.so:${PORTSDIR}/www/libmicrohttpd \
@@ -67,7 +67,7 @@ GH_ACCOUNT=	plexinc
 GH_PROJECT=	plex-home-theater-public
 BUNDLE_LIBS=	yes
 
-USES=		cmake:outsource execinfo gmake iconv:wchar_t pkgconfig python:2
+USES=		cmake:outsource execinfo gmake iconv:wchar_t jpeg pkgconfig python:2
 CMAKE_ARGS+=	-DENABLE_AUTOUPDATE:BOOL=false
 CMAKE_ARGS+=	-DENABLE_DUMP_SYMBOLS:BOOL=false
 CMAKE_ARGS+=	-DENABLE_PYTHON:BOOL=false
@@ -77,14 +77,18 @@ CMAKE_ARGS+=	-DCMAKE_PREFIX_PATH=${LOCALBASE}
 CFLAGS+=	-isystem${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 USE_XORG=	xt xmu xtst xrandr
-USE_GL=		glu
+USE_GL=		glu glew
 USE_SDL=	image sdl mixer
 INSTALLS_ICONS=	yes
+
 ONLY_FOR_ARCHS=	i386 amd64
+PLEX_ARCH_i386=	x86
+PLEX_ARCH_amd64=x86_64
 
 WRKSRC=		${WRKDIR}/${GH_PROJECT}-${GH_TAGNAME_EXTRACT}
 
 SUB_FILES=	${PORTNAME}.sh pkg-message
+PLIST_SUB=	ARCH=${PLEX_ARCH_${ARCH}}
 
 DESKTOP_ENTRIES="Plex Home Theater" \
 		"${COMMENT}" \
@@ -108,18 +112,7 @@ LIRC_RUN_DEPENDS=	lircd:${PORTSDIR}/comms/lirc
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:${PORTSDIR}/audio/pulseaudio
 PULSEAUDIO_CMAKE_OFF=	-DCMAKE_DISABLE_FIND_PACKAGE_PulseAudio:BOOL=true
 
-.include <bsd.port.pre.mk>
-
-.if ${ARCH} == i386
-PLIST_SUB+=	ARCH="x86"
-.else
-PLIST_SUB+=	ARCH="x86_64"
-.endif
-
-.if ${OPSYS} == "FreeBSD" && ${OSVERSION} < 900033
-USE_BINUTILS=	yes
-MAKE_ENV=	COMPILER_PATH=${LOCALBASE}/bin
-.endif
+.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} 's/[[:<:]]ARCH[[:>:]]/FFMPEG_ARCH/' \
@@ -145,4 +138,4 @@ post-install:
 	${RM} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/*.so
 	${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME}.sh ${STAGEDIR}${PREFIX}/bin
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

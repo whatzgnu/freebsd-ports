@@ -1,9 +1,9 @@
 # Created by: Vanilla I. Shu <vanilla@FreeBSD.org>
 # $FreeBSD$
-#   $MCom: ports/trunk/devel/glib20/Makefile 20052 2014-11-10 10:21:14Z gusi $
 
 PORTNAME=	glib
-PORTVERSION=	2.42.2
+PORTVERSION=	2.44.1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -40,7 +40,7 @@ INSTALL_TARGET=	install-strip
 
 SHEBANG_FILES=	*/*.pl
 
-LIBVERSION=	0.4200.2
+LIBVERSION=	0.4400.1
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 glib_MAN=	gtester.1 gtester-report.1 glib-gettextize.1
@@ -110,6 +110,10 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|inotify_support=yes|inotify_support=no| ; \
 		s|-Werror|| ; \
 		s|#define HAVE_SYS_INOTIFY_H 1||' ${WRKSRC}/configure
+
+post-configure:
+	@${REINPLACE_CMD} -e 's|#define HAVE_MACH_MACH_TIME_H 1||g' \
+		${WRKSRC}/config.h
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/GConf/gsettings

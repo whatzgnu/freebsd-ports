@@ -3,10 +3,9 @@
 
 PORTNAME=	cvs
 PORTVERSION=	1.12.13
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	devel ipv6
-MASTER_SITES=	${MASTER_SITE_GNU}
-MASTER_SITE_SUBDIR=	non-gnu/${PORTNAME}/source/feature/${PORTVERSION}
+MASTER_SITES=	GNU/non-gnu/${PORTNAME}/source/feature/${PORTVERSION}
 PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	bdheeman@gmail.com
@@ -14,7 +13,7 @@ COMMENT=	IPv6 enabled cvs.  You can use IPv6 connection when using pserver
 
 CONFLICTS=	cvsnt-[12]* cvs+ipv6-[12]*
 
-USES=		makeinfo tar:bzip2
+USES=		makeinfo perl5 tar:bzip2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-ipv6 --without-gssapi \
 		--with-editor="vi" \
@@ -26,7 +25,7 @@ CVS_SITE?=	:pserver:anoncvs@anoncvs.jp.FreeBSD.org:/home/ncvs
 CVS_VER?=	v${PORTVERSION:S//_/g}
 
 post-patch:
-	${REINPLACE_CMD} 's/${PORTVERSION:S/./\./g}/&-devel/g' \
+	@${REINPLACE_CMD} 's/${PORTVERSION:S/./\./g}/&-devel/g' \
 		${WRKSRC}/configure
 	@${CP} ${FILESDIR}/missing ${WRKSRC}
 

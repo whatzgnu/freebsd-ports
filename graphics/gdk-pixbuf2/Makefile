@@ -1,5 +1,5 @@
 # Created by: Ade Lovett <ade@lovett.com>
-# $FreeBSD: head/graphics/gdk-pixbuf2/Makefile 398640 2015-10-05 11:49:24Z kwm $
+# $FreeBSD$
 
 PORTNAME=	gdk-pixbuf
 PORTVERSION=	2.32.1

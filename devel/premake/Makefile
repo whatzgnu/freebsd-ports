@@ -8,7 +8,7 @@ CATEGORIES=	devel
 MASTER_SITES=	SF/${PORTNAME}/Premake/${PORTVERSION}
 DISTNAME=	${PORTNAME}-src-${PORTVERSION}
 
-MAINTAINER=	lippe@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Build script creation tool
 
 OPTIONS_DEFINE=	DOCS
@@ -20,6 +20,8 @@ USES=		gmake dos2unix zip
 PLIST_FILES=	bin/premake
 
 PORTDOCS=	CHANGES.txt LICENSE.txt README.txt
+
+MAKE_JOBS_UNSAFE=	yes
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

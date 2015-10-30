@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	listen
-PORTVERSION=	2.10.0
-PORTREVISION=	1
+PORTVERSION=	3.0.3
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
@@ -11,12 +10,13 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Listen to file modifications and notify about the changes
 
 LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-celluloid>=0.16.0:${PORTSDIR}/devel/rubygem-celluloid \
-		rubygem-rb-fsevent>=0.9.3:${PORTSDIR}/devel/rubygem-rb-fsevent \
+RUN_DEPENDS=	rubygem-rb-fsevent>=0.9.3:${PORTSDIR}/devel/rubygem-rb-fsevent \
 		rubygem-rb-inotify>=0.9:${PORTSDIR}/devel/rubygem-rb-inotify \
 		rubygem-rb-kqueue>=0.2:${PORTSDIR}/devel/rubygem-rb-kqueue
 
+NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

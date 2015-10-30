@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nzbget
-PORTVERSION=	14.2
+PORTVERSION=	15.0
 CATEGORIES=	news
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-stable/${PORTVERSION}
 
@@ -25,12 +25,11 @@ LDFLAGS+=	-lpthread
 BINMODE=	0755
 
 SHEBANG_FILES=	scripts/*.py
-python_OLD_CMD=	/usr/bin/env python
 
 OPTIONS_DEFINE=	7Z PYTHON RAR DOCS
 OPTIONS_SINGLE=	TLSLIB
 OPTIONS_SINGLE_TLSLIB=	GNUTLS OPENSSL
-OPTIONS_DEFAULT=	GNUTLS PAR PYTHON RAR
+OPTIONS_DEFAULT=	GNUTLS PAR PYTHON RAR 7Z
 7Z_DESC=	Support extraction of 7z archives
 PYTHON_DESC=	Support for python post-processing scripts
 RAR_DESC=	Support extraction of rar archives

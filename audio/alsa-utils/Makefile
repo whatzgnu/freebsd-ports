@@ -5,7 +5,7 @@ PORTNAME=	alsa-utils
 PORTVERSION=	1.0.29
 CATEGORIES=	audio
 MASTER_SITES=	ALSA/utils \
-		GENTOO/distfiles
+		GENTOO
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	ALSA compatibility utils
@@ -15,13 +15,12 @@ LICENSE=	GPLv2 # or any later version
 LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
 RUN_DEPENDS=	${LOCALBASE}/lib/alsa-lib/libasound_module_pcm_oss.so:${PORTSDIR}/audio/alsa-plugins
 
-USES=		gmake shebangfix tar:bzip2
+USES=		gmake localbase shebangfix tar:bzip2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-udev-rules-dir="\$${prefix}/lib/udev"
 SHEBANG_FILES=	alsa-info/alsa-info.sh alsaconf/alsaconf.in
 INSTALL_TARGET=	install-strip
-CPPFLAGS+=	-I${LOCALBASE}/include -I${.CURDIR}/../alsa-lib/files
-LDFLAGS+=	-L${LOCALBASE}/lib
+CPPFLAGS+=	-I${.CURDIR}/../alsa-lib/files
 
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	MANPAGES NLS

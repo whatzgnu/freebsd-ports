@@ -3,14 +3,16 @@
 
 PORTNAME=	mysql-workbench-oss
 PORTVERSION=	5.1.16
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	databases
-MASTER_SITES=	${MASTER_SITE_MYSQL}
-MASTER_SITE_SUBDIR=	MySQLGUITools
+MASTER_SITES=	MYSQL/MySQLGUITools
 PKGNAMESUFFIX=	51
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	The MySQL Workbench
+
+DEPRECATED=	EOL upstream, use databases/mysql-workbench52 instead
+EXPIRATION_DATE=	2015-11-10
 
 LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre \
 		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid \
@@ -63,4 +65,10 @@ pre-configure:
 	(cd ${WRKSRC}/ext/yassl/taocrypt && ${LOCALBASE}/bin/autoreconf -f -i)
 	(cd ${WRKSRC}/ext/yassl && ${LOCALBASE}/bin/autoreconf -f -i)
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000000
+BROKEN=		does not build
+.endif
+
+.include <bsd.port.post.mk>

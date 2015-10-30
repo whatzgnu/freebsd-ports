@@ -51,6 +51,7 @@
     SUBDIR += baudline
     SUBDIR += bcg729
     SUBDIR += beast
+    SUBDIR += beep
     SUBDIR += beets
     SUBDIR += blop
     SUBDIR += boodler
@@ -206,6 +207,7 @@
     SUBDIR += gnormalize
     SUBDIR += gnuitar
     SUBDIR += gnupod
+    SUBDIR += gnuspeechsa
     SUBDIR += gnustep-cdplayer
     SUBDIR += gogglesmm
     SUBDIR += goobox
@@ -214,6 +216,7 @@
     SUBDIR += gramofile
     SUBDIR += grip
     SUBDIR += gsm
+    SUBDIR += gsound
     SUBDIR += gspeakers
     SUBDIR += gstreamer-plugins-a52dec
     SUBDIR += gstreamer-plugins-amrnb
@@ -252,7 +255,9 @@
     SUBDIR += gstreamer1-plugins-a52dec
     SUBDIR += gstreamer1-plugins-amrnb
     SUBDIR += gstreamer1-plugins-amrwbdec
+    SUBDIR += gstreamer1-plugins-bs2b
     SUBDIR += gstreamer1-plugins-cdparanoia
+    SUBDIR += gstreamer1-plugins-chromaprint
     SUBDIR += gstreamer1-plugins-faac
     SUBDIR += gstreamer1-plugins-faad
     SUBDIR += gstreamer1-plugins-flac
@@ -263,6 +268,7 @@
     SUBDIR += gstreamer1-plugins-lame
     SUBDIR += gstreamer1-plugins-mad
     SUBDIR += gstreamer1-plugins-modplug
+    SUBDIR += gstreamer1-plugins-mpg123
     SUBDIR += gstreamer1-plugins-ogg
     SUBDIR += gstreamer1-plugins-opus
     SUBDIR += gstreamer1-plugins-pulse
@@ -368,6 +374,7 @@
     SUBDIR += liblo
     SUBDIR += liblscp
     SUBDIR += libmad
+    SUBDIR += libmatemixer
     SUBDIR += libmikmod
     SUBDIR += libmodplug
     SUBDIR += libmp3-archive-perl
@@ -432,6 +439,7 @@
     SUBDIR += linux-laudio
     SUBDIR += linux-mbrola
     SUBDIR += linux-neroaaccodec
+    SUBDIR += linux-skype_oss_wrapper
     SUBDIR += linuxsampler
     SUBDIR += listener
     SUBDIR += lmms
@@ -571,7 +579,6 @@
     SUBDIR += p5-tagged
     SUBDIR += p5-xmms2
     SUBDIR += pacpl
-    SUBDIR += padevchooser
     SUBDIR += paman
     SUBDIR += paprefs
     SUBDIR += patchage
@@ -592,8 +599,8 @@
     SUBDIR += pms
     SUBDIR += pocketsphinx
     SUBDIR += portaudio
-    SUBDIR += portaudio2
     SUBDIR += praat
+    SUBDIR += pragha
     SUBDIR += puddletag
     SUBDIR += pulseaudio
     SUBDIR += pure-audio
@@ -658,8 +665,7 @@
     SUBDIR += rubygem-librmpd
     SUBDIR += rubygem-ruby-mp3info
     SUBDIR += rubygem-ruby-ogginfo
-    SUBDIR += rubygem-shout
-    SUBDIR += rubyripper
+    SUBDIR += rubygem-ruby-shout
     SUBDIR += s3mod
     SUBDIR += sbagen
     SUBDIR += schism

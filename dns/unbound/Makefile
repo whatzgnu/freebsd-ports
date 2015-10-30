@@ -2,18 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	unbound
-PORTVERSION=	1.5.3
-PORTREVISION=	1
+PORTVERSION=	1.5.5
 CATEGORIES=	dns
 MASTER_SITES=	http://unbound.net/downloads/
 
 MAINTAINER=	sem@FreeBSD.org
 COMMENT=	Validating, recursive, and caching DNS resolver
 
-LICENSE=	BSD4CLAUSE
+LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES+=		gmake libtool
+USES+=		autoreconf cpe gmake libtool
+CPE_VENDOR=	nlnetlabs
 USE_OPENSSL=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--with-ssl=${OPENSSLBASE} --with-libexpat=${LOCALBASE}
@@ -101,7 +101,7 @@ post-patch:
 		s|$$(configfile); fi|$$(configfile).sample|' \
 		${WRKSRC}/Makefile.in
 .if ${PORT_OPTIONS:MFILTER_AAAA}
-	cat ${WRKSRC}/contrib/aaaa-filter-iterator.patch | ${PATCH} -d ${WRKSRC} -p1 -s
+	${CAT} ${WRKSRC}/contrib/aaaa-filter-iterator.patch | ${PATCH} -d ${WRKSRC} -p1 -s
 .endif
 
 post-build:
@@ -131,5 +131,8 @@ post-install:
 		cd ${WRKSRC}/doc && ${INSTALL_DATA} $${f} ${STAGEDIR}${DOCSDIR}/; \
 	done
 .endif
+
+regression-test: build
+	cd ${WRKSRC} && ${MAKE} test
 
 .include <bsd.port.mk>

@@ -5,8 +5,7 @@ PORTNAME=	spidermonkey17
 DISTVERSION=	1.7.0
 PORTREVISION=	1
 CATEGORIES=	lang
-MASTER_SITES=	${MASTER_SITE_MOZILLA_EXTENDED}
-MASTER_SITE_SUBDIR=	js
+MASTER_SITES=	MOZILLA/js
 DISTNAME=	js-${DISTVERSION}
 
 MAINTAINER=	citric@cubicone.tmetic.com
@@ -20,6 +19,8 @@ MAKE_ARGS+=	JS_THREADSAFE=YES \
 		PROG_LIBS="-lreadline -ltermcap -lm -lpthread" \
 		LDFLAGS="-L${LOCALBASE}/lib"
 CFLAGS+=	-I${LOCALBASE}/include/nspr
+
+BROKEN_sparc64=		Does not build on sparc64: fails to link
 
 USES=		gmake readline
 MAKEFILE=	Makefile.ref
@@ -62,10 +63,4 @@ do-install:
 	${CP} ${WRKSRC}/${OPSYS}`${UNAME} -r`_DBG.OBJ/jsautocfg.h ${WRKSRC}
 	@${INSTALL_DATA} ${JSH:S,^,${WRKSRC}/,} ${STAGEDIR}${PREFIX}/include/
 
-.include <bsd.port.pre.mk>
-
-.if ${ARCH} == "sparc64" && ${OSVERSION} > 900000
-BROKEN=		Does not build on sparc64-9: fails to link
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	saga
-PORTVERSION=	2.1.4
+PORTVERSION=	2.2.1
 CATEGORIES=	math
 MASTER_SITES=	SF/saga-gis/SAGA%20-%20${PORTVERSION:C/\.[[:digit:]]*$//}/SAGA%20${PORTVERSION}
 DISTNAME=	${PORTNAME}_${PORTVERSION}
@@ -27,18 +27,18 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 CONFIGURE_ARGS=	CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" \
 		--enable-python
 CONFIGURE_ENV=	SWIG="${LOCALBASE}/bin/swig3.0"
-CFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
-LDFLAGS+=	-L${LOCALBASE}/lib -lopencv_contrib
+LDFLAGS+=	-lopencv_contrib
 USE_LDCONFIG=	yes
 USE_CXXSTD=	c++11
 USE_WX=		3.0+
-USES=		autoreconf compiler:gcc-c++11-lib iconv:wchar_t dos2unix libtool python:2
+USES=		autoreconf libtool localbase compiler:gcc-c++11-lib \
+		iconv:wchar_t dos2unix python:2
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
-WX_UNICODE=	yes
 
 DESKTOP_ENTRIES=	"SAGA GIS" "${COMMENT}" "${DATADIR}/saga.png" \
 			"saga_gui" "Science;Geoscience;Math;" true
+INSTALLS_ICONS=	yes
 DOS2UNIX_GLOB=	*.cpp *.h
 PLIST_SUB=	PORTVERSION=${PORTVERSION}
 
@@ -58,6 +58,8 @@ VIGRA_BUILD_DEPENDS=	${LOCALBASE}/lib/libvigraimpex.so:${PORTSDIR}/graphics/vigr
 VIGRA_RUN_DEPENDS=	${LOCALBASE}/lib/libvigraimpex.so:${PORTSDIR}/graphics/vigra
 
 .include <bsd.port.pre.mk>
+
+SUB_FILES=	pkg-message
 
 post-extract:
 	@${REINPLACE_CMD} -e 's|wx-config |${WX_CONFIG} |g' \
@@ -80,7 +82,7 @@ post-patch:
 		${WRKSRC}/src/modules/imagery/imagery_opencv/Makefile.am
 	@${REINPLACE_CMD} -e 's|\[cv\]|\[opencv_core\]|' \
 		${WRKSRC}/configure.ac
-	@${REINPLACE_CMD} -e 's|wxString(SAGA_VERSION) + "\\n"|wxString(SAGA_VERSION) + " (SVN r2316)" + "\\n"|' \
+	@${REINPLACE_CMD} -e 's|wxString(SAGA_VERSION) + "\\n"|wxString(SAGA_VERSION) + " (SVN r2600)" + "\\n"|' \
 		${WRKSRC}/src/saga_core/saga_gui/dlg_about.cpp
 .if ${ARCH} == "powerpc"
 	@${REINPLACE_CMD} -e 's|typedef unsigned long	DWORD;|typedef unsigned int	DWORD;|' \
@@ -96,12 +98,13 @@ post-configure:
 		${WRKSRC}/src/saga_core/saga_gui/Makefile
 
 post-install:
-	@${MKDIR} ${STAGEDIR}${DATADIR}
+	${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/src/saga_core/saga_gui/res/saga_tip.txt ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/src/saga_core/saga_gui/res/saga.lng.txt ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/src/saga_core/saga_gui/res/saga.ger.txt ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/src/saga_core/saga_gui/res/saga.png ${STAGEDIR}${DATADIR}
-	${CHMOD} -R a+rw ${STAGEDIR}${DATADIR}
+	${MKDIR} ${STAGEDIR}${DATADIR}/scripting
+	(cd ${WRKSRC}/src/scripting && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/scripting)
 	${INSTALL_DATA} ${WRKSRC}/src/saga_core/saga_gui/res/saga.desktop \
 		${STAGEDIR}${PREFIX}/share/applications/
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libsaga_api-${PORTVERSION}.so

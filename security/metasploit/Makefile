@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	metasploit
-PORTVERSION=	4.11.1
+PORTVERSION=	4.11.2
+PORTREVISION=	2
 CATEGORIES=	security
 
 MAINTAINER=	tanawts@gmail.com
@@ -16,9 +17,9 @@ RUN_DEPENDS=	nasm:${PORTSDIR}/devel/nasm \
 		rubygem-bundler>=0:${PORTSDIR}/sysutils/rubygem-bundler \
 		rubygem-jsobfu>=0.2.0:${PORTSDIR}/www/rubygem-jsobfu \
 		rubygem-json>=0:${PORTSDIR}/devel/rubygem-json \
-		rubygem-metasploit-concern>=0.3.0:${PORTSDIR}/security/rubygem-metasploit-concern \
-		rubygem-metasploit-model>=0.28.0:${PORTSDIR}/security/rubygem-metasploit-model \
-		rubygem-meterpreter_bins>=0.0.13:${PORTSDIR}/security/rubygem-meterpreter_bins \
+		rubygem-metasploit-concern>=0.4.0:${PORTSDIR}/security/rubygem-metasploit-concern \
+		rubygem-metasploit-model>=0.29.0:${PORTSDIR}/security/rubygem-metasploit-model \
+		rubygem-metasploit-payloads>=0.0.3:${PORTSDIR}/security/rubygem-metasploit-payloads \
 		rubygem-msgpack>=0:${PORTSDIR}/devel/rubygem-msgpack \
 		rubygem-nokogiri>=0:${PORTSDIR}/textproc/rubygem-nokogiri \
 		rubygem-network_interface>=0.0.1:${PORTSDIR}/net/rubygem-network_interface \
@@ -38,7 +39,19 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	rapid7
 GH_PROJECT=	metasploit-framework
 
-USES=		ncurses:port
+USES=		ncurses:port shebangfix
+SHEBANG_FILES=	data/cpuinfo/build.sh \
+		data/john/run.*/*.rb \
+		data/john/run.*/*.pl \
+		data/templates/src/pe/dll/build.sh \
+		external/ruby-kissfft/tests/test_kissfft.rb \
+		external/source/exploits/*/*.sh \
+		external/source/metsvc/test.rb \
+		external/source/msfJavaToolkit/*.sh \
+		external/source/msfJavaToolkit/*.rb \
+		external/source/pxesploit/regeditor/compile.sh \
+		external/source/shellcode/windows/build.sh \
+		lib/net/ssh/test.rb
 USE_RUBY=	yes
 
 OPTIONS_DEFINE=	DB
@@ -46,18 +59,15 @@ OPTIONS_DEFAULT=DB
 DB_DESC=	Database support
 
 DB_RUN_DEPENDS=	rubygem-activerecord>=3.0.0:${PORTSDIR}/databases/rubygem-activerecord \
-		rubygem-metasploit-credential>=0.13.7:${PORTSDIR}/security/rubygem-metasploit-credential \
-		rubygem-metasploit_data_models>=0.22.6:${PORTSDIR}/security/rubygem-metasploit_data_models \
+		rubygem-metasploit-credential>=0.14.5:${PORTSDIR}/security/rubygem-metasploit-credential \
+		rubygem-metasploit_data_models>=0.24.0,2:${PORTSDIR}/security/rubygem-metasploit_data_models \
 		rubygem-pg>=0.11:${PORTSDIR}/databases/rubygem-pg
-
-.include <bsd.port.options.mk>
 
 post-patch:
 	${REINPLACE_CMD} 's,git ls-files,find . ! -type d | sed "s|^./||", ; \
+		/jsobfu/s/~> 0.2.0/>= 0.2.0/ ; \
 		/packetfu/s/1.1.9/>= 1.1.9/ ; \
 		/rb-readline/d' ${WRKSRC}/metasploit-framework.gemspec
-	${REINPLACE_CMD} 's,3.2.21,3.2.19,' \
-		${WRKSRC}/lib/metasploit/framework/rails_version_constraint.rb
 
 do-build:
 	${RM} ${WRKSRC}/Gemfile.lock
@@ -66,9 +76,9 @@ do-build:
 	${CHMOD} 666 ${WRKSRC}/Gemfile.lock ${WRKSRC}/log/production.log
 	${REINPLACE_CMD} '/^group :coverage/,/^end/d ; /^group :development/,/^end/d ; /^group :test/,/^end/d' \
 		${WRKSRC}/Gemfile
-.if ! ${PORT_OPTIONS:MDB}
+
+do-build-DB-off:
 	${REINPLACE_CMD} '/^group :db do/,/^end/d' ${WRKSRC}/Gemfile
-.endif
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}

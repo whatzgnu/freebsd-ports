@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libpci
-PORTVERSION=	3.3.1
+PORTVERSION=	3.4.0
 CATEGORIES=	devel
 MASTER_SITES=	KERNEL_ORG/software/utils/pciutils \
 		ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/ \
@@ -39,7 +39,7 @@ post-patch:
 	@${REINPLACE_CMD} 's|^#include "|&pci/|' ${WRKSRC}/lib/pci.h
 
 post-build:
-	@cd ${WRKSRC}/lib/ && ${CC} ${CFLAGS} ${STRIP} -shared *.o -lz -o libpci.so.3
+	@cd ${WRKSRC}/lib/ && ${CC} ${CFLAGS} ${STRIP} -Wl,-soname=libpci.so.3 -shared *.o -lz -o libpci.so.3
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/include/pci/

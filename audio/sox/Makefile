@@ -1,5 +1,5 @@
 # Created by: torstenb
-# $FreeBSD: head/audio/sox/Makefile 394778 2015-08-19 13:29:59Z mat $
+# $FreeBSD$
 
 PORTNAME=	sox
 PORTVERSION=	14.4.2

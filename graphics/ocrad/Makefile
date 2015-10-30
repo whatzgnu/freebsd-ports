@@ -5,10 +5,9 @@ PORTNAME=	ocrad
 PORTVERSION=	0.22
 CATEGORIES=	graphics
 MASTER_SITES=	GNU
-MASTER_SITE_SUBDIR=	${PORTNAME}
 EXTRACT_SUFX=	.tar.lz
 
-MAINTAINER=	lippe@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	OCR program implemented as filter
 
 LICENSE=	GPLv3

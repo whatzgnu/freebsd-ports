@@ -7,7 +7,7 @@ PORTREVISION=	1
 CATEGORIES=	devel java python
 MASTER_SITES=	SF/${PORTNAME}p/${PORTNAME}/${PORTVERSION}
 
-MAINTAINER=	lippe@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Java Embedded Python
 
 HAS_CONFIGURE=	yes
@@ -22,6 +22,8 @@ USES=		libtool python
 # Necessary, since the configure script does the LIBS and
 # LDFLAGS detection wrong
 LDFLAGS=	-L${LOCALBASE}/lib
+
+MAKE_JOBS_UNSAFE=	yes
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/jep.jar ${STAGEDIR}${JAVAJARDIR}/
