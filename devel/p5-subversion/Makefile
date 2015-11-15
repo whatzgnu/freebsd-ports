@@ -23,13 +23,16 @@ USE_PERL5=	build run
 SVN_BUILD_BINDINGS=	yes
 SVN_BUILD_ADDONS=	yes
 
+MAKE_JOBS_UNSAFE=	yes
+
 .include "${MASTERDIR}/Makefile.common"
 
 CATEGORIES+=	perl5
 
 CONFIGURE_ARGS+=	--without-gnome-keyring \
 			--without-kwallet \
-			--with-apxs=no
+			--with-apxs=no \
+			--disable-keychain
 
 ALL_TARGET=	swig-pl-lib swig-pl
 INSTALL_TARGET=	install-swig-pl

@@ -300,6 +300,7 @@
     SUBDIR += libpwquality
     SUBDIR += libpwstor
     SUBDIR += libressl
+    SUBDIR += libressl-devel
     SUBDIR += libscrypt
     SUBDIR += libsecret
     SUBDIR += libsectok
@@ -816,6 +817,7 @@
     SUBDIR += py-kerberos
     SUBDIR += py-keyczar
     SUBDIR += py-keyring
+    SUBDIR += py-letsencrypt
     SUBDIR += py-libnacl
     SUBDIR += py-m2crypto
     SUBDIR += py-mcrypt
@@ -846,6 +848,7 @@
     SUBDIR += py-pyptlib
     SUBDIR += py-pyscard
     SUBDIR += py-pysha3
+    SUBDIR += py-python-gnupg
     SUBDIR += py-python-registry
     SUBDIR += py-rekall
     SUBDIR += py-rekall-core
@@ -963,6 +966,7 @@
     SUBDIR += rubygem-sshkey
     SUBDIR += rubygem-sshkit
     SUBDIR += rubygem-twitter_oauth
+    SUBDIR += s2n
     SUBDIR += safesh
     SUBDIR += samba-virusfilter
     SUBDIR += sancp
@@ -1076,6 +1080,7 @@
     SUBDIR += vinetto
     SUBDIR += vlock
     SUBDIR += vlog
+    SUBDIR += vm-to-tor
     SUBDIR += vnccrack
     SUBDIR += vpnc
     SUBDIR += vuxml
