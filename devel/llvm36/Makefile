@@ -1,4 +1,4 @@
-# $FreeBSD: head/devel/llvm36/Makefile 399346 2015-10-15 14:55:14Z mat $
+# $FreeBSD$
 
 PORTNAME=	llvm
 DISTVERSION=	3.6.2
@@ -173,14 +173,18 @@ post-patch:
 	    ${WRKSRC}/utils/lit/lit.py ${WRKSRC}/utils/lit/lit/*.py \
 	    ${WRKSRC}/utils/lit/lit/formats/*.py
 
-.if ${PORT_OPTIONS:MCMAKE}
 post-configure:
+.if ${PORT_OPTIONS:MCMAKE}
 	${MKDIR} ${WRKDIR}/cmake
 	cd ${WRKDIR}/cmake && cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER:STRING="${CC}" -DCMAKE_CXX_COMPILER:STRING="${CXX}" ${WRKSRC}
 	${REINPLACE_CMD} -e 's|${WRKDIR}/cmake|${LLVM_PREFIX}|' \
 	    -e 's|${WRKSRC}/cmake/modules|${DATADIR}/cmake|' \
 	    ${WRKDIR}/cmake/share/llvm/cmake/LLVMConfig.cmake
 .endif
+	@${REINPLACE_CMD} -e 's|HAVE_MACH_MACH_H|NOHAVE_MACH_MACH_H|g' \
+		${WRKSRC}/include/llvm/Config/config.h.cmake
+	@${REINPLACE_CMD} -e 's|HAVE_MACH_MACH_H|NOHAVE_MACH_MACH_H|g' \
+		${WRKSRC}/cmake/config-ix.cmake
 
 post-build:
 .if ${PORT_OPTIONS:MMANPAGES}
