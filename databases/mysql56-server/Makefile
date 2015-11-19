@@ -1,8 +1,8 @@
 # Created by: Alex Dupre <ale@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/databases/mysql56-server/Makefile 401883 2015-11-18 17:00:16Z ale $
 
 PORTNAME?=	mysql
-PORTVERSION=	5.6.26
+PORTVERSION=	5.6.27
 PORTREVISION?=	0
 CATEGORIES=	databases ipv6
 MASTER_SITES=	MYSQL/MySQL-5.6

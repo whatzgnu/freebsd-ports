@@ -1,5 +1,5 @@
 # Created by: Eric Anholt
-# $FreeBSD$
+# $FreeBSD: head/devel/git/Makefile 401118 2015-11-09 17:51:05Z garga $
 
 PORTNAME=	git
 DISTVERSION=	2.6.3
