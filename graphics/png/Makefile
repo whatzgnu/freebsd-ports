@@ -1,8 +1,8 @@
 # Created by: ache
-# $FreeBSD: head/graphics/png/Makefile 401693 2015-11-15 11:41:02Z antoine $
+# $FreeBSD: head/graphics/png/Makefile 402897 2015-12-03 19:52:59Z antoine $
 
 PORTNAME=	png
-PORTVERSION=	1.6.19
+PORTVERSION=	1.6.20
 CATEGORIES=	graphics
 MASTER_SITES=	SF/lib${PORTNAME}/lib${PORTNAME}16/${PORTVERSION} \
 		ftp://ftp.simplesystems.org/pub/lib${PORTNAME}/${PORTNAME}/src/lib${PORTNAME}16/
