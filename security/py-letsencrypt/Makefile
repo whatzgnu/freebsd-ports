@@ -1,8 +1,8 @@
 # Created by: Kubilay Kocak <koobs@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/security/py-letsencrypt/Makefile 403057 2015-12-05 11:08:46Z brnrd $
 
 PORTNAME=	letsencrypt
-DISTVERSION=	0.0.0.dev20151104
+DISTVERSION=	0.1.0
 CATEGORIES=	security python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
