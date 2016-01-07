@@ -1,8 +1,9 @@
 # Created by: Richard Hwang <rhwang@bigpanda.com>, Mikhail Teterin <mi@aldan.algebra.com>, Jun-ichiro itojun Itoh <itojun@itojun.org>
-# $FreeBSD$
+# $FreeBSD: head/graphics/tiff/Makefile 405294 2016-01-05 15:04:58Z rakuco $
 
 PORTNAME=	tiff
 PORTVERSION=	4.0.6
+PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	ftp://ftp.remotesensing.org/pub/libtiff/ \
 		http://download.osgeo.org/libtiff/
