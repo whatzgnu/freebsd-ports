@@ -1,5 +1,5 @@
 #
-# $FreeBSD$
+# $FreeBSD: head/Mk/bsd.openssl.mk 405241 2016-01-04 13:54:38Z brnrd $
 # bsd.openssl.mk - Support for OpenSSL based ports.
 #
 # Use of 'USE_OPENSSL=yes' includes this Makefile after bsd.ports.pre.mk
@@ -105,9 +105,11 @@ OPENSSL_SHLIBVER?=	${OPENSSL_SHLIBFILE:E}
 .endif
 .endif
 
-# try to guess SHLIBVER for libressl
-.if defined(OPENSSL_PORT) && ${OPENSSL_PORT} == security/libressl
+# LibreSSL specific SHLIBVER
+.if   defined(OPENSSL_PORT) && ${OPENSSL_PORT} == security/libressl
 OPENSSL_SHLIBVER?=	35
+.elif defined(OPENSSL_PORT) && ${OPENSSL_PORT} == security/libressl-devel
+OPENSSL_SHLIBVER?=	37
 .endif
 
 # default
