@@ -1,8 +1,8 @@
 # Created by: Florent Thoumie <flz@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/www/chromium/Makefile 407459 2016-01-29 08:13:57Z rene $
 
 PORTNAME=	chromium
-PORTVERSION=	46.0.2490.80
+PORTVERSION=	48.0.2564.97
 CATEGORIES=	www
 MASTER_SITES=	http://commondatastorage.googleapis.com/chromium-browser-official/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} # default, but needed to get distinfo correct if TEST is on
@@ -22,7 +22,8 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/gperf:${PORTSDIR}/devel/gperf \
 		${LOCALBASE}/include/linux/videodev2.h:${PORTSDIR}/multimedia/v4l_compat \
 		${LOCALBASE}/share/usbids/usb.ids:${PORTSDIR}/misc/usbids \
 		${PYTHON_PKGNAMEPREFIX}Jinja2>0:${PORTSDIR}/devel/py-Jinja2 \
-		${PYTHON_PKGNAMEPREFIX}ply>0:${PORTSDIR}/devel/py-ply
+		${PYTHON_PKGNAMEPREFIX}ply>0:${PORTSDIR}/devel/py-ply \
+		${PYTHON_PKGNAMEPREFIX}html5lib>0:${PORTSDIR}/www/py-html5lib
 
 LIB_DEPENDS=	libcairo.so:${PORTSDIR}/graphics/cairo \
 		libdbus-1.so:${PORTSDIR}/devel/dbus \
@@ -271,12 +272,13 @@ pre-configure:
 		'third_party/boringssl' \
 		'third_party/cacheinvalidation' \
 		'third_party/catapult' \
+		'third_party/catapult/third_party/beautifulsoup' \
+		'third_party/catapult/third_party/py_vulcanize' \
+		'third_party/catapult/third_party/py_vulcanize/py_vulcanize' \
+		'third_party/catapult/third_party/py_vulcanize/third_party/rcssmin' \
+		'third_party/catapult/third_party/py_vulcanize/third_party/rjsmin' \
 		'third_party/catapult/tracing' \
 		'third_party/catapult/tracing/third_party' \
-		'third_party/catapult/tracing/third_party/tvcm' \
-		'third_party/catapult/tracing/third_party/tvcm/third_party/beautifulsoup' \
-		'third_party/catapult/tracing/third_party/tvcm/third_party/rcssmin' \
-		'third_party/catapult/tracing/third_party/tvcm/third_party/rjsmin' \
 		'third_party/cld' \
 		'third_party/cros_system_api' \
 		'third_party/dom_distiller_js' \
@@ -299,8 +301,8 @@ pre-configure:
 		'third_party/libjingle' \
 		'third_party/libphonenumber' \
 		'third_party/libsrtp' \
-		'third_party/libvpx' \
-		'third_party/libvpx/source/libvpx/third_party/x86inc' \
+		'third_party/libvpx_new' \
+		'third_party/libvpx_new/source/libvpx/third_party/x86inc' \
 		'third_party/libwebm' \
 		'third_party/libxml/chromium' \
 		'third_party/libXNVCtrl' \
@@ -324,7 +326,6 @@ pre-configure:
 		'third_party/pywebsocket' \
 		'third_party/qcms' \
 		'third_party/qunit' \
-		'third_party/readability' \
 		'third_party/sfntly' \
 		'third_party/sinonjs' \
 		'third_party/skia' \
