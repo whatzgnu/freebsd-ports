@@ -1,8 +1,8 @@
 # Created by: Bernard Spil <brnrd@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/security/libressl-devel/Makefile 407614 2016-01-31 11:51:36Z brnrd $
 
 PORTNAME=	libressl
-PORTVERSION=	2.3.1
+PORTVERSION=	2.3.2
 CATEGORIES=	security devel
 MASTER_SITES=	OPENBSD/LibreSSL
 PKGNAMESUFFIX=	-devel
@@ -24,15 +24,12 @@ CONFLICTS?=	openssl-[0-9]* \
 		libressl-[0-9]*
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--enable-silent-rules
 USES=		cpe libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 OPTIONS_SUB=	yes
 
 INSTALL_TARGET=	install-strip
-
-regression-test: build
-	cd ${WRKSRC} && ${MAKE} check
+TEST_TARGET=	check
 
 post-stage-NC-on:
 	${INSTALL_PROGRAM} ${WRKSRC}/apps/nc/.libs/nc ${STAGEDIR}/${PREFIX}/bin/nc
@@ -41,5 +38,8 @@ post-stage-NC-on:
 post-install-MAN3-off:
 	${RM} -rf ${STAGEDIR}/${PREFIX}/man/man3
 	${REINPLACE_CMD} -e '/^man\/man3/d' ${TMPPLIST}
+
+post-install:
+	${RM} -rf ${STAGEDIR}/${PREFIX}/etc/ssl/cert.pem
 
 .include <bsd.port.mk>

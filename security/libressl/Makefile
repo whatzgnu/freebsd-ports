@@ -1,12 +1,12 @@
 # Created by: Vsevolod Stakhov <vsevolod@FreeBSD.org>
-# $FreeBSD: head/security/libressl/Makefile 399426 2015-10-16 07:13:03Z brnrd $
+# $FreeBSD: head/security/libressl/Makefile 407612 2016-01-31 11:48:37Z brnrd $
 
 PORTNAME=	libressl
-PORTVERSION=	2.2.4
+PORTVERSION=	2.2.6
 CATEGORIES=	security devel
 MASTER_SITES=	OPENBSD/LibreSSL
 
-MAINTAINER=	vsevolod@FreeBSD.org
+MAINTAINER=	brnrd@FreeBSD.org
 COMMENT=	Free version of the SSL/TLS protocol forked from OpenSSL
 
 LICENSE=	BSD4CLAUSE
@@ -22,11 +22,11 @@ CONFLICTS?=	openssl-[0-9]* \
 		libressl-devel-[0-9]*
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--enable-silent-rules
 USES=		cpe libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 
 INSTALL_TARGET=	install-strip
+TEST_TARGET=	check
 
 .include <bsd.port.pre.mk>
 
@@ -34,11 +34,11 @@ INSTALL_TARGET=	install-strip
 CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 .endif
 
-regression-test: build
-	cd ${WRKSRC} && ${MAKE} check
-
 post-install-MAN3-off:
 	${RM} -rf ${STAGEDIR}/${PREFIX}/man/man3
 	${REINPLACE_CMD} -e '/^man\/man3/d' ${TMPPLIST}
+
+post-install:
+	${RM} -rf ${STAGEDIR}/${PREFIX}/etc/ssl/cert.pem
 
 .include <bsd.port.post.mk>
