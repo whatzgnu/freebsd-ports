@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nginx
-PORTVERSION=	1.9.10
+PORTVERSION=	1.9.11
 CATEGORIES=	www
 MASTER_SITES=	http://nginx.org/download/
 MASTER_SITES+=	LOCAL/osa
@@ -329,7 +329,7 @@ USES+=	gssapi:base,flags
 
 .if ${PORT_OPTIONS:MHTTP_AUTH_LDAP}
 # WWW: https://github.com/kvspb/nginx-auth-ldap
-GIT_HTTP_AUTH_LDAP_VERSION=	be8ff8eecb
+GIT_HTTP_AUTH_LDAP_VERSION=	8517bb0
 GH_ACCOUNT+=	kvspb:http_auth_ldap
 GH_PROJECT+=	nginx-auth-ldap:http_auth_ldap
 GH_TAGNAME+=	${GIT_HTTP_AUTH_LDAP_VERSION}:http_auth_ldap
@@ -432,7 +432,7 @@ CONFIGURE_ARGS+=--add-module=${WRKSRC_eval}
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_FANCYINDEX}
-NGINX_FANCYINDEX_VERSION=	0.3.5
+NGINX_FANCYINDEX_VERSION=	0.3.6
 GH_ACCOUNT+=	aperezdc:fancyindex
 GH_PROJECT+=	ngx-fancyindex:fancyindex
 GH_TAGNAME+=	v${NGINX_FANCYINDEX_VERSION}:fancyindex
@@ -691,7 +691,7 @@ CONFIGURE_ARGS+=--add-module=${WRKSRC_memc}
 .endif
 
 .if ${PORT_OPTIONS:MMODSECURITY}
-NGINX_MODSECURITY_VERSION=	2.9.0
+NGINX_MODSECURITY_VERSION=	2.9.1-RC1
 LIB_DEPENDS+=	libapr-1.so:${PORTSDIR}/devel/apr1 \
 		libcurl.so:${PORTSDIR}/ftp/curl \
 		libluajit-5.1.so:${PORTSDIR}/lang/luajit \
@@ -699,7 +699,7 @@ LIB_DEPENDS+=	libapr-1.so:${PORTSDIR}/devel/apr1 \
 		libyajl.so:${PORTSDIR}/devel/yajl
 USE_APACHE=	22+
 USE_GNOME+=	libxml2
-MASTER_SITES+=	http://www.modsecurity.org/tarball/${NGINX_MODSECURITY_VERSION}/:modsecurity
+MASTER_SITES+=	http://www.modsecurity.org/tarball/${NGINX_MODSECURITY_VERSION:S/RC/rc/}/:modsecurity
 DISTFILES+=	modsecurity-${NGINX_MODSECURITY_VERSION}.tar.gz:modsecurity
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/modsecurity-${NGINX_MODSECURITY_VERSION}/nginx/modsecurity
 EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-nginx-modsecurity-configure
@@ -1008,6 +1008,14 @@ post-patch:
 		's!--std=c99!-DMONGO_HAVE_STDINT!' \
 		${WRKSRC_gridfs}/config
 .endif
+.if ${PORT_OPTIONS:MLUA}
+	@${REINPLACE_CMD} \
+		's!ngx_udp_connection_t!ngx_resolver_connection_t!g; \
+		s!udp_connections!connections!g; \
+		s!udp_connection.connection!udp_connection.udp!g; \
+		s!uc->connection!uc->udp!g' \
+		${WRKSRC_lua}/src/ngx_http_lua_socket_udp.*
+.endif
 .if ${PORT_OPTIONS:MPASSENGER}
 	@${REINPLACE_CMD} \
 		'177,179s!true!false!' \
@@ -1030,6 +1038,20 @@ post-patch:
 	@${REINPLACE_CMD} \
 		's!%%PREFIX%%!${LOCALBASE}!g' \
 		${WRKDIR}/nginx-sflow-module-${NGINX_SFLOW_VERSION}/ngx_http_sflow_config.h
+.endif
+.if ${PORT_OPTIONS:MSTATSD}
+	@${REINPLACE_CMD} \
+		's!ngx_udp_connection_t!ngx_resolver_connection_t!g; \
+		s!uc->connection!uc->udp!g; \
+		s!e->udp_connection->connection!e->udp_connection->udp!g' \
+		${WRKSRC_statsd}/ngx_http_statsd.c
+.endif
+.if ${PORT_OPTIONS:MUDPLOG}
+	@${REINPLACE_CMD} \
+		's!ngx_udp_connection_t!ngx_resolver_connection_t!g; \
+		s!uc->connection!uc->udp!g; \
+		s!e->udp_connection->connection!e->udp_connection->udp!g' \
+		${WRKDIR}/nginx_udplog_module-${NGINX_UDPLOG_VERSION}/ngx_http_udplog_module.c
 .endif
 .if ${PORT_OPTIONS:MICONV}
 	@${REINPLACE_CMD} \
