@@ -1,16 +1,18 @@
-# $FreeBSD$
+# $FreeBSD: head/graphics/graphite2/Makefile 408499 2016-02-08 18:55:45Z jkim $
 
 PORTNAME=	graphite2
-PORTVERSION=	1.2.4
+PORTVERSION=	1.3.5
 CATEGORIES=	graphics print
 MASTER_SITES=	SF/silgraphite/${PORTNAME}
 
 MAINTAINER=	office@FreeBSD.org
 COMMENT=	Rendering capabilities for complex non-Roman writing systems
 
-USES=		cmake iconv tar:tgz
+LICENSE=	GPLv2 LGPL21 MPL
+LICENSE_COMB=	dual
+
+USES=		cmake tar:tgz
 USE_LDCONFIG=	yes
-LDFLAGS+=	-L${LOCALBASE}/lib ${ICONV_LIB}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,/pkgconfig,data/pkgconfig,g' ${WRKSRC}/CMakeLists.txt

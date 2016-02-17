@@ -5,11 +5,12 @@ PORTNAME=	thefish
 PORTVERSION=	0.6.6
 PORTREVISION=	6
 CATEGORIES=	sysutils
-MASTER_SITES=	${MASTER_SITE_BERLIOS}
-MASTER_SITE_SUBDIR=	${PORTNAME}
+MASTER_SITES=	SF/${PORTNAME}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Gtk+/ncurses rc.conf editor/management tool
+
+BROKEN=		unfetchable
 
 USES=		pkgconfig
 WANT_GNOME=	yes

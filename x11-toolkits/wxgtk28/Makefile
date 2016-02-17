@@ -3,7 +3,7 @@
 
 PORTNAME=	wx
 PORTVERSION=	2.8.12
-PORTREVISION?=	5
+PORTREVISION?=	6
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	SF/wxwindows/${PORTVERSION}
 PKGNAMESUFFIX=	28-${WXGTK_FLAVOR}
@@ -13,11 +13,10 @@ MAINTAINER?=	fjoe@FreeBSD.org
 COMMENT?=	The wxWidgets GUI toolkit with GTK+ bindings
 
 LIB_DEPENDS+=	libpng.so:${PORTSDIR}/graphics/png\
-		libjpeg.so:${PORTSDIR}/graphics/jpeg\
 		libtiff.so:${PORTSDIR}/graphics/tiff\
 		libexpat.so:${PORTSDIR}/textproc/expat2
 
-USES=		compiler iconv gmake pkgconfig tar:bzip2
+USES=		compiler gmake iconv jpeg pkgconfig tar:bzip2
 USE_XORG=	x11 sm xxf86vm xinerama
 USE_GL=		glu
 USE_GNOME=	gtk20 pangox-compat
@@ -82,10 +81,7 @@ INSTALL_WRKSRC=	${BUILD_WRKSRC}
 .if ${WXGTK_FLAVOR} != "gtk2-contrib-common"
 USE_WX=		2.8
 RUN_DEPENDS=	${LOCALBASE}/include/wx-2.8/wx/stc/stc.h:${PORTSDIR}/x11-toolkits/wxgtk28-contrib-common
-
-.if ${WXGTK_FLAVOR:M*-unicode*} != ""
 WX_UNICODE=	yes
-.endif
 
 pre-configure:
 	@${FIND} ${BUILD_WRKSRC} -name Makefile.in -print0 | ${XARGS} -0 ${REINPLACE_CMD} \
@@ -96,9 +92,7 @@ pre-configure:
 .endif # !gtk2-contrib-common
 .endif # *-contrib*
 
-.if ${WXGTK_FLAVOR:M*-unicode*} != ""
 CONFIGURE_ARGS+=--enable-unicode
-.endif
 
 .include <bsd.port.pre.mk>
 

@@ -20,6 +20,11 @@ LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libvorbis.so:${PORTSDIR}/audio/libvorbis
 BUILD_DEPENDS=	7z:${PORTSDIR}/archivers/p7zip
 
+# XXX: it should be possible to build it on i386, investigate
+# (currently link fails on undefined reference to __sync_fetch_and_add_8)
+ONLY_FOR_ARCHS=		amd64
+ONLY_FOR_ARCHS_REASON=	relies on x86 floating-point math and amd64 atomic ops
+
 USE_SDL=	sdl2
 USE_GL=		gl glu glew
 USE_XORG=	x11 xcursor
@@ -47,6 +52,9 @@ LEI_PREFIX=	${LOCALBASE}
 # Do not exctract bundled copies of header files for 3rd-party packages:
 EXTRACT_AFTER_ARGS=--no-same-owner --no-same-permissions --exclude ${WRKSRC:T}/include
 
+# The check-target fails right now: https://springrts.com/mantis/view.php?id=4736
+TEST_TARGET=	check
+
 PORTDOCS=	*
 PORTDATA=	*
 
@@ -70,11 +78,11 @@ CXXFLAGS+=	-Wno-deprecated		# Too much noise
 
 PR_DOWNLOADER_LIB_DEPENDS=libcurl.so:${PORTSDIR}/ftp/curl
 
-# The check-target fails right now: https://springrts.com/mantis/view.php?id=4736
-check test xregression-test: build
-	${MAKE} -C ${WRKSRC} check
+.include <bsd.port.pre.mk>
 
-.include <bsd.port.options.mk>
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
+BROKEN=		does not build (lack of proper c++11 support)
+.endif
 
 .if defined(WITH_SYNC_DEBUG)
 CFLAGS=		# empty
@@ -111,4 +119,4 @@ post-patch:
 pre-build:
 	cd ${WRKSRC} && ${MAKE} generateVersionFiles
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

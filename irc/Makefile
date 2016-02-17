@@ -99,6 +99,7 @@
     SUBDIR += py-supybot
     SUBDIR += py-supybot-plugins
     SUBDIR += quassel
+    SUBDIR += quassel-kde4
     SUBDIR += quirc
     SUBDIR += qwebirc
     SUBDIR += ratbox-respond
@@ -125,7 +126,6 @@
     SUBDIR += undernet-ircu
     SUBDIR += unreal
     SUBDIR += weechat
-    SUBDIR += weechat-devel
     SUBDIR += xaric
     SUBDIR += xchat
     SUBDIR += xchat-fish

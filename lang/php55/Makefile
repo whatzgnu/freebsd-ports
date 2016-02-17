@@ -1,8 +1,8 @@
 # Created by: Alex Dupre <ale@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/lang/php55/Makefile 405778 2016-01-11 12:16:37Z miwi $
 
 PORTNAME=	php55
-PORTVERSION=	5.5.27
+PORTVERSION=	5.5.31
 PORTREVISION?=	0
 CATEGORIES?=	lang devel www
 MASTER_SITES=	PHP/distributions
@@ -12,8 +12,6 @@ MAINTAINER=	ale@FreeBSD.org
 COMMENT=	PHP Scripting Language
 
 LICENSE=	PHP301
-
-LATEST_LINK=	${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 
 USES=		tar:bzip2 cpe
 CPE_PRODUCT=	php
@@ -91,7 +89,7 @@ CONFIGURE_ARGS+=--enable-fpm \
 
 .if defined(OPTIONS_FILE_SET) && ${OPTIONS_FILE_SET:MAPACHE}
 IGNORE=		doesn't install the Apache module anymore:\
-		update your OPTIONS and build www/mod_php55 port instead 
+		update your OPTIONS and build www/mod_php55 port instead
 .endif
 
 .if defined(PKGNAMEPREFIX)
@@ -156,9 +154,6 @@ CONFIGURE_ARGS+=--enable-maintainer-zts
 .endif
 
 .if ${PORT_OPTIONS:MDTRACE}
-.if ${OSVERSION} < 900000
-IGNORE=		cannot be built with DTrace support on FreeBSD < 9.x
-.endif
 CONFIGURE_ARGS+=--enable-dtrace
 PLIST_SUB+=	DTRACE=""
 .else

@@ -1,20 +1,23 @@
 # Created by: Olivier Duchateau
-# $FreeBSD$
+# $FreeBSD: head/net/py-ndg_httpsclient/Makefile 401898 2015-11-18 21:41:48Z rm $
 
 PORTNAME=	ndg_httpsclient
-PORTVERSION=	0.3.3
+PORTVERSION=	0.4.0
+PORTREVISION=	2
 CATEGORIES=	net python
-MASTER_SITES=	CHEESESHOP
-MASTER_SITE_SUBDIR=	source/${DISTNAME:C/(.).*/\1/}/${PORTNAME:S/_/-/}
+MASTER_SITES=	CHEESESHOP/source/n/ndg-httpsclient
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	olivierd@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Enhance HTTPS support for httplib and urllib2
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>=0.13:${PORTSDIR}/security/py-openssl \
-	${PYTHON_PKGNAMEPREFIX}asn1>=0.1.4:${PORTSDIR}/devel/py-asn1
+LICENSE=	BSD3CLAUSE
 
-USES=	python:2
-USE_PYTHON=	distutils autoplist
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyasn1>=0.1.4:${PORTSDIR}/devel/py-pyasn1 \
+		${PYTHON_PKGNAMEPREFIX}openssl>=0.13:${PORTSDIR}/security/py-openssl
+
+NO_ARCH=	yes
+USE_PYTHON=	autoplist concurrent distutils
+USES=		python
 
 .include <bsd.port.mk>

@@ -14,14 +14,13 @@ COMMENT=	SGI's Open Inventor (TM)
 
 LICENSE=	LGPL21
 
-LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2 \
-		libjpeg.so:${PORTSDIR}/graphics/jpeg
+LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2
 
 CONFLICTS=	Coin-[0-9]* SoXt-[0-9]*
 
 USE_XORG=	x11 xext xi xp xt
 USE_GL=		glu glw
-USES=		iconv gmake motif
+USES=		gmake iconv jpeg motif
 USE_LDCONFIG=	yes
 ONLY_FOR_ARCHS=	i386 amd64
 MAKE_JOBS_UNSAFE=	yes
@@ -43,11 +42,7 @@ OPTIONS_DEFINE=	DEBUG
 
 DEBUG_MAKE_ENV=	LIBTYPE=debug
 
-.include <bsd.port.options.mk>
-
-.if !(${OPSYS} == FreeBSD && ${OSVERSION} < 900033)
 LDFLAGS+=	-Wl,--add-needed
-.endif
 
 post-patch:
 	@${REINPLACE_CMD} 's|/usr\(/include/freetype2\)|${LOCALBASE}\1|' \

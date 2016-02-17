@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnustep-base
-PORTVERSION=	1.24.6
-PORTREVISION=	7
+PORTVERSION=	1.24.8
 CATEGORIES=	lang devel gnustep
 MASTER_SITES=	GNUSTEP/core
 
@@ -32,14 +31,13 @@ LIB_DEPENDS+=	libgcrypt.so:${PORTSDIR}/security/libgcrypt
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-procfs --disable-openssl --enable-tls \
 		--with-tls-prefix=${LOCALBASE} TLS_CONFIG="pkg-config -gnutls"\
-		--disable-mixedabi
+		--disable-mixedabi --disable-libdispatch
 CONFIGURE_ENV+=	OBJCFLAGS='-fobjc-runtime=gnustep-1.7 -fblocks'
 USES=		pkgconfig iconv gnustep
 USE_GNUSTEP=	build
 USE_LDCONFIG=	${GNUSTEP_SYSTEM_LIBRARIES}
 
 MAKE_FLAGS=	OPTFLAG="${CFLAGS}"
-MAKE_ENV+=	GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
 
 ETCDIR=		${LOCALBASE}/etc
 STAGEHEADER=	${STAGEDIR}${PREFIX}/GNUstep/System/Library/Headers

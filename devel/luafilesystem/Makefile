@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	luafilesystem
-PORTVERSION=	1.6.3
+DISTVERSIONPREFIX=	v_
+DISTVERSION=	1_6_3
 CATEGORIES=	devel
 PKGNAMEPREFIX=	${LUA_PKGNAMEPREFIX}
 
@@ -12,11 +13,9 @@ COMMENT=	Library to access directory structure and file attributes
 LICENSE=	MIT
 
 USES?=		lua
-USES+=		gmake
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	keplerproject
-GH_TAGNAME=	v_${PORTVERSION:S/./_/g}
 
 ALL_TARGET=	lib
 

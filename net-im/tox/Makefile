@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	toxcore
-PORTVERSION=	0.150426
+PORTVERSION=	0.151028
+PORTREVISION=	1
 CATEGORIES=	net-im net-p2p
 
 MAINTAINER=	thierry@FreeBSD.org
@@ -12,19 +13,16 @@ LICENSE=	GPLv3
 
 BUILD_DEPENDS=	checkmk:${PORTSDIR}/devel/libcheck
 LIB_DEPENDS=	libvpx.so:${PORTSDIR}/multimedia/libvpx		\
-		libopus.so:${PORTSDIR}/audio/opus		\
-		libv4l2.so:${PORTSDIR}/multimedia/libv4l	\
-		libswscale.so:${PORTSDIR}/multimedia/ffmpeg
+		libopus.so:${PORTSDIR}/audio/opus
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	irungentoo
 GH_PROJECT=	${PORTNAME}
-GH_TAGNAME=	6a1efc3
+GH_TAGNAME=	a25cc96
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-tests
-USES=		autoreconf libtool openal:soft pathfix pkgconfig
-USE_SDL=	yes
+USES=		autoreconf libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 PATHFIX_MAKEFILEIN=	Makefile.am
 INSTALL_TARGET=		install-strip
@@ -50,11 +48,6 @@ DAEMON_LIB_DEPENDS=	libconfig.so:${PORTSDIR}/devel/libconfig
 
 .include <bsd.port.options.mk>
 
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
-USE_GCC=	yes
-BROKEN_i386=	'__stack_chk_fail_local' is not defined
-.endif
-
 .if ${PORT_OPTIONS:MDAEMON}
 USERS=	toxdht
 USE_RC_SUBR=	tox-bootstrapd
@@ -65,8 +58,8 @@ PID_DIR=	/var/run/tox-bootstrapd
 PKGMESSAGE=	${PKGDIR}/pkg-message.daemon
 .endif
 
-post-patch:
-	@${REINPLACE_CMD} 's|/usr/local|${LOCALBASE}|' ${WRKSRC}/configure.ac
+pre-configure:
+	${REINPLACE_CMD} 's|/usr/local|${LOCALBASE}|' ${WRKSRC}/configure.ac
 
 post-install:
 .if ${PORT_OPTIONS:MDAEMON}

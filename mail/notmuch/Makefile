@@ -2,16 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	notmuch
-PORTVERSION=	0.19
+PORTVERSION=	0.20.2
+PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	http://notmuchmail.org/releases/
 
-MAINTAINER=	ross@rosstimson.com
+MAINTAINER=	mp39590@gmail.com
 COMMENT=	Thread-based email index, search, and tagging application
 
 LICENSE=	GPLv3
 
-BUILD_DEPENDS=	sphinx-build:${PORTSDIR}/textproc/py-sphinx
+BUILD_DEPENDS=	sphinx-build:${PORTSDIR}/textproc/py-sphinx \
+		c++filt:${PORTSDIR}/devel/binutils
 LIB_DEPENDS=	libgmime-2.6.so:${PORTSDIR}/mail/gmime26 \
 		libxapian.so:${PORTSDIR}/databases/xapian-core \
 		libtalloc.so:${PORTSDIR}/devel/talloc
@@ -28,25 +30,18 @@ BASH_CONFIGURE_OFF=	--without-bash-completion
 EMACS_CONFIGURE_OFF=	--without-emacs
 EMACS_CONFIGURE_ON=	--emacslispdir=${PREFIX}/${EMACS_SITE_LISPDIR} \
 			--emacsetcdir=${PREFIX}/${EMACS_SITE_LISPDIR}
+EMACS_USE=		EMACS=yes
 ZSH_CONFIGURE_OFF=	--without-zsh-completion
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MEMACS}
-USE_EMACS=	yes
-.endif
-
 HAS_CONFIGURE=	yes
-USES=		pkgconfig python:build gmake
+USES=		gmake pkgconfig python:build
 CONFIGURE_ARGS=	--prefix=${PREFIX} --mandir=${MANPREFIX}/man
 USE_LDCONFIG=	yes
 
 MAKE_ENV+=		PYTHONCMD=${PYTHON_CMD}
 
-.include <bsd.port.pre.mk>
+post-install:
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/notmuch
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libnotmuch.so.4.2.0
 
-.if ${OSVERSION} < 900044
-IGNORE=	requires zlib at least 1.2.5
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

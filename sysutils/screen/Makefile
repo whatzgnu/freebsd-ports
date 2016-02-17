@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	screen
-PORTVERSION=	4.2.1
-PORTREVISION=	5
+PORTVERSION=	4.3.1
+PORTREVISION=	2
 CATEGORIES=	sysutils
 MASTER_SITES=	http://ftp.gnu.org/gnu/screen/ \
 		ftp://ftp.gnu.org/gnu/screen/ \
@@ -34,6 +34,8 @@ NAMED_PIPES_DESC=	Use legacy (4.0.3) named pipes for IPC (override)
 SYSTEM_SCREENRC_DESC=	Install system screenrc with helpful status line
 
 OPTIONS_SUB=
+
+MAKE_JOBS_UNSAFE=	yes
 
 USES=		gmake cpe
 
@@ -81,12 +83,10 @@ post-patch:
 # 		Choose sockets if you don't know what the difference is.
 # 		Choose named pipes if your environment is heterogeneous,
 #		using both screen 4.0.3 and 4.2.1.
-.if ${PORT_OPTIONS:MNAMED_PIPES}
 # Bug 191017
-post-configure:
+post-configure-NAMED_PIPES-on:
 	@${ECHO_CMD} '#define NAMEDPIPE 1' >> ${WRKSRC}/config.h
 	@${ECHO_CMD} User selected named pipes override set.
-.endif
 
 ETCDIR?=	${PREFIX}/etc
 

@@ -5,7 +5,7 @@
 # $FreeBSD$
 
 PORTNAME=	trueos-base
-PORTVERSION=	1427204819
+PORTVERSION=	2020151023
 CATEGORIES=	misc
 MASTER_SITES=	# Empty
 DISTFILES=	# Empty
@@ -15,9 +15,9 @@ COMMENT=	PC-BSD / TrueOS Command-Line Utilities
 
 RUN_DEPENDS=	pc-updatemanager:${PORTSDIR}/sysutils/pcbsd-utils \
 		${LOCALBASE}/share/pcbsd/scripts/functions.sh:${PORTSDIR}/sysutils/pcbsd-libsh \
-		syscache:${PORTSDIR}/sysutils/pcbsd-syscache \
 		lpreserver:${PORTSDIR}/sysutils/life-preserver \
 		warden:${PORTSDIR}/sysutils/warden \
+		iocage:${PORTSDIR}/sysutils/iocage-devel \
 		pbi:${PORTSDIR}/sysutils/pbi-manager \
 		beadm:${PORTSDIR}/sysutils/beadm \
 		sudo:${PORTSDIR}/security/sudo \
@@ -34,8 +34,8 @@ RUN_DEPENDS=	pc-updatemanager:${PORTSDIR}/sysutils/pcbsd-utils \
 		anacron:${PORTSDIR}/sysutils/anacron \
 		grub-mkconfig:${PORTSDIR}/sysutils/grub2-pcbsd \
 		grub2-efi>=0:${PORTSDIR}/sysutils/grub2-efi \
-		openntpd>=0:${PORTSDIR}/net/openntpd \
-		vim>=0:${PORTSDIR}/editors/vim
+		docker:${PORTSDIR}/sysutils/docker-freebsd \
+		openntpd>=0:${PORTSDIR}/net/openntpd
 
 NO_BUILD=	yes
 

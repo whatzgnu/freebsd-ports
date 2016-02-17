@@ -3,13 +3,15 @@
 
 PORTNAME=	oracle_odbc_driver
 PORTVERSION=	0.5.6
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	databases
 MASTER_SITES=	http://home.fnal.gov/~dbox/oracle/odbc/
 DISTNAME=	${PORTNAME}.${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Oracle Open Source ODBC driver
+
+BROKEN=		unfetchable
 
 LIB_DEPENDS=	libodbc.so:${PORTSDIR}/databases/unixODBC
 CONFIGURE_ARGS=	--with-unixODBC=${LOCALBASE}

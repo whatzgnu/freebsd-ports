@@ -4,12 +4,14 @@
 PORTNAME=	frama-c
 DISTVERSIONPREFIX=	Sodium-
 DISTVERSION=	20150201
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	http://frama-c.com/download/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Extensible platform for source-code analysis of C
+
+BROKEN=		unfetchable
 
 LICENSE=	LGPL21
 
@@ -47,6 +49,13 @@ post-patch:
 		\|$$(CP).*man/|s|$$(CP)|${INSTALL_MAN}|; \
 		s|$$(CP)|${INSTALL_DATA}|; }' \
 			${WRKSRC}/Makefile
+
+post-install:
+	${CHMOD} u+w ${STAGEDIR}${PREFIX}/bin/*
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
+	${CHMOD} u-w ${STAGEDIR}${PREFIX}/bin/*
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/frama-c/plugins/*.cmxs
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/frama-c/plugins/gui/*.cmxs
 
 check regression-test test: build
 	@cd ${WRKSRC}; ${SETENV} ${MAKE_ENV:NCPP=*} \

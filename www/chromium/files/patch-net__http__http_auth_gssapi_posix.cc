@@ -1,9 +1,9 @@
---- net/http/http_auth_gssapi_posix.cc.orig	2014-10-10 08:54:16 UTC
-+++ net/http/http_auth_gssapi_posix.cc
+--- net/http/http_auth_gssapi_posix.cc.orig	2016-01-21 16:42:58.881942944 +0100
++++ net/http/http_auth_gssapi_posix.cc	2016-01-21 16:43:28.081940938 +0100
 @@ -431,8 +431,8 @@
      static const char* const kDefaultLibraryNames[] = {
  #if defined(OS_MACOSX)
-       "libgssapi_krb5.dylib"  // MIT Kerberos
+       "/System/Library/Frameworks/Kerberos.framework/Kerberos"
 -#elif defined(OS_OPENBSD)
 -      "libgssapi.so"          // Heimdal - OpenBSD
 +#elif defined(OS_BSD)

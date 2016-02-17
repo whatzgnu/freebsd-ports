@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	postfix
-PORTVERSION=	2.11.5
+PORTVERSION=	2.11.7
 PORTEPOCH=	1
 CATEGORIES=	mail ipv6
 MASTER_SITES=	ftp://ftp.porcupine.org/mirrors/postfix-release/ \
@@ -33,9 +33,9 @@ CONFLICTS_INSTALL?=	courier-0.* opensmtpd-[0-9]* \
 USERS=		postfix
 GROUPS=		mail maildrop postfix
 USES=		perl5 shebangfix cpe
-SHEBANG_LANG=	perl
 SHEBANG_FILES=	auxiliary/qshape/qshape.pl
 
+USE_RC_SUBR=	postfix
 USE_SUBMAKE=	yes
 USE_PERL5=	build
 SCRIPTS_ENV+=	POSTFIX_DEFAULT_MTA="${POSTFIX_DEFAULT_MTA}"
@@ -69,7 +69,7 @@ LDAP_SASL_DESC=	LDAP client-to-server SASL auth
 LMDB_DESC=	LMDB maps
 SPF_DESC=	SPF support (via libspf2 1.2.x)
 TEST_DESC=	SMTP/LMTP test server and generator
-VDA_DESC=	VDA (Virtual Delivery Agent 32Bit)
+VDA_DESC=	VDA (Virtual Delivery Agent)
 
 RG1_DESC=	Dovecot SASL authentication methods
 DOVECOT_DESC=	Dovecot 1.x SASL authentication method
@@ -104,10 +104,8 @@ MAKEFILEFLAGS+=	CC="${CC}" OPT="${CFLAGS}"
 PKGNAMESUFFIX=	-base
 PREFIX=		/usr
 ETCDIR=		/etc/postfix
-USE_RCORDER=	postfix
 PLIST_SUB+=	BMAN="share/"
 .else
-USE_RC_SUBR=	postfix
 PLIST_SUB+=	BMAN=""
 .endif
 
@@ -182,8 +180,7 @@ POSTFIX_CCARGS+=	-DNO_TLS
 .endif
 
 .if ${PORT_OPTIONS:MSPF}
-PATCH_SITES+=		${MASTER_SITE_LOCAL}
-PATCH_SITE_SUBDIR=	mm
+PATCH_SITES+=		LOCAL/mm
 PATCHFILES+=		postfix-2.8.0-libspf2-1.2.x-0.patch.gz
 PATCH_DIST_STRIP=	-p1
 POSTFIX_CCARGS+=	-DHAVE_NS_TYPE -DHAS_SPF -I${LOCALBASE}/include
@@ -300,22 +297,22 @@ post-patch:
 	@${ECHO} '$$html_directory/$f:f:root:-:644' \
 		>> ${WRKSRC}/conf/postfix-files
 .endfor
-.if ${PORT_OPTIONS:MSPF}
-	@${ECHO} '$$readme_directory/SPF_README:f:root:-:644' \
-		>> ${WRKSRC}/conf/postfix-files
-	@${REINPLACE_CMD} -E -e '${REINPLACE}' \
-		${WRKSRC}/README_FILES/SPF_README
-.endif
-.if ${PORT_OPTIONS:MVDA}
-	@${ECHO} '$$readme_directory/VDA_README:f:root:-:644' \
-		>> ${WRKSRC}/conf/postfix-files
-	@${REINPLACE_CMD} -E -e '${REINPLACE}' \
-		${WRKSRC}/README_FILES/VDA_README
-.endif
 	@${ECHO} '$$manpage_directory/man1/posttls-finger.1:f:root:-:644' \
 		>> ${WRKSRC}/conf/postfix-files
 	@${ECHO} '$$command_directory/posttls-finger:f:root:-:755' \
 		>> ${WRKSRC}/conf/postfix-files
+
+post-patch-SPF-on:
+	@${ECHO} '$$readme_directory/SPF_README:f:root:-:644' \
+		>> ${WRKSRC}/conf/postfix-files
+	@${REINPLACE_CMD} -E -e '${REINPLACE}' \
+		${WRKSRC}/README_FILES/SPF_README
+
+post-patch-VDA-on:
+	@${ECHO} '$$readme_directory/VDA_README:f:root:-:644' \
+		>> ${WRKSRC}/conf/postfix-files
+	@${REINPLACE_CMD} -E -e '${REINPLACE}' \
+		${WRKSRC}/README_FILES/VDA_README
 
 do-configure:
 	(cd ${WRKSRC} && ${MAKE} -f Makefile.init makefiles \
@@ -323,10 +320,8 @@ do-configure:
 	AUXLIBS="${POSTFIX_AUXLIBS}" && \
 	${ECHO} "all: default" >> Makefile)
 
-pre-install:
-.if ${PORT_OPTIONS:MINST_BASE}
+pre-install-INST_BASE-on:
 	${MKDIR} ${STAGEDIR}/etc/rc.d
-.endif
 
 do-install:
 	@(cd ${WRKSRC} && ${MAKE} non-interactive-package \
@@ -344,10 +339,10 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/auxiliary/rmail/rmail ${STAGEDIR}${PREFIX}/bin/rmail
 	${INSTALL_SCRIPT} ${WRKSRC}/auxiliary/qshape/qshape.pl ${STAGEDIR}${PREFIX}/bin/qshape
 	${INSTALL_MAN} ${WRKSRC}/man/man1/qshape.1 ${STAGEDIR}${MANPREFIX}/man/man1
-.if ${PORT_OPTIONS:MTEST}
+
+do-install-TEST-on:
 	${INSTALL_PROGRAM} ${BINTEST:S|^|${WRKSRC}/bin/|} ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${MANTEST:S|^|${WRKSRC}/man/man1/|} ${STAGEDIR}${MANPREFIX}/man/man1
-.endif
 
 post-stage:
 # == do not overwrite existing config

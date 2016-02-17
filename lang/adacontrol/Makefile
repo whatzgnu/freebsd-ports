@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	adacontrol
-PORTVERSION=	1.16r11
+PORTVERSION=	1.17r3
 CATEGORIES=	lang
 MASTER_SITES=	SF/adacontrol
 DISTNAME=	adactl-${PORTVERSION}-src
@@ -23,8 +23,6 @@ PORTDOCS=	adacontrol*
 
 OPTIONS_DEFINE= DOCS
 
-.include <bsd.port.options.mk>
-
 do-build:
 	(cd ${BUILD_WRKSRC} && ${SETENV} ${MAKE_ENV} gnatmake -Pbuild)
 
@@ -41,10 +39,10 @@ do-install:
 		${STAGEDIR}${PREFIX}/share/gps/plug-ins
 	${INSTALL_DATA} ${WRKSRC}/doc/*.html \
 		${STAGEDIR}${PREFIX}/share/doc/gps/html
-.if ${PORT_OPTIONS:MDOCS}
+
+do-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/*.pdf ${WRKSRC}/doc/*.html \
 		${STAGEDIR}${DOCSDIR}
-.endif
 
 .include <bsd.port.mk>

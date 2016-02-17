@@ -30,7 +30,6 @@ man/man1/xymongrep.1
 man/man1/xymonnet-again.sh.1
 man/man1/xymonnet.1
 man/man1/xymonpage.cgi.1
-man/man1/xymonping.1
 man/man5/alerts.cfg.5
 man/man5/analysis.cfg.5
 man/man5/cgioptions.cfg.5
@@ -95,6 +94,7 @@ man/man8/xymonproxy.8
 %%WWWDIR%%/cgi-bin/topchanges.sh
 %%WWWDIR%%/cgi-secure/ackinfo.sh
 %%WWWDIR%%/cgi-secure/acknowledge.sh
+%%WWWDIR%%/cgi-secure/chpasswd.sh
 %%WWWDIR%%/cgi-secure/criticaleditor.sh
 %%WWWDIR%%/cgi-secure/enadis.sh
 %%WWWDIR%%/cgi-secure/useradm.sh
@@ -110,6 +110,7 @@ man/man8/xymonproxy.8
 %%WWWDIR%%/server/bin/beastat
 %%WWWDIR%%/server/bin/boilerplate.cgi
 %%WWWDIR%%/server/bin/cgiwrap
+%%WWWDIR%%/server/bin/chpasswd.cgi
 %%WWWDIR%%/server/bin/combostatus
 %%WWWDIR%%/server/bin/confreport.cgi
 %%WWWDIR%%/server/bin/convertnk
@@ -192,6 +193,9 @@ man/man8/xymonproxy.8
 %%WWWDIR%%/server/web/acknowledgements_footer
 %%WWWDIR%%/server/web/acknowledgements_form
 %%WWWDIR%%/server/web/acknowledgements_header
+%%WWWDIR%%/server/web/chpasswd_footer
+%%WWWDIR%%/server/web/chpasswd_form
+%%WWWDIR%%/server/web/chpasswd_header
 %%WWWDIR%%/server/web/columndoc_footer
 %%WWWDIR%%/server/web/columndoc_header
 %%WWWDIR%%/server/web/confreport_back
@@ -295,6 +299,7 @@ man/man8/xymonproxy.8
 %%WWWDIR%%/server/www/gifs/favicon-red.ico
 %%WWWDIR%%/server/www/gifs/favicon-unknown.ico
 %%WWWDIR%%/server/www/gifs/favicon-yellow.ico
+%%WWWDIR%%/server/www/gifs/green-ack.gif
 %%WWWDIR%%/server/www/gifs/green-recent.gif
 %%WWWDIR%%/server/www/gifs/green.gif
 %%WWWDIR%%/server/www/gifs/purple-ack.gif
@@ -366,7 +371,6 @@ man/man8/xymonproxy.8
 %%WWWDIR%%/server/www/help/manpages/man1/xymonnet-again.sh.1.html
 %%WWWDIR%%/server/www/help/manpages/man1/xymonnet.1.html
 %%WWWDIR%%/server/www/help/manpages/man1/xymonpage.cgi.1.html
-%%WWWDIR%%/server/www/help/manpages/man1/xymonping.1.html
 %%WWWDIR%%/server/www/help/manpages/man5/alerts.cfg.5.html
 %%WWWDIR%%/server/www/help/manpages/man5/analysis.cfg.5.html
 %%WWWDIR%%/server/www/help/manpages/man5/client-local.cfg.5.html

@@ -11,6 +11,8 @@ DIST_SUBDIR=	platon/${PORTVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Tool for viewing molecular/crystallographic structures
 
+BROKEN=		unfetchable
+
 # PLATON may be used free of charge by the academic community under
 # the condition that it is not redistributed for a current & fresh copy.
 # There is a charge of US$ 5000 for commercial users.
@@ -28,8 +30,6 @@ OPTIONS_DEFINE=	DOCS
 
 MAKEFILE=	${FILESDIR}/Makefile
 
-.include <bsd.port.pre.mk>
-
 pre-patch:
 	${GUNZIP_CMD} ${WRKSRC}/platon.f.gz ${WRKSRC}/xdrvr.c.gz
 
@@ -37,7 +37,7 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/${DISTNAME}/platon \
 		${STAGEDIR}${PREFIX}/bin
 	${LN} -fs platon ${STAGEDIR}${PREFIX}/bin/pluton
-.if ${PORT_OPTIONS:MDOCS}
+do-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${MV} ${WRKDIR}/${DISTNAME}/README* ${STAGEDIR}${DOCSDIR}/
 	${MV} ${SAMPLES:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}/
@@ -46,6 +46,5 @@ do-install:
 	${MV} ${WRKSRC}/TEST ${STAGEDIR}${DOCSDIR}/
 	${FIND} ${STAGEDIR}${DOCSDIR} -type f -print0 |	\
 		${XARGS} -0 ${CHMOD} ${_SHAREMODE}
-.endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

@@ -10,6 +10,8 @@ COMMENT=	Perl bindings for Version control system
 MASTERDIR=	${.CURDIR}/../../devel/subversion16
 .elif defined(WITH_SUBVERSION_VER) && ${WITH_SUBVERSION_VER} == 17
 MASTERDIR=	${.CURDIR}/../../devel/subversion17
+.elif defined(WITH_SUBVERSION_VER) && ${WITH_SUBVERSION_VER} == 18
+MASTERDIR=	${.CURDIR}/../../devel/subversion18
 .else
 MASTERDIR=	${.CURDIR}/../../devel/subversion
 .endif
@@ -21,13 +23,16 @@ USE_PERL5=	build run
 SVN_BUILD_BINDINGS=	yes
 SVN_BUILD_ADDONS=	yes
 
+MAKE_JOBS_UNSAFE=	yes
+
 .include "${MASTERDIR}/Makefile.common"
 
 CATEGORIES+=	perl5
 
 CONFIGURE_ARGS+=	--without-gnome-keyring \
 			--without-kwallet \
-			--with-apxs=no
+			--with-apxs=no \
+			--disable-keychain
 
 ALL_TARGET=	swig-pl-lib swig-pl
 INSTALL_TARGET=	install-swig-pl

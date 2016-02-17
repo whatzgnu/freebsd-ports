@@ -13,6 +13,8 @@ MAINTAINER=	martin.dieringer@gmx.de
 COMMENT=	Author and playback unencrypted and uncompressed Audio-DVDs
 
 BROKEN=		Fails to fetch
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2015-11-26
 LIB_DEPENDS=	libFLAC.so:${PORTSDIR}/audio/flac \
 		libogg.so:${PORTSDIR}/audio/libogg \
 		libsox.so:${PORTSDIR}/audio/sox \
@@ -33,11 +35,7 @@ USE_CSTD=	gnu89
 
 OPTIONS_DEFINE=	DOCS
 
-.include <bsd.port.options.mk>
-
-.if ! ${PORT_OPTIONS:MDOCS}
-CONFIGURE_ARGS+=	--docdir=${WRKDIR}/doc
-.endif
+DOCS_CONFIGURE_OFF=	--docdir=${WRKDIR}/doc
 
 post-patch:
 	@${REINPLACE_CMD} 's|-std=c99||g' \

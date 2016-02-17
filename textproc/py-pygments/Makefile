@@ -1,8 +1,9 @@
 # Created by: Nicola Vitale <nivit@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/textproc/py-pygments/Makefile 406304 2016-01-17 12:03:37Z rakuco $
 
 PORTNAME=	pygments
 PORTVERSION=	2.0.2
+PORTREVISION=	1
 CATEGORIES=	textproc python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

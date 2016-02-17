@@ -3,7 +3,7 @@
 #
 # Created by: Akinori MUSHA <knu@FreeBSD.org>
 #
-# $FreeBSD$
+# $FreeBSD: head/Mk/bsd.ruby.mk 404314 2015-12-23 19:11:44Z sunpoet $
 #
 
 .if !defined(Ruby_Include)
@@ -174,14 +174,14 @@ RUBY?=			${LOCALBASE}/bin/${RUBY_NAME}
 RUBY_RELVERSION=	2.0.0
 RUBY_PORTREVISION=	0
 RUBY_PORTEPOCH=		1
-RUBY_PATCHLEVEL=	645
+RUBY_PATCHLEVEL=	648
 RUBY20=			""	# PLIST_SUB helpers
 
 . elif ${RUBY_VER} == 2.1
 #
 # Ruby 2.1
 #
-RUBY_RELVERSION=	2.1.6
+RUBY_RELVERSION=	2.1.8
 RUBY_PORTREVISION=	0
 RUBY_PORTEPOCH=		1
 RUBY_PATCHLEVEL=	0
@@ -191,7 +191,7 @@ RUBY21=			""	# PLIST_SUB helpers
 #
 # Ruby 2.2
 #
-RUBY_RELVERSION=	2.2.2
+RUBY_RELVERSION=	2.2.4
 RUBY_PORTREVISION=	0
 RUBY_PORTEPOCH=		1
 RUBY_PATCHLEVEL=	0
@@ -211,6 +211,14 @@ _INVALID_RUBY_VER=	1
 RUBY20?=		"@comment "
 RUBY21?=		"@comment "
 RUBY22?=		"@comment "
+
+.if defined(BROKEN_RUBY${RUBY_VER:R}${RUBY_VER:E})
+.if ${BROKEN_RUBY${RUBY_VER:R}${RUBY_VER:E}} == "yes"
+BROKEN=			does not build with Ruby ${RUBY_VER}
+.else
+BROKEN=			${BROKEN_RUBY${RUBY_VER:R}${RUBY_VER:E}}
+.endif
+.endif
 
 .if ${RUBY_PATCHLEVEL} == 0
 RUBY_VERSION?=		${RUBY_RELVERSION}

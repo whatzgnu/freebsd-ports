@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	treesheets
-PORTVERSION=	0.0.20150405
+PORTVERSION=	0.0.20151008
 CATEGORIES=	deskutils
 
 MAINTAINER=	lightside@gmx.com
@@ -13,14 +13,15 @@ LICENSE_FILE=	${WRKSRC}/ZLIB_LICENSE.txt
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	aardappel
-GH_TAGNAME=	b994c63
+GH_TAGNAME=	10fbc77
 
 BUILD_WRKSRC=	${WRKSRC}/src
 EXTRACT_AFTER_ARGS=	--exclude .gitignore
+PACKAGE_VERSION=	\"${PORTVERSION}\"
+MAKE_ENV=	PACKAGE_VERSION=${PACKAGE_VERSION:Q}
 
 USES=		compiler:c++11-lib
 USE_WX=		3.0+
-WX_UNICODE=	yes
 
 PORTDATA=	images
 PORTDOCS=	docs *.html
@@ -35,12 +36,6 @@ DESKTOP_ENTRIES="TreeSheets" "${COMMENT}" \
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-.include <bsd.port.pre.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 900014
-CXXFLAGS+=	-D__LONG_LONG_SUPPORTED
-.endif
-
 post-patch: .SILENT
 	${REINPLACE_CMD} -e 's|sys->frame->GetPath(L"|(L"${DOCSDIR}/|' \
 		${BUILD_WRKSRC}/document.h
@@ -52,10 +47,14 @@ post-patch: .SILENT
 do-install:
 	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 	(cd ${WRKSRC}/TS && ${COPYTREE_SHARE} "${PORTDATA}" ${STAGEDIR}${DATADIR})
-	(cd ${WRKSRC}/TS && ${COPYTREE_SHARE} "${PORTDOCS}" ${STAGEDIR}${DOCSDIR})
-	(cd ${WRKSRC}/TS/examples && ${COPYTREE_SHARE} "${PORTEXAMPLES}" \
-		${STAGEDIR}${EXAMPLESDIR})
 	${INSTALL_DATA} ${WRKSRC}/TS/images/icon32.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps/${PORTNAME}.png
 
-.include <bsd.port.post.mk>
+do-install-DOCS-on:
+	(cd ${WRKSRC}/TS && ${COPYTREE_SHARE} "${PORTDOCS}" ${STAGEDIR}${DOCSDIR})
+
+do-install-EXAMPLES-on:
+	(cd ${WRKSRC}/TS/examples && ${COPYTREE_SHARE} "${PORTEXAMPLES}" \
+		${STAGEDIR}${EXAMPLESDIR})
+
+.include <bsd.port.mk>

@@ -4,7 +4,7 @@ PORTNAME=	yasnippet
 PORTVERSION=	0.6.1c
 PORTREVISION=	10
 CATEGORIES=	editors
-MASTER_SITES=	${MASTER_SITE_GOOGLE_CODE}
+MASTER_SITES=	GOOGLE_CODE
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
 		yasnippet-doc-${PORTVERSION}${EXTRACT_SUFX}
 
@@ -12,6 +12,8 @@ MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	YASnippet is a template system for Emacs
 
 BROKEN=		Unfetchable
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2015-11-26
 USES=		tar:bzip2
 USE_EMACS=	yes
 NO_BUILD=	yes

@@ -12,9 +12,10 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Simple OpenGL-based firework simulator
 
 BROKEN=		No public distfiles
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2015-11-26
 
-LIB_DEPENDS=	libjpeg.so:${PORTSDIR}/graphics/jpeg
-
+USES=		jpeg
 USE_GL=		gl glut
 USE_XORG=	xi xmu xext
 

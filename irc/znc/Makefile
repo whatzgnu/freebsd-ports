@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	znc
-PORTVERSION=	1.6.0
+PORTVERSION=	1.6.1
+PORTREVISION=	1
 CATEGORIES=	irc ipv6
 MASTER_SITES=	http://znc.in/releases/ \
 		http://znc.in/releases/archive/
@@ -11,6 +12,7 @@ MAINTAINER=	jase@FreeBSD.org
 COMMENT=	Advanced IRC bouncer
 
 LICENSE=	APACHE20
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 GNU_CONFIGURE=	yes
 USE_RC_SUBR=	znc
@@ -43,15 +45,11 @@ PYTHON_CONFIGURE_ON=	--enable-python=python-${PYTHON_VER} --enable-swig
 PYTHON_USES=	perl5 python:3
 OPENSSL_CONFIGURE_OFF=	--disable-openssl
 CHARSET_CONFIGURE_OFF=	--disable-charset
-CHARSET_LIB_DEPENDS=	libicuuc.so.53:${PORTSDIR}/devel/icu \
-			libicudata.so.53:${PORTSDIR}/devel/icu
+CHARSET_LIB_DEPENDS=	libicuuc.so.55:${PORTSDIR}/devel/icu \
+			libicudata.so.55:${PORTSDIR}/devel/icu
 TCL_CONFIGURE_ENABLE=	tcl
 
 .include <bsd.port.options.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 900014
-CXXFLAGS+=	-D__LONG_LONG_SUPPORTED
-.endif
 
 .if ${PORT_OPTIONS:MOPENSSL}
 .include "${PORTSDIR}/Mk/bsd.openssl.mk"

@@ -3,6 +3,7 @@
 
 PORTNAME=	osm2pgsql
 PORTVERSION=	0.87.2
+PORTREVISION=	1
 CATEGORIES=	converters geography
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -42,7 +43,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|AC_MSG_WARN|AC_MSG_ERROR|' ${WRKSRC}/configure.ac
 	@${REINPLACE_CMD} -e 's|-lstdc++||' ${WRKSRC}/Makefile.am
 
-post-install:
+post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}/

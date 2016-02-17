@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mediastreamer
-PORTVERSION=	2.11.1
+PORTVERSION=	2.12.0
 CATEGORIES=	net
 MASTER_SITES=	SAVANNAH/linphone/mediastreamer
 
@@ -15,16 +15,16 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS=	libortp.so:${PORTSDIR}/net/ortp \
 		libsrtp.so:${PORTSDIR}/net/libsrtp \
 		libbzrtp.so:${PORTSDIR}/security/libbzrtp \
-		libpolarssl.so.8:${PORTSDIR}/security/polarssl13
+		libmbedtls.so.9:${PORTSDIR}/security/polarssl13
 
 CONFLICTS_INSTALL=	linphone-base-[0-9]*
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-alsa --disable-matroska --disable-pulseaudio \
-		--disable-silent-rules --disable-strict \
+CONFIGURE_ARGS=	--disable-alsa --disable-documentation --disable-matroska \
+		--disable-pulseaudio --disable-silent-rules --disable-strict \
 		--with-gsm=${LOCALBASE} --with-srtp=${LOCALBASE} \
 		--with-polarssl=${LOCALBASE} xxd_found=yes
-CPPFLAGS+=	-I${LOCALBASE}/include
+CPPFLAGS+=	-I${LOCALBASE}/include -DHAVE_ARC4RANDOM
 LIBS+=		-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 USES=		gettext-tools gmake libtool pathfix pkgconfig

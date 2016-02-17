@@ -5,8 +5,7 @@ PORTNAME=	armv7
 PORTVERSION=	${SNAPSHOT}
 PORTREVISION=	${ARMV7_PR}
 CATEGORIES=	lang
-MASTER_SITES=	${MASTER_SITE_GCC}
-MASTER_SITE_SUBDIR=	releases/gcc-${GCC_VERSION}
+MASTER_SITES=	GCC/releases/gcc-${GCC_VERSION}
 PKGNAMEPREFIX=	gnatdroid-
 DISTFILES=	${IDENTIFICATION}.tar.bz2
 
@@ -115,6 +114,8 @@ post-extract:
 .endfor
 	@(cd ${WRKSRC}/gcc/testsuite/ada/acats && \
 		${CP} run_remote.sh run_all.sh)
+	${REINPLACE_CMD} -e 's|<syscall.h>|<sys/syscall.h>|' \
+		${WRKSRC}/libstdc++-v3/libsupc++/guard.cc
 
 do-configure:
 	${MKDIR} ${BUILD_WRKSRC}

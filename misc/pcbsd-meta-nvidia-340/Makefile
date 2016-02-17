@@ -12,8 +12,8 @@ DISTFILES=	# none
 MAINTAINER=	kris@pcbsd.org
 COMMENT=	The meta-port pcbsd-meta-nvidia-340
 
-RUN_DEPENDS=	nvidia-driver-304>=0:${PORTSDIR}/x11/nvidia-driver-340 \
-		nvidia-settings>=0:${PORTSDIR}/x11/nvidia-settings \
+RUN_DEPENDS=	nvidia-driver-340>=0:${PORTSDIR}/x11/nvidia-driver-340 \
+		nvidia-settings-340>=0:${PORTSDIR}/x11/nvidia-settings-340 \
 		nvidia-xconfig>=0:${PORTSDIR}/x11/nvidia-xconfig
 
 NO_BUILD=	yes

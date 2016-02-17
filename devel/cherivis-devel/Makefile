@@ -2,13 +2,15 @@
 
 PORTNAME=	cherivis-devel
 PORTVERSION=	0.1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel gnustep
 
 MAINTAINER=	theraven@FreeBSD.org
 COMMENT=	Visualisation tool for CHERI / BERI streamtraces
 
 LICENSE=	MIT
+
+BROKEN_FreeBSD_9=	does not build on FreeBSD 9.x
 
 USES=		gnustep
 USE_GITHUB=	yes

@@ -3,7 +3,7 @@
 
 PORTNAME=	ntopng
 PORTVERSION=	1.2.1
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	net
 MASTER_SITES=	SF/ntop/${PORTNAME}
 
@@ -13,12 +13,12 @@ COMMENT=	Network monitoring tool with command line and web interfaces
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BROKEN=		Fails to link
+BROKEN=		Fails to build
 
 LIB_DEPENDS=	librrd.so:${PORTSDIR}/databases/rrdtool \
 		libluajit-5.1.so:${PORTSDIR}/lang/luajit \
 		libndpi.so:${PORTSDIR}/net/ndpi \
-		libzmq.so:${PORTSDIR}/net/libzmq3
+		libzmq.so:${PORTSDIR}/net/libzmq4
 
 GNU_CONFIGURE=	yes
 USE_SQLITE=	yes
@@ -35,12 +35,6 @@ GEOIP_BUILD_DEPENDS=	geoiplookup:${PORTSDIR}/net/GeoIP
 NLS_USES=	gettext
 
 USE_RC_SUBR=	ntopng
-
-.include <bsd.port.options.mk>
-
-.if ${OSVERSION} < 900000
-BROKEN=	Does not build on 8.X due to *ENDIAN implementations
-.endif
 
 post-extract:
 	@${FIND} ${WRKSRC} -name "*~" -delete

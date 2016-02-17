@@ -1,11 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	fldigi
-PORTVERSION=	3.22.08
-PORTREVISION=	1
+PORTVERSION=	3.23.03
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://www.w1hkj.com/downloads/fldigi/\
-		LOCAL/shurd
+		LOCAL/db
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Digital decoder for psk, cw, psk31, olivia
@@ -23,7 +22,7 @@ LIB_DEPENDS=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo \
 
 USE_CXXSTD=	gnu++0x
 GNU_CONFIGURE=	yes
-USES=		gmake pkgconfig compiler:c++11-lib perl5 shebangfix
+USES=		compiler:c++11-lib gmake perl5 pkgconfig shebangfix
 CONFIGURE_ENV=	FLTK_CONFIG="${LOCALBASE}/bin/fltk-config" \
 		    EXTRA_LIBS="-lexecinfo"
 
@@ -47,8 +46,7 @@ OSS_CONFIGURE_ENABLE=		oss
 SNDFILE_CONFIGURE_WITH=		sndfile
 SNDFILE_LIB_DEPENDS=		libsndfile.so:${PORTSDIR}/audio/libsndfile
 PORTAUDIO_CONFIGURE_WITH=	portaudio
-PORTAUDIO_BUILD_DEPENDS=	${LOCALBASE}/lib/portaudio2/libportaudio.so:${PORTSDIR}/audio/portaudio2
-PORTAUDIO_RUN_DEPENDS=		${LOCALBASE}/lib/portaudio2/libportaudio.so:${PORTSDIR}/audio/portaudio2
+PORTAUDIO_LIB_DEPENDS=		libportaudio.so:${PORTSDIR}/audio/portaudio
 PULSEAUDIO_CONFIGURE_WITH=	pulseaudio
 PULSEAUDIO_LIB_DEPENDS=		libpulse.so:${PORTSDIR}/audio/pulseaudio
 HAMLIB_CONFIGURE_WITH=		hamlib
@@ -69,8 +67,6 @@ PLIST_SUB+=	XMLRPC=""
 CONFIGURE_ARGS+=--with-asciidoc
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|png_infopp_NULL|NULL|' \
-		 ${WRKSRC}/src/widgets/picture.cxx
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|' \
 		${WRKSRC}/Makefile.in
 

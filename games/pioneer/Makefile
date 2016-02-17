@@ -4,7 +4,6 @@
 PORTNAME=	pioneer
 PORTVERSION=	0.0.${GH_TAGNAME}
 CATEGORIES=	games
-MASTER_SITES=	http://github.com/${GH_ACCOUNT}/${GH_PROJECT}/archive/${GH_TAGNAME}${EXTRACT_SUFX}?dummy=/
 
 MAINTAINER=	lightside@gmx.com
 COMMENT=	Space adventure game set in the Milky Way galaxy
@@ -37,11 +36,9 @@ LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libassimp.so:${PORTSDIR}/multimedia/assimp
 
+USE_GITHUB=	yes
 GH_ACCOUNT=	pioneerspacesim
-GH_PROJECT=	${PORTNAME}
-GH_TAGNAME=	20150314
-
-WRKSRC=		${WRKDIR}/${GH_PROJECT}-${GH_TAGNAME}
+GH_TAGNAME=	20151004
 
 USES=		autoreconf gmake pkgconfig
 USE_GL=		gl
@@ -89,20 +86,20 @@ QUICKSTART_PATH=	\
 post-patch: .SILENT
 	${REINPLACE_CMD} -e '/^OPTIMISE=/d' \
 		${WRKSRC}/configure.ac
-	${REINPLACE_CMD} -e 's/modelviewer/${PORTNAME} -modelviewer/' \
-		${WRKSRC}/Modelviewer.txt
-.if !${PORT_OPTIONS:MMODELCOMPILER}
+	${REINPLACE_CMD} -e 's/std:://g' \
+		${WRKSRC}/src/Orbit.cpp
+
+post-patch-MODELCOMPILER-off: .SILENT
 	${REINPLACE_CMD} -e 's/pioneer modelcompiler/pioneer/' \
 		${WRKSRC}/src/Makefile.am
-.endif
 
 post-install:
-.if ${PORT_OPTIONS:MMODELCOMPILER}
-	@${MV} ${STAGEDIR}${PREFIX}/bin/modelcompiler \
-		${STAGEDIR}${PREFIX}/bin/${PORTNAME}-modelcompiler
-.endif
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} "${PORTDOCS}" ${STAGEDIR}${DOCSDIR})
 	${INSTALL_DATA} ${WRKSRC}/application-icon/pngs/pioneer-256x256.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps/${PORTNAME}.png
+
+post-install-MODELCOMPILER-on:
+	${MV} ${STAGEDIR}${PREFIX}/bin/modelcompiler \
+		${STAGEDIR}${PREFIX}/bin/${PORTNAME}-modelcompiler
 
 .include <bsd.port.mk>

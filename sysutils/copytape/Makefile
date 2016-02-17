@@ -4,15 +4,12 @@
 PORTNAME=		copytape
 PORTVERSION=		1.0
 CATEGORIES=		sysutils
-MASTER_SITES=		${MASTER_SITE_COMP_SOURCES}
-MASTER_SITE_SUBDIR=	unix/volume10
+MASTER_SITES=		COMP_SOURCES/unix/volume10
 DISTNAME=		copytape
 EXTRACT_SUFX=		.Z
 
 MAINTAINER=		sjroz@verizon.net
 COMMENT=		Program that is used to duplicate magtapes
-
-BROKEN=			No public distfiles
 
 EXTRACT_DEPENDS=	gunshar:${PORTSDIR}/archivers/sharutils
 
@@ -20,7 +17,7 @@ NO_WRKSUBDIR=		yes
 
 EXTRACT_CMD=		zcat
 EXTRACT_BEFORE_ARGS=
-EXTRACT_AFTER_ARGS=	| gunshar -d ${WRKDIR}
+EXTRACT_AFTER_ARGS=	| gunshar -d ${WRKSRC}
 
 CFLAGS+=	-Wno-return-type
 # XXX upstream puts CFLAGS in CC
