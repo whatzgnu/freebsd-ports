@@ -1,4 +1,4 @@
-# $FreeBSD: head/www/apache24/Makefile.options 399207 2015-10-13 18:17:28Z ohauer $
+# $FreeBSD$
 
 # ===========================================================
 # Only the most important modules are enabled per default in 

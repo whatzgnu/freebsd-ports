@@ -1,5 +1,5 @@
 # Created by: rooneg@electricjellyfish.net
-# $FreeBSD: head/devel/subversion/Makefile 403810 2015-12-15 21:06:27Z ohauer $
+# $FreeBSD$
 
 PORTREVISION=	1
 
@@ -50,6 +50,7 @@ SVNUSER?=	svn
 
 CONFIGURE_ARGS+=	--without-gnome-keyring \
 			--without-kwallet \
+			--disable-keychain \
 			--with-apxs=no
 
 .if ${PORT_OPTIONS:MSVNSERVE_WRAPPER}

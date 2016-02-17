@@ -3,7 +3,7 @@
 
 PORTNAME=	rezound
 DISTVERSION=	0.12.3beta
-PORTREVISION=	22
+PORTREVISION=	23
 CATEGORIES=	audio
 MASTER_SITES=	SF/${PORTNAME}/ReZound/${DISTVERSION}
 
@@ -13,6 +13,8 @@ COMMENT=	Graphical audio file editor
 LICENSE=	GPLv2
 
 BROKEN=		Fails to configure with gcc, fails to link with clang
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2016-02-29
 
 LIB_DEPENDS=	libFOX-1.4.so:${PORTSDIR}/x11-toolkits/fox14
 

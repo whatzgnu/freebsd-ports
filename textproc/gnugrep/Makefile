@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	grep
-PORTVERSION=	2.22
+PORTVERSION=	2.23
 CATEGORIES=	textproc
 MASTER_SITES=	GNU
 PKGNAMEPREFIX=	gnu
@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	gnu
 MAINTAINER=	johans@FreeBSD.org
 COMMENT=	GNU grep
 
-LICENSE=	GPLv3
+LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 CONFLICTS=	bsd-grep-[0-9]*
@@ -43,6 +43,7 @@ PCRE_CONFIGURE_OFF=	--disable-perl-regexp
 .include <bsd.port.options.mk>
 
 post-patch:
+	@${REINPLACE_CMD} 's:@grep@:${LOCALBASE}/bin/&:' ${WRKSRC}/src/egrep.sh
 .if empty(PORT_OPTIONS:MNLS)
 	@${REINPLACE_CMD} '/install-exec-local:/s/install-exec-localcharset//' \
 		${WRKSRC}/lib/Makefile.in

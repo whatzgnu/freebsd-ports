@@ -60,7 +60,6 @@
     SUBDIR += h5utils
     SUBDIR += harminv
     SUBDIR += hdf
-    SUBDIR += hdf-java
     SUBDIR += hdf5
     SUBDIR += hs-bio
     SUBDIR += isaac-cfd
@@ -132,6 +131,7 @@
     SUBDIR += p5-Geo-Coordinates-Converter-iArea
     SUBDIR += p5-Geo-ReadGRIB
     SUBDIR += p5-Geo-WebService-Elevation-USGS
+    SUBDIR += p5-Mcstas-Tools
     SUBDIR += p5-PerlMol
     SUBDIR += p5-Physics-Unit
     SUBDIR += paje
@@ -156,6 +156,7 @@
     SUBDIR += py-pysal
     SUBDIR += py-pyteomics
     SUBDIR += py-pyteomics.biolccc
+    SUBDIR += py-scikit-fuzzy
     SUBDIR += py-scikit-learn
     SUBDIR += py-scikit-sparse
     SUBDIR += py-scimath

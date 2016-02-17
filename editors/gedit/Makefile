@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gedit
-PORTVERSION=	3.16.3
+PORTVERSION=	3.18.3
 CATEGORIES=	editors gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -23,18 +23,18 @@ RUN_DEPENDS=	iso-codes>=0:${PORTSDIR}/misc/iso-codes \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake libtool \
+USES=		desktop-file-utils gettext gmake gnome libtool \
 		pathfix pkgconfig python:3 tar:xz
 USE_GNOME=	gtksourceview3 intlhack introspection:build \
 		libxml2 py3gobject3
 USE_XORG=	sm
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-updater
-CONFIGURE_ARGS+=--disable-zeitgeist \
+CONFIGURE_ARGS=	--disable-updater \
 		--enable-python
 CPPFLAGS+=	-I${LOCALBASE}/include -Wno-error=format-nonliteral
 CFLAGS+=	-I${LOCALBASE}/include -Wno-error=format-nonliteral
 LDFLAGS+=	-L${LOCALBASE}/lib
+USE_LDCONFIG=	yes
 PLIST_SUB=	VERSION="3.14"
 INSTALL_TARGET=	install-strip
 
@@ -48,5 +48,9 @@ GLIB_SCHEMAS=	org.gnome.gedit.enums.xml \
 		org.gnome.gedit.plugins.time.gschema.xml
 
 PLIST_SUB+=	PYVER=${PYTHON_VER:S/.//}
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|=python|=${PYTHON_CMD}|g' \
+		${WRKSRC}/py-compile
 
 .include <bsd.port.mk>

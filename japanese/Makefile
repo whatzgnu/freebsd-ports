@@ -22,6 +22,7 @@
     SUBDIR += bible_names-fpw
     SUBDIR += bookview
     SUBDIR += bugzilla44
+    SUBDIR += bugzilla50
     SUBDIR += calligra-l10n
     SUBDIR += canna-lib
     SUBDIR += canna-server
@@ -186,7 +187,6 @@
     SUBDIR += ngraph-fonts
     SUBDIR += nhocr
     SUBDIR += nkf
-    SUBDIR += ochusha
     SUBDIR += onew
     SUBDIR += p5-Date-Japanese-Era
     SUBDIR += p5-Date-Japanese-Holiday

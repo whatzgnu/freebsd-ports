@@ -120,6 +120,9 @@ bin/thg
 %%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/lfprompt.py
 %%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/lfprompt.pyc
 %%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/lfprompt.pyo
+%%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/locktool.py
+%%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/locktool.pyc
+%%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/locktool.pyo
 %%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/manifestmodel.py
 %%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/manifestmodel.pyc
 %%PYTHON_SITELIBDIR%%/tortoisehg/hgqt/manifestmodel.pyo
@@ -397,6 +400,7 @@ share/applications/tortoisehg.desktop
 %%NLS%%share/locale/ru/LC_MESSAGES/tortoisehg.mo
 %%NLS%%share/locale/sr/LC_MESSAGES/tortoisehg.mo
 %%NLS%%share/locale/sv/LC_MESSAGES/tortoisehg.mo
+%%NLS%%share/locale/th/LC_MESSAGES/tortoisehg.mo
 %%NLS%%share/locale/tr/LC_MESSAGES/tortoisehg.mo
 %%NLS%%share/locale/uk/LC_MESSAGES/tortoisehg.mo
 %%NLS%%share/locale/zh_CN/LC_MESSAGES/tortoisehg.mo

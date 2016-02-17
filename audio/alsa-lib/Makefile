@@ -10,10 +10,11 @@ MASTER_SITES=	ALSA/lib \
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	ALSA compatibility library
 
-LICENSE=	LGPL21 # or any later version
+LICENSE=	LGPL21+
 
-USES=		libtool:keepla tar:bzip2
+USES=		cpe libtool:keepla tar:bzip2
 USE_LDCONFIG=	yes
+CPE_VENDOR=	alsa
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-pkgconfdir="\$${prefix}/libdata/pkgconfig"
 INSTALL_TARGET=	install-strip

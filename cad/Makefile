@@ -24,19 +24,11 @@
     SUBDIR += elmerfem
     SUBDIR += feappv
     SUBDIR += fidocadj
-    SUBDIR += findhier
     SUBDIR += freehdl
+    SUBDIR += fritzing
     SUBDIR += gdsreader
     SUBDIR += gdt
     SUBDIR += geda
-    SUBDIR += geda-docs
-    SUBDIR += geda-examples
-    SUBDIR += geda-gattrib
-    SUBDIR += geda-gschem
-    SUBDIR += geda-netlist
-    SUBDIR += geda-symbols
-    SUBDIR += geda-symcheck
-    SUBDIR += geda-utils
     SUBDIR += gerbv
     SUBDIR += ghdl
     SUBDIR += gmsh
@@ -55,7 +47,6 @@
     SUBDIR += layouteditor
     SUBDIR += ldraw
     SUBDIR += leocad
-    SUBDIR += libgeda
     SUBDIR += librecad
     SUBDIR += linux-eagle5
     SUBDIR += logisim
@@ -71,6 +62,7 @@
     SUBDIR += p5-Verilog-Perl
     SUBDIR += pcb
     SUBDIR += pdnmesh
+    SUBDIR += py-pycam
     SUBDIR += pythoncad
     SUBDIR += qcad
     SUBDIR += qcad-partslib
@@ -81,7 +73,6 @@
     SUBDIR += repsnapper
     SUBDIR += sceptre
     SUBDIR += scotch
-    SUBDIR += slffea
     SUBDIR += spice
     SUBDIR += stepcode
     SUBDIR += sweethome3d

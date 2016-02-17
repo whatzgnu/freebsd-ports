@@ -14,13 +14,15 @@ LIB_DEPENDS+=	libvorbis.so:${PORTSDIR}/audio/libvorbis \
 		libFLAC.so:${PORTSDIR}/audio/flac
 RUN_DEPENDS+=	lame:${PORTSDIR}/audio/lame
 
-USES=		imake motif
+USES=		imake motif ncurses
 USE_XORG=	x11 xext xaw xmu xp xpm xt sm ice
 PLIST_SUB+=	RELEASE=${OSREL:R:R} ARCH=${ARCH} OPSYS=${OPSYS}
 SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
 LIBBINDIR=	${STAGEDIR}${PREFIX}/lib/X11/xmcd/bin-${OPSYS}_${OSREL:R:R}-${ARCH}
+
+BROKEN_powerpc64=	Does not build on powerpc64
 
 post-extract:
 	@${CHMOD} -R u+w ${WRKSRC}

@@ -2,23 +2,22 @@
 # $FreeBSD$
 
 PORTNAME=	django-evolution
-PORTVERSION=	0.6.9
+PORTVERSION=	0.7.6
 PORTREVISION=	1
+DISTVERSIONPREFIX=	release-
 CATEGORIES=	www python
-MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
-DISTNAME=	django_evolution-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	cs@FreeBSD.org
 COMMENT=	Database schema evolution tool for the Django web framework
-
-DEPRECATED=	Django 1.4 extended support ended on 2015-10-01
-EXPIRATION_DATE=	2015-12-09
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django14>=1.1.1:${PORTSDIR}/www/py-django14
+RUN_DEPENDS=	${PYTHON_SITELIBDIR}/django/bin/django-admin.py:${PORTSDIR}/www/py-django18
 
+USE_GITHUB=	yes
+
+GH_ACCOUNT=	beanbaginc
 USES=		python
 USE_PYTHON=	distutils autoplist
 

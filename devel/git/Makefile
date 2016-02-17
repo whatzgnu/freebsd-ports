@@ -1,8 +1,8 @@
 # Created by: Eric Anholt
-# $FreeBSD: head/devel/git/Makefile 401118 2015-11-09 17:51:05Z garga $
+# $FreeBSD$
 
 PORTNAME=	git
-DISTVERSION=	2.6.3
+DISTVERSION=	2.7.0
 CATEGORIES=	devel
 MASTER_SITES=	KERNEL_ORG/software/scm/git
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
@@ -41,8 +41,8 @@ SHEBANG_FILES=	*.perl */*.perl */*/*.perl */*.pl */*/*.pl */*/*/*.pl \
 CONFIGURE_ARGS=	--enable-pthreads=-pthread ac_cv_header_libcharset_h=no
 
 OPTIONS_DEFINE=	GUI SVN GITWEB CONTRIB P4 CVS HTMLDOCS PERL ICONV CURL \
-		ETCSHELLS NLS
-OPTIONS_DEFAULT=	CONTRIB P4 CVS PERL ICONV CURL ETCSHELLS NLS
+		ETCSHELLS SEND_EMAIL NLS
+OPTIONS_DEFAULT=	CONTRIB P4 CVS PERL ICONV CURL ETCSHELLS SEND_EMAIL NLS
 OPTIONS_SUB=	yes
 
 GITWEB_DESC=	Install gitweb
@@ -51,6 +51,7 @@ P4_DESC=	Enable Perforce support
 CVS_DESC=	Enable CVS support
 HTMLDOCS_DESC=	Install additional documentation
 ETCSHELLS_DESC=	Modify /etc/shells
+SEND_EMAIL_DESC=Enable the git-send-email(1) script
 
 NLS_USES=		gettext
 NLS_MAKE_ARGS_OFF=	NO_GETTEXT=yes
@@ -58,10 +59,12 @@ NLS_MAKE_ARGS_OFF=	NO_GETTEXT=yes
 PERL_USES=		perl5
 PERL_MAKE_ENV=		PERL_PATH=${PERL}
 PERL_BUILD_DEPENDS=	p5-Error>=0:${PORTSDIR}/lang/p5-Error
-PERL_RUN_DEPENDS=	p5-Error>=0:${PORTSDIR}/lang/p5-Error \
-			p5-Net-SMTP-SSL>=0:${PORTSDIR}/mail/p5-Net-SMTP-SSL \
-			p5-Authen-SASL>=0:${PORTSDIR}/security/p5-Authen-SASL
+PERL_RUN_DEPENDS=	p5-Error>=0:${PORTSDIR}/lang/p5-Error
 PERL_MAKE_ARGS_OFF=	NO_PERL=1
+
+SEND_EMAIL_IMPLIES=	PERL
+SEND_EMAIL_RUN_DEPENDS= p5-Net-SMTP-SSL>=0:${PORTSDIR}/mail/p5-Net-SMTP-SSL \
+			p5-Authen-SASL>=0:${PORTSDIR}/security/p5-Authen-SASL
 
 ICONV_USES=		iconv
 ICONV_MAKE_ARGS_OFF=	NO_ICONV=1
@@ -80,8 +83,8 @@ GUI_MAKE_ARGS_OFF=	NO_TCLTK=yes
 
 # While this port does not explicity honor WITH_SUBVERSION_VER knob it does
 # depend upon devel/p5-subversion, which does honor that knob. If you want
-# to have git use devel/subversion16 it will be brought in through
-# devel/p5-subversion if you set WITH_SUBVERSION_VER=16. Otherwise
+# to have git use devel/subversion18 it will be brought in through
+# devel/p5-subversion if you set WITH_SUBVERSION_VER=18. Otherwise
 # devel/subversion will be brought in.
 SVN_RUN_DEPENDS=	p5-Term-ReadKey>=0:${PORTSDIR}/devel/p5-Term-ReadKey \
 			p5-subversion>=0:${PORTSDIR}/devel/p5-subversion

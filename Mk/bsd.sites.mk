@@ -20,7 +20,7 @@
 #
 # Note: all entries should terminate with a slash.
 #
-# $FreeBSD: head/Mk/bsd.sites.mk 407675 2016-01-31 22:58:43Z gerald $
+# $FreeBSD: head/Mk/bsd.sites.mk 364450 2014-08-09 15:44:27Z mva $
 #
 
 # Where to put distfiles that don't have any other master site
@@ -1123,8 +1123,7 @@ MASTER_SITE_RUBY+= \
 # See http://rubygems.org/pages/about
 .if !defined(IGNORE_MASTER_SITE_RUBYGEMS)
 MASTER_SITE_RUBYGEMS+= \
-	http://production.s3.rubygems.org/gems/%SUBDIR%/ \
-	http://production.cf.rubygems.org/gems/%SUBDIR%/
+	https://rubygems.global.ssl.fastly.net/gems/%SUBDIR%/
 .endif
 
 .if !defined(IGNORE_MASTER_SITE_SAMBA)

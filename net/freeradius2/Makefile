@@ -14,7 +14,8 @@ DISTNAME=	freeradius-server-${DISTVERSION}
 MAINTAINER=	zi@FreeBSD.org
 COMMENT=	Free RADIUS server implementation
 
-LICENSE=	GPLv2
+LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libgdbm.so:${PORTSDIR}/databases/gdbm \
 		libltdl.so:${PORTSDIR}/devel/libltdl
@@ -176,7 +177,7 @@ PLIST_SUB+=	UNIXODBC="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MFIREBIRD}
-USE_FIREBIRD=	YES
+USES+=		firebird
 CONFIGURE_ARGS+=--with-rlm_sql_firebird
 PLIST_SUB+=	FIREBIRD=""
 .else

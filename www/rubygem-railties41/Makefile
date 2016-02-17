@@ -1,8 +1,8 @@
-# Created by: Torsten Zühlsdorff
+# Created by: Torsten Zuhlsdorff
 # $FreeBSD$
 
 PORTNAME=	railties
-PORTVERSION=	4.1.13
+PORTVERSION=	4.1.14
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 PKGNAMESUFFIX=	41
@@ -11,6 +11,9 @@ MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Rails internals bootup, plugins, generators, and rake tasks
 
 LICENSE=	MIT
+
+DEPRECATED=	Rails 4.1 is no longer supported - please switch to Rails 4.2
+EXPIRATION_DATE=	2016-03-31
 
 RUN_DEPENDS=	rubygem-actionpack41>=${PORTVERSION}:${PORTSDIR}/www/rubygem-actionpack41 \
 		rubygem-activesupport41>=${PORTVERSION}:${PORTSDIR}/devel/rubygem-activesupport41 \

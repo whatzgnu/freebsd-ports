@@ -1,27 +1,30 @@
 # $FreeBSD$
 
 PORTNAME=	rspamd
-PORTVERSION=	1.0.10
+PORTVERSION=	1.1.3
 CATEGORIES=	mail
 MASTER_SITES=	http://rspamd.com/downloads/
 
 MAINTAINER=	vsevolod@FreeBSD.org
 COMMENT=	Fast spam filtering system
 
-LICENSE=	BSD2CLAUSE
+LICENSE=	APACHE20
 
 LIB_DEPENDS=	libpcre.so:${PORTSDIR}/devel/pcre \
 		libgmime-2.4.so:${PORTSDIR}/mail/gmime24 \
 		libevent.so:${PORTSDIR}/devel/libevent2 \
-		libluajit-5.1.so:${PORTSDIR}/lang/luajit \
-		libhiredis.so:${PORTSDIR}/databases/hiredis
+		libluajit-5.1.so:${PORTSDIR}/lang/luajit
 
-OPTIONS_DEFINE=	GPERF REDIRECTOR
-GPERF_DESC=		google perf-tools profiling
+CONFLICTS_INSTALL=	rspamd
+
+OPTIONS_DEFINE=	GPERF REDIRECTOR HYPERSCAN
+GPERF_DESC=		Google perf-tools profiling
 REDIRECTOR_DESC=	Install HTTP redirector
+HYPERSCAN_DESC=		Use hyperscan optimizations (amd64 only)
 
 USE_RC_SUBR=	rspamd
 
+SUB_FILES=	pkg-message rspamd.newsyslog.conf.sample
 PLIST_SUB+=	ETCDIR=etc/rspamd \
 		RSPAMDVERSION=${PORTVERSION}
 CMAKE_ARGS+=	-DCONFDIR=${PREFIX}/etc/rspamd \
@@ -36,19 +39,24 @@ CMAKE_ARGS+=	-DCONFDIR=${PREFIX}/etc/rspamd \
 		-DNO_SHARED=ON
 
 USES=		cmake:outsource gettext iconv pkgconfig tar:xz perl5 \
-		compiler:c11
+		compiler:c11 sqlite
 USE_LDCONFIG=	yes
 USE_PERL5=	build
 
 USE_GNOME=	glib20
 USE_OPENSSL=	yes
-USE_SQLITE=	yes
 
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGPERF}
  CMAKE_ARGS+=	-DENABLE_GPERF_TOOLS=ON
  LIB_DEPENDS+=	libprofiler.so:${PORTSDIR}/devel/google-perftools
+.endif
+
+.if ${PORT_OPTIONS:MHYPERSCAN}
+ CMAKE_ARGS+=  -DENABLE_HYPERSCAN=ON
+ BUILD_DEPENDS+=       ${LOCALBASE}/lib/libhs.a:${PORTSDIR}/devel/hyperscan
+ ONLY_FOR_ARCHS=       amd64
 .endif
 
 .if ${PORT_OPTIONS:MREDIRECTOR}
@@ -77,9 +85,14 @@ post-stage:
 		${STAGEDIR}/var/log/rspamd \
 		${STAGEDIR}/var/db/rspamd \
 		${STAGEDIR}/var/run/rspamd
-		# Linux specific
-		${RM} ${STAGEDIR}/${ETCDIR}/rspamd.systemd.conf
-		# No need, since rspamd.conf.sample is a same
-		${RM} ${STAGEDIR}/${ETCDIR}/rspamd.sysvinit.conf
+	# Linux specific
+	${RM} ${STAGEDIR}/${ETCDIR}/rspamd.systemd.conf
+	# No need, since rspamd.conf.sample is a same
+	${RM} ${STAGEDIR}/${ETCDIR}/rspamd.sysvinit.conf
+	${INSTALL_DATA} ${WRKDIR}/rspamd.newsyslog.conf.sample ${STAGEDIR}${ETCDIR}
+
+post-install:
+	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/newsyslog.conf.d
+	${LN} -s ${ETCDIR}/rspamd.newsyslog.conf ${STAGEDIR}${PREFIX}/etc/newsyslog.conf.d
 
 .include <bsd.port.mk>

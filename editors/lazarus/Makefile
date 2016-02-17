@@ -2,16 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	lazarus
-PORTVERSION=	1.4.2
+PORTVERSION=	1.6RC2
 DISTVERSIONSUFFIX=	-0
-PORTREVISION?=	2
+PORTREVISION?=	0
 CATEGORIES=	editors devel
 MASTER_SITES=	SF/${PORTNAME}/Lazarus%20Zip%20_%20GZip/Lazarus%20${PORTVERSION:S/.0//} \
 		LOCAL/acm/freepascal
 DIST_SUBDIR=	freepascal
 
 MAINTAINER?=	freebsd-fpc@FreeBSD.org
-COMMENT?=	A portable Delphi-like IDE for the FreePascal compiler
+COMMENT?=	Portable Delphi-like IDE for the FreePascal compiler
 
 BUILD_DEPENDS?=	#
 RUN_DEPENDS?=	#
@@ -20,9 +20,9 @@ ONLY_FOR_ARCHS=	i386 amd64
 
 USES=		gmake
 USE_GNOME=	#
-USE_FPC?=	cairo dblib fcl-base fcl-db fcl-fpcunit fcl-image fcl-json fcl-process \
-		fcl-registry fcl-res fcl-xml gtk2 ibase iconvenc mysql numlib odbc oracle \
-		pasjpeg postgres sqlite x11
+USE_FPC?=	cairo dblib fcl-base fcl-db fcl-fpcunit fcl-image fcl-json \
+		fcl-registry fcl-res fcl-xml gtk2 ibase iconvenc rtl-extra \
+		mysql numlib odbc oracle pasjpeg postgres sqlite x11
 OPT?=		"-Sgic "
 
 MAKE_ENV=	OPT=${OPT}
@@ -44,13 +44,9 @@ OPTIONS_DEFAULT=	GTK2 GDB
 
 .include <bsd.port.options.mk>
 
-.if ${ARCH} == "i386"
-LAZARUS_ARCH=	i386
-.elif ${ARCH} == "amd64"
-LAZARUS_ARCH=	x86_64
-.endif
+LAZARUS_ARCH=	${ARCH:S,amd64,x86_64,}
 
-BUILDNAME=	${LAZARUS_ARCH}-freebsd
+BUILDNAME=	${LAZARUS_ARCH}-${OPSYS:tl}
 LCL_UNITS_DIR=	${LOCALBASE}/share/${PORTNAME}-${PORTVERSION}/lcl/units/${BUILDNAME}
 
 .if !defined(PKGNAMESUFFIX)
@@ -84,7 +80,6 @@ LIB_DEPENDS+=	libQt4Pas.so:${PORTSDIR}/x11-toolkits/qt4pas
 LCL_PLATFORM=	qt
 BUILD_DEPENDS+=	${LCL_UNITS_DIR}/${LCL_PLATFORM}/interfaces.ppu:${PORTSDIR}/editors/lazarus-lcl-qt
 RUN_DEPENDS+=	${LCL_UNITS_DIR}/${LCL_PLATFORM}/interfaces.ppu:${PORTSDIR}/editors/lazarus-lcl-qt
-#OPT_EXTRA=	"-dUSE_QT_45"
 .endif
 
 post-extract:

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mikmod
-PORTVERSION=	3.2.6
+PORTVERSION=	3.2.7
 CATEGORIES=	audio
 MASTER_SITES=	SF \
 		LOCAL/ehaupt
@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libmikmod.so:${PORTSDIR}/audio/libmikmod
 
-USES=		gmake
+USES=		gmake ncurses
 GNU_CONFIGURE=	yes
 
 PLIST_FILES=	bin/mikmod \

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	madsonic
-PORTVERSION=	5.1.5200
+PORTVERSION=	5.1.5250
 CATEGORIES=	www java
 MASTER_SITES=	http://www.madsonic.org/download/5.1/
 DISTFILES=	${DISTDATE}_${DISTNAME}-war-tomcat.zip \
@@ -46,8 +46,8 @@ TOMCAT7_BUILD_DEPENDS=	${LOCALBASE}/${SERVERDIR}/bin/bootstrap.jar:${PORTSDIR}/w
 TOMCAT7_RUN_DEPENDS=	${LOCALBASE}/${SERVERDIR}/bin/bootstrap.jar:${PORTSDIR}/www/tomcat7
 TOMCAT6_BUILD_DEPENDS=	${LOCALBASE}/${SERVERDIR}/bin/bootstrap.jar:${PORTSDIR}/www/tomcat6
 TOMCAT6_RUN_DEPENDS=	${LOCALBASE}/${SERVERDIR}/bin/bootstrap.jar:${PORTSDIR}/www/tomcat6
-JETTY_BUILD_DEPENDS=	${LOCALBASE}/${SERVERDIR}/start.jar:${PORTSDIR}/www/jetty
-JETTY_RUN_DEPENDS=	${LOCALBASE}/${SERVERDIR}/start.jar:${PORTSDIR}/www/jetty
+JETTY_BUILD_DEPENDS=	${LOCALBASE}/${SERVERDIR}/start.jar:${PORTSDIR}/www/jetty8
+JETTY_RUN_DEPENDS=	${LOCALBASE}/${SERVERDIR}/start.jar:${PORTSDIR}/www/jetty8
 RESIN3_BUILD_DEPENDS=	${LOCALBASE}/${SERVERDIR}/lib/resin.jar:${PORTSDIR}/www/resin3
 RESIN3_RUN_DEPENDS=	${LOCALBASE}/${SERVERDIR}/lib/resin.jar:${PORTSDIR}/www/resin3
 FFMPEG_RUN_DEPENDS=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
@@ -63,7 +63,7 @@ APE_RUN_DEPENDS=	mac:${PORTSDIR}/audio/mac
 .include <bsd.port.options.mk>
 
 NO_BUILD=	yes
-DISTDATE=	20141017
+DISTDATE=	20150813
 USE_JAVA=	yes
 JAVA_VERSION=	1.7+
 USES=	zip

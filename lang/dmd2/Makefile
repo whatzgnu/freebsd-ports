@@ -3,16 +3,22 @@
 
 PORTNAME=	dmd
 PKGNAMESUFFIX=	2
-PORTVERSION=	2.067.0
+PORTVERSION=	2.070.0
+PORTREVISION=	2
 CATEGORIES=	lang
 MASTER_SITES=	http://ftp.digitalmars.com/
 DISTNAME=	dmd.${PORTVERSION}
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
+		dmd.2.067.1${EXTRACT_SUFX}
+EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	cy@FreeBSD.org
 COMMENT=	D 2.0 compiler, not officially validated for FreeBSD
 
 USES=		gmake zip
 MAKEFILE=	posix.mak
+MAKE_ARGS=	AUTO_BOOTSTRAP=1
+MAKE_ENV+=	WRKDIR=${WRKDIR}
 EXAMPLESDIR=	${PREFIX}/share/examples/dmd2
 DOCSDIR=	${PREFIX}/share/doc/dmd2
 PORTDOCS=	*.txt html/
@@ -50,14 +56,16 @@ MAKE_ARGS+=	DEBUG_FLAGS=-g\ -DDEBUG=1\ -DUNITTEST
 MODULEDIR=	${PREFIX}/include/d/phobos2
 
 post-patch:
-	@${REINPLACE_CMD} -e "s|g++|${CXX}|" ${WRKSRC}/posix.mak
+	@${REINPLACE_CMD} -e "s|g++|${CXX}|" \
+			  -e "s|/etc|${PREFIX}/etc|" \
+		${WRKSRC}/posix.mak
+	@${REINPLACE_CMD} -e "s|gcc|${CC}|" ${WRKSRC}/link.d
 	@${REINPLACE_CMD} -e "s|cc|${CC}|" ${WRKSRC}/../phobos/posix.mak
 	@${REINPLACE_CMD} -e "s|/etc|${PREFIX}/etc|"	\
 			  -e "s|\(dmd\)|\12|gI"		\
 			  -e "s|\\\BR|.BR|"		\
 		${WRKDIR}/dmd2/man/man1/dmd.1		\
 		${WRKDIR}/dmd2/man/man5/dmd.conf.5
-	@${REINPLACE_CMD} -e '/^SYSCONFDIR=/s|/etc/|${PREFIX}/etc/|' ${WRKSRC}/posix.mak
 	@${REINPLACE_CMD} -e "s|%@P%/../../src/phobos|${MODULEDIR}|"	\
 			  -e "s|%@P%/../lib|${PREFIX}/lib|"		\
 			  -e "s|%@P%/../../src/druntime|${PREFIX}/include/d/druntime|"	\
@@ -85,5 +93,8 @@ do-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/*.txt ${STAGEDIR}${DOCSDIR}
 	cd ${WRKDIR}/dmd2 && ${COPYTREE_SHARE} html ${STAGEDIR}${DOCSDIR}
+
+pre-configure:
+	${MAKE} -f Makefile.bootstrap BOOTDIR=${WRKDIR}
 
 .include <bsd.port.post.mk>

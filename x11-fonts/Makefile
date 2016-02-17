@@ -4,6 +4,7 @@
     COMMENT = X11 fonts and font utilities
 
     SUBDIR += alef
+    SUBDIR += alegreya
     SUBDIR += alegreya-sans
     SUBDIR += alfont
     SUBDIR += andika
@@ -39,6 +40,7 @@
     SUBDIR += encodings
     SUBDIR += fantasque-sans-mono
     SUBDIR += farsifonts
+    SUBDIR += fifteen
     SUBDIR += fira
     SUBDIR += fntsample
     SUBDIR += font-adobe-100dpi
@@ -107,6 +109,7 @@
     SUBDIR += intlfonts
     SUBDIR += isabella
     SUBDIR += jmk-x11-fonts
+    SUBDIR += junction
     SUBDIR += junicode
     SUBDIR += kaputa
     SUBDIR += khmeros
@@ -114,6 +117,7 @@
     SUBDIR += lfpfonts-var
     SUBDIR += libFS
     SUBDIR += libXfont
+    SUBDIR += libXfont2
     SUBDIR += libXfontcache
     SUBDIR += libXft
     SUBDIR += liberation-fonts-ttf
@@ -144,6 +148,7 @@
     SUBDIR += paratype
     SUBDIR += pcf2bdf
     SUBDIR += pingwi
+    SUBDIR += powerline-fonts
     SUBDIR += profont
     SUBDIR += proggy_fonts
     SUBDIR += proggy_fonts-ttf

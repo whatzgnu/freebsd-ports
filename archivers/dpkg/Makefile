@@ -1,5 +1,5 @@
 # Created by: Hye-Shik Chang <perky@FreeBSD.org>
-# $FreeBSD: head/archivers/dpkg/Makefile 404444 2015-12-25 17:43:33Z pawel $
+# $FreeBSD$
 
 PORTNAME=	dpkg
 PORTVERSION=	1.18.4
@@ -17,7 +17,7 @@ RUN_DEPENDS=	gtar:${PORTSDIR}/archivers/gtar \
 		gpatch:${PORTSDIR}/devel/patch
 
 GNU_CONFIGURE=	yes
-USES=		cpe gmake iconv libtool perl5 pkgconfig tar:xz
+USES=		cpe gmake iconv libtool ncurses perl5 pkgconfig tar:xz
 CPE_VENDOR=	debian
 WRKSRC=		${WRKDIR}/dpkg-${PORTVERSION}
 

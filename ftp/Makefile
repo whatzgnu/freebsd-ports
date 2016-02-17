@@ -23,7 +23,6 @@
     SUBDIR += fpc-libcurl
     SUBDIR += frox
     SUBDIR += ftpcopy
-    SUBDIR += ftpcube
     SUBDIR += ftpfind
     SUBDIR += ftplib
     SUBDIR += ftpmirror
@@ -31,7 +30,6 @@
     SUBDIR += ftpsesame
     SUBDIR += ftpsync
     SUBDIR += gftp
-    SUBDIR += gnusget
     SUBDIR += gnustep-ftp
     SUBDIR += gstreamer1-plugins-curl
     SUBDIR += gwget
@@ -41,6 +39,7 @@
     SUBDIR += jftp
     SUBDIR += jftpgw
     SUBDIR += lftp
+    SUBDIR += libfilezilla
     SUBDIR += linux-c6-curl
     SUBDIR += linux-f10-curl
     SUBDIR += llnlxdir
@@ -64,12 +63,12 @@
     SUBDIR += pavuk
     SUBDIR += pear-Net_FTP
     SUBDIR += pftpd
-    SUBDIR += php5-curl
-    SUBDIR += php5-ftp
     SUBDIR += php55-curl
     SUBDIR += php55-ftp
     SUBDIR += php56-curl
     SUBDIR += php56-ftp
+    SUBDIR += php70-curl
+    SUBDIR += php70-ftp
     SUBDIR += phpwebftp
     SUBDIR += plasma-applet-ftpmonitor
     SUBDIR += proftpd
@@ -78,15 +77,14 @@
     SUBDIR += puf
     SUBDIR += pure-ftpd
     SUBDIR += pureadmin
-    SUBDIR += py-curl
     SUBDIR += py-ftputil
+    SUBDIR += py-pycurl
     SUBDIR += py-pyftpdlib
     SUBDIR += py-tftpy
     SUBDIR += quftp
     SUBDIR += rubygem-curb
     SUBDIR += scythia
     SUBDIR += smbftpd
-    SUBDIR += spegla
     SUBDIR += tftp-hpa
     SUBDIR += tnftp
     SUBDIR += tnftpd

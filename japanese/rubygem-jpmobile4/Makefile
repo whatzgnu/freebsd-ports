@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	jpmobile
-PORTVERSION=	4.2.0
+PORTVERSION=	4.2.2
 CATEGORIES=	japanese www rubygems
 MASTER_SITES=	RG
 PKGNAMESUFFIX=	4
@@ -15,6 +15,7 @@ LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
 RUN_DEPENDS=	rubygem-rails4>0:${PORTSDIR}/www/rubygem-rails4
 
+NO_ARCH=	yes
 USE_RUBY=	yes
 USE_RUBYGEMS=	yes
 RUBYGEM_AUTOPLIST=	yes

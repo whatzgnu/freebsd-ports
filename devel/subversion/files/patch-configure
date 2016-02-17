@@ -1,5 +1,14 @@
 --- configure.orig	2015-09-18 16:18:38.000000000 +0300
 +++ configure	2015-10-15 01:27:20.438627000 +0300
+@@ -18708,7 +18708,7 @@ $as_echo_n "checking for Mac OS property
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+-    #include <AvailabilityMacros.h>
++    #include <NOAvailabilityMacros.h>
+     #if !defined(MAC_OS_X_VERSION_MAX_ALLOWED) \
+      || !defined(MAC_OS_X_VERSION_10_0) \
+      || (MAC_OS_X_VERSION_MAX_ALLOWED <= MAC_OS_X_VERSION_10_0)
 @@ -20318,11 +20318,11 @@
                    SVN_KWALLET_INCLUDES="$DBUS_CPPFLAGS $qt_include_dirs -I$kde_dir/include"
                    qt_libs_other_options="`$PKG_CONFIG --libs-only-other QtCore QtDBus QtGui`"

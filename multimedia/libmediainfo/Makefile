@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libmediainfo
-PORTVERSION=	0.7.78
+PORTVERSION=	0.7.82
 CATEGORIES=	multimedia
 MASTER_SITES=	http://mediaarea.net/download/binary/mediainfo/${PORTVERSION}/ \
 		LOCAL/sunpoet
@@ -12,6 +12,7 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	MediaInfo library
 
 LICENSE=	BSD2CLAUSE
+LICENSE_FILE=	${WRKSRC}/../../../License.html
 
 LIB_DEPENDS=	libzen.so:${PORTSDIR}/multimedia/libzen
 
@@ -25,7 +26,7 @@ CONFIGURE_ARGS=	--enable-shared
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
-USES=		alias libtool pathfix pkgconfig tar:bzip2
+USES=		alias libtool localbase pathfix pkgconfig tar:xz
 
 WRKSRC=		${WRKDIR}/MediaInfo_CLI_GNU_FromSource/MediaInfoLib/Project/GNU/Library
 
@@ -35,7 +36,6 @@ MMS_CONFIGURE_ON=	--with-libmms=${LOCALBASE}
 MMS_LIB_DEPENDS=	libmms.so:${PORTSDIR}/net/libmms
 TINYXML2_CONFIGURE_ON=	--with-libtinyxml2=yes
 TINYXML2_LIB_DEPENDS=	libtinyxml2.so:${PORTSDIR}/textproc/tinyxml2
-TINYXML2_USES=		localbase
 
 post-patch:
 	@${TOUCH} ${WRKSRC}/aclocal.m4

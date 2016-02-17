@@ -1,8 +1,8 @@
 # Created by: Alex Dupre <ale@FreeBSD.org>
-# $FreeBSD: head/lang/php55/Makefile 405778 2016-01-11 12:16:37Z miwi $
+# $FreeBSD$
 
 PORTNAME=	php55
-PORTVERSION=	5.5.31
+PORTVERSION=	5.5.32
 PORTREVISION?=	0
 CATEGORIES?=	lang devel www
 MASTER_SITES=	PHP/distributions
@@ -52,7 +52,7 @@ MAILHEAD_DESC=	Enable mail header patch
 LINKTHR_DESC=	Link thread lib (for threaded extensions)
 ZTS_DESC=	Force Zend Thread Safety (ZTS) build
 
-CONFLICTS=	php53-5* php54-5* php56-5* php5-5*
+CONFLICTS=	php56-5* php70-*
 
 DESTDIRNAME=	INSTALL_ROOT
 

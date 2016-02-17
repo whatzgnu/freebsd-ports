@@ -9,6 +9,7 @@ MASTER_SITES=	http://download.copperspice.com/copperspice/source/
 MAINTAINER=	marino@FreeBSD.org
 COMMENT=	Modern cross-platform C++ GUI library (derived from Qt 4.8)
 
+BROKEN=		unfetchable
 LICENSE=	LGPL21
 
 BUILD_DEPENDS=	fc-cache:${PORTSDIR}/x11-fonts/fontconfig
@@ -41,7 +42,6 @@ MAKE_JOBS_UNSAFE=	yes
 WITH_OPENSSL_PORT=	yes
 
 BROKEN=			upstream notified; removed patches broke DF too
-BROKEN_FreeBSD_8=	PR 193528 (c++11 support is broken)
 BROKEN_FreeBSD_9=	PR 193528 (c++11 support is broken)
 BROKEN_i386=		qx11embed_x11.cpp:470:20: non-constant-expression\
 			cannot be narrowed from type 'unsigned int' to 'long'\

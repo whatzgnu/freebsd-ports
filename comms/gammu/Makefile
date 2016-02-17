@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gammu
-PORTVERSION=	1.33.0
-PORTREVISION=	1
+PORTVERSION=	1.37.0
 CATEGORIES=	comms
 MASTER_SITES=	http://dl.cihar.com/gammu/releases/ \
 		http://dl.cihar.com.nyud.net/gammu/releases/
@@ -15,7 +14,6 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
-RUN_DEPENDS=	cdialog:${PORTSDIR}/devel/cdialog
 
 CONFLICTS=	gammu-devel-[1-9]* gammu-python-[1-9]*
 
@@ -26,6 +24,7 @@ SHEBANG_FILES=	utils/jadmaker utils/gammu-config
 bash_CMD=	/bin/sh
 USE_GNOME=	glib20
 USE_LDCONFIG=	yes
+PLIST_SUB+=	VERSION=${PORTVERSION}
 
 PORTDOCS=	*
 

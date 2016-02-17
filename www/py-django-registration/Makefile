@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	django-registration
-PORTVERSION=	1.0
-PORTREVISION=	1
+PORTVERSION=	2.0.4
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -13,9 +12,9 @@ COMMENT=	User-registration application for Django
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django>=1.4:${PORTSDIR}/www/py-django
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django18>=1.4:${PORTSDIR}/www/py-django18
 
-USES=		gettext python
+USES=		python
 USE_PYTHON=	distutils autoplist
 
 CONFLICTS_INSTALL=	pootle-*

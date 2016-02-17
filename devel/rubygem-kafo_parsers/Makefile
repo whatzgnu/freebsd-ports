@@ -7,12 +7,12 @@ PORTREVISION=	1
 CATEGORIES=	devel ruby
 MASTER_SITES=	RG
 
-MAINTAINER=	mmoll@FreeBSD.org
+MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Parser for puppet modules
 
 LICENSE=	GPLv3
 
-RUN_DEPENDS=	puppet:${PORTSDIR}/sysutils/puppet
+RUN_DEPENDS=	puppet:${PORTSDIR}/sysutils/puppet38
 
 NO_ARCH=	yes
 

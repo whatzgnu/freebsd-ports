@@ -113,7 +113,6 @@
     SUBDIR += p5-Sereal-Encoder
     SUBDIR += p5-Storable-AMF
     SUBDIR += p5-String-Multibyte
-    SUBDIR += p5-String-SetUTF8
     SUBDIR += p5-Text-Bidi
     SUBDIR += p5-Text-Iconv
     SUBDIR += p5-Text-Unidecode
@@ -135,15 +134,15 @@
     SUBDIR += pecl-fribidi
     SUBDIR += pecl-igbinary
     SUBDIR += php5-bsdconv
-    SUBDIR += php5-iconv
-    SUBDIR += php5-mbstring
-    SUBDIR += php5-recode
     SUBDIR += php55-iconv
     SUBDIR += php55-mbstring
     SUBDIR += php55-recode
     SUBDIR += php56-iconv
     SUBDIR += php56-mbstring
     SUBDIR += php56-recode
+    SUBDIR += php70-iconv
+    SUBDIR += php70-mbstring
+    SUBDIR += php70-recode
     SUBDIR += psiconv
     SUBDIR += py-bencode
     SUBDIR += py-bsdconv
@@ -169,6 +168,7 @@
     SUBDIR += vda2fbd
     SUBDIR += wkhtmltopdf
     SUBDIR += xdeview
+    SUBDIR += xml2c
     SUBDIR += ytnef
     SUBDIR += zbase32
 

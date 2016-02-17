@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	xterm
-PORTVERSION=	320
+PORTVERSION=	322
 CATEGORIES=	x11
 MASTER_SITES=	ftp://invisible-island.net/xterm/:src1 \
 		LOCAL/ehaupt:src1 LOCAL/ehaupt:src2
@@ -16,7 +16,7 @@ LICENSE=	MIT
 
 CONFLICTS=	x11iraf-[0-9]*
 
-USES=		tar:tgz
+USES=		ncurses tar:tgz
 USE_XORG=	xft
 GNU_CONFIGURE=	yes
 

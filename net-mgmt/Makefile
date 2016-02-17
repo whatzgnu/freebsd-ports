@@ -28,6 +28,7 @@
     SUBDIR += ccnet
     SUBDIR += cdpd
     SUBDIR += cdpr
+    SUBDIR += cdpsnarf
     SUBDIR += centreon-clib
     SUBDIR += check_ipmi_sensor
     SUBDIR += check_logfiles
@@ -251,9 +252,9 @@
     SUBDIR += pandorafms_server
     SUBDIR += percona-monitoring-plugins
     SUBDIR += pftabled
-    SUBDIR += php5-snmp
     SUBDIR += php55-snmp
     SUBDIR += php56-snmp
+    SUBDIR += php70-snmp
     SUBDIR += phpip
     SUBDIR += phpipam
     SUBDIR += phpweathermap
@@ -267,6 +268,8 @@
     SUBDIR += py-ipcalc
     SUBDIR += py-ipy
     SUBDIR += py-pyang
+    SUBDIR += py-pysmi
+    SUBDIR += py-pyzabbix
     SUBDIR += py-snmp4
     SUBDIR += py-snmp4-apps
     SUBDIR += py-snmp4-mibs
@@ -312,7 +315,6 @@
     SUBDIR += tcpreplay
     SUBDIR += tcptrack
     SUBDIR += torrus
-    SUBDIR += unifi2
     SUBDIR += unifi3
     SUBDIR += unifi4
     SUBDIR += victorops-nagios

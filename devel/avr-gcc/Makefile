@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	4.8.3
-PORTREVISION=	1
+PORTVERSION=	4.9.3
 CATEGORIES=	devel
 MASTER_SITES=	GCC/releases/gcc-${DISTVERSION}
 PKGNAMEPREFIX=	avr-
@@ -30,16 +29,10 @@ DISTVERSION=	${PORTVERSION:C/([0-9]+\.[0-9]+).*\.s([0-9]+)/\1-\2/}
 GCC_VERSION=	${PORTVERSION:C/(.+)\.s[0-9]{8}/\1/}
 SUFFIX=		${PORTVERSION:C/([0-9]+).([0-9]+).*/\1\2/}
 
-USES=		bison gettext gmake perl5 tar:bzip2 libtool
+USES=		bison gmake perl5 tar:bzip2 libtool
 USE_PERL5=	build
 CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
-
-.include <bsd.port.pre.mk>
-
-.if (${ARCH} == "amd64")
-ARCH=		x86_64
-.endif
 
 CONFLICTS=	avr-gcc-devel*
 
@@ -48,6 +41,17 @@ CONFIGURE_ARGS=	--target=avr --disable-libssp --with-gmp=${LOCALBASE} --enable-l
 WITHOUT_CPU_CFLAGS=This is a cross-compiler.
 
 INFO=		cpp gcc gccint cppinternals gccinstall
+
+OPTIONS_DEFINE=	NLS
+OPTIONS_SUB=	yes
+NLS_USES=	gettext
+NLS_CONFIGURE_ENABLE=	nls
+
+.include <bsd.port.pre.mk>
+
+.if (${ARCH} == "amd64")
+ARCH=		x86_64
+.endif
 
 post-configure:
 	${MKDIR} ${WRKSRC}/gcc/include

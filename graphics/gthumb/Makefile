@@ -4,6 +4,7 @@
 
 PORTNAME=	gthumb
 PORTVERSION=	3.4.1
+PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -11,7 +12,7 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Image viewer and browser for the GNOME 3 environment
 
-LICENSE=	GPLv2 # (or later)
+LICENSE=	GPLv2+
 
 BUILD_DEPENDS=	gsettings-desktop-schemas>0:${PORTSDIR}/devel/gsettings-desktop-schemas \
 		itstool:${PORTSDIR}/textproc/itstool

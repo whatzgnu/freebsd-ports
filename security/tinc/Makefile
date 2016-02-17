@@ -3,16 +3,16 @@
 
 PORTNAME=	tinc
 PORTVERSION=	1.0.26
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	security
 MASTER_SITES=	http://www.tinc-vpn.org/packages/
 
 MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Virtual Private Network (VPN) daemon
 
-LIB_DEPENDS=	liblzo2.so:${PORTSDIR}/archivers/lzo2
-
 LICENSE=	GPLv3
+
+LIB_DEPENDS=	liblzo2.so:${PORTSDIR}/archivers/lzo2
 
 USES=		cpe makeinfo
 CPE_VENDOR=	tinc-vpn

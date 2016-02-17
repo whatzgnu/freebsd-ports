@@ -1,4 +1,4 @@
-# $FreeBSD: head/www/Makefile 404882 2015-12-30 23:20:40Z rene $
+# $FreeBSD$
 #
 
     COMMENT = Ports related to the World Wide Web
@@ -36,7 +36,6 @@
     SUBDIR += asterisk-stat
     SUBDIR += atutor
     SUBDIR += august
-    SUBDIR += autoindex2
     SUBDIR += awffull
     SUBDIR += aws
     SUBDIR += aws-demos
@@ -61,11 +60,6 @@
     SUBDIR += c-icap
     SUBDIR += c-icap-modules
     SUBDIR += cadaver
-    SUBDIR += cakephp11
-    SUBDIR += cakephp13
-    SUBDIR += cakephp21
-    SUBDIR += cakephp22
-    SUBDIR += cakephp23
     SUBDIR += calamaris
     SUBDIR += calendarserver
     SUBDIR += castget
@@ -84,6 +78,8 @@
     SUBDIR += choqok
     SUBDIR += chpasswd
     SUBDIR += chromium
+    SUBDIR += chromium-npapi
+    SUBDIR += chromium-pulse
     SUBDIR += chtml
     SUBDIR += ckeditor
     SUBDIR += cl-lml
@@ -97,7 +93,6 @@
     SUBDIR += cntlm
     SUBDIR += cocoon
     SUBDIR += codeigniter
-    SUBDIR += codeigniter22
     SUBDIR += coppermine
     SUBDIR += cplanet
     SUBDIR += cppcms
@@ -121,6 +116,7 @@
     SUBDIR += dojo
     SUBDIR += dojo-shrinksafe
     SUBDIR += dokuwiki
+    SUBDIR += domoticz
     SUBDIR += dotclear
     SUBDIR += dotproject
     SUBDIR += download-gemist
@@ -201,12 +197,12 @@
     SUBDIR += firefox-esr
     SUBDIR += firefox-esr-i18n
     SUBDIR += firefox-i18n
+    SUBDIR += firefox-pulse
     SUBDIR += flat-frog
     SUBDIR += flickcurl
     SUBDIR += flood
     SUBDIR += flot
     SUBDIR += fluxbb
-    SUBDIR += fluxcms
     SUBDIR += fnord
     SUBDIR += formication
     SUBDIR += foswiki
@@ -217,7 +213,6 @@
     SUBDIR += freeway
     SUBDIR += fswiki
     SUBDIR += ftasv
-    SUBDIR += fusionpbx
     SUBDIR += g-cows
     SUBDIR += g-gcl
     SUBDIR += gaeo
@@ -254,6 +249,7 @@
     SUBDIR += gstreamer1-plugins-neon
     SUBDIR += gtkhtml3
     SUBDIR += gtkhtml4
+    SUBDIR += guacamole-client
     SUBDIR += guile-www
     SUBDIR += gurlchecker
     SUBDIR += h2o
@@ -349,7 +345,6 @@
     SUBDIR += interchange
     SUBDIR += itop
     SUBDIR += iwebcal
-    SUBDIR += jawstats
     SUBDIR += jdresolve
     SUBDIR += jericho-html
     SUBDIR += jesred
@@ -497,9 +492,9 @@
     SUBDIR += mod_myvhost
     SUBDIR += mod_ntlm2
     SUBDIR += mod_perl2
-    SUBDIR += mod_php5
     SUBDIR += mod_php55
     SUBDIR += mod_php56
+    SUBDIR += mod_php70
     SUBDIR += mod_proctitle
     SUBDIR += mod_proxy_html
     SUBDIR += mod_proxy_uwsgi
@@ -572,7 +567,6 @@
     SUBDIR += obhttpd
     SUBDIR += ocaml-net
     SUBDIR += offline-npm
-    SUBDIR += ojs2
     SUBDIR += opencart
     SUBDIR += openxmldir
     SUBDIR += opera
@@ -1442,7 +1436,6 @@
     SUBDIR += pecl-varnish
     SUBDIR += pecl-yaf
     SUBDIR += pecl-yar
-    SUBDIR += pecl-zendopcache
     SUBDIR += perlbal
     SUBDIR += pglogd
     SUBDIR += phalcon
@@ -1450,14 +1443,15 @@
     SUBDIR += php-plurk-api
     SUBDIR += php-screw
     SUBDIR += php-templates
-    SUBDIR += php5-session
-    SUBDIR += php5-tidy
     SUBDIR += php55-opcache
     SUBDIR += php55-session
     SUBDIR += php55-tidy
     SUBDIR += php56-opcache
     SUBDIR += php56-session
     SUBDIR += php56-tidy
+    SUBDIR += php70-opcache
+    SUBDIR += php70-session
+    SUBDIR += php70-tidy
     SUBDIR += phpbb
     SUBDIR += phpbb3
     SUBDIR += phpgroupware
@@ -1490,6 +1484,7 @@
     SUBDIR += py-GinGin
     SUBDIR += py-HTMLgen
     SUBDIR += py-Lightbox
+    SUBDIR += py-MechanicalSoup
     SUBDIR += py-Products.CMFPlone
     SUBDIR += py-Products.PloneLDAP
     SUBDIR += py-Products.TinyMCE
@@ -1516,6 +1511,7 @@
     SUBDIR += py-clientform
     SUBDIR += py-collective.easytemplate
     SUBDIR += py-collective.templateengines
+    SUBDIR += py-cookies
     SUBDIR += py-cssmin
     SUBDIR += py-cssselect
     SUBDIR += py-cssutils
@@ -1527,6 +1523,7 @@
     SUBDIR += py-django-appmedia
     SUBDIR += py-django-assets
     SUBDIR += py-django-auth-ldap
+    SUBDIR += py-django-bitfield
     SUBDIR += py-django-bootstrap-form
     SUBDIR += py-django-caching-app-plugins
     SUBDIR += py-django-classy-tags
@@ -1543,6 +1540,7 @@
     SUBDIR += py-django-extensions
     SUBDIR += py-django-filer
     SUBDIR += py-django-formtools
+    SUBDIR += py-django-happenings
     SUBDIR += py-django-haystack
     SUBDIR += py-django-json-rpc
     SUBDIR += py-django-keyedcache
@@ -1566,6 +1564,10 @@
     SUBDIR += py-django-registration
     SUBDIR += py-django-registration-defaults
     SUBDIR += py-django-registration-redux
+    SUBDIR += py-djangorestframework
+    SUBDIR += py-djangorestframework-csv
+    SUBDIR += py-djangorestframework-filters
+    SUBDIR += py-djangorestframework-xml
     SUBDIR += py-django-reversion
     SUBDIR += py-django-sekizai
     SUBDIR += py-django-signals-ahoy
@@ -1584,8 +1586,8 @@
     SUBDIR += py-django-voting
     SUBDIR += py-django16
     SUBDIR += py-django16-tastypie
-    SUBDIR += py-django17
     SUBDIR += py-django18
+    SUBDIR += py-django19
     SUBDIR += py-django_compressor
     SUBDIR += py-djangotoolbox
     SUBDIR += py-djblets
@@ -1774,6 +1776,7 @@
     SUBDIR += py-tvdb_api
     SUBDIR += py-twistedWeb
     SUBDIR += py-twistedWeb2
+    SUBDIR += py-txrequests
     SUBDIR += py-uliweb
     SUBDIR += py-urlgrabber
     SUBDIR += py-urljr
@@ -2010,6 +2013,7 @@
     SUBDIR += rubygem-thin
     SUBDIR += rubygem-tinyatom
     SUBDIR += rubygem-tinymce-rails
+    SUBDIR += rubygem-totoridipjp
     SUBDIR += rubygem-tumblr_client
     SUBDIR += rubygem-turbolinks
     SUBDIR += rubygem-turbolinks-rails41
@@ -2052,6 +2056,7 @@
     SUBDIR += sitecopy
     SUBDIR += siteframe
     SUBDIR += skytemplate
+    SUBDIR += slowcgi
     SUBDIR += smarty2
     SUBDIR += smarty3
     SUBDIR += smb_auth
@@ -2142,6 +2147,8 @@
     SUBDIR += trac-iniadmin
     SUBDIR += trac-keywords
     SUBDIR += trac-keywordsecretticket
+    SUBDIR += trac-ldap
+    SUBDIR += trac-ldapauthstore
     SUBDIR += trac-mastertickets
     SUBDIR += trac-math
     SUBDIR += trac-mercurial
@@ -2240,7 +2247,6 @@
     SUBDIR += web2ldap
     SUBDIR += webalizer
     SUBDIR += webbrowser
-    SUBDIR += webcalendar
     SUBDIR += webcheck
     SUBDIR += webcopy
     SUBDIR += webcrawl
@@ -2284,7 +2290,6 @@
     SUBDIR += xoops
     SUBDIR += xpi-adblock
     SUBDIR += xpi-adblock_plus
-    SUBDIR += xpi-bookmarkdd
     SUBDIR += xpi-clear_cache_button
     SUBDIR += xpi-clearfields
     SUBDIR += xpi-close-all-tabs
@@ -2333,7 +2338,6 @@
     SUBDIR += xpi-linkification
     SUBDIR += xpi-live_http_headers
     SUBDIR += xpi-live_pagerank
-    SUBDIR += xpi-locale-switcher
     SUBDIR += xpi-menueditor
     SUBDIR += xpi-mldonkey
     SUBDIR += xpi-modify_headers

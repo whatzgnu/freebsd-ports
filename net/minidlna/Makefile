@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	minidlna
-PORTVERSION=	1.1.4
+PORTVERSION=	1.1.5
 PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	net multimedia www
@@ -22,9 +22,7 @@ LIB_DEPENDS=	libsqlite3.so:${PORTSDIR}/databases/sqlite3	\
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-db-path=/var/db/minidlna \
 		--with-os-url="http://www.FreeBSD.org"
-CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib
-USES=		autoreconf gettext-tools iconv jpeg
+USES=		autoreconf gettext-tools iconv jpeg localbase
 
 PKGMESSAGE=	${WRKSRC}/pkg-message
 SUB_FILES+=	pkg-message

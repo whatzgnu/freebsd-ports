@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	asterisk
-PORTVERSION=	11.20.0
-PORTREVISION=	1
+PORTVERSION=	11.21.2
 CATEGORIES=	net
 MASTER_SITES=	http://downloads.asterisk.org/pub/telephony/%SUBDIR%/:main,g729
 MASTER_SITE_SUBDIR=	asterisk/:main \
@@ -21,12 +20,11 @@ EXTRACT_ONLY:=	${DISTNAME}${EXTRACT_SUFX}
 
 ONLY_FOR_ARCHS=	i386 amd64 powerpc sparc64
 
-USES=		bison cpe gmake iconv localbase ncurses shebangfix
+USES=		bison cpe gmake iconv localbase ncurses shebangfix sqlite
 USE_CSTD=	gnu89
 USE_GNOME=	libxml2
 USE_LDCONFIG=	yes
 USE_OPENSSL=	yes
-USE_SQLITE=	3
 USE_RC_SUBR=	asterisk
 
 GNU_CONFIGURE=	yes
@@ -54,8 +52,9 @@ CONFLICTS_INSTALL=	asterisk*-1.8* asterisk*-13*
 OPTIONS_DEFINE=			BACKTRACE CURL EXCHANGE FREETDS LDAP LUA \
 				MP3PLAYER OOH323 RADIUS SNMP SPANDSP SRTP \
 				SYSINFO UUID XMPP
-OPTIONS_DEFAULT=		BACKTRACE CURL FREETDS GCC GSM LUA MP3PLAYER NEWT ODBC PGSQL \
-				RADIUS SNMP SPEEX SQLITE2 UUID VORBIS XMPP
+OPTIONS_DEFAULT=		BACKTRACE CURL FREETDS GCC GSM LUA MP3PLAYER \
+				NEWT ODBC PGSQL RADIUS SNMP SPANDSP SPEEX \
+				SQLITE2 UUID VORBIS XMPP
 
 OPTIONS_DEFINE_i386=		DAHDI
 OPTIONS_DEFINE_amd64=		DAHDI
@@ -96,7 +95,6 @@ BACKTRACE_DESC= Stack backtrace support via (lib)execinfo
 BASE_DESC=	Use base compiler (experimental)
 DAHDI_DESC=	DAHDI support
 EXCHANGE_DESC=	Exchange calendar support
-GCC_DESC=	Use GCC from ports
 MP3PLAYER_DESC=	Install MP3 Player for Music-On-Hold (mpg123)
 NEWG711_DESC=	New G711 codec
 OOH323_DESC=	ooh323 support
@@ -108,7 +106,7 @@ XMPP_DESC=	XMPP/GTALK support
 OPTIONS_SUB=		yes
 
 BACKTRACE_CONFIGURE_WITH=	execinfo
-BACKTRACE_LIB_DEPENDS=		libexecinfo.so:${PORTSDIR}/devel/libexecinfo
+BACKTRACE_USES=			execinfo
 
 CURL_CONFIGURE_ON=	--with-libcurl
 CURL_CONFIGURE_OFF=	--with-libcurl=no

@@ -3,19 +3,22 @@
 
 PORTNAME=	satchmo
 PORTVERSION=	0.9.2
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	www python
 MASTER_SITES=	http://www.caomhin.org/ports/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	ports@caomhin.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Shopping cart application for Django
+
+DEPRECATED=	Project development unmaintained
+EXPIRATION_DATE=	2016-04-01
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools_hg>=0.4:${PORTSDIR}/devel/py-setuptools_hg
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django>=1.2.3:${PORTSDIR}/www/py-django \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django18>=1.2.3:${PORTSDIR}/www/py-django18 \
 		${PYTHON_PKGNAMEPREFIX}pycrypto>=0:${PORTSDIR}/security/py-pycrypto \
 		${PYTHON_PKGNAMEPREFIX}reportlab1>=0:${PORTSDIR}/print/py-reportlab1 \
 		${PYTHON_PKGNAMEPREFIX}trml2pdf>=0:${PORTSDIR}/print/py-trml2pdf \

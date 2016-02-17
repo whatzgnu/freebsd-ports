@@ -27,7 +27,6 @@
     SUBDIR += c
     SUBDIR += ccl
     SUBDIR += cdent
-    SUBDIR += cduce
     SUBDIR += ceylon
     SUBDIR += cfortran
     SUBDIR += chibi-scheme
@@ -40,6 +39,7 @@
     SUBDIR += clang35
     SUBDIR += clang36
     SUBDIR += clang37
+    SUBDIR += clang38
     SUBDIR += clojure
     SUBDIR += clojure-mode.el
     SUBDIR += cloudabi-clang
@@ -80,6 +80,10 @@
     SUBDIR += fpc-docs
     SUBDIR += fpc-lua
     SUBDIR += fpc-rexx
+    SUBDIR += fpc-rtl-console
+    SUBDIR += fpc-rtl-extra
+    SUBDIR += fpc-rtl-objpas
+    SUBDIR += fpc-rtl-unicode
     SUBDIR += fpc-tcl
     SUBDIR += fpc-units
     SUBDIR += fpc-utils
@@ -97,6 +101,7 @@
     SUBDIR += gcc5
     SUBDIR += gcc5-aux
     SUBDIR += gcc5-devel
+    SUBDIR += gcc6-aux
     SUBDIR += gcc6-devel
     SUBDIR += gcl
     SUBDIR += gforth
@@ -105,7 +110,10 @@
     SUBDIR += gnat_util
     SUBDIR += gnatdroid-armv7
     SUBDIR += gnatdroid-binutils
+    SUBDIR += gnatdroid-binutils-x86
     SUBDIR += gnatdroid-sysroot
+    SUBDIR += gnatdroid-sysroot-x86
+    SUBDIR += gnatdroid-x86
     SUBDIR += gnu-cobol
     SUBDIR += gnustep-base
     SUBDIR += go
@@ -228,7 +236,6 @@
     SUBDIR += pcc
     SUBDIR += pecl-perl
     SUBDIR += perl5-devel
-    SUBDIR += perl5.16
     SUBDIR += perl5.18
     SUBDIR += perl5.20
     SUBDIR += perl5.22
@@ -238,12 +245,12 @@
     SUBDIR += pharo
     SUBDIR += phc
     SUBDIR += php-mode.el
-    SUBDIR += php5
-    SUBDIR += php5-extensions
     SUBDIR += php55
     SUBDIR += php55-extensions
     SUBDIR += php56
     SUBDIR += php56-extensions
+    SUBDIR += php70
+    SUBDIR += php70-extensions
     SUBDIR += php_doc
     SUBDIR += picoc
     SUBDIR += pike78
@@ -253,6 +260,7 @@
     SUBDIR += py-clojure
     SUBDIR += py-mx-base
     SUBDIR += py-prolog
+    SUBDIR += py-qt5-qml
     SUBDIR += pypy
     SUBDIR += pypy3-devel
     SUBDIR += python
@@ -265,7 +273,6 @@
     SUBDIR += python2
     SUBDIR += python27
     SUBDIR += python3
-    SUBDIR += python32
     SUBDIR += python33
     SUBDIR += python34
     SUBDIR += python35
@@ -285,6 +292,7 @@
     SUBDIR += ruby20
     SUBDIR += ruby21
     SUBDIR += ruby22
+    SUBDIR += ruby23
     SUBDIR += runawk
     SUBDIR += rust
     SUBDIR += rust-nightly

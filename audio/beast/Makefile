@@ -5,7 +5,7 @@ PORTNAME=	beast
 PORTVERSION=	0.7.8
 PORTREVISION=	8
 CATEGORIES=	audio
-MASTER_SITES=	http://dist.testbit.eu/beast/v${PORTVERSION:R}/
+MASTER_SITES=	http://testbit.eu/pub/dists/beast/v${PORTVERSION:R}/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Powerful music composition and modular synthesis application
@@ -46,6 +46,10 @@ OPTIONS_DEFAULT_amd64=	SSE
 
 DEBUG_CONFIGURE_ENABLE=	debug
 SSE_VARS=	SSE_FLAGS="-mmmx -msse"
+
+BROKEN_powerpc64=	Does not build
+
+MAKE_JOBS_UNSAFE=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e \

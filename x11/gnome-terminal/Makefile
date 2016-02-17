@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-terminal
-PORTVERSION=	3.16.2
+PORTVERSION=	3.18.1
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -12,7 +12,7 @@ COMMENT=	Terminal component for the GNOME 3 Desktop
 
 BUILD_DEPENDS=	gsettings-desktop-schemas>=0:${PORTSDIR}/devel/gsettings-desktop-schemas \
 		itstool:${PORTSDIR}/textproc/itstool \
-		appdata-validate:${PORTSDIR}/devel/appstream-glib \
+		appstream-builder:${PORTSDIR}/devel/appstream-glib \
 		vala:${PORTSDIR}/lang/vala
 LIB_DEPENDS=	libstartup-notification-1.so:${PORTSDIR}/x11/startup-notification \
 		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid
@@ -20,7 +20,7 @@ RUN_DEPENDS=	gsettings-desktop-schemas>=0:${PORTSDIR}/devel/gsettings-desktop-sc
 
 PORTSCOUT=	limitw:1,even
 
-USES=		cpe gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		cpe gettext gmake gnome libtool pathfix pkgconfig tar:xz
 USE_GNOME=	dconf gtk30 intlhack nautilus3 vte3
 USE_XORG=	sm ice
 GNU_CONFIGURE=	yes
@@ -55,7 +55,7 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-src_terminal-screen.c
 .endif
 
 post-install:
-.for i in cs de el es fi fr gl hu pt_BR ru
+.for i in ca cs de el es fi fr gl hu pt_BR ru
 	@${RMDIR} ${STAGEDIR}${PREFIX}/share/help/${i}/gnome-terminal/figures
 .endfor
 

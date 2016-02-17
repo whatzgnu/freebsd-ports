@@ -1,5 +1,5 @@
 # Created by: Martin Jackson <mhjacks@swbell.net>
-# $FreeBSD: head/devel/py-pyasn1/Makefile 401899 2015-11-18 21:48:05Z rm $
+# $FreeBSD$
 
 PORTNAME=	pyasn1
 PORTVERSION=	0.1.9

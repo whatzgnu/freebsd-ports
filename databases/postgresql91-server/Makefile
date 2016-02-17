@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME?=	postgresql
-DISTVERSION?=	9.1.19
+DISTVERSION?=	9.1.20
 CATEGORIES?=	databases
 MASTER_SITES=	PGSQL/source/v${DISTVERSION}
 PKGNAMESUFFIX?=	${DISTVERSION:R:S/.//}${COMPONENT}
@@ -67,6 +67,7 @@ SUB_FILES+=	502.pgsql
 .if defined(CLIENT_ONLY)
 OPTIONS_DEFINE+=LIBEDIT
 LIBEDIT_DESC=   Use non-GPL libedit instead of readline
+USES+=		perl5
 .else
 MAKE_ENV=	PATH=${PREFIX}/bin:${PATH}
 CONFIGURE_ENV+=	PATH=${PREFIX}/bin:${PATH}
@@ -103,7 +104,6 @@ HEIMDAL_KRB5_DESC=	Builds with Heimdal kerberos
 GSSAPI_DESC=	Build with GSSAPI support
 OPTIMIZED_CFLAGS_DESC=	Builds with compiler optimizations (-O3)
 DEBUG_DESC=	Builds with debugging symbols
-OSSP_UUID_DESC=	Enable / disable ossp-uuid support
 
 OPTIONS_DEFINE+=	SSL
 SSL_DESC=	Build with OpenSSL support
@@ -119,9 +119,6 @@ LIBEDIT_USES_OFF=		readline
 
 SSL_USE=	OPENSSL=yes
 SSL_CONFIGURE_WITH=openssl
-
-OSSP_UUID_BUILD_DEPENDS=	${LOCALBASE}/lib/libuuid.a:${PORTSDIR}/misc/ossp-uuid
-OSSP_UUID_CONFIGURE_WITH=	ossp-uuid
 
 PAM_CONFIGURE_WITH=	pam
 

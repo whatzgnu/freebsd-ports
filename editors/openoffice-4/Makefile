@@ -3,6 +3,7 @@
 
 PORTNAME=	apache-openoffice
 PORTVERSION=	${AOOVERSION}
+PORTREVISION=	3
 CATEGORIES=	editors java
 MASTER_SITES=	APACHE/openoffice/${PORTVERSION}/source \
 		http://tools.openoffice.org/unowinreg_prebuild/680/:unoreg \
@@ -126,7 +127,8 @@ JAVA_VERSION=	1.6+
 USE_PERL5=	build
 USE_XORG=	ice x11 xau xaw xcomposite xcursor xdamage xext xfixes xi \
 		xrandr xrender xt
-USES=		autoreconf:autoconf bison compiler cpe desktop-file-utils \
+USES=		autoreconf:autoconf bison compiler:c++11-lib cpe \
+		desktop-file-utils \
 		gettext-runtime gmake iconv jpeg perl5 pkgconfig python \
 		shared-mime-info tar:bzip2
 INSTALLS_ICONS=	yes
@@ -169,8 +171,6 @@ WIKI_PUBLISHER_VARS=	BUNDLED_EXTENSIONS+=swext/wiki-publisher.oxt
 
 .if ${COMPILER_TYPE} == clang
 CPPFLAGS+=		-I${LOCALBASE}/include
-.else
-USE_GCC=		yes
 .endif
 
 .if ${ARCH} == amd64
@@ -326,7 +326,7 @@ post-extract:
 		-e d  ${WRKSRC}/LICENSE > ${LICENSE_FILE_W3C}
 
 post-patch:
-	${REINPLACE_CMD} -e "/^ICONVERSION/s/=.*/= '-${AOOSUFFIX}'/" \
+	${REINPLACE_CMD} -e "/^ICONVERSION/s/=.*/= '${AOOVERSION1}'/" \
 		${WRKSRC}/sysui/desktop/productversion.mk
 	${REINPLACE_CMD} -e "s|%%JAVA_HOME%%|${JAVA_HOME}|" \
 		${WRKSRC}/desktop/scripts/soffice.sh

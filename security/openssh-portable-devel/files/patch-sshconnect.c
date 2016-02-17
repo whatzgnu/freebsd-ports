@@ -1,4 +1,3 @@
---- UTC
 Added for bindresvport_sa(3)
 
 --- sshconnect.c.orig	2015-04-02 15:04:24.482112000 -0500

@@ -3,7 +3,7 @@
 #
 # Created by: Akinori MUSHA <knu@FreeBSD.org>
 #
-# $FreeBSD: head/Mk/bsd.ruby.mk 404314 2015-12-23 19:11:44Z sunpoet $
+# $FreeBSD$
 #
 
 .if !defined(Ruby_Include)
@@ -197,11 +197,21 @@ RUBY_PORTEPOCH=		1
 RUBY_PATCHLEVEL=	0
 RUBY22=			""	# PLIST_SUB helpers
 
+. elif ${RUBY_VER} == 2.3
+#
+# Ruby 2.3
+#
+RUBY_RELVERSION=	2.3.0
+RUBY_PORTREVISION=	0
+RUBY_PORTEPOCH=		1
+RUBY_PATCHLEVEL=	0
+RUBY23=			""	# PLIST_SUB helpers
+
 . else
 #
 # Other versions
 #
-IGNORE=	Only ruby 2.0, 2.1 and 2.2 are supported
+IGNORE=	Only ruby 2.0, 2.1, 2.2 and 2.3 are supported
 _INVALID_RUBY_VER=	1
 . endif
 .endif # defined(RUBY_VER)
@@ -211,6 +221,7 @@ _INVALID_RUBY_VER=	1
 RUBY20?=		"@comment "
 RUBY21?=		"@comment "
 RUBY22?=		"@comment "
+RUBY23?=		"@comment "
 
 .if defined(BROKEN_RUBY${RUBY_VER:R}${RUBY_VER:E})
 .if ${BROKEN_RUBY${RUBY_VER:R}${RUBY_VER:E}} == "yes"
@@ -349,7 +360,8 @@ PLIST_SUB+=		${PLIST_RUBY_DIRS:C,DIR="(${LOCALBASE}|${PREFIX})/,DIR=",} \
 			RUBY_DEFAULT_SUFFIX="${RUBY_DEFAULT_SUFFIX}" \
 			RUBY20=${RUBY20} \
 			RUBY21=${RUBY21} \
-			RUBY22=${RUBY22}
+			RUBY22=${RUBY22} \
+			RUBY23=${RUBY23}
 
 .if defined(USE_RUBY_RDOC)
 MAKE_ENV+=	RUBY_RDOC=${RUBY_RDOC}
@@ -489,6 +501,10 @@ do-build:
 do-install:
 	(cd ${BUILD_WRKSRC}; ${SETENV} ${GEM_ENV} ${RUBYGEMBIN} install ${RUBYGEM_ARGS} ${GEMFILES} -- --build-args ${CONFIGURE_ARGS})
 	${RM} -r ${STAGEDIR}${PREFIX}/${GEMS_BASE_DIR}/build_info/
+	${FIND} ${STAGEDIR}${PREFIX}/${GEMS_BASE_DIR} -type f -name '*.so' -exec ${STRIP_CMD} {} +
+	${FIND} ${STAGEDIR}${PREFIX}/${GEMS_BASE_DIR} -type f \( -name mkmf.log -or -name gem_make.out \) -delete
+	${RM} -rf ${STAGEDIR}${PREFIX}/${GEM_LIB_DIR}/ext \
+		${STAGEDIR}${PREFIX}/${CACHE_DIR} 2> /dev/null || ${TRUE}
 	${RMDIR} ${STAGEDIR}${PREFIX}/${EXT_DIR} 2> /dev/null || ${TRUE}
 .if defined(NOPORTDOCS)
 	-@${RMDIR} ${STAGEDIR}${PREFIX}/${DOC_DIR}
@@ -497,7 +513,6 @@ do-install:
 . if defined(RUBYGEM_AUTOPLIST)
 .  if !target(post-install-script)
 post-install-script:
-	@${ECHO} ${GEM_CACHE} >> ${TMPPLIST}
 	@${ECHO} ${GEM_SPEC} >> ${TMPPLIST}
 .if !defined(NOPORTDOCS)
 	@${FIND} -ds ${STAGEDIR}${PREFIX}/${DOC_DIR} -type f -print | ${SED} -E -e \

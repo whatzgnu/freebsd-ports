@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	MongoDB
-PORTVERSION=	1.0.3
-PORTREVISION=	1
+PORTVERSION=	1.2.2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	databases perl5
 MASTER_SITES=	CPAN
@@ -34,8 +33,6 @@ TEST_DEPENDS=	p5-Data-Dump>=0:${PORTSDIR}/devel/p5-Data-Dump \
 		p5-Test-Fatal>=0:${PORTSDIR}/devel/p5-Test-Fatal \
 		p5-Test-Warn>=0:${PORTSDIR}/devel/p5-Test-Warn
 
-PORTSCOUT=	skipv:0.999.998.5
-
 CFLAGS+=	-DBSON_COMPILATION -DMONGO_USE_64_BIT_INT
 MAKE_JOBS_UNSAFE=	yes
 USES=		perl5
@@ -44,4 +41,11 @@ USE_PERL5=	configure
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/MongoDB/MongoDB.so
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${PERL_LEVEL} < 502200
+BUILD_DEPENDS+=	p5-JSON-PP>=2.27300:${PORTSDIR}/converters/p5-JSON-PP
+RUN_DEPENDS+=	p5-JSON-PP>=2.27300:${PORTSDIR}/converters/p5-JSON-PP
+.endif
+
+.include <bsd.port.post.mk>

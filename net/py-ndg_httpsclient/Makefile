@@ -1,5 +1,5 @@
 # Created by: Olivier Duchateau
-# $FreeBSD: head/net/py-ndg_httpsclient/Makefile 401898 2015-11-18 21:41:48Z rm $
+# $FreeBSD$
 
 PORTNAME=	ndg_httpsclient
 PORTVERSION=	0.4.0

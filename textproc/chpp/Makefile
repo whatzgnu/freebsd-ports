@@ -11,7 +11,7 @@ MASTER_SITES=	http://www.complang.tuwien.ac.at/schani/chpp/files/ \
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Non-intrusive full-featured text preprocessor
 
-LICENSE=	GPLv2 # or later
+LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libgc.so:${PORTSDIR}/devel/boehm-gc
@@ -49,11 +49,13 @@ post-patch:
 		's|"../regex.h"|<gnu/regex.h>|' ${WRKSRC}/builtins/${i}
 .endfor
 
-post-install:
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for file in AUTHORS NEWS README
 	${INSTALL_DATA} ${WRKSRC}/${file} ${STAGEDIR}${DOCSDIR}
 .endfor
+
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	(cd ${WRKSRC}/test && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
 

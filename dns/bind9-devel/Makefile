@@ -19,8 +19,8 @@ COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 LICENSE=	ISCL
 
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.11.0.a20151109
-HASH=		e13d04f
+ISCVERSION=	9.11.0.a20160211
+HASH=		ee2e5fe
 
 MAKE_JOBS_UNSAFE=	yes
 
@@ -215,6 +215,8 @@ post-extract:
 	echo "SRCID=${HASH}" > ${WRKSRC}/srcid
 
 post-patch:
+	@${REINPLACE_CMD} -e '/RELEASETYPE=/s#$$#-${HASH}#' \
+		${WRKSRC}/version
 	@${REINPLACE_CMD} -e 's|readline/readline.h|editline/readline.h|; \
 		s|readline/history.h|histedit.h|' \
 		${WRKSRC}/bin/dig/nslookup.c ${WRKSRC}/bin/nsupdate/nsupdate.c

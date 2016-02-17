@@ -1,5 +1,5 @@
 # Created by: se
-# $FreeBSD: head/www/mini_httpd/Makefile 405201 2016-01-03 23:48:58Z rene $
+# $FreeBSD$
 
 PORTNAME=	mini_httpd
 PORTVERSION=	1.23

@@ -1,5 +1,5 @@
 # Created by: Elvis Chiang <elvis@sslab.cs.ccu.edu.tw>
-# $FreeBSD: head/www/wordpress/Makefile 405400 2016-01-07 07:24:53Z miwi $
+# $FreeBSD$
 
 PORTNAME=	wordpress
 PORTVERSION=	4.4.1

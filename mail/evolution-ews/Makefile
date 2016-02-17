@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	evolution-ews
-PORTVERSION=	3.16.5
+PORTVERSION=	3.18.4
 CATEGORIES=	mail gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -18,10 +18,9 @@ RUN_DEPENDS=	evolution>=3.0.0:${PORTSDIR}/mail/evolution
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		gettext gmake gnome libtool pathfix pkgconfig sqlite tar:xz
 USE_GNOME=	intltool
 GNU_CONFIGURE=	yes
-USE_SQLITE=	3
 USE_BDB=	5
 USE_OPENLDAP=	yes
 USE_LDCONFIG=	yes
@@ -31,9 +30,5 @@ CONFIGURE_ARGS=	--datarootdir=${PREFIX}/share \
 		--localedir=${PREFIX}/share/locale \
 		--prefix=${PREFIX}
 INSTALL_TARGET=	install-strip
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|$$(prefix)/$$(DATADIRNAME)/|$$(prefix)/share/|g' \
-		${WRKSRC}/configure
 
 .include <bsd.port.mk>

@@ -1,8 +1,8 @@
-# Created by: Torsten Zühlsdorff <ports@toco-domains.de>
+# Created by: Torsten Zuhlsdorff <ports@toco-domains.de>
 # $FreeBSD$
 
 PORTNAME=	ice_cube
-PORTVERSION=	0.13.0
+PORTVERSION=	0.13.2
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 

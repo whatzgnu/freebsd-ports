@@ -12,6 +12,7 @@ MAINTAINER=	milios@ccsys.com
 COMMENT=	Decentralized, open DNS system and general purpose key/value store
 
 LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libboost_date_time.so:${PORTSDIR}/devel/boost-libs
 
@@ -22,8 +23,6 @@ UPNP_DESC=	Build with UPNP support
 QRCODES_DESC=	Build with QR code display
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	namecoin
-GH_PROJECT=	namecoin
 
 USES=		gmake compiler:c++11-lib
 MAKE_JOBS_UNSAFE=yes

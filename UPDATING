@@ -5,6 +5,247 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20160214:
+  AFFECTS: users of www/nginx-devel
+  AUTHOR: osa@FreeBSD.org
+
+  Dynamic modules support has been enabled for the following third-party
+  modules, in case of usage of these modules please update nginx
+  configuration file for load these modules:
+
+  load_module "modules/ngx_http_echo_module.so";
+  load_module "modules/ngx_http_headers_more_filter_module.so";
+  load_module "modules/ngx_http_eval_module.so";
+  load_module "modules/ngx_http_lua_module.so";
+  load_module "modules/ngx_http_set_misc_module.so";
+
+20160213:
+  AFFECTS: users of www/nginx-devel
+  AUTHOR: osa@FreeBSD.org
+
+  Dynamic modules support has been enabled.  In case of usage following
+  modules please update nginx configuration file for load these modules:
+
+  load_module "modules/ngx_http_geoip_module.so";
+  load_module "modules/ngx_http_image_filter_module.so";
+  load_module "modules/ngx_http_xslt_filter_module.so";
+  load_module "modules/ngx_mail_module.so";
+  load_module "modules/ngx_stream_module.so";
+
+  See https://www.nginx.com/blog/dynamic-modules-nginx-1-9-11/ for details.
+
+20160127:
+  AFFECTS: users of net-im/uTox
+  AUTHOR: amdmi3@FreeBSD.org
+
+  Before upgrading uTox port, please set maximum font scale in the
+  program options.
+
+20160119:
+  AFFECTS: users of security/tor, security/tor-devel
+  AUTHOR: amdmi3@FreeBSD.org
+
+  The tor ports now create /var/log/tor subdirectory for tor logs. If
+  you've used /var/log/tor as a log _file_, you'll need to update your
+  torrc and move the file before updating the port.
+
+20160118:
+  AFFECTS: users of mail/rspamd and mail/rmilter
+  AUTHOR: vsevolod@FreeBSD.org
+
+  Rspamd has been updated to the version 1.1.0. If you have used per user
+  statistics, then please consult changelog for details: your configuration
+  should be changed.
+
+  Rmilter has been updated to the version 1.7.0. Support of SPF and Spamassassin
+  has been dropped from this project completely. You might also consider
+  migration from memcahched to redis in this version.
+
+20160113:
+  AFFECTS: users of sysutils/ansible
+  AUTHOR: lifanov@mail.lifanov.com
+
+  Ansible 2.0.0 introduces a number of incompatible configuration changes.
+  Please read changelog and migrate current configuration:
+
+  https://raw.githubusercontent.com/ansible/ansible/v2.0.0.0-1/CHANGELOG.md
+
+  Ansible 1.9.* will be provided as sysutils/ansible1 until the next update
+  of 2.0 branch.
+
+20160111:
+  AFFECTS: users of security/easy-rsa
+  AUTHOR: mandree@FreeBSD.org
+
+  The port has been upgraded to version 3. This incurs major changes,
+  please see ${PREFIX}/share/doc/easy-rsa/doc/EasyRSA-Upgrade-Notes.md
+  for details.
+
+  The old version 2.2.2 has been retained as security/easy-rsa2.
+
+20151227:
+  AFFECTS: users of games/nethack34
+  AUTHOR: glewis@FreeBSD.org
+
+  The port name and installation location of games/nethack34 have changed
+  to allow for a port of NetHack 3.6.0.  To preserve your save and bones
+  files do the following after updating:
+
+    # sudo cp -p ${LOCALBASE}/share/nethack/save/* ${LOCALBASE}/share/nethack34/save/
+    # sudo cp -p ${LOCALBASE}/share/nethack/bon* ${LOCALBASE}/share/nethack34/
+
+  After verifying the files were copied correctly, remove the playground
+  directory (as these files are incompatible with NetHack 3.6.0).
+
+    # sudo rm -r ${LOCALBASE}/share/nethack
+
+20151219:
+  AFFECTS: users of net/samba4, net/samba41
+  AUTHOR: timur@FreeBSD.org
+
+  Given version of Samba were marked as deprecated. Please, consider to upgrade.
+
+  Samba4 was giving wrong builds with recent version of p5-Parse-Pidl. It was
+  converted to use bundled version instead and to conflict with the given package.
+  If you still intend to build net/samba4 - remove p5-Parse-Pidle first.
+
+20151217:
+  AFFECTS: users of security/tor, security/tor-devel
+  AUTHOR: amdmi3
+
+  Tor rc.d script no longer overrides or forces logfile configuration,
+  you now need to setup logging by hand. To preserve old behavior, add
+  the following line to /usr/local/etc/tor/torrc:
+
+    Log notice file /var/log/tor
+
+20151215:
+  AFFECTS: All users of www/node
+  AUTHOR: koobs
+
+  www/node has been updated to the latest 5.x stable release, and a new port
+  www/node4 has been created for the 4.x LTS branch.
+
+  Should users want to continue to use version 4.x, replace www/node with
+  www/node4 as follows:
+
+  Using packages:
+
+    # pkg delete node
+    # pkg install node4
+
+  Using ports:
+
+    # portupgrade -o www/node4 www/node
+
+  OR
+
+    # portmaster -o www/node4 www/node
+
+20151210:
+  AFFECTS: users of comms/gammu
+  AUTHOR: vanilla@FreeBSD.org
+
+  The python binding of comms/gammu were split from the main port. To get them you
+  need to install comms/py-gammu.
+
+20151206:
+  AFFECTS: users of mail/postfixadmin
+  AUTHOR: riggs@FreeBSD.org
+
+  Caveat when updating to version 2.93: If you have an existing
+  configuration and are NOT using the recommended practice of putting your
+  settings changes in config.local.php:
+
+  Copy config.inc.php to config.local.php prior to upgrading, then revise
+  config.local.php for the current version afterward.
+
+  Postfixadmin will not function correctly unless correct and complete
+  data structures are placed in config.inc.php. Therefore the file must be
+  upgraded as part of the package and any changes to config.inc.php will
+  be overwritten.
+
+  Detailed information regarding this procedure is provided in step 3 of
+  the installation instructions in ${DATADIR}/INSTALL.TXT (by default
+  /usr/local/share/postfixadmin/INSTALL.TXT).
+
+20151205:
+  AFFECTS: users of devel/ncurses
+  AUTHOR: bapt@FreeBSD.org
+
+  ncurses has been updated to 6.0.
+  If you are using binary pkg, 'pkg upgrade' will do the right thing.
+  Users of portmaster/portupgrade must rebuild all ports which depend
+  on ncurses.
+
+  Portmaster users:
+      portmaster -w -r ncurses
+  Portupgrade users:
+      portupgrade -fr devel/ncurses
+
+20151203:
+  AFFECTS: users of x11-toolkits/qt4-gui or x11-toolkits/qt5-gui
+  AUTHOR: kde@FreeBSD.org
+
+  Back in mid-2012, pkg-message was added to the port suggesting changes to the
+  default shared memory limits in loader.conf(5). Since then, the default
+  limits have been changed and the values suggested by the port are no longer
+  sensible. If you have changed the following values in loader.conf(5) due to
+  qt4-gui's or qt5-gui's pkg-message, please considering removing them and
+  using the default settings:
+  * kern.ipc.shmall
+  * kern.ipc.shmmni
+  * kern.ipc.shmseg
+  See base r209037 and ports PR 202927 for more context.
+
+20151203:
+  AFFECTS: users of sysutils/logstash
+  AUTHOR: junovitch@FreeBSD.org
+
+  Logstash has been updated to the 2.1.0 release. The embedded ElasticSearch
+  instance is no longer supported. If in use, end users must update
+  logstash.conf to point to the URL of an ElasticSearch instance.
+
+20151130:
+  AFFECTS: users of net/samba43
+  AUTHOR: timur@FreeBSD.org
+
+  A new version of Samba server that has better integration with Windows 10.
+  This is still experimental and there were reports that rolling upgrade from
+  previous version of Samba fails to work.
+
+  Please, backup all relevant files from /var/db/samba4/ directory, as well
+  as configuration files.
+
+  Follow https://wiki.samba.org/index.php/Updating_Samba for the upgrade path.
+
+20151130:
+  AFFECTS: users of net/samba4, net/samba41, net/samba42
+  AUTHOR: timur@FreeBSD.org
+
+  Recent versions of devel/talloc, devel/tevent, database/tdb, database/ldb
+  contained infinit recursive call to the strtol* set of replacement functions,
+  which lead to coredumps. Unofficial patch was added meanwhile, but now
+  official version of the fixed libs were released. If your version of
+  net/samba4 works fine you don't need to recompile it. Other ports were also
+  upgraded and some bugs were fixed in upstream.
+
+20151122:
+  AFFECTS: users of audio/audacity
+  AUTHOR: riggs@FreeBSD.org
+
+  Audacity has been upgraded to version 2.1.1. Changes in its settings
+  processing may prevent it from starting. If this happens, removing its
+  user-specific configuration directory ~/.audacity-data resolves this.
+
+20151118:
+  AFFECTS: users of mail/rmilter
+  AUTHOR: vsevolod@FreeBSD.org
+
+  Rmilter now has switched from user postfix to user _rmilter for security
+  and sanity purposes. You might want to fix the ownership of
+  /var/run/rmilter to user _rmilter and group mail.
+
 20151105:
   AFFECTS: users of deskutils/egroupware
   AUTHOR: danilo@FreeBSD.org
@@ -12,7 +253,7 @@ you update your ports collection, before attempting any port upgrades.
   EGroupware 1.8 was deprecated and removed from sourceforge.net.
   To upgrade to the new version (14.3), make a backup of all files and
   database, remove all files from ${PREFIX}/www/eg:
-  
+
     # pkg remove egroupware
     # rm -rf ${PREFIX}/www/eg
 
@@ -75,18 +316,18 @@ you update your ports collection, before attempting any port upgrades.
 20151015:
   AFFECTS: users of devel/subversion, its bindings and www/mod_dav_svn
   AUTHOR: lev@FreeBSD.org
-  
+
   The subversion upgdate to 1.9 branch introduces new "old" subversion
   port devel/subversion18.
-  
+
   If you don't want to update your subversion installation, run
-  
-  	pkg set -n subversion:subversion18
-  	
+
+        pkg set -n subversion:subversion18
+
   and add
-  
+
         WITH_SUBVERSION_VER=18
-        
+
   to your /etc/make.conf
 
 20151013:
@@ -104,7 +345,7 @@ you update your ports collection, before attempting any port upgrades.
   block rule like the following:
 
   ipfw add deny all from 'table(22)' to any
-  
+
   The release announcement can be found here:
     http://sourceforge.net/p/sshguard/mailman/message/34534861/
 
@@ -113,10 +354,10 @@ you update your ports collection, before attempting any port upgrades.
   AUTHOR: sbruno@FreeBSD.org
 
   The Jemalloc update at svn r286871 introduced some TLS enhancements
-  for MIPS targets that require a bit of workaround.  Users who want 
+  for MIPS targets that require a bit of workaround.  Users who want
   to build MIPS packages should update their host systems past r286871
   prior to upgrading their qemu-user-static/qemu-sbruno ports.
-  
+
   Discussion about this can be found here:
     https://lists.freebsd.org/pipermail/freebsd-mips/2015-October/004018.html
 
@@ -290,11 +531,11 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: users of sysutils/s6
   AUTHOR: Colin Booth <colin@heliocat.net>
 
-  s6-notifywhenup has been removed as of v2.2.0.0. Any run scripts 
-  using readyness notification must be updated to use a notification 
+  s6-notifywhenup has been removed as of v2.2.0.0. Any run scripts
+  using readyness notification must be updated to use a notification
   fd instead.
 
-  s6-svc options have changed for sending syncronous up/down timeouts. 
+  s6-svc options have changed for sending syncronous up/down timeouts.
   Any management or wrapper scripts using those options will need to
   be updated.
 
@@ -330,7 +571,7 @@ you update your ports collection, before attempting any port upgrades.
   be both used with Icinga 1.x and the Icinga 2 port (net-mgmt/icinga2).
   A new meta-port net-mgmt/icinga was added which depends on both new
   ports, so updating the Icinga port should be transparent.
-  
+
 20150812:
   AFFECTS: users of sysutils/moosefs-master and other moosefs packages
   AUTHOR: feld@FreeBSD.org
@@ -497,7 +738,7 @@ you update your ports collection, before attempting any port upgrades.
   to www/varnish4. The upgrade guide can be found here:
 
   https://www.varnish-cache.org/docs/trunk/whats-new/upgrade-4.0.html
-  
+
   www/varnish-libvmod-header and www/varnish-nagios have been updated to
   versions that work with Varnish 4.x. You should not lose access to
   this software.
@@ -533,10 +774,10 @@ you update your ports collection, before attempting any port upgrades.
 
 20150615:
   AFFECTS: users of security/libressl
-  AUTHOR: brnrd@FreeBSD.org 
+  AUTHOR: brnrd@FreeBSD.org
 
   After upgrading libressl, manually update all packages that depend on
-  this library since its version has changed. Normally, you can obtain the 
+  this library since its version has changed. Normally, you can obtain the
   list of dependent software by running the following command:
 
   pkg query -e '%n = libressl' %ro
@@ -678,8 +919,8 @@ you update your ports collection, before attempting any port upgrades.
   - SQLITE
   - MYSQL
   - PGSQL
-  - REDIS 
- 
+  - REDIS
+
   They are disabled/removed in upstream since 5.4.4p1, but did not get removed
   from port.
 
@@ -697,7 +938,6 @@ you update your ports collection, before attempting any port upgrades.
 20150419
   AFFECTS: Users of emulators/wine-devel
   AUTHOR: gerald@FreeBSD.org
-
 
   The COMPHOLIO option in emulators/wine-devel has been renamed to
   STAGING to align with the upstream evolution of that project.
@@ -1027,7 +1267,7 @@ AUTHOR: ohauer@FreeBSD.org
   #
   # Keep MySQL 5.5 as default version
   #
-  DEFAULT_VERSIONS+=mysql= 5.5 
+  DEFAULT_VERSIONS+=mysql= 5.5
 
   If you wish to update to the new default version, you need to first stop any
   running server instance. Then, you will need to follow these steps, depending
@@ -1242,7 +1482,7 @@ AUTHOR: ohauer@FreeBSD.org
 
 20141215:
   AFFECTS: users of emulators/linux_base-f10 and emulators/linux_base-c6
-  AUTHOR: sbruno@freebsd.org
+  AUTHOR: sbruno@FreeBSD.org
 
   The CentOS ports are now the default for stable/10 (after revision 275807).
   See UPDATING entry 20141209 for details on migration of systems.
@@ -1266,7 +1506,7 @@ AUTHOR: ohauer@FreeBSD.org
 
 20141209:
   AFFECTS: users of emulators/linux_base-f10 and emulators/linux_base-c6
-  AUTHOR: xmj@freebsd.org
+  AUTHOR: xmj@FreeBSD.org
 
   The CentOS ports infrastructure has replaced Fedora 10 as default.
 
@@ -2596,7 +2836,7 @@ AUTHOR: ohauer@FreeBSD.org
 
     1) distribute-0.6.35-py2.7.egg
     2) setuptools-0.6c11-py2.7.egg
-    3) *Any* version of setuptools directly from PyPi via pip or easy_install
+    3) *Any* version of setuptools directly from PyPI via pip or easy_install
 
   More information is available here:
 
@@ -6994,7 +7234,7 @@ AUTHOR: ohauer@FreeBSD.org
 
 20110928:
   AFFECTS: users of www/nginx-devel
-  AUTHOR: osa@FreeBSD.ORG
+  AUTHOR: osa@FreeBSD.org
 
   Note: 1.1.4 release introduces several API changes which may affect
   third-party modules.

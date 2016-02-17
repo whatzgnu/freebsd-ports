@@ -1,7 +1,8 @@
-# $FreeBSD$
+# $FreeBSD: head/net/openbsc/Makefile 404614 2015-12-28 02:35:55Z junovitch $
 
 PORTNAME=	openbsc
-PORTVERSION=	0.14.0
+PORTVERSION=	0.15.0
+PORTREVISION=	1
 CATEGORIES=	net
 MASTER_SITES=	http://git.osmocom.org/${PORTNAME}/snapshot/ \
 		http://chaosophia.net/downloads/osmocom/${PORTNAME}/
@@ -20,15 +21,27 @@ LIB_DEPENDS=	libdbi.so:${PORTSDIR}/databases/libdbi \
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/${PORTNAME}
 
 USES=		autoreconf compiler:c11 gmake pkgconfig
-GNU_CONFIGURE=yes
+USE_OPENSSL=	yes
+GNU_CONFIGURE=	yes
 AUTOMAKE_ARGS=	--gnu --add-missing --copy
 CONFIGURE_ARGS+=	CFLAGS="-I${LOCALBASE}/include"
 
-OPTIONS_DEFINE=		SQLITE
-OPTIONS_DEFAULT=
+OPTIONS_DEFINE=	BSC NAT SQLITE
+OPTIONS_DEFAULT= BSC NAT
+
+BSC_DESC=	Enable OSMO BSC
+NAT_DESC=	Enable NAT support
+SQLITE_DESC=	Enable SQLite support
 
 OPTIONS_SUB=	yes
-SQLITE_LIB_DEPENDS=	libsqlite.so:${PORTSDIR}/databases/sqlite3
+
+BSC_CONFIGURE_ENABLE=	osmo-bsc
+
+NAT_CONFIGURE_ENABLE=	nat
+NAT_BUILD_DEPENDS=	${LOCALBASE}/lib/libsccp.a:${PORTSDIR}/devel/libosmo-sccp
+NAT_RUN_DEPENDS=	${LOCALBASE}/lib/libsccp.a:${PORTSDIR}/devel/libosmo-sccp
+
+SQLITE_LIB_DEPENDS=	libsqlite3.so:${PORTSDIR}/databases/sqlite3
 
 post-patch:
 	${REINPLACE_CMD} -e 's|pkgconfigdir.*|pkgconfigdir = ${PREFIX}/libdata/pkgconfig|g' \

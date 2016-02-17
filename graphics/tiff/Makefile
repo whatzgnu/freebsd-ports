@@ -1,5 +1,5 @@
 # Created by: Richard Hwang <rhwang@bigpanda.com>, Mikhail Teterin <mi@aldan.algebra.com>, Jun-ichiro itojun Itoh <itojun@itojun.org>
-# $FreeBSD: head/graphics/tiff/Makefile 405294 2016-01-05 15:04:58Z rakuco $
+# $FreeBSD$
 
 PORTNAME=	tiff
 PORTVERSION=	4.0.6

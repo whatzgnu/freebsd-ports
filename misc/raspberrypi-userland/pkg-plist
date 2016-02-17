@@ -12,10 +12,12 @@ bin/containers_uri_pipe
 bin/mmal_vc_diag
 bin/raspistill
 bin/raspivid
+bin/raspividyuv
 bin/raspiyuv
 bin/tvservice
 bin/vcgencmd
 bin/vchiq_test
+bin/vcmailbox
 bin/vcsmem
 include/EGL/egl.h
 include/EGL/eglext.h
@@ -52,6 +54,7 @@ include/interface/mmal/core/mmal_buffer_private.h
 include/interface/mmal/core/mmal_clock_private.h
 include/interface/mmal/core/mmal_component_private.h
 include/interface/mmal/core/mmal_core_private.h
+include/interface/mmal/core/mmal_events_private.h
 include/interface/mmal/core/mmal_port_private.h
 include/interface/mmal/mmal.h
 include/interface/mmal/mmal_buffer.h
@@ -284,6 +287,7 @@ sbin/vcfiled
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/hello_fft.c
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/hello_fft_2d.c
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/hello_fft_2d_bitmap.h
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/hex/shader_4096k.hex
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/hex/shader_1024k.hex
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/hex/shader_128k.hex
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/hex/shader_16k.hex
@@ -303,6 +307,7 @@ sbin/vcfiled
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/mailbox.h
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/makefile
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/qasm/gpu_fft.qinc
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/qasm/gpu_fft_4096k.qasm
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/qasm/gpu_fft_1024k.qasm
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/qasm/gpu_fft_128k.qasm
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/hello_fft/qasm/gpu_fft_16k.qasm
@@ -383,16 +388,5 @@ sbin/vcfiled
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/libs/vgfont/vgft.h
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/hello_pi/rebuild.sh
 share/install/vcfiled
-@dir include/interface/vchiq_arm/CMakeFiles/vchiq_arm.dir
-@dir include/interface/vchiq_arm/CMakeFiles/vchiq_test.dir
-@dir include/interface/vcos/CMakeFiles
 @dir include/interface/vcos/glibc
-@dir include/interface/vcos/pthreads/CMakeFiles/vcos.dir/__/generic
-@dir include/interface/vcos/pthreads/CMakeFiles/vcos.dir/__/glibc
-@dir include/interface/vcos/pthreads/generic/CMakeFiles
-@dir include/interface/vmcs_host/CMakeFiles/vchostif.dir/linux
-@dir include/interface/vmcs_host/CMakeFiles/vcilcs.dir
-@dir include/interface/vmcs_host/linux/vcfiled/CMakeFiles/vcfiled.dir
-@dir include/interface/vmcs_host/linux/vcfiled/CMakeFiles/vcfiled_check.dir
-@dir include/interface/vmcs_host/linux/vcfiled/CMakeFiles/vcfiled_lock_test.dir
 @dir include/interface/vmcs_host/linux/vcfiled/etc/init.d

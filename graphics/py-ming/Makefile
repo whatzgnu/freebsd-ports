@@ -2,7 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	ming
-PORTVERSION=	0.4.7
+DISTVERSIONPREFIX=	${PORTNAME}-
+DISTVERSION=	0_4_7
+PORTREVISION=	1
 CATEGORIES=	graphics python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -19,6 +21,8 @@ LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libming.so:${PORTSDIR}/graphics/ming \
 		libpng.so:${PORTSDIR}/graphics/png
 
+PORTSCOUT=	limit:^ming-
+
 CONFIGURE_ARGS=	--enable-python
 CONFIGURE_ENV=	PYTHON_LDFLAGS="-L${PYTHON_LIBDIR} -l${PYTHON_VERSION}${PYTHON_ABIVER}"
 GNU_CONFIGURE=	yes
@@ -31,7 +35,6 @@ WRKSRC=		${WRKDIR}/${GH_PROJECT}-${GH_TAGNAME_EXTRACT}/py_ext
 USE_GITHUB=	yes
 GH_ACCOUNT=	lib${PORTNAME}
 GH_PROJECT=	lib${PORTNAME}
-GH_TAGNAME=	${PORTNAME}-${PORTVERSION:S|.|_|g}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's| --root ".*"||' ${WRKSRC}/Makefile.am

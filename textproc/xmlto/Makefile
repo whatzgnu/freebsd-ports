@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	xmlto
-PORTVERSION=	0.0.26
-PORTREVISION=	2
+PORTVERSION=	0.0.28
 CATEGORIES=	textproc
 MASTER_SITES=	https://fedorahosted.org/releases/x/m/xmlto/:xmlto \
 		LOCAL/mandree/:xmlto \
@@ -74,7 +73,12 @@ CONFIGURE_ARGS+=	--with-backend=dblatex
 
 post-patch:
 	@# get rid of nonstandard "type" option -t:
-	cd ${WRKSRC} && ${FIND} . -type f -exec ${REINPLACE_CMD} -i '' -e 's/type -t/which/;' '{}' '+'
+	${SED} -i '' -e 's/type -t/which/;' \
+		${WRKSRC}/format/docbook/epub \
+		${WRKSRC}/format/docbook/txt \
+		${WRKSRC}/format/fo/dvi \
+		${WRKSRC}/format/fo/pdf \
+		${WRKSRC}/format/xhtml1/txt
 	@# get rid of GNU-make-ism (BSD make defines $< only in suffix rules)
 	${REINPLACE_CMD} -e '/^GEN_MANPAGE/{s/\$$</$$>/;}' ${WRKSRC}/Makefile.in
 

@@ -2,23 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	recoll
-PORTVERSION=	1.21.2
+PORTVERSION=	1.21.5
 CATEGORIES=	deskutils
-MASTER_SITES=	http://www.lesbonscomptes.com/${PORTNAME}/
+MASTER_SITES=	http://www.lesbonscomptes.com/recoll/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Personal full text search package, based on Xapian
 
-LICENSE=	GPLv2
+LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	xapian-core>=0:${PORTSDIR}/databases/xapian-core
-RUN_DEPENDS:=	${BUILD_DEPENDS} \
+LIB_DEPENDS=	libxapian.so:${PORTSDIR}/databases/xapian-core
+RUN_DEPENDS=	unrar:${PORTSDIR}/archivers/unrar \
 		antiword:${PORTSDIR}/textproc/antiword \
 		catdoc:${PORTSDIR}/textproc/catdoc \
 		wpd2html:${PORTSDIR}/textproc/libwpd010 \
-		xsltproc:${PORTSDIR}/textproc/libxslt \
-		unrar:${PORTSDIR}/archivers/unrar \
 		unrtf:${PORTSDIR}/textproc/unrtf
 
 USES=		bison gmake iconv shebangfix
@@ -40,22 +38,27 @@ OPTIONS_SUB=		yes
 ASPELL_LIB_DEPENDS=	libaspell.so:${PORTSDIR}/textproc/aspell
 ASPELL_CONFIGURE_WITH=	aspell
 CHM_DESC=		CHM via CHMLIB
-CHM_RUN_DEPENDS=	pychm:${PORTSDIR}/textproc/pychm
+CHM_RUN_DEPENDS=	pychm>0:${PORTSDIR}/textproc/pychm
 DJVU_RUN_DEPENDS=	djvutxt:${PORTSDIR}/graphics/djvulibre
 IMAGE_DESC=		Store personal tags or textual descriptions in images
 IMAGE_RUN_DEPENDS=	exiftool:${PORTSDIR}/graphics/p5-Image-ExifTool
 KONQUEROR_DESC=		Konqueror webarchive format with Python
-KONQUEROR_RUN_DEPENDS=	kwebkitpart:${PORTSDIR}/www/kwebkitpart
-LATEX_USE=		tex=dvipsk:run
-#LATEX_RUN_DEPENDS=	detex:${PORTSDIR}/print/detex
+KONQUEROR_RUN_DEPENDS=	kwebkitpart>0:${PORTSDIR}/www/kwebkitpart
+LATEX_USE=		tex=dvipsk:run,latex:run
 PDF_RUN_DEPENDS=	xpdf:${PORTSDIR}/graphics/xpdf
 PS_RUN_DEPENDS=		pstotext:${PORTSDIR}/print/pstotext
 PYTHON_USES=		python
 PYTHON_CONFIGURE_ENABLE=	python-module
+PYTHON_PLIST_SUB=	PYDISTUTILS_EGGINFO="${PYDISTUTILS_EGGINFO}"
+PYTHON_VARS= 		PYDISTUTILS_PKGNAME=Recoll \
+			PYDISTUTILS_PKGVERSION=1.0
 QT4_USE=		qt4=moc_build,qmake_build,rcc_build,uic_build \
 			qt4=iconengines_run,imageformats_run \
 			qt4=corelib,gui,xml,webkit
 QT4_CONFIGURE_ENABLE=	qtgui
+QT4_CONFIGURE_ENV=	QMAKE="${QMAKE}" QMAKESPEC="${QMAKESPEC}" \
+			QTDIR="${QT_PREFIX}"
+QT4_VARS=		QT_NONSTANDARD=yes
 SOUND_RUN_DEPENDS=	mutagen-pony:${PORTSDIR}/audio/py-mutagen \
 			pykaraoke:${PORTSDIR}/audio/py-karaoke
 X11MON_DESC=		X11 session monitoring support
@@ -64,47 +67,34 @@ X11MON_USE=		xorg=ice,sm,x11
 X11MON_CONFIGURE_ENABLE=	x11mon
 X11MON_CONFIGURE_WITH=	fam
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MPYTHON}
-PYDISTUTILS_PKGNAME=	Recoll
-PYDISTUTILS_PKGVERSION=	1.0
-PLIST_SUB+=	PYDISTUTILS_EGGINFO="${PYDISTUTILS_EGGINFO}"
-.endif
-
-.if ${PORT_OPTIONS:MQT4}
-QT_NONSTANDARD=	yes
-CONFIGURE_ENV+=	QTDIR="${QT_PREFIX}" QMAKE="${QMAKE}"
-INSTALLS_ICONS=	yes
-.endif
-
 post-patch:
+	@${REINPLACE_CMD} -e \
+		'/recoll.pro/s|^|#|' \
+		${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} -e \
 		's|/usr/local/lib|${LOCALBASE}/lib|' \
 		${WRKSRC}/configure
 	@${REINPLACE_CMD} -e \
-		's|= -g -O2|=|' \
-		${WRKSRC}/mk/localdefs.in
-	@${REINPLACE_CMD} -e \
-		's|@NOCMDLINE@||g ; \
-	 	 s|@prefix@|${PREFIX}| ; \
-		 s|REALPREFIX=$$PREFIX|REALPREFIX=$$DESTDIR$$PREFIX| ; \
-		 s|python setup.py|${PYTHON_CMD} setup.py| ; \
-		 s|$${ROOTFORPYTHON}||' \
+		's|@NOCMDLINE@|| ; \
+		 s|python setup.py|${PYTHON_CMD} setup.py|' \
 		${WRKSRC}/recollinstall.in
 	@${REINPLACE_CMD} -e \
 		's|python setup.py|${PYTHON_CMD} setup.py|' \
 		${WRKSRC}/python/recoll/Makefile
 
+pre-build-QT4-on:
+	@(cd ${WRKSRC}/qtgui && ${SETENV} ${QMAKE_ENV} ${QMAKE} \
+		${QMAKE_ARGS} recoll.pro)
+
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/recoll/librecoll.so.[0-9].*
-.if ${PORT_OPTIONS:MPYTHON}
+
+post-install-PYTHON-on:
 .for l in recoll rclextract
 	@${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/recoll/${l}.so
 .endfor
 	@(cd ${STAGEDIR}${PREFIX} && ${PYTHON_CMD} -m compileall \
 		-d ${PYTHONPREFIX_SITELIBDIR} \
 		-f ${PYTHONPREFIX_SITELIBDIR:S;${PREFIX}/;;})
-.endif
 
 .include <bsd.port.mk>

@@ -1,4 +1,4 @@
-# $FreeBSD: head/Mk/Uses/firebird.mk 407738 2016-02-01 19:47:26Z sunpoet $
+# $FreeBSD$
 #
 # Provide support for Firebird
 # Feature:	firebird

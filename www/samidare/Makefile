@@ -18,7 +18,6 @@ RUN_DEPENDS=	${RUBY_SITELIBDIR}/htree.rb:${PORTSDIR}/textproc/ruby-htree
 
 USES=	gmake
 USE_RUBY=	yes
-USE_RUBY_FEATURES=	iconv
 
 RUBY_SHEBANG_FILES=	main.rb rb-link rb2rm rm2rb
 PORTDOCS=	README README.ja
@@ -29,6 +28,9 @@ ALL_TARGET=	${PORTNAME}
 PLIST_FILES=	bin/samidare man/man1/samidare.1.gz
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
+
+BROKEN_RUBY22=	yes
+BROKEN_RUBY23=	yes
 
 post-build:
 	@${REINPLACE_CMD} -e '1d' ${BUILD_WRKSRC}/${PORTNAME}

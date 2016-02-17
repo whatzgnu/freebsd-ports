@@ -12,7 +12,6 @@
     SUBDIR += apwal
     SUBDIR += arandr
     SUBDIR += aterm
-    SUBDIR += avant-window-navigator
     SUBDIR += babl
     SUBDIR += bbappconf
     SUBDIR += bbdock
@@ -127,6 +126,7 @@
     SUBDIR += kgamma
     SUBDIR += konsole
     SUBDIR += leechcraft
+    SUBDIR += lemonbar
     SUBDIR += libICE
     SUBDIR += libSM
     SUBDIR += libX11
@@ -159,6 +159,7 @@
     SUBDIR += libdmx
     SUBDIR += libdnd
     SUBDIR += libexo
+    SUBDIR += libfakekey
     SUBDIR += libfm
     SUBDIR += libfm-extra
     SUBDIR += libgnome
@@ -185,7 +186,6 @@
     SUBDIR += lsw
     SUBDIR += luit
     SUBDIR += lumina
-    SUBDIR += lumina-devel
     SUBDIR += lumina-i18n
     SUBDIR += lupe
     SUBDIR += lxde-meta
@@ -235,6 +235,7 @@
     SUBDIR += printscreen
     SUBDIR += props
     SUBDIR += py-qt4-opengl
+    SUBDIR += py-qt5-opengl
     SUBDIR += qimageblitz
     SUBDIR += qt4-graphicssystems-opengl
     SUBDIR += qt4-inputmethods

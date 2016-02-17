@@ -27,7 +27,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-wx-config=${WX_CONFIG} --with-contrib-plugins=all \
 		--disable-pch
 CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib
+LIBS+=		-L${LOCALBASE}/lib -lboost_system
 INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
@@ -38,6 +38,9 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 .if ${CHOSEN_COMPILER_TYPE} == clang
 USE_CXXSTD=	c++11
+. if ${COMPILER_VERSION} >= 35
+CXXFLAGS+=	-Wno-undefined-bool-conversion
+. endif
 .endif
 
 .include <bsd.port.post.mk>

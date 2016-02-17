@@ -2,25 +2,23 @@
 # $FreeBSD$
 
 PORTNAME=	qemu
-PORTVERSION=	2.4.50.g20151011
+PORTVERSION=	2.5.50.g20160215
 CATEGORIES=	emulators
 MASTER_SITES=	GH \
-		LOCAL/nox \
 		LOCAL/nox:dtc \
-		http://people.freebsd.org/~nox/tmp/distfiles/ \
 		http://people.freebsd.org/~nox/tmp/distfiles/:dtc
 PKGNAMESUFFIX?=	-sbruno
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
 		dtc-v1.4.0${EXTRACT_SUFX}:dtc
 DIST_SUBDIR=	qemu/${PORTVERSION}
 
-MAINTAINER=	nox@FreeBSD.org
+MAINTAINER=	sbruno@FreeBSD.org
 COMMENT?=	QEMU CPU Emulator - github bsd-user branch
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	seanbruno
 GH_PROJECT=	${PORTNAME}-bsd-user
-GH_TAGNAME=	182181a
+GH_TAGNAME=	cada59f
 HAS_CONFIGURE=	yes
 USES=		gmake pkgconfig bison perl5 python:2,build
 USE_PERL5=	build
@@ -61,7 +59,7 @@ SUB_LIST=	NAME=qemu_user_static
 
 CONFIGURE_ARGS+=	--localstatedir=/var
 CONFIGURE_ARGS+=	--extra-ldflags=-L\"${LOCALBASE}/lib\"
-CONFIGURE_ARGS+=	--disable-smartcard-nss --disable-libssh2
+CONFIGURE_ARGS+=	--disable-libssh2
 PORTDOCS=	docs qemu-doc.html qemu-tech.html qmp-commands.txt
 
 .if defined(QEMU_USER_STATIC)
@@ -120,10 +118,6 @@ PLIST_SUB+=	SOFTMMU=""
 PLIST_SUB+=	STATIC=""
 .endif
 
-#.if ${PORT_OPTIONS:MGNS3}
-#EXTRA_PATCHES+=	${FILESDIR}/hw_e1000_c.patch
-#.endif
-
 WITHOUT_CPU_CFLAGS=yes	#to avoid problems with register allocation
 CFLAGS:=	${CFLAGS:C/-fno-tree-vrp//}
 CONFIGURE_ARGS+=	--prefix=${PREFIX} --cc=${CC} --enable-docs \
@@ -150,9 +144,7 @@ USES+=		gettext
 PLIST_SUB+=	GTK2=""
 .endif
 
-.if empty(PORT_OPTIONS:MGNUTLS)
-CONFIGURE_ARGS+=	--disable-vnc-tls
-.else
+.if ${PORT_OPTIONS:MGNUTLS}
 LIB_DEPENDS+=	libgnutls.so:${PORTSDIR}/security/gnutls
 .endif
 
@@ -201,7 +193,7 @@ CONFIGURE_ARGS+=	--disable-pcap
 
 .if ${PORT_OPTIONS:MSTATIC_LINK}
 .if ${PORT_OPTIONS:MGTK2} || ${PORT_OPTIONS:MX11}
-IGNORE=		X11 ui cannot be built static
+IGNORE=		the X11 ui cannot be built static
 .endif
 CONFIGURE_ARGS+=	--static
 .endif
@@ -234,10 +226,10 @@ MAKE_ARGS+=	ARCH=ppc64
 .endif
 
 .if ${ARCH} == "sparc64"
-CONFIGURE_ARGS+= --sparc_cpu=v9
+CONFIGURE_ARGS+=	--sparc_cpu=v9
 .endif
 
-CONFIGURE_ARGS+= --python=${PYTHON_CMD}
+CONFIGURE_ARGS+=	--python=${PYTHON_CMD}
 
 # -lprocstat actually only _needs_ -lelf after r249666 or r250870 (MFC)
 # but it shouldn't matter much
@@ -282,6 +274,8 @@ post-install:
 	${INSTALL_SCRIPT} ${FILESDIR}/qemu-ifup.sample ${STAGEDIR}${PREFIX}/etc
 	${INSTALL_SCRIPT} ${FILESDIR}/qemu-ifdown.sample ${STAGEDIR}${PREFIX}/etc
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/qemu-*
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/ivshmem-*
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/share/qemu/palcode-clipper
 .endif
 
 .include <bsd.port.mk>

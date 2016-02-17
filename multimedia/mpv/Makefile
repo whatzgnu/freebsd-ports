@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mpv
-PORTVERSION=	0.12.0
+PORTVERSION=	0.15.0
 DISTVERSIONPREFIX=	v
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
@@ -18,7 +18,7 @@ BUILD_DEPENDS=	rst2man:${PORTSDIR}/textproc/py-docutils
 USE_GITHUB=	yes
 GH_ACCOUNT=	mpv-player waf-project:waf
 GH_PROJECT=	waf:waf
-GH_TAGNAME=	waf-1.8.16:waf
+GH_TAGNAME=	waf-1.8.19:waf
 
 WAF_CMD=	${WRKSRC_waf}/waf-light
 
@@ -126,7 +126,7 @@ XINERAMA_USE=			XORG=xinerama,xineramaproto
 XINERAMA_CONFIGURE_OFF=		--disable-xinerama
 XINERAMA_IMPLIES=		X11
 
-YTDL_BUILD_DEPENDS=		${LOCALBASE}/bin/youtube-dl:${PORTSDIR}/www/youtube_dl
+YTDL_RUN_DEPENDS=		youtube-dl:${PORTSDIR}/www/youtube_dl
 
 ZSH_USES=			perl5
 ZSH_USE=			PERL5=build

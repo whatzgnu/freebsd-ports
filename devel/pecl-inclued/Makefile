@@ -8,10 +8,13 @@ CATEGORIES=	devel pear
 MASTER_SITES=	http://pecl.php.net/get/
 PKGNAMEPREFIX=	pecl-
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	miwi@FreeBSD.org
 COMMENT=	Inclued gives you a Clue for PHP inclusion check
 
 LICENSE=	PHP301
+
+DEPRECATED=	${IGNORE}
+EXPIRATION_DATE=2016-03-15
 
 USES=		tar:tgz
 USE_PHP=	yes

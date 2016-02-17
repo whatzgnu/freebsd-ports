@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME?=	postgresql
-DISTVERSION?=	9.2.14
+DISTVERSION?=	9.2.15
 CATEGORIES?=	databases
 MASTER_SITES=	PGSQL/source/v${DISTVERSION}
 PKGNAMESUFFIX?=	${DISTVERSION:R:S/.//}${COMPONENT}
@@ -67,6 +67,7 @@ SUB_FILES+=	502.pgsql
 .if defined(CLIENT_ONLY)
 OPTIONS_DEFINE+=LIBEDIT
 LIBEDIT_DESC=	Use non-GPL libedit instead of readline
+USES+=		perl5
 .else
 MAKE_ENV=	PATH=${PREFIX}/bin:${PATH}
 CONFIGURE_ENV+=	PATH=${PREFIX}/bin:${PATH}
@@ -119,9 +120,6 @@ LIBEDIT_USES_OFF=		readline
 
 SSL_USE=	OPENSSL=yes
 SSL_CONFIGURE_WITH=openssl
-
-OSSP_UUID_BUILD_DEPENDS=	${LOCALBASE}/lib/libuuid.a:${PORTSDIR}/misc/ossp-uuid
-OSSP_UUID_CONFIGURE_WITH=	ossp-uuid
 
 PAM_CONFIGURE_WITH=	pam
 

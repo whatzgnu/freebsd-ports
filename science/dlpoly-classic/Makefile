@@ -1,15 +1,15 @@
-# Created by: Jason Bacon <jwbacon@tds.net>
+# Created by: Jason Bacon <bacon4000@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	dlpoly
 PORTVERSION=	1.8
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	science java
 MASTER_SITES=	http://ccpforge.cse.rl.ac.uk/gf/download/frsrelease/238/2028/
 PKGNAMESUFFIX=	classic
 DISTNAME=	dl_class_${PORTVERSION}
 
-MAINTAINER=	jwbacon@tds.net
+MAINTAINER=	bacon4000@gmail.com
 COMMENT=	Molecular dynamics simulation package
 
 BUILD_DEPENDS=	${LOCALBASE}/mpi/openmpi/bin/mpif90:${PORTSDIR}/net/openmpi

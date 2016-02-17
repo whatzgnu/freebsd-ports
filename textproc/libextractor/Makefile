@@ -3,14 +3,14 @@
 
 PORTNAME=	libextractor
 PORTVERSION=	1.3
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	textproc
 MASTER_SITES=	GNU
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Library for keyword extraction
 
-LICENSE=	GPLv3 # (or later)
+LICENSE=	GPLv3+
 
 LIB_DEPENDS=	libltdl.so:${PORTSDIR}/devel/libltdl
 

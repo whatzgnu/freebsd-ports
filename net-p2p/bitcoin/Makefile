@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	bitcoin
-PORTVERSION=	0.11.0
+PORTVERSION=	0.11.2
 DISTVERSIONPREFIX=	v
-PORTREVISION?=	1
 CATEGORIES=	net-p2p finance
 
 MAINTAINER=	robbak@robbak.com
@@ -77,6 +76,12 @@ CONFIGURE_ARGS?=	--without-libs \
 			--with-gui \
 			--without-daemon \
 			--without-utils
+
+# BitCoin requires a bug-compatible OpenSSL
+.if defined(OPENSSL_PORT) && (${OPENSSL_PORT} == "security/libressl" \
+	|| ${OPENSSL_PORT} == "security/libressl-devel")
+WITH_OPENSSL_BASE=	yes
+.endif
 
 CONFIGURE_ENV=	CRYPTO_CFLAGS="-I${OPENSSLINC}" CRYPTO_LIBS="-L${OPENSSLLIB} -lcrypto" \
 		SSL_CFLAGS="-I${OPENSSLINC}" SSL_LIBS="-L${OPENSSLLIB} -lssl"

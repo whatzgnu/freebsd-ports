@@ -1,4 +1,4 @@
-# $FreeBSD: head/www/obhttpd/Makefile 403730 2015-12-14 17:16:54Z mat $
+# $FreeBSD$
 
 PORTNAME=	obhttpd
 PORTVERSION=	5.8.20151023
@@ -20,7 +20,7 @@ USE_RC_SUBR=	obhttpd
 USES=		uidfix
 
 WITH_OPENSSL_PORT=yes
-OPENSSL_PORT=	security/libressl
+OPENSSL_PORT=	security/libressl-devel
 
 CFLAGS+=	-Wall
 

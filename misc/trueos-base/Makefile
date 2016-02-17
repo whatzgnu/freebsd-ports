@@ -5,7 +5,7 @@
 # $FreeBSD$
 
 PORTNAME=	trueos-base
-PORTVERSION=	2020151023
+PORTVERSION=	2020151123
 CATEGORIES=	misc
 MASTER_SITES=	# Empty
 DISTFILES=	# Empty
@@ -32,9 +32,6 @@ RUN_DEPENDS=	pc-updatemanager:${PORTSDIR}/sysutils/pcbsd-utils \
 		zfs-stats:${PORTSDIR}/sysutils/zfs-stats \
 		ataidle>=0:${PORTSDIR}/sysutils/ataidle \
 		anacron:${PORTSDIR}/sysutils/anacron \
-		grub-mkconfig:${PORTSDIR}/sysutils/grub2-pcbsd \
-		grub2-efi>=0:${PORTSDIR}/sysutils/grub2-efi \
-		docker:${PORTSDIR}/sysutils/docker-freebsd \
 		openntpd>=0:${PORTSDIR}/net/openntpd
 
 NO_BUILD=	yes

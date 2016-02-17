@@ -3,8 +3,8 @@
 
 PORTNAME=	openssl
 PORTVERSION=	1.0.2
-DISTVERSIONSUFFIX=	d
-PORTREVISION=	4
+DISTVERSIONSUFFIX=	f
+PORTREVISION=	8
 CATEGORIES=	security devel
 MASTER_SITES=	http://www.openssl.org/source/ \
 		ftp://ftp.openssl.org/source/ \
@@ -19,6 +19,8 @@ COMMENT=	SSL and crypto library
 .endif
 
 CONFLICTS?=	libressl-*
+LICENSE=	OpenSSL
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 OPTIONS_DEFINE=	SHARED THREADS I386 SSE2 ASM PADLOCK ZLIB GMP SCTP SSL2 SSL3 RFC3779 MD2 RC5 EXPCIPHERS DOCS MAN3
 OPTIONS_DEFAULT=SHARED THREADS SSE2 SCTP SSL2 SSL3 MD2 MAN3
@@ -67,7 +69,7 @@ CPE_VERSION=	${PORTVERSION}${DISTVERSIONSUFFIX}
 .include <bsd.port.pre.mk>
 
 .if ${PREFIX} == /usr
-IGNORE=	OpenSSL can not be installed over the base version.
+IGNORE=	the OpenSSL port can not be installed over the base version
 .endif
 
 OPENSSLDIR?=	${PREFIX}/openssl
@@ -90,6 +92,7 @@ EXTRACONFIGURE+=	no-sse2
 .endif
 
 .if ${PORT_OPTIONS:MASM}
+BROKEN_sparc64=	option ASM generates illegal instructions
 EXTRACONFIGURE+=	enable-asm
 .else
 EXTRACONFIGURE+=	no-asm
@@ -129,7 +132,7 @@ EXTRACONFIGURE+=	no-ssl2
 .if ${PORT_OPTIONS:MSSL3}
 EXTRACONFIGURE+=	enable-ssl3
 .else
-EXTRACONFIGURE+=	no-ssl3
+EXTRACONFIGURE+=	no-ssl3 no-ssl3-method
 .endif
 
 .if ${PORT_OPTIONS:MMD2}
@@ -155,7 +158,7 @@ PATCHFILES+=	1001-crypto-hmac-support-EVP_MD_CTX_FLAG_ONESHOT-and-set-.patch:pad
 
 .if ${PORT_OPTIONS:MGMP}
 EXTRACONFIGURE+=	enable-gmp -I${LOCALBASE}/include
-IGNORE=	GMP is LGPLv3 and can not be linked.
+IGNORE=	can not be linked because GMP is LGPLv3
 .else
 EXTRACONFIGURE+=	no-gmp
 .endif
@@ -224,15 +227,14 @@ post-install:
 	${LN} -sf $i.so.${OPENSSL_SHLIBVER} ${STAGEDIR}${PREFIX}/lib/$i.so
 .endfor
 .endif
-.if ${PORT_OPTIONS:MDOCS}
-	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/doc/openssl.txt ${STAGEDIR}${DOCSDIR}/
-.endif
 .if empty(PORT_OPTIONS:MMAN3)
 	${RM} -rf ${STAGEDIR}/${PREFIX}/man/man3
 	${REINPLACE_CMD} -e 's|^man/man3/.*||' ${TMPPLIST}
 .endif
-	${SED} -e 's|/usr/local|${PREFIX}|g' ${PKGMESSAGE}
+
+post-install-DOCS-on:
+	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/doc/openssl.txt ${STAGEDIR}${DOCSDIR}/
 
 test: build
 	cd ${WRKSRC} && ${MAKE} test

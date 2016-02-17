@@ -1,5 +1,5 @@
 # Created by: peter.thoenen@yahoo.com
-# $FreeBSD: head/security/tor/Makefile 406686 2016-01-19 13:54:54Z amdmi3 $
+# $FreeBSD$
 
 PORTNAME=	tor
 PORTVERSION=	0.2.7.6
@@ -19,7 +19,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-openssl-dir="${OPENSSLBASE}" --disable-asciidoc
 CONFIGURE_ENV=	TOR_CPPFLAGS_libevent="-I${LOCALBASE}/include" \
 		TOR_LDFLAGS_libevent="-L${LOCALBASE}/lib/" \
-		TOR_LIBEVENT_LIBS="${TOR_LIBEVENT_LIBS}"
+		TOR_LIBEVENT_LIBS="${TOR_LIBEVENT_LIBS}" \
 
 OPTIONS_DEFINE=	BUFFEREVENTS INSTR_DOWNLOADS \
 		STATIC_TOR TCMALLOC TOR2WEB TRANSPARENT
@@ -54,6 +54,10 @@ empty(PORT_OPTIONS:MSTATIC_TOR) && empty(ARCH:Mia64)
 CONFIGURE_ARGS+=	--enable-gcc-hardening
 .else
 CONFIGURE_ARGS+=	--disable-gcc-hardening
+.endif
+
+.if ( "${OPENSSL_PORT:tl}" == "security/libressl" )
+CONFIGURE_ENV+=	ac_cv_member_struct_ssl_method_st_get_cipher_by_char=no
 .endif
 
 .if ${PORT_OPTIONS:MBUFFEREVENTS}

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	qqwing
-PORTVERSION=	1.3.3
+PORTVERSION=	1.3.4
 DISTVERSIONPREFIX=	v
 PORTREVISION=	1
 CATEGORIES=	games gnome
@@ -30,7 +30,7 @@ pre-configure:
 		target/automake
 	@cd ${WRKSRC} && ${CP} doc/qqwing.man target/automake/qqwing.1
 	@cd ${WRKSRC}/target/automake && ${TOUCH} config.h.in
-	@cd ${WRKSRC}/target/automake && autoreconf --force --install
+	@cd ${WRKSRC}/target/automake && ${AUTORECONF} --force --install
 
 pre-build:
 	@cd ${WRKSRC} && ${CP} src/cpp/*.cpp target/automake

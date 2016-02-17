@@ -1,4 +1,4 @@
-# $FreeBSD: head/www/apache24/Makefile 403736 2015-12-14 20:53:28Z ohauer $
+# $FreeBSD$
 
 PORTNAME=	apache24
 PORTVERSION=	2.4.18
@@ -177,9 +177,8 @@ post-install:
 	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
 	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/libexec/apache24/mod_*.so
 
-.if ${PORT_OPTIONS:MLOG_FORENSIC}
+post-install-LOG_FORENSIC-on:
 	${INSTALL_SCRIPT} ${WRKSRC}/support/check_forensic ${STAGEDIR}${PREFIX}/sbin
-.endif
 
 # maintainer only, check for new modules
 modlist: extract

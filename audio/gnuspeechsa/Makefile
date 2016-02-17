@@ -9,10 +9,11 @@ MASTER_SITES=	GNU/gnuspeech
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Command line, or application-based speech output module of gnuspeech
 
-LICENSE=	GPLv3 # or later
+LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BROKEN_FreeBSD_9=	does not build
+BROKEN_powerpc64=	Does not build
 
 USES=		cmake compiler:c++11-lib
 

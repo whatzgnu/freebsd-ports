@@ -12,7 +12,8 @@ PKGNAMESUFFIX=	-gui
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Three-dimensional fractal creator (X11 GUI)
 
-LICENSE=	GPLv2 # (or later)
+BROKEN=		unfetchable
+LICENSE=	GPLv2+
 
 LIB_DEPENDS=	libfltk.so:${PORTSDIR}/x11-toolkits/fltk
 

@@ -28,6 +28,7 @@
     SUBDIR += hamcrest
     SUBDIR += icedtea-web
     SUBDIR += infobus
+    SUBDIR += intellij
     SUBDIR += jad
     SUBDIR += jaf
     SUBDIR += jai
@@ -116,8 +117,7 @@
     SUBDIR += trove4j
     SUBDIR += veditor
     SUBDIR += visualvm
-    SUBDIR += wildfly80
-    SUBDIR += wildfly81
+    SUBDIR += wildfly100
     SUBDIR += wildfly82
     SUBDIR += wildfly90
     SUBDIR += xdoclet

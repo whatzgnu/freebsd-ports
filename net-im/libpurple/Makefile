@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME?=	libpurple
-PORTVERSION=	2.10.11
-PORTREVISION?=	0
+PORTVERSION=	2.10.12
+PORTREVISION?=	1
 CATEGORIES?=	net-im
 MASTER_SITES=	SF/pidgin/Pidgin/${PORTVERSION}
 DISTNAME=	pidgin-${PORTVERSION}
@@ -77,6 +77,8 @@ PLIST_SUB+=	GTKUI="@comment not installed: "
 .endif
 
 .if defined(WITH_CONSOLEUI)
+OPTIONS_DEFINE+=NCURSES
+NCURSES_DESC=	Build with ncurses from ports
 PLIST_SUB+=	CONSOLEUI=""
 .else
 PLIST_SUB+=	CONSOLEUI="@comment not installed: "
@@ -97,13 +99,31 @@ CONFIGURE_ARGS+=	--disable-tcl
 PLIST_SUB+=		TCL:="@comment not installed: "
 .endif
 
-.include <bsd.port.pre.mk>
+.if ${PORT_OPTIONS:MNCURSES}
+USES+=		ncurses:port
+CONFIGURE_ARGS+=--with-ncurses-headers=${LOCALBASE}/include/ncurses/
+.else
+USES+=		ncurses
+.endif
+
+.if ${PORT_OPTIONS:MPERL}
+USES+=			perl5
+CONFIGURE_ARGS+=	--with-perl-lib=site
+PLIST_SUB+=		PERL:=""
+.if !defined(PIDGIN_SLAVE) || defined(WITH_GTKUI)
+PLIST_SUB+=		PERLMAN:=""
+.else
+PLIST_SUB+=		PERLMAN:="@comment not installed: "
+.endif
+.else
+CONFIGURE_ARGS+=	--disable-perl
+PLIST_SUB+=		PERL:="@comment not installed: " \
+			PERLMAN:="@comment not installed: "
+.endif
 
 .if !defined(PIDGIN_SLAVE)
-.if ${HAVE_GNOME:Mgconf2}!="" || exists(${LOCALBASE}/bin/gconftool-2)
 USE_GNOME+=	gconf2
 GCONF_SCHEMAS=	purple.schemas
-.endif
 .endif
 
 #.if defined(WITH_GTKUI) && ${HAVE_GNOME:Mevolutiondataserver}!=""
@@ -122,7 +142,7 @@ CONFIGURE_ARGS+=--disable-gstreamer
 .endif
 
 .if ${PORT_OPTIONS:MVV} && ${PORT_OPTIONS:MGSTREAMER}
-LIB_DEPENDS+=	libgstfarsight-0.10.so:${PORTSDIR}/net-im/farsight2
+LIB_DEPENDS+=	libfarstream-0.2.so:${PORTSDIR}/net-im/farstream
 USE_GSTREAMER+=	v4l2
 PLIST_SUB+=	VV=""
 .else
@@ -197,21 +217,6 @@ PLIST_SUB+=		DBUS=""
 .else
 CONFIGURE_ARGS+=	--disable-dbus
 PLIST_SUB+=		DBUS="@comment not installed: "
-.endif
-
-.if ${PORT_OPTIONS:MPERL}
-USES+=			perl5
-CONFIGURE_ARGS+=	--with-perl-lib=site
-PLIST_SUB+=		PERL:=""
-.if !defined(PIDGIN_SLAVE)
-PLIST_SUB+=		PERLMAN:=""
-.else
-PLIST_SUB+=		PERLMAN:="@comment not installed: "
-.endif
-.else
-CONFIGURE_ARGS+=	--disable-perl
-PLIST_SUB+=		PERL:="@comment not installed: " \
-			PERLMAN:="@comment not installed: "
 .endif
 
 .if ${PORT_OPTIONS:MSAMETIME}
@@ -322,6 +327,8 @@ post-patch:
 .if defined(PIDGIN_SLAVE)
 	@${FIND} ${BUILD_WRKSRC} -name Makefile.in | ${XARGS} ${REINPLACE_CMD} -e \
 		's|$$(top_builddir)/libpurple/libpurple.la|-lpurple|'
+	@${REINPLACE_CMD} -e 's|gconftool-2|gconftool-disabled|g' \
+		${WRKSRC}/configure
 .endif
 
 .if !defined(PIDGIN_SLAVE) && ${PORT_OPTIONS:MPERL}
@@ -330,4 +337,4 @@ post-stage:
 		${STAGEDIR}${PREFIX}/lib/purple-2/perl/auto/Purple/.packlist
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

@@ -33,6 +33,7 @@
     SUBDIR += bayespam
     SUBDIR += bbmail
     SUBDIR += biabam
+    SUBDIR += bincimap
     SUBDIR += bmf
     SUBDIR += bogofilter
     SUBDIR += bogofilter-sqlite
@@ -69,6 +70,7 @@
     SUBDIR += claws-mail-tnef
     SUBDIR += claws-mail-vcalendar
     SUBDIR += clawsker
+    SUBDIR += cleanup-maildir
     SUBDIR += cone
     SUBDIR += coolmail
     SUBDIR += courier
@@ -198,6 +200,7 @@
     SUBDIR += libesmtp
     SUBDIR += libetpan
     SUBDIR += libmapi
+    SUBDIR += libmilter
     SUBDIR += libpst
     SUBDIR += librfc822
     SUBDIR += libsieve
@@ -362,6 +365,7 @@
     SUBDIR += p5-Mail-CheckUser
     SUBDIR += p5-Mail-ClamAV
     SUBDIR += p5-Mail-DKIM
+    SUBDIR += p5-Mail-DMARC
     SUBDIR += p5-Mail-DeliveryStatus-BounceParser
     SUBDIR += p5-Mail-DomainKeys
     SUBDIR += p5-Mail-Ezmlm
@@ -397,6 +401,7 @@
     SUBDIR += p5-Mail-Verify
     SUBDIR += p5-Mail-Verp
     SUBDIR += p5-Mail-Webmail-Gmail
+    SUBDIR += p5-Mojolicious-Plugin-Mail
     SUBDIR += p5-Net-IMAP-Client
     SUBDIR += p5-Net-IMAP-Server
     SUBDIR += p5-Net-IMAP-Simple
@@ -461,12 +466,11 @@
     SUBDIR += pflogsumm
     SUBDIR += pfqueue
     SUBDIR += pgpsendmail
-    SUBDIR += php5-imap
     SUBDIR += php55-imap
     SUBDIR += php56-imap
+    SUBDIR += php70-imap
     SUBDIR += phplist
     SUBDIR += phpmailer
-    SUBDIR += phpmailer2
     SUBDIR += pine-pgp-filters
     SUBDIR += pm-lib
     SUBDIR += policyd2
@@ -508,9 +512,10 @@
     SUBDIR += py-dkimpy
     SUBDIR += py-libgmail
     SUBDIR += py-milter
+    SUBDIR += py-notmuch
     SUBDIR += py-ppolicy
+    SUBDIR += py-pyspf
     SUBDIR += py-spambayes
-    SUBDIR += py-spf
     SUBDIR += py-turbomail
     SUBDIR += py-twistedMail
     SUBDIR += py-zope.sendmail
@@ -572,6 +577,7 @@
     SUBDIR += roundcube-umich
     SUBDIR += roundcube-veximaccountadmin
     SUBDIR += rspamd
+    SUBDIR += rspamd-devel
     SUBDIR += rss2email2
     SUBDIR += rss2email3
     SUBDIR += ruby-rfilter
@@ -579,14 +585,19 @@
     SUBDIR += rubygem-actionmailer
     SUBDIR += rubygem-actionmailer4
     SUBDIR += rubygem-actionmailer41
+    SUBDIR += rubygem-email_reply_parser
     SUBDIR += rubygem-email_reply_parser-discourse
     SUBDIR += rubygem-exception_notification
     SUBDIR += rubygem-larch
     SUBDIR += rubygem-mail
     SUBDIR += rubygem-mail25
+    SUBDIR += rubygem-mail_room
+    SUBDIR += rubygem-mailboxer
     SUBDIR += rubygem-mailfactory
     SUBDIR += rubygem-pony
     SUBDIR += rubygem-rmail
+    SUBDIR += rubygem-roadie
+    SUBDIR += rubygem-roadie-rails
     SUBDIR += rubygem-ruby-qmail
     SUBDIR += rubygem-tmail
     SUBDIR += rubygem-vmail

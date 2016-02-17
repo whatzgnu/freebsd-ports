@@ -2,13 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	libwps
-PORTVERSION=	0.2.9
+PORTVERSION=	0.2.10
 CATEGORIES=	textproc
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 PKGNAMESUFFIX=	02
 
 MAINTAINER=	office@FreeBSD.org
 COMMENT=	Microsoft file word processor format import filter library
+
+DEPRECATED=	Not used any more
+EXPIRATION_DATE=2016-03-26
 
 LICENSE=	LGPL21 MPL
 LICENSE_COMB=	dual

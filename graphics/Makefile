@@ -31,6 +31,7 @@
     SUBDIR += R-cran-rtiff
     SUBDIR += R-cran-scales
     SUBDIR += R-cran-shape
+    SUBDIR += R-cran-visNetwork
     SUBDIR += SciPlot
     SUBDIR += a2png
     SUBDIR += aalib
@@ -90,7 +91,6 @@
     SUBDIR += cimg
     SUBDIR += cinepaint
     SUBDIR += clutter
-    SUBDIR += clutter-box2d
     SUBDIR += clutter-gtk
     SUBDIR += clutter-gtk3
     SUBDIR += cluttermm
@@ -348,7 +348,6 @@
     SUBDIR += icc-profiles-openicc
     SUBDIR += iccexamin
     SUBDIR += iccxml
-    SUBDIR += icoconvert
     SUBDIR += icon-slicer
     SUBDIR += icontact
     SUBDIR += icoutils
@@ -386,7 +385,6 @@
     SUBDIR += jpatch
     SUBDIR += jpeg
     SUBDIR += jpeg-turbo
-    SUBDIR += jpeg2ps
     SUBDIR += jpeginfo
     SUBDIR += jpegoptim
     SUBDIR += jpg2pdf
@@ -542,7 +540,6 @@
     SUBDIR += libwpg03
     SUBDIR += lightzone
     SUBDIR += linplasma
-    SUBDIR += linux-XnViewMP
     SUBDIR += linux-adobesvg
     SUBDIR += linux-c6-cairo
     SUBDIR += linux-c6-dri
@@ -568,6 +565,7 @@
     SUBDIR += linux-f10-sdl_ttf
     SUBDIR += linux-f10-tiff
     SUBDIR += linux-f10-ungif
+    SUBDIR += llpp
     SUBDIR += lprof-devel
     SUBDIR += lua-gd
     SUBDIR += luminance
@@ -630,6 +628,7 @@
     SUBDIR += opennurbs
     SUBDIR += openrm
     SUBDIR += openshadinglanguage
+    SUBDIR += opensubdiv
     SUBDIR += optar
     SUBDIR += optipng
     SUBDIR += osg
@@ -654,6 +653,8 @@
     SUBDIR += p5-Color-Rgb
     SUBDIR += p5-Color-Scheme
     SUBDIR += p5-Convert-Color
+    SUBDIR += p5-Data-Google-Visualization-DataSource
+    SUBDIR += p5-Data-Google-Visualization-DataTable
     SUBDIR += p5-GD
     SUBDIR += p5-GD-Arrow
     SUBDIR += p5-GD-Barcode
@@ -759,24 +760,23 @@
     SUBDIR += pgplot
     SUBDIR += pho
     SUBDIR += photopc
+    SUBDIR += phototonic
     SUBDIR += php-facedetect
     SUBDIR += php-gdal
     SUBDIR += php-libpuzzle
     SUBDIR += php-magickwand
-    SUBDIR += php5-exif
     SUBDIR += php5-ffmpeg
-    SUBDIR += php5-gd
-    SUBDIR += php5-swfed
     SUBDIR += php55-exif
     SUBDIR += php55-gd
     SUBDIR += php56-exif
     SUBDIR += php56-gd
+    SUBDIR += php70-exif
+    SUBDIR += php70-gd
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
     SUBDIR += pikopixel
     SUBDIR += pinpoint
-    SUBDIR += pinta
     SUBDIR += pixelize
     SUBDIR += pixen
     SUBDIR += pixie
@@ -815,7 +815,6 @@
     SUBDIR += projectm-libvisual
     SUBDIR += pstoedit
     SUBDIR += pstoepsi
-    SUBDIR += pure-gl
     SUBDIR += py-PyX
     SUBDIR += py-PyX12
     SUBDIR += py-aafigure
@@ -827,6 +826,7 @@
     SUBDIR += py-django-easy-thumbnails
     SUBDIR += py-editobj
     SUBDIR += py-exif
+    SUBDIR += py-exifread
     SUBDIR += py-exiv2
     SUBDIR += py-freeimagepy
     SUBDIR += py-gchartwrapper
@@ -839,13 +839,13 @@
     SUBDIR += py-graph
     SUBDIR += py-graph-core
     SUBDIR += py-graph-dot
-    SUBDIR += py-graphviz
     SUBDIR += py-graphy
     SUBDIR += py-gvgen
     SUBDIR += py-imaging
     SUBDIR += py-mcomix
     SUBDIR += py-ming
     SUBDIR += py-nwdiag
+    SUBDIR += py-opencolorio
     SUBDIR += py-opencv
     SUBDIR += py-openexr
     SUBDIR += py-opengl
@@ -864,9 +864,11 @@
     SUBDIR += py-pyganim
     SUBDIR += py-pyggel
     SUBDIR += py-pyglet
+    SUBDIR += py-pygraphviz
     SUBDIR += py-pygooglechart
     SUBDIR += py-pyproj
     SUBDIR += py-qt4-svg
+    SUBDIR += py-qt5-svg
     SUBDIR += py-rabbyt
     SUBDIR += py-sane
     SUBDIR += py-seqdiag
@@ -879,10 +881,8 @@
     SUBDIR += py3-cairo
     SUBDIR += pygts
     SUBDIR += pymorph
-    SUBDIR += pyro
     SUBDIR += pysvg
     SUBDIR += qcomicbook
-    SUBDIR += qcread
     SUBDIR += qgis
     SUBDIR += qiv
     SUBDIR += qiviewer
@@ -892,6 +892,7 @@
     SUBDIR += qt4-opengl
     SUBDIR += qt4-pixeltool
     SUBDIR += qt4-svg
+    SUBDIR += qt5-3d
     SUBDIR += qt5-graphicaleffects
     SUBDIR += qt5-imageformats
     SUBDIR += qt5-opengl
@@ -950,12 +951,12 @@
     SUBDIR += rubygem-rsvg2
     SUBDIR += rubygem-ruby-graphviz
     SUBDIR += rubygem-scruffy
-    SUBDIR += rubyphoto
     SUBDIR += s10sh
     SUBDIR += sage
     SUBDIR += sam2p
     SUBDIR += sampleicc
     SUBDIR += sane-backends
+    SUBDIR += sane-epkowa
     SUBDIR += sane-frontends
     SUBDIR += scale2x
     SUBDIR += scantailor
@@ -985,7 +986,6 @@
     SUBDIR += simpleviewer
     SUBDIR += sk1libs
     SUBDIR += skanlite
-    SUBDIR += sketch
     SUBDIR += smillaenlarger
     SUBDIR += springgraph
     SUBDIR += squish

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mu
-PORTVERSION=	0.9.12
+PORTVERSION=	0.9.16
 DISTVERSIONPREFIX=	v
 CATEGORIES=	mail
 
@@ -26,7 +26,7 @@ INSTALL_TARGET=	install-strip
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=		GUILE MU4E
+OPTIONS_DEFINE=		DOCS GUILE MU4E
 OPTIONS_SUB=		yes
 
 GUILE_LIB_DEPENDS=	libguile-2.0.so:${PORTSDIR}/lang/guile2
@@ -38,14 +38,12 @@ MU4E_USE=		emacs=yes
 MU4E_CONFIGURE_ENABLE=	mu4e
 MU4E_INFO=		mu4e
 
-.include <bsd.port.options.mk>
-
 post-install:
 	(cd ${FILESDIR} && ${INSTALL_SCRIPT} mu-ask \
 		${STAGEDIR}${PREFIX}/bin)
-.if ${PORT_OPTIONS:MGUILE}
+
+post-install-GUILE-on:
 	(${FIND} ${STAGEDIR}${PREFIX}/lib -name "*.so.*" -type f | \
 		${XARGS} ${STRIP_CMD})
-.endif
 
 .include <bsd.port.mk>

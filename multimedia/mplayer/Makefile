@@ -3,7 +3,7 @@
 
 PORTNAME=	mplayer
 PORTVERSION=	${MPLAYER_PORT_VERSION}
-PORTREVISION=	4
+PORTREVISION=	3
 CATEGORIES=	multimedia audio
 
 MAINTAINER=	riggs@FreeBSD.org
@@ -48,7 +48,7 @@ CONFFILES=	example.conf input.conf menu.conf dvb-menu.conf
 USES+=		iconv pkgconfig
 
 .include "${.CURDIR}/../../multimedia/mplayer/Makefile.optvars"
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 CONFIGURE_ARGS+=	--disable-arts \
 			--disable-directfb \
@@ -63,8 +63,6 @@ CONFIGURE_ARGS+=	--disable-arts \
 			--disable-mpg123 \
 			--disable-musepack \
 			--disable-theora
-
-.include "${.CURDIR}/../../multimedia/mplayer/Makefile.options"
 
 .if ${PORT_OPTIONS:MGUI} && ${PORT_OPTIONS:MX11}
 PLIST_SUB+=	GMPLAYER=""
@@ -115,6 +113,9 @@ CONFIGURE_ARGS+=--enable-xvmc --with-xvmclib=XvMCW
 CONFIGURE_ARGS+=--disable-x11
 .endif
 
+.include <bsd.port.pre.mk>
+.include "${.CURDIR}/../../multimedia/mplayer/Makefile.options"
+
 pre-everything::
 	@${ECHO_MSG} "N - O - T - E"
 	@${ECHO_MSG} ""
@@ -157,7 +158,8 @@ post-patch:
 			-e 's|[[:space:]]gcc[-[:digit:]\.]+| ${CC}|' \
 			-e 's|[[:space:]]gcc| ${CC}|' \
 			-e 's|\$$\(CC\)|${CC}|' \
-			-e 's|/usr/X11R6|${LOCALBASE}|'
+			-e 's|/usr/X11R6|${LOCALBASE}|' \
+			-e 's|%%LOCALBASE%%|${LOCALBASE}|'
 	@${FIND} ${WRKSRC}/DOCS/man -name "mplayer.1" | ${XARGS} ${REINPLACE_CMD} -E -e \
 		's|/usr/\\:local/\\:etc/\\:mplayer|${DATADIR:S/\//\/\\\:/g}|g ; \
 		 s|/dev/\\:(dvd[[:alnum:]]*[[:>:]])|${DEFAULT_DVD_DEVICE:S/dev\//dev\/\\\:/}|g ; \

@@ -1,6 +1,7 @@
 # $FreeBSD$
 
-AVIDEMUX_VERSION=	2.6.10
+PORTREVISION?=	1
+AVIDEMUX_VERSION=	2.6.11
 MASTER_SITES=	\
 		SF/avidemux/avidemux/${PORTVERSION}
 DISTNAME=	avidemux_${PORTVERSION}
@@ -18,10 +19,9 @@ USE_QT4=	# empty
 
 OPTIONS_FILE=	${PORT_DBDIR}/${OPTIONS_NAME:C/-.*//}/options
 
-USE_SQLITE=	yes
-USES=		cmake:outsource pkgconfig iconv gmake compiler:features
-USES+=		dos2unix
-DOS2UNIX_FILES=	cmake/admCheckMiscLibs.cmake po/CMakeLists.txt
+USES=		cmake:outsource pkgconfig iconv gmake compiler:features sqlite
+USES+=		dos2unix execinfo
+DOS2UNIX_FILES=	cmake/admCheckMiscLibs.cmake
 CMAKE_ARGS+=	-DGNUMAKE_EXECUTABLE=gmake
 CMAKE_ARGS+=	-DAVIDEMUX_PACKAGER=none
 CMAKE_ARGS+=	-DQT5:BOOL=OFF
@@ -33,11 +33,19 @@ CONFIGURE_ENV+=	COMPILER_PATH=${LOCALBASE}/bin
 MAKE_ENV+=	COMPILER_PATH=${LOCALBASE}/bin
 
 OPTIONS_DEFINE=	QT4 CLI FREETYPE FONTCONFIG OSS ESOUND JACK \
-		PULSEAUDIO XVIDEO FAAC \
+		PULSEAUDIO XVIDEO FAAC FRIBIDI OPUS TWOLAME \
 		FAAD X264 X265 VPX XVID SDL AMR VORBIS NLS LAME VAAPI VDPAU
 OPTIONS_DEFAULT=	QT4 FREETYPE FONTCONFIG OSS XVIDEO VPX XVID \
 			SDL FAAD VORBIS
+OPTIONS_SUB=	yes
 CLI_DESC=	Build CLI tool
+
+FRIBIDI_CMAKE_OFF=	-DFRIDIBI:BOOL=OFF
+FRIBIDI_LIB_DEPENDS=	libfribidi.so:${PORTSDIR}/converters/fribidi
+OPUS_CMAKE_OFF=		-DOPUS:BOOL=OFF
+OPUS_LIB_DEPENDS=	libopus.so:${PORTSDIR}/audio/opus
+TWOLAME_CMAKE_OFF=	-DTWOLAME:BOOL=OFF
+TWOLAME_LIB_DEPENDS=	libtwolame.so:${PORTSDIR}/audio/twolame
 
 .if !defined(PACKAGE_BUILDING)
 OPTIONS_DEFAULT+=	LAME FAAC AMR X264
@@ -58,17 +66,6 @@ CMAKE_ARGS+=	-DNO_NLS:BOOL=ON
 PLIST_SUB+=	NLS="@comment " QT_NLS="@comment "
 .endif
 
-.include <bsd.port.pre.mk>
-
-# is this kosher?  the result seems to run tho...  (see ports/185997)
-.if $(COMPILER_FEATURES:Mlibc++)
-LDFLAGS+=	-lc++
-.endif
-
-#.if ${COMPILER_TYPE} == clang
-USE_GCC=	yes
-#.endif
-
 # for libexecinfo: (so that __builtin_frame_address() finds the top
 # of the stack)
 .if ${ARCH} == "amd64"
@@ -76,8 +73,7 @@ CFLAGS+=	-fno-omit-frame-pointer
 #MAKE_ENV+=	ARCH=x86_64
 #CONFIGURE_ENV+=	ARCH=x86_64
 .endif
-.if ${OSVERSION} < 1000000
-LIB_DEPENDS+=	libexecinfo.so:${PORTSDIR}/devel/libexecinfo
+.if !exists(/usr/lib/libexecinfo.so)
 CMAKE_ARGS+=	-DLIBEXECINFO_INCLUDE_DIR=${LOCALBASE}/include
 CMAKE_ARGS+=	-DLIBEXECINFO_LIBRARY_DIR=${LOCALBASE}/lib/libexecinfo.so
 .else
@@ -266,6 +262,17 @@ PLIST_SUB+=	AMRNB="@comment "
 CMAKE_ARGS+=	-DOPENCORE_AMRWB:BOOL=OFF
 PLIST_SUB+=	AMRWB="@comment "
 .endif
+
+.include <bsd.port.pre.mk>
+
+# is this kosher?  the result seems to run tho...  (see ports/185997)
+.if $(COMPILER_FEATURES:Mlibc++)
+LDFLAGS+=	-lc++
+.endif
+
+#.if ${COMPILER_TYPE} == clang
+USE_GCC=	yes
+#.endif
 
 .if ${ARCH} == "ia64" || ${ARCH} == "powerpc" || ${ARCH} == "sparc64"
 BROKEN=		Does not compile on ia64, powerpc, or sparc64

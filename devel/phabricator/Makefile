@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	phabricator
-PORTVERSION=	20150626
-PORTREVISION=	1
+PORTVERSION=	20151220
 CATEGORIES=	devel
 PKGNAMEPREFIX=	php5-
 
@@ -46,12 +45,14 @@ NO_BUILD=	yes
 USE_RC_SUBR=	phd
 SUB_FILES=	pkg-message
 GH_ACCOUNT=	phacility
-GH_TAGNAME=	cee1835
+GH_TAGNAME=	006321c
 
 PHP_DESTDIR=	lib/php/phabricator
 
 do-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}/conf/local
+	@${INSTALL_DATA} ${FILESDIR}/local.json.sample \
+		${STAGEDIR}${PREFIX}/${PHP_DESTDIR}/conf/local
 	cd ${WRKSRC} ; ${PAX} -rw * ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}
 
 .include <bsd.port.post.mk>

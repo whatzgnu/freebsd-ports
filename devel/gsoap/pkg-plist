@@ -58,6 +58,8 @@ libdata/pkgconfig/gsoapssl.pc
 %%DATADIR%%/custom/chrono_time_point.h
 %%DATADIR%%/custom/duration.c
 %%DATADIR%%/custom/duration.h
+%%DATADIR%%/custom/int128.c
+%%DATADIR%%/custom/int128.h
 %%DATADIR%%/custom/long_double.c
 %%DATADIR%%/custom/long_double.h
 %%DATADIR%%/custom/long_time.c
@@ -74,6 +76,8 @@ libdata/pkgconfig/gsoapssl.pc
 %%DATADIR%%/extras/ckdbtest.c
 %%DATADIR%%/extras/ckdbtest.h
 %%DATADIR%%/extras/fault.cpp
+%%DATADIR%%/custom/float128.c
+%%DATADIR%%/custom/float128.h
 %%DATADIR%%/extras/logging.cpp
 %%DATADIR%%/extras/soapdefs.h
 %%DATADIR%%/import/README.txt

@@ -31,6 +31,7 @@
     SUBDIR += anacron
     SUBDIR += and
     SUBDIR += ansible
+    SUBDIR += ansible1
     SUBDIR += apachetop
     SUBDIR += apcpwr
     SUBDIR += apcupsd
@@ -76,7 +77,6 @@
     SUBDIR += bareos-client-static
     SUBDIR += bareos-docs
     SUBDIR += bareos-server
-    SUBDIR += bashburn
     SUBDIR += batmon
     SUBDIR += battfink
     SUBDIR += battmond
@@ -105,8 +105,8 @@
     SUBDIR += bsdstats
     SUBDIR += btsixad
     SUBDIR += bulk_extractor
+    SUBDIR += burp
     SUBDIR += busybox
-    SUBDIR += busybox-unstable
     SUBDIR += byobu
     SUBDIR += cbsd
     SUBDIR += ccd2iso
@@ -124,6 +124,10 @@
     SUBDIR += cdrtools
     SUBDIR += cdrtools-devel
     SUBDIR += cfengine
+    SUBDIR += cfengine-masterfiles
+    SUBDIR += cfengine-masterfiles36
+    SUBDIR += cfengine-masterfiles37
+    SUBDIR += cfengine-masterfiles38
     SUBDIR += cfengine22
     SUBDIR += cfengine32
     SUBDIR += cfengine33
@@ -131,6 +135,7 @@
     SUBDIR += cfengine35
     SUBDIR += cfengine36
     SUBDIR += cfengine37
+    SUBDIR += cfengine38
     SUBDIR += chgrep
     SUBDIR += cinnamon-control-center
     SUBDIR += cinnamon-settings-daemon
@@ -313,6 +318,7 @@
     SUBDIR += fusefs-ifuse
     SUBDIR += fusefs-kmod
     SUBDIR += fusefs-libs
+    SUBDIR += fusefs-lkl
     SUBDIR += fusefs-mhddfs
     SUBDIR += fusefs-mp3fs
     SUBDIR += fusefs-ntfs
@@ -340,6 +346,7 @@
     SUBDIR += gconf-editor
     SUBDIR += gdisk
     SUBDIR += gdmap
+    SUBDIR += genisoimage
     SUBDIR += geomWatch
     SUBDIR += geomgui
     SUBDIR += getdelta
@@ -436,10 +443,12 @@
     SUBDIR += jadm
     SUBDIR += jail-primer
     SUBDIR += jail2
+    SUBDIR += jailadmin
     SUBDIR += jailctl
     SUBDIR += jaildaemon
     SUBDIR += jailme
     SUBDIR += jailrc
+    SUBDIR += jailutils
     SUBDIR += javaservicewrapper
     SUBDIR += jdiskreport
     SUBDIR += jfbterm
@@ -501,7 +510,6 @@
     SUBDIR += lmon
     SUBDIR += lnav
     SUBDIR += log_analysis
-    SUBDIR += loganalyzer
     SUBDIR += logrotate
     SUBDIR += logstalgia
     SUBDIR += logstash
@@ -653,6 +661,7 @@
     SUBDIR += p5-Samba-SIDhelper
     SUBDIR += p5-Schedule-At
     SUBDIR += p5-Schedule-Cron
+    SUBDIR += p5-Schedule-Cron-Events
     SUBDIR += p5-Schedule-Load
     SUBDIR += p5-Schedule-Match
     SUBDIR += p5-Shell-Command
@@ -724,12 +733,13 @@
     SUBDIR += pftables
     SUBDIR += pftop
     SUBDIR += phantom
-    SUBDIR += php5-fileinfo
-    SUBDIR += php5-posix
     SUBDIR += php55-fileinfo
     SUBDIR += php55-posix
     SUBDIR += php56-fileinfo
     SUBDIR += php56-posix
+    SUBDIR += php70-fileinfo
+    SUBDIR += php70-posix
+    SUBDIR += phybs
     SUBDIR += pick
     SUBDIR += pidof
     SUBDIR += pipemeter
@@ -759,10 +769,10 @@
     SUBDIR += pstacku
     SUBDIR += pstree
     SUBDIR += ptools
-    SUBDIR += puppet
     SUBDIR += puppet-lint
     SUBDIR += puppet-mode.el
     SUBDIR += puppet37
+    SUBDIR += puppet38
     SUBDIR += puppet4
     SUBDIR += pv
     SUBDIR += pwd_unmkdb
@@ -775,11 +785,14 @@
     SUBDIR += py-croniter
     SUBDIR += py-crontab
     SUBDIR += py-danzfs
+    SUBDIR += py-diffoscope
+    SUBDIR += py-dlipower
     SUBDIR += py-drmaa
     SUBDIR += py-execnet
     SUBDIR += py-ezjailremote
     SUBDIR += py-fnutils
     SUBDIR += py-filelike
+    SUBDIR += py-freenas.cli
     SUBDIR += py-glances
     SUBDIR += py-halite
     SUBDIR += py-honcho
@@ -797,6 +810,7 @@
     SUBDIR += py-psutil121
     SUBDIR += py-ptyprocess
     SUBDIR += py-pytsk
+    SUBDIR += py-pywatchman
     SUBDIR += py-queuelib
     SUBDIR += py-ranger
     SUBDIR += py-salt
@@ -819,6 +833,7 @@
     SUBDIR += racktables
     SUBDIR += radeontool
     SUBDIR += radmind
+    SUBDIR += rainbarf
     SUBDIR += raincoat
     SUBDIR += rcadm
     SUBDIR += rclean
@@ -831,7 +846,9 @@
     SUBDIR += recoverdm
     SUBDIR += reed
     SUBDIR += rej
+    SUBDIR += relaunchd
     SUBDIR += relaxconf
+    SUBDIR += relaunchd
     SUBDIR += rename
     SUBDIR += renameutils
     SUBDIR += reoback
@@ -886,6 +903,7 @@
     SUBDIR += rubygem-hiera
     SUBDIR += rubygem-hiera-file
     SUBDIR += rubygem-hiera1
+    SUBDIR += rubygem-hieracles
     SUBDIR += rubygem-librarian-puppet
     SUBDIR += rubygem-log4r
     SUBDIR += rubygem-logify
@@ -988,6 +1006,8 @@
     SUBDIR += symlinks
     SUBDIR += symon
     SUBDIR += synergy
+    SUBDIR += sysadm
+    SUBDIR += sysadm-client
     SUBDIR += sysgather
     SUBDIR += sysinfo
     SUBDIR += syslinux
@@ -1065,6 +1085,7 @@
     SUBDIR += upsdaemon
     SUBDIR += uptimed
     SUBDIR += usb_modeswitch
+    SUBDIR += usbhid-dump
     SUBDIR += usbhotkey
     SUBDIR += usbutils
     SUBDIR += uschedule

@@ -3,10 +3,11 @@
 
 PORTNAME=	ipmitool
 PORTVERSION=	1.8.15
+PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	SF
 
-MAINTAINER=	steve.polyack@intermedix.com
+MAINTAINER=	zi@FreeBSD.org
 COMMENT=	CLI to manage IPMI systems
 
 LICENSE=	BSD3CLAUSE

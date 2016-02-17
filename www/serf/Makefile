@@ -5,7 +5,7 @@ PORTNAME=	serf
 PORTVERSION=	1.3.8
 PORTREVISION=	1
 CATEGORIES=	www
-MASTER_SITES=	http://serf.googlecode.com/svn/src_releases/
+MASTER_SITES=	APACHE/serf
 
 MAINTAINER=	lev@FreeBSD.org
 COMMENT=	Serf HTTP client library
@@ -39,7 +39,7 @@ do-build:
 	@(cd ${WRKSRC} && ${SETENV} ${MAKE_CMD} ${SCONS_ARGS})
 
 do-install:
-	@(cd ${WRKSRC} && ${SENTENV} ${MAKE_CMD} ${SCONS_ARGS} ${INSTALL_TARGET})
+	@(cd ${WRKSRC} && ${SETENV} ${MAKE_CMD} ${SCONS_ARGS} ${INSTALL_TARGET})
 
 post-patch:
 	@${REINPLACE_CMD} -E \
