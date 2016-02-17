@@ -2,12 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	openssh
-DISTVERSION=	6.8p1
-PORTREVISION=	6
+DISTVERSION=	7.1p2
+PORTREVISION=	0
 PORTEPOCH=	1
 CATEGORIES=	security ipv6
-MASTER_SITES=	${MASTER_SITE_OPENBSD}
-MASTER_SITE_SUBDIR=	OpenSSH/portable
+MASTER_SITES=	OPENBSD/OpenSSH/portable
 PKGNAMESUFFIX?=	-portable
 
 MAINTAINER=	bdrewery@FreeBSD.org
@@ -16,9 +15,9 @@ COMMENT=	The portable version of OpenBSD's OpenSSH
 #LICENSE=      BSD2,BSD3,MIT,public domain,BSD-Style,BEER-WARE,"any purpose with notice intact",ISC-Style
 #LICENSE_FILE= ${WRKSRC}/LICENCE
 
-CONFLICTS?=		openssh-3.* ssh-1.* ssh2-3.*
+CONFLICTS?=		openssh-3.* ssh-1.* ssh2-3.* openssh-portable-devel-*
 
-USES=			alias
+USES=			alias ncurses
 USE_AUTOTOOLS=		autoconf autoheader
 USE_OPENSSL=		yes
 GNU_CONFIGURE=		yes
@@ -48,7 +47,6 @@ NONECIPHER_DESC=	NONE Cipher support
 
 OPTIONS_SUB=		yes
 
-EXTRA_PATCHES+=		${FILESDIR}/extra-patch-ttssh
 TCP_WRAPPERS_EXTRA_PATCHES=${FILESDIR}/extra-patch-tcpwrappers
 
 LDNS_CONFIGURE_WITH=	ldns
@@ -62,9 +60,9 @@ HPN_CONFIGURE_WITH=		hpn
 NONECIPHER_CONFIGURE_WITH=	nonecipher
 
 # See http://www.roumenpetrov.info/openssh/
-X509_VERSION=		8.3
+X509_VERSION=		8.5
 X509_PATCH_SITES=	http://www.roumenpetrov.info/openssh/x509-${X509_VERSION}/:x509
-X509_PATCHFILES=	${PORTNAME}-6.8p1+x509-${X509_VERSION}.diff.gz:-p1:x509
+X509_PATCHFILES=	${PORTNAME}-7.0p1+x509-${X509_VERSION}.diff.gz:-p1:x509
 
 # See https://bugzilla.mindrot.org/show_bug.cgi?id=2016
 # and https://bugzilla.mindrot.org/show_bug.cgi?id=1604
@@ -78,7 +76,10 @@ PAM_CONFIGURE_WITH=	pam
 TCP_WRAPPERS_CONFIGURE_WITH=	tcp-wrappers
 
 LIBEDIT_CONFIGURE_WITH=	libedit
+LIBEDIT_USES=		libedit
 BSM_CONFIGURE_ON=	--with-audit=bsm
+
+ETCDIR?=		${PREFIX}/etc/ssh
 
 .include <bsd.port.pre.mk>
 
@@ -89,42 +90,40 @@ PATCH_SITES+=		http://mirror.shatow.net/freebsd/${PORTNAME}/:DEFAULT,x509,hpn,gs
 EXTRA_PATCHES:=		${EXTRA_PATCHES:N${TCP_WRAPPERS_EXTRA_PATCHES}}
 .endif
 
+# Must add this patch before HPN due to conflicts
+.if ${PORT_OPTIONS:MKERB_GSSAPI}
+# 7.1 patch taken from
+# http://sources.debian.net/data/main/o/openssh/1:7.1p2-2/debian/patches/gssapi.patch
+# which was originally based on 5.7 patch from
+# http://www.sxw.org.uk/computing/patches/
+.  if ${PORT_OPTIONS:MHPN} || ${PORT_OPTIONS:MNONECIPHER}
+# Needed glue for applying HPN patch without conflict
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-hpn-gss-glue
+.  endif
+PATCHFILES+=	openssh-7.1p2-gsskex-all-20141021-debian-rh-20160104.patch.gz:-p1:gsskex
+.endif
+
 # http://www.psc.edu/index.php/hpn-ssh https://github.com/rapier1/hpn-ssh https://github.com/rapier1/openssh-portable
 .if ${PORT_OPTIONS:MHPN} || ${PORT_OPTIONS:MNONECIPHER}
 PORTDOCS+=		HPN-README
 HPN_VERSION=		14v5
 HPN_DISTVERSION=	6.7p1
-#PATCH_SITES+=		${MASTER_SITE_SOURCEFORGE:S/$/:hpn/}
-#PATCH_SITE_SUBDIR+=	hpnssh/HPN-SSH%20${HPN_VERSION}%20${HPN_DISTVERSION}/:hpn
+#PATCH_SITES+=		SOURCEFORGE/hpnssh/HPN-SSH%20${HPN_VERSION}%20${HPN_DISTVERSION}/:hpn
 #PATCHFILES+=		${PORTNAME}-${HPN_DISTVERSION}-hpnssh${HPN_VERSION}.diff.gz:-p1:hpn
 EXTRA_PATCHES+=		${FILESDIR}/extra-patch-hpn:-p2
 .endif
 
-# Must add this patch after HPN due to conflicts
-.if ${PORT_OPTIONS:MKERB_GSSAPI}
-# 6.7 patch taken from
-# http://sources.debian.net/data/main/o/openssh/1:6.7p1-3/debian/patches/gssapi.patch
-# which was originally based on 5.7 patch from
-# http://www.sxw.org.uk/computing/patches/
-PATCHFILES+=	openssh-6.7p1-gsskex-all-20141021-284f364.patch.gz:-p1:gsskex
-.endif
-
-
-.if ${OSVERSION} >= 900000
 CONFIGURE_LIBS+=	-lutil
-.endif
 
-# 900007 is when utmp(5) was removed and utmpx(3) added
-.if ${OSVERSION} >= 900007
 CONFIGURE_ARGS+=	--disable-utmp --disable-wtmp --disable-wtmpx --without-lastlog
-.else
-EXTRA_PATCHES+=		${FILESDIR}/extra-patch-sshd-utmp-size
-.endif
+
+EXTRA_PATCHES+=		${FILESDIR}/extra-patch-hostkeyalg_plus:-p1
 
 # Keep this last
 EXTRA_PATCHES+=		${FILESDIR}/extra-patch-version-addendum
 
 .if ${PORT_OPTIONS:MX509}
+BROKEN=	Patch does not apply with 7.1
 .  if ${PORT_OPTIONS:MHPN} || ${PORT_OPTIONS:MNONECIPHER}
 BROKEN=		X509 patch and HPN patch do not apply cleanly together
 .  endif
@@ -138,10 +137,6 @@ BROKEN=		X509 patch incompatible with KERB_GSSAPI patch
 .  endif
 
 .endif
-
-.  if ${PORT_OPTIONS:MKERB_GSSAPI}
-BROKEN=		Does not apply to 6.8
-.  endif
 
 .if ${PORT_OPTIONS:MHEIMDAL_BASE} && ${PORT_OPTIONS:MKERB_GSSAPI}
 BROKEN=		KERB_GSSAPI Requires either MIT or HEMIDAL, does not build with base Heimdal currently
@@ -179,7 +174,6 @@ IGNORE=	Overwrite base option is no longer supported.
 .endif
 
 USE_RC_SUBR=		openssh
-ETCDIR=			${PREFIX}/etc/ssh
 
 # After all
 CONFIGURE_ARGS+=	--sysconfdir=${ETCDIR} --with-privsep-path=${EMPTYDIR}
