@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/graphics/graphite2/Makefile 408499 2016-02-08 18:55:45Z jkim $
 
 PORTNAME=	graphite2
 PORTVERSION=	1.3.5
