@@ -1,10 +1,10 @@
 # Created by: Dirk Froemberg <dirk@FreeBSD.org>
-# $FreeBSD: head/security/openssl/Makefile 350548 2014-04-07 21:46:40Z bdrewery $
+# $FreeBSD: head/security/openssl/Makefile 410067 2016-03-03 19:00:40Z dinoex $
 
 PORTNAME=	openssl
 PORTVERSION=	1.0.2
-DISTVERSIONSUFFIX=	f
-PORTREVISION=	8
+DISTVERSIONSUFFIX=	g
+PORTREVISION=	11
 CATEGORIES=	security devel
 MASTER_SITES=	http://www.openssl.org/source/ \
 		ftp://ftp.openssl.org/source/ \
@@ -18,7 +18,7 @@ COMMENT=	SSL and crypto library
 .error You have `USE_OPENSSL' variable defined either in environment or in make(1) arguments. Please undefine and try again.
 .endif
 
-CONFLICTS?=	libressl-*
+CONFLICTS?=	libressl-* openssl-devel-*
 LICENSE=	OpenSSL
 LICENSE_FILE=	${WRKSRC}/LICENSE
 

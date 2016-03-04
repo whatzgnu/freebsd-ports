@@ -407,6 +407,7 @@
     SUBDIR += openssh-portable
     SUBDIR += openssh-portable-devel
     SUBDIR += openssl
+    SUBDIR += openssl-devel
     SUBDIR += openssl_tpm_engine
     SUBDIR += openvas-client
     SUBDIR += openvas-libnasl
