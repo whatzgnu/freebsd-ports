@@ -48,7 +48,6 @@ RUN_DEPENDS=	pc-updategui:${PORTSDIR}/sysutils/pcbsd-utils-qt5 \
 		cups-pdf>=0:${PORTSDIR}/print/cups-pdf \
 		cups-filters>=0:${PORTSDIR}/print/cups-filters \
 		cups-bjnp>=0:${PORTSDIR}/print/cups-bjnp \
-		splix>=0:${PORTSDIR}/print/splix \
 		fusefs-ntfs>=0:${PORTSDIR}/sysutils/fusefs-ntfs \
 		xdg-open:${PORTSDIR}/devel/xdg-utils \
 		rsync:${PORTSDIR}/net/rsync \
@@ -63,7 +62,6 @@ RUN_DEPENDS=	pc-updategui:${PORTSDIR}/sysutils/pcbsd-utils-qt5 \
 		numlockx:${PORTSDIR}/x11/numlockx \
 		pciutils>=0:${PORTSDIR}/sysutils/pciutils \
 		gpg:${PORTSDIR}/security/gnupg \
-		foo2zjs>=0:${PORTSDIR}/print/foo2zjs \
 		linux_dvbwrapper-kmod>=0:${PORTSDIR}/multimedia/linux_dvbwrapper-kmod \
 		xvkbd:${PORTSDIR}/x11/xvkbd \
 		volman>=0:${PORTSDIR}/sysutils/volman \
@@ -86,8 +84,6 @@ RUN_DEPENDS=	pc-updategui:${PORTSDIR}/sysutils/pcbsd-utils-qt5 \
 		paprefs>=0:${PORTSDIR}/audio/paprefs \
 		pavucontrol>=0:${PORTSDIR}/audio/pavucontrol \
 		disktype>=0:${PORTSDIR}/sysutils/disktype \
-		grub-mkconfig:${PORTSDIR}/sysutils/grub2-pcbsd \
-		grub2-efi>=0:${PORTSDIR}/sysutils/grub2-efi \
 		unrar:${PORTSDIR}/archivers/unrar \
 		7z:${PORTSDIR}/archivers/p7zip \
 		avahi-browse:${PORTSDIR}/net/avahi-app \
