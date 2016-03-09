@@ -1,9 +1,10 @@
-# $FreeBSD: head/graphics/graphite2/Makefile 408499 2016-02-08 18:55:45Z jkim $
+# $FreeBSD: head/graphics/graphite2/Makefile 410185 2016-03-05 15:42:31Z jbeich $
 
 PORTNAME=	graphite2
-PORTVERSION=	1.3.5
+PORTVERSION=	1.3.6
 CATEGORIES=	graphics print
 MASTER_SITES=	SF/silgraphite/${PORTNAME}
+DISTFILES=	graphite-${DISTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	office@FreeBSD.org
 COMMENT=	Rendering capabilities for complex non-Roman writing systems
