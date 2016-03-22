@@ -1,9 +1,9 @@
 # Created by: dom
-# $FreeBSD$
+# $FreeBSD: head/devel/pcre/Makefile 411532 2016-03-21 02:40:25Z feld $
 
 PORTNAME=	pcre
-PORTVERSION=	8.37
-PORTREVISION=	4
+PORTVERSION=	8.38
+PORTREVISION=	0
 CATEGORIES=	devel
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION} \
 		ftp://ftp.csx.cam.ac.uk/pub/software/programming/${PORTNAME}/ \
