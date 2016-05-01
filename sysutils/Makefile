@@ -177,6 +177,7 @@
     SUBDIR += cramfs
     SUBDIR += crashme
     SUBDIR += createrepo
+    SUBDIR += cronic
     SUBDIR += cronolog
     SUBDIR += cronolog-devel
     SUBDIR += curly
@@ -436,6 +437,7 @@
     SUBDIR += iat
     SUBDIR += inotify-tools
     SUBDIR += installwatch
+    SUBDIR += intel-nvmupdate
     SUBDIR += intel-pcm
     SUBDIR += iocage
     SUBDIR += iocage-devel
@@ -776,6 +778,7 @@
     SUBDIR += polkit-kde
     SUBDIR += polkit-qt
     SUBDIR += polkit-qt5
+    SUBDIR += powerdxx
     SUBDIR += powerman
     SUBDIR += pp
     SUBDIR += pprotectd
@@ -901,6 +904,7 @@
     SUBDIR += rubygem-bundler_ext
     SUBDIR += rubygem-capistrano
     SUBDIR += rubygem-capistrano-ext
+    SUBDIR += rubygem-capistrano-harrow
     SUBDIR += rubygem-chef
     SUBDIR += rubygem-chef-api
     SUBDIR += rubygem-chef-zero
@@ -1022,7 +1026,6 @@
     SUBDIR += stow
     SUBDIR += stowES
     SUBDIR += stress
-    SUBDIR += su2
     SUBDIR += superiotool
     SUBDIR += swapd
     SUBDIR += swapexd

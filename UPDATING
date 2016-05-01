@@ -5,6 +5,26 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20160501:
+  AFFECTS: Users of mail/dspam
+  AUTHOR: junovitch@FreeBSD.org
+
+  dspam has been modified to no longer run as root:mail by default.
+  Existing configuration must be adjusted to reflect using a non-privileged
+  port and the /var/run/dspam directory for PID and socket files.  If you
+  need dspam to run as root for your mail setup, you can use the SETUID
+  config option to enable the old insecure behavior.
+  
+20160424:
+  AFFECTS: Users of net-mgmt/icinga2
+  AUTHOR: lme@FreeBSD.org
+
+  The creation of Icinga2 directories and files in /var is now controlled 
+  by the /etc/rc.conf variable icinga2_mkvar.  Earlier ports always 
+  created the /var entries, but could slow startup significantly when /var 
+  was a normal disk rather than a RAM disk.  icinga2_mkvar defaults to 
+  "NO".
+
 20160415:
   AFFECTS: users of audio/chromaprint
   AUTHOR: jhale@FreeBSD.org
@@ -30,7 +50,6 @@ you update your ports collection, before attempting any port upgrades.
   should set
   ttrssd_local_db="NO"
   in your /etc/rc.conf .
-
 
 20160414:
   AFFECTS: Users of graphics/kipi-plugin-googledrive and graphics/kipi-plugin-picasaweb
@@ -59,6 +78,16 @@ you update your ports collection, before attempting any port upgrades.
   # portmaster -o www/node www/node-devel
     or
   # portupgrade -o www/node www/node-devel
+
+20160413:
+  AFFECTS: multimedia/x264
+  AUTHOR: jbeich@FreeBSD.org
+
+  LSMASH replaced GPAC by default. If you use BATCH=y in /etc/make.conf
+  and hit below error make sure to re-run "make config".
+
+  ====> You cannot select multiple options from the MP4 radio
+  *** Error code 1
 
 20160412:
   AFFECTS: Users of net/samba42 and net/samba/43
