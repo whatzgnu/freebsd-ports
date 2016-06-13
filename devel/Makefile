@@ -622,6 +622,7 @@
     SUBDIR += geany-plugin-git-changebar
     SUBDIR += geany-plugin-insertnum
     SUBDIR += geany-plugin-latex
+    SUBDIR += geany-plugin-lineoperations
     SUBDIR += geany-plugin-lipsum
     SUBDIR += geany-plugin-lua
     SUBDIR += geany-plugin-macro
@@ -1205,6 +1206,7 @@
     SUBDIR += libewf
     SUBDIR += libexecinfo
     SUBDIR += libexplain
+    SUBDIR += libfastjson
     SUBDIR += libffi
     SUBDIR += libfirm
     SUBDIR += libfortuna
@@ -4967,6 +4969,7 @@
     SUBDIR += rubygem-hashery
     SUBDIR += rubygem-hashie
     SUBDIR += rubygem-hashie2
+    SUBDIR += rubygem-health_check
     SUBDIR += rubygem-highline
     SUBDIR += rubygem-hike
     SUBDIR += rubygem-hitimes
