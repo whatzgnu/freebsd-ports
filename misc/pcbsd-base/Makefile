@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pcbsd-base
-PORTVERSION=	20160606
+PORTVERSION=	20160615
 PORTEPOCH=	2
 CATEGORIES=	misc
 MASTER_SITES=
@@ -41,7 +41,6 @@ RUN_DEPENDS=	${LOCALBASE}/bin/qsudo:sysutils/pcbsd-utils-qt5 \
 		${LOCALBASE}/bin/unrar:archivers/unrar \
 		${LOCALBASE}/bin/7z:archivers/p7zip \
 		${LOCALBASE}/bin/avahi-browse:net/avahi-app \
-		${LOCALBASE}/bin/gsmartcontrol:sysutils/gsmartcontrol \
 		${LOCALBASE}/bin/xsane:graphics/xsane \
 		${LOCALBASE}/bin/rdesktop:net/rdesktop \
 		${LOCALBASE}/bin/fluxbox:x11-wm/fluxbox \
@@ -49,12 +48,9 @@ RUN_DEPENDS=	${LOCALBASE}/bin/qsudo:sysutils/pcbsd-utils-qt5 \
 		xf86-input-synaptics>=0:x11-drivers/xf86-input-synaptics \
 		xf86-video-intel>=0:x11-drivers/xf86-video-intel \
 		xf86-video-scfb>=0:x11-drivers/xf86-video-scfb \
-		noto>=0:x11-fonts/noto \
+		noto-lite>=0:x11-fonts/noto-lite \
 		droid-fonts-ttf>=0:x11-fonts/droid-fonts-ttf \
 		libvdpau>=0:multimedia/libvdpau \
-		gtk2-qtcurve-theme>=0:x11-themes/qtcurve-gtk2 \
-		qt4-style-qtcurve>=0:x11-themes/qtcurve-qt4 \
-		gtk-theme-switch>=0:x11/gtk-theme-switch2 \
 		alsa-lib>=0:audio/alsa-lib \
 		fluxbox-tenr-styles-pack>=0:x11-themes/fluxbox-tenr-styles-pack \
 		vorbis-tools>=0:audio/vorbis-tools \
