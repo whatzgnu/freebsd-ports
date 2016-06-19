@@ -74,6 +74,7 @@
     SUBDIR += clambc
     SUBDIR += clamcour
     SUBDIR += clamd-stream-client
+    SUBDIR += clamfs
     SUBDIR += clamsmtp
     SUBDIR += clamtk
     SUBDIR += clusterssh
@@ -818,6 +819,7 @@
     SUBDIR += py-Products.PluggableAuthService
     SUBDIR += py-RestrictedPython
     SUBDIR += py-SecretStorage
+    SUBDIR += py-YubiOTP
     SUBDIR += py-acme
     SUBDIR += py-acme-tiny
     SUBDIR += py-artifacts
@@ -1153,6 +1155,7 @@
     SUBDIR += yubikey-personalization-gui
     SUBDIR += zebedee
     SUBDIR += zenmap
+    SUBDIR += zeronet
     SUBDIR += zxid
     SUBDIR += zzuf
 

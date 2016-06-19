@@ -176,7 +176,9 @@
     SUBDIR += liquibase
     SUBDIR += lmdb
     SUBDIR += luadbi
+    SUBDIR += luasql-firebird
     SUBDIR += luasql-mysql
+    SUBDIR += luasql-odbc
     SUBDIR += luasql-postgres
     SUBDIR += luasql-sqlite3
     SUBDIR += mantis
@@ -567,6 +569,8 @@
     SUBDIR += pgfouine
     SUBDIR += pglesslog
     SUBDIR += pgloader
+    SUBDIR += pglogical
+    SUBDIR += pglogical-output
     SUBDIR += pgpool
     SUBDIR += pgpool-II
     SUBDIR += pgpool-II-22
@@ -651,6 +655,7 @@
     SUBDIR += postgresql-plv8js
     SUBDIR += postgresql-relay
     SUBDIR += postgresql-repmgr
+    SUBDIR += postgresql-repmgr2
     SUBDIR += postgresql90-client
     SUBDIR += postgresql90-pgtcl
     SUBDIR += postgresql90-plperl
@@ -705,7 +710,9 @@
     SUBDIR += proftpd-mod_sql_tds
     SUBDIR += puppetdb
     SUBDIR += puppetdb-terminus
+    SUBDIR += puppetdb-terminus3
     SUBDIR += puppetdb-terminus4
+    SUBDIR += puppetdb3
     SUBDIR += puppetdb4
     SUBDIR += pure-sql3
     SUBDIR += puredb
