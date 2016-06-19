@@ -74,6 +74,7 @@
     SUBDIR += clambc
     SUBDIR += clamcour
     SUBDIR += clamd-stream-client
+    SUBDIR += clamfs
     SUBDIR += clamsmtp
     SUBDIR += clamtk
     SUBDIR += clusterssh
@@ -1154,6 +1155,7 @@
     SUBDIR += yubikey-personalization-gui
     SUBDIR += zebedee
     SUBDIR += zenmap
+    SUBDIR += zeronet
     SUBDIR += zxid
     SUBDIR += zzuf
 

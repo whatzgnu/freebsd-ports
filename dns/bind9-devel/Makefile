@@ -16,8 +16,8 @@ COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 LICENSE=	ISCL
 
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.11.0.a20160604
-HASH=		e211ffb
+ISCVERSION=	9.11.0.a20160614
+HASH=		3635d8f
 
 MAKE_JOBS_UNSAFE=	yes
 
@@ -207,9 +207,9 @@ PORTDOCS=	*
 
 .include <bsd.port.pre.mk>
 
-.if ( ${PORT_OPTIONS:MGOST} || ${PORT_OPTIONS:MGOST_ASN1} ) && defined(WITH_OPENSSL_BASE)
+.if ( ${PORT_OPTIONS:MGOST} || ${PORT_OPTIONS:MGOST_ASN1} ) && ${SSL_DEFAULT} == base
 BROKEN=	OpenSSL from the base system does not support GOST, add \
-	WITH_OPENSSL_PORT=yes to your /etc/make.conf and rebuild everything \
+	DEFAULT_VERSIONS+=ssl=openssl to your /etc/make.conf and rebuild everything \
 	that needs SSL.
 .endif
 

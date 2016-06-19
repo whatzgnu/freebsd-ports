@@ -43,6 +43,7 @@
     SUBDIR += R-cran-reshape2
     SUBDIR += R-cran-rngtools
     SUBDIR += R-cran-rstudioapi
+    SUBDIR += R-cran-tibble
     SUBDIR += R-cran-tidyr
     SUBDIR += SpecTcl
     SUBDIR += aap
@@ -3534,6 +3535,7 @@
     SUBDIR += pas2dox
     SUBDIR += pasm
     SUBDIR += patch
+    SUBDIR += pcc-libs
     SUBDIR += pccts
     SUBDIR += pcl
     SUBDIR += pcre
@@ -4040,6 +4042,7 @@
     SUBDIR += py-coverage
     SUBDIR += py-crcmod
     SUBDIR += py-ctags
+    SUBDIR += py-cuisine
     SUBDIR += py-curtsies
     SUBDIR += py-cxx
     SUBDIR += py-cycler
@@ -4202,6 +4205,7 @@
     SUBDIR += py-lock_file
     SUBDIR += py-lockfile
     SUBDIR += py-log4py
+    SUBDIR += py-logbook
     SUBDIR += py-logan
     SUBDIR += py-logilab-common
     SUBDIR += py-lxml
