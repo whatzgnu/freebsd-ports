@@ -17,7 +17,7 @@ COMMENT=	PC-BSD / TrueOS Command-Line Utilities
 RUN_DEPENDS=	${LOCALBASE}/bin/pc-updatemanager:sysutils/pc-updatemanager \
 		${LOCALBASE}/sbin/pc-sysinstall:sysutils/pc-sysinstall \
 		${LOCALBASE}/bin/pc-su:sysutils/pcbsd-utils \
-		${LOCALBASE}/share/pcbsd/scripts/functions.sh:sysutils/pcbsd-libsh \
+		${LOCALBASE}/share/pcbsd/scripts/functions.sh:sysutils/trueos-libsh \
 		${LOCALBASE}/bin/lpreserver:sysutils/life-preserver \
 		${LOCALBASE}/sbin/beadm:sysutils/beadm \
 		${LOCALBASE}/bin/jobctl:sysutils/jobd \
