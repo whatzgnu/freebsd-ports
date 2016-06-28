@@ -12,18 +12,19 @@ COMMENT=	Dependency-based init system
 LICENSE=	BSD2CLAUSE
 
 USE_LDCONFIG=	yes
-USES=		gmake
+USES=		gmake pkgconfig:both
 USE_GITHUB=	yes
+
+#PKGMESSAGE=	${WRKDIR}/pkg-message
+#SUB_FILES+=	pkg-message
 
 GH_ACCOUNT=	openrc:DEFAULT pacbsd:abs freebsd:freebsd
 GH_PROJECT=	abs:abs freebsd:freebsd
 GH_TAGNAME=	53e9da4:abs b58cf84:freebsd
 
 USE_RC_SUBR+=	openrc
-
-PKGMESSAGE=     ${WRKDIR}/pkg-message
-FILESDIR=       ${.CURDIR}/files
-SUB_FILES=      pkg-message
+PKGMESSAGE=	${WRKDIR}/pkg-message
+SUB_FILES+=	pkg-message
 
 STRIP=		# stripping can break openrc scripts
 
@@ -38,7 +39,7 @@ post-extract:
 	@${CP} ${WRKSRC}/src/github.com/pacbsd/abs/core/openrc/init.d-zfs ${WRKSRC}/src/github.com/pacbsd/abs/core/openrc/zfs
 	@${CP} ${WRKSRC}/src/github.com/pacbsd/abs/core/openrc/init.d-zvol ${WRKSRC}/src/github.com/pacbsd/abs/core/openrc/zvol
 
-do-install:
+post-configure:
 	@${REINPLACE_CMD} -e 's|/sbin/openrc|/usr/local/sbin/openrc|g' ${WRKSRC}/etc/rc.in
 	@${REINPLACE_CMD} -e 's|/sbin/openrc|/usr/local/sbin/openrc|g' ${WRKSRC}/etc/rc.shutdown.in
 	@${REINPLACE_CMD} -e 's|/etc/init.d|/usr/local/etc/init.d|g' ${WRKSRC}/etc/rc.devd

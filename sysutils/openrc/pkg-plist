@@ -58,6 +58,7 @@ etc/init.d/zvol
 etc/local.d/README
 etc/rc
 etc/rc.conf
+etc/rc.d/openrc
 etc/rc.devd
 etc/rc.shutdown
 etc/runlevels/boot/adjkerntz
