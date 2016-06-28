@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lumina-i18n
-PORTVERSION=	0.9.0
+PORTVERSION=	0.9.1
 DISTVERSIONPREFIX=	v
 DISTVERSIONSUFFIX=	-Release
 CATEGORIES=	x11
@@ -18,10 +18,10 @@ USES=		tar:xz
 NO_BUILD=	yes
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	pcbsd
+GH_ACCOUNT=	trueos
 
 do-install:
-	${MKDIR} ${STAGEDIR}${PREFIX}/share/Lumina-DE/i18n
-	tar xvf ${WRKSRC}/dist/${PORTNAME}.txz -C ${STAGEDIR}${PREFIX}/share/Lumina-DE/i18n
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/lumina-desktop/i18n
+	tar xvf ${WRKSRC}/dist/${PORTNAME}.txz -C ${STAGEDIR}${PREFIX}/share/lumina-desktop/i18n
 
 .include <bsd.port.mk>
