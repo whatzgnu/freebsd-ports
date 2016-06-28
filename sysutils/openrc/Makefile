@@ -1,4 +1,4 @@
-# Created by: Joe Maloney <jmaloney@pcbsd.org>
+# Created by: Joe Maloney <jmaloney@ixsystems.com>
 # $FreeBSD$
 
 PORTNAME=	openrc
@@ -6,13 +6,12 @@ PORTVERSION=	0.19
 DISTVERSIONSUFFIX=	.x
 CATEGORIES=	sysutils
 
-PKGMESSAGE=	${WRKDIR}/pkg-message
-FILESDIR=	${.CURDIR}/files
-SUB_FILES=	pkg-message
+MAINTAINER=	jmaloney@ixsystems.com
+COMMENT=	Dependency-based init system
 
-MAINTAINER=	jmaloney@pcbsd.org
-COMMENT=	A dependency-based init system
 LICENSE=	BSD2CLAUSE
+
+RUN_DEPENDS=    gmake:devel/gmake
 
 USES=           gmake
 USE_GITHUB=     yes
@@ -21,6 +20,10 @@ GH_PROJECT=     abs:abs freebsd:freebsd
 GH_TAGNAME=     53e9da4:abs b58cf84:freebsd
 
 USE_RC_SUBR+=	openrc
+
+PKGMESSAGE=     ${WRKDIR}/pkg-message
+FILESDIR=       ${.CURDIR}/files
+SUB_FILES=      pkg-message
 
 STRIP=		# stripping can break openrc scripts
 
