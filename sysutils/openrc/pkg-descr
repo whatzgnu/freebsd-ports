@@ -1,0 +1,6 @@
+OpenRC is a dependency based init system that works with the system provided init program, 
+normally located at /sbin/init. It is not a replacement for /sbin/init. OpenRC is 100% 
+compatible with Gentoo init scripts, which means you can probably find one for the dozens of 
+daemons in the main Gentoo repository.
+
+https://wiki.gentoo.org/wiki/Project:OpenRC
