@@ -13,7 +13,7 @@ COMMENT=	Lumina Desktop Environment
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	xorg>=0:x11/xorg-minimal \
+RUN_DEPENDS=	xorg-minimal>=0:x11/xorg-minimal \
 		fluxbox>=0:x11-wm/fluxbox \
 		kde4-icons-oxygen>=0:x11-themes/kde4-icons-oxygen \
 		xscreensaver:x11/xscreensaver \
@@ -47,7 +47,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	trueos
 
 #Setup the qmake configuration options
-.if {PORT_OPTIONS:MTRUEOS}
+.if ${PORT_OPTIONS:MTRUEOS}
 QMAKE_ARGS=	CONFIG+="configure" \
 		DEFAULT_SETTINGS=TrueOS
 .endif
