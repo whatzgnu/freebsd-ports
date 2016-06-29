@@ -645,7 +645,6 @@
     SUBDIR += open
     SUBDIR += openhpi
     SUBDIR += openipmi
-    SUBDIR += openrc
     SUBDIR += openupsd
     SUBDIR += ori
     SUBDIR += osquery
