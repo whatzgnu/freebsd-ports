@@ -5,6 +5,7 @@ PORTNAME=	lumina
 PORTVERSION=	0.9.1
 DISTVERSIONPREFIX=	v
 DISTVERSIONSUFFIX=	-Release
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	x11
 
@@ -13,8 +14,7 @@ COMMENT=	Lumina Desktop Environment
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	xorg-minimal>=0:x11/xorg-minimal \
-		fluxbox>=0:x11-wm/fluxbox \
+RUN_DEPENDS=	fluxbox>=0:x11-wm/fluxbox \
 		kde4-icons-oxygen>=0:x11-themes/kde4-icons-oxygen \
 		xscreensaver:x11/xscreensaver \
 		xbrightness:x11/xbrightness \
