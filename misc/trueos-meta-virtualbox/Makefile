@@ -1,16 +1,16 @@
-# New ports collection makefile for:	pcbsd-meta-virtualbox
+# New ports collection makefile for:	trueos-meta-virtualbox
 #
 # $FreeBSD$
 #
 
-PORTNAME=	pcbsd-meta-virtualbox
+PORTNAME=	trueos-meta-virtualbox
 PORTVERSION=	1429971087
 CATEGORIES=	misc
 MASTER_SITES=	# empty
 DISTFILES=	# none
 
 MAINTAINER=	kris@pcbsd.org
-COMMENT=	The meta-port pcbsd-meta-virtualbox
+COMMENT=	The meta-port trueos-meta-virtualbox
 
 RUN_DEPENDS=	virtualbox-ose>=0:${PORTSDIR}/emulators/virtualbox-ose \
 		virtualbox-ose-kmod>=0:${PORTSDIR}/emulators/virtualbox-ose-kmod

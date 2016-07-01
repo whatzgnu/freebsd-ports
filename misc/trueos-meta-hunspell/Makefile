@@ -1,11 +1,11 @@
-# New ports collection makefile for:	pcbsd-meta-hunspell
+# New ports collection makefile for:	trueos-meta-hunspell
 # Date created:				14 June 2016
 # Whom:					Joe Maloney <jmaloney@ixsystems.com>
 #
 # $FreeBSD$
 
-PORTNAME=	pcbsd-meta-hunspell
-PORTVERSION=	20160604
+PORTNAME=	trueos-meta-hunspell
+PORTVERSION=	20160701
 PORTEPOCH=	1
 CATEGORIES=	misc
 MASTER_SITES=

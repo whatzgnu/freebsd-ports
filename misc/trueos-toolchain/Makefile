@@ -1,7 +1,7 @@
-# New ports collection makefile for:	pcbsd-toolchain
+# New ports collection makefile for:	trueos-toolchain
 # $FreeBSD$
 
-PORTNAME=	pcbsd-toolchain
+PORTNAME=	trueos-toolchain
 PORTVERSION=	1.3
 CATEGORIES=	misc
 MASTER_SITES=
