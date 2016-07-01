@@ -1,16 +1,16 @@
-# New ports collection makefile for:	pcbsd-meta-virtualboxguest
+# New ports collection makefile for:	trueos-meta-virtualboxguest
 #
 # $FreeBSD$
 #
 
-PORTNAME=	pcbsd-meta-virtualboxguest
+PORTNAME=	trueos-meta-virtualboxguest
 PORTVERSION=	1373635705
 CATEGORIES=	misc
 MASTER_SITES=	# empty
 DISTFILES=	# none
 
 MAINTAINER=	kris@pcbsd.org
-COMMENT=	The meta-port pcbsd-meta-virtualboxguest
+COMMENT=	The meta-port trueos-meta-virtualboxguest
 
 RUN_DEPENDS=	virtualbox-ose-additions>=0:${PORTSDIR}/emulators/virtualbox-ose-additions
 

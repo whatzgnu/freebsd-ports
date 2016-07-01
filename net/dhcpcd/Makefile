@@ -17,7 +17,7 @@ LICENSE=	BSD2CLAUSE
 USES=		cpe tar:xz
 CPE_VENDOR=	dhcpcd_project
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=	--datadir=${PREFIX}/share/examples
+CONFIGURE_ARGS+=	--datadir=${PREFIX}/share/examples --disable-embedded
 USE_RC_SUBR=	dhcpcd
 
 post-install:

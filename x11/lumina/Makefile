@@ -13,6 +13,7 @@ COMMENT=	Lumina Desktop Environment
 
 LICENSE=	BSD3CLAUSE
 
+
 RUN_DEPENDS=	fluxbox>=0:x11-wm/fluxbox \
 		kde4-icons-oxygen>=0:x11-themes/kde4-icons-oxygen \
 		xscreensaver:x11/xscreensaver \
