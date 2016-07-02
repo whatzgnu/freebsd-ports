@@ -1,6 +1,6 @@
---- src/gq-hash-openssl.c.orig	2008-01-09 15:55:46.000000000 +0100
-+++ src/gq-hash-openssl.c	2015-02-28 19:27:54.038020011 +0100
-@@ -60,7 +60,7 @@
+--- src/gq-hash-openssl.c.orig	2008-01-09 14:55:46 UTC
++++ src/gq-hash-openssl.c
+@@ -60,7 +60,7 @@ gq_hash_crypt(gchar const *data, gsize l
       salt->str[2] = 0;
  
       g_byte_array_append(gb, (guchar*)"{CRYPT}", 7);
@@ -9,7 +9,7 @@
  
       g_byte_array_append(gb, cryptbuf, strlen((gchar*)cryptbuf));
  
-@@ -242,7 +242,7 @@
+@@ -242,7 +242,7 @@ static const char *lmhash_key = "KGS!@#$
  /* FIXME: silently assumes US-ASCII (or a single-byte encoding to be
     handled by toupper) */
  
@@ -18,7 +18,7 @@
  {
       int i;
       char *k = (char *) key;
-@@ -253,7 +253,7 @@
+@@ -253,7 +253,7 @@ static void lm_make_key(const char *pw, 
  	  k[i+1]  = (pw[i] << (7 - i)) & 0xff;
       }
  
@@ -27,7 +27,7 @@
  }
  
  GByteArray*
-@@ -262,10 +262,10 @@
+@@ -262,10 +262,10 @@ gq_hash_lmhash(gchar const* data, gsize 
       unsigned int i;
       char hex[2];
       char plain[15];
@@ -41,7 +41,7 @@
  
       memset(plain, 0, sizeof(plain));
  
-@@ -274,12 +274,12 @@
+@@ -274,12 +274,12 @@ gq_hash_lmhash(gchar const* data, gsize 
       }
  
       lm_make_key(plain, &ckey1);
