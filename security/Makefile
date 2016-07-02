@@ -108,6 +108,7 @@
     SUBDIR += dirmngr
     SUBDIR += distcache
     SUBDIR += dmitry
+    SUBDIR += doas
     SUBDIR += doorman
     SUBDIR += doscan
     SUBDIR += dradis
@@ -121,6 +122,7 @@
     SUBDIR += elixir-jose
     SUBDIR += erlang-jose
     SUBDIR += erlang-p1tls
+    SUBDIR += eschalot
     SUBDIR += esteidfirefoxplugin
     SUBDIR += expiretable
     SUBDIR += f-prot
@@ -515,6 +517,7 @@
     SUBDIR += p5-Crypt-Imail
     SUBDIR += p5-Crypt-Juniper
     SUBDIR += p5-Crypt-Khazad
+    SUBDIR += p5-Crypt-LE
     SUBDIR += p5-Crypt-License
     SUBDIR += p5-Crypt-Lite
     SUBDIR += p5-Crypt-Loki97
@@ -530,6 +533,7 @@
     SUBDIR += p5-Crypt-OpenSSL-DSA
     SUBDIR += p5-Crypt-OpenSSL-EC
     SUBDIR += p5-Crypt-OpenSSL-ECDSA
+    SUBDIR += p5-Crypt-OpenSSL-PKCS10
     SUBDIR += p5-Crypt-OpenSSL-RSA
     SUBDIR += p5-Crypt-OpenSSL-Random
     SUBDIR += p5-Crypt-OpenSSL-X509
@@ -826,6 +830,7 @@
     SUBDIR += py-bcrypt
     SUBDIR += py-borg.localrole
     SUBDIR += py-cerealizer
+    SUBDIR += py-certbot
     SUBDIR += py-certifi
     SUBDIR += py-cpe
     SUBDIR += py-cracklib
@@ -848,7 +853,6 @@
     SUBDIR += py-keyczar
     SUBDIR += py-keyring
     SUBDIR += py-keyrings.alt
-    SUBDIR += py-letsencrypt
     SUBDIR += py-libnacl
     SUBDIR += py-m2crypto
     SUBDIR += py-mcrypt
@@ -1152,7 +1156,9 @@
     SUBDIR += yersinia
     SUBDIR += ykclient
     SUBDIR += ykpers
+    SUBDIR += yubico-piv-tool
     SUBDIR += yubikey-personalization-gui
+    SUBDIR += yubikey-piv-manager
     SUBDIR += zebedee
     SUBDIR += zenmap
     SUBDIR += zeronet

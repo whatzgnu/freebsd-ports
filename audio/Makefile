@@ -163,6 +163,7 @@
     SUBDIR += flacon
     SUBDIR += flake
     SUBDIR += flite
+    SUBDIR += fluid-soundfont
     SUBDIR += fluidsynth
     SUBDIR += fluidsynth-dssi
     SUBDIR += fmit
@@ -405,6 +406,7 @@
     SUBDIR += libsidplayfp
     SUBDIR += libsmf
     SUBDIR += libsndfile
+    SUBDIR += libsoxr
     SUBDIR += libtremor
     SUBDIR += libumidi
     SUBDIR += libvorbis
