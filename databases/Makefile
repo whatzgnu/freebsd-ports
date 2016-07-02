@@ -636,6 +636,7 @@
     SUBDIR += php70-pdo_pgsql
     SUBDIR += php70-pdo_sqlite
     SUBDIR += php70-pgsql
+    SUBDIR += php70-redis
     SUBDIR += php70-sqlite3
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin
@@ -656,11 +657,6 @@
     SUBDIR += postgresql-relay
     SUBDIR += postgresql-repmgr
     SUBDIR += postgresql-repmgr2
-    SUBDIR += postgresql90-client
-    SUBDIR += postgresql90-pgtcl
-    SUBDIR += postgresql90-plperl
-    SUBDIR += postgresql90-plpython
-    SUBDIR += postgresql90-server
     SUBDIR += postgresql91-client
     SUBDIR += postgresql91-contrib
     SUBDIR += postgresql91-docs
@@ -753,6 +749,7 @@
     SUBDIR += py-mysql-connector-python
     SUBDIR += py-mysql-connector-python2
     SUBDIR += py-mysql2pgsql
+    SUBDIR += py-mysqlclient
     SUBDIR += py-odbc
     SUBDIR += py-oops
     SUBDIR += py-oursql
@@ -972,6 +969,7 @@
     SUBDIR += tcl-sqlite3
     SUBDIR += tdb
     SUBDIR += tdbc
+    SUBDIR += tile38
     SUBDIR += tinycdb
     SUBDIR += tokyocabinet
     SUBDIR += tokyotyrant
