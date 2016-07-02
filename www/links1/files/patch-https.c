@@ -5,8 +5,8 @@
  
  		const char *f = RAND_file_name(f_randfile, sizeof(f_randfile));
 -		if (f && RAND_egd(f)<0) {
-+#ifndef OPENSSL_NO_EGD	
-+		if (f && RAND_egd(f)<0)
++#ifndef OPENSSL_NO_EGD
++		if (f && RAND_egd(f)<0) 
 +#endif
 +		{
  			/* Not an EGD, so read and write to it */
