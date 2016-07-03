@@ -85,6 +85,10 @@ MAKE_ENV+=	BUILDTYPE=${BUILDTYPE}
 
 .include <bsd.port.pre.mk>
 
+.if defined(OPENSSL_PORT) && "${OPENSSL_PORT:M*libressl*}" != ""
+IGNORE=         mod_spdy is unsupported with LibreSSL, please use www/apache24 with mod_http2
+.endif
+
 .if ${COMPILER_TYPE} == clang && ${COMPILER_VERSION} >= 36
 CXXFLAGS+=	-Wno-unused-local-typedef
 .endif
