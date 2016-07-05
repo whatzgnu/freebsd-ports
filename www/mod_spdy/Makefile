@@ -47,11 +47,6 @@ SUB_LIST+=	APACHEMODDIR=${APACHEMODDIR}
 
 OPTIONS_DEFINE=	GCC DEBUG
 
-.if defined(OPENSSL_PORT) && \
-	${OPENSSL_PORT} == security/libressl || ${OPENSSL_PORT} == security/libressl-devel
-IGNORE=		mod_spdy is unsupported with LibreSSL, please use www/apache24 with mod_http2
-.endif
-
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MGCC}
@@ -89,6 +84,10 @@ CONFIGURE_ENV+=	CFLAGS="${CFLAGS}" \
 MAKE_ENV+=	BUILDTYPE=${BUILDTYPE}
 
 .include <bsd.port.pre.mk>
+
+.if defined(OPENSSL_PORT) && "${OPENSSL_PORT:M*libressl*}" != ""
+IGNORE=         mod_spdy is unsupported with LibreSSL, please use www/apache24 with mod_http2
+.endif
 
 .if ${COMPILER_TYPE} == clang && ${COMPILER_VERSION} >= 36
 CXXFLAGS+=	-Wno-unused-local-typedef
