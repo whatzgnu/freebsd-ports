@@ -456,7 +456,6 @@
     SUBDIR += nss-pam-ldapd-sasl
     SUBDIR += nss_ldap
     SUBDIR += nsscache
-    SUBDIR += nstxd
     SUBDIR += ntimed
     SUBDIR += ntlmaps
     SUBDIR += ntop
@@ -965,6 +964,7 @@
     SUBDIR += py-libcloud
     SUBDIR += py-libdnet
     SUBDIR += py-libnet
+    SUBDIR += py-magic-wormhole
     SUBDIR += py-matrix-synapse
     SUBDIR += py-maxminddb
     SUBDIR += py-miniupnpc
@@ -1241,7 +1241,6 @@
     SUBDIR += spread
     SUBDIR += spread-j
     SUBDIR += spread4
-    SUBDIR += sprinkle
     SUBDIR += sqtop
     SUBDIR += srelay
     SUBDIR += ss5

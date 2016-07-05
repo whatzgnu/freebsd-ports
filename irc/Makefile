@@ -63,7 +63,6 @@
     SUBDIR += miau
     SUBDIR += minbif
     SUBDIR += muh
-    SUBDIR += nefarious
     SUBDIR += nethirc
     SUBDIR += netwalker-ircc
     SUBDIR += ngircd
@@ -102,8 +101,6 @@
     SUBDIR += quassel
     SUBDIR += quassel-kde4
     SUBDIR += quirc
-    SUBDIR += qwebirc
-    SUBDIR += ratbox-respond
     SUBDIR += ratbox-services
     SUBDIR += rbot
     SUBDIR += riece
@@ -119,7 +116,6 @@
     SUBDIR += sic
     SUBDIR += simpleirc
     SUBDIR += sirc
-    SUBDIR += slirc
     SUBDIR += smartirc4net
     SUBDIR += srvx
     SUBDIR += thales
