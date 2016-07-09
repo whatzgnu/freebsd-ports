@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS+=	libqtermwidget5.so:x11-toolkits/qtermwidget
 
-USES=		cmake
+USES=		cmake qmake
 USE_XORG+=	x11
 USE_QT5+=	core gui widgets buildtools x11extras
 
