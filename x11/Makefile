@@ -242,7 +242,6 @@
     SUBDIR += qt5-qev
     SUBDIR += qt5-x11extras
     SUBDIR += qterminal
-    SUBDIR += qtermwidget
     SUBDIR += qxkb
     SUBDIR += randrproto
     SUBDIR += recordproto
