@@ -1,8 +1,8 @@
 # Created by: Martti Kuparinen <martti.kuparinen@ericsson.com>
-# $FreeBSD: head/security/stunnel/Makefile 398889 2015-10-08 19:38:53Z brnrd $
+# $FreeBSD: head/security/stunnel/Makefile 417710 2016-06-28 11:57:33Z zi $
 
 PORTNAME=	stunnel
-PORTVERSION=	5.33
+PORTVERSION=	5.34
 PORTEPOCH=	1
 CATEGORIES=	security
 MASTER_SITES=	https://www.stunnel.org/downloads/%SUBDIR%/ \
@@ -27,10 +27,9 @@ COMMENT=	SSL encryption wrapper for standard network daemons
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 
-USES=		cpe libtool perl5 shebangfix
+USES=		cpe libtool perl5 shebangfix ssl
 USE_PERL5=	build
 USE_LDCONFIG=	yes
-USE_OPENSSL=	yes
 USE_RC_SUBR=	stunnel
 
 GNU_CONFIGURE=	yes
@@ -76,11 +75,10 @@ LDFLAGS+=	-lpthread
 
 .include <bsd.port.pre.mk>
 
-.if ${PORT_OPTIONS:MFIPS} && ${SSL_DEFAULT} == libressl
+.if !empty(${SSL_DEFAULT:Mlibressl})
+.  if ${PORT_OPTIONS:MFIPS}
 IGNORE=		LibreSSL does not support FIPS standard
-.endif
-
-.if ${SSL_DEFAULT} == libressl
+.  endif
 NO_PACKAGE=	The stunnel license restricts distribution when linked to non-OpenSSL non-base SSL-libraries
 .endif
 
