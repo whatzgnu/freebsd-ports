@@ -81,7 +81,6 @@
     SUBDIR += chromium
     SUBDIR += chromium-npapi
     SUBDIR += chromium-pulse
-    SUBDIR += chtml
     SUBDIR += ckeditor
     SUBDIR += cl-lml
     SUBDIR += cl-lml-sbcl
