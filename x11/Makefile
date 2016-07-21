@@ -236,6 +236,7 @@
     SUBDIR += props
     SUBDIR += py-qt4-opengl
     SUBDIR += py-qt5-opengl
+    SUBDIR += py-xdot
     SUBDIR += qimageblitz
     SUBDIR += qt4-graphicssystems-opengl
     SUBDIR += qt4-inputmethods
@@ -337,6 +338,7 @@
     SUBDIR += xcb-util-keysyms
     SUBDIR += xcb-util-renderutil
     SUBDIR += xcb-util-wm
+    SUBDIR += xcb-util-xrm
     SUBDIR += xcbautolock
     SUBDIR += xclip
     SUBDIR += xclipboard
