@@ -46,6 +46,7 @@ VIDEO_DRIVERS=		mach64 \
 			s3 \
 			s3virge \
 			savage \
+			scfb \
 			siliconmotion \
 			sis \
 			tdfx \
@@ -59,6 +60,7 @@ OPTIONS_DEFAULT=	MOUSE \
 			MACH64 \
 			NV \
 			R128 \
+			SCFB \
 			VESA
 
 .for type in input video
