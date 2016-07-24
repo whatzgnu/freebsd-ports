@@ -2,7 +2,8 @@
 # $FreeBSD: head/security/stunnel/Makefile 398889 2015-10-08 19:38:53Z brnrd $
 
 PORTNAME=	stunnel
-PORTVERSION=	5.33
+PORTVERSION=	5.35
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	security
 MASTER_SITES=	https://www.stunnel.org/downloads/%SUBDIR%/ \
