@@ -362,6 +362,7 @@
     SUBDIR += libunp
     SUBDIR += libutp
     SUBDIR += libvncserver
+    SUBDIR += libwebsockets
     SUBDIR += libzapojit
     SUBDIR += libzmq2
     SUBDIR += libzmq3
@@ -1185,6 +1186,7 @@
     SUBDIR += rubygem-twitter
     SUBDIR += rubygem-twitter-stream
     SUBDIR += rubygem-twitter4r
+    SUBDIR += rubygem-u2f
     SUBDIR += rubygem-uri-redis
     SUBDIR += rubygem-whois
     SUBDIR += rude

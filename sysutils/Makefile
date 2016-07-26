@@ -87,6 +87,7 @@
     SUBDIR += bchunk
     SUBDIR += beadm
     SUBDIR += beadm-devel
+    SUBDIR += bhyve-firmware
     SUBDIR += bhyve-rc
     SUBDIR += biosfont
     SUBDIR += bkpupsd
@@ -169,6 +170,7 @@
     SUBDIR += consolehm
     SUBDIR += consolekit
     SUBDIR += consul
+    SUBDIR += consul-alerts
     SUBDIR += contractor
     SUBDIR += copytape
     SUBDIR += coreutils
@@ -606,6 +608,14 @@
     SUBDIR += moosefs2-master
     SUBDIR += moosefs2-metalogger
     SUBDIR += moosefs2-netdump
+    SUBDIR += moosefs3-cgi
+    SUBDIR += moosefs3-cgiserv
+    SUBDIR += moosefs3-chunkserver
+    SUBDIR += moosefs3-cli
+    SUBDIR += moosefs3-client
+    SUBDIR += moosefs3-master
+    SUBDIR += moosefs3-metalogger
+    SUBDIR += moosefs3-netdump
     SUBDIR += moreutils
     SUBDIR += most
     SUBDIR += mount.app

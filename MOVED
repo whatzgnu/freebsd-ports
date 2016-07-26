@@ -962,7 +962,6 @@ devel/radrails||2010-01-20|Has expired: has been broken for 3 months
 devel/rubygem-rtags||2010-01-20|Has expired: has been broken for 5 months
 games/hattrickorganizer||2010-01-20|Has expired: Has been broken for a while
 games/laughingman||2010-01-20|Has expired: has been broken for 3 months
-devel/aunit||2010-01-20|Has expired: has been broken for 3 months
 devel/gdb53||2010-01-20|Has expired: has been broken for 3 months
 lang/ccscript||2010-01-20|Has expired: has been broken for 4 months
 lang/gnat-glade||2010-01-20|Has expired: has been broken for 3 months
@@ -8596,9 +8595,6 @@ ftp/fget||2016-07-04|Has expired: Broken for more than 6 months
 net-mgmt/netmond||2016-07-04|Has expired: Broken for more than 6 months
 net-mgmt/ipfm||2016-07-04|Has expired: Broken for more than 6 months
 textproc/py-dbf|databases/py-dbf|2016-07-05|Duplicate port deleted
-games/freetennis||2016-07-05|Depends on expired graphics/ocaml-images
-graphics/ocaml-images||2016-07-05|Has expired: Depends on expiring devel/omake
-devel/omake||2016-07-05|Has expired: Broken for more than 6 months
 www/yahoo-ui||2016-07-05|Has expired: Broken for more than 6 months
 sysutils/moosefs-cgi|sysutils/moosefs2-cgi|2016-07-07|Moved to a numbered port name
 sysutils/moosefs-cgiserv|sysutils/moosefs2-cgiserv|2016-07-07|Moved to a numbered port name
