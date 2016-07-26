@@ -22,7 +22,7 @@ RUN_DEPENDS=	fluxbox>=0:x11-wm/fluxbox \
 		xrandr:x11/xrandr \
 		numlockx:x11/numlockx
 
-CONFLICTS=      lumina-devel-0*
+CONFLICTS=	lumina-devel-0*
 
 OPTIONS_DEFINE=	MULTIMEDIA TRUEOS
 OPTIONS_DEFAULT=	MULTIMEDIA
