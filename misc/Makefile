@@ -456,9 +456,6 @@
     SUBDIR += tpp
     SUBDIR += translate
     SUBDIR += trueos-meta-hunspell
-    SUBDIR += trueos-meta-virtualbox
-    SUBDIR += trueos-meta-virtualboxguest
-    SUBDIR += trueos-meta-vmwareguest
     SUBDIR += trueos-toolchain
     SUBDIR += ttyrec
     SUBDIR += tudu
