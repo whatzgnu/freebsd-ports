@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	kodi
-DISTVERSION=	16.0
-PORTREVISION=	1
+DISTVERSION=	16.1
 CATEGORIES=	multimedia java
 
 MAINTAINER=	mickael.maillot@gmail.com
@@ -52,7 +51,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3 \
 		xdpyinfo:x11/xdpyinfo
 
 USE_GITHUB=	yes
-GH_TUPLE=	xbmc:xbmc:a5f3a99 xbmc:FFmpeg:2.8.6-Jarvis-${DISTVERSION}:ffmpeg
+GH_TUPLE=	xbmc:xbmc:c327c53 xbmc:FFmpeg:2.8.6-Jarvis-16.0:ffmpeg
 
 SAMBA_PORT?=	net/samba43
 
@@ -105,7 +104,7 @@ LIBBLURAY_CONFIGURE_ENABLE=	libbluray
 
 LIRC_RUN_DEPENDS=	lircd:comms/lirc
 
-MYSQL_USE=	MYSQL=yes
+MYSQL_USES=	mysql
 MYSQL_CONFIGURE_ENABLE=	mysql
 
 NFS_LIB_DEPENDS=	libnfs.so:net/libnfs
