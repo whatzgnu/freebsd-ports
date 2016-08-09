@@ -268,6 +268,7 @@
     SUBDIR += setlayout
     SUBDIR += setxkbmap
     SUBDIR += simdock
+    SUBDIR += simplestroke
     SUBDIR += sisctrl
     SUBDIR += slim
     SUBDIR += slock
@@ -322,6 +323,7 @@
     SUBDIR += xautomation
     SUBDIR += xbacklight
     SUBDIR += xballoon
+    SUBDIR += xbanish
     SUBDIR += xbanner
     SUBDIR += xbelld
     SUBDIR += xbiff
