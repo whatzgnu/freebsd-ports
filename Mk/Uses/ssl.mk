@@ -32,7 +32,7 @@ _INCLUDE_USES_SSL_MK=	yes
 IGNORE=	"USES=ssl does not take any argument."
 .endif
 
-.if !empty(SSL_DEFAULT:Mbase*)
+.if !empty(SSL_DEFAULT:M*base*)
 OPENSSLBASE=		/usr
 OPENSSLDIR?=		/etc/ssl
 
