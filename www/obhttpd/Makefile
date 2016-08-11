@@ -49,7 +49,7 @@ post-install:
 
 .include <bsd.port.pre.mk>
 
-.if empty(SSL_DEFAULT:Mlibressl*)
+.if empty(SSL_DEFAULT:M*libressl*)
 IGNORE=		Need LibreSSL to build. set DEFAULT_VERSIONS+=ssl=libressl and rebuild everything.
 .endif
 
