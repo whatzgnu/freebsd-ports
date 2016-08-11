@@ -1,5 +1,4 @@
 # Created by: Martti Kuparinen <martti.kuparinen@ericsson.com>
-<<<<<<< HEAD
 # $FreeBSD: head/security/stunnel/Makefile 398889 2015-10-08 19:38:53Z brnrd $
 
 PORTNAME=	stunnel
