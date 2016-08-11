@@ -41,8 +41,8 @@ post-stage:
 
 .include <bsd.port.pre.mk>
 
-#.if ${PORT_OPTIONS:MRESSL} && empty(SSL_DEFAULT:Mlibressl*)
-#IGNORE=	Requires LibreSSL from ports, define DEFAULT_VERSIONS+=ssl=libressl in your make.conf and rebuild everything.
-#.endif
+.if ${PORT_OPTIONS:MRESSL} && empty(SSL_DEFAULT:M*libressl*)
+IGNORE=	Requires LibreSSL from ports, define DEFAULT_VERSIONS+=ssl=libressl in your make.conf and rebuild everything.
+.endif
 
 .include <bsd.port.post.mk>
