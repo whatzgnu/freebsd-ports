@@ -1,6 +1,7 @@
 bin/X
 %%SUID%%@(,,4555) bin/Xorg
 %%NO_SUID%%bin/Xorg
+%%XWL%%bin/Xwayland
 bin/cvt
 bin/gtf
 include/xorg/BT.h

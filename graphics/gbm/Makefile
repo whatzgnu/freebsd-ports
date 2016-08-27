@@ -17,12 +17,12 @@ USE_XORG=	x11 xau xcb xdmcp
 
 # stuff not needed by gbm but configure wants it
 USE_XORG+=	glproto dri2proto xext xdamage xfixes presentproto \
-		xshmfence
+		xshmfence dri3proto
 
 .include <bsd.port.options.mk>
 .include "${.CURDIR}/../../graphics/libGL/Makefile.common"
 
-MESA_BUILD_WRKSRC=	src/mapi src/gbm
+MESA_BUILD_WRKSRC=	src/egl/wayland/wayland-drm src/mapi src/gbm
 MESA_INSTALL_WRKSRC=	src/gbm
 
 .include "${.CURDIR}/../../graphics/libGL/Makefile.targets"

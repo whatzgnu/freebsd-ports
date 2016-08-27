@@ -776,6 +776,7 @@
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
+    SUBDIR += piglit
     SUBDIR += pikopixel
     SUBDIR += pinpoint
     SUBDIR += pixelize
@@ -1048,6 +1049,7 @@
     SUBDIR += vp
     SUBDIR += waffle
     SUBDIR += waifu2x-converter-cpp
+    SUBDIR += wayland
     SUBDIR += webp
     SUBDIR += wings
     SUBDIR += wmicons

@@ -22,13 +22,14 @@ USE_XORG=	x11 xau xcb xdmcp
 
 # stuff not needed by libEGL but configure wants it
 USE_XORG+=	glproto dri2proto xext xdamage xfixes presentproto \
-		xshmfence
+		xshmfence dri3proto
 
 .include <bsd.port.options.mk>
 .include "${.CURDIR}/../../graphics/libGL/Makefile.common"
 
-MESA_BUILD_WRKSRC=	src/mapi src/gbm src/egl/
-MESA_INSTALL_WRKSRC=	src/egl
+MESA_BUILD_WRKSRC=	src/mapi src/egl/wayland/wayland-egl \
+			src/egl/wayland/wayland-drm src/gbm src/egl
+MESA_INSTALL_WRKSRC=	src/egl src/egl/wayland/wayland-egl
 
 .include "${.CURDIR}/../../graphics/libGL/Makefile.targets"
 

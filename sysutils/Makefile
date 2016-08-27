@@ -455,6 +455,7 @@
     SUBDIR += ioping
     SUBDIR += ipa
     SUBDIR += ipad_charge
+    SUBDIR += ipdbtools
     SUBDIR += ipfs-go
     SUBDIR += ipmitool
     SUBDIR += ipsc
@@ -640,6 +641,7 @@
     SUBDIR += ncdu
     SUBDIR += nepomuk-core
     SUBDIR += nepomuk-widgets
+    SUBDIR += nfcutils
     SUBDIR += nfsping
     SUBDIR += nitrogen
     SUBDIR += no-login
