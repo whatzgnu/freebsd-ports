@@ -84,6 +84,7 @@
     SUBDIR += antlr3
     SUBDIR += antlr4
     SUBDIR += apache-ant
+    SUBDIR += apache-rat
     SUBDIR += api-sanity-autotest
     SUBDIR += apiextractor
     SUBDIR += appstream-glib
@@ -455,6 +456,7 @@
     SUBDIR += elixir-hex
     SUBDIR += elixir-inflex
     SUBDIR += elixir-lager_logger
+    SUBDIR += elixir-math
     SUBDIR += elixir-msgpax
     SUBDIR += elixir-nadia
     SUBDIR += elixir-nimble_csv
@@ -463,7 +465,10 @@
     SUBDIR += elixir-poison
     SUBDIR += elixir-quantum
     SUBDIR += elixir-red_black_tree
+    SUBDIR += elixir-simple_bayes
     SUBDIR += elixir-sorted_set
+    SUBDIR += elixir-stemmer
+    SUBDIR += elixir-swarm
     SUBDIR += elixir-timex
     SUBDIR += elixir-tirexs
     SUBDIR += elixir-tzdata
@@ -749,6 +754,7 @@
     SUBDIR += gobject-introspection
     SUBDIR += godep
     SUBDIR += godot
+    SUBDIR += godot-tools
     SUBDIR += goffice
     SUBDIR += goffice010
     SUBDIR += google-gdata
@@ -2186,6 +2192,7 @@
     SUBDIR += p5-Devel-GlobalDestruction
     SUBDIR += p5-Devel-GlobalDestruction-XS
     SUBDIR += p5-Devel-Hide
+    SUBDIR += p5-Devel-InheritNamespace
     SUBDIR += p5-Devel-KYTProf
     SUBDIR += p5-Devel-Leak
     SUBDIR += p5-Devel-Leak-Cb
@@ -4271,6 +4278,7 @@
     SUBDIR += py-omnijson
     SUBDIR += py-omniorb
     SUBDIR += py-omniorb-3
+    SUBDIR += py-opster
     SUBDIR += py-optik
     SUBDIR += py-option_merge
     SUBDIR += py-orbit
@@ -4401,6 +4409,7 @@
     SUBDIR += py-qt5-dbussupport
     SUBDIR += py-qt5-designer
     SUBDIR += py-qt5-designerplugin
+    SUBDIR += py-qt5-help
     SUBDIR += py-qt5-qscintilla2
     SUBDIR += py-qt5-test
     SUBDIR += py-rauth
@@ -4439,6 +4448,7 @@
     SUBDIR += py-scripttest
     SUBDIR += py-sdl2
     SUBDIR += py-selection
+    SUBDIR += py-selectors34
     SUBDIR += py-semantic_version
     SUBDIR += py-serpent
     SUBDIR += py-setproctitle
@@ -5279,6 +5289,7 @@
     SUBDIR += rubygem-wdm
     SUBDIR += rubygem-web-console
     SUBDIR += rubygem-webby
+    SUBDIR += rubygem-windows_error
     SUBDIR += rubygem-wmi-lite
     SUBDIR += rubygem-xpath
     SUBDIR += rubygem-yajl-ruby

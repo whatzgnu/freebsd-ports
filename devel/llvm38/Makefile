@@ -2,6 +2,7 @@
 
 PORTNAME=	llvm
 DISTVERSION=	3.8.1
+PORTREVISION=	3
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/${PRE_}releases/${LLVM_RELEASE}/${RCDIR}
 DISTNAME=	${PORTNAME}-${DISTVERSION}.src
@@ -34,8 +35,8 @@ CMAKE_ARGS=
 OPTIONS_DEFINE=	CLANG DOCS EXTRAS GOLD LIT LLD LLDB
 OPTIONS_DEFINE_amd64=	COMPILER_RT OPENMP
 OPTIONS_DEFINE_i386=	COMPILER_RT
-OPTIONS_DEFAULT=	CLANG EXTRAS GOLD LIT LLD LLDB
-OPTIONS_DEFAULT_amd64=	COMPILER_RT OPENMP
+OPTIONS_DEFAULT=	CLANG EXTRAS LIT LLD LLDB
+OPTIONS_DEFAULT_amd64=	COMPILER_RT GOLD OPENMP
 OPTIONS_DEFAULT_i386=	COMPILER_RT
 OPTIONS_SUB=	yes
 
@@ -192,7 +193,7 @@ NOT_FOR_ARCH=	ia64
 
 .include <bsd.port.pre.mk>
 
-_CRTLIBDIR=    ${LLVM_PREFIX:S|${PREFIX}/||}/lib/freebsd
+_CRTLIBDIR=    ${LLVM_PREFIX:S|${PREFIX}/||}/lib/clang/${LLVM_RELEASE}/lib/freebsd
 .if ${ARCH} == "amd64"
 _COMPILER_RT_LIBS= \
 	libclang_rt.asan-preinit-x86_64.a \
@@ -284,6 +285,7 @@ post-patch:
 	    -e 's|from lit|from lit${LLVM_SUFFIX}|' \
 	    -e 's|lit\.|lit${LLVM_SUFFIX}.|' \
 	    ${WRKSRC}/utils/lit/lit.py ${WRKSRC}/utils/lit/lit/*.py
+	${REINPLACE_CMD} -e 's|CMAKE_INSTALL_PREFIX|${CMAKE_INSTALL_PREFIX}|g' ${WRKSRC}/tools/clang/lib/Driver/Tools.cpp
 
 post-patch-COMPILER_RT-on:
 	cd ${WRKSRC_compiler_rt} && patch < ${PATCHDIR}/compiler-rt-patch-svn-261229
@@ -343,6 +345,10 @@ post-install-CLANG-on:
 post-install-COMPILER_RT-on:
 	cd ${WRKDIR}/compiler-rt-build && \
 	${MAKE_ENV} ${MAKE_CMD} ${INSTALL_TARGET}
+	${MKDIR} ${STAGEDIR}${PREFIX}/${_CRTLIBDIR}
+	${MV} ${STAGEDIR}${LLVM_PREFIX}/lib/freebsd/* \
+	    ${STAGEDIR}${PREFIX}/${_CRTLIBDIR}
+	${RMDIR} ${STAGEDIR}${LLVM_PREFIX}/lib/freebsd
 
 post-install-LIT-on:
 	${INSTALL_SCRIPT} ${PATCH_WRKSRC}/utils/lit/lit.py \

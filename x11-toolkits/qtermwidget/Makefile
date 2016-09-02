@@ -10,12 +10,11 @@ COMMENT=	Terminal widget for QTerminal
 
 LICENSE=	GPLv2
 
-USES=		cmake:outsource
+USES=		cmake:outsource compiler:c++11-lang pkgconfig
 USE_LDCONFIG=	yes
-USE_QT5=	core gui widgets qmake_build buildtools \
-		x11extras
+USE_QT5=	buildtools_build core gui qmake_build widgets
 
-CMAKE_ARGS+=	-DBUILD_DESIGNER_PLUGIN=0 -DUSE_QT5=1
+CMAKE_ARGS+=	-DBUILD_DESIGNER_PLUGIN:BOOL=OFF -DUSE_QT5:BOOL=ON
 
 CFLAGS+=	-DHAVE_UTEMPTER
 
