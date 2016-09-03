@@ -1075,12 +1075,6 @@ MINIMAL_PKG_VERSION=	1.6.0
 # make sure bmake treats -V as expected
 .MAKE.EXPAND_VARIABLES= yes
 
-# KPM Use external toolchain compiler
-# In TrueOS the built-in clang is disabled
-.if (!defined(USES) || ( defined(USES) && !${USES:Mcompiler*} ))
-USES+=	compiler
-.endif
-
 .include "${PORTSDIR}/Mk/bsd.commands.mk"
 
 .if defined(X_BUILD_FOR)
@@ -1104,6 +1098,14 @@ STRIP_CMD=	${X_BUILD_FOR}-strip
 # only bmake support the below
 STRIPBIN=	${STRIP_CMD}
 .export.env STRIPBIN
+.endif
+
+# KPM Use external toolchain compiler
+# In TrueOS the built-in clang is disabled, use the one from ports
+.if ((!defined(USES) && !defined(USE_GCC)) || ( defined(USES) && !${USES:Mcompiler*} ))
+BUILD_DEPENDS+=	${LOCALBASE}/bin/clang38:devel/llvm38
+CC=	${LOCALBASE}/bin/clang38
+CXX= ${LOCALBASE}/bin/clang++38
 .endif
 
 #
