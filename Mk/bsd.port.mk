@@ -1075,6 +1075,12 @@ MINIMAL_PKG_VERSION=	1.6.0
 # make sure bmake treats -V as expected
 .MAKE.EXPAND_VARIABLES= yes
 
+# KPM Use external toolchain compiler
+# In TrueOS the built-in clang is disabled
+.if (!defined(USES) || ( defined(USES) && !${USES:Mcompiler*} ))
+USES+=	compiler
+.endif
+
 .include "${PORTSDIR}/Mk/bsd.commands.mk"
 
 .if defined(X_BUILD_FOR)
