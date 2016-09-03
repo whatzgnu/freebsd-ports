@@ -1100,14 +1100,6 @@ STRIPBIN=	${STRIP_CMD}
 .export.env STRIPBIN
 .endif
 
-# KPM Use external toolchain compiler
-# In TrueOS the built-in clang is disabled, use the one from ports
-.if ((!defined(USES) && !defined(USE_GCC)) || ( defined(USES) && !${USES:Mcompiler*} ))
-BUILD_DEPENDS+=	${LOCALBASE}/bin/clang38:devel/llvm38
-CC=	${LOCALBASE}/bin/clang38
-CXX= ${LOCALBASE}/bin/clang++38
-.endif
-
 #
 # DESTDIR section to start a chrooted process if invoked with DESTDIR set
 #
