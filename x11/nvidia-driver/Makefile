@@ -10,9 +10,9 @@
 # slave ports instead (`x11/nvidia-driver-340' or `x11/nvidia-driver-304').
 
 PORTNAME=	nvidia-driver
-DISTVERSION?=	367.35
+DISTVERSION?=	367.44
 # Always try to set PORTREVISION as it can be overridden by the slave ports
-PORTREVISION?=	2
+PORTREVISION?=	0
 CATEGORIES=	x11
 MASTER_SITES=	NVIDIA/XFree86/FreeBSD-${ARCH_SUFX}/${DISTVERSION}
 DISTNAME=	NVIDIA-FreeBSD-${ARCH_SUFX}-${DISTVERSION}
@@ -241,28 +241,6 @@ post-install: .SILENT
 .endif
 .if ${NVVERSION} < 358.009
 	${REINPLACE_CMD} '/nvidia-modeset.ko/d' ${TMPPLIST}
-.endif
-.if ${NVVERSION} >= 361.028
-	${REINPLACE_CMD} -E '/(EGL_nvidia\.so|GLESv[12](_CM)?(\.so\.[0-9]+\.[0-9]+))$$/d' \
-		${TMPPLIST}
-.else
-	${REINPLACE_CMD} -E '/\/lib\/libGLESv[12](_CM)?(\.so)?(_nvidia.so(\.[0-9]|\.[0-9]+\.[0-9]+)?)?$$/d ; \
-		/libEGL_nvidia\.so\.${PORTVERSION}/d' ${TMPPLIST}
-.endif
-.if ${NVVERSION} < 352.009
-	${REINPLACE_CMD} -E '/(lib)?nvidia-(debugdump|smi|ml)/d' ${TMPPLIST}
-.endif
-.if ${NVVERSION} < 355.006
-	${REINPLACE_CMD} -E '/(libEGL_nvidia|GLdispatch|OpenGL)/d' ${TMPPLIST}
-.else
-	${REINPLACE_CMD} 's/libEGL\.so\.${PORTVERSION}/libEGL.so/' \
-		${TMPPLIST}
-.endif
-.if ${NVVERSION} < 358.009
-	${REINPLACE_CMD} '/nvidia-modeset.ko/d' ${TMPPLIST}
-.else
-	${REINPLACE_CMD} 's/nvidia$$/nvidia-modeset/ ; s/nvidia_/nvidia-modeset_/' \
-		${PKGMESSAGE}
 .endif
 .if ${NVVERSION} >= 361.028
 	${REINPLACE_CMD} -E '/(EGL_nvidia\.so|GLESv[12](_CM)?(\.so\.[0-9]+\.[0-9]+))$$/d' \
