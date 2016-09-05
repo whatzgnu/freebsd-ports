@@ -37,6 +37,7 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
 # Keep this, else ruby will fail to load libraries dependent of libpthread.
 LIBS+=		-lpthread -L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/llvm38/lib
 MAKE_ENV=	LC_ALL=C
 USE_LDCONFIG=	yes
 USE_OPENSSL=	yes

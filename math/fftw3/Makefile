@@ -49,6 +49,7 @@ OPTIONS_DEFAULT=	OPENMP OPTIMIZED_CFLAGS
 CONFIGURE_ARGS+=	--enable-openmp
 PLIST_SUB+=	OPENMP=""
 USES+=		compiler:openmp
+LDFLAGS+=	-L${LOCALBASE}/llvm38/lib
 .else
 CONFIGURE_ARGS+=	--disable-openmp
 PLIST_SUB+=	OPENMP="@comment "
