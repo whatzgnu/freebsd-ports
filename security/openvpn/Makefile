@@ -86,7 +86,6 @@ TEST_ALL_TARGET=	check
 WARNING+=	"${.CURDIR}: WITHOUT_CHECK is deprecated, please use WITHOUT=TEST or OPTIONS_UNSET=TEST."
 WITHOUT+=	TEST
 .endif
->>>>>>> 1fe84c388aace5ff6c0867a217e1cfe91d6478da
 
 pre-configure:
 .ifdef (LOG_OPENVPN)
