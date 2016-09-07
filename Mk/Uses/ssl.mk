@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/Mk/Uses/ssl.mk 421374 2016-09-05 15:21:06Z novel $
 #
 # Handle dependency on *ssl ports.
 #
@@ -32,7 +32,14 @@ _INCLUDE_USES_SSL_MK=	yes
 IGNORE=	"USES=ssl does not take any argument."
 .endif
 
-.if !empty(SSL_DEFAULT:M*base*)
+.if exists(${DESTDIR}/usr/lib/libtls.so)
+LIBRESSL_IS_OPENSSL=   yes
+.  if ${SSL_DEFAULT} == libressl
+SSL_DEFAULT=           base
+.  endif
+.endif
+
+.if ${SSL_DEFAULT} == base
 OPENSSLBASE=		/usr
 OPENSSLDIR?=		/etc/ssl
 
