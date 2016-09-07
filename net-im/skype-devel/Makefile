@@ -37,16 +37,6 @@ SUB_LIST+=	SKYPEDIR=${SKYPEDIR}
 
 .include <bsd.port.options.mk>
 
-<<<<<<< HEAD
-=======
-.if ${PORT_OPTIONS:MNVIDIA_GL}
-RUN_DEPENDS+=	${LINUXBASE}/usr/lib/libGL.so.1:x11/nvidia-driver
-USE_LINUX+=	xorglibs
-.else
-USE_LINUX+=	dri
-.endif
-
->>>>>>> 19c53dd856580eab60f655dd88b4618fd831c2be
 .if ${PORT_OPTIONS:MVIDEO}
 RUN_DEPENDS+=	webcamd:multimedia/webcamd
 USE_LINUX+=	libv4l
