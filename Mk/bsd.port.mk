@@ -408,40 +408,15 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				  core, webkit).  Implies that the port needs Qt.
 #				  Implies the inclusion of bsd.qt.mk.  See bsd.qt.mk
 #				  for more details.
-#
-# USE_LINUX		- Set to yes to say the port needs the default linux base port.
-#				  Set to value <X>, if the port needs emulators/linux_base-<X>.
-#				  Implies appropriate settings for STRIP and STRIP_CMD.
+##
 # USE_LINUX_PREFIX
-#				- controls the action of PREFIX (see above). Only use this
-#				  if the port is a linux infrastructure port (e.g. contains libs
+#				- Controls the action of PREFIX (see above).  Only use this
+#				  if the port is a Linux infrastructure port (e.g. contains libs
 #				  or a sound server which supports the FreeBSD native one),
-#				  use the default or the X11 prefix if it's a leaf port
-#				  (e.g. a game or program).
-#				  Implies NO_MTREE=yes, and, if USE_LDCONFIG is defined:
-#				    - USE_LINUX=yes
-#				    - appropriate invocation of the Linux ldconfig
-# USE_LINUX_RPM	- Set to yes to pull in variables and targets useful to Linux
-#				  RPM ports.
-# 				  Set to nolib if your port does not contain an architecture-
-#				  specific library.
-#				  Implies inclusion of bsd.linux-rpm.mk.
-#
-# LINUX_OSRELEASE	- Contains the value of compat.linux.osrelease sysctl.
-#				  Will be used to distinguish which linux
-#				  infrastructure ports should be used.
-#				  Valid values: 2.6.16.
-#
-# OVERRIDE_LINUX_BASE_PORT
-#				- This specifies the default linux base to use, for valid
-#				  values have a look at the description of USE_LINUX. This is
-#				  an user-only variable. Don't use it in any port, it's meant
-#				  to be used in make.conf.
-#
-# LINUX_BASE_PORT
-#				- This is a read-only variable, it gets set to a value which is
-#				  usable in *_DEPENDS (e.g. BUILD_DEPENDS=${LINUX_BASE_PORT}).
-#				  It honors USE_LINUX=foo and OVERRIDE_LINUX_BASE_PORT.
+#				  use the default prefix if it's a leaf port (e.g. a game or
+#				  program).
+#				  Implies NO_LICENSES_INSTALL=yes, NO_MTREE=yes, and causes
+#				  Linux ldconfig to be used when USE_LDCONFIG is defined.
 ##
 # USE_XORG			- Set to a list of X.org module dependencies.
 #				  Implies inclusion of bsd.xorg.mk.
@@ -1318,16 +1293,6 @@ DATADIR?=		${PREFIX}/share/${PORTNAME}
 WWWDIR?=		${PREFIX}/www/${PORTNAME}
 ETCDIR?=		${PREFIX}/etc/${PORTNAME}
 
-.if defined(USE_LINUX_RPM)
-BROKEN=		Linux Compat Apps disabled in favor of apt-get
-.include "${PORTSDIR}/Mk/bsd.linux-rpm.mk"
-.endif
-
-.if defined(USE_LINUX_APPS)
-BROKEN=		Linux Compat Apps disabled in favor of apt-get
-.include "${PORTSDIR}/Mk/bsd.linux-apps.mk"
-.endif
-
 .if defined(USE_XORG) || defined(XORG_CAT)
 .include "${PORTSDIR}/Mk/bsd.xorg.mk"
 .endif
@@ -1341,16 +1306,7 @@ FILESDIR?=		${MASTERDIR}/files
 SCRIPTDIR?=		${MASTERDIR}/scripts
 PKGDIR?=		${MASTERDIR}
 
-.if defined(USE_LINUX_PREFIX)
-PREFIX:=		${LINUXBASE}
-NO_MTREE=		yes
-.else
 PREFIX?=		${LOCALBASE}
-.endif
-
-.if defined(USE_LINUX_PREFIX)
-LDCONFIG_CMD?=			${LINUXBASE}/sbin/ldconfig -r ${LINUXBASE}
-.endif
 
 PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 
@@ -1459,6 +1415,14 @@ ${_f}_ARGS:=	${f:C/^[^\:]*(\:|\$)//:S/,/ /g}
 
 EXTRACT_SUFX?=			.tar.gz
 
+.if defined(USE_LINUX_PREFIX)
+PREFIX=					${LINUXBASE}
+DATADIR?=				${PREFIX}/usr/share/${PORTNAME}
+DOCSDIR?=				${PREFIX}/usr/share/doc/${PORTNAME}-${PORTVERSION}
+NO_LICENSES_INSTALL=	yes
+NO_MTREE=				yes
+.endif
+
 # You can force skipping these test by defining IGNORE_PATH_CHECKS
 .if !defined(IGNORE_PATH_CHECKS)
 .if ! ${PREFIX:M/*}
@@ -1468,6 +1432,12 @@ EXTRACT_SUFX?=			.tar.gz
 	@${FALSE}
 .endif
 .endif
+
+DATADIR?=		${PREFIX}/share/${PORTNAME}
+DOCSDIR?=		${PREFIX}/share/doc/${PORTNAME}
+ETCDIR?=		${PREFIX}/etc/${PORTNAME}
+EXAMPLESDIR?=	${PREFIX}/share/examples/${PORTNAME}
+WWWDIR?=		${PREFIX}/www/${PORTNAME}
 
 # Owner and group of the WWW user
 WWWOWN?=	www
@@ -1765,65 +1735,6 @@ USE_LDCONFIG=	${PREFIX}/lib
 IGNORE=			has USE_LDCONFIG32 set to yes, which is not correct
 .endif
 
-.if defined(USE_LINUX_PREFIX) && defined(USE_LDCONFIG)
-# we need ${LINUXBASE}/sbin/ldconfig
-USE_LINUX?=	yes
-.endif
-
-.if defined(USE_LINUX)
-
-.  if !defined(LINUX_OSRELEASE)
-LINUX_OSRELEASE!=	${ECHO_CMD} `${SYSCTL} -n compat.linux.osrelease 2>/dev/null`
-.  endif
-_EXPORTED_VARS+=	LINUX_OSRELEASE
-
-# install(1) also does a brandelf on strip, so don't strip with FreeBSD tools.
-STRIP=
-.	if exists(${LINUXBASE}/usr/bin/strip)
-STRIP_CMD=	${LINUXBASE}/usr/bin/strip
-.	else
-STRIP_CMD=	${TRUE}
-.	endif
-
-# Allow the user to specify another linux_base version.
-.	if defined(OVERRIDE_LINUX_BASE_PORT)
-.		if ${USE_LINUX:tl} == yes || (${USE_LINUX} == "c6" && ${OVERRIDE_LINUX_BASE_PORT} == "c6_64")
-USE_LINUX=	${OVERRIDE_LINUX_BASE_PORT}
-.		endif
-.	endif
-
-# NOTE: when you update the default linux_base version (case "yes"),
-# don't forget to update the Handbook!
-
-.	if exists(${PORTSDIR}/emulators/linux_base-${USE_LINUX})
-LINUX_BASE_PORT=	${LINUXBASE}/bin/sh:emulators/linux_base-${USE_LINUX}
-.	else
-.		if ${USE_LINUX:tl} == "yes"
-USE_LINUX=	c6
-LINUX_BASE_PORT=	${LINUXBASE}/etc/redhat-release:emulators/linux_base-c6
-.		elif ${USE_LINUX} == "c6_64"
-LINUX_BASE_PORT=	${LINUXBASE}/etc/redhat-release:emulators/linux_base-c6
-.		else
-IGNORE=		cannot be built: there is no emulators/linux_base-${USE_LINUX}, perhaps wrong use of USE_LINUX or OVERRIDE_LINUX_BASE_PORT
-.		endif
-.	endif
-
-.	if ${USE_LINUX} == "c6_64" || (defined(OVERRIDE_LINUX_BASE_PORT) && ${OVERRIDE_LINUX_BASE_PORT} == "c6_64")
-.		if ${ARCH} != "amd64"
-IGNORE=		Cannot install 64 bit Linux on non-64bit platforms
-.		endif
-LINUX_RPM_ARCH?=	x86_64
-LINUX_REPO_ARCH?=	x86_64
-.	elif ${USE_LINUX} == "c6" || ${USE_LINUX} == "yes" # default to CentOS
-LINUX_RPM_ARCH?=	i686
-LINUX_REPO_ARCH?=	i386
-.	elif ${USE_LINUX} == "f10"
-LINUX_RPM_ARCH?=	i386
-LINUX_REPO_ARCH?=	i386
-.	endif
-RUN_DEPENDS+=	${LINUX_BASE_PORT}
-.endif
-
 PKG_IGNORE_DEPENDS?=		'this_port_does_not_exist'
 
 _GL_gbm_LIB_DEPENDS=		libgbm.so:graphics/gbm
@@ -1912,6 +1823,7 @@ _FORCE_POST_PATTERNS=	rmdir kldxref mkfontscale mkfontdir fc-cache \
 .include "${PORTSDIR}/Mk/bsd.ocaml.mk"
 .endif
 
+<<<<<<< HEAD
 .if defined(USE_LINUX_RPM)
 BROKEN=		Linux Compat Apps disabled in favor of apt-get
 .include "${PORTSDIR}/Mk/bsd.linux-rpm.mk"
@@ -1922,6 +1834,8 @@ BROKEN=		Linux Compat Apps disabled in favor of apt-get
 .include "${PORTSDIR}/Mk/bsd.linux-apps.mk"
 .endif
 
+=======
+>>>>>>> 19c53dd856580eab60f655dd88b4618fd831c2be
 .if defined(USE_QT4) || defined(USE_QT5)
 .include "${PORTSDIR}/Mk/bsd.qt.mk"
 .endif
@@ -4477,8 +4391,9 @@ generate-plist: ${WRKDIR}
 
 .if defined(USE_LINUX_PREFIX)
 .if defined(USE_LDCONFIG)
-	@${ECHO_CMD} "@postexec ${LDCONFIG_CMD}" >> ${TMPPLIST}
-	@${ECHO_CMD} "@postunexec ${LDCONFIG_CMD}" >> ${TMPPLIST}
+	@${ECHO_CMD} '@preexec [ -n "`/sbin/sysctl -q compat.linux.osrelease`" ] || ( echo "Cannot install package: kernel missing Linux support"; exit 1 )' >> ${TMPPLIST}
+	@${ECHO_CMD} "@postexec ${LINUXBASE}/sbin/ldconfig" >> ${TMPPLIST}
+	@${ECHO_CMD} "@postunexec ${LINUXBASE}/sbin/ldconfig" >> ${TMPPLIST}
 .endif
 .else
 .if defined(USE_LDCONFIG)

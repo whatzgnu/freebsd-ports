@@ -19,9 +19,8 @@ OPTIONS_DEFAULT=	VIDEO
 
 NO_BUILD=	yes
 
-USES=		cpe tar:bzip2
-USE_LINUX=	yes
-USE_LINUX_APPS+=alsalib alsa-plugins-oss expat fontconfig libasyncns \
+USES=		cpe linux tar:bzip2
+USE_LINUX=	alsalib alsa-plugins-oss expat fontconfig libasyncns \
 		libsigcpp20
 RESTRICTED=	Redistribution prohibited.
 
@@ -32,11 +31,11 @@ PLIST_SUB+=	SKYPEDIR=${SKYPEDIR}
 SUB_FILES=	skype.sh
 SUB_LIST+=	SKYPEDIR=${SKYPEDIR}
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MVIDEO}
 RUN_DEPENDS+=	webcamd:multimedia/webcamd
-USE_LINUX_APPS+=libv4l
+USE_LINUX+=	libv4l
 SUB_LIST+=	VIDEO="LD_PRELOAD=/usr/lib/libv4l/v4l2convert.so "
 .else
 SUB_LIST+=	VIDEO=""
@@ -59,4 +58,4 @@ do-install:
 	@cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
