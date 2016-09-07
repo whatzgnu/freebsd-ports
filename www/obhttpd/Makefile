@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/www/obhttpd/Makefile 417767 2016-06-29 14:22:47Z mat $
 
 PORTNAME=	obhttpd
 PORTVERSION=	5.9.20160601
