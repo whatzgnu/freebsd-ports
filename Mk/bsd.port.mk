@@ -1823,19 +1823,6 @@ _FORCE_POST_PATTERNS=	rmdir kldxref mkfontscale mkfontdir fc-cache \
 .include "${PORTSDIR}/Mk/bsd.ocaml.mk"
 .endif
 
-<<<<<<< HEAD
-.if defined(USE_LINUX_RPM)
-BROKEN=		Linux Compat Apps disabled in favor of apt-get
-.include "${PORTSDIR}/Mk/bsd.linux-rpm.mk"
-.endif
-
-.if defined(USE_LINUX_APPS)
-BROKEN=		Linux Compat Apps disabled in favor of apt-get
-.include "${PORTSDIR}/Mk/bsd.linux-apps.mk"
-.endif
-
-=======
->>>>>>> 19c53dd856580eab60f655dd88b4618fd831c2be
 .if defined(USE_QT4) || defined(USE_QT5)
 .include "${PORTSDIR}/Mk/bsd.qt.mk"
 .endif
