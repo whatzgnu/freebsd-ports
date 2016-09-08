@@ -22,6 +22,8 @@ diff -ruN tools/clang/include/clang/Driver/Options.td tools/clang/include/clang/
    HelpText<"Allow GNU-extension keywords regardless of language standard">;
  def fgnu89_inline : Flag<["-"], "fgnu89-inline">, Group<f_Group>, Flags<[CC1Option]>,
 diff -ruN tools/clang/lib/Driver/Tools.cpp tools/clang/lib/Driver/Tools.cpp
+--- tools/clang/lib/Driver/Tools.cpp	2015-07-30 22:47:41 UTC
++++ tools/clang/lib/Driver/Tools.cpp
 @@ -4045,6 +4045,7 @@
  
    // Forward -f (flag) options which we can pass directly.
