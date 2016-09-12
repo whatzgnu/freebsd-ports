@@ -7,15 +7,14 @@
 # Starting with version 1.0-7667, NVidia has dropped support for numerous
 # "legacy" GPUs.  Consult NVidia README (the Appendix) to find out whether
 # you need to use legacy driver version and install one of corresponding
-# slave ports instead (`x11/nvidia-driver-304', or `x11/nvidia-driver-340').
+# slave ports instead (`x11/nvidia-driver-340' or `x11/nvidia-driver-304').
 
 PORTNAME=	nvidia-driver
-DISTVERSION?=	367.35
+DISTVERSION?=	367.44
 # Always try to set PORTREVISION as it can be overridden by the slave ports
 PORTREVISION?=	0
 CATEGORIES=	x11
-MASTER_SITES=	NVIDIA
-# MASTER_SITE_SUBDIR has to be set later because it depends on NVVERSION
+MASTER_SITES=	NVIDIA/XFree86/FreeBSD-${ARCH_SUFX}/${DISTVERSION}
 DISTNAME=	NVIDIA-FreeBSD-${ARCH_SUFX}-${DISTVERSION}
 
 MAINTAINER=	danfe@FreeBSD.org
@@ -25,6 +24,8 @@ LICENSE=	NVIDIA
 LICENSE_NAME=	License For Customer Use of NVIDIA Software
 LICENSE_FILE=	${WRKSRC}/doc/license.txt
 LICENSE_PERMS=	dist-mirror no-dist-sell pkg-mirror no-pkg-sell auto-accept
+
+ONLY_FOR_ARCHS=	i386 amd64
 
 ARCH_SUFX=	x86${ARCH:S/i386//:S/amd/_/}
 USES=		kmod uidfix
@@ -56,38 +57,36 @@ NVVERSION=	${DISTVERSION}
 .  endif
 .endif
 
-MASTER_SITE_SUBDIR=	XFree86/FreeBSD-${ARCH_SUFX}/${DISTVERSION}
-ONLY_FOR_ARCHS=	i386 amd64
-
 .if ${NVVERSION} < 355.006
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-src-Makefile \
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-src-Makefile \
 		${FILESDIR}/extra-patch-src-nv-freebsd.h \
 		${FILESDIR}/extra-patch-src-nv-misc.h
+NVSRC=		.
 .else
-NVSRC=nvidia
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-src_nvidia_Makefile \
+EXTRA_PATCHES=	${FILESDIR}/extra-patch-src_nvidia_Makefile \
 		${FILESDIR}/extra-patch-src_nvidia_nv-freebsd.h \
 		${FILESDIR}/extra-patch-src_nvidia_nv-misc.h
+NVSRC=		nvidia
 .endif
 .if ${NVVERSION} >= 358.009
+# Initialize memory allocations to avoid spurious "lock re-initialization"
+# errors.  A little more detail can be found in bug 201340 starting around
+# comment #50.
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-src_nvidia-modeset_nvidia-modeset-freebsd.c
 .endif
 
-OPTIONS_DEFINE=		ACPI_PM LINUX DOCS WBINVD
+OPTIONS_DEFINE=	ACPI_PM LINUX WBINVD DOCS
+OPTIONS_DEFINE_i386=	PAE
 OPTIONS_DEFAULT=	LINUX
 
 ACPI_PM_DESC=		ACPI Power Management support
 LINUX_DESC=		Linux compatibility support
+PAE_DESC=		Physical Address Extensions support
 WBINVD_DESC=		Flush CPU caches directly with WBINVD
 
 .if ${NVVERSION} < 310.014
 OPTIONS_DEFINE+=	FREEBSD_AGP
 FREEBSD_AGP_DESC=	Use FreeBSD AGP GART driver
-.endif
-
-.if ${NVVERSION} >= 304.088
-OPTIONS_DEFINE_i386=	PAE
-PAE_DESC=		Physical Address Extensions support
 .endif
 
 PLIST_SUB+=	LINUXBASE=${LINUXBASE} SHLIB_VERSION=${PORTVERSION} \
@@ -97,7 +96,7 @@ PLIST_SUB+=	LINUXBASE=${LINUXBASE} SHLIB_VERSION=${PORTVERSION} \
 
 .if ${PORT_OPTIONS:MLINUX}
 CONFLICTS_INSTALL=	linux[-_]dri-[0-9]* linux-f10-dri-[0-9]*
-USE_LINUX=	yes
+USES+=		linux
 PLIST_SUB+=	LINUX=""
 .else
 PLIST_SUB+=	LINUX="@comment "
@@ -106,9 +105,10 @@ MAKE_ENV+=	WITHOUT_LINUX=yes
 .endif
 
 post-patch: .SILENT
+# We should support -CURRENT: kill the check
 	${REINPLACE_CMD} -e '24,26d' ${WRKSRC}/src/${NVSRC}/nv-freebsd.h
 # Adjust Linux headers #include's after FreeBSD src SVN r246085
-.if ${OSVERSION} > 1000027 && ${NVVERSION} >= 96.04323
+.if ${OSVERSION} > 1000027
 	${REINPLACE_CMD} -E '/#include "machine\/\.\.\/linux(32)?\/linux.h"/ \
 		{ x ; s/.*/#include "machine\/..\/..\/compat\/linux\/linux_ioctl.h"/ ; H ; x ; }' \
 			${WRKSRC}/src/${NVSRC}/nvidia_linux.c
@@ -140,7 +140,50 @@ post-patch: .SILENT
 	${REINPLACE_CMD} -e 's/d_thread_t/struct thread/' \
 		${WRKSRC}/src/nvidia-modeset/nvidia-modeset-freebsd.c
 .endif
-# Process OPTIONS
+# Respect WITHOUT_LINUX setting
+	${REINPLACE_CMD} -e 's/exists(\/.*/& \&\& !defined(WITHOUT_LINUX)/' \
+		${WRKSRC}/lib/Makefile
+# Do not install VDPAU libraries which are provided by `multimedia/libvdpau'
+# port for a while now
+	${REINPLACE_CMD} -e '/libvdpau[[:blank:]_][^n]/d ; \
+		s/name libvdpau/&_nvidia/' ${WRKSRC}/lib/Makefile
+# Do not build any binaries (native nvidia-settings and nvidia-xconfig are
+# provided by corresponding ports) and manual pages
+	${REINPLACE_CMD} -E 's/(extension).*/\1/' ${WRKSRC}/x11/Makefile
+	${REINPLACE_CMD} -e '/bin/d ; /man/d' ${WRKSRC}/x11/Makefile
+# Also do not install libnvidia-gtk* libraries which are for nvidia-settings
+.if ${NVVERSION} >= 346.016
+	${REINPLACE_CMD} -e '/libnvidia-gtk/d' ${WRKSRC}/lib/Makefile
+.endif
+# Adjust installation paths of some conflicting files (shared also between
+# libGL, libEGL, libGLESv2, and xorg-server) to ease package manager work
+	${REINPLACE_CMD} -e '/LIBDIR/s:xorg/modules/extensions:&/.nvidia:' \
+		${WRKSRC}/x11/extension/Makefile
+	${REINPLACE_CMD} -e '/LIBDIR/s:lib:&/.nvidia:' \
+		${WRKSRC}/lib/libGL/Makefile
+.if ${NVVERSION} >= 331.013
+	${REINPLACE_CMD} -e '/LIBDIR/s:lib:&/.nvidia:' \
+		${WRKSRC}/lib/libEGL/Makefile \
+		${WRKSRC}/lib/libGLESv2/Makefile
+.endif
+# Do not execute afterinstall target (prevent automatic module registration
+# and "smart" installation of conflicting files heuristics)
+	${REINPLACE_CMD} -e 's/afterinstall/&_dontexecute/' ${WRKSRC}/Makefile
+	${REINPLACE_CMD} -e 's/beforeinstall/&_dontexecute/' \
+		${WRKSRC}/lib/Makefile ${WRKSRC}/src/${NVSRC}/Makefile
+# /usr/share/nvidia path is hardcoded in libGL and nvidia-settings, but we
+# won't adhere to this stupidity and install nvidia-application-profiles-*
+# files as part of documentation
+.if ${NVVERSION} >= 334.016
+	${REINPLACE_CMD} -e 's,/usr/share/nvidia,${STAGEDIR}${DOCSDIR},' \
+		${WRKSRC}/lib/libGL/Makefile ${WRKSRC}/doc/Makefile
+.endif
+# New cap_rights_t structure was introduced in FreeBSD r255219 (FreeBSD 10.0).
+.if ${OSVERSION} < 1000053 && ${NVVERSION} >= 358.009
+	${REINPLACE_CMD} '/<sys\/caprights.h>/d ; /cap_rights_t rights/d ; s/cap_rights_init(&rights, CAP_IOCTL)/CAP_IOCTL/' \
+		${WRKSRC}/src/nvidia-modeset/nvidia-modeset-freebsd.c
+.endif
+# Finally, process OPTIONS
 .if ${PORT_OPTIONS:MFREEBSD_AGP}
 	${REINPLACE_CMD} -E 's/undef (NV_SUPPORT_OS_AGP)/define \1/' \
 		${WRKSRC}/src/${NVSRC}/nv-freebsd.h
@@ -161,53 +204,9 @@ post-patch: .SILENT
 	${REINPLACE_CMD} -E 's/undef (NV_USE_WBINVD)/define \1/' \
 		${WRKSRC}/src/${NVSRC}/nv-freebsd.h
 .endif
-	${REINPLACE_CMD} -e 's/exists(\/.*/& \&\& !defined(WITHOUT_LINUX)/' \
-		${WRKSRC}/lib/Makefile
-# Do not install VDPAU libraries which are provided by `multimedia/libvdpau'
-# port for a while now
-.if ${NVVERSION} >= 180.029
-	${REINPLACE_CMD} -e '/libvdpau[[:blank:]_][^n]/d ; \
-		s/name libvdpau/&_nvidia/' ${WRKSRC}/lib/Makefile
-.endif
-# Do not build any binaries (native nvidia-settings and nvidia-xconfig are
-# provided by corresponding ports) and manual pages
-	${REINPLACE_CMD} -e '/bin/d ; /man/d' ${WRKSRC}/x11/Makefile
-# Also do not install libnvidia-gtk* libraries which are for nvidia-settings
-.if ${NVVERSION} >= 346.016
-	${REINPLACE_CMD} -e '/libnvidia-gtk/d' ${WRKSRC}/lib/Makefile
-.endif
 # Conditionally install documentation (but you generally want it)
 .if ! ${PORT_OPTIONS:MDOCS}
 	${REINPLACE_CMD} -E 's/(x11).*/\1/ ; /doc/d' ${WRKSRC}/Makefile
-.endif
-# Adjust installation paths of some conflicting files (shared also between
-# libGL, libEGL, libglesv2 and xorg-server) to ease package manager work.
-	${REINPLACE_CMD} -e '/LIBDIR/s:xorg/modules/extensions:&/.nvidia:' \
-		${WRKSRC}/x11/extension/Makefile
-	${REINPLACE_CMD} -e '/LIBDIR/s:lib:&/.nvidia:' \
-		${WRKSRC}/lib/libGL/Makefile
-.if ${NVVERSION} >= 331.013
-	${REINPLACE_CMD} -e '/LIBDIR/s:lib:&/.nvidia:' \
-		${WRKSRC}/lib/libEGL/Makefile
-	${REINPLACE_CMD} -e '/LIBDIR/s:lib:&/.nvidia:' \
-		${WRKSRC}/lib/libGLESv2/Makefile
-.endif
-# Do not execute afterinstall target (prevent automatic module registration
-# and "smart" installation of conflicting files heuristics)
-	${REINPLACE_CMD} -e 's/afterinstall/&_dontexecute/' ${WRKSRC}/Makefile
-	${REINPLACE_CMD} -e 's/beforeinstall/&_dontexecute/' \
-		${WRKSRC}/lib/Makefile ${WRKSRC}/src/${NVSRC}/Makefile
-# /usr/share/nvidia path is hardcoded in libGL and nvidia-settings, but we
-# won't adhere to this stupidity and install nvidia-application-profiles-*
-# files as part of documentation
-.if ${NVVERSION} >= 334.016
-	${REINPLACE_CMD} -e 's,/usr/share/nvidia,${STAGEDIR}${DOCSDIR},' \
-		${WRKSRC}/lib/libGL/Makefile ${WRKSRC}/doc/Makefile
-.endif
-# Fix cap_rights, does not exist before 10.x
-.if ${OSVERSION} < 1000000 && ${NVVERSION} >= 358.009
-	${REINPLACE_CMD} '/<sys\/caprights.h>/d ; /cap_rights_t rights/d ; s/cap_rights_init(&rights, CAP_IOCTL)/CAP_IOCTL/' \
-		${WRKSRC}/src/nvidia-modeset/nvidia-modeset-freebsd.c
 .endif
 
 pre-install:
@@ -231,9 +230,6 @@ post-install: .SILENT
 	${REINPLACE_CMD} -E '/lib(nvidia-)?(EGL|eglcore|GLESv|glsi)/d' \
 		${TMPPLIST}
 .endif
-.if ${NVVERSION} >= 195.022
-	${REINPLACE_CMD} -e '/does not support PAE/,+1d' ${PKGMESSAGE}
-.endif
 .if ${NVVERSION} < 352.009
 	${REINPLACE_CMD} -E '/(lib)?nvidia-(debugdump|smi|ml)/d' ${TMPPLIST}
 .endif
@@ -245,9 +241,6 @@ post-install: .SILENT
 .endif
 .if ${NVVERSION} < 358.009
 	${REINPLACE_CMD} '/nvidia-modeset.ko/d' ${TMPPLIST}
-.else
-	${REINPLACE_CMD} 's/nvidia$$/nvidia-modeset/ ; s/nvidia_/nvidia-modeset_/' \
-		${PKGMESSAGE}
 .endif
 .if ${NVVERSION} >= 361.028
 	${REINPLACE_CMD} -E '/(EGL_nvidia\.so|GLESv[12](_CM)?(\.so\.[0-9]+\.[0-9]+))$$/d' \

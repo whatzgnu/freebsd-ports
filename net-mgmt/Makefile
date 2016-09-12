@@ -69,6 +69,7 @@
     SUBDIR += flowviewer
     SUBDIR += fprobe
     SUBDIR += glpi-plugins-fusioninventory-server
+    SUBDIR += gnu-ipcalc
     SUBDIR += grepcidr
     SUBDIR += grepip
     SUBDIR += gsnmp
@@ -153,7 +154,6 @@
     SUBDIR += nedi
     SUBDIR += nefu
     SUBDIR += net-snmp
-    SUBDIR += netams
     SUBDIR += netdisco
     SUBDIR += netdisco-mibs
     SUBDIR += netdot

@@ -1,6 +1,5 @@
-$OpenBSD: patch-libs_tcpd_libcouriertls_c,v 1.3 2015/07/20 07:17:40 jca Exp $
---- libs/tcpd/libcouriertls.c.orig	Wed Oct 22 02:00:12 2014
-+++ libs/tcpd/libcouriertls.c	Sat Jul 18 19:12:58 2015
+--- libs/tcpd/libcouriertls.c.orig	2015-06-10 00:08:23 UTC
++++ libs/tcpd/libcouriertls.c
 @@ -74,7 +74,9 @@ struct proto_ops op_list[] =
      { "TLSv1",     &TLSv1_method,   SSL_OP_ALL },
      { "TLS1",      &TLSv1_method,   SSL_OP_ALL },

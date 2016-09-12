@@ -1,5 +1,5 @@
 # Created by: Bernard Spil <brnrd@FreeBSD.org>
-# $FreeBSD: head/security/acme-client/Makefile 421258 2016-09-02 09:09:42Z brnrd $
+# $FreeBSD$
 
 PORTNAME=	acme-client
 PORTVERSION=	0.1.11
@@ -46,7 +46,7 @@ post-install:
 
 .include <bsd.port.pre.mk>
 
-.if empty(SSL_DEFAULT:Mlibressl*) && !defined(LIBRESSL_IS_OPENSSL)
+.if empty(SSL_DEFAULT:M*libressl*)
 IGNORE=	needs LibreSSL to build. set DEFAULT_VERSIONS+=ssl=libressl \
 	and rebuild all ports that depend on openssl
 .endif

@@ -601,6 +601,7 @@
     SUBDIR += netpbm
     SUBDIR += nip2
     SUBDIR += nomacs
+    SUBDIR += nplot
     SUBDIR += npretty
     SUBDIR += nurbs++
     SUBDIR += nvidia-texture-tools
@@ -776,6 +777,7 @@
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
+    SUBDIR += piglit
     SUBDIR += pikopixel
     SUBDIR += pinpoint
     SUBDIR += pixelize

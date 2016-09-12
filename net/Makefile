@@ -187,6 +187,7 @@
     SUBDIR += grilo
     SUBDIR += grilo-plugins
     SUBDIR += grive
+    SUBDIR += grive2
     SUBDIR += grsync
     SUBDIR += gsk
     SUBDIR += gspoof
@@ -422,6 +423,7 @@
     SUBDIR += nanomsg
     SUBDIR += nast
     SUBDIR += nats
+    SUBDIR += nats-top
     SUBDIR += nbd-server
     SUBDIR += nc
     SUBDIR += ncp
@@ -544,6 +546,7 @@
     SUBDIR += p5-IO-Socket-IP
     SUBDIR += p5-IO-Socket-Multicast
     SUBDIR += p5-IO-Socket-Multicast6
+    SUBDIR += p5-IO-Socket-Socks
     SUBDIR += p5-IO-Socket-Timeout
     SUBDIR += p5-IO-Socket-UNIX-Util
     SUBDIR += p5-IP-Anonymous
@@ -789,8 +792,8 @@
     SUBDIR += p5-Socket6
     SUBDIR += p5-Socks
     SUBDIR += p5-Sort-Key-IPv4
-    SUBDIR += p5-Test-URI
     SUBDIR += p5-TFTP
+    SUBDIR += p5-Test-URI
     SUBDIR += p5-URI
     SUBDIR += p5-URI-FromHash
     SUBDIR += p5-URI-Match
@@ -855,6 +858,7 @@
     SUBDIR += pear-Net_IDNA
     SUBDIR += pear-Net_IPv4
     SUBDIR += pear-Net_IPv6
+    SUBDIR += pear-Net_Growl
     SUBDIR += pear-Net_Ident
     SUBDIR += pear-Net_LDAP
     SUBDIR += pear-Net_LDAP2
@@ -980,6 +984,7 @@
     SUBDIR += py-netifaces
     SUBDIR += py-netlib
     SUBDIR += py-netstring
+    SUBDIR += py-nnpy
     SUBDIR += py-novaclient
     SUBDIR += py-ntplib
     SUBDIR += py-oauth
@@ -1205,6 +1210,7 @@
     SUBDIR += samba44
     SUBDIR += samplicator
     SUBDIR += sbd
+    SUBDIR += sbm
     SUBDIR += scamper
     SUBDIR += scapy
     SUBDIR += scnc

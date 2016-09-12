@@ -1,4 +1,4 @@
---- src/xstd/Ssl.cc.orig	2011-04-04 22:07:36 UTC
+--- src/xstd/Ssl.cc.orig	2014-10-22 23:22:22 UTC
 +++ src/xstd/Ssl.cc
 @@ -38,9 +38,11 @@ SslCtx::SslCtx(SslProtocol protocol, con
  		case TLSv1:

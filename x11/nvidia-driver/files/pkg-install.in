@@ -24,16 +24,3 @@ POST-INSTALL)
 		${PREFIX}/lib/xorg/modules/extensions/libglx.so
 	;;
 esac
-
-if [ "$2" != "POST-INSTALL" ] ; then
-  exit 0
-fi
-
-# If this is during staging, we can skip for now
-echo $PREFIX | grep -q '/stage/'
-if [ $? -eq 0 ] ; then
-  exit 0
-fi
-
-# Enable loading the nvidia binary driver
-sysrc -f /etc/rc.conf kldload_nvidia="nvidia-modeset nvidia"

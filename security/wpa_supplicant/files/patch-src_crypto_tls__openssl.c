@@ -1,10 +1,8 @@
-$OpenBSD: patch-src_crypto_tls_openssl_c,v 1.3 2015/09/29 11:57:54 dcoppa Exp $
-
 Compatibility fixes for LibreSSL
 
---- src/crypto/tls_openssl.c.orig	Sun Sep 27 21:02:05 2015
-+++ src/crypto/tls_openssl.c	Mon Sep 28 13:43:46 2015
-@@ -2229,7 +2229,7 @@ static int tls_parse_pkcs12(struct tls_data *data, SSL
+--- src/crypto/tls_openssl.c.orig	2015-09-27 19:02:05 UTC
++++ src/crypto/tls_openssl.c
+@@ -2229,7 +2229,7 @@ static int tls_parse_pkcs12(struct tls_d
  	}
  
  	if (certs) {
@@ -13,7 +11,7 @@ Compatibility fixes for LibreSSL
  		SSL_clear_chain_certs(ssl);
  		while ((cert = sk_X509_pop(certs)) != NULL) {
  			X509_NAME_oneline(X509_get_subject_name(cert), buf,
-@@ -2247,7 +2247,7 @@ static int tls_parse_pkcs12(struct tls_data *data, SSL
+@@ -2247,7 +2247,7 @@ static int tls_parse_pkcs12(struct tls_d
  			/* Try to continue anyway */
  		}
  		sk_X509_free(certs);
@@ -22,7 +20,7 @@ Compatibility fixes for LibreSSL
  		res = SSL_build_cert_chain(ssl,
  					   SSL_BUILD_CHAIN_FLAG_CHECK |
  					   SSL_BUILD_CHAIN_FLAG_IGNORE_ERROR);
-@@ -2812,7 +2812,7 @@ int tls_connection_get_random(void *ssl_ctx, struct tl
+@@ -2812,7 +2812,7 @@ int tls_connection_get_random(void *ssl_
  	if (conn == NULL || keys == NULL)
  		return -1;
  	ssl = conn->ssl;
@@ -31,7 +29,7 @@ Compatibility fixes for LibreSSL
  	if (ssl == NULL || ssl->s3 == NULL || ssl->session == NULL)
  		return -1;
  
-@@ -2841,7 +2841,7 @@ int tls_connection_get_random(void *ssl_ctx, struct tl
+@@ -2841,7 +2841,7 @@ int tls_connection_get_random(void *ssl_
  #ifndef CONFIG_FIPS
  static int openssl_get_keyblock_size(SSL *ssl)
  {
@@ -40,7 +38,7 @@ Compatibility fixes for LibreSSL
  	const EVP_CIPHER *c;
  	const EVP_MD *h;
  	int md_size;
-@@ -2911,7 +2911,7 @@ static int openssl_tls_prf(struct tls_connection *conn
+@@ -2911,7 +2911,7 @@ static int openssl_tls_prf(struct tls_co
  		   "mode");
  	return -1;
  #else /* CONFIG_FIPS */
@@ -49,7 +47,7 @@ Compatibility fixes for LibreSSL
  	SSL *ssl;
  	u8 *rnd;
  	int ret = -1;
-@@ -3394,7 +3394,7 @@ int tls_connection_set_cipher_list(void *tls_ctx, stru
+@@ -3394,7 +3394,7 @@ int tls_connection_set_cipher_list(void
  
  	wpa_printf(MSG_DEBUG, "OpenSSL: cipher suites: %s", buf + 1);
  
@@ -58,7 +56,7 @@ Compatibility fixes for LibreSSL
  #if defined(EAP_FAST) || defined(EAP_FAST_DYNAMIC) || defined(EAP_SERVER_FAST)
  	if (os_strstr(buf, ":ADH-")) {
  		/*
-@@ -3977,7 +3977,7 @@ static int tls_sess_sec_cb(SSL *s, void *secret, int *
+@@ -3977,7 +3977,7 @@ static int tls_sess_sec_cb(SSL *s, void
  	struct tls_connection *conn = arg;
  	int ret;
  

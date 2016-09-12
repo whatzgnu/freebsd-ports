@@ -143,6 +143,7 @@
     SUBDIR += cfengine38
     SUBDIR += cfengine39
     SUBDIR += chgrep
+    SUBDIR += chyves
     SUBDIR += cinnamon-control-center
     SUBDIR += cinnamon-settings-daemon
     SUBDIR += ciso
@@ -455,6 +456,7 @@
     SUBDIR += ioping
     SUBDIR += ipa
     SUBDIR += ipad_charge
+    SUBDIR += ipdbtools
     SUBDIR += ipfs-go
     SUBDIR += ipmitool
     SUBDIR += ipsc
@@ -511,6 +513,7 @@
     SUBDIR += libcdio
     SUBDIR += libcdio-paranoia
     SUBDIR += libchk
+    SUBDIR += libcpuid
     SUBDIR += libfvde
     SUBDIR += libgksu
     SUBDIR += libieee1284
@@ -640,6 +643,7 @@
     SUBDIR += ncdu
     SUBDIR += nepomuk-core
     SUBDIR += nepomuk-widgets
+    SUBDIR += nfcutils
     SUBDIR += nfsping
     SUBDIR += nitrogen
     SUBDIR += no-login
@@ -871,6 +875,7 @@
     SUBDIR += qchroot
     SUBDIR += qjail
     SUBDIR += qjail2
+    SUBDIR += qjail4
     SUBDIR += qlogtools
     SUBDIR += qpxtool
     SUBDIR += qsynergy
@@ -890,6 +895,7 @@
     SUBDIR += rdiff-backup
     SUBDIR += rdiff-backup-devel
     SUBDIR += rdup
+    SUBDIR += read-edid
     SUBDIR += realsync
     SUBDIR += recoverdm
     SUBDIR += reed
@@ -978,6 +984,7 @@
     SUBDIR += rubygem-sys-uname
     SUBDIR += rubygem-sys-uptime
     SUBDIR += rubygem-teamocil
+    SUBDIR += rubygem-vmstat
     SUBDIR += rubygem-winrm
     SUBDIR += rubygem-winrm-fs
     SUBDIR += rubygem-yell
@@ -1108,6 +1115,7 @@
     SUBDIR += tuptime
     SUBDIR += tw_cli
     SUBDIR += tzdialog
+    SUBDIR += u-boot-a13-olinuxino
     SUBDIR += u-boot-bananapi
     SUBDIR += u-boot-bananapim2
     SUBDIR += u-boot-beaglebone
@@ -1116,8 +1124,10 @@
     SUBDIR += u-boot-cubox-hummingboard
     SUBDIR += u-boot-duovero
     SUBDIR += u-boot-olimex-a20-som-evb
+    SUBDIR += u-boot-olinuxino-lime
     SUBDIR += u-boot-orangepi-one
     SUBDIR += u-boot-pandaboard
+    SUBDIR += u-boot-pcduino3
     SUBDIR += u-boot-pine64
     SUBDIR += u-boot-rpi
     SUBDIR += u-boot-rpi2

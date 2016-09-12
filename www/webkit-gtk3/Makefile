@@ -48,7 +48,8 @@ CONFIGURE_ARGS=	--with-gtk=3.0 \
 MAKEFILE=	GNUmakefile
 MAKE_ENV=	XDG_CACHE_HOME=${WRKDIR}
 
-#CONFIGURE_ARGS+=--disable-silent-rules
+BROKEN_sparc64=	fails to detect working compiler
+
 CONFIGURE_ARGS+=--disable-egl \
 		--disable-gles2
 #		--with-acceleration-backend=opengl # clutter broken?

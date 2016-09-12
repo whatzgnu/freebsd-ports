@@ -1,6 +1,6 @@
---- src/nvidia/Makefile.orig	2015-08-26 22:35:13 UTC
-+++ src/nvidia/Makefile
-@@ -26,6 +26,15 @@ NO_OBJ=		true
+--- src/nvidia/Makefile.orig	2014-04-04 23:24:59.000000000 +0200
++++ src/nvidia/Makefile	2014-05-06 14:31:07.000000000 +0200
+@@ -24,6 +24,15 @@
  stdarg.h:
  	@ln -s machine/stdarg.h stdarg.h
  
