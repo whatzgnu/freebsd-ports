@@ -28,6 +28,7 @@ PORTSCOUT=	limit:^2\.4\.
 
 USE_GSTREAMER1=	yes
 USE_XORG=	xt xdamage xcomposite
+USE_GCC=	yes
 USES=		bison compiler:c++11-lib gettext gmake gperf libtool localbase \
 		perl5 pkgconfig shebangfix sqlite tar:xz
 USE_RUBY=	yes
