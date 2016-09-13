@@ -33,7 +33,7 @@ PLIST_SUB+=	APMOD_FILE=${APMOD_FILE}
 
 .if ${OSVERSION} < 1000000 && ${SSL_DEFAULT} == base
 IGNORE=		mod_auth_gssapi requires OpenSSL 1.0.0+
-.elif ${SSL_DEFAULT:Mlibressl*}
+.elif ${SSL_DEFAULT:M*libressl*}
 IGNORE=		mod_auth_gssapi currently only supports OpenSSL
 .endif
 

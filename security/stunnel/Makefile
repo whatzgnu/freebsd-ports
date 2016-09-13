@@ -76,7 +76,7 @@ LDFLAGS+=	-lpthread
 
 .include <bsd.port.pre.mk>
 
-.if !empty(${SSL_DEFAULT:Mlibressl})
+.if !empty(${SSL_DEFAULT:M*libressl*})
 .  if ${PORT_OPTIONS:MFIPS}
 IGNORE=		LibreSSL does not support FIPS standard
 .  endif
