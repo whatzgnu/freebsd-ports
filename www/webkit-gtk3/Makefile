@@ -27,6 +27,7 @@ RUN_DEPENDS=	geoclue>=0:net/geoclue
 PORTSCOUT=	limit:^2\.4\.
 
 USE_GSTREAMER1=	yes
+USE_GCC=	yes
 USE_XORG=	xt xdamage xcomposite
 USES=		bison compiler:c++11-lib gettext gmake gperf libtool localbase \
 		perl5 pkgconfig shebangfix sqlite tar:xz
