@@ -34,7 +34,7 @@ INSTALL_TARGET=	install-strip
 
 .include <bsd.port.pre.mk>
 
-.if ${SSL_DEFAULT} == base
+.if !empty(${SSL_DEFAULT:M*libressl*})
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-configure.ac
 pre-patch:
 	@${GREP} -l '@openssl@' ${WRKSRC}/opusurl.pc.in | \
