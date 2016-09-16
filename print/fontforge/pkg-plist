@@ -102,7 +102,6 @@ man/man1/fontforge.1.gz
 man/man1/fontimage.1.gz
 man/man1/fontlint.1.gz
 man/man1/sfddiff.1.gz
-share/applications/fontforge.desktop
 %%DATADIR%%/Adobe-CNS1-6.cidmap
 %%DATADIR%%/Adobe-GB1-5.cidmap
 %%DATADIR%%/Adobe-Identity-0.cidmap
@@ -461,13 +460,6 @@ share/applications/fontforge.desktop
 %%PYTHON%%%%DATADIR%%/python/simple/expand-a.py
 %%PYTHON%%%%DATADIR%%/python/simple/load-font-and-show-name.py
 %%PYTHON%%%%DATADIR%%/python/test.sfd
-share/icons/hicolor/16x16/apps/fontforge.png
-share/icons/hicolor/22x22/apps/fontforge.png
-share/icons/hicolor/24x24/apps/fontforge.png
-share/icons/hicolor/256x256/apps/fontforge.png
-share/icons/hicolor/32x32/apps/fontforge.png
-share/icons/hicolor/48x48/apps/fontforge.png
-share/icons/hicolor/scalable/apps/fontforge.svg
 share/locale/ca/LC_MESSAGES/FontForge.mo
 share/locale/de/LC_MESSAGES/FontForge.mo
 share/locale/el/LC_MESSAGES/FontForge.mo
@@ -485,4 +477,3 @@ share/locale/uk/LC_MESSAGES/FontForge.mo
 share/locale/vi/LC_MESSAGES/FontForge.mo
 share/locale/zh_CN/LC_MESSAGES/FontForge.mo
 share/locale/zh_TW/LC_MESSAGES/FontForge.mo
-share/mime/packages/fontforge.xml
