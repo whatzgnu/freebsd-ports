@@ -1,6 +1,5 @@
-$OpenBSD: patch-lib_pki_temp_cpp,v 1.1 2015/09/12 20:40:49 sthen Exp $
---- lib/pki_temp.cpp.orig	Tue Sep  8 20:46:15 2015
-+++ lib/pki_temp.cpp	Tue Sep  8 20:47:00 2015
+--- lib/pki_temp.cpp.orig	2015-10-10 12:54:12 UTC
++++ lib/pki_temp.cpp
 @@ -363,7 +363,7 @@ BIO *pki_temp::pem(BIO *b, int format)
  	QByteArray ba = toExportData();
          if (!b)

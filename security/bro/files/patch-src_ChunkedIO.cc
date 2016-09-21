@@ -1,12 +1,14 @@
-$OpenBSD: patch-src_ChunkedIO_cc,v 1.1 2015/07/19 16:38:48 sthen Exp $
---- src/ChunkedIO.cc.orig	2015-01-23 18:49:03 UTC
+--- src/ChunkedIO.cc.orig	2015-09-06 19:43:16 UTC
 +++ src/ChunkedIO.cc
-@@ -689,7 +689,7 @@ bool ChunkedIOSSL::Init()
+@@ -709,7 +709,11 @@ bool ChunkedIOSSL::Init()
  		{
  		SSL_load_error_strings();
  
--		ctx = SSL_CTX_new(SSLv3_method());
++#ifndef OPENSSL_NO_SSL3
+ 		ctx = SSL_CTX_new(SSLv3_method());
++#else
 +		ctx = SSL_CTX_new(SSLv23_method());
++#endif
  		if ( ! ctx )
  			{
  			Log("can't create SSL context");
