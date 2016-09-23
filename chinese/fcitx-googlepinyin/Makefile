@@ -4,15 +4,13 @@
 PORTNAME=	fcitx-googlepinyin
 PORTVERSION=	0.1.6
 CATEGORIES=	chinese
-MASTER_SITES=	GOOGLE_CODE
+MASTER_SITES=	https://download.fcitx-im.org/${PORTNAME}
 DIST_SUBDIR=	fcitx
 
 MAINTAINER=	lichray@gmail.com
 COMMENT=	Libgooglepinyin support for Fcitx
 
 LICENSE=	GPLv3
-
-BROKEN=		Unfetchable (google code has gone away)
 
 LIB_DEPENDS=	libfcitx-config.so:chinese/fcitx \
 		libgooglepinyin.so:chinese/libgooglepinyin
