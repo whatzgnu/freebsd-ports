@@ -41,7 +41,7 @@ _SSL_BUILD_DEP=	1
 _SSL_RUN_DEP=	1
 .endif
 
-.if ${SSL_DEFAULT} == base
+.if !empty(SSL_DEFAULT:M*base*)
 OPENSSLBASE=		/usr
 OPENSSLDIR?=		/etc/ssl
 
