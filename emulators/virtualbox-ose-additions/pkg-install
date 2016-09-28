@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# $FreeBSD$
+#
+
+PREFIX=${PKG_PREFIX-/usr/local}
+
+# If this is during staging, we can skip for now
+echo $PREFIX | grep -q '/stage/'
+if [ $? -eq 0 ] ; then
+  exit 0
+fi
+
+# Enable loading the VirtualBox Driver
+sysrc -f /etc/rc.conf vboxservice_enable="YES"
+sysrc -f /etc/rc.conf vboxguest_enable="YES"
