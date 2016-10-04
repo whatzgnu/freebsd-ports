@@ -22,15 +22,9 @@ POST-INSTALL)
 	fi
 	/bin/ln -f ${PREFIX}/lib/xorg/modules/extensions/.nvidia/libglx.so.1 \
 		${PREFIX}/lib/xorg/modules/extensions/libglx.so
+	# Enable loading the nvidia binary driver
+	sysrc -f /etc/rc.conf kldload_nvidia="nvidia-modeset nvidia"
 	;;
 esac
 
 
-# If this is during staging, we can skip for now
-echo $PREFIX | grep -q '/stage/'
-if [ $? -eq 0 ] ; then
-  exit 0
-fi
-
-# Enable loading the nvidia binary driver
-sysrc -f /etc/rc.conf kldload_nvidia="nvidia-modeset nvidia"
