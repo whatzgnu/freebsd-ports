@@ -12,7 +12,9 @@
     SUBDIR += assimp
     SUBDIR += atomicparsley
     SUBDIR += audacious
+    SUBDIR += audacious-gtk3
     SUBDIR += audacious-plugins
+    SUBDIR += audacious-plugins-gtk3
     SUBDIR += audiopreview
     SUBDIR += avbin
     SUBDIR += avidemux
@@ -53,7 +55,6 @@
     SUBDIR += dvdstyler
     SUBDIR += dvts
     SUBDIR += emby-server
-    SUBDIR += emotion_generic_players-vlc
     SUBDIR += emovix
     SUBDIR += ffdec
     SUBDIR += ffmpeg
@@ -167,6 +168,7 @@
     SUBDIR += kmplayer-kde4
     SUBDIR += kodi
     SUBDIR += kplayer-kde4
+    SUBDIR += kvazaar
     SUBDIR += l-smash
     SUBDIR += libaacs
     SUBDIR += libass
@@ -245,6 +247,7 @@
     SUBDIR += motion
     SUBDIR += mp3cd
     SUBDIR += mp4v2
+    SUBDIR += mpc-qt
     SUBDIR += mpeg2codec
     SUBDIR += mpeg2play
     SUBDIR += mpeg4ip
