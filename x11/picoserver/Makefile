@@ -1,0 +1,26 @@
+# Created by: Kris Moore <kris@ixsystems.com>
+# $FreeBSD$
+
+PORTNAME=	picoserver
+PORTVERSION=	0.1
+CATEGORIES=	x11
+MASTER_SITES=	http://www.trueos.org/picodist/ \
+		http://web.trueos.org/picodist/
+
+MAINTAINER=	kris@ixsystems.com
+COMMENT=	Server for hosting Pico clients
+
+ONLY_FOR_ARCHS=	amd64
+
+NO_WRKSUBDIR=	yes
+PLIST_FILES=	bin/pico-server \
+		etc/rc.d/picoserver
+
+NO_BUILD=	yes
+USES=		tar:xz
+
+do-install:
+	${INSTALL_SCRIPT} ${WRKSRC}/pico-server ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_SCRIPT} ${WRKSRC}/rc.d/picoserver ${STAGEDIR}${PREFIX}/etc/rc.d
+
+.include <bsd.port.mk>
