@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	picoserver
-PORTVERSION=	0.1
+PORTVERSION=	0.2
 CATEGORIES=	x11
 MASTER_SITES=	http://www.trueos.org/picodist/ \
 		http://web.trueos.org/picodist/
