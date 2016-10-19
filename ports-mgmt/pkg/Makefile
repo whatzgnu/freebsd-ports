@@ -1,9 +1,8 @@
 # $FreeBSD: head/ports-mgmt/pkg/Makefile 366286 2014-08-26 23:12:10Z bdrewery $
 
 PORTNAME=	pkg
-DISTVERSION=	1.8.7
+DISTVERSION=	1.9.1
 _PKG_VERSION=	${DISTVERSION}
-PORTREVISION=	3
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	\
 		http://files.etoilebsd.net/${PORTNAME}/ \

@@ -101,6 +101,7 @@
     SUBDIR += quassel
     SUBDIR += quassel-kde4
     SUBDIR += quirc
+    SUBDIR += ratbox-respond
     SUBDIR += ratbox-services
     SUBDIR += rbot
     SUBDIR += riece

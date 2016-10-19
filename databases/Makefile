@@ -172,6 +172,7 @@
     SUBDIR += libzbxpgsql
     SUBDIR += libzdb
     SUBDIR += linux-c6-sqlite3
+    SUBDIR += linux-c7-sqlite3
     SUBDIR += linux-f10-sqlite3
     SUBDIR += linux-oracle-instantclient-basic
     SUBDIR += linux-oracle-instantclient-sdk
@@ -775,6 +776,7 @@
     SUBDIR += py-pymssql
     SUBDIR += py-pymysql
     SUBDIR += py-pypuppetdb
+    SUBDIR += py-pypuppetdb03
     SUBDIR += py-pytc
     SUBDIR += py-python-memcached
     SUBDIR += py-python-rrdtool
