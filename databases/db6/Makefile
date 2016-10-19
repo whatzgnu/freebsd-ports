@@ -3,7 +3,7 @@
 
 PORTNAME=	db6
 PORTVERSION=	6.2.23
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	databases java
 MASTER_SITES=	http://download.oracle.com/berkeley-db/
 PKGNAMEPREFIX?=
@@ -64,12 +64,6 @@ DOCS_INSTALL_TARGET=	install_docs
 
 .include <bsd.port.options.mk>
 
-.if ${ARCH:Marm*} && empty(ARCH:Marmv6*)
-# db6 uses LDREX/STREX instructions for mutexes on ARM,
-# which are unavailable before ARMv6.
-CONFIGURE_ARGS+=	--enable-posixmutexes
-.endif
-
 post-patch:
 	${REINPLACE_CMD} -e '/^DOCLIST/{s/csharp//;}' ${WRKSRC}/../dist/Makefile.in
 	${REINPLACE_CMD} -Ee 's/[[:<:]]atomic_init[[:>:]]/db_atomic_init/g' \
@@ -99,12 +93,12 @@ post-install-SQL-on:
 	${INSTALL_SCRIPT} ${WRKSRC}/../lang/sql/upgrade61.sh \
 	    ${STAGEDIR}${PREFIX}/bin/${PORTNAME}-upgrade61.sh
 
-post-install-TCL-off:
+post-install-TCL-on:
 	echo "package ifneeded Db_tcl ${BDBVER} \
 	      [list load [file join $$dir libdb_tcl-${BDBVER}.so]] \
 	     " > ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/pkgIndex.tcl
 
-post-install-TCL-on:
+post-install-TCL-off:
 .for i in api_reference/TCL
 	${RM} -r -f ${STAGEDIR}${DOCSDIR}/${i}
 .endfor

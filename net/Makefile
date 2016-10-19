@@ -254,6 +254,7 @@
     SUBDIR += iipsrv
     SUBDIR += ilbc
     SUBDIR += imapproxy
+    SUBDIR += intel-em-kmod
     SUBDIR += intel-ixl-kmod
     SUBDIR += iodine
     SUBDIR += ip2location
@@ -1305,6 +1306,7 @@
     SUBDIR += tcpslice
     SUBDIR += tcpsplit
     SUBDIR += tcpstat
+    SUBDIR += tcptestsuite
     SUBDIR += tcptrace
     SUBDIR += tcptraceroute
     SUBDIR += tcptraceroute-devel
