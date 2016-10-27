@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	picoserver
-PORTVERSION=	0.2
+PORTVERSION=	0.3
 CATEGORIES=	x11
-MASTER_SITES=	http://www.trueos.org/picodist/ \
-		http://web.trueos.org/picodist/
+MASTER_SITES=	https://web.trueos.org/picodist/ \
+		https://www.trueos.org/picodist/
 
 MAINTAINER=	kris@ixsystems.com
 COMMENT=	Server for hosting Pico clients
