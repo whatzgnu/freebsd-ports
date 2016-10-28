@@ -431,6 +431,14 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				  automatically be expanded, they will be installed in
 #				  ${PREFIX}/etc/rc.d if ${PREFIX} is not /usr, otherwise they
 #				  will be installed in /etc/rc.d/ and added to the packing list.
+#
+# USE_OPENRC_SUBR- If set, the ports startup/shutdown script uses the common
+#				  routines found in /etc/init.d
+#				  If this is set to a list of files, these files will be
+#				  automatically added to ${SUB_FILES}, some %%VAR%%'s will
+#				  automatically be expanded, they will be installed in
+#				  ${PREFIX}/etc/init.d if ${PREFIX} is not /usr, otherwise they
+#				  will be installed in /etc/init.d/ and added to the packing list.
 ##
 # USE_APACHE	- If set, this port relies on an apache webserver.
 #
@@ -1719,6 +1727,10 @@ MAKE_ENV+=	${b}="${${b}}"
 
 .if defined(USE_RC_SUBR)
 SUB_FILES+=	${USE_RC_SUBR}
+.endif
+
+.if defined(USE_OPENRC_SUBR)
+SUB_FILES+=	${USE_OPENRC_SUBR}
 .endif
 
 .if defined(USE_RCORDER)
@@ -4469,6 +4481,16 @@ install-rc-script:
 		[ "${PREFIX}" = "/usr" ] && _prefix="" ; \
 		${INSTALL_SCRIPT} ${WRKDIR}/$${i} ${STAGEDIR}$${_prefix}/etc/rc.d/$${i%.sh}; \
 		${ECHO_CMD} "$${_prefix}/etc/rc.d/$${i%.sh}" >> ${TMPPLIST}; \
+	done
+.endif
+.if defined(USE_OPENRC_SUBR)
+install-rc-script:
+	@${ECHO_MSG} "===> Staging init.d startup script(s)"
+	@for i in ${USE_OPENRC_SUBR}; do \
+		_prefix=${PREFIX}; \
+		[ "${PREFIX}" = "/usr" ] && _prefix="" ; \
+		${INSTALL_SCRIPT} ${WRKDIR}/$${i} ${STAGEDIR}$${_prefix}/etc/init.d/$${i%.sh}; \
+		${ECHO_CMD} "$${_prefix}/etc/init.d/$${i%.sh}" >> ${TMPPLIST}; \
 	done
 .endif
 .endif
