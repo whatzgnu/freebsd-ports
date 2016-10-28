@@ -15,7 +15,7 @@
 command=/usr/local/sbin/ntpd
 required_files=$ntpd_config
 pidfile=/var/run/ntpd.pid
-command_args="$ntpd_args -f $ntpd_config -f $ntpd_drift -p $pidfile -s"
+command_args="$ntpd_args -f $ntpd_config -p $pidfile -s"
 name="Network Time Protocol Daemon"
 
 depend()
