@@ -44,8 +44,25 @@ post-stage:
 
 .include <bsd.port.pre.mk>
 
-.if ${PORT_OPTIONS:MRESSL} && ( empty(SSL_DEFAULT:M*libressl*) && !defined(LIBRESSL_IS_OPENSSL) )
-IGNORE=	Requires LibreSSL from ports, define DEFAULT_VERSIONS+=ssl=libressl in your make.conf and rebuild everything.
-.endif
+# Requires libtls from LibreSSL
+.if ${SSL_DEFAULT:Mlibressl*} || defined(LIBRESSL_IS_OPENSSL)
+CPPFLAGS+=		-I${OPENSSLINC}
+LDFLAGS+=		-L${OPENSSLLIB}
+.else # SSL_DEFAULT
+BUILD_DEPENDS+=		${NONEXISTENT}:security/libressl:stage
+CPPFLAGS+=		-I${WRKDIR}/libressl/include
+LDFLAGS+=		-L${WRKDIR}/libressl/lib
+# security/libressl ignores implicit SSP_UNSAFE, see Mk/bsd.ssp.mk
+. if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000036 && ${ARCH} == i386
+SSP_CFLAGS?=	-fstack-protector
+CFLAGS+=	${SSP_CFLAGS}
+LDFLAGS+=	-fstack-protector
+LIBS+=		-lssp_nonshared
+. endif
+
+pre-configure:
+	@cd `${MAKE} -V STAGEDIR -C ${PORTSDIR}/security/libressl`${LOCALBASE} \
+	    && ${COPYTREE_SHARE} . ${WRKDIR}/libressl "! -name *.so*"
+.endif # SSL_DEFAULT
 
 .include <bsd.port.post.mk>
