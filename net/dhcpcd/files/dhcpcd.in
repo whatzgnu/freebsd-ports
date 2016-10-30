@@ -1,40 +1,34 @@
-#!/bin/sh
-
-# PROVIDE: dhclient
-# KEYWORD: nojail nostart
+#!/sbin/openrc-run
+# Copyright (c) 2007-2015 The OpenRC Authors.
+# See the Authors file at the top-level directory of this distribution and
+# https://github.com/OpenRC/openrc/blob/master/AUTHORS
 #
+# This file is part of OpenRC. It is subject to the license terms in
+# the LICENSE file found in the top-level directory of this
+# distribution and at https://github.com/OpenRC/openrc/blob/master/LICENSE
+# This file may not be copied, modified, propagated, or distributed
+# except according to the terms contained in the LICENSE file.
 
-. /etc/rc.subr
-. /etc/network.subr
+command=/usr/local/sbin/dhcpcd
+pidfile=/var/run/dhcpcd.pid
+command_args=-q
+name="DHCP Client Daemon"
 
-name="dhcpcd"
-ifn="$2"
-command="%%PREFIX%%/sbin/dhcpcd"
-command_args="$ifn"
-if [ -n "$ifn" ]; then
-	specific="$(get_if_var $ifn dhcpcd_flags_IF)"
-	if [ -z "$flags" -a -n "$specific" ]; then
-		rc_flags="$specific"
-	fi
-	pidfile="/var/run/dhcpcd-$ifn.pid"
-else
-	pidfile="$($command -P $rc_flags)"
-fi
-start_precmd="dhcpcd_precmd"
-
-dhcpcd_precmd()
+depend()
 {
-	# dhcpcd may need local binaries
-	export PATH=${PATH}:/usr/local/sbin
+	provide net
+	need localmount
+	use logger
+	after bootmisc modules
+	before dns
 }
 
-load_rc_config $name
-load_rc_config network
-
-if [ -n "$ifn" ]; then
-	if ! dhcpif $ifn; then
-		err 1 "$ifn is not enabled for DHCP"
+stop_pre()
+{
+	# When shutting down, kill dhcpcd but preserve network
+	# We do this as /var/run/dhcpcd could be cleaned out when we
+	# return to multiuser.
+	if yesno $RC_GOINGDOWN; then
+		: ${stopsig:=SIGKILL}
 	fi
-fi
-
-run_rc_command "$1"
+}
