@@ -16,6 +16,7 @@ USERS=		_ntp
 GROUPS=		_ntp
 
 USE_RC_SUBR=	openntpd
+USE_OPENRC_SUBR=openntpd-openrc
 
 GNU_CONFIGURE=	yes
 
