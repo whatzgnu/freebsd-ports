@@ -21,6 +21,8 @@ CONFIGURE_ARGS+=	--datadir=${PREFIX}/share/examples
 USE_RC_SUBR=	dhcpcd
 USE_OPENRC_SUBR=dhcpcd-openrc
 
+SUB_FILES=	pkg-deinstall pkg-install
+
 post-install:
 	${MV} ${STAGEDIR}${PREFIX}/etc/dhcpcd.conf \
 		${STAGEDIR}${PREFIX}/etc/dhcpcd.conf.sample

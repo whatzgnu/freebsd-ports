@@ -34,6 +34,8 @@ USE_RC_SUBR=	dbus
 USE_OPENRC_SUBR=dbus-openrc
 USE_GNOME_SUBR=	yes
 
+SUB_FILES=      pkg-deinstall pkg-install
+
 USERS=		messagebus
 GROUPS=		messagebus
 
