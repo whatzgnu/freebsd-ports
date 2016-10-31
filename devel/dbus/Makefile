@@ -33,8 +33,6 @@ CPE_PRODUCT=	d-bus
 USE_OPENRC_SUBR=dbus
 USE_GNOME_SUBR=	yes
 
-SUB_FILES=      pkg-deinstall pkg-install
-
 USERS=		messagebus
 GROUPS=		messagebus
 

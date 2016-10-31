@@ -17,7 +17,7 @@ CFLAGS+=	-I${OPENSSLINC}
 LDFLAGS+=	-L${OPENSSLLIB} -lutil
 USE_OPENRC_SUBR=wpa_supplicant
 
-SUB_FILES=	pkg-deinstall pkg-install pkg-message
+SUB_FILES=	pkg-message
 PORTDOCS=	README ChangeLog
 
 CFG=		${BUILD_WRKSRC}/.config
