@@ -18,7 +18,9 @@ USES=		cpe tar:xz
 CPE_VENDOR=	dhcpcd_project
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--datadir=${PREFIX}/share/examples
-USE_RC_SUBR=	dhcpcd
+USE_OPENRC_SUBR=dhcpcd
+
+SUB_FILES=	pkg-deinstall pkg-install
 
 post-install:
 	${MV} ${STAGEDIR}${PREFIX}/etc/dhcpcd.conf \

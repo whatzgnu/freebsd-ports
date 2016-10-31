@@ -15,7 +15,9 @@ LICENSE=	ISCL
 USERS=		_ntp
 GROUPS=		_ntp
 
-USE_RC_SUBR=	openntpd
+USE_OPENRC_SUBR=openntpd
+
+SUB_FILES=	pkg-deinstall pkg-install
 
 GNU_CONFIGURE=	yes
 

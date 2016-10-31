@@ -30,8 +30,10 @@ INSTALL_TARGET=	install-strip
 CPE_VENDOR=	d-bus_project
 CPE_PRODUCT=	d-bus
 
-USE_RC_SUBR=	dbus
+USE_OPENRC_SUBR=dbus
 USE_GNOME_SUBR=	yes
+
+SUB_FILES=      pkg-deinstall pkg-install
 
 USERS=		messagebus
 GROUPS=		messagebus

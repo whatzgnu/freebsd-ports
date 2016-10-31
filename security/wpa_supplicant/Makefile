@@ -15,8 +15,9 @@ INSTALL_WRKSRC=	${WRKSRC}/src
 CFLAGS+=	${CPPFLAGS} # USES=readline only augments CPPFLAGS and LDFLAGS
 CFLAGS+=	-I${OPENSSLINC}
 LDFLAGS+=	-L${OPENSSLLIB} -lutil
+USE_OPENRC_SUBR=wpa_supplicant
 
-SUB_FILES=	pkg-message
+SUB_FILES=	pkg-deinstall pkg-install pkg-message
 PORTDOCS=	README ChangeLog
 
 CFG=		${BUILD_WRKSRC}/.config
