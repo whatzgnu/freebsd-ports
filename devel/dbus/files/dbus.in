@@ -10,7 +10,7 @@
 # except according to the terms contained in the LICENSE file.
 
 command=/usr/local/bin/dbus-daemon
-pidfile=@VARBASE@/run/dbus/pid
+pidfile=/var/run/dbus/pid
 command_args="${dbusd_args---system}"
 name="Message Bus Daemon"
 
@@ -23,4 +23,7 @@ depend()
 start_pre()
 {
 	mkdir -p $(dirname $pidfile)
+	if [ ! -e "/var/db/dbus/machine-id" ] ; then
+	/usr/local/bin/dbus-uuidgen --ensure
+	fi
 }
