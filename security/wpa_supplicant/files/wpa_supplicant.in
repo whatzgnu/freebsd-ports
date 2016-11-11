@@ -20,7 +20,7 @@ depend()
 	need localmount
 	use logger
 	after bootmisc modules
-	before dns dhcpcd net
+	before dns
 	keyword -shutdown
 }
 
