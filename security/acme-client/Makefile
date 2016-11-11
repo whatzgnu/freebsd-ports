@@ -47,7 +47,7 @@ post-install:
 
 .include <bsd.port.pre.mk>
 
-.if ! ${SSL_DEFAULT:Mlibressl*}
+.if ! ${SSL_DEFAULT:Mlibressl*} && !defined(LIBRESSL_IS_OPENSSL)
 BUILD_DEPENDS+=		${NONEXISTENT}:security/libressl:stage
 CPPFLAGS+=		-I${WRKDIR}/libressl/include
 LDFLAGS+=		-L${WRKDIR}/libressl/lib
