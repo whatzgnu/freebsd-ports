@@ -4483,6 +4483,9 @@ install-rc-script:
 		${ECHO_CMD} "$${_prefix}/etc/rc.d/$${i%.sh}" >> ${TMPPLIST}; \
 	done
 .endif
+.endif
+
+.if !target(install-openrc-script)
 .if defined(USE_OPENRC_SUBR)
 install-openrc-script:
 	@${ECHO_MSG} "===> Staging init.d startup script(s)"
@@ -5252,7 +5255,7 @@ _STAGE_SEQ=		050:stage-message 100:stage-dir 150:run-depends \
 				400:generate-plist 450:pre-su-install 475:create-users-groups \
 				500:do-install 550:kmod-post-install 700:post-install \
 				750:post-install-script 800:post-stage 850:compress-man \
-				860:install-openrc-script 870:install-ldconfig-file \
+				860:install-rc-script 861:install-openrc-script 870:install-ldconfig-file \
 				880:install-license 890:install-desktop-entries \
 				900:add-plist-info 910:add-plist-docs 920:add-plist-examples \
 				930:add-plist-data 940:add-plist-post ${POST_PLIST:C/^/990:/} \

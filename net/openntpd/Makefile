@@ -17,8 +17,6 @@ GROUPS=		_ntp
 
 USE_OPENRC_SUBR=openntpd
 
-SUB_FILES=	pkg-deinstall pkg-install
-
 GNU_CONFIGURE=	yes
 
 OPTIONS_DEFINE=		RESSL
