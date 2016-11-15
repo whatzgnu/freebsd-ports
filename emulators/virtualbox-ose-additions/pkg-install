@@ -12,5 +12,4 @@ if [ $? -eq 0 ] ; then
 fi
 
 # Enable loading the VirtualBox Driver
-sysrc -f /etc/rc.conf vboxservice_enable="YES"
-sysrc -f /etc/rc.conf vboxguest_enable="YES"
+sysrc -f /etc/rc.conf kldload_vboxguest="vboxguest"
