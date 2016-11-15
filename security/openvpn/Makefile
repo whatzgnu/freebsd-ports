@@ -65,7 +65,7 @@ OPENSSL_CONFIGURE_ON=	--with-crypto-library=openssl
 POLARSSL_LIB_DEPENDS=	libmbedtls.so.9:security/polarssl13
 POLARSSL_CONFIGURE_ON=	--with-crypto-library=polarssl
 
-USE_RC_SUBR=		openvpn
+USE_OPENRC_SUBR=	openvpn
 USE_LDCONFIG=		${PREFIX}/lib
 
 SUB_FILES=		pkg-message openvpn-client
