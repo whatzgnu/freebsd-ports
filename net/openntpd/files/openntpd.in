@@ -9,10 +9,10 @@
 # This file may not be copied, modified, propagated, or distributed
 # except according to the terms contained in the LICENSE file.
 
-: ${ntpd_config:=/usr/local/etc/ntpd.conf}
+: ${ntpd_config:=%%PREFIX%%/etc/ntpd.conf}
 : ${ntpd_drift:=/var/db/ntpd.drift}
 
-command=/usr/local/sbin/ntpd
+command=%%PREFIX%%/sbin/ntpd
 required_files=$ntpd_config
 pidfile=/var/run/ntpd.pid
 command_args="$ntpd_args -f $ntpd_config -p $pidfile -s"
@@ -22,5 +22,5 @@ depend()
 {
 	use dns
 	need localmount
-	after bootmisc network
+	after bootmisc network dhcpcd wpa_supplicant
 }
