@@ -13,14 +13,13 @@ COMMENT=	Server for hosting Pico clients
 ONLY_FOR_ARCHS=	amd64
 
 NO_WRKSUBDIR=	yes
-PLIST_FILES=	bin/pico-server \
-		etc/rc.d/picoserver
+PLIST_FILES=	bin/pico-server
 
 NO_BUILD=	yes
 USES=		tar:xz
+USE_OPENRC_SUBRC=	picoserver
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/pico-server ${STAGEDIR}${PREFIX}/bin
-	${INSTALL_SCRIPT} ${WRKSRC}/rc.d/picoserver ${STAGEDIR}${PREFIX}/etc/rc.d
 
 .include <bsd.port.mk>
