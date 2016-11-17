@@ -1,50 +1,29 @@
-#!/bin/sh
+#!/sbin/openrc-run
+# Copyright (c) 2007-2015 The OpenRC Authors.
+# See the Authors file at the top-level directory of this distribution and
+# https://github.com/OpenRC/openrc/blob/master/AUTHORS
 #
-# $FreeBSD$
-#
-# PROVIDE: hald
-# REQUIRE: DAEMON devd dbus moused webcamd
-#
-# Add the following line to /etc/rc.conf to enable the HAL daemon:
-#
-# hald_enable="YES"
-#
+# This file is part of OpenRC. It is subject to the license terms in
+# the LICENSE file found in the top-level directory of this
+# distribution and at https://github.com/OpenRC/openrc/blob/master/LICENSE
+# This file may not be copied, modified, propagated, or distributed
+# except according to the terms contained in the LICENSE file.
 
-. /etc/rc.subr
-. %%GNOME_SUBR%%
+command=%%PREFIX%%/sbin/hald
+pidfile=/var/run/hald.pid
+name="HALd"
 
-hald_enable=${hald_enable-${gnome_enable}}
-hald_flags=${hald_flags-""}
-
-name=hald
-rcvar=hald_enable
-
-command="%%PREFIX%%/sbin/hald"
-pidfile="/var/run/${name}/${name}.pid"
-
-stop_postcmd="hald_postcmd"
-start_precmd="hald_precmd"
-start_cmd="hald_start"
-
-local_force_depend()
+depend()
 {
-    _depend="$1"
-    if [ -f %%LOCALBASE%%/etc/rc.d/${_depend}.sh ]; then
-	_depend="${_depend}.sh"
-    fi
-
-    if ! %%LOCALBASE%%/etc/rc.d/${_depend} forcestatus 1>/dev/null 2>&1 &&
-       ! %%LOCALBASE%%/etc/rc.d/${_depend} forcestart; then
-       return 1
-   fi
-   return 0
+	need localmount
+	after dbus
 }
 
 init_var_policykit()
 {
   local USER=polkit
   local GROUP=${USER}
-  local PREFIX=/usr/local
+  local PREFIX=%%PREFIX%%
 
   /usr/bin/install -d -o root -m 0770 -g ${GROUP} /var/run/PolicyKit
   /usr/bin/install -d -o root -m 0770 -g ${GROUP} /var/lib/PolicyKit
@@ -77,44 +56,11 @@ init_var_hal()
           org.freedesktop.policykit.read 1> /dev/null 2>&1
 }
 
-hald_precmd()
+start_pre()
 {
-    if ! checkyesno dbus_enable
-    then
-	local_force_depend dbus || return 1
-    fi
-
     init_var_policykit
     init_var_polkit
     init_var_hal
 
     chmod 0755 /var/cache
-
-    mkdir -p $(dirname $pidfile)
 }
-
-hald_postcmd()
-{
-    rm -f $pidfile
-}
-
-hald_start()
-{
-    if ! checkyesno hald_enable ; then
-	return 0
-    fi
-    echo "Starting ${name}."
-
-    ( iter=0
-    while ! ps -axoargs | grep "^/usr/libexec/getty " | grep -qv grep >/dev/null 2>&1; do
-	if [ ${iter} -eq 60 ]; then
-	    break
-	fi
-	sleep 1
-	iter=$(expr ${iter} + 1)
-    done
-    ${command} ${hald_flags} ) &
-}
-
-load_rc_config ${name}
-run_rc_command "$1"
