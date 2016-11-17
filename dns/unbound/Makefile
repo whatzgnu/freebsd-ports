@@ -21,7 +21,7 @@ USE_LDCONFIG=	yes
 USERS=		${PORTNAME}
 GROUPS=		${PORTNAME}
 
-USE_RC_SUBR=	unbound
+USE_OPENRC_SUBR=unbound
 
 PORTDOCS=	CREDITS Changelog FEATURES LICENSE README README.svn \
 		README.tests TODO control_proto_spec.txt ietf67-design-02.odp \

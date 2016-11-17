@@ -1,47 +1,53 @@
-#!/bin/sh
-#
-# $FreeBSD$
-#
-# unbound freebsd startup rc.d script, modified from the named script.
-# uses the default unbound installation path and pidfile location.
-# copy this to /etc/rc.d/unbound
-# and put unbound_enable="YES" into rc.conf
-#
-# unbound_anchorflags can be used to allow you to pass a custom flags to
-# unbound-anchor.  Examples include a custom resolv.conf (-f) or a custom
-# root.hints (-r).  Useful for when /etc/resolv.conf only contains 127.0.0.1
+#!/sbin/openrc-run
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 
-# PROVIDE: unbound
-# REQUIRE: SERVERS cleanvar
-# KEYWORD: shutdown
+name="unbound daemon"
+extra_commands="configtest"
+extra_started_commands="reload"
+description="Unbound is a validating, recursive, and caching DNS resolver"
+description_configtest="Check the configuration file for errors."
+description_reload="Kills all children and reloads the configuration."
 
-. /etc/rc.subr
+UNBOUND_BINARY=${UNBOUND_BINARY:-%%PREFIX%%/sbin/unbound}
+UNBOUND_CHECKCONF=${UNBOUND_CHECKCONF:-%%PREFIX%%/sbin/unbound-checkconf}
+UNBOUND_CONFFILE=${UNBOUND_CONFFILE:-%%PREFIX%%/etc/unbound/${SVCNAME}.conf}
 
-name="unbound"
-rcvar=unbound_enable
-
-command="%%PREFIX%%/sbin/unbound"
-extra_commands="reload"
-start_precmd="start_precmd"
-reload_precmd="%%PREFIX%%/sbin/unbound-checkconf >/dev/null"
-
-load_rc_config $name
-
-pidfile=${unbound_pidfile:-"%%PREFIX%%/etc/unbound/unbound.pid"}
-unbound_enable=${unbound_enable:-"NO"}
-unbound_anchorflags=${unbound_anchorflags:-""}
-
-start_precmd()
-{
-	%%PREFIX%%/sbin/unbound-checkconf > /dev/null && \
-	echo -n "Obtaining a trust anchor:" && \
-	if [ "${unbound_anchorflags}T" = "T" ]; then \
-		su -m unbound -c %%PREFIX%%/sbin/unbound-anchor; \
-	else
-		su -m unbound -c "%%PREFIX%%/sbin/unbound-anchor ${unbound_anchorflags}"; \
-	fi &&
-	echo .
-	return 0
+depend() {
+	need net
+	use logger
+	provide dns
 }
 
-run_rc_command "$1"
+checkconfig() {
+	UNBOUND_PIDFILE=$("${UNBOUND_CHECKCONF}" -o pidfile "${UNBOUND_CONFFILE}")
+	return $?
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME} configuration"
+	checkconfig
+	eend $?
+}
+
+start() {
+	checkconfig || return $?
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile "${UNBOUND_PIDFILE}" \
+		--exec "${UNBOUND_BINARY}" -- -c "${UNBOUND_CONFFILE}"
+	eend $?
+}
+
+stop() {
+	checkconfig || return $?
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile "${UNBOUND_PIDFILE}"
+	eend $?
+}
+
+reload() {
+	checkconfig || return $?
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${UNBOUND_PIDFILE}"
+	eend $?
+}
