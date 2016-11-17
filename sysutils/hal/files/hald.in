@@ -9,9 +9,9 @@
 # This file may not be copied, modified, propagated, or distributed
 # except according to the terms contained in the LICENSE file.
 
-command=%%PREFIX%%/sbin/hald
-pidfile=/var/run/hald.pid
-name="HALd"
+BINARY=%%PREFIX%%/sbin/hald
+PID=/var/run/hald.pid
+name="HAL"
 
 depend()
 {
@@ -52,7 +52,7 @@ init_var_hal()
   /usr/bin/install -d -o ${USER} -g ${GROUP} /var/run/hald
   /usr/bin/install -d -o ${USER} -g ${GROUP} /var/cache/hald
   /usr/bin/install -d -o ${USER} -g ${GROUP} /var/lib/hal
-  /usr/local/bin/polkit-auth --user ${USER} --grant \
+  %%PREFIX%%/bin/polkit-auth --user ${USER} --grant \
           org.freedesktop.policykit.read 1> /dev/null 2>&1
 }
 
@@ -63,4 +63,23 @@ start_pre()
     init_var_hal
 
     chmod 0755 /var/cache
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile "${PID}" \
+		--exec "${BINARY}" -b -m -- --daemon=no
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile "${PID}"
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${PID}"
+	eend $?
 }
