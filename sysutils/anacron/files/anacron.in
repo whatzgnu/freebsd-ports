@@ -9,11 +9,32 @@
 # This file may not be copied, modified, propagated, or distributed
 # except according to the terms contained in the LICENSE file.
 
-command=%%PREFIX%%/sbin/anacron
-pidfile=/var/run/anacron.pid
-name="Anacron Scheduler"
+name="Anacron"
+description="Anacron is a cron replacement suitable for non-always-on systems"
+
+COMMAND="%%PREFIX%%/sbin/anacron"
+PID="/var/run/anacron.pid"
 
 depend()
 {
 	need localmount
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile "${PID}" \
+		--exec "${COMMAND}" -b -m -- -d
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile "${PID}"
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${PID}"
+	eend $?
 }
