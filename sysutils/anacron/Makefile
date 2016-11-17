@@ -11,7 +11,7 @@ MAINTAINER=	dz@426.ch
 COMMENT=	Schedules periodic jobs on systems that are not permanently up
 
 USES=		gmake
-USE_RC_SUBR=	anacron
+USE_OPENRC_SUBR=anacron
 SUB_FILES=	pkg-message
 
 post-patch:
