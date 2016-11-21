@@ -266,7 +266,7 @@ NGINX_ACCESSLOG?=	${NGINX_LOGDIR}/access.log
 NGINX_ERRORLOG?=	${NGINX_LOGDIR}/error.log
 
 CONFLICTS?=	nginx-devel-1.*
-USE_RC_SUBR=	nginx
+USE_OPENRC_SUBR=nginx
 SUB_FILES=	pkg-message
 SUB_LIST+=	WWWOWN=${WWWOWN} \
 		WWWGRP=${WWWGRP} \
