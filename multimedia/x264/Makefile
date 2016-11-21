@@ -19,7 +19,7 @@
 
 PORTNAME=	x264
 PORTVERSION=	0.${X264_BUILD}.${X264_REV}
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	ftp://ftp.videolan.org/pub/videolan/x264/snapshots/ \
 		http://samples.mplayerhq.hu/yuv4mpeg2/:pgo
@@ -104,8 +104,6 @@ CONFIGURE_ARGS?=	--system-libx264
 CONFIGURE_ARGS+=	--prefix="${PREFIX}" \
 			--extra-cflags="${CPPFLAGS} ${CFLAGS}" \
 			--extra-ldflags="${LDFLAGS}"
-
-CFLAGS_armv6+=		-mcpu=arm1136jf-s
 
 post-extract-PGO-on:
 	@${BZIP2_CMD} -dc ${DISTDIR}/${DIST_SUBDIR}/${Y4M_VIDEO_DISTFILE} \

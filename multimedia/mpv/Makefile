@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mpv
-PORTVERSION=	0.20.0
+PORTVERSION=	0.21.0
+PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
@@ -20,7 +21,7 @@ BUILD_DEPENDS=	rst2man:textproc/py-docutils \
 USE_GITHUB=	yes
 GH_ACCOUNT=	mpv-player waf-project:waf
 GH_PROJECT=	waf:waf
-GH_TAGNAME=	waf-1.9.3:waf
+GH_TAGNAME=	waf-1.8.19:waf
 
 WAF_CMD=	${WRKSRC_waf}/waf-light
 

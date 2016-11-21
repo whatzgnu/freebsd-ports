@@ -3,7 +3,7 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	2.8.8
-PORTREVISION=	4
+PORTREVISION=	8
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://ffmpeg.org/releases/
@@ -18,7 +18,7 @@ BUILD_DEPENDS=	yasm:devel/yasm \
 		${LOCALBASE}/bin/as:devel/binutils
 
 HAS_CONFIGURE=	yes
-USES=		compiler cpe gmake perl5 pkgconfig tar:bzip2 shebangfix
+USES=		compiler:c11 cpe gmake perl5 pkgconfig tar:bzip2 shebangfix
 USE_LDCONFIG=	yes
 USE_PERL5=	build
 SHEBANG_FILES=	doc/texi2pod.pl
@@ -49,7 +49,7 @@ OPTIONS_DEFINE_armv6=	VFP NEON
 OPTIONS_DEFINE_armv6hf=	VFP NEON
 OPTIONS_DEFINE_i386=	MMX SSE
 OPTIONS_DEFAULT_amd64=	MMX SSE
-OPTIONS_DEFAULT_i386=	${MACHINE_CPU:tu:MMMX} ${MACHINE_CPU:tu:MSSE}
+OPTIONS_DEFAULT_i386=	MMX SSE
 
 ASS_DESC=	Subtitles rendering via libass
 BS2B_DESC=	Bauer Stereophonic-to-Binaural filter
@@ -297,7 +297,6 @@ SPEEX_CONFIGURE_ENABLE=	libspeex
 
 # sse support
 SSE_CONFIGURE_ENABLE=	sse
-SSE_VARS=		FFMPEG_CFLAGS+="-msse"
 SSE_IMPLIES=		MMX
 
 # ssh

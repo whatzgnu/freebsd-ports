@@ -78,6 +78,7 @@
     SUBDIR += inadyn-mt
     SUBDIR += ipcheck
     SUBDIR += ironsides
+    SUBDIR += kf5-kdnssd
     SUBDIR += knot-resolver
     SUBDIR += knot1
     SUBDIR += knot2
@@ -89,6 +90,7 @@
     SUBDIR += libdjbdns
     SUBDIR += libidn
     SUBDIR += libidn2
+    SUBDIR += libnspsl
     SUBDIR += libpsl
     SUBDIR += linux-c6-libasyncns
     SUBDIR += linux-c7-libasyncns
@@ -108,6 +110,7 @@
     SUBDIR += opendnssec
     SUBDIR += opendnssec13
     SUBDIR += opendnssec2
+    SUBDIR += openmdns
     SUBDIR += openresolv
     SUBDIR += p5-AnyEvent-CacheDNS
     SUBDIR += p5-AnyEvent-DNS-EtcHosts

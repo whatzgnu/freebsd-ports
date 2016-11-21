@@ -2,6 +2,7 @@
 
 PORTNAME=	msgpack
 PORTVERSION=	1.4.2
+PORTREVISION=	1
 DISTVERSIONPREFIX=	cpp-
 CATEGORIES=	devel
 
@@ -13,7 +14,7 @@ LICENSE=	APACHE20
 USE_GITHUB=	yes
 GH_PROJECT=	msgpack-c
 
-USES=		libtool:build autoreconf:build
+USES=		libtool:build autoreconf:build pathfix
 
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes

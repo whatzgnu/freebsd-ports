@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME?=	pypy
-DISTVERSION?=	5.4.1	# Also update bsd.pypy.cffi.mk
+DISTVERSION?=	5.6.0	# Also update bsd.pypy.cffi.mk
 CATEGORIES=	lang python
 MASTER_SITES=	https://bitbucket.org/pypy/pypy/downloads/ http://buildbot.pypy.org/mirror/
 DISTNAME?=	${PORTNAME}2-v${PORTVERSION}-src
@@ -52,6 +52,7 @@ PYPY_VARS=	PYTHON_CMD=${LOCALBASE}/bin/pypy
 PYPY_MINMEM_VARS=	PYTHON_CMD="${SETENV} PYPY_GC_MAX_DELTA=200MB ${LOCALBASE}/bin/pypy --jit loop_longevity=300"
 PYTHON_USES=	python:2,build
 
+DESCR=		${.CURDIR}/pkg-descr
 DISTINFO_FILE=	${.CURDIR}/distinfo
 MASTERDIR?=	${.CURDIR}
 PATCHDIR=	${.CURDIR}/files

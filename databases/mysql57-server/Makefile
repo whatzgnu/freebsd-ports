@@ -3,7 +3,7 @@
 
 PORTNAME?=	mysql
 PORTVERSION=	5.7.15
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES=	databases ipv6
 MASTER_SITES=	MYSQL/MySQL-5.7
 PKGNAMESUFFIX?=	57-server
@@ -148,7 +148,7 @@ CMAKE_ARGS+=		-DWITH_SSL=${OPENSSLBASE}
 .endif
 
 post-extract:
-	@${RM} -rvf ${WRKSRC}/sql/sql_hints.yy.cc ${WRKSRC}/sql/sql_hints.yy.h
+	@${RM} -rv ${WRKSRC}/sql/sql_hints.yy.cc ${WRKSRC}/sql/sql_hints.yy.h
 
 post-patch:
 	@${REINPLACE_CMD} 's/*.1/${MMAN1}/' ${WRKSRC}/man/CMakeLists.txt

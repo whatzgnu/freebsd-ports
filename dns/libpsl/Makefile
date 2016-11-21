@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	libpsl
-PORTVERSION=	0.13.0
+PORTVERSION=	0.15.0
 DISTVERSIONPREFIX=	${PORTNAME}-
-PORTREVISION=	3
+PORTREVISION=	1
 CATEGORIES=	dns
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -29,14 +29,13 @@ CONFIGURE_ARGS=	--enable-man \
 		--with-psl-testfile=${LOCALBASE}/share/public_suffix_list/test_psl.txt
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-PATHFIX_MAKEFILEIN=	Makefile.am
 USE_LDCONFIG=	yes
 USES=		autoreconf libtool pathfix pkgconfig python:build shebangfix
 
 GH_ACCOUNT=	rockdaboot
 USE_GITHUB=	yes
 
-SHEBANG_FILES=	src/make_dafsa.py
+SHEBANG_FILES=	src/psl-make-dafsa
 
 ICU_CONFIGURE_ON=	--enable-builtin=libicu --enable-runtime=libicu
 ICU_LIB_DEPENDS=	libicuuc.so:devel/icu

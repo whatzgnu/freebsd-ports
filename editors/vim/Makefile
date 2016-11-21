@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	vim
-PORTVERSION=	8.0.0035
+PORTVERSION=	8.0.0094
 DISTVERSIONPREFIX=	v
 CATEGORIES=	editors
 
@@ -92,16 +92,16 @@ ATHENA_USE=		XORG=ice,sm,x11,xaw,xmu,xpm,xt
 CONSOLE_MAKE_ARGS=	CONF_OPT_GUI="--enable-gui=no --without-x"
 CONSOLE_PLIST_SUB=	GUI="@comment "
 
-GNOME_MAKE_ARGS=	CONF_OPT_GUI=--enable-gui=gnome2 X_LIBS="$$(X_LIBS) -lX11 -lXpm -lXt"
+GNOME_MAKE_ARGS=	CONF_OPT_GUI=--enable-gui=gnome2
 GNOME_PLIST_SUB=	GUI=""
 GNOME_IMPLIES=		NLS
 GNOME_USE=		GNOME=gdkpixbuf2,libgnomeui XORG=ice,sm,glproto,x11,xpm,xt
 
-GTK2_MAKE_ARGS=		CONF_OPT_GUI=--enable-gui=gtk2 X_LIBS="$$(X_LIBS) -lX11 -lXpm -lXt"
+GTK2_MAKE_ARGS=		CONF_OPT_GUI=--enable-gui=gtk2
 GTK2_PLIST_SUB=		GUI=""
 GTK2_USE=		GNOME=gdkpixbuf2,gtk20 XORG=ice,sm,x11,xpm,xt
 
-GTK3_MAKE_ARGS=		CONF_OPT_GUI=--enable-gui=gtk3 X_LIBS="$$(X_LIBS) -lX11 -lXpm -lXt"
+GTK3_MAKE_ARGS=		CONF_OPT_GUI=--enable-gui=gtk3
 GTK3_PLIST_SUB=		GUI=""
 GTK3_USE=		GNOME=cairo,gdkpixbuf2,gtk30 XORG=ice,sm,x11,xpm,xt
 
@@ -110,9 +110,9 @@ MOTIF_PLIST_SUB=	GUI=""
 MOTIF_USES=		motif
 MOTIF_USE=		XORG=ice,sm,x11,xmu,xt
 
-X11_MAKE_ARGS=		CONF_OPT_GUI="--enable-gui=no --with-x" X_LIBS="$$(X_LIBS) -lX11 -lXt"
+X11_MAKE_ARGS=		CONF_OPT_GUI="--enable-gui=no --with-x"
 X11_PLIST_SUB=		GUI="@comment "
-X11_USE=		XORG=x11,xt
+X11_USE=		XORG=ice,sm,x11,xt
 
 # LANGUAGE BINDINGS
 LUA_MAKE_ARGS=		CONF_OPT_LUA=--enable-luainterp=dynamic CONF_OPT_LUA_PREFIX=--with-lua-prefix=${LOCALBASE}
@@ -138,6 +138,9 @@ MAKE_ARGS+=	CONF_OPT_PYTHON="--enable-pythoninterp --disable-python3interp"
 MAKE_ARGS+=	CONF_OPT_PYTHON="--enable-python3interp --disable-pythoninterp"
 .endif
 .endif
+
+post-extract:
+	${INSTALL_DATA} ${FILESDIR}/vietnamese_viscii.vim ${WRKSRC}/runtime/keymap
 
 post-patch:
 	@${FIND} ${WRKSRC}/ -name 'Makefile' | ${XARGS} ${REINPLACE_CMD} -e 's| $$<| $$>|'
@@ -168,15 +171,9 @@ post-configure:
 	@${REINPLACE_CMD} -e 's|#define HAVE_SYSINFO 1|/* #undef HAVE_SYSINFO */|' ${WRKSRC}/src/auto/config.h
 
 post-install:
-	${MKDIR} ${STAGEDIR}${DATADIR}/${VIM_VER}/lang/
-.for file in evim rview rvim vimdiff
-	${LN} -fs vim ${STAGEDIR}${PREFIX}/bin/${file}
+.for F in eview evim gview gvim gvimdiff rgview rgvim rview rvim vimdiff
+	${LN} -s vim ${STAGEDIR}${PREFIX}/bin/$F
 .endfor
-.if empty(PORT_OPTIONS:MCONSOLE) && empty(PORT_OPTIONS:MX11)
-.for file in eview gview gvim gvimdiff rgview rgvim
-	${LN} -fs vim ${STAGEDIR}${PREFIX}/bin/${file}
-.endfor
-.endif
 
 post-install-DEFAULT_VIMRC-on:
 	@${MKDIR} ${STAGEDIR}${ETCDIR}
@@ -184,11 +181,8 @@ post-install-DEFAULT_VIMRC-on:
 	${INSTALL_DATA} ${FILESDIR}/vimrc ${STAGEDIR}${ETCDIR}/vimrc.sample
 
 post-install-NLS-off:
+	@${MKDIR} ${STAGEDIR}${DATADIR}/${VIM_VER}/lang
 	@${MKDIR} ${STAGEDIR}${DATADIR}/${VIM_VER}/keymap
 	${INSTALL_DATA} ${WRKSRC}/runtime/keymap/* ${STAGEDIR}${DATADIR}/${VIM_VER}/keymap
-	${INSTALL_DATA} ${FILESDIR}/vietnamese_viscii.vim ${STAGEDIR}${DATADIR}/${VIM_VER}/keymap
-
-post-install-NLS-on:
-	${INSTALL_DATA} ${FILESDIR}/vietnamese_viscii.vim ${STAGEDIR}${DATADIR}/${VIM_VER}/keymap
 
 .include <bsd.port.post.mk>

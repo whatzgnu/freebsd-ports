@@ -2,7 +2,7 @@
 
 PORTNAME=	openntpd
 PORTVERSION=	6.0p1
-PORTREVISION=	1
+PORTREVISION=	2
 PORTEPOCH=	2
 CATEGORIES=	net
 MASTER_SITES=	OPENBSD/OpenNTPD
@@ -12,28 +12,18 @@ COMMENT=	Network Time Protocol (NTP) daemon
 
 LICENSE=	ISCL
 
+RUN_DEPENDS=	ca_root_nss>=0:security/ca_root_nss
+
+USE_RC_SUBR=	openntpd
 USERS=		_ntp
 GROUPS=		_ntp
 
 USE_OPENRC_SUBR=openntpd
 
+USES=		ssl
+
 GNU_CONFIGURE=	yes
-
-OPTIONS_DEFINE=		RESSL
-RESSL_DESC=		SSL/TLS support via LibreSSL
-
-OPTIONS_DEFAULT=	RESSL
-
-# Requires libtls from LibreSSL
-RESSL_USES=		ssl
-.if !exists(${DESTDIR}/usr/lib/libtls.so)
-RESSL_CONFIGURE_WITH=	cacert=${LOCALBASE}/etc/ssl/cert.pem
-RESSL_CPPFLAGS=		-I${OPENSSLINC}
-RESSL_LDFLAGS=		-L${OPENSSLLIB}
-RESSL_RUN_DEPENDS=	ca_root_nss>=0:security/ca_root_nss
-RESSL_BUILD_DEPENDS=	libtls.so:security/libressl
-RESSL_RUN_DEPENDS=	libtls.so:security/libressl
-.endif
+CONFIGURE_ARGS=	--with-cacert=${LOCALBASE}/etc/ssl/cert.pem
 
 pre-build:
 	${REINPLACE_CMD} -e 's,%%PREFIX%%,${PREFIX},g' \

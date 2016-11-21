@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	timezonedb
-PORTVERSION=	2016.5
-PORTREVISION=	1
+PORTVERSION=	2016.9
 CATEGORIES=	misc
 MASTER_SITES=	http://pecl.php.net/get/
 PKGNAMEPREFIX=	pecl-

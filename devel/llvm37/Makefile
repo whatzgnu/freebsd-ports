@@ -199,7 +199,7 @@ PLIST_FILES+=	\
 	${SAN_LIBDIR}/libclang_rt.ubsan_standalone-i386.a \
 	${SAN_LIBDIR}/libclang_rt.ubsan_standalone_cxx-i386.a
 .else
-BROKEN=	no packaging data for sanitizers on ${ARCH}.  Disable COMPILER_RT.
+BROKEN=	no packaging data for sanitizers on ${ARCH}; disable COMPILER_RT
 .endif
 .endif
 
@@ -229,7 +229,7 @@ PLIST_SUB+=	GOLD="@comment "
 
 .if ! ${OPTIONS_DEFINE:MOPENMP}
 # Hack to disable OPENMP in plist of unsupported architectures
-PLIST_SUB+=    OPENMP="@comment "
+PLIST_SUB+=	OPENMP="@comment "
 .else
 .endif
 
@@ -374,7 +374,7 @@ regression-test: ${BUILD_COOKIE}
 	fi
 
 build-plist:
-	${RM} -f ${PLIST} ${PLIST}.tmp
+	${RM} ${PLIST} ${PLIST}.tmp
 .for command in ${COMMANDS}
 	${ECHO_CMD} bin/${command}${LLVM_SUFFIX} >> ${PLIST}.tmp
 .endfor
@@ -401,7 +401,7 @@ build-plist:
 	    if ($$0 ~ /lib.*omp/) {printf "%%%%OPENMP%%%%"} \
 	    if ($$0 ~ /LLVMgold/) {printf "%%%%GOLD%%%%"} \
 	    if ($$0 !~ /libclang_rt/) {print}}' ${PLIST}.tmp >> ${PLIST}
-	${RM} -f ${PLIST}.tmp
+	${RM} ${PLIST}.tmp
 
 check-commands:
 .for command in ${COMMANDS}

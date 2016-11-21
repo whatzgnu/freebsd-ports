@@ -48,6 +48,7 @@
     SUBDIR += innoextract
     SUBDIR += javatar
     SUBDIR += jzlib
+    SUBDIR += kf5-karchive
     SUBDIR += kzip
     SUBDIR += laszip
     SUBDIR += lbrate
@@ -144,10 +145,6 @@
     SUBDIR += pecl-rar
     SUBDIR += pecl-snappy
     SUBDIR += php-horde_lz4
-    SUBDIR += php55-bz2
-    SUBDIR += php55-phar
-    SUBDIR += php55-zip
-    SUBDIR += php55-zlib
     SUBDIR += php56-bz2
     SUBDIR += php56-phar
     SUBDIR += php56-zip
@@ -186,7 +183,6 @@
     SUBDIR += rpm2cpio
     SUBDIR += rpm4
     SUBDIR += ruby-lha
-    SUBDIR += ruby-zip
     SUBDIR += rubygem-archive-tar-minitar
     SUBDIR += rubygem-archive-zip
     SUBDIR += rubygem-bzip2-ruby

@@ -85,7 +85,7 @@ MOZILLA_VER?=	${PORTVERSION}
 MOZILLA_BIN?=	${PORTNAME}-bin
 MOZILLA_EXEC_NAME?=${MOZILLA}
 MOZ_RPATH?=	${MOZILLA}
-USES+=		cpe compiler:c++11-lang gmake iconv perl5 pkgconfig \
+USES+=		cpe gmake iconv perl5 pkgconfig \
 			python:2.7,build desktop-file-utils
 CPE_VENDOR?=mozilla
 USE_PERL5=	build
@@ -95,10 +95,13 @@ USE_XORG=	x11 xcomposite xdamage xext xfixes xrender xt
 BUNDLE_LIBS=	yes
 .endif
 
-# call to implicitly-deleted copy constructor of 'mozilla::WidevineVideoFrame'
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000019 && ${MOZILLA_VER:R:R} >= 49
-# XXX USES=compiler:c++11-lib cannot be used due to ports/208538
-USE_GCC=	5+
+.if ${MOZILLA_VER:R:R} >= 49
+USES+=		compiler:c++14-lang
+FAVORITE_COMPILER=	${COMPILER_TYPE} # c++14-lib
+CPPFLAGS+=	-D_GLIBCXX_USE_C99 -D_GLIBCXX_USE_C99_MATH_TR1 \
+			-D_DECLARE_C99_LDBL_MATH # XXX ports/193528
+.else
+USES+=		compiler:c++11-lang
 .endif
 
 MOZILLA_SUFX?=	none
@@ -263,8 +266,7 @@ MOZ_OPTIONS+=	--enable-necko-protocols=${MOZ_PROTOCOLS}
 .endif
 # others
 MOZ_OPTIONS+=	--with-system-zlib		\
-		--with-system-bz2		\
-		--disable-debug-symbols
+		--with-system-bz2
 
 # API keys from www/chromium 
 # http://www.chromium.org/developers/how-tos/api-keys
@@ -378,7 +380,7 @@ MOZ_OPTIONS+=	--disable-rust
 MOZ_OPTIONS+=	--enable-debug --disable-release
 STRIP=	# ports/184285
 .else
-MOZ_OPTIONS+=	--disable-debug --enable-release
+MOZ_OPTIONS+=	--disable-debug --disable-debug-symbols --enable-release
 .endif
 
 .if ${PORT_OPTIONS:MDTRACE}
@@ -488,7 +490,7 @@ gecko-post-patch:
 .if exists(${PKGDEINSTALL_INC})
 	@${MOZCONFIG_SED} < ${PKGDEINSTALL_INC} > ${PKGDEINSTALL}
 .endif
-	@${RM} -f ${MOZCONFIG}
+	@${RM} ${MOZCONFIG}
 .if !defined(NOMOZCONFIG)
 	@if [ -e ${PORT_MOZCONFIG} ] ; then \
 		${MOZCONFIG_SED} < ${PORT_MOZCONFIG} >> ${MOZCONFIG} ; \
@@ -579,7 +581,7 @@ post-install-script: gecko-create-plist
 
 gecko-create-plist:
 # Create the plist
-	${RM} -f ${PLISTF}
+	${RM} ${PLISTF}
 .for dir in ${MOZILLA_PLIST_DIRS}
 	@cd ${STAGEDIR}${PREFIX}/${dir} && ${FIND} -H -s * ! -type d | \
 		${SED} -e 's|^|${dir}/|' >> ${PLISTF}

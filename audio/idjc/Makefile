@@ -3,6 +3,7 @@
 
 PORTNAME=	idjc
 PORTVERSION=	0.8.16
+PORTREVISION=	1
 CATEGORIES=	audio python
 MASTER_SITES=	SF/idjc/idjc/0.8
 
@@ -47,7 +48,7 @@ DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
 pre-install:
 	${REINPLACE_CMD} 's|libvorbis.so.0|libvorbis.so|' \
 		${WRKSRC}/python/format.py
-	${REINPLACE_CMD} 's|#! /usr/local/bin/python2.72.7|#\!${LOCALBASE}/bin/${PYTHON_VERSION}|' \
+	${REINPLACE_CMD} 's|#! /usr/local/bin/python2.72.7|#\!${PYTHON_CMD}|' \
 		${WRKSRC}/idjc
 
 .include <bsd.port.mk>

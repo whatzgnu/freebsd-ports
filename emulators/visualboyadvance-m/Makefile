@@ -3,6 +3,7 @@
 
 PORTNAME=	visualboyadvance-m
 PORTVERSION=	2.0.0b2
+PORTREVISION=	1
 CATEGORIES=	emulators
 
 MAINTAINER=	root@cooltrainer.org
@@ -11,6 +12,8 @@ COMMENT=	Game Boy Advance emulator with GTK frontend
 LICENSE=	GPLv2
 
 LIB_DEPENDS=	libpng.so:graphics/png
+
+BROKEN_aarch64=	Fails to build: regparm is not valid on this platform
 
 USE_GITHUB=	yes
 GH_TAGNAME=	VBA-M_Beta_2
@@ -134,7 +137,7 @@ maint-gen-distfile:
 	svn export -r${SVN_REV} \
 		 https://svn.code.sf.net/p/vbam/code/trunk/ ${DISTNAME}
 	${TAR} jcf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX} ${DISTNAME}
-	${RM} -rf ${DISTNAME}
+	${RM} -r ${DISTNAME}
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/vbam

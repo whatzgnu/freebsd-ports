@@ -478,6 +478,7 @@
     SUBDIR += lollypop
     SUBDIR += lpac
     SUBDIR += lua51-mpd
+    SUBDIR += lv2
     SUBDIR += lv2core
     SUBDIR += lxmusic
     SUBDIR += mac
@@ -708,6 +709,7 @@
     SUBDIR += sfront
     SUBDIR += shairplay
     SUBDIR += shairport
+    SUBDIR += shairport-sync
     SUBDIR += shntool
     SUBDIR += shorten
     SUBDIR += shout
@@ -794,6 +796,8 @@
     SUBDIR += vagalume
     SUBDIR += vamp-plugin-sdk
     SUBDIR += ventrilo-server
+    SUBDIR += virtual_oss
+    SUBDIR += virtual_oss_ctl
     SUBDIR += vitunes
     SUBDIR += vo-aacenc
     SUBDIR += vo-amrwbenc

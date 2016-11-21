@@ -24,12 +24,14 @@ RUN_DEPENDS=	${PYNUMPY} \
 		${PYTHON_PKGNAMEPREFIX}mako>0:textproc/py-mako \
 		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six
 
+BROKEN_FreeBSD_9=	does not build
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	dumbbell
 GH_PROJECT=	piglit
 GH_TAGNAME=	ca5350b4056ae63a93c4c207087b7634873b2ce2
 
-USES=		cmake:outsource pkgconfig python:2
+USES=		cmake:outsource compiler:c11 pkgconfig python:2
 USE_GL=		egl gbm gl glu
 USE_XORG=	x11 xcb xext xrender
 

@@ -199,6 +199,7 @@
     SUBDIR += get_flash_videos
     SUBDIR += getleft
     SUBDIR += gist
+    SUBDIR += gitea
     SUBDIR += gitlab
     SUBDIR += gitlab-workhorse
     SUBDIR += glassfish
@@ -310,7 +311,6 @@
     SUBDIR += httpsqs
     SUBDIR += httptunnel
     SUBDIR += httrack
-    SUBDIR += hydra
     SUBDIR += hypermail
     SUBDIR += igal2
     SUBDIR += ikiwiki
@@ -337,6 +337,10 @@
     SUBDIR += kannel-sqlbox
     SUBDIR += kcgi
     SUBDIR += kdewebdev4
+    SUBDIR += kf5-kdewebkit
+    SUBDIR += kf5-khtml
+    SUBDIR += kf5-kjs
+    SUBDIR += kf5-kjsembed
     SUBDIR += kohana
     SUBDIR += kpartsplugin
     SUBDIR += kplaylist
@@ -359,7 +363,6 @@
     SUBDIR += libxul
     SUBDIR += lightsquid
     SUBDIR += lighttpd
-    SUBDIR += lighttpd-mod_geoip
     SUBDIR += lighttpd-mod_h264_streaming
     SUBDIR += lilurl
     SUBDIR += limesurvey
@@ -370,8 +373,10 @@
     SUBDIR += links-hacked
     SUBDIR += links1
     SUBDIR += linux-c6-flashplugin11
+    SUBDIR += linux-c6-flashplugin24
     SUBDIR += linux-c6-qt47-webkit
     SUBDIR += linux-c7-flashplugin11
+    SUBDIR += linux-c7-flashplugin24
     SUBDIR += linux-c7-qtwebkit
     SUBDIR += linux-f10-flashplugin11
     SUBDIR += linux-firefox
@@ -404,6 +409,7 @@
     SUBDIR += midori
     SUBDIR += mimetex
     SUBDIR += mini_httpd
+    SUBDIR += minio
     SUBDIR += mitmproxy
     SUBDIR += mkapachepw
     SUBDIR += mknmz-wwwoffle
@@ -474,7 +480,6 @@
     SUBDIR += mod_myvhost
     SUBDIR += mod_ntlm2
     SUBDIR += mod_perl2
-    SUBDIR += mod_php55
     SUBDIR += mod_php56
     SUBDIR += mod_php70
     SUBDIR += mod_proctitle
@@ -538,6 +543,8 @@
     SUBDIR += node
     SUBDIR += node012
     SUBDIR += node4
+    SUBDIR += node6
+    SUBDIR += node7
     SUBDIR += nostromo
     SUBDIR += npapi-vlc
     SUBDIR += npapi-xine
@@ -1254,6 +1261,7 @@
     SUBDIR += p5-WWW-DHL
     SUBDIR += p5-WWW-Dilbert
     SUBDIR += p5-WWW-Facebook-API
+    SUBDIR += p5-WWW-Form-UrlEncoded
     SUBDIR += p5-WWW-FreeProxy
     SUBDIR += p5-WWW-GitHub-Gist
     SUBDIR += p5-WWW-Google-Calculator
@@ -1383,6 +1391,7 @@
     SUBDIR += pear-Horde_Http
     SUBDIR += pear-Horde_Routes
     SUBDIR += pear-Horde_Service_Facebook
+    SUBDIR += pear-Horde_Service_Gravatar
     SUBDIR += pear-Horde_Service_Twitter
     SUBDIR += pear-Horde_Service_UrlShortener
     SUBDIR += pear-Horde_Service_Weather
@@ -1398,7 +1407,6 @@
     SUBDIR += pear-Services_GeoNames
     SUBDIR += pear-Services_Google
     SUBDIR += pear-Services_OpenSearch
-    SUBDIR += pear-Services_SharedBook
     SUBDIR += pear-Services_ShortURL
     SUBDIR += pear-Services_TinyURL
     SUBDIR += pear-Services_TwitPic
@@ -1432,9 +1440,6 @@
     SUBDIR += php-plurk-api
     SUBDIR += php-screw
     SUBDIR += php-templates
-    SUBDIR += php55-opcache
-    SUBDIR += php55-session
-    SUBDIR += php55-tidy
     SUBDIR += php56-opcache
     SUBDIR += php56-session
     SUBDIR += php56-tidy
@@ -1492,6 +1497,7 @@
     SUBDIR += py-bjoern
     SUBDIR += py-bleach
     SUBDIR += py-blogofile
+    SUBDIR += py-bokeh
     SUBDIR += py-boto3
     SUBDIR += py-bottle
     SUBDIR += py-bottle-cork
@@ -1560,7 +1566,6 @@
     SUBDIR += py-django-picklefield
     SUBDIR += py-django-pipeline
     SUBDIR += py-django-pipeline13
-    SUBDIR += py-django-piston
     SUBDIR += py-django-post_office
     SUBDIR += py-django-profiles
     SUBDIR += py-django-recaptcha
@@ -1655,6 +1660,7 @@
     SUBDIR += py-meld3
     SUBDIR += py-mt
     SUBDIR += py-nevow
+    SUBDIR += py-octoprint
     SUBDIR += py-pafy
     SUBDIR += py-paste
     SUBDIR += py-pastedeploy
@@ -2271,11 +2277,13 @@
     SUBDIR += uwsgitop
     SUBDIR += uzbl
     SUBDIR += validator
+    SUBDIR += varnish-libvmod-awsrest
     SUBDIR += varnish-libvmod-digest
     SUBDIR += varnish-libvmod-maxminddb
     SUBDIR += varnish-modules
     SUBDIR += varnish-nagios
     SUBDIR += varnish4
+    SUBDIR += varnish5
     SUBDIR += vdr-plugin-live
     SUBDIR += vdradmin-am
     SUBDIR += vee
@@ -2409,6 +2417,7 @@
     SUBDIR += xpi-togglewordwrap
     SUBDIR += xpi-torbutton
     SUBDIR += xpi-twitterfox
+    SUBDIR += xpi-u2f4moz
     SUBDIR += xpi-uBlock_origin
     SUBDIR += xpi-unplug
     SUBDIR += xpi-urllink

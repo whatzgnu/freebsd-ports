@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	thunderbird
-DISTVERSION=	45.4.0
+DISTVERSION=	45.5.0
 PORTREVISION=	1
 CATEGORIES=	mail news net-im ipv6
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \
@@ -31,8 +31,8 @@ BUILD_DEPENDS=	nspr>=4.12:devel/nspr \
 
 LIB_DEPENDS=	libv4l2.so:multimedia/libv4l
 
-EM_VERSION=	1.9.5
-L_VERSION=	4.7.4
+EM_VERSION=	1.9.6.1
+L_VERSION=	4.7.5
 
 SSP_UNSAFE=	yes
 USE_GECKO=	gecko
@@ -40,6 +40,8 @@ USE_MOZILLA=	# empty
 
 USE_GL=		gl
 USES=		tar:xz
+
+BROKEN_aarch64=		Fails to link: js-dtrace.o.arJ1an: error adding symbols: File in wrong format
 
 MOZ_OPTIONS=	--program-transform-name='s/thunderbird/${MOZILLA}/' \
 	--enable-single-profile --disable-profilesharing \
@@ -144,7 +146,7 @@ post-install:
 	@${CHMOD} -R a+rX,go-w ${STAGEDIR}${XPI_LIBDIR}/${XPI_ID}
 	@${LN} -sf ${XPI_LIBDIR}/${XPI_ID} ${STAGEDIR}${XPI_LIBDIR}/symlinks/thunderbird 2>/dev/null || true
 	@${ECHO_CMD} '@exec ${LN} -sf %D/lib/xpi/${XPI_ID} ${LOCALBASE}/lib/thunderbird/extensions 2>/dev/null || true' >> ${TMPPLIST}
-	@${ECHO_CMD} '@unexec ${RM} -f ${LOCALBASE}/lib/thunderbird/extensions/${XPI_ID}' >> ${TMPPLIST}
+	@${ECHO_CMD} '@unexec ${RM} ${LOCALBASE}/lib/thunderbird/extensions/${XPI_ID}' >> ${TMPPLIST}
 .endif
 .if ${PORT_OPTIONS:MENIGMAIL}
 	@${MKDIR} ${STAGEDIR}${XPI_LIBDIR}/${EM_ID} ${STAGEDIR}${XPI_LIBDIR}/symlinks/${PORTNAME}
@@ -153,7 +155,7 @@ post-install:
 	@${CHMOD} -R a+rX,go-w ${STAGEDIR}${XPI_LIBDIR}/${EM_ID}
 	@${LN} -sf ${XPI_LIBDIR}/${EM_ID} ${STAGEDIR}${XPI_LIBDIR}/symlinks/${PORTNAME} 2>/dev/null || true
 	@${ECHO_CMD} '@exec ${LN} -sf %D/lib/xpi/${EM_ID} ${LOCALBASE}/lib/${PORTNAME}/extensions 2>/dev/null || true' >> ${TMPPLIST}
-	@${ECHO_CMD} '@unexec ${RM} -f ${LOCALBASE}/lib/${PORTNAME}/extensions/${EM_ID}' >> ${TMPPLIST}
+	@${ECHO_CMD} '@unexec ${RM} ${LOCALBASE}/lib/${PORTNAME}/extensions/${EM_ID}' >> ${TMPPLIST}
 .endif
 
 .include <bsd.port.post.mk>

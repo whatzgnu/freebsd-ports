@@ -3,6 +3,7 @@
 
 PORTNAME=	emacs
 DISTVERSION=	${EMACS_VER}.${EMACS_REV}
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	editors ipv6
 PKGNAMESUFFIX=	-devel
@@ -12,9 +13,6 @@ COMMENT=	GNU editing macros
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-BROKEN_sparc64=	Emacs does not currently build on sparc64
-BROKEN_ia64=	Emacs does not currently build on ia64
 
 CONFLICTS=	emacs25-[0-9]* emacs-nox11-[0-9]*
 
@@ -27,7 +25,6 @@ EMACS_REV=	20161001
 GNU_CONFIGURE=	yes
 USES=		autoreconf cpe gmake makeinfo ncurses pkgconfig
 INFO_PATH=	${DATADIR_REL}/info
-WRKSRC=		${WRKDIR}/${PORTNAME}-${GH_TAGNAME}
 CPE_VENDOR=	gnu
 
 SUB_FILES+=	sources.el
@@ -241,7 +238,7 @@ LDFLAGS+=-ltinfo
 .endif
 
 post-patch:
-	@${RM} -f ${WRKSRC}/info/*
+	@${RM} ${WRKSRC}/info/*
 
 ## stage-qa will give a warning, but don't pull in desktop-file-utils
 ## portlint -AC will give a warning about INSTALL_ICONS, but don't pull in those

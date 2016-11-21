@@ -82,6 +82,7 @@
     SUBDIR += bareos-client-static
     SUBDIR += bareos-docs
     SUBDIR += bareos-server
+    SUBDIR += bareos-traymonitor
     SUBDIR += batmon
     SUBDIR += battfink
     SUBDIR += battmond
@@ -182,6 +183,7 @@
     SUBDIR += cotty
     SUBDIR += cpdup
     SUBDIR += cpu
+    SUBDIR += cpu-x
     SUBDIR += cpuburn
     SUBDIR += cpuid
     SUBDIR += cpulimit
@@ -333,6 +335,7 @@
     SUBDIR += fusefs-funionfs
     SUBDIR += fusefs-fusepak
     SUBDIR += fusefs-fusexmp_fh
+    SUBDIR += fusefs-gitfs
     SUBDIR += fusefs-gnome-vfs
     SUBDIR += fusefs-gstfs
     SUBDIR += fusefs-gunzip
@@ -393,7 +396,6 @@
     SUBDIR += gnome-system-monitor
     SUBDIR += gnome_subr
     SUBDIR += goaccess
-    SUBDIR += gosa
     SUBDIR += gpart
     SUBDIR += gpte
     SUBDIR += graffer
@@ -494,6 +496,8 @@
     SUBDIR += kdf
     SUBDIR += kdirstat
     SUBDIR += keyboard-daemon
+    SUBDIR += kf5-baloo
+    SUBDIR += kf5-kwallet
     SUBDIR += kfilemetadata
     SUBDIR += kfloppy
     SUBDIR += kiconvtool
@@ -543,6 +547,7 @@
     SUBDIR += logstalgia
     SUBDIR += logstash
     SUBDIR += logstash-forwarder
+    SUBDIR += logstash5
     SUBDIR += logtool
     SUBDIR += logwatch
     SUBDIR += lookat
@@ -669,6 +674,7 @@
     SUBDIR += openipmi
     SUBDIR += openupsd
     SUBDIR += ori
+    SUBDIR += osinfo-db-tools
     SUBDIR += osquery
     SUBDIR += p5-BSD-Jail-Object
     SUBDIR += p5-BSD-Process
@@ -786,8 +792,6 @@
     SUBDIR += pftables
     SUBDIR += pftop
     SUBDIR += phantom
-    SUBDIR += php55-fileinfo
-    SUBDIR += php55-posix
     SUBDIR += php56-fileinfo
     SUBDIR += php56-posix
     SUBDIR += php70-fileinfo
@@ -990,6 +994,9 @@
     SUBDIR += rubygem-sys-uname
     SUBDIR += rubygem-sys-uptime
     SUBDIR += rubygem-teamocil
+    SUBDIR += rubygem-vagrant-bhyve
+    SUBDIR += rubygem-vagrant-mutate
+    SUBDIR += rubygem-vagrant-vbguest
     SUBDIR += rubygem-vmstat
     SUBDIR += rubygem-winrm
     SUBDIR += rubygem-winrm-fs
@@ -1130,6 +1137,7 @@
     SUBDIR += u-boot-cubieboard2
     SUBDIR += u-boot-cubox-hummingboard
     SUBDIR += u-boot-duovero
+    SUBDIR += u-boot-master
     SUBDIR += u-boot-olimex-a20-som-evb
     SUBDIR += u-boot-olinuxino-lime
     SUBDIR += u-boot-orangepi-one
@@ -1264,6 +1272,7 @@
     SUBDIR += zetaback
     SUBDIR += zfs-periodic
     SUBDIR += zfs-replicate
+    SUBDIR += zfs-snap-diff
     SUBDIR += zfs-snapshot-clean
     SUBDIR += zfs-snapshot-mgmt
     SUBDIR += zfs-stats

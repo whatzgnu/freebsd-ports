@@ -2,7 +2,7 @@
 # $FreeBSD: head/security/libressl/Makefile 410481 2016-03-06 20:06:41Z brnrd $
 
 PORTNAME=	libressl
-PORTVERSION=	2.4.3
+PORTVERSION=	2.4.4
 CATEGORIES=	security devel
 MASTER_SITES=	OPENBSD/LibreSSL
 
@@ -19,9 +19,11 @@ OPTIONS_DEFAULT=	MAN3 NC
 MAN3_DESC=	Install API manpages (section 3)
 NC_DESC=	Install TLS-enabled netcat
 
-CONFLICTS?=	libressl-devel-[0-9]* \
-		openssl-[0-9]* \
-		openssl-devel-[0-9]*
+CONFLICTS_INSTALL=	libressl-devel-[0-9]* \
+			openssl-[0-9]* \
+			openssl-devel-[0-9]*
+
+MAN3_EXTRA_PATCHES_OFF=	${FILESDIR}/extra-patch-MAN3
 
 GNU_CONFIGURE=	yes
 USES=		cpe libtool pathfix pkgconfig
@@ -37,10 +39,6 @@ post-stage-NC-on:
 	${INSTALL_MAN} ${WRKSRC}/apps/nc/nc.1 ${STAGEDIR}/${PREFIX}/man/man1/nc.1
 
 post-stage:
-	${RM} -rf ${STAGEDIR}/${PREFIX}/etc/ssl/cert.pem
-
-post-install-MAN3-off:
-	${RM} -rf ${STAGEDIR}/${PREFIX}/man/man3
-	${REINPLACE_CMD} -e '/^man\/man3/d' ${TMPPLIST}
+	${RM} -r ${STAGEDIR}/${PREFIX}/etc/ssl/cert.pem
 
 .include <bsd.port.mk>

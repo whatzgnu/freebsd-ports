@@ -3,7 +3,7 @@
 
 PORTNAME=	mutt
 PORTVERSION=	1.7.1
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES+=	mail ipv6
 MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/ \
 		ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/ \
@@ -54,7 +54,7 @@ AUTOMAKE_ARGS=	--add-missing --foreign
 OPTIONS_SUB=	yes
 
 .if defined (MUTT_LITE)
-OPTIONS_UNSET=	NLS DOCS EXAMPLES
+OPTIONS_EXCLUDE=	NLS DOCS EXAMPLES
 .else
 OPTIONS_DEFINE=	COMPRESSED_FOLDERS SASL DEBUG DOCS EXAMPLES FLOCK \
 		FORCEBASE64 GPGME GREETING_PATCH HTML ICONV IDN IFDEF_PATCH \
@@ -101,7 +101,7 @@ TOKYOCABINET_DESC=	Use tokyocabinet instead of Berkley DB
 URLVIEW_DESC=	Use urlview for the URL selector menu
 XML_DESC=	Use XML tools for rebuilding documentation
 
-OPTIONS_DEFAULT=	COMPRESSED_FOLDERS HTML ICONV IDN IFDEF_PATCH \
+OPTIONS_DEFAULT=	COMPRESSED_FOLDERS GPGME HTML ICONV IDN IFDEF_PATCH \
 		IMAP_HEADER_CACHE LOCALES_FIX MAILBOX_MANPAGES \
 		MAILDIR_HEADER_CACHE MAILDIR_MTIME_PATCH NLS \
 		NCURSES PARENT_CHILD_MATCH_PATCH QUOTE_PATCH \
@@ -297,7 +297,7 @@ post-patch::
 		${WRKSRC}/contrib/Makefile.am
 
 pre-configure::
-	@${RM} -f ${WRKSRC}/missing
+	@${RM} ${WRKSRC}/missing
 .if defined(WITH_KRB5_SYS)
 	@${ECHO_CMD} "#define HAVE_HEIMDAL" >> ${WRKSRC}/config.h.in
 	@${REINPLACE_CMD} -e 's|<gssapi/gssapi\.h>|<gssapi.h>|' \

@@ -145,6 +145,7 @@
     SUBDIR += js_of_ocaml
     SUBDIR += jython
     SUBDIR += kawa
+    SUBDIR += kf5-kross
     SUBDIR += kturtle
     SUBDIR += lafontaine
     SUBDIR += lci
@@ -183,6 +184,7 @@
     SUBDIR += nawk
     SUBDIR += nbc
     SUBDIR += nbfc
+    SUBDIR += neko
     SUBDIR += nesasm
     SUBDIR += newlisp
     SUBDIR += newlisp-devel
@@ -247,8 +249,6 @@
     SUBDIR += pharo
     SUBDIR += phc
     SUBDIR += php-mode.el
-    SUBDIR += php55
-    SUBDIR += php55-extensions
     SUBDIR += php56
     SUBDIR += php56-extensions
     SUBDIR += php70
@@ -256,6 +256,7 @@
     SUBDIR += php_doc
     SUBDIR += picoc
     SUBDIR += pike78
+    SUBDIR += pocl
     SUBDIR += polyml
     SUBDIR += ptoc
     SUBDIR += pure

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gpgme
-PORTVERSION=	1.7.0
+PORTVERSION=	1.7.1
 PORTREVISION?=	0
 CATEGORIES?=	security
 MASTER_SITES=	GNUPG/gpgme
@@ -55,17 +55,20 @@ CONFIGURE_ARGS+=	--disable-gpgsm-test
 
 .if defined(SLAVEPORT)
 LIB_DEPENDS+=	libgpgme.so:security/gpgme
-BUILD_WRKSRC=	${WRKSRC}/lang
+BUILD_WRKSRC=	${WRKSRC}/lang/${BINDING_NAME}
 INSTALL_WRKSRC=	${WRKSRC}/lang/${BINDING_NAME}
 
 .  if ${SLAVEPORT} == "cpp"
 CONFIGURE_ARGS+=--enable-languages="cpp"
+USES+=		compiler:c++11-lib
+# Unhide std::to_string() to fix build with GCC 4.8 (ports/193528).
+CXXFLAGS+=	-D_GLIBCXX_USE_C99
 .  endif
 
 .  if ${SLAVEPORT} == "qt5"
 LIB_DEPENDS+=	libgpgmepp.so:security/gpgme-cpp
 CONFIGURE_ARGS+=--enable-languages="cpp qt"
-USES+=		pkgconfig
+USES+=		compiler:c++11-lib pkgconfig
 USE_QT5=	buildtools_build core testlib
 CONFLICTS_INSTALL=	kdepimlibs-4.*
 .  endif
@@ -76,7 +79,6 @@ BUILD_DEPENDS+=	swig3.0:devel/swig30 \
 RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}setuptools${PYTHON_SUFFIX}>0:devel/py-setuptools${PYTHON_SUFFIX}
 USES+=		python
 USE_PYTHON=	py3kplist
-BUILD_WRKSRC=	${WRKSRC}/lang/${BINDING_NAME}
 CONFIGURE_ENV+=	SWIG=${LOCALBASE}/bin/swig3.0
 PLIST_SUB+=	VERSION=${PORTVERSION}
 CONFLICTS_INSTALL=	py*-pyme-[0-9]*
@@ -99,6 +101,10 @@ post-patch:
 .if defined(SLAVEPORT)
 	@${FIND} ${BUILD_WRKSRC} -name "Makefile.in" -type f | ${XARGS} \
 	${REINPLACE_CMD} -e 's|../../../src/libgpgme.la|-lgpgme|g'
+.  if ${SLAVEPORT} == "qt5"
+	@${FIND} ${BUILD_WRKSRC} -name "Makefile.in" -type f | ${XARGS} \
+	${REINPLACE_CMD} -e 's|../../cpp/src/libgpgmepp.la|-lgpgmepp|g'
+.  endif
 .endif
 	@${REINPLACE_CMD} -e 's|^clfilesdir.*|clfilesdir=$$\(libdir\)/common-lisp/gpgme|g' \
 					${WRKSRC}/lang/cl/Makefile.in

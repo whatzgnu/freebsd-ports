@@ -483,14 +483,12 @@
     SUBDIR += pear-Net_Cyrus
     SUBDIR += pear-Net_IMAP
     SUBDIR += pear-Net_LMTP
-    SUBDIR += pecl-esmtp
     SUBDIR += pecl-mailparse
     SUBDIR += pecl-pop3
     SUBDIR += perdition
     SUBDIR += pflogsumm
     SUBDIR += pfqueue
     SUBDIR += pgpsendmail
-    SUBDIR += php55-imap
     SUBDIR += php56-imap
     SUBDIR += php70-imap
     SUBDIR += phplist
@@ -725,7 +723,6 @@
     SUBDIR += tmda
     SUBDIR += tpop3d
     SUBDIR += trojita
-    SUBDIR += trojita-qt4
     SUBDIR += tumgreyspf
     SUBDIR += up-imapproxy
     SUBDIR += usendmail

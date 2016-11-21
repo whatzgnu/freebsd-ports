@@ -3,6 +3,7 @@
 
 PORTNAME=	GraphicsMagick
 PORTVERSION=	1.3.24
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	graphics
 MASTER_SITES=	SF \
@@ -24,7 +25,7 @@ CONFIGURE_ENV=	PTHREAD_LIBS=-lpthread
 INSTALL_TARGET=	install-strip
 TEST_TARGET=	check
 USE_LDCONFIG=	yes
-USES=		libtool localbase tar:bzip2
+USES=		libtool localbase pathfix tar:bzip2
 
 PORTDATA=	*
 PORTDOCS=	*

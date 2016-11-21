@@ -3,7 +3,7 @@
 
 PORTNAME=	db5
 PORTVERSION=	5.3.28
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	databases java
 MASTER_SITES=	http://download.oracle.com/berkeley-db/
 PKGNAMEPREFIX?=
@@ -73,6 +73,11 @@ DOCS_INSTALL_TARGET=	install_docs
 # db5 uses a deprecated instruction for mutexes on ARM, fbsd bug#197227
 # and also bug#205001
 CONFIGURE_ARGS+=	--enable-posixmutexes
+. if ${OSVERSION} > 1100100
+#                 ^ leave that as ">" it really is greater than but NOT equal
+# force POSIX mutexes - the OS supports PTHREAD_PROCESS_SHARED
+CONFIGURE_ARGS+=	--with-mutex=POSIX/pthreads
+. endif
 .endif
 
 post-patch:
@@ -93,13 +98,13 @@ post-install:
 		       ${LN} -s -f ${PORTNAME}/$$i ../$$i-${BDBMAJ} ; done
 
 post-install-JAVA-off:
-	${RM} -r -f ${STAGEDIR}${DOCSDIR}/java
+	${RM} -r ${STAGEDIR}${DOCSDIR}/java
 .for i in gsg gsg_db_rep gsg_txn
-	${RM} -r -f ${STAGEDIR}${DOCSDIR}/${i}/JAVA
+	${RM} -r ${STAGEDIR}${DOCSDIR}/${i}/JAVA
 .endfor
 
 post-install-SQL-off:
-	${RM} -r -f ${STAGEDIR}${DOCSDIR}/bdb-sql
+	${RM} -r ${STAGEDIR}${DOCSDIR}/bdb-sql
 
 post-install-TCL-on:
 	echo "package ifneeded Db_tcl ${BDBVER} \
@@ -108,7 +113,7 @@ post-install-TCL-on:
 
 post-install-TCL-off:
 .for i in api_reference/TCL
-	${RM} -r -f ${STAGEDIR}${DOCSDIR}/${i}
+	${RM} -r ${STAGEDIR}${DOCSDIR}/${i}
 .endfor
 
 .include <bsd.port.mk>

@@ -6022,7 +6022,6 @@ multimedia/xmms-weasel||2014-04-28|Has expired: Abandonware, please consider usi
 audio/xmms-sexyspc||2014-04-28|Has expired: Abandonware, please consider using multimedia/audacious instead
 audio/libmusicbrainz4|audio/libmusicbrainz5|2014-04-28|Has expired: Please use audio/libmusicbrainz5 instead
 cad/kicad-library||2014-05-02|kicad-library is no more distributed separately
-science/hdf5-18|science/hdf5|2014-05-03|Use science/hdf5 instead
 science/netcdf-ftn|science/netcdf-fortran|2014-05-03|Use science/netcdf-fortran instead
 science/netcdf3-ftn|science/netcdf-fortran|2014-05-03|Use science/netcdf-fortran instead
 science/netcdf4|science/netcdf|2014-05-03|Use science/netcdf instead
@@ -7952,13 +7951,11 @@ audio/mpdscribble||2015-11-28|Has expired: Broken for more than 6 months
 cad/geda-symcheck||2015-11-28|Has expired: Broken for more than 6 months
 audio/linux-fmodapi||2015-11-28|Has expired: Broken for more than 6 months
 audio/pure-audio||2015-11-28|Has expired: Broken for more than 6 months
-editors/bpatch||2015-11-28|Has expired: Broken for more than 6 months
 benchmarks/geekbench||2015-11-28|Has expired: Broken for more than 6 months
 graphics/icoconvert||2015-11-28|Has expired: Broken for more than 6 months
 cad/geda-utils||2015-11-28|Has expired: Broken for more than 6 months
 deskutils/tomboy-plugin-wordcount||2015-11-28|Has expired: Broken for more than 6 months
 graphics/sketch||2015-11-28|Has expired: Broken for more than 6 months
-ftp/spegla||2015-11-28|Has expired: Broken for more than 6 months
 graphics/clutter-box2d||2015-11-28|Has expired: Broken for more than 6 months
 audio/scmpc||2015-11-28|Has expired: Broken for more than 6 months
 ftp/gnusget||2015-11-28|Has expired: Broken for more than 6 months
@@ -7969,7 +7966,6 @@ cad/slffea||2015-11-28|Has expired: Broken for more than 6 months
 audio/cripple||2015-11-28|Has expired: Broken for more than 6 months
 cad/geda-gattrib||2015-11-28|Has expired: Broken for more than 6 months
 cad/findhier||2015-11-28|Has expired: Broken for more than 6 months
-biology/njplot||2015-11-28|Has expired: Broken for more than 6 months
 audio/wmmp||2015-11-28|Has expired: Broken for more than 6 months
 x11/avant-window-navigator||2015-11-28|Has expired: Broken for more than 6 months
 cad/geda-netlist||2015-11-28|Has expired: Broken for more than 6 months
@@ -8681,5 +8677,133 @@ net/py-uritemplate.py|net/py-uritemplate|2016-10-12|Upstream has consolidated on
 misc/fortune_strfile||2016-10-14|Has expired: unmaintained and duplicated from base
 mail/elmo-devel|mail/elmo|2016-10-15|Has expired: Same version as mail/elmo, use it instead
 math/libR||2016-10-16|Has expired: math/R LIBR option is now on by default
+security/libbzrtp|security/bzrtp|2016-10-17|Renamed
 devel/gaphor||2016-10-18|Has expired: runtime failure uncorrected for 1 year after first report
 editors/winefish||2016-10-18|Has expired: upstream disappeared (project dead?), segfaults on multiple arches
+misc/jive||2016-10-20|Has expired: Offensive
+devel/pecl-spread||2016-10-20|Has expired: Works only with EOL php 5.5
+devel/pecl-mcve||2016-10-20|Has expired: Works only with EOL php 5.5
+security/pecl-tcpwrap||2016-10-20|Has expired: Works only with EOL php 5.5
+devel/pecl-shape||2016-10-20|Has expired: Works only with EOL php 5.5
+textproc/pecl-enchant||2016-10-20|Has expired: Works only with EOL php 5.5
+databases/pecl-mysqlnd_ms||2016-10-20|Has expired: Works only with EOL php 5.5
+textproc/pecl-html_parse||2016-10-20|Has expired: Works only with EOL php 5.5
+mail/pecl-esmtp||2016-10-20|Has expired: Works only with EOL php 5.5
+net/pecl-cvsclient||2016-10-20|Has expired: Works only with EOL php 5.5
+databases/pecl-mdbtools||2016-10-20|Has expired: Works only with EOL php 5.5
+databases/pecl-mysqlnd_qc||2016-10-20|Has expired: Works only with EOL php 5.5
+devel/pecl-operator||2016-10-20|Has expired: Works only with EOL php 5.5
+devel/pecl-parsekit||2016-10-20|Has expired: Works only with EOL php 5.5
+devel/pecl-hidef||2016-10-20|Has expired: Works only with EOL php 5.5
+devel/pecl-automap||2016-10-20|Has expired: Works only with EOL php 5.5
+devel/pecl-bbcode||2016-10-20|Has expired: Works only with EOL php 5.5
+devel/pecl-bcompiler||2016-10-20|Has expired: Works only with EOL php 5.5
+databases/php-adodb-ext||2016-10-21|Has expired: Works only with EOL php 5.5
+archivers/php55-bz2||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+archivers/php55-phar||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+archivers/php55-zip||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+archivers/php55-zlib||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+converters/php55-iconv||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+converters/php55-mbstring||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+converters/php55-recode||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-dba||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-interbase||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-mssql||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-mysql||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-mysqli||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-odbc||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-pdo||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-pdo_dblib||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-pdo_firebird||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-pdo_mysql||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-pdo_odbc||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-pdo_pgsql||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-pdo_sqlite||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-pgsql||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-redis||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-sqlite3||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+databases/php55-sybase_ct||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-gettext||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-json||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-pcntl||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-readline||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-shmop||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-sysvmsg||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-sysvsem||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-sysvshm||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+devel/php55-tokenizer||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+ftp/php55-curl||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+ftp/php55-ftp||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+graphics/php55-exif||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+graphics/php55-gd||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+lang/php55||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+lang/php55-extensions||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+mail/php55-imap||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+math/php55-bcmath||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+math/php55-gmp||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+misc/php55-calendar||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+net-mgmt/php55-snmp||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+net/php55-ldap||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+net/php55-soap||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+net/php55-sockets||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+net/php55-xmlrpc||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+security/php55-filter||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+security/php55-hash||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+security/php55-mcrypt||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+security/php55-openssl||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+sysutils/php55-fileinfo||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+sysutils/php55-posix||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-ctype||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-dom||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-enchant||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-pspell||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-simplexml||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-wddx||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-xml||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-xmlreader||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-xmlwriter||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+textproc/php55-xsl||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+www/mod_php55||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+www/php55-opcache||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+www/php55-session||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+www/php55-tidy||2016-10-21|Has expired: EOL upstream since 21 Jul 2016
+www/lighttpd-mod_geoip|www/lighttpd|2016-10-21|Integrated into www/lighttpd
+net/dosdetector||2016-10-23|Has expired: No maintainer activity in over a decade
+devel/go-btree||2016-10-26|The only consumer of this port (peco) started to bundle a snapshot
+devel/go-flags||2016-10-26|The only consumer of this port (peco) started to bundle a snapshot
+devel/go-termbox||2016-10-26|The only consumer of this port (peco) started to bundle a snapshot
+math/octave-forge-octgpr||2016-11-01|Has expired: Broken for more than 6 months
+math/octave-forge-spline-gcvspl||2016-11-01|Has expired: Broken for more than 6 months
+www/pear-Services_SharedBook||2016-11-01|Has expired: Broken for more than 6 months
+devel/py-snackwich||2016-11-01|Has expired: Depends on broken and expiring devel/py-snack
+math/octave-forge-ad||2016-11-01|Has expired: Broken for more than 6 months
+math/octave-forge-xraylib||2016-11-01|Has expired: Broken for more than 6 months
+x11-toolkits/py-traitsbackendwx||2016-11-01|Has expired: Broken for more than 6 months
+x11-toolkits/py-traitsgui||2016-11-01|Has expired: Depends on broken and expiring x11-toolkits/py-traitsbackendwx
+security/lsh||2016-11-01|Has expired: Broken for more than 6 months
+devel/py-snack||2016-11-01|Has expired: Broken for more than 6 months
+security/massh||2016-11-01|Has expired: Broken for more than 6 months
+www/hydra||2016-11-01|Has expired: Broken for more than 6 months
+math/py-pyfst||2016-11-01|Has expired: Broken for more than 6 months
+archivers/ruby-zip||2016-11-01|Has expired: Broken will all supported versions of Ruby
+devel/ruby-langscan||2016-11-01|Has expired: Broken will all supported versions of Ruby
+math/octave-forge-dicom||2016-11-01|Has expired: Broken for more than 6 months
+graphics/linux-c6-libGLU|graphics/linux-c6-dri|2016-11-04|Unused
+graphics/linux-c7-libGLU|graphics/linux-c7-dri|2016-11-04|Unused
+multimedia/libmovtar||2016-11-05|Not used anymore, abandonware
+devel/p5-Test-Exception-LessClever||2016-11-06|Deprecated by upstream
+www/py-django-piston||2016-11-06|Has expired: Abandoned upstream. Doesn't work with django>=1.6
+net/remmina-plugin-i18n||2016-11-08|Plugin translations removed upstream in GH commit 2dd0526
+net/p5-Net-Ping||2016-11-08|Has expired: This or newer version included in all supported versions of perl
+ftp/curl-hiphop||2016-11-08|Has expired: useful only for removed hiphop-php
+textproc/rubygem-string-scrub||2016-11-08|Has expired: needed only for EOL versions of Ruby
+cad/py-gdsii|cad/python-gdsii|2016-11-10|Renamed
+textproc/erlang-p1xml|textproc/erlang-fast_xml|2016-11-08|Project was renamed
+devel/py-pydasm|devel/py-capstone|2016-11-11|Has expired: No more upstream and known bugs, use devel/py-capstone instead
+devel/libdasm|devel/capstone3|2016-11-11|Has expired: No more upstream and known bugs, use devel/capstone3 instead
+security/erlang-p1tls|security/erlang-fast_tls|2016-11-11|Project was renamed
+mail/trojita-qt4|mail/trojita|2016-11-13|Qt4 support was dropped, use mail/trojita instead
+devel/extra-cmake-modules|devel/kf5-extra-cmake-modules|2016-11-14|Renamed to match other KF5 port
+net/vnc||2016-11-14|Has expired: Distfiles no longer available.
+sysutils/gosa||2016-11-20|Has expired: this version of gosa cannot be fixed (requires PHP < 5.4)
+security/krb5-112||2016-11-20|Has expired: EOL twelve months after release of krb5-1.14
