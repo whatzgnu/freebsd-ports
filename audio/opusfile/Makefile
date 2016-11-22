@@ -33,12 +33,10 @@ INSTALL_TARGET=	install-strip
 
 .include <bsd.port.pre.mk>
 
-.if !empty(${SSL_DEFAULT:M*libressl*})
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-configure.ac
 pre-patch:
 	@${GREP} -l '@openssl@' ${WRKSRC}/opusurl.pc.in | \
 		${XARGS} ${REINPLACE_CMD} -e 's| @openssl@||'
-.endif
 
 post-patch:
 	@${GREP} -l 'AC_SEARCH_LIBS(ftime' ${WRKSRC}/configure.ac | \
