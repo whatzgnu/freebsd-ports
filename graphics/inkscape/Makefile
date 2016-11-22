@@ -27,7 +27,7 @@ USES=		compiler:c++11-lib cpe desktop-file-utils gettext gmake iconv \
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/lib -L${LOCALBASE}/llvm38/lib
 CONFIGURE_ARGS=	--without-gnome-vfs
 
 python_CMD?=	${LOCALBASE}/bin/python2
