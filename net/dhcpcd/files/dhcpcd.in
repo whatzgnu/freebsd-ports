@@ -9,11 +9,11 @@
 # This file may not be copied, modified, propagated, or distributed
 # except according to the terms contained in the LICENSE file.
 
-interfaces=$(grep ^ifconfig_ /etc/rc.conf | grep DHCP | cut -d = -f 1 | cut -d _ -f 2)
+interfaces=$(grep "^ifconfig_" /etc/rc.conf | grep DHCP | cut -d = -f 1 | cut -d _ -f 2 | tr -s '\n' ' ')
 
-command=/usr/local/sbin/dhcpcd
+command=%%PREFIX%%/sbin/dhcpcd
 pidfile=/var/run/dhcpcd.pid
-command_args=-q $interfaces
+command_args="-q $interfaces"
 name="DHCP Client Daemon"
 
 depend()
