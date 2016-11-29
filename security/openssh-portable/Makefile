@@ -172,7 +172,7 @@ EMPTYDIR=		/var/empty
 IGNORE=	Overwrite base option is no longer supported.
 .endif
 
-USE_RC_SUBR=		openssh
+USE_OPENRC_SUBR=	openssh
 
 # After all
 CONFIGURE_ARGS+=	--sysconfdir=${ETCDIR} --with-privsep-path=${EMPTYDIR}
