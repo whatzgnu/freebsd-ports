@@ -1,5 +1,4 @@
-%%ETCDIR%%.conf
-%%ETCDIR%%.conf.sample
+@sample etc/dhcpcd.conf.sample
 libexec/dhcpcd-hooks/01-test
 libexec/dhcpcd-hooks/02-dump
 libexec/dhcpcd-hooks/20-resolv.conf
