@@ -17,16 +17,17 @@ LICENSE=	GPLv3
 BUILD_DEPENDS=	gprbuild:devel/gprbuild \
 		xmlada>=4.4:textproc/xmlada \
 		gnatcoll>=2016:devel/gnatcoll \
-		templates_parser>11:textproc/templates_parser
+		templates_parser>11:textproc/templates_parser \
+		llvm-config38:devel/llvm38
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libgtkada.so:x11-toolkits/gtkada3 \
-		libfreetype.so:print/freetype2 \
-		libclang.so.3.8:devel/llvm38
+		libfreetype.so:print/freetype2
 RUN_DEPENDS=	rsvg-convert:graphics/librsvg2 \
 		gdb${PORTGDB}:devel/gdb \
 		gprbuild:devel/gprbuild \
 		${PYTHON_PKGNAMEPREFIX}pep8>0:devel/pep8 \
-		${PYTHON_PKGNAMEPREFIX}jedi>0:devel/py-jedi
+		${PYTHON_PKGNAMEPREFIX}jedi>0:devel/py-jedi \
+		llvm-config38:devel/llvm38
 
 GNU_CONFIGURE=	yes
 USES=		ada:run gettext gmake perl5 pkgconfig python
