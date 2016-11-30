@@ -198,8 +198,6 @@ pre-configure:
 .endif
 
 post-configure:
-	@${REINPLACE_CMD} -e 's|#define HAVE_MACH_MACH_H 1||g' \
-		${WRKSRC}/libclamav/c++/llvm/include/llvm/Config/config.h
 
 .if ${PORT_OPTIONS:MTESTS}
 post-build:
