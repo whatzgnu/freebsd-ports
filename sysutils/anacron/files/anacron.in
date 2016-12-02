@@ -12,9 +12,6 @@
 name="Anacron"
 description="Anacron is a cron replacement suitable for non-always-on systems"
 
-COMMAND="%%PREFIX%%/sbin/anacron"
-PID="/var/run/anacron.pid"
-
 depend()
 {
 	need localmount
@@ -22,19 +19,6 @@ depend()
 
 start() {
 	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon --start --pidfile "${PID}" \
-		--exec "${COMMAND}" -b -m -- -d
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon --stop --pidfile "${PID}"
-	eend $?
-}
-
-reload() {
-	ebegin "Reloading ${SVCNAME}"
-	start-stop-daemon --signal HUP --pidfile "${PID}"
+	%%PREFIX%%/sbin/anacron
 	eend $?
 }
