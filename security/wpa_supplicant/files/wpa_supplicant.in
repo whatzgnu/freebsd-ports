@@ -9,7 +9,7 @@
 # This file may not be copied, modified, propagated, or distributed
 # except according to the terms contained in the LICENSE file.
 
-command=/usr/sbin/wpa_supplicant
+command=%%PREFIX%%/sbin/wpa_supplicant
 : ${wpa_supplicant_conf:=/etc/wpa_supplicant.conf}
 wpa_supplicant_if=${wpa_supplicant_if:+-i}$wpa_supplicant_if
 command_args="$wpa_supplicant_args -B -c$wpa_supplicant_conf $wpa_supplicant_if"
@@ -17,10 +17,7 @@ name="WPA Supplicant Daemon"
 
 depend()
 {
-	need localmount
-	use logger
-	after bootmisc modules
-	before dns
+	provide wifi
 	keyword -shutdown
 }
 
