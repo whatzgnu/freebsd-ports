@@ -17,7 +17,6 @@ name="WPA Supplicant Daemon"
 
 depend()
 {
-	provide wifi
 	keyword -shutdown
 }
 
@@ -25,35 +24,9 @@ find_wireless()
 {
 	local iface=
 
-	case "$RC_UNAME" in
-	Linux)
-		for iface in /sys/class/net/*; do
-			if [ -e "$iface"/wireless -o \
-				-e "$iface"/phy80211 ]
-			then
-				echo "${iface##*/}"
-				return 0
-			fi
-		done
-		;;
-	FreeBSD)
-		for iface in $(sysctl -b net.wlan.devices 2>/dev/null); do
-			echo "${iface##*/}"
-		done
-		;;
-	*)
-		for iface in /dev/net/* $(ifconfig -l 2>/dev/null); do
-			if ifconfig "${iface##*/}" 2>/dev/null | \
-				grep -q "[ ]*ssid "
-			then
-				echo "${iface##*/}"
-				return 0
-			fi
-		done
-		;;
-	esac
-
-	return 1
+	for iface in $(sysctl -b net.wlan.devices 2>/dev/null); do
+		echo "${iface##*/}"
+	done
 }
 
 append_wireless()
@@ -64,7 +37,6 @@ append_wireless()
 	if [ -n "$iface" ]; then
 	wnum="0"
 		for i in $iface; do
-			ifconfig wlan${wnum} create wlandev $iface
 			command_args="$command_args -iwlan${wnum}"
 			wnum=`expr $wnum + 1`
 		done
