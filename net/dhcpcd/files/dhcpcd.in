@@ -18,7 +18,6 @@ depend()
 {
 	provide net
 	need localmount
-	use logger
 	after bootmisc modules
 }
 
