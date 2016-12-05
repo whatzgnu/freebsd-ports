@@ -1,14 +1,14 @@
---- configure.ac.orig	2015-12-21 10:05:52.000000000 +0100
-+++ configure.ac	2015-12-22 17:04:25.728359000 +0100
-@@ -78,6 +78,7 @@
+--- configure.ac.orig	2016-09-05 13:00:42.000000000 +0200
++++ configure.ac	2016-09-12 16:31:50.702327000 +0200
+@@ -79,6 +79,7 @@
  DRI3PROTO_REQUIRED=1.0
  PRESENTPROTO_REQUIRED=1.0
  LIBUDEV_REQUIRED=151
 +LIBDEVQ_REQUIRED=0.0.2
  GLPROTO_REQUIRED=1.4.14
  LIBOMXIL_BELLAGIO_REQUIRED=0.0
- LIBVA_REQUIRED=0.35.0
-@@ -743,7 +744,7 @@
+ LIBVA_REQUIRED=0.38.0
+@@ -873,7 +874,7 @@
      [enable_dri=yes])
  
  case "$host_os" in
@@ -17,7 +17,7 @@
      dri3_default=yes
      ;;
  *)
-@@ -1000,6 +1001,9 @@
+@@ -1314,6 +1315,9 @@
  PKG_CHECK_MODULES([LIBUDEV], [libudev >= $LIBUDEV_REQUIRED],
                    have_libudev=yes, have_libudev=no)
  
@@ -27,7 +27,7 @@
  AC_ARG_ENABLE([sysfs],
      [AS_HELP_STRING([--enable-sysfs],
          [enable /sys PCI identification @<:@default=disabled@:>@])],
-@@ -1096,6 +1100,10 @@
+@@ -1411,6 +1415,10 @@
      DEFINES="$DEFINES -DHAVE_LIBUDEV"
      have_pci_id=yes
  fi
@@ -38,11 +38,16 @@
  
  if test "$have_sysfs" = yes; then
      DEFINES="$DEFINES -DHAVE_SYSFS"
-@@ -1228,6 +1236,23 @@
+@@ -1538,9 +1546,28 @@
+             ;;
+         esac
          ;;
-     gnu*)
+-    *freebsd* | dragonfly* | *netbsd* | openbsd*)
++    *netbsd* | openbsd* | dragonfly*)
          DEFINES="$DEFINES -DHAVE_ALIAS"
-+dnl not sure about dri3 support, just enable it for now.
+         ;;
++    *freebsd*)
++        DEFINES="$DEFINES -DHAVE_ALIAS"
 +        if test "x$enable_dri3" = xyes; then
 +            DEFINES="$DEFINES -DHAVE_DRI3"
 +        fi
@@ -59,10 +64,11 @@
 +            fi
 +            ;;
 +        esac
++        ;;
+     gnu*)
+         DEFINES="$DEFINES -DHAVE_ALIAS"
          ;;
-     cygwin*)
-         if test "x$with_dri_drivers" = "xyes"; then
-@@ -1384,6 +1409,8 @@
+@@ -1749,6 +1776,8 @@
  AM_CONDITIONAL(HAVE_GBM, test "x$enable_gbm" = xyes)
  if test "x$need_pci_id$have_libudev" = xyesyes; then
      GBM_PC_REQ_PRIV="libudev >= $LIBUDEV_REQUIRED"
@@ -71,7 +77,7 @@
  else
      GBM_PC_REQ_PRIV=""
  fi
-@@ -1545,9 +1572,19 @@
+@@ -1924,9 +1953,19 @@
          AC_MSG_ERROR([cannot enable OpenCL without Gallium])
      fi
  
@@ -91,7 +97,20 @@
  
      if test "x$have_libclc" = xno; then
          AC_MSG_ERROR([pkg-config cannot find libclc.pc which is required to build clover.
-@@ -1815,8 +1852,6 @@
+@@ -2105,9 +2144,9 @@
+ strip_unwanted_llvm_flags() {
+     # Use \> (marks the end of the word)
+     echo `$1` | sed \
+-	-e 's/-march=\S*//g' \
+-	-e 's/-mtune=\S*//g' \
+-	-e 's/-mcpu=\S*//g' \
++	-e 's/-march=[[:graph:]]* //g' \
++	-e 's/-mtune=[[:graph:]]* //g' \
++	-e 's/-mcpu=[[:graph:]]* //g' \
+ 	-e 's/-DNDEBUG\>//g' \
+ 	-e 's/-D_GNU_SOURCE\>//g' \
+ 	-e 's/-pedantic\>//g' \
+@@ -2199,8 +2238,6 @@
                  CLANG_LIBDIR=${LLVM_LIBDIR}
              fi
              CLANG_RESOURCE_DIR=$CLANG_LIBDIR/clang/${LLVM_VERSION}

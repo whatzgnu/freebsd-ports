@@ -1,5 +1,5 @@
---- src/radeon_kms.c.orig	2014-10-02 05:31:27.000000000 +0200
-+++ src/radeon_kms.c	2014-10-23 18:56:18.359108170 +0200
+--- src/radeon_kms.c.orig	2016-09-15 10:52:47.000000000 +0200
++++ src/radeon_kms.c	2016-09-21 18:12:30.817337000 +0200
 @@ -30,6 +30,8 @@
  
  #include <errno.h>
@@ -8,8 +8,8 @@
 +#include <sys/linker.h>
  /* Driver data structures */
  #include "radeon.h"
- #include "radeon_reg.h"
-@@ -280,7 +282,7 @@
+ #include "radeon_drm_queue.h"
+@@ -321,7 +323,7 @@ static void
  radeon_dirty_update(ScreenPtr screen)
  {
  	RegionPtr region;
@@ -18,7 +18,7 @@
  
  	if (xorg_list_is_empty(&screen->pixmap_dirty_list))
  		return;
-@@ -589,7 +591,7 @@
+@@ -914,7 +916,7 @@ static int radeon_get_drm_master_fd(Scrn
  #endif
      struct pci_device *dev = info->PciInfo;
      char *busid;
@@ -27,7 +27,7 @@
  
  #ifdef XF86_PDEV_SERVER_FD
      if (pRADEONEnt->platform_dev) {
-@@ -608,6 +610,15 @@
+@@ -933,6 +935,15 @@ static int radeon_get_drm_master_fd(Scrn
  		      dev->domain, dev->bus, dev->dev, dev->func);
  #endif
  
