@@ -17,6 +17,9 @@ name="WPA Supplicant Daemon"
 
 depend()
 {
+        provide wpa_supplicant
+        need localmount
+        after bootmisc modules devd network
 	keyword -shutdown
 }
 

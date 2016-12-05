@@ -16,9 +16,9 @@ name="DHCP Client Daemon"
 
 depend()
 {
-	provide net
+	provide dhcp
 	need localmount
-	after bootmisc modules
+	after bootmisc modules devd network
 }
 
 stop_pre()
