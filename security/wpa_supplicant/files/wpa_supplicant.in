@@ -44,7 +44,9 @@ append_wireless()
 			wnum=`expr $wnum + 1`
 		done
 	else
-		eerror "Could not find a wireless interface"
+                einfo "Could not find a wireless interface"
+                mark_service_inactive
+                return 1
 	fi
 }
 
