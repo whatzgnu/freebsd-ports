@@ -20,6 +20,7 @@ depend()
         provide wpa_supplicant
         need localmount net
         after bootmisc modules devd network
+	before dhcpcd
 	keyword -shutdown
 }
 
