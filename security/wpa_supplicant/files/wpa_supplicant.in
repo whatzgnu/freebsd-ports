@@ -55,12 +55,12 @@ start_pre()
 {
 	case " $command_args" in
 	*" -i"*) ;;
-	*) append_wireless;;
+	*) append_wireless || exit 1 ;;
 	esac
 
         if [ ! -e "/etc/wpa_supplicant.conf" ] ; then
-	echo "ctrl_interface=/var/run/wpa_supplicant" > /etc/wpa_supplicant.conf
-	chmod 600 /etc/wpa_supplicant.conf
+		echo "ctrl_interface=/var/run/wpa_supplicant" > /etc/wpa_supplicant.conf
+		chmod 600 /etc/wpa_supplicant.conf
         fi
 
 }
