@@ -20,7 +20,7 @@ name="Network Time Protocol Daemon"
 
 depend()
 {
-	use dns
+	use dns net
 	need localmount
 	after bootmisc network dhcpcd wpa_supplicant
 }
