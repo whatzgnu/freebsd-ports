@@ -3,6 +3,7 @@
 
 PORTNAME=	dhcpcd
 PORTVERSION=	7.0
+PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	roy@marples.name
