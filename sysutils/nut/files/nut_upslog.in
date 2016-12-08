@@ -3,7 +3,7 @@
 # Copyright (c) 2016 2 Clause BSD license
 
 BINARY=%%PREFIX%%/sbin/upslog
-PID=/var/run/nut_upslog.pid
+PID=/var/db/nut/nut_upslog.pid
 name="NUT UPS Logging Daemon"
 
 depend() {
