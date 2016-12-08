@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# NUT driver load
+
+nut_prefix=${nut_prefix-"/usr/local"}
+pidfile="/var/db/nut/upsdrv.pid"
+command="${nut_prefix}/sbin/upsdrvctl"
+name="NUT UPS Driver"
+
+depend() {
+         before upsd
+         provide upsdrv
+}
+
+start() {
+        ebegin "Starting ${SVCNAME}"
+        ${command} start
+        eend $? "Failed to start UPS driver"
+}
+
+stop() {
+        ebegin "Stopping ${SVCNAME}"
+        ${command} stop
+        eend $? "Failed to stop UPS driver"
+}

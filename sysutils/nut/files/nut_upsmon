@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# NUT upsmon load
+
+nut_prefix=${nut_prefix-"/usr/local"}
+pidfile="/var/db/nut/upsmon.pid"
+command="${nut_prefix}/sbin/upsmon"
+name="NUT UPS Monitoring Daemon"
+
+depend() {
+#        use net
+         after upsd
+}
+
+start() {
+        ebegin "Starting ${SVCNAME}"
+        start-stop-daemon --start --quiet --exec ${command}
+        eend $? 
+}
+
+stop() {
+        ebegin "Stopping ${SVCNAME}"
+        start-stop-daemon --stop --quiet --pidfile ${pidfile}
+        eend $? 
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --stop --signal HUP --oknodo --quiet --pidfile ${pidfile}
+	eend $?
+}
