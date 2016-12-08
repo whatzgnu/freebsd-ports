@@ -40,7 +40,8 @@ IPMI_OFF_DESC=	No IPMI support
 FREEIPMI_DESC=	freeipmi support
 IPMIPSU_DESC=	Use nut-ipmipsu support (experimental)
 
-USE_RC_SUBR=	nut nut_upsmon nut_upslog
+USE_OPENRC_SUBR= nut_upsdrv nut_upsd nut_upsmon nut_upslog
+
 SUB_LIST+=	STATEDIR=${STATEDIR}
 PLIST_SUB+=	STATEDIR=${STATEDIR}
 
