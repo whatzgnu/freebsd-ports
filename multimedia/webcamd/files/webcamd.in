@@ -1,16 +1,13 @@
-#!/bin/sh
-# $FreeBSD$
+#!/sbin/openrc-run
+# Copyright (c) 2007-2015 The OpenRC Authors.
+# See the Authors file at the top-level directory of this distribution and
+# https://github.com/OpenRC/openrc/blob/master/AUTHORS
 #
-# PROVIDE: webcamd
-# REQUIRE: FILESYSTEMS netif dbus
-# BEFORE: devd
-# KEYWORD: shutdown
-#
-# ================================================================
-# Webcamd is enabled by adding the following line to /etc/rc.conf:
-# ================================================================
-#
-# webcamd_enable="YES"
+# This file is part of OpenRC. It is subject to the license terms in
+# the LICENSE file found in the top-level directory of this
+# distribution and at https://github.com/OpenRC/openrc/blob/master/LICENSE
+# This file may not be copied, modified, propagated, or distributed
+# except according to the terms contained in the LICENSE file.
 #
 # ================================================================
 # By default webcamd instances are invoked by the devd(8) system
@@ -81,35 +78,32 @@
 # webcamd_devd_starts_unspecified=<YES/NO>
 #
 
-. /etc/rc.subr
-
-name=webcamd
-rcvar=webcamd_enable
-load_rc_config $name
-
-: ${webcamd_enable:=NO}
 : ${webcamd_user:=webcamd}
 : ${webcamd_group:=webcamd}
 : ${webcamd_startup_delay=1}
 : ${webcamd_devd_starts_unspecified=YES}
-
 : ${hald_enable:=NO}
 
-# If invoked automatically by devd, we receive additional arguments
-devd_device=${2}
-devd_interface=${3-0}
-
+name="webcamd"
 command=webcamd
 command_args="-B -U ${webcamd_user} -G ${webcamd_group}"
+extra_commands="startdevd"
+startdevd_description="Internal command to start a instance from devd"
 
-start_cmd="${name}_start"
-stop_cmd="${name}_stop"
-status_cmd="${name}_status"
+depend()
+{
+	need localmount network dbus
+	after bootmisc
+}
+
+# If invoked automatically by devd, we receive additional arguments
+#devd_device=${2}
+devd_interface=${devd_interface-0}
 
 webcamd()
 {
   # When running early we need to pre-load some libraries
-  env LD_PRELOAD=%%LIBHAL%%%%LIBCUSE%% %%PREFIX%%/sbin/webcamd $*
+  env LD_PRELOAD= %%PREFIX%%/sbin/webcamd $*
 }
 
 webcamd_pids()
@@ -125,11 +119,20 @@ webcamd_grep_instance_flags()
     exit 0
 }
 
-webcamd_start_devd()
+startdevd()
 {
-  # Start a single USB device, as this rc.d script was invoked by devd
-  # with extra arguments
+  # Check if we should attach to the "hald" service
+  if yesno hald_enable ; then
+    command_args="$command_args -H"
+  fi
 
+  if [ -z "$devd_device" ] ; then
+    eerror "Missing devd_device"
+    return 1
+  fi
+
+  # Start a single USB device, as this init.d script was invoked by devd
+  # with extra arguments
   n=0
   while true
   do
@@ -159,33 +162,28 @@ webcamd_start_devd()
     break
   done
 
-  if checkyesno webcamd_devd_starts_unspecified; then
-    # Try to start the connected USB device
-    ${command} -i ${devd_interface} ${instance_flags} ${webcamd_flags} ${command_args}
+  if yesno webcamd_devd_starts_unspecified; then
+    # Try to start the connected USB device - But quietly, don't clutter up my pretty OpenRC messages
+    ${command} -i ${devd_interface} ${instance_flags} ${webcamd_flags} ${command_args} >/dev/null 2>/dev/null
   fi
+  eend 0
 }
 
-webcamd_start()
+start()
 {
   # Check if we should attach to the "hald" service
-  if checkyesno hald_enable ; then
+  if yesno hald_enable ; then
     command_args="$command_args -H"
   fi
 
-  # If this rc.d script was invoked by devd
-  if [ "$devd_device" ]; then
-    # Then start the device ugenX.X, as provied in the argv $2, $3
-    webcamd_start_devd
-  else
-    # Start specified instances
-    webcamd_start_instances
-  fi
+  # Start specified instances
+  webcamd_start_instances
 }
 
 webcamd_start_instances()
 {
   # Start instances that were specified by $webcamd_N_flags
-  echo "Starting ${name}."
+  ebegin "Starting ${name}."
 
   n=0
   instance_flags=$(eval "echo \$webcamd_${n}_flags")
@@ -212,9 +210,10 @@ webcamd_start_instances()
       sleep "$webcamd_startup_delay"
     fi
   done
+  eend 0
 }
 
-webcamd_stop()
+stop()
 {
   pids=$(webcamd_pids)
   if [ "${pids}" ]; then
@@ -229,20 +228,19 @@ webcamd_stop()
     done
   else
     echo "${name} is not running."
-    return 1
+    return 0
   fi
 }
 
-webcamd_status()
+status()
 {
   pids=$(webcamd_pids)
 
   if [ "${pids}" ]; then
-    echo "${name} is running as pid ${pids}."
+    einfo "status: started"
+    return 0
   else
-    echo "${name} is not running."
-    return 1
+    einfo "status: stopped"
+    return 3
   fi
 }
-
-run_rc_command "$1"
