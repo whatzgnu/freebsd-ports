@@ -2,6 +2,7 @@
 
 PORTNAME=	cups-filters
 PORTVERSION=	1.11.4
+PORTREVISION=	1
 CATEGORIES=	print
 MASTER_SITES=	http://www.openprinting.org/download/cups-filters/
 
@@ -27,7 +28,7 @@ SHEBANG_FILES=	filter/braille/drivers/generic/brftoembosser.in \
 		filter/braille/filters/imagetobrf.in \
 		filter/braille/filters/texttobrf.in
 USE_GNOME=	glib20
-USE_RC_SUBR=	cups_browsed
+USE_OPENRC_SUBR=	cups_browsed
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-shell=/bin/sh \
 		ZLIB_CFLAGS=" " ZLIB_LIBS="-lz"
