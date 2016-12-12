@@ -3,7 +3,7 @@
 
 PORTNAME=	avahi
 PORTVERSION=	0.6.31
-PORTREVISION?=	5
+PORTREVISION?=	6
 CATEGORIES?=	net dns
 MASTER_SITES=	http://www.avahi.org/download/
 PKGNAMESUFFIX?=	-app
@@ -38,6 +38,8 @@ CONFIGURE_ARGS?=--with-distro=freebsd \
 CPPFLAGS+=	-I${LOCALBASE}/include -DHAVE_KQUEUE
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
+
+USE_OPENRC_SUBR=	avahi-daemon avahi-dnsconfd
 
 .if ${AVAHI_SLAVE} == no
 CONFLICTS=	howl-[0-9]*
