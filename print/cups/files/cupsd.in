@@ -17,7 +17,7 @@ name="CUPS Printing Daemon"
 depend()
 {
 	need localmount
-	after dbus avahi_daemon
+	after dbus avahi-daemon
 }
 
 start() {
