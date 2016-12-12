@@ -12,7 +12,7 @@
 
 pidfile=/var/run/avahi-daemon/pid
 name="avahi daemon"
-command=/usr/local/sbin/avahi-daemon
+command=%%PREFIX%%/sbin/avahi-daemon
 command_args="-D ${avahi_daemon_flags}"
 
 depend()

@@ -16,7 +16,7 @@
 # DNS servers in a DHCP-like fashion with mDNS.
 #
 name="avahi dnsconfd"
-command=/usr/local/sbin/avahi-dnsconfd
+command=%%PREFIX%%/sbin/avahi-dnsconfd
 command_args="-D ${avahi_dnsconfd_flags}"
 pidfile=/var/run/avahi-dnsconfd.pid
 
