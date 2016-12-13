@@ -18,7 +18,8 @@ LIB_DEPENDS=	libpopt.so:devel/popt \
 		libgtkspell.so:textproc/gtkspell \
 		liblcms.so:graphics/lcms \
 		libpng.so:graphics/png \
-		libMagick++-6.so:graphics/ImageMagick
+		libMagick++-6.so:graphics/ImageMagick \
+	  libgomp.so:devel/openmp
 #RUN_DEPENDS=	p5-XML-XQL>=0:textproc/p5-XML-XQL
 
 USE_GNOME=	gtkmm24 intlhack libxslt
