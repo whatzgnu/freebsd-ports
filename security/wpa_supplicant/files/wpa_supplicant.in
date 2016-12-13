@@ -9,58 +9,93 @@
 # This file may not be copied, modified, propagated, or distributed
 # except according to the terms contained in the LICENSE file.
 
-command=%%PREFIX%%/sbin/wpa_supplicant
+BIN=%%PREFIX%%/sbin/wpa_supplicant
 : ${wpa_supplicant_conf:=/etc/wpa_supplicant.conf}
-wpa_supplicant_if=${wpa_supplicant_if:+-i}$wpa_supplicant_if
-command_args="$wpa_supplicant_args -B -c$wpa_supplicant_conf $wpa_supplicant_if"
-name="WPA Supplicant Daemon"
+
+wpa=${RC_SVCNAME##*.}
+if [ -n "$wpa" -a "$wpa" != "wpa_supplicant" ]; then
+        wpa_device="$wpa"
+        pidfile="/var/run/wpa_supplicant-${wpa_device}.pid"
+fi
+
+wpa_args="$wpa_supplicant_args -B -c$wpa_supplicant_conf"
+name="wpa_supplicant"
+[ -n "$wpa_device" ] && name="$name ($wpa_device)"
 
 depend()
 {
-        provide wpa_supplicant
         need localmount
         after bootmisc modules devd network
 	before dhcpcd
-	keyword -shutdown -stop
+	keyword -shutdown -stop -jail
 }
 
 find_wireless()
 {
-	local iface=
-
-	for iface in $(sysctl -b net.wlan.devices 2>/dev/null); do
-		echo "${iface##*/}"
+	local _devs
+	for i in `ifconfig -l 2>/dev/null`
+	do
+		echo $i | grep -q "^wlan"
+		if [ $? -eq 0 ] ; then
+			_devs="$_devs $i"
+		fi
 	done
+
+	echo "$_devs"
 }
 
-append_wireless()
+start_wpa_service()
 {
-	local iface= i=
-
-	iface=$(find_wireless)
-	if [ -n "$iface" ]; then
-	wnum="0"
-		for i in $iface; do
-			command_args="$command_args -iwlan${wnum}"
-			wnum=`expr $wnum + 1`
-		done
-	else
-                einfo "Could not find a wireless interface"
-                mark_service_inactive
-                return 1
-	fi
-}
-
-start_pre()
-{
-	case " $command_args" in
-	*" -i"*) ;;
-	*) append_wireless || exit 1 ;;
-	esac
-
+	device="$1"
         if [ ! -e "/etc/wpa_supplicant.conf" ] ; then
 		echo "ctrl_interface=/var/run/wpa_supplicant" > /etc/wpa_supplicant.conf
 		chmod 600 /etc/wpa_supplicant.conf
         fi
 
+	wpa_args="$wpa_args -i${device} -P ${pidfile}"
+
+	start-stop-daemon --start --exec $BIN -p ${pidfile} -- ${wpa_args}
+}
+
+start()
+{
+	if [ -n "$wpa_device" ] ; then
+		ebegin "Starting $name"
+		start_wpa_service "$wpa_device"
+		stat=$?
+		eend $stat
+		return $stat
+	fi
+
+	# Start any sub-devices
+	for i in $(find_wireless)
+	do
+		ln -fs %%PREFIX%%/etc/init.d/wpa_supplicant %%PREFIX%%/etc/init.d/wpa_supplicant.${i}
+		/sbin/service wpa_supplicant.${i} start
+	done
+	return 0
+}
+
+stop_wpa_service()
+{
+	start-stop-daemon --stop --exec $BIN -p ${pidfile} -- ${wpa_args}
+}
+
+stop()
+{
+	if [ -n "$wpa_device" ] ; then
+		ebegin "Stopping $name"
+		stop_wpa_service "$wpa_device"
+		stat=$?
+		eend $stat
+		return $stat
+	fi
+
+	# Stopping any sub-devices
+	for i in $(find_wireless)
+	do
+		ln -fs %%PREFIX%%/etc/init.d/wpa_supplicant %%PREFIX%%/etc/init.d/wpa_supplicant.${i}
+		/sbin/service wpa_supplicant.${i} stop
+	done
+	return 0
 }
