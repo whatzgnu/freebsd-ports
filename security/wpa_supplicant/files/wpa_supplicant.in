@@ -18,10 +18,10 @@ name="WPA Supplicant Daemon"
 depend()
 {
         provide wpa_supplicant
-        need localmount net
+        need localmount
         after bootmisc modules devd network
 	before dhcpcd
-	keyword -shutdown
+	keyword -shutdown -stop
 }
 
 find_wireless()

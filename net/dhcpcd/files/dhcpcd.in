@@ -10,15 +10,66 @@
 # except according to the terms contained in the LICENSE file.
 
 command=%%PREFIX%%/sbin/dhcpcd
-pidfile=/var/run/dhcpcd.pid
-command_args="-q $interfaces"
+command_args="-q"
+
+dhcpcd=${RC_SVCNAME##*.}
+if [ -n "$dhcpcd" -a "$dhcpcd" != "dhcpcd" ]; then
+        dhcpcd_device="$dhcpcd"
+fi
 name="DHCP Client Daemon"
+[ -n "$dhcpcd_device" ] && name="$name ($dhcpcd_device)"
+
 
 depend()
 {
 	provide dhcp
-	need localmount net
+	need localmount
 	after bootmisc modules devd network
+	keyword -stop
+}
+
+uniqify()
+{
+	local result= i=
+	for i; do
+		case " $result " in
+		*" $i "*);;
+		*) result="$result $i";;
+		esac
+	done
+	echo "${result# *}"
+}
+
+reverse()
+{
+	local result= i=
+	for i; do
+		result="$i $result"
+	done
+	echo "${result# *}"
+}
+
+sys_interfaces()
+{
+	ifconfig -l$1
+}
+
+auto_interfaces()
+{
+	local ifs= c= f=
+
+	for f in /etc/ifconfig.*; do
+		[ -f "$f" ] && printf "%s" "${f##*.} "
+	done
+	for f in /etc/ip.*; do
+		[ -f "$f" ] && printf "%s" "${f##*.} "
+	done
+	echo
+}
+
+interfaces()
+{
+	uniqify $(sys_interfaces "$@") $interfaces $(auto_interfaces)
 }
 
 stop_pre()
@@ -31,44 +82,32 @@ stop_pre()
 	fi
 }
 
-start_pre()
+check_dhcpcd()
 {
-	if [ ! -e /etc/rc.conf ] ; then return 1 ; fi
-
 	# Get our ifconfig settings
 	have_ipv4="false"
 	have_ipv6="false"
-	count=0
-	while read i
-	do
-		echo "$i" | grep -q "^ifconfig_"
-		if [ $? -ne 0 ] ; then continue ; fi
 
-		val=$(echo $i | cut -d = -f 2)
-		echo $val | grep -q -e "DHCP" -e "IPV6" -e "ALL"
-		if [ $? -ne 0 ] ; then continue ; fi
+        int="$1"
+	intv=$(shell_var "$int")
+	eval upcmd=\$ifup_$intv
+	for func in ip ifconfig; do
+		eval cmd=\$${func}_$intv
+		if [ -n "$cmd" -o -f /etc/"$func.$int" ]; then
+			cf=/etc/"$func.$int"
+			break
+		fi
+	done
 
-		echo $val | grep -q "DHCP"
-		if [ $? -eq 0 ] ; then have_ipv4="true"; fi
+	echo $cmd | grep -q "DHCP"
+	if [ $? -eq 0 ] ; then have_ipv4="true"; fi
 
-		echo $val | grep -q "IPV6"
-		if [ $? -eq 0 ] ; then have_ipv6="true"; fi
+	echo $cmd | grep -q "IPV6"
+	if [ $? -eq 0 ] ; then have_ipv6="true"; fi
 
-		echo $val | grep -q "ALL"
-		if [ $? -eq 0 ] ; then have_ipv4="true"; have_ipv6="true"; fi
+	echo $cmd | grep -q "ALL"
+	if [ $? -eq 0 ] ; then have_ipv4="true"; have_ipv6="true"; fi
 
-		device=$(echo $i | cut -d = -f 1 | sed 's|ifconfig_||g')
-		interfaces="$device $interfaces"
-		count=`expr $count + 1`
-	done < /etc/rc.conf
-
-	# If no interfaces are defined, time to stop
-	if [ -z "$interfaces" ] ; then
-		mark_service_inactive
-		return 1
-	fi
-
-	ebegin "Detected DHCP Client Daemon interfaces: $interfaces"
 
 	# This is a v4 only request?
 	if [ "$have_ipv6" = "false" ] ; then
@@ -80,12 +119,72 @@ start_pre()
 		command_args="${command_args} -6"
 	fi
 
-	# Enable Master mode on a single interface
-	if [ "$count" = "1" ] ; then
-		command_args="${command_args} -M"
+	# Is this device eben enabled for DHCP?
+	if [ "$have_ipv4" != "true" -a "$have_ipv6" != "true" ] ; then
+		return 1
 	fi
 
-        command_args="${command_args} $interfaces"
+        command_args="${command_args} $int"
 	export command_args
-	eend 0 ""
+
+	# Determine the pidfile
+ 	export pidfile=$(${command} -P $command_args)
+
+	return 0
+
+}
+
+start()
+{
+	if [ ! -e /etc/rc.conf ] ; then return 1 ; fi
+
+	if [ -n "$dhcpcd_device" ] ; then
+		check_dhcpcd "$dhcpcd_device"
+		if [ $? -ne 0 ] ; then return 1; fi
+		ebegin "Starting $name"
+		start-stop-daemon --start --exec $command -m -b -p $pidfile -- $command_args
+		stat=$?
+		eend $stat
+		return $stat
+	fi
+	
+        # Spawn the network sub-services
+	for int in $(interfaces); do
+		check_dhcpcd "$int"
+		if [ $? -ne 0 ] ; then continue ; fi
+
+		# Skip devices not active
+		ifconfig $int | grep -q "no carrier"
+		if [ $? -eq 0 ] ; then continue ; fi
+
+		# We have a device that needs dhcpcd
+		ln -fs /usr/local/etc/init.d/dhcpcd /usr/local/etc/init.d/dhcpcd.${int}
+		/sbin/service dhcpcd.${int} start
+	done
+	return 0
+}
+
+
+stop()
+{
+	if [ -n "$dhcpcd_device" ] ; then
+		check_dhcpcd "$dhcpcd_device"
+		if [ $? -ne 0 ] ; then return 1; fi
+		ebegin "Stopping $name"
+		start-stop-daemon --stop --exec $command -p $pidfile
+		stat=$?
+		eend $stat
+		return $stat
+	fi
+	
+        # Spawn the network sub-services
+	for int in $(interfaces); do
+		check_dhcpcd "$int"
+		if [ $? -ne 0 ] ; then continue ; fi
+
+		# We have a device that needs dhcpcd
+		ln -fs /usr/local/etc/init.d/dhcpcd /usr/local/etc/init.d/dhcpcd.${int}
+		/sbin/service dhcpcd.${int} stop
+	done
+	return 0
 }
