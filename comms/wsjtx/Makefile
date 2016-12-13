@@ -22,7 +22,7 @@ RUN_DEPENDS=	${LOCALBASE}/bin/kvasd:comms/kvasd
 MAKE_JOBS_UNSAFE=	yes
 USE_GL=		yes
 USE_QT5=	gui buildtools qmake_build widgets multimedia concurrent serialport
-USES=		cmake compiler:c++11-lib dos2unix fortran pkgconfig tar:tgz
+USES=		cmake dos2unix fortran pkgconfig tar:tgz
 CMAKE_ARGS+=	-DPORT_BUILDING::STRING="ON" \
 		-DCMAKE_PREFIX_PATH+=${LOCALBASE}/wsjtx/lib
 WRKSRC=		${WRKDIR}/${PORTNAME}
