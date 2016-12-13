@@ -36,7 +36,8 @@ find_wireless()
 	for i in `ifconfig -l 2>/dev/null`
 	do
 		echo $i | grep -q "^wlan"
-		if [ $? -eq 0 ] ; then
+		if [ $? -ne 0 ] ; then continue; fi
+		if wpaif $i; then
 			_devs="$_devs $i"
 		fi
 	done
