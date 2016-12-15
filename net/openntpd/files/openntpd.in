@@ -3,20 +3,52 @@
 # See the Authors file at the top-level directory of this distribution and
 # https://github.com/OpenRC/openrc/blob/master/AUTHORS
 #
-# This file is part of OpenRC. It is subject to the license terms in
-# the LICENSE file found in the top-level directory of this
-# distribution and at https://github.com/OpenRC/openrc/blob/master/LICENSE
-# This file may not be copied, modified, propagated, or distributed
-# except according to the terms contained in the LICENSE file.
+# $FreeBSD$
+#
+# PROVIDE: openntpd
+# REQUIRE: DAEMON ntpdate
+# BEFORE:  LOGIN
+# KEYWORD: nojail shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# openntpd_enable (bool):	Set to NO by default.
+#				Set it to YES to enable openntpd.
+# openntpd_config (str):	Path to ntpd.conf
+#				Default: %%PREFIX%%/etc/ntpd.conf
+# openntpd_flags (str):		Flags passed to ntpd(8)
+#				Default: none
 
-: ${ntpd_config:=%%PREFIX%%/etc/ntpd.conf}
-: ${ntpd_drift:=/var/db/ntpd.drift}
+. /etc/rc.subr
+
+name=openntpd
+rcvar=openntpd_enable
+
+start_precmd="openntpd_checkconfig"
+restart_precmd="openntpd_checkconfig"
+configtest_cmd="openntpd_checkconfig"
+extra_commands="configtest"
+
+load_rc_config $name
+
+: ${openntpd_enable:="NO"}
+: ${openntpd_config:="%%PREFIX%%/etc/ntpd.conf"}
 
 command=%%PREFIX%%/sbin/ntpd
-required_files=$ntpd_config
-pidfile=/var/run/ntpd.pid
-command_args="$ntpd_args -f $ntpd_config -p $pidfile -s"
-name="Network Time Protocol Daemon"
+command_args="-f ${openntpd_config}"
+required_files=${openntpd_config}
+
+check_process()
+{
+        pgrep -f $command
+}
+
+openntpd_checkconfig()
+{
+	echo "Performing sanity check on ${name} configuration:"
+	eval ${command} ${command_args} ${openntpd_flags} -n
+}
 
 depend()
 {

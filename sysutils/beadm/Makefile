@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	beadm
-PORTVERSION=	1.5.7
+PORTVERSION=	1.2.6
+PORTREVISION=	0
 CATEGORIES=	sysutils
 
 MAINTAINER=	kmoore@FreeBSD.org
@@ -10,7 +11,7 @@ COMMENT=	Solaris-like utility to manage Boot Environments on ZFS
 LICENSE=	BSD2CLAUSE
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	kmoore134
+GH_ACCOUNT=	vermaden
 
 NO_BUILD=	YES
 

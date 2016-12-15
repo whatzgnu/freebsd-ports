@@ -3,7 +3,6 @@
 
 PORTNAME=	webcamd
 PORTVERSION=	4.8.0.4
-PORTREVISION=	3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.selasky.org/hans_petter/distfiles/ \
 		http://home.selasky.org:8192/distfiles/
@@ -18,7 +17,7 @@ LIB_DEPENDS=	libv4l1.so:multimedia/libv4l
 
 USES=		pkgconfig tar:bzip2 uidfix
 MAKE_ARGS=	LIBDIR="${LOCALBASE}/lib"
-USE_OPENRC_SUBR=	webcamd
+USE_RC_SUBR=	webcamd
 SUB_FILES=	webcamd.conf
 USE_LDCONFIG=	yes
 

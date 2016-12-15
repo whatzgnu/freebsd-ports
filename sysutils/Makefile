@@ -163,6 +163,7 @@
     SUBDIR += clsync
     SUBDIR += cluster-glue
     SUBDIR += cmdwatch
+    SUBDIR += cmocka
     SUBDIR += cmockery2
     SUBDIR += cmogstored
     SUBDIR += cmospwd
@@ -236,7 +237,6 @@
     SUBDIR += dolly
     SUBDIR += downtime
     SUBDIR += downtimed
-    SUBDIR += drwright
     SUBDIR += dsbbatmon
     SUBDIR += dsbdriverd
     SUBDIR += dsbmc
@@ -315,8 +315,6 @@
     SUBDIR += freebsd-snapshot
     SUBDIR += freecolor
     SUBDIR += freedt
-    SUBDIR += freenas-datastore
-    SUBDIR += freenas-dispatcher
     SUBDIR += freefilesync
     SUBDIR += freeipmi
     SUBDIR += freesbie
@@ -1125,6 +1123,7 @@
     SUBDIR += ts
     SUBDIR += tss
     SUBDIR += tty-clock
+    SUBDIR += ttyd
     SUBDIR += ttyload
     SUBDIR += tuptime
     SUBDIR += tw_cli

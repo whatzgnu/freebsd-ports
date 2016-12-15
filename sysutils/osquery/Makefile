@@ -3,7 +3,7 @@
 
 PORTNAME=	osquery
 PORTVERSION=	1.4.7
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	sysutils
 
 MAINTAINER=	zi@FreeBSD.org
@@ -20,7 +20,6 @@ BUILD_DEPENDS=	snappy>0:archivers/snappy \
 		doxygen:devel/doxygen \
 		${PYTHON_PKGNAMEPREFIX}MarkupSafe>0:textproc/py-MarkupSafe \
 		${PYTHON_PKGNAMEPREFIX}psutil>0:sysutils/py-psutil \
-		${PYTHON_PKGNAMEPREFIX}argparse>0:devel/py-argparse \
 		${PYTHON_PKGNAMEPREFIX}pexpect>0:misc/py-pexpect \
 		${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2  \
 		${PYTHON_PKGNAMEPREFIX}thrift>0:devel/py-thrift \
@@ -70,7 +69,6 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/tools/deployment/osquery.example.conf \
 		${STAGEDIR}${PREFIX}/etc/osquery.conf.sample
 
-post-stage:
 	${MKDIR} ${STAGEDIR}/var/db/osquery
 
 .include <bsd.port.post.mk>

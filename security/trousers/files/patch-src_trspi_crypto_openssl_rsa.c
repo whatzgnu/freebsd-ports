@@ -1,4 +1,4 @@
---- src/trspi/crypto/openssl/rsa.c.orig	2016-11-22 00:00:39 UTC
+--- src/trspi/crypto/openssl/rsa.c.orig	2016-11-23 12:26:19 UTC
 +++ src/trspi/crypto/openssl/rsa.c
 @@ -38,7 +38,7 @@
  #define DEBUG_print_openssl_errors()

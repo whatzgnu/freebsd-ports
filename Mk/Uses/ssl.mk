@@ -1,4 +1,4 @@
-# $FreeBSD: head/Mk/Uses/ssl.mk 421374 2016-09-05 15:21:06Z novel $
+# $FreeBSD$
 #
 # Handle dependency on *ssl ports.
 #
@@ -39,13 +39,6 @@ _SSL_RUN_DEP=	1
 _SSL_BUILD_DEP=	1
 .elif !empty(ssl_ARGS:Mrun)
 _SSL_RUN_DEP=	1
-.endif
-
-.if exists(${DESTDIR}/usr/lib/libtls.so)
-LIBRESSL_IS_OPENSSL=   yes
-.  if ${SSL_DEFAULT} == libressl
-SSL_DEFAULT=           base
-.  endif
 .endif
 
 .if ${SSL_DEFAULT} == base

@@ -120,6 +120,7 @@
     SUBDIR += drraw
     SUBDIR += drupal7
     SUBDIR += drupal7-wysiwyg
+    SUBDIR += drupal8
     SUBDIR += drush
     SUBDIR += dtse
     SUBDIR += dummyflash
@@ -190,7 +191,6 @@
     SUBDIR += gallery3
     SUBDIR += gatling
     SUBDIR += gecko-mediaplayer
-    SUBDIR += gecko-sharp20
     SUBDIR += geeklog
     SUBDIR += geeknote
     SUBDIR += geneweb
@@ -401,6 +401,7 @@
     SUBDIR += mediawiki123
     SUBDIR += mediawiki126
     SUBDIR += mediawiki127
+    SUBDIR += mediawiki128
     SUBDIR += mergelog
     SUBDIR += mgstat
     SUBDIR += mhonarc
@@ -519,6 +520,7 @@
     SUBDIR += moodle29
     SUBDIR += moodle30
     SUBDIR += moodle31
+    SUBDIR += moodle32
     SUBDIR += mozplugger
     SUBDIR += multisort
     SUBDIR += multiwatch
@@ -539,6 +541,9 @@
     SUBDIR += nghttp2
     SUBDIR += nginx
     SUBDIR += nginx-devel
+    SUBDIR += nginx-full
+    SUBDIR += nginx-lite
+    SUBDIR += nginx-naxsi
     SUBDIR += nibbleblog
     SUBDIR += node
     SUBDIR += node012
@@ -552,6 +557,7 @@
     SUBDIR += npm
     SUBDIR += npm012
     SUBDIR += npm2
+    SUBDIR += npm3
     SUBDIR += nspluginwrapper
     SUBDIR += obhttpd
     SUBDIR += ocaml-net
@@ -2016,6 +2022,7 @@
     SUBDIR += rubygem-rack-protection
     SUBDIR += rubygem-rack-ssl
     SUBDIR += rubygem-rack-test
+    SUBDIR += rubygem-rack14
     SUBDIR += rubygem-rack15
     SUBDIR += rubygem-rack16
     SUBDIR += rubygem-rails
@@ -2069,8 +2076,8 @@
     SUBDIR += rubygem-underscore-rails
     SUBDIR += rubygem-unicorn
     SUBDIR += rubygem-unicorn-worker-killer
-    SUBDIR += rubygem-url-mount
     SUBDIR += rubygem-url_escape
+    SUBDIR += rubygem-url_mount
     SUBDIR += rubygem-wasabi
     SUBDIR += rubygem-webkit-gtk
     SUBDIR += rubygem-webkit-gtk2

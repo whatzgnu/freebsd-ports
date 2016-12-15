@@ -3,7 +3,6 @@
 
 PORTNAME=	cups
 PORTVERSION=	2.2.1
-PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	print
 
@@ -41,7 +40,7 @@ CONFIGURE_ARGS=	--disable-dnssd						\
 USES=		cpe gmake iconv localbase pkgconfig tar:bzip2
 CPE_VENDOR=	apple
 USE_LDCONFIG=	yes
-USE_OPENRC_SUBR=	cupsd
+USE_RC_SUBR=	cupsd
 
 GROUPS=		cups
 USERS=		cups

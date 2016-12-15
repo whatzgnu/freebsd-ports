@@ -3,7 +3,6 @@
 
 PORTNAME=	pefs
 DISTVERSION=	2016-06-11
-PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	LOCAL/gleb
 PKGNAMESUFFIX=	-kmod
@@ -29,7 +28,7 @@ PLIST_FILES=	sbin/pefs \
 		lib/pam_pefs.so \
 		man/man8/pam_pefs.8.gz \
 		man/man8/pefs.8.gz \
-		/${KMODDIR}/pefs.ko
+		${KMODDIR}/pefs.ko
 
 .include <bsd.port.options.mk>
 

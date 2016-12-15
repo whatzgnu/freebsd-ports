@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	teeworlds
-PORTVERSION=	0.6.3
+PORTVERSION=	0.6.4
 PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	https://downloads.teeworlds.com/ \
@@ -25,7 +25,7 @@ BAM_WRKSRC=	${WRKDIR}/bam-${BAM_VERSION}
 BAM_TARGET=	release
 USE_GCC=	any
 
-PLIST_FILES+=	bin/${PORTNAME}_srv
+PLIST_FILES=	bin/${PORTNAME}_srv
 PORTDATA=	*
 
 OPTIONS_DEFINE=	SERVER_ONLY

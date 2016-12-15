@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	syncthing
-PORTVERSION=	0.14.7
-PORTREVISION=	1
+PORTVERSION=	0.14.12
 DISTVERSIONPREFIX=	v
 CATEGORIES=	net
 
@@ -14,7 +13,7 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/go:lang/go
 
 USE_GITHUB=	yes
 GH_SUBDIR=	src/github.com/${PORTNAME}/${PORTNAME}
-USE_OPENRC_SUBR=syncthing
+USE_RC_SUBR=	syncthing
 PLIST_FILES=	bin/syncthing
 PORTDOCS=	*
 

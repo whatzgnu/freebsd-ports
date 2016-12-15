@@ -321,7 +321,6 @@
     SUBDIR += gtimelapse
     SUBDIR += gtk-update-icon-cache
     SUBDIR += gtkam
-    SUBDIR += gtkdps
     SUBDIR += gts
     SUBDIR += guilib
     SUBDIR += gwenview-kde4
@@ -859,6 +858,7 @@
     SUBDIR += py-imageio
     SUBDIR += py-imagesize
     SUBDIR += py-imgurpython
+    SUBDIR += py-leather
     SUBDIR += py-mayavi
     SUBDIR += py-mcomix
     SUBDIR += py-ming
@@ -1011,6 +1011,7 @@
     SUBDIR += smillaenlarger
     SUBDIR += springgraph
     SUBDIR += squish
+    SUBDIR += ssocr
     SUBDIR += sswf
     SUBDIR += stamp
     SUBDIR += structuresynth

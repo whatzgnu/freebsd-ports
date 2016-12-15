@@ -15,13 +15,6 @@ _INCLUDE_USES_SHARED_MIME_INFO_MK=	yes
 IGNORE=	USES=shared-mime-info does not require args
 .endif
 
-#  This basically elevates GTK2 as a requirement for all graphical pkgs
-#  since the "update-mime-database" utility depends on glib20
-# (but the freedesktop database files are needed by many things)
-#
-#  Re-evaluate this functionality if we can find an alternative C/C++  tool
-#  for extracting the database files without "update-mime-database"
-
 BUILD_DEPENDS+=	update-mime-database:misc/shared-mime-info
 RUN_DEPENDS+=	update-mime-database:misc/shared-mime-info
 PLIST_FILES+=	"@shared-mime-info share/mime"

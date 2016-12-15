@@ -56,7 +56,7 @@ WITH_OPENSSL_PORT=yes
 .include <bsd.port.pre.mk>
 
 .if empty(PORT_OPTIONS:MBUNDLED_SSL)
-.if !empty(SSL_DEFAULT:M*libressl*)
+.if !empty(SSL_DEFAULT:Mlibressl*)
 IGNORE=		cannot build node.js with LibreSSL. You must enable BUNDLED_SSL
 .endif
 .endif

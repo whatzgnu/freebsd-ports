@@ -2,7 +2,6 @@
 
 PORTNAME=	wpa_supplicant
 PORTVERSION=	2.6
-PORTREVISION=	3
 CATEGORIES=	security net
 MASTER_SITES=	http://w1.fi/releases/
 
@@ -18,7 +17,6 @@ INSTALL_WRKSRC=	${WRKSRC}/src
 CFLAGS+=	${CPPFLAGS} # USES=readline only augments CPPFLAGS and LDFLAGS
 CFLAGS+=	-I${OPENSSLINC}
 LDFLAGS+=	-L${OPENSSLLIB} -lutil
-USE_OPENRC_SUBR=wpa_supplicant
 MAKE_ENV=	V=1
 
 SUB_FILES=	pkg-message

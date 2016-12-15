@@ -3060,6 +3060,56 @@ fetch-url-list-int:
 fetch-urlall-list:
 	@cd ${.CURDIR} && ${SETENV} FORCE_FETCH_ALL=yes ${MAKE} fetch-url-list-int
 .endif
+#
+# Prints out a list of files to fetch (useful to do a batch fetch)
+
+.if !target(fetch-list)
+fetch-list:
+.if !empty(DISTFILES)
+	@${SETENV} \
+			${_DO_FETCH_ENV} ${_MASTER_SITES_ENV} \
+			dp_SITE_FLAVOR=MASTER \
+			${SH} ${SCRIPTSDIR}/do-fetch.sh ${DISTFILES:C/.*/'&'/}
+.endif
+.if defined(PATCHFILES) && !empty(PATCHFILES)
+	@${SETENV} \
+			${_DO_FETCH_ENV} ${_PATCH_SITES_ENV} \
+			dp_SITE_FLAVOR=PATCH \
+			${SH} ${SCRIPTSDIR}/do-fetch.sh ${PATCHFILES:C/:-p[0-9]//:C/.*/'&'/}
+.endif
+.endif
+
+# Used by fetch-urlall-list and fetch-url-list
+
+.if !target(fetch-url-list-int)
+fetch-url-list-int:
+.if !empty(DISTFILES)
+	@${SETENV} \
+			${_DO_FETCH_ENV} ${_MASTER_SITES_ENV} \
+			dp_SITE_FLAVOR=MASTER \
+			${SH} ${SCRIPTSDIR}/do-fetch.sh ${DISTFILES:C/.*/'&'/}
+.endif
+.if defined(PATCHFILES) && !empty(PATCHFILES)
+	@${SETENV} \
+			${_DO_FETCH_ENV} ${_PATCH_SITES_ENV} \
+			dp_SITE_FLAVOR=PATCH \
+			${SH} ${SCRIPTSDIR}/do-fetch.sh ${PATCHFILES:C/:-p[0-9]//:C/.*/'&'/}
+.endif
+.endif
+
+# Prints out all the URL for all the DISTFILES and PATCHFILES.
+
+.if !target(fetch-urlall-list)
+fetch-urlall-list:
+	@cd ${.CURDIR} && ${SETENV} FORCE_FETCH_ALL=yes ${MAKE} fetch-url-list-int
+.endif
+
+# Prints the URL for all the DISTFILES and PATCHFILES that are not here
+
+.if !target(fetch-url-list)
+fetch-url-list: fetch-url-list-int
+.endif
+
 
 # Prints the URL for all the DISTFILES and PATCHFILES that are not here
 
@@ -4617,9 +4667,9 @@ fake-pkg: create-manifest
 	@${ECHO_MSG} "===>   Registering installation for ${PKGNAME}"
 .endif
 .if defined(INSTALLS_DEPENDS)
-	@${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CMD} -d ${STAGE_ARGS} -m ${METADIR} -f ${TMPPLIST}
+	@${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_REGISTER} -d ${STAGE_ARGS} -m ${METADIR} -f ${TMPPLIST}
 .else
-	@${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CMD} ${STAGE_ARGS} -m ${METADIR} -f ${TMPPLIST}
+	@${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_REGISTER} ${STAGE_ARGS} -m ${METADIR} -f ${TMPPLIST}
 .endif
 	@${RM} -r ${METADIR}
 .endif
@@ -5279,7 +5329,7 @@ _STAGE_SEQ=		050:stage-message 100:stage-dir 150:run-depends \
 				400:generate-plist 450:pre-su-install 475:create-users-groups \
 				500:do-install 550:kmod-post-install 700:post-install \
 				750:post-install-script 800:post-stage 850:compress-man \
-				860:install-rc-script 861:install-openrc-script 870:install-ldconfig-file \
+				860:install-rc-script 870:install-ldconfig-file \
 				880:install-license 890:install-desktop-entries \
 				900:add-plist-info 910:add-plist-docs 920:add-plist-examples \
 				930:add-plist-data 940:add-plist-post ${POST_PLIST:C/^/990:/} \

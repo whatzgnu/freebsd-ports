@@ -46,9 +46,17 @@ OPTIONS_DEFAULT_amd64=	SSE
 DEBUG_CONFIGURE_ENABLE=	debug
 SSE_VARS=	SSE_FLAGS="-mmmx -msse"
 
+DEBUG_CONFIGURE_ENABLE=	debug
+SSE_VARS=	SSE_FLAGS="-mmmx -msse"
+
 BROKEN_powerpc64=	Does not build
 
 MAKE_JOBS_UNSAFE=	yes
+
+.if ${ARCH} != amd64 && ${ARCH} != i386
+SSE_FLAGS=
+SSE_VARS=
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e \

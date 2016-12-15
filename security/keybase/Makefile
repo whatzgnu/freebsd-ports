@@ -21,4 +21,7 @@ PLIST_FILES=	bin/keybase
 GH_PROJECT=	client
 USE_GITHUB=	yes
 
+post-patch:
+	@${REINPLACE_CMD} -e '1 s|,amd64||' ${WRKSRC}/vendor/github.com/keybase/go-ps/process_freebsd.go
+
 .include <bsd.port.mk>

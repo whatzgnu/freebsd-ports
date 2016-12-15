@@ -2,7 +2,7 @@
 
 PORTNAME=	openntpd
 PORTVERSION=	6.0p1
-PORTREVISION=	3
+PORTREVISION=	2
 PORTEPOCH=	2
 CATEGORIES=	net
 MASTER_SITES=	OPENBSD/OpenNTPD
@@ -18,8 +18,6 @@ USE_RC_SUBR=	openntpd
 USERS=		_ntp
 GROUPS=		_ntp
 
-USE_OPENRC_SUBR=openntpd
-
 USES=		ssl
 
 GNU_CONFIGURE=	yes
@@ -29,13 +27,13 @@ pre-build:
 	${REINPLACE_CMD} -e 's,%%PREFIX%%,${PREFIX},g' \
 	    ${WRKSRC}/src/ntpd.conf.5 ${WRKSRC}/src/ntpd.8
 
-post-stage:
+post-install:
 	cd ${STAGEDIR}${PREFIX}/etc && ${MV} ntpd.conf ntpd.conf.sample
 
 .include <bsd.port.pre.mk>
 
 # Requires libtls from LibreSSL
-.if ${SSL_DEFAULT:Mlibressl*} || defined(LIBRESSL_IS_OPENSSL)
+.if ${SSL_DEFAULT:Mlibressl*}
 CPPFLAGS+=		-I${OPENSSLINC}
 LDFLAGS+=		-L${OPENSSLLIB}
 .else # SSL_DEFAULT

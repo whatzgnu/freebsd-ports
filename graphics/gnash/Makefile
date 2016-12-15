@@ -3,12 +3,14 @@
 
 PORTNAME=	gnash
 PORTVERSION=	0.8.10
-PORTREVISION=	18
+PORTREVISION=	19
 CATEGORIES=	graphics
 MASTER_SITES=	GNU/${PORTNAME}/${PORTVERSION}/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GNU Flash movie player
+
+LICENSE=	GPLv3
 
 LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 		libltdl.so:devel/libltdl \
@@ -19,15 +21,14 @@ LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 
 CONFLICTS=	gnash-devel-[0-9]*
 
-USES=		cpe gmake jpeg kde:4 libtool pkgconfig tar:bzip2
+USES=		cpe tar:bzip2 pkgconfig gmake libtool jpeg
+CPE_VENDOR=	gnu
 GNU_CONFIGURE=	yes
-USE_GCC=	any
 WANT_GSTREAMER=	yes
 USE_GNOME=	libxml2
 USE_XORG=	x11 xau xdmcp xext xi xinerama ice sm xv
 INSTALLS_ICONS=	yes
 SYSCONFIGDIR=	${PREFIX}/etc
-CPE_VENDOR=	gnu
 
 # jemalloc leads to infinite recursion on FreeBSD
 CONFIGURE_ARGS=	--with-boost-incl="${LOCALBASE}/include" \
@@ -65,13 +66,10 @@ FFMPEG2_DESC=	ffmpeg2 media handler (broken)
 GSTREAMER_DESC=	GStreamer media handler
 VAAPI_DESC=	VAAPI support (requires FFMPEG)
 
+KDE4_USES=	kde:4
 CYGNAL_CONFIGURE_ENABLE=	cygnal
 
 .include <bsd.port.options.mk>
-
-.if ${OSVERSION} > 1000000
-BROKEN=	unable to link in libboost_system
-.endif
 
 # Cygnal option processing
 .if ${PORT_OPTIONS:MCYGNAL}

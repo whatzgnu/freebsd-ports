@@ -1,4 +1,4 @@
-# $FreeBSD: head/www/obhttpd/Makefile 417767 2016-06-29 14:22:47Z mat $
+# $FreeBSD$
 
 PORTNAME=	obhttpd
 PORTVERSION=	5.9.20160601
@@ -49,7 +49,7 @@ post-install:
 
 .include <bsd.port.pre.mk>
 
-.if empty(SSL_DEFAULT:M*libressl*) && !defined(LIBRESSL_IS_OPENSSL)
+.if empty(SSL_DEFAULT:Mlibressl*)
 IGNORE=		Need LibreSSL to build. set DEFAULT_VERSIONS+=ssl=libressl and rebuild everything.
 .endif
 

@@ -1,4 +1,10 @@
-#!/sbin/openrc-run
+#!/bin/sh
+
+# $FreeBSD$
+#
+# PROVIDE: cups_browsed
+# REQUIRE: cupsd %%AVAHI_DAEMON%%
+# KEYWORD: shutdown
 #
 # Copyright (c) 2007-2015 The OpenRC Authors.
 # See the Authors file at the top-level directory of this distribution and

@@ -1,3 +1,2 @@
-TIMESTAMP = 1480443915
-SHA256 (trueos-dhcpcd-7.0-6fd3d98507ee18dce98bd58220d4ad1462ba6eae_GH0.tar.gz) = 72cd1672cfd2a2d36d851b5bcbc280373fa7ea4a17ed53093eea0c0336461fef
-SIZE (trueos-dhcpcd-7.0-6fd3d98507ee18dce98bd58220d4ad1462ba6eae_GH0.tar.gz) = 267757
+SHA256 (dhcpcd-6.11.0.tar.xz) = 31c2cd327657f11c427fe5044f74c5b942e70450fa43ceabf4b25f3fd4999959
+SIZE (dhcpcd-6.11.0.tar.xz) = 187580

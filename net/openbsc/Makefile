@@ -1,4 +1,4 @@
-# $FreeBSD: head/net/openbsc/Makefile 404614 2015-12-28 02:35:55Z junovitch $
+# $FreeBSD$
 
 PORTNAME=	openbsc
 PORTVERSION=	0.15.0

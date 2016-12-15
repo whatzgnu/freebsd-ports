@@ -3,6 +3,7 @@
 
 PORTNAME=	doublecmd
 PORTVERSION=	0.7.6
+PORTREVISION=	1
 CATEGORIES=	x11-fm
 MASTER_SITES=	SF/${PORTNAME}/Double%20Commander%20Source
 DISTNAME=	${PORTNAME}-${PORTVERSION}-src
@@ -30,7 +31,7 @@ WANT_GNOME=	yes
 PLIST=		${WRKDIR}/pkg-plist
 
 PROJECT_FILE=	src/doublecmd.lpi
-LAZARUS_VER=	1.6.0
+LAZARUS_VER=	1.6.2
 LAZBUILD_CMD=	${LOCALBASE}/bin/lazbuild -d --pcp=${WRKSRC}/tmppcp
 LAZARUS_DIR=	${LOCALBASE}/share/lazarus-${LAZARUS_VER}
 MAKE_ENV+=	LDVER=ld.bfd # for DragonFly
@@ -367,7 +368,7 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}/${DIRE}
 	@cd ${WRKSRC}/${DIRE} && \
 		${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${DATADIR}/${DIRE}/{}" \; && \
-			${FIND} * -type f -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${DATADIR}/${DIRE}/{}" \;
+			${FIND} * -type f -exec ${INSTALL_DATA} {} "${STAGEDIR}${DATADIR}/${DIRE}/{}" \;
 .endfor
 
 .for FILE in doublecmd.ext.example pixmaps.txt multiarc.ini install/linux/doublecmd.xml
@@ -386,7 +387,7 @@ post-install:
 .if ${PORT_OPTIONS:MDOCS}
 	@cd ${DOCSRC} && \
 		${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${DOCSDIR}/{}" \; && \
-			${FIND} * -type f -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${DOCSDIR}/{}" \;
+			${FIND} * -type f -exec ${INSTALL_DATA} {} "${STAGEDIR}${DOCSDIR}/{}" \;
 .endif
 
 .include <bsd.port.mk>

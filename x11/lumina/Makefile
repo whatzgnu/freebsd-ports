@@ -48,12 +48,6 @@ USES=		desktop-file-utils qmake
 USE_GITHUB=	yes
 GH_ACCOUNT=	trueos
 
-#Setup the XCB library dependencies (USE_XCB macro does not appear to exist anymore)
-LIB_DEPENDS+=	libxcb-ewmh.so:x11/xcb-util-wm \
-		libxcb-icccm.so:x11/xcb-util-wm \
-		libxcb-image.so:x11/xcb-util-image \
-		libxcb-util.so:x11/xcb-util
-
 #Setup the qmake configuration options
 .if ${PORT_OPTIONS:MTRUEOS}
 QMAKE_ARGS=	DEFAULT_SETTINGS=TrueOS

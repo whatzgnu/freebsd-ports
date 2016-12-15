@@ -81,7 +81,6 @@
     SUBDIR += clit
     SUBDIR += clucene
     SUBDIR += clucene-qt4
-    SUBDIR += clucene-qt5
     SUBDIR += cmark
     SUBDIR += coccigrep
     SUBDIR += code2html
@@ -92,6 +91,8 @@
     SUBDIR += consul-template
     SUBDIR += crimson
     SUBDIR += cs-aspell
+    SUBDIR += cs-hunspell
+    SUBDIR += cs-hyphen
     SUBDIR += cs-mythes
     SUBDIR += csb-aspell
     SUBDIR += csv2latex
@@ -719,6 +720,7 @@
     SUBDIR += p5-Pod-Eventual
     SUBDIR += p5-Pod-HtmlEasy
     SUBDIR += p5-Pod-Markdown
+    SUBDIR += p5-Pod-MinimumVersion
     SUBDIR += p5-Pod-POM
     SUBDIR += p5-Pod-POM-View-HTML-Filter
     SUBDIR += p5-Pod-Parser
@@ -761,6 +763,9 @@
     SUBDIR += p5-SVG
     SUBDIR += p5-SVG-Parser
     SUBDIR += p5-Search-Elasticsearch
+    SUBDIR += p5-Search-Elasticsearch-Client-0_90
+    SUBDIR += p5-Search-Elasticsearch-Client-1_0
+    SUBDIR += p5-Search-Elasticsearch-Client-2_0
     SUBDIR += p5-Search-Estraier
     SUBDIR += p5-Search-Odeum
     SUBDIR += p5-Search-QueryParser
@@ -1438,6 +1443,7 @@
     SUBDIR += rubygem-github-markup
     SUBDIR += rubygem-gitlab-grit
     SUBDIR += rubygem-gitlab-linguist
+    SUBDIR += rubygem-gitlab-markup
     SUBDIR += rubygem-heredoc_unindent
     SUBDIR += rubygem-hikidoc
     SUBDIR += rubygem-html-pipeline
@@ -1635,6 +1641,7 @@
     SUBDIR += txt2html
     SUBDIR += txt2man
     SUBDIR += txt2tags
+    SUBDIR += UCD
     SUBDIR += uchardet
     SUBDIR += uim
     SUBDIR += uim-el

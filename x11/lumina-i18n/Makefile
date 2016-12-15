@@ -3,29 +3,26 @@
 
 PORTNAME=	lumina-i18n
 PORTVERSION=	1.0.0
-DISTVERSIONPREFIX=	v
-DISTVERSIONSUFFIX=	-Release
-#PORTREVISION=	1
 CATEGORIES=	x11
 
 MAINTAINER=	kmoore@FreeBSD.org
 COMMENT=	Lumina desktop environment localization files
 
 LICENSE=	BSD3CLAUSE
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	lumina>=0:x11/lumina
 
-USES=		tar:xz
-USE_QT5=	linguisttools_build
+NO_BUILD=	yes
+NO_ARCH=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	trueos
-
-NO_BUILD=	yes
+GH_PROJECT=	lumina-i18n
+GH_TAGNAME=	a96928d
 
 do-install:
-	@cd ${WRKSRC}/scripts && ./mkrelease.sh
-	${MKDIR} ${STAGEDIR}${PREFIX}/share/lumina-desktop/i18n
-	tar xvf ${WRKSRC}/dist/${PORTNAME}.txz -C ${STAGEDIR}${PREFIX}/share/lumina-desktop/i18n
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/lumina-desktop/i18n
+	${TAR} xvf ${WRKSRC}/dist/${PORTNAME}.txz -C ${STAGEDIR}${PREFIX}/share/lumina-desktop/i18n
 
 .include <bsd.port.mk>

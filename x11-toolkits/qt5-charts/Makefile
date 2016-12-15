@@ -1,10 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	charts
+DISTVERSIONPREFIX=	release-
 DISTVERSION=	2.1.0
+PORTREVISION=	1
 CATEGORIES=	x11-toolkits
 PKGNAMEPREFIX=	qt5-
-DISTVERSIONPREFIX=	release-
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt 5 charts module
@@ -21,8 +22,9 @@ GH_ACCOUNT=	qt
 GH_PROJECT=	qtcharts
 
 pre-configure:
-	# manuall run syncqt
-	mkdir -p ${CONFIGURE_WRKSRC}
+# Manually run syncqt. This can be dropped with the update to 5.7.0 as syncqt
+# is run upstream when creating the tarball.
+	${MKDIR} ${CONFIGURE_WRKSRC}
 	cd ${CONFIGURE_WRKSRC} && ${QT_BINDIR}/syncqt.pl -version ${PORTVERSION}
 
 .include <bsd.port.mk>

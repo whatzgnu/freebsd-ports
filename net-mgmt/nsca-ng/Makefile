@@ -39,7 +39,7 @@ PORTDOCS=	NEWS COPYING README PROTOCOL TODO
 IGNORE_FreeBSD_9=	Requires newer OpenSSL (set DEFAULT_VERSIONS+=ssl=openssl)
 .endif
 
-.if ${SSL_DEFAULT:M*libressl*}
+.if ${SSL_DEFAULT:Mlibressl*}
 IGNORE=	Requires PSK which is unsupported by the selected LibreSSL
 .endif
 

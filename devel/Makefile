@@ -11,6 +11,7 @@
     SUBDIR += R-cran-BH
     SUBDIR += R-cran-Defaults
     SUBDIR += R-cran-Hmisc
+    SUBDIR += R-cran-ModelMetrics
     SUBDIR += R-cran-R6
     SUBDIR += R-cran-RUnit
     SUBDIR += R-cran-Rcpp
@@ -516,6 +517,7 @@
     SUBDIR += erlang-jobs
     SUBDIR += erlang-jsx
     SUBDIR += erlang-jsxd
+    SUBDIR += erlang-katana
     SUBDIR += erlang-lager
     SUBDIR += erlang-lager_syslog
     SUBDIR += erlang-meck
@@ -4049,7 +4051,6 @@
     SUBDIR += py-archetypes.schemaextender
     SUBDIR += py-argcomplete
     SUBDIR += py-argh
-    SUBDIR += py-argparse
     SUBDIR += py-args
     SUBDIR += py-arrow
     SUBDIR += py-aspects
@@ -4324,6 +4325,7 @@
     SUBDIR += py-memory_profiler
     SUBDIR += py-mercurialserver
     SUBDIR += py-mez_xml
+    SUBDIR += py-microversion-parse
     SUBDIR += py-mimeparse
     SUBDIR += py-minimongo
     SUBDIR += py-mock
@@ -4366,7 +4368,10 @@
     SUBDIR += py-orbit
     SUBDIR += py-ordered-set
     SUBDIR += py-ordereddict
+    SUBDIR += py-os-brick
     SUBDIR += py-os-client-config
+    SUBDIR += py-os-vif
+    SUBDIR += py-os-win
     SUBDIR += py-osc-lib
     SUBDIR += py-oslo.cache
     SUBDIR += py-oslo.concurrency
@@ -4378,9 +4383,13 @@
     SUBDIR += py-oslo.messaging
     SUBDIR += py-oslo.middleware
     SUBDIR += py-oslo.policy
+    SUBDIR += py-oslo.privsep
+    SUBDIR += py-oslo.reports
+    SUBDIR += py-oslo.rootwrap
     SUBDIR += py-oslo.serialization
     SUBDIR += py-oslo.service
     SUBDIR += py-oslo.utils
+    SUBDIR += py-oslo.versionedobjects
     SUBDIR += py-osprofiler
     SUBDIR += py-palm
     SUBDIR += py-parsedatetime
@@ -4621,6 +4630,7 @@
     SUBDIR += py-thriftpy
     SUBDIR += py-timelib
     SUBDIR += py-tinyarray
+    SUBDIR += py-tinyrpc
     SUBDIR += py-tipper
     SUBDIR += py-total-ordering
     SUBDIR += py-tox
@@ -4674,8 +4684,10 @@
     SUBDIR += py-wcwidth
     SUBDIR += py-weakrefmethod
     SUBDIR += py-weblib
+    SUBDIR += py-websockify
     SUBDIR += py-wheel
     SUBDIR += py-wrapt
+    SUBDIR += py-wsgi_intercept
     SUBDIR += py-wsgi_xmlrpc
     SUBDIR += py-wsgitools
     SUBDIR += py-wsgiutils
@@ -4785,6 +4797,7 @@
     SUBDIR += py3-gobject3
     SUBDIR += py3-jsonschema
     SUBDIR += py3-libpeas
+    SUBDIR += py3-lxml
     SUBDIR += py3-nose
     SUBDIR += py3-pyicu
     SUBDIR += py3-pylru-cache
@@ -4971,6 +4984,7 @@
     SUBDIR += rubygem-aws-sdk-core
     SUBDIR += rubygem-aws-sdk-resources
     SUBDIR += rubygem-aws-sdk-v1
+    SUBDIR += rubygem-aws-sigv4
     SUBDIR += rubygem-axiom-types
     SUBDIR += rubygem-backports
     SUBDIR += rubygem-bacon
@@ -5210,6 +5224,8 @@
     SUBDIR += rubygem-multi_test
     SUBDIR += rubygem-murmurhash3
     SUBDIR += rubygem-mustache
+    SUBDIR += rubygem-mustermann
+    SUBDIR += rubygem-mustermann-grape
     SUBDIR += rubygem-mutter
     SUBDIR += rubygem-naught
     SUBDIR += rubygem-needle
@@ -5392,6 +5408,7 @@
     SUBDIR += rubygem-tins
     SUBDIR += rubygem-titlecase
     SUBDIR += rubygem-toml
+    SUBDIR += rubygem-tool
     SUBDIR += rubygem-transaction-simple
     SUBDIR += rubygem-travis
     SUBDIR += rubygem-treetop

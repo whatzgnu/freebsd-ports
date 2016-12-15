@@ -3,12 +3,24 @@
 name="VirtualBox Networking"
 vboxnet_modules="vboxdrv vboxnetflt:ng_vboxnetflt vboxnetadp"
 
-depend() {
-	need net
-}
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# vboxnet_enable (bool):   Set to NO by default.
+#               Set it to YES to load network related kernel modules on startup
 
-start() {
-	ebegin "Starting ${SVCNAME}"
+. /etc/rc.subr
+
+name="vboxnet"
+rcvar=vboxnet_enable
+start_cmd="vboxnet_start"
+stop_cmd="vboxnet_stop"
+
+vboxnet_modules="vboxdrv vboxnetflt:ng_vboxnetflt vboxnetadp"
+
+vboxnet_start()
+{
 	local _k _m
 
 	for _m in ${vboxnet_modules}; do
@@ -25,11 +37,8 @@ start() {
 	# initialize configured host-only interfaces
 	LD_LIBRARY_PATH=%%PREFIX%%/lib %%PREFIX%%/bin/VBoxManage list hostonlyifs >/dev/null
 
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping ${SVCNAME}"
+vboxnet_stop()
+{
 	local _k _m _r
 
 	_r=
@@ -46,7 +55,6 @@ stop() {
 			fi
 		fi
 	done
-	eend 0
 }
 
 reload() {

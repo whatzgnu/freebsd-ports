@@ -1,5 +1,5 @@
 # Created by: Bernard Spil <brnrd@FreeBSD.org>
-# $FreeBSD: head/security/libressl-devel/Makefile 410481 2016-03-06 20:06:41Z brnrd $
+# $FreeBSD$
 
 PORTNAME=	libressl
 PORTVERSION=	2.5.0
@@ -33,12 +33,12 @@ CFLAGS+=	-fpic -DPIC
 INSTALL_TARGET=	install-strip
 TEST_TARGET=	check
 
-post-stage-NC-on:
+post-install:
+	${RM} -r ${STAGEDIR}/${PREFIX}/etc/ssl/cert.pem
+
+post-install-NC-on:
 	${INSTALL_PROGRAM} ${WRKSRC}/apps/nc/.libs/nc ${STAGEDIR}/${PREFIX}/bin/nc
 	${INSTALL_MAN} ${WRKSRC}/apps/nc/nc.1 ${STAGEDIR}/${PREFIX}/man/man1/nc.1
-
-post-stage:
-	${RM} -r ${STAGEDIR}/${PREFIX}/etc/ssl/cert.pem
 
 post-install-MAN3-off:
 	${RM} -r ${STAGEDIR}/${PREFIX}/man/man3

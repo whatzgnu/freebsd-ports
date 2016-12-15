@@ -2,6 +2,7 @@
 
 PORTNAME?=	mariadb
 PORTVERSION=	10.1.19
+PORTREVISION=	1
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://ftp.osuosl.org/pub/${SITESDIR}/ \
 		http://mirrors.supportex.net/${SITESDIR}/ \
@@ -104,9 +105,6 @@ OPTIONS_SUB=		yes
 # MySQL-Client part
 USES+=		readline
 GSSAPI_NONE_CMAKE_ON=	-DPLUGIN_AUTH_GSSAPI_CLIENT=NO
-
-post-install:
-	${RM} ${STAGEDIR}${PREFIX}/bin/wsrep*
 .else
 # MySQL-Server part
 USES+=		mysql:101m

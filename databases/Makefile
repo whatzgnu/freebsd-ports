@@ -556,9 +556,9 @@
     SUBDIR += percona56-server
     SUBDIR += pg_activity
     SUBDIR += pg_citus
+    SUBDIR += pg_qualstats
     SUBDIR += pg_reorg
     SUBDIR += pg_rman
-    SUBDIR += pg_qualstats
     SUBDIR += pg_stat_kcache
     SUBDIR += pg_statsinfo
     SUBDIR += pgaccess
@@ -776,6 +776,7 @@
     SUBDIR += py-sqlalchemy08
     SUBDIR += py-sqlalchemy09
     SUBDIR += py-sqlalchemy10
+    SUBDIR += py-sqlalchemy11
     SUBDIR += py-sqlite3
     SUBDIR += py-sqlite3dbm
     SUBDIR += py-sqlobject
@@ -794,6 +795,7 @@
     SUBDIR += py34-gdbm
     SUBDIR += py34-sqlite3
     SUBDIR += py35-gdbm
+    SUBDIR += py35-mysqlclient
     SUBDIR += py35-sqlite3
     SUBDIR += pydbx
     SUBDIR += pymongo
