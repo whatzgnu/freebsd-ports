@@ -105,20 +105,8 @@ check_dhcpcd()
 	echo $cmd | grep -q "IPV6"
 	if [ $? -eq 0 ] ; then have_ipv6="true"; fi
 
-name="dhcpcd"
-ifn="$2"
-command="%%PREFIX%%/sbin/dhcpcd"
-command_args="$ifn"
-if [ -n "$ifn" ]; then
-	specific="$(get_if_var $ifn dhcpcd_flags_IF)"
-	if [ -z "$flags" -a -n "$specific" ]; then
-		rc_flags="$specific"
-	fi
-	pidfile="/var/run/dhcpcd-$ifn.pid"
-else
-	pidfile="$($command -P $rc_flags)"
-fi
-start_precmd="dhcpcd_precmd"
+	echo $cmd | grep -q "ALL"
+	if [ $? -eq 0 ] ; then have_ipv4="true"; have_ipv6="true"; fi
 
 
 	# This is a v4 only request?
@@ -148,16 +136,51 @@ start_precmd="dhcpcd_precmd"
 
 start()
 {
-	# dhcpcd may need local binaries
-	export PATH=${PATH}:/usr/local/sbin
+	if [ ! -e /etc/rc.conf ] ; then return 1 ; fi
+
+	if [ -n "$dhcpcd_device" ] ; then
+		check_dhcpcd "$dhcpcd_device"
+		if [ $? -ne 0 ] ; then return 1; fi
+		ebegin "Starting $name"
+		start-stop-daemon --start --exec $command -m -b -p $pidfile -- $command_args
+		stat=$?
+		eend $stat
+		return $stat
+	fi
+	
+        # Spawn the network sub-services
+	for int in $(interfaces); do
+		check_dhcpcd "$int"
+		if [ $? -ne 0 ] ; then continue ; fi
+
+		# Skip devices not active
+		ifconfig $int | grep -q "no carrier"
+		if [ $? -eq 0 ] ; then continue ; fi
+
+		# We have a device that needs dhcpcd
+		ln -fs /usr/local/etc/init.d/dhcpcd /usr/local/etc/init.d/dhcpcd.${int}
+		/sbin/service dhcpcd.${int} start
+	done
+	return 0
 }
 
 
-if [ -n "$ifn" ]; then
-	if ! dhcpif $ifn; then
-		err 1 "$ifn is not enabled for DHCP"
+stop()
+{
+	if [ -n "$dhcpcd_device" ] ; then
+		check_dhcpcd "$dhcpcd_device"
+		if [ $? -ne 0 ] ; then return 1; fi
+		ebegin "Stopping $name"
+		start-stop-daemon --stop --exec $command -p $pidfile
+		stat=$?
+		eend $stat
+		return $stat
 	fi
-fi
+	
+        # Spawn the network sub-services
+	for int in $(interfaces); do
+		check_dhcpcd "$int"
+		if [ $? -ne 0 ] ; then continue ; fi
 
 		# We have a device that needs dhcpcd
 		ln -fs /usr/local/etc/init.d/dhcpcd /usr/local/etc/init.d/dhcpcd.${int}

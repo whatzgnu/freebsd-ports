@@ -40,7 +40,7 @@ CONFIGURE_ARGS=	--disable-dnssd						\
 USES=		cpe gmake iconv localbase pkgconfig tar:bzip2
 CPE_VENDOR=	apple
 USE_LDCONFIG=	yes
-USE_RC_SUBR=	cupsd
+USE_OPENRC_SUBR=	cupsd
 
 GROUPS=		cups
 USERS=		cups

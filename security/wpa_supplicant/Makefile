@@ -19,6 +19,8 @@ CFLAGS+=	-I${OPENSSLINC}
 LDFLAGS+=	-L${OPENSSLLIB} -lutil
 MAKE_ENV=	V=1
 
+USE_OPENRC_SUBR=wpa_supplicant
+
 SUB_FILES=	pkg-message
 PORTDOCS=	README ChangeLog
 

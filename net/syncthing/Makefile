@@ -13,7 +13,7 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/go:lang/go
 
 USE_GITHUB=	yes
 GH_SUBDIR=	src/github.com/${PORTNAME}/${PORTNAME}
-USE_RC_SUBR=	syncthing
+USE_OPENRC_SUBR=syncthing
 PLIST_FILES=	bin/syncthing
 PORTDOCS=	*
 
