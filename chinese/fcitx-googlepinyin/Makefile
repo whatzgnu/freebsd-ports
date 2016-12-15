@@ -3,6 +3,7 @@
 
 PORTNAME=	fcitx-googlepinyin
 PORTVERSION=	0.1.6
+PORTREVISION=	1
 CATEGORIES=	chinese
 MASTER_SITES=	https://download.fcitx-im.org/${PORTNAME}
 DIST_SUBDIR=	fcitx

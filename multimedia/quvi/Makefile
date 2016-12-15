@@ -3,7 +3,7 @@ reated by: Toni Gundogdu <legatvs@gmail.com>
 
 PORTNAME=	quvi
 PORTVERSION=	0.4.2
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	multimedia devel
 MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION:R}/${PORTNAME}/
 
