@@ -82,8 +82,4 @@ post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/notmuch
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libnotmuch.so.4.4.0
 
-post-install:
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/notmuch
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libnotmuch.so.4.4.0
-
 .include <bsd.port.post.mk>
