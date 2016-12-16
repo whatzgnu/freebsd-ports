@@ -141,10 +141,14 @@ start()
 	if [ -n "$dhcpcd_device" ] ; then
 		check_dhcpcd "$dhcpcd_device"
 		if [ $? -ne 0 ] ; then return 1; fi
-		ebegin "Starting $name"
+		if [ -z "$OPENRC_SILENT" ] ; then
+			ebegin "Starting $name"
+		fi
 		start-stop-daemon --start --exec $command -m -b -p $pidfile -- $command_args
 		stat=$?
-		eend $stat
+		if [ -z "$OPENRC_SILENT" ] ; then
+			eend $stat
+		fi
 		return $stat
 	fi
 	
@@ -158,7 +162,8 @@ start()
 		if [ $? -eq 0 ] ; then continue ; fi
 
 		# We have a device that needs dhcpcd
-		ln -fs /usr/local/etc/init.d/dhcpcd /usr/local/etc/init.d/dhcpcd.${int}
+		export OPENRC_SILENT=TRUE
+		ln -fs %%PREFIX%%/etc/init.d/dhcpcd %%PREFIX%%/etc/init.d/dhcpcd.${int}
 		/sbin/service dhcpcd.${int} start
 	done
 	return 0
@@ -170,10 +175,14 @@ stop()
 	if [ -n "$dhcpcd_device" ] ; then
 		check_dhcpcd "$dhcpcd_device"
 		if [ $? -ne 0 ] ; then return 1; fi
-		ebegin "Stopping $name"
+		if [ -z "$OPENRC_SILENT" ] ; then
+			ebegin "Stopping $name"
+		fi
 		start-stop-daemon --stop --exec $command -p $pidfile
 		stat=$?
-		eend $stat
+		if [ -z "$OPENRC_SILENT" ] ; then
+			eend $stat
+		fi
 		return $stat
 	fi
 	
@@ -183,7 +192,8 @@ stop()
 		if [ $? -ne 0 ] ; then continue ; fi
 
 		# We have a device that needs dhcpcd
-		ln -fs /usr/local/etc/init.d/dhcpcd /usr/local/etc/init.d/dhcpcd.${int}
+		export OPENRC_SILENT=TRUE
+		ln -fs %%PREFIX%%/etc/init.d/dhcpcd %%PREFIX%%/etc/init.d/dhcpcd.${int}
 		/sbin/service dhcpcd.${int} stop
 	done
 	return 0
