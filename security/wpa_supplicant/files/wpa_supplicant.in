@@ -61,16 +61,21 @@ start_wpa_service()
 start()
 {
 	if [ -n "$wpa_device" ] ; then
-		ebegin "Starting $name"
+		if [ -z "$OPENRC_SILENT" ] ; then
+			ebegin "Starting $name"
+		fi
 		start_wpa_service "$wpa_device"
 		stat=$?
-		eend $stat
+		if [ -z "$OPENRC_SILENT" ] ; then
+			eend $stat
+		fi
 		return $stat
 	fi
 
 	# Start any sub-devices
 	for i in $(find_wireless)
 	do
+		export OPENRC_SILENT=TRUE
 		ln -fs %%PREFIX%%/etc/init.d/wpa_supplicant %%PREFIX%%/etc/init.d/wpa_supplicant.${i}
 		/sbin/service wpa_supplicant.${i} start
 	done
@@ -85,16 +90,21 @@ stop_wpa_service()
 stop()
 {
 	if [ -n "$wpa_device" ] ; then
-		ebegin "Stopping $name"
+		if [ -z "$OPENRC_SILENT" ] ; then
+			ebegin "Stopping $name"
+		fi
 		stop_wpa_service "$wpa_device"
 		stat=$?
-		eend $stat
+		if [ -z "$OPENRC_SILENT" ] ; then
+			eend $stat
+		fi
 		return $stat
 	fi
 
 	# Stopping any sub-devices
 	for i in $(find_wireless)
 	do
+		export OPENRC_SILENT=TRUE
 		ln -fs %%PREFIX%%/etc/init.d/wpa_supplicant %%PREFIX%%/etc/init.d/wpa_supplicant.${i}
 		/sbin/service wpa_supplicant.${i} stop
 	done
