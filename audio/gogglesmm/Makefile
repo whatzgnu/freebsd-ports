@@ -100,9 +100,4 @@ post-install-DOCS-on:
 	(cd ${WRKSRC} && ${INSTALL_DATA} AUTHORS ChangeLog README \
 		${STAGEDIR}${DOCSDIR})
 
-post-install-DOCS-on:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	(cd ${WRKSRC} && ${INSTALL_DATA} AUTHORS ChangeLog README \
-		${STAGEDIR}${DOCSDIR})
-
 .include <bsd.port.mk>
