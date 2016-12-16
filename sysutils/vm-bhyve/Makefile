@@ -17,6 +17,8 @@ EXAMPLES_DESC=	Install example guest templates
 USE_GITHUB=	yes
 GH_ACCOUNT=	churchers
 
+USE_OPENRC_SUBR=	vm
+
 NO_ARCH=	yes
 NO_BUILD=	yes
 
