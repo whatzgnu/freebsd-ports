@@ -1,7 +1,12 @@
-#!/sbin/openrc-run
+#!/bin/sh
+#
+# $FreeBSD$
+#
 
-name="VirtualBox Networking"
-vboxnet_modules="vboxdrv vboxnetflt:ng_vboxnetflt vboxnetadp"
+# PROVIDE:	vboxnet
+# BEFORE:	NETWORKING
+# REQUIRE:	FILESYSTEMS
+# KEYWORD:	nojail
 
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -36,6 +41,7 @@ vboxnet_start()
 
 	# initialize configured host-only interfaces
 	LD_LIBRARY_PATH=%%PREFIX%%/lib %%PREFIX%%/bin/VBoxManage list hostonlyifs >/dev/null
+}
 
 vboxnet_stop()
 {
@@ -57,7 +63,8 @@ vboxnet_stop()
 	done
 }
 
-reload() {
-	ebegin "Reloading ${SVCNAME}"
-	eend 0
-}
+load_rc_config $name
+
+: ${vboxnet_enable="NO"}
+
+run_rc_command "$1"
