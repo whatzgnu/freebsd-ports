@@ -12,7 +12,7 @@ MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Full featured open source SVG editor
 
 BUILD_DEPENDS=	${LOCALBASE}/include/boost/concept_check.hpp:devel/boost-libs \
-		clang39:lang/clang39
+		llvm39>=0:devel/llvm39
 LIB_DEPENDS=	libpopt.so:devel/popt \
 		libgc.so:devel/boehm-gc \
 		libgsl.so:math/gsl \
@@ -20,7 +20,7 @@ LIB_DEPENDS=	libpopt.so:devel/popt \
 		liblcms.so:graphics/lcms \
 		libpng.so:graphics/png \
 		libMagick++-6.so:graphics/ImageMagick
-RUN_DEPENDS=	clang39:lang/clang39
+RUN_DEPENDS=	llvm39>=0:devel/llvm39
 
 USE_GNOME=	gtkmm24 intlhack libxslt
 USES=		compiler:c++11-lib cpe desktop-file-utils gettext gmake iconv \
