@@ -11,7 +11,8 @@ MASTER_SITES=	https://inkscape.global.ssl.fastly.net/media/resources/file/ \
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Full featured open source SVG editor
 
-BUILD_DEPENDS=	${LOCALBASE}/include/boost/concept_check.hpp:devel/boost-libs
+BUILD_DEPENDS=	${LOCALBASE}/include/boost/concept_check.hpp:devel/boost-libs \
+		clang39:lang/clang39
 LIB_DEPENDS=	libpopt.so:devel/popt \
 		libgc.so:devel/boehm-gc \
 		libgsl.so:math/gsl \
@@ -19,7 +20,7 @@ LIB_DEPENDS=	libpopt.so:devel/popt \
 		liblcms.so:graphics/lcms \
 		libpng.so:graphics/png \
 		libMagick++-6.so:graphics/ImageMagick
-#RUN_DEPENDS=	p5-XML-XQL>=0:textproc/p5-XML-XQL
+RUN_DEPENDS=	clang39:lang/clang39
 
 USE_GNOME=	gtkmm24 intlhack libxslt
 USES=		compiler:c++11-lib cpe desktop-file-utils gettext gmake iconv \
@@ -27,7 +28,7 @@ USES=		compiler:c++11-lib cpe desktop-file-utils gettext gmake iconv \
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -L${LOCALBASE}/llvm38/lib
+LDFLAGS+=	-L${LOCALBASE}/lib -L${LOCALBASE}/llvm39/lib
 CONFIGURE_ARGS=	--without-gnome-vfs
 
 python_CMD?=	${LOCALBASE}/bin/python2
