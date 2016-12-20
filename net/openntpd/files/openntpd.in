@@ -12,15 +12,21 @@
 : ${ntpd_config:=%%PREFIX%%/etc/ntpd.conf}
 : ${ntpd_drift:=/var/db/ntpd.drift}
 
-command=%%PREFIX%%/sbin/ntpd
+BINARY=%%PREFIX%%/sbin/ntpd
 required_files=$ntpd_config
 pidfile=/var/run/ntpd.pid
-command_args="$ntpd_args -f $ntpd_config -p $pidfile -s"
+args="$ntpd_args -f $ntpd_config -p $pidfile -d -S"
 name="Network Time Protocol Daemon"
 
 depend()
 {
-	use dns net
 	need localmount
-	after bootmisc network dhcpcd wpa_supplicant
+	before pcdm
+}
+
+start()
+{
+	ebegin "Starting $name"
+	start-stop-daemon --start --exec $BINARY -p ${pidfile} -b -- $args
+	eend $?
 }
