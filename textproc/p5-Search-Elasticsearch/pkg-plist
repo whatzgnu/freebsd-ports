@@ -25,7 +25,6 @@
 %%SITE_PERL%%/Search/Elasticsearch/Role/API.pm
 %%SITE_PERL%%/Search/Elasticsearch/Role/Client.pm
 %%SITE_PERL%%/Search/Elasticsearch/Role/Client/Direct.pm
-%%SITE_PERL%%/Search/Elasticsearch/Role/Client/Direct/Main.pm
 %%SITE_PERL%%/Search/Elasticsearch/Role/Cxn.pm
 %%SITE_PERL%%/Search/Elasticsearch/Role/CxnPool.pm
 %%SITE_PERL%%/Search/Elasticsearch/Role/CxnPool/Sniff.pm
