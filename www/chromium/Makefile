@@ -188,10 +188,8 @@ MAKE_ENV+=	C_INCLUDE_PATH=${LOCALBASE}/include \
 GN_ARGS+=	is_clang=true
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-clang
 .if ${OSVERSION} < 1200017
-.warning Using _LIBCPP_TRIVIAL_PAIR_COPY_CTOR
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-old
 .else
-.warning Using _LIBCPP_ABI_UNSTABLE
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-new
 .endif
 .endif
