@@ -93,7 +93,7 @@ GN_ARGS+=	\
 		use_system_sqlite=false   # chrome has additional patches
 # TODO: investigate building with these options:
 # use_system_icu use_system_harfbuzz use_system_minigbm
-GN_BOOTSTRAP_FLAGS=	--no-clean --no-rebuild
+GN_BOOTSTRAP_FLAGS=	--no-clean --no-rebuild -v
 
 # FreeBSD Chromium Api Key
 # Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys .
@@ -187,6 +187,13 @@ MAKE_ENV+=	C_INCLUDE_PATH=${LOCALBASE}/include \
 		CPLUS_INCLUDE_PATH=${LOCALBASE}/include
 GN_ARGS+=	is_clang=true
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-clang
+.if ${OSVERSION} < 1200017
+.warning Using _LIBCPP_TRIVIAL_PAIR_COPY_CTOR
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-old
+.else
+.warning Using _LIBCPP_ABI_UNSTABLE
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-new
+.endif
 .endif
 
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1002000
