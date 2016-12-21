@@ -64,7 +64,6 @@ share/applications/chromium-browser.desktop
 %%DATADIR%%/locales/zh-CN.pak
 %%DATADIR%%/locales/zh-TW.pak
 %%DATADIR%%/mksnapshot
-%%DATADIR%%/pseudo_locales/fake-bidi.pak
 %%DATADIR%%/resources.pak
 %%DATADIR%%/resources/inspector/Images/accelerometer-back.png
 %%DATADIR%%/resources/inspector/Images/accelerometer-bottom.png
