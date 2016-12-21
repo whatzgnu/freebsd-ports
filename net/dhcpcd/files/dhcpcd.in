@@ -22,10 +22,7 @@ name="DHCP Client Daemon"
 
 depend()
 {
-	provide dhcp
-	need localmount
-	after bootmisc modules devd network
-	keyword -stop
+	keyword -stop -shutdown
 }
 
 uniqify()
@@ -121,7 +118,8 @@ check_dhcpcd()
 
 	# Is this device eben enabled for DHCP?
 	if [ "$have_ipv4" != "true" -a "$have_ipv6" != "true" ] ; then
-		return 1
+		mark_service_inactive
+		return 0
 	fi
 
         command_args="${command_args} $int"

@@ -24,9 +24,6 @@ name="wpa_supplicant"
 
 depend()
 {
-        need localmount
-        after bootmisc modules devd network
-	before dhcpcd
 	keyword -shutdown -stop -jail
 }
 
