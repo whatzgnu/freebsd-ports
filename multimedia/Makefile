@@ -244,6 +244,8 @@
     SUBDIR += mkvtoolnix
     SUBDIR += mkxvcd
     SUBDIR += mlt
+    SUBDIR += mlt-qt4
+    SUBDIR += mlt-qt5
     SUBDIR += mmpython
     SUBDIR += mmsclient
     SUBDIR += mmsrip
@@ -368,6 +370,7 @@
     SUBDIR += rubygem-gstreamer
     SUBDIR += sabbu
     SUBDIR += schroedinger
+    SUBDIR += shotcut
     SUBDIR += smpeg
     SUBDIR += smpeg2
     SUBDIR += smplayer
@@ -438,6 +441,7 @@
     SUBDIR += vtkmpeg2encode
     SUBDIR += w_scan
     SUBDIR += webcamd
+    SUBDIR += webvfx-qt5
     SUBDIR += win32-codecs
     SUBDIR += winff
     SUBDIR += x264

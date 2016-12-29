@@ -45,6 +45,7 @@
     SUBDIR += R-cran-reshape
     SUBDIR += R-cran-reshape2
     SUBDIR += R-cran-rngtools
+    SUBDIR += R-cran-rprojroot
     SUBDIR += R-cran-rstudioapi
     SUBDIR += R-cran-sourcetools
     SUBDIR += R-cran-tibble
@@ -500,6 +501,7 @@
     SUBDIR += erlang-bear
     SUBDIR += erlang-certifi
     SUBDIR += erlang-cf
+    SUBDIR += erlang-cl
     SUBDIR += erlang-clique
     SUBDIR += erlang-common_lib
     SUBDIR += erlang-cuttlefish
@@ -749,7 +751,9 @@
     SUBDIR += go-codec
     SUBDIR += go-faker
     SUBDIR += go-form
+    SUBDIR += go-glide
     SUBDIR += go-go.uuid
+    SUBDIR += go-gocode
     SUBDIR += go-goregen
     SUBDIR += go-hashicorp-logutils
     SUBDIR += go-json-rest
@@ -1025,6 +1029,7 @@
     SUBDIR += hs-scientific
     SUBDIR += hs-securemem
     SUBDIR += hs-setenv
+    SUBDIR += hs-setlocale
     SUBDIR += hs-shake
     SUBDIR += hs-show
     SUBDIR += hs-silently
@@ -1707,6 +1712,7 @@
     SUBDIR += omniORB-4.1
     SUBDIR += oniguruma4
     SUBDIR += oniguruma5
+    SUBDIR += oniguruma6
     SUBDIR += onscripter
     SUBDIR += onscripter-1byte
     SUBDIR += oozie
@@ -3281,6 +3287,7 @@
     SUBDIR += p5-Term-Size-Any
     SUBDIR += p5-Term-Size-Perl
     SUBDIR += p5-Term-Sk
+    SUBDIR += p5-Term-Table
     SUBDIR += p5-Term-Title
     SUBDIR += p5-Term-UI
     SUBDIR += p5-Term-VT102
@@ -3850,6 +3857,7 @@
     SUBDIR += pecl-qb
     SUBDIR += pecl-raphf
     SUBDIR += pecl-raphf2
+    SUBDIR += pecl-request
     SUBDIR += pecl-runkit
     SUBDIR += pecl-scream
     SUBDIR += pecl-spl_types
@@ -4037,6 +4045,34 @@
     SUBDIR += py-TGScheduler
     SUBDIR += py-ToscaWidgets
     SUBDIR += py-TurboJinja
+    SUBDIR += py-XStatic
+    SUBDIR += py-XStatic-Angular
+    SUBDIR += py-XStatic-Angular-Bootstrap
+    SUBDIR += py-XStatic-Angular-FileUpload
+    SUBDIR += py-XStatic-Angular-Gettext
+    SUBDIR += py-XStatic-Angular-Schema-Form
+    SUBDIR += py-XStatic-Angular-lrdragndrop
+    SUBDIR += py-XStatic-Bootstrap-Datepicker
+    SUBDIR += py-XStatic-Bootstrap-SCSS
+    SUBDIR += py-XStatic-D3
+    SUBDIR += py-XStatic-Font-Awesome
+    SUBDIR += py-XStatic-Hogan
+    SUBDIR += py-XStatic-JQuery-Migrate
+    SUBDIR += py-XStatic-JQuery.TableSorter
+    SUBDIR += py-XStatic-JQuery.quicksearch
+    SUBDIR += py-XStatic-JSEncrypt
+    SUBDIR += py-XStatic-Jasmine
+    SUBDIR += py-XStatic-Rickshaw
+    SUBDIR += py-XStatic-Spin
+    SUBDIR += py-XStatic-bootswatch
+    SUBDIR += py-XStatic-jQuery
+    SUBDIR += py-XStatic-jquery-ui
+    SUBDIR += py-XStatic-mdi
+    SUBDIR += py-XStatic-objectpath
+    SUBDIR += py-XStatic-roboto-fontface
+    SUBDIR += py-XStatic-smart-table
+    SUBDIR += py-XStatic-term.js
+    SUBDIR += py-XStatic-tv4
     SUBDIR += py-ZopeUndo
     SUBDIR += py-adb
     SUBDIR += py-akismet
@@ -4158,6 +4194,7 @@
     SUBDIR += py-dexml
     SUBDIR += py-dialog
     SUBDIR += py-diazo
+    SUBDIR += py-dill
     SUBDIR += py-dirspec
     SUBDIR += py-distorm
     SUBDIR += py-django-rq
@@ -4309,6 +4346,7 @@
     SUBDIR += py-libusb1
     SUBDIR += py-libvirt
     SUBDIR += py-libzfs
+    SUBDIR += py-linecache2
     SUBDIR += py-ll-core
     SUBDIR += py-llfuse
     SUBDIR += py-llvmlite
@@ -4582,6 +4620,7 @@
     SUBDIR += py-setuptools33
     SUBDIR += py-setuptools34
     SUBDIR += py-setuptools35
+    SUBDIR += py-setuptools36
     SUBDIR += py-setuptools_darcs
     SUBDIR += py-setuptools_hg
     SUBDIR += py-setuptools_scm
@@ -4642,6 +4681,7 @@
     SUBDIR += py-total-ordering
     SUBDIR += py-tox
     SUBDIR += py-trace2html
+    SUBDIR += py-traceback2
     SUBDIR += py-traitlets
     SUBDIR += py-traits
     SUBDIR += py-transaction
@@ -4669,6 +4709,7 @@
     SUBDIR += py-uncompyle2
     SUBDIR += py-unicodecsv
     SUBDIR += py-unipath
+    SUBDIR += py-unittest2
     SUBDIR += py-unpaddedbase64
     SUBDIR += py-update_checker
     SUBDIR += py-urlimport
@@ -4842,6 +4883,7 @@
     SUBDIR += qdevelop
     SUBDIR += qgit
     SUBDIR += qjson
+    SUBDIR += qjson-qt5
     SUBDIR += qmake
     SUBDIR += qmake4
     SUBDIR += qmake5
