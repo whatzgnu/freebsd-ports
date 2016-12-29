@@ -23,7 +23,7 @@ CONFIGURE_ARGS=	--with-docdir=${DOCSDIR} \
 		--without-systemd
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
-USE_RC_SUBR=	saned
+USE_OPENRC_SUBR=	saned
 
 SUB_FILES=	pkg-message
 
