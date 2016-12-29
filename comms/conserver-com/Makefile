@@ -20,7 +20,7 @@ CONFIGURE_ARGS=	--with-master=${DEFAULTHOST} --with-port=${DEFAULTPORT} \
 		--with-pam --with-libwrap --with-openssl
 
 USE_OPENSSL=	yes
-USE_RC_SUBR=	conserver
+USE_OPENRC_SUBR=	conserver
 
 OPTIONS_DEFINE=	FREEIPMI GSSAPI GSSAPIONLY STRIPREALM UDS
 FREEIPMI_DESC=	Compile in FreeIPMI support
