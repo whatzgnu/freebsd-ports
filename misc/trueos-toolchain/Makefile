@@ -8,7 +8,7 @@ MASTER_SITES=
 DISTFILES=
 
 MAINTAINER=	kmoore@FreeBSD.org
-COMMENT=	PC-BSD Development Utilities
+COMMENT=	TrueOS Development Utilities
 
 USES=		python
 
