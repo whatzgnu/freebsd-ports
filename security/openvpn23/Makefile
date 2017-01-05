@@ -3,6 +3,7 @@
 
 PORTNAME=		openvpn
 DISTVERSION=		2.3.14
+PORTREVISION=		1
 CATEGORIES=		security net
 MASTER_SITES=		http://swupdate.openvpn.net/community/releases/ \
 			http://build.openvpn.net/downloads/releases/
@@ -68,7 +69,7 @@ OPENSSL_CONFIGURE_ON=	--with-crypto-library=openssl
 POLARSSL_LIB_DEPENDS=	libmbedtls.so.9:security/polarssl13
 POLARSSL_CONFIGURE_ON=	--with-crypto-library=polarssl
 
-USE_RC_SUBR=		openvpn
+USE_OPENRC_SUBR=	openvpn
 USE_LDCONFIG=		${PREFIX}/lib
 
 SUB_FILES=		pkg-message openvpn-client
