@@ -16,6 +16,7 @@ LICENSE=		GPLv3
 CONFLICTS?=		*samba3[2-6]-3.* samba4-4.0.* samba41-4.1.* samba43-4.3.* samba44-4.4.*
 
 EXTRA_PATCHES=		${PATCHDIR}/extra-patch-progress:-p1
+USE_OPENRC_SUBR=samba
 
 SAMBA4_BASENAME=	samba
 SAMBA4_PORTNAME=	${SAMBA4_BASENAME}4
