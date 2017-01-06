@@ -403,7 +403,7 @@ SAMBA4_SUB=		SAMBA4_LOGDIR="${SAMBA4_LOGDIR}" \
 PLIST_SUB+=		${SAMBA4_SUB}
 SUB_LIST+=		${SAMBA4_SUB}
 
-USE_RC_SUBR=		samba_server
+USE_OPENRC_SUBR=samba
 SUB_FILES=		pkg-message README.FreeBSD
 # Make sure that the right version of Python is used by the tools
 # https://bugzilla.samba.org/show_bug.cgi?id=7305
