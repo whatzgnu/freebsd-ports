@@ -192,6 +192,8 @@
     SUBDIR += libxkbui
     SUBDIR += libxklavier
     SUBDIR += libxshmfence
+    SUBDIR += lightdm
+    SUBDIR += lightdm-gtk-greeter
     SUBDIR += linux-c6-pixman
     SUBDIR += linux-c6-xorg-libs
     SUBDIR += linux-c7-pixman
@@ -206,6 +208,7 @@
     SUBDIR += lxde-meta
     SUBDIR += lxmenu-data
     SUBDIR += lxpanel
+    SUBDIR += lxqt-l10n
     SUBDIR += lxrandr
     SUBDIR += mate
     SUBDIR += mate-applets

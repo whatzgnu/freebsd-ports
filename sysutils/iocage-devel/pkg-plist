@@ -1,4 +1,3 @@
-etc/rc.d/iocage
 lib/iocage/ioc-cmd
 lib/iocage/ioc-common
 lib/iocage/ioc-configure

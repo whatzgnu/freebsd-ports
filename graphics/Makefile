@@ -396,6 +396,7 @@
     SUBDIR += kdegraphics4-thumbnailers
     SUBDIR += kf5-kimageformats
     SUBDIR += kf5-kplotting
+    SUBDIR += kf5-prison
     SUBDIR += kiconedit
     SUBDIR += kipi-plugin-acquireimages
     SUBDIR += kipi-plugin-advancedslideshow
@@ -599,6 +600,7 @@
     SUBDIR += mirage
     SUBDIR += mitsuba
     SUBDIR += mmrecover
+    SUBDIR += movit
     SUBDIR += mozjpeg
     SUBDIR += mscgen
     SUBDIR += mtpaint
@@ -769,6 +771,7 @@
     SUBDIR += pfstools
     SUBDIR += pgplot
     SUBDIR += pho
+    SUBDIR += photivo
     SUBDIR += photopc
     SUBDIR += phototonic
     SUBDIR += php-facedetect

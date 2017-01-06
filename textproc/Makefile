@@ -365,6 +365,7 @@
     SUBDIR += kenlm
     SUBDIR += kf5-kcodecs
     SUBDIR += kf5-sonnet
+    SUBDIR += kf5-syntax-highlighting
     SUBDIR += kibana3
     SUBDIR += kibana41
     SUBDIR += kibana43
@@ -800,6 +801,7 @@
     SUBDIR += p5-String-Fraction
     SUBDIR += p5-String-HexConvert
     SUBDIR += p5-String-Koremutake
+    SUBDIR += p5-String-LCSS
     SUBDIR += p5-String-Print
     SUBDIR += p5-String-RewritePrefix
     SUBDIR += p5-String-Scanf
@@ -1254,6 +1256,7 @@
     SUBDIR += py-guess-language
     SUBDIR += py-hexdump
     SUBDIR += py-html2text
+    SUBDIR += py-hunspell
     SUBDIR += py-hyperestraier-python
     SUBDIR += py-hypua2jamo
     SUBDIR += py-jaxml
@@ -1347,6 +1350,7 @@
     SUBDIR += py3-MarkupSafe
     SUBDIR += py3-asciinema
     SUBDIR += py3-chardet
+    SUBDIR += py3-hunspell
     SUBDIR += py3-libxml2
     SUBDIR += py3-pager
     SUBDIR += pychm
@@ -1587,6 +1591,7 @@
     SUBDIR += sphinxsearch
     SUBDIR += sphinxsearch-devel
     SUBDIR += spiff
+    SUBDIR += splitpatch
     SUBDIR += sq-hunspell
     SUBDIR += sr-aspell
     SUBDIR += sr-hunspell
@@ -1737,5 +1742,6 @@
     SUBDIR += zsh-syntax-highlighting
     SUBDIR += zu-aspell
     SUBDIR += zu-hunspell
+    SUBDIR += zxing-cpp
 
 .include <bsd.port.subdir.mk>

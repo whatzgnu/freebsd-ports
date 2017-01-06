@@ -27,6 +27,6 @@ GH_TAGNAME=	6fd3d98507ee18dce98bd58220d4ad1462ba6eae
 post-install:
 	${MV} ${STAGEDIR}${PREFIX}/etc/dhcpcd.conf \
 		${STAGEDIR}${PREFIX}/etc/dhcpcd.conf.sample
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/dhcpcd
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/dhcpcd
 
 .include <bsd.port.mk>

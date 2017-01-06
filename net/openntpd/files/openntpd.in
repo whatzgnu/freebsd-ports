@@ -9,13 +9,13 @@
 # This file may not be copied, modified, propagated, or distributed
 # except according to the terms contained in the LICENSE file.
 
-: ${ntpd_config:=%%PREFIX%%/etc/ntpd.conf}
+: ${openntpd_config:=%%PREFIX%%/etc/ntpd.conf}
 : ${ntpd_drift:=/var/db/ntpd.drift}
 
 BINARY=%%PREFIX%%/sbin/ntpd
-required_files=$ntpd_config
+required_files=$openntpd_config
 pidfile=/var/run/ntpd.pid
-args="$ntpd_args -f $ntpd_config -p $pidfile -d -S"
+args="$ntpd_args -f $openntpd_config -p $pidfile -d -S"
 name="Network Time Protocol Daemon"
 
 depend()

@@ -3,6 +3,7 @@
 
 PORTNAME=	iocage
 PORTVERSION=	1.7.6
+PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
 
@@ -13,6 +14,7 @@ LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USE_GITHUB=	yes
+USE_OPENRC_SUBR=	iocage
 
 NO_BUILD=	yes
 NO_ARCH=	yes
@@ -24,7 +26,6 @@ pre-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/iocage
 
 do-install:
-	${INSTALL_SCRIPT} ${WRKSRC}/rc.d/iocage ${STAGEDIR}${PREFIX}/etc/rc.d
 	${INSTALL_SCRIPT} ${WRKSRC}/iocage ${STAGEDIR}${PREFIX}/sbin
 	(cd ${WRKSRC}/lib/ && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/lib/iocage)
 	${INSTALL_MAN} ${WRKSRC}/iocage.8 ${STAGEDIR}${PREFIX}/man/man8

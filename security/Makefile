@@ -436,7 +436,9 @@
     SUBDIR += openvpn-auth-ldap
     SUBDIR += openvpn-auth-radius
     SUBDIR += openvpn-devel
-    SUBDIR += openvpn-polarssl
+    SUBDIR += openvpn-mbedtls
+    SUBDIR += openvpn23
+    SUBDIR += openvpn23-polarssl
     SUBDIR += ophcrack
     SUBDIR += orthrus
     SUBDIR += osiris
@@ -822,6 +824,7 @@
     SUBDIR += pulledpork
     SUBDIR += pure-sfv
     SUBDIR += putty
+    SUBDIR += putty-nogtk
     SUBDIR += pvk
     SUBDIR += pwauth
     SUBDIR += pwman
