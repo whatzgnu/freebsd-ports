@@ -13,8 +13,8 @@ SAMBA_TOOL="${PREFIX}/bin/samba-tool"
 # Argument 1: configuration option
 # Returns: string (via `echo`)
 get_config_opt() {
-	option="$1"
-	retval=`${SAMBA_TOOL} testparm --parameter-name="${option}" 2>/dev/null | tail -1`
+	local option="$1"
+	local retval=`${SAMBA_TOOL} testparm --parameter-name="${option}" 2>/dev/null | tail -1`
 	echo "${retval}"
 }
 
