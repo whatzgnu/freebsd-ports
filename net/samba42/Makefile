@@ -16,7 +16,6 @@ LICENSE=		GPLv3
 CONFLICTS?=		*samba3[2-6]-3.* samba4-4.0.* samba41-4.1.* samba43-4.3.* samba44-4.4.*
 
 EXTRA_PATCHES=		${PATCHDIR}/extra-patch-progress:-p1
-USE_OPENRC_SUBR=samba
 
 SAMBA4_BASENAME=	samba
 SAMBA4_PORTNAME=	${SAMBA4_BASENAME}4
@@ -404,7 +403,7 @@ SAMBA4_SUB=		SAMBA4_LOGDIR="${SAMBA4_LOGDIR}" \
 PLIST_SUB+=		${SAMBA4_SUB}
 SUB_LIST+=		${SAMBA4_SUB}
 
-USE_RC_SUBR=		samba_server
+USE_OPENRC_SUBR=samba
 SUB_FILES=		pkg-message README.FreeBSD
 # Make sure that the right version of Python is used by the tools
 # https://bugzilla.samba.org/show_bug.cgi?id=7305
