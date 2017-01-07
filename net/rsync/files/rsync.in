@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+
+# Initialize variables if they are not already set.
+# Note that %%...%% are substituted by `portlint`
+: ${rsyncd_config:=%%ETCDIR%%/rsyncd.conf}
+
+
+# These assignments are sufficient for openrc to build a service.
+# See: `man openrc-run`
+
+name="rsync daemon"
+command="%%PREFIX%%/bin/rsync"
+command_args="--daemon --config ${rsyncd_config}"
+required_files=${rsyncd_config}
+pidfile="/var/run/rsyncd.pid"
+
+
+# Service dependencies
+depend()
+{
+	need localmount
+	after network
+}

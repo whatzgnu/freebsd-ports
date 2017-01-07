@@ -25,7 +25,7 @@ CPE_PRODUCT=	rsync
 
 PATCH_STRIP=	-p1
 GNU_CONFIGURE=	yes
-USE_RC_SUBR=	rsyncd
+USE_OPENRC_SUBR=rsync
 SUB_LIST=	NAME=rsyncd
 
 INSTALL_TARGET=	install-strip
