@@ -2,12 +2,9 @@
 
 extra_started_commands="reload"
 
-#: ${samba_config:=/usr/local/etc/smb4.conf}
-
 name="Samba SMB/CIFS server, version 4.2"
-PREFIX="/usr/local"
-SMBCONTROL="${PREFIX}/bin/smbcontrol"
-SAMBA_TOOL="${PREFIX}/bin/samba-tool"
+SMBCONTROL="%%PREFIX%%/bin/smbcontrol"
+SAMBA_TOOL="%%PREFIX%%/bin/samba-tool"
 
 # Cleanly queries the Samba configuration file for the given option
 # Argument 1: configuration option
@@ -40,7 +37,7 @@ depend() {
 
 start_samba() {
 	mkdir -p /var/run/samba
-	start-stop-daemon --start --quiet --exec ${PREFIX}/sbin/samba --
+	start-stop-daemon --start --quiet --exec %%PREFIX%%/sbin/samba --
 }
 
 stop_samba() {
@@ -49,7 +46,7 @@ stop_samba() {
 
 
 start_smbd() {
-	start-stop-daemon --start --quiet --exec ${PREFIX}/sbin/smbd -- \
+	start-stop-daemon --start --quiet --exec %%PREFIX%%/sbin/smbd -- \
 	${smbd_options:-"-D"}
 }
 
@@ -58,7 +55,7 @@ stop_smbd() {
 }
 
 start_nmbd() {
-	start-stop-daemon --start --quiet --exec ${PREFIX}/sbin/nmbd -- \
+	start-stop-daemon --start --quiet --exec %%PREFIX%%/sbin/nmbd -- \
 	${nmbd_options:-"-D"}
 }
 
@@ -67,7 +64,7 @@ stop_nmbd() {
 }
 
 start_winbindd() {
-	start-stop-daemon --start --quiet --exec ${PREFIX}/sbin/winbindd -- \
+	start-stop-daemon --start --quiet --exec %%PREFIX%%/sbin/winbindd -- \
 	$winbindd_options
 }
 
