@@ -3,7 +3,7 @@
 
 PORTNAME=	gnash
 PORTVERSION=	0.8.10
-PORTREVISION=	22
+PORTREVISION=	23
 CATEGORIES=	graphics
 MASTER_SITES=	http://git.savannah.gnu.org/cgit/gnash.git/snapshot/
 DISTNAME=	gnash-2b3bdede0305c4fc3ad21a0a4197330606c9b880
@@ -24,8 +24,6 @@ LIB_DEPENDS=	libltdl.so:devel/libltdl \
 		libboost_thread.so:devel/boost-libs \
 		libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
-
-BROKEN_FreeBSD_9=	does not build (Syntax error: ";" unexpected)
 
 CONFLICTS=	gnash-devel-[0-9]*
 

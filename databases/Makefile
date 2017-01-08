@@ -173,7 +173,6 @@
     SUBDIR += libzdb
     SUBDIR += linux-c6-sqlite3
     SUBDIR += linux-c7-sqlite3
-    SUBDIR += linux-f10-sqlite3
     SUBDIR += linux-oracle-instantclient-basic
     SUBDIR += linux-oracle-instantclient-sdk
     SUBDIR += linux-oracle-instantclient-sqlplus
@@ -224,8 +223,11 @@
     SUBDIR += mysql56-server
     SUBDIR += mysql57-client
     SUBDIR += mysql57-server
+    SUBDIR += mysql80-client
+    SUBDIR += mysql80-server
     SUBDIR += mysqlbackup
     SUBDIR += mysqlbigram
+    SUBDIR += mysqldump-secure
     SUBDIR += mysqldumper
     SUBDIR += mysqlidxchk
     SUBDIR += mysqlreport
@@ -720,6 +722,7 @@
     SUBDIR += py-dbf
     SUBDIR += py-dbutils
     SUBDIR += py-django-transaction-hooks
+    SUBDIR += py-fakeredis
     SUBDIR += py-fdb
     SUBDIR += py-firebirdsql
     SUBDIR += py-flask-sqlalchemy
@@ -849,13 +852,10 @@
     SUBDIR += ruby-rdbc1
     SUBDIR += ruby-sybct
     SUBDIR += ruby-tokyocabinet
-    SUBDIR += rubygem-activemodel
     SUBDIR += rubygem-activemodel4
-    SUBDIR += rubygem-activerecord
     SUBDIR += rubygem-activerecord-import
     SUBDIR += rubygem-activerecord-jdbc-adapter
     SUBDIR += rubygem-activerecord-jdbcmysql-adapter
-    SUBDIR += rubygem-activerecord-mysql-adapter
     SUBDIR += rubygem-activerecord-session_store
     SUBDIR += rubygem-activerecord4
     SUBDIR += rubygem-after_commit_queue
@@ -876,12 +876,10 @@
     SUBDIR += rubygem-dbd-pg
     SUBDIR += rubygem-dbd-sqlite3
     SUBDIR += rubygem-dbi
-    SUBDIR += rubygem-dm-active_model
     SUBDIR += rubygem-dm-aggregates
     SUBDIR += rubygem-dm-chunked_query
     SUBDIR += rubygem-dm-constraints
     SUBDIR += rubygem-dm-core
-    SUBDIR += rubygem-dm-devise
     SUBDIR += rubygem-dm-do-adapter
     SUBDIR += rubygem-dm-migrations
     SUBDIR += rubygem-dm-mysql-adapter
@@ -889,7 +887,6 @@
     SUBDIR += rubygem-dm-pager
     SUBDIR += rubygem-dm-paperclip
     SUBDIR += rubygem-dm-postgres-adapter
-    SUBDIR += rubygem-dm-rails
     SUBDIR += rubygem-dm-serializer
     SUBDIR += rubygem-dm-timestamps
     SUBDIR += rubygem-dm-transactions
@@ -917,8 +914,8 @@
     SUBDIR += rubygem-rbase
     SUBDIR += rubygem-redis
     SUBDIR += rubygem-redis-actionpack
+    SUBDIR += rubygem-redis-actionpack4
     SUBDIR += rubygem-redis-namespace
-    SUBDIR += rubygem-rubyrep
     SUBDIR += rubygem-seed-fu
     SUBDIR += rubygem-sqlite3
     SUBDIR += rubygem-sqlite3-ruby

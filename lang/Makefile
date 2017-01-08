@@ -40,6 +40,7 @@
     SUBDIR += clang36
     SUBDIR += clang37
     SUBDIR += clang38
+    SUBDIR += cling
     SUBDIR += clojure
     SUBDIR += clojure-mode.el
     SUBDIR += clover
@@ -158,8 +159,6 @@
     SUBDIR += libstdc++_stldoc_4.2.2
     SUBDIR += linux-c6-tcl85
     SUBDIR += linux-c7-tcl85
-    SUBDIR += linux-f10-libg2c
-    SUBDIR += linux-f10-tcl85
     SUBDIR += linux-j
     SUBDIR += lua-ada
     SUBDIR += lua51
@@ -240,7 +239,6 @@
     SUBDIR += pcc
     SUBDIR += pecl-perl
     SUBDIR += perl5-devel
-    SUBDIR += perl5.18
     SUBDIR += perl5.20
     SUBDIR += perl5.22
     SUBDIR += perl5.24

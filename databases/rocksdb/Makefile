@@ -50,12 +50,12 @@ ZSTD_LIB_DEPENDS=	libzstd.so:archivers/zstd
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} <= 1000000
-CFLAGS+=	-D_GLIBCXX_USE_C99
-.endif
-
 .if ${COMPILER_TYPE} == clang && ${COMPILER_VERSION} >= 36
 CXXFLAGS+=	-Wno-inconsistent-missing-override
+.endif
+
+.if ${COMPILER_TYPE} == gcc && ${COMPILER_VERSION} < 60
+CFLAGS+=	-D_GLIBCXX_USE_C99
 .endif
 
 post-patch:

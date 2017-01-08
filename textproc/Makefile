@@ -133,7 +133,6 @@
     SUBDIR += docbook2X
     SUBDIR += docbook2mdoc
     SUBDIR += docbook2odf
-    SUBDIR += docdiff
     SUBDIR += doclifter
     SUBDIR += docproj
     SUBDIR += dom4j
@@ -451,11 +450,6 @@
     SUBDIR += linux-c7-aspell
     SUBDIR += linux-c7-expat
     SUBDIR += linux-c7-libxml2
-    SUBDIR += linux-f10-aspell
-    SUBDIR += linux-f10-expat
-    SUBDIR += linux-f10-libxml2
-    SUBDIR += linux-f10-scim-gtk
-    SUBDIR += linux-f10-scim-libs
     SUBDIR += linuxdoc
     SUBDIR += linuxdoc-tools
     SUBDIR += localize
@@ -817,6 +811,7 @@
     SUBDIR += p5-Syntax-Highlight-Engine-Kate
     SUBDIR += p5-Syntax-Highlight-Perl-Improved
     SUBDIR += p5-TOML
+    SUBDIR += p5-TOML-Parser
     SUBDIR += p5-TeX-Encode
     SUBDIR += p5-TeX-Hyphen
     SUBDIR += p5-Template-Declare
@@ -1305,6 +1300,7 @@
     SUBDIR += py-rst2html5
     SUBDIR += py-rstyoutube
     SUBDIR += py-rxp
+    SUBDIR += py-scour
     SUBDIR += py-sgrep
     SUBDIR += py-snowballstemmer
     SUBDIR += py-sparqlwrapper
@@ -1431,6 +1427,7 @@
     SUBDIR += rubygem-cssmin
     SUBDIR += rubygem-diff-lcs
     SUBDIR += rubygem-diffy
+    SUBDIR += rubygem-docdiff
     SUBDIR += rubygem-elasticsearch
     SUBDIR += rubygem-elasticsearch-api
     SUBDIR += rubygem-elasticsearch-transport
@@ -1474,6 +1471,7 @@
     SUBDIR += rubygem-linguistics
     SUBDIR += rubygem-liquid
     SUBDIR += rubygem-liquid2
+    SUBDIR += rubygem-liquid3
     SUBDIR += rubygem-loggability
     SUBDIR += rubygem-loofah
     SUBDIR += rubygem-ltsv
@@ -1491,6 +1489,7 @@
     SUBDIR += rubygem-phone
     SUBDIR += rubygem-pretty-xml
     SUBDIR += rubygem-rails-dom-testing
+    SUBDIR += rubygem-rails-dom-testing1
     SUBDIR += rubygem-rails-html-sanitizer
     SUBDIR += rubygem-rak
     SUBDIR += rubygem-rchardet
@@ -1502,6 +1501,7 @@
     SUBDIR += rubygem-rich
     SUBDIR += rubygem-rmmseg-cpp
     SUBDIR += rubygem-rouge
+    SUBDIR += rubygem-rouge1
     SUBDIR += rubygem-rttool
     SUBDIR += rubygem-ruby-augeas
     SUBDIR += rubygem-ruby-xslt
@@ -1510,7 +1510,6 @@
     SUBDIR += rubygem-rugments
     SUBDIR += rubygem-sanitize
     SUBDIR += rubygem-sass
-    SUBDIR += rubygem-sass-rails
     SUBDIR += rubygem-sass-rails4
     SUBDIR += rubygem-sass-rails5
     SUBDIR += rubygem-sass32
@@ -1518,6 +1517,7 @@
     SUBDIR += rubygem-scss_lint
     SUBDIR += rubygem-shell2html
     SUBDIR += rubygem-simplecov-html
+    SUBDIR += rubygem-sixarm_ruby_unaccent
     SUBDIR += rubygem-spreadsheet
     SUBDIR += rubygem-stamp
     SUBDIR += rubygem-syntax

@@ -3,7 +3,7 @@
 
 PORTNAME=	cadabra2
 PORTVERSION=	2.0.930
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	math
 
 MAINTAINER=	yuri@rawbw.com
@@ -27,8 +27,6 @@ RUN_DEPENDS=	${PYTHON_SITELIBDIR}/sympy/__init__.py:math/py-sympy \
 USE_GITHUB=	yes
 GH_ACCOUNT=	kpeeters
 GH_TAGNAME=	85ac041
-
-BROKEN_FreeBSD_9=	does not build: fatal error: 'type_traits' file not found
 
 OPTIONS_DEFINE=	GUI
 OPTIONS_DEFAULT=GUI
