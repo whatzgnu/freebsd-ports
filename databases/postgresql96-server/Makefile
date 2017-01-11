@@ -22,4 +22,6 @@ PG_UID?=	770
 ICU_PATCHFILE=	pg-96b4-icu-2016-10-02.diff.gz
 OPTIONS_DEFAULT+=ICU
 
+USE_OPENRC_SUBR=postgresql96
+
 .include "${.CURDIR}/../postgresql92-server/Makefile"
