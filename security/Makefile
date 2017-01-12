@@ -116,7 +116,6 @@
     SUBDIR += doorman
     SUBDIR += doscan
     SUBDIR += dotdotpwn
-    SUBDIR += dradis
     SUBDIR += dropbear
     SUBDIR += dsniff
     SUBDIR += duo
@@ -356,14 +355,6 @@
     SUBDIR += linux-c7-nss
     SUBDIR += linux-c7-openssl
     SUBDIR += linux-c7-openssl-compat
-    SUBDIR += linux-f10-cyrus-sasl2
-    SUBDIR += linux-f10-gnutls
-    SUBDIR += linux-f10-libgcrypt
-    SUBDIR += linux-f10-libgpg-error
-    SUBDIR += linux-f10-libssh2
-    SUBDIR += linux-f10-libtasn1
-    SUBDIR += linux-f10-nss
-    SUBDIR += linux-f10-openssl
     SUBDIR += lockdown
     SUBDIR += log2timeline
     SUBDIR += logcheck
@@ -1017,6 +1008,7 @@
     SUBDIR += rubygem-net-ssh
     SUBDIR += rubygem-net-ssh-gateway
     SUBDIR += rubygem-net-ssh-multi
+    SUBDIR += rubygem-net-telnet
     SUBDIR += rubygem-nmap-parser
     SUBDIR += rubygem-omniauth
     SUBDIR += rubygem-omniauth-bitbucket
@@ -1058,6 +1050,7 @@
     SUBDIR += rubygem-six
     SUBDIR += rubygem-sshkey
     SUBDIR += rubygem-sshkit
+    SUBDIR += rubygem-timfel-krb5
     SUBDIR += rubygem-twitter_oauth
     SUBDIR += s2n
     SUBDIR += safesh

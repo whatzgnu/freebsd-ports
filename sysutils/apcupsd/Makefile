@@ -11,7 +11,7 @@ COMMENT=	Set of programs for controlling APC UPS
 
 LICENSE=	GPLv2
 
-USE_RC_SUBR=	apcupsd
+USE_OPENRC_SUBR=apcupsd
 SUB_FILES=	pkg-message
 
 GNU_CONFIGURE=	yes

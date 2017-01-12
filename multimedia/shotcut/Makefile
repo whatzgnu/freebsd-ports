@@ -18,7 +18,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	mltframework
 GH_TAGNAME=	v${PORTVERSION}
 # Needed to be able to correctly check for updates in-app.
-FULLVERSION=	16.12.03
+FULLVERSION=	17.01.02
 
 USES=		pkgconfig qmake
 USE_QT5=	buildtools_build concurrent_build core \
@@ -51,6 +51,9 @@ WEBVFX_RUN_DEPENDS=	${LOCALBASE}/lib/mlt/libmltwebvfx.so:multimedia/webvfx-qt5
 post-patch:
 	${REINPLACE_CMD} -e 's/"qmelt"/"melt"/' \
 		${WRKSRC}/src/jobs/meltjob.cpp
+
+pre-build:
+	@${FIND} ${WRKSRC} -name '.depend' -delete
 
 post-build-NLS-on:
 	${LRELEASE} ${WRKSRC}/src/src.pro

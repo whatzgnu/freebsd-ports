@@ -374,7 +374,6 @@
     SUBDIR += gdmap
     SUBDIR += genisoimage
     SUBDIR += geomWatch
-    SUBDIR += geomgui
     SUBDIR += getdelta
     SUBDIR += geteltorito
     SUBDIR += gigolo
@@ -408,6 +407,7 @@
     SUBDIR += grub2-efi
     SUBDIR += grub2-pcbsd
     SUBDIR += gsmartcontrol
+    SUBDIR += gsh
     SUBDIR += gstopd
     SUBDIR += gstreamer-plugins-cdio
     SUBDIR += gstreamer-plugins-hal
@@ -536,7 +536,6 @@
     SUBDIR += lineakd
     SUBDIR += linrename
     SUBDIR += linux-crashplan
-    SUBDIR += linux-f10-procps
     SUBDIR += linux-nero
     SUBDIR += linuxfdisk
     SUBDIR += livecd
@@ -662,7 +661,6 @@
     SUBDIR += nomad
     SUBDIR += npadmin
     SUBDIR += nrg2iso
-    SUBDIR += ntfsprogs
     SUBDIR += nut
     SUBDIR += nvclock
     SUBDIR += nvramtool
@@ -1007,6 +1005,7 @@
     SUBDIR += runit
     SUBDIR += runwhen
     SUBDIR += s6
+    SUBDIR += s6-rc
     SUBDIR += safe-rm
     SUBDIR += safecat
     SUBDIR += samefile
@@ -1025,7 +1024,6 @@
     SUBDIR += schedutils
     SUBDIR += scprotect
     SUBDIR += screen
-    SUBDIR += screen-legacy
     SUBDIR += screenfetch
     SUBDIR += screenie
     SUBDIR += scterc
@@ -1051,6 +1049,7 @@
     SUBDIR += slst
     SUBDIR += slurm-wlm
     SUBDIR += smartmontools
+    SUBDIR += smenu
     SUBDIR += smp_utils
     SUBDIR += snap
     SUBDIR += snowlog

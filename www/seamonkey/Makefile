@@ -4,7 +4,7 @@
 PORTNAME=	seamonkey
 DISTVERSION=	2.46
 MOZILLA_VER=	49 # above + 3
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES?=	www mail news editors irc ipv6
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \
 		MOZILLA/${PORTNAME}/candidates/${DISTVERSION}-candidates/build9/source
@@ -43,8 +43,6 @@ MOZ_OPTIONS+=	--enable-application=suite
 
 USE_MOZILLA=	# empty
 MOZ_PKGCONFIG_FILES=
-
-BROKEN_aarch64=		Fails to link: error adding symbols: File in wrong format
 
 OPTIONS_DEFINE=	LDAP LIGHTNING RUST
 OPTIONS_SINGLE=	TOOLKIT
