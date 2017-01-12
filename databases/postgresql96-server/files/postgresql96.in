@@ -42,6 +42,34 @@ profiles_available() {
 	return 1
 }
 
+# Returns the pidfile associated with the given profile
+# Argument: name of the PostgreSQL profile.
+#           If this is "", then this returns information for
+#           the default profile.
+# Returns:  pidfile of server
+get_pidfile() {
+
+	local profile
+	profile=$1
+	if [ "x${profile}" != "x" ]; then
+		if ! profile_enabled ${profile} ; then
+			return 0
+		else
+			# Add trailing underscore to variable name
+			profile="${profile}_"
+		fi
+	fi
+
+	eval pidfile="\${postgresql_${profile}data}/postmaster.pid"
+	echo "$pidfile"
+	# The following will actually return the pid, if the server
+	# is started
+	#if [ ! -f "$pidfile" ]; then
+	#	return 0
+	#fi
+	#return $( head -n 1 $pidfile )
+}
+
 # Determines if a PostgreSQL profile is enabled.
 # Argument: name of the PostgreSQL profile
 # Return: 0 if enabled, 1 otherwise
@@ -74,7 +102,7 @@ checkconfig() {
 			if profile_enabled "${profile}" ; then
 				for file in postgresql pg_hba pg_ident ; do
 					local f
-					eval f="\$postgresql_${profile}_data}/${file}.conf"
+					eval f="\${postgresql_${profile}_data}/${file}.conf"
 					if [ -f ${f} ] ; then
 						checkpath -f -m 0600 -o postgres:postgres ${f}
 					else
@@ -96,19 +124,19 @@ start_pre() {
 
 start() {
 	ebegin "Starting $name"
-	start-stop-daemon --start --exec $command --user ${postgresql_user} -- start ${command_args}
+	start-stop-daemon --start --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- start ${command_args}
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping $name"
-	start-stop-daemon --stop --exec $command --user ${postgresql_user} -- stop ${command_args}
+	start-stop-daemon --stop --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- stop ${command_args}
 	eend $?
 }
 
 restart() {
 	ebegin "Restarting $name"
-	start-stop-daemon --exec $command --user ${postgresql_user} -- restart ${command_args}
+	start-stop-daemon --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- restart ${command_args}
 	eend $?
 }
 
