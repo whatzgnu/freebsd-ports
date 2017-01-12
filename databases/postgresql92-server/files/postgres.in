@@ -47,27 +47,17 @@ profiles_available() {
 #           If this is "", then this returns information for
 #           the default profile.
 # Returns:  pidfile of server
-get_pidfile() {
 
+get_pidfile() {
 	local profile
 	profile=$1
 	if [ "x${profile}" != "x" ]; then
-		if ! profile_enabled ${profile} ; then
-			return 0
-		else
-			# Add trailing underscore to variable name
-			profile="${profile}_"
-		fi
+		# Add trailing underscore to variable name
+		profile="${profile}_"
 	fi
 
 	eval pidfile="\${postgresql_${profile}data}/postmaster.pid"
 	echo "$pidfile"
-	# The following will actually return the pid, if the server
-	# is started
-	#if [ ! -f "$pidfile" ]; then
-	#	return 0
-	#fi
-	#return $( head -n 1 $pidfile )
 }
 
 # Determines if a PostgreSQL profile is enabled.
@@ -148,7 +138,7 @@ reload() {
 
 status() {
 	ebegin "$name status"
-	start-stop-daemon --exec $command --user ${postgresql_user} -- status ${command_args}
+	su -l -c ${postgresql_class} ${postgresql_user} -c "exec ${command} ${command_args} -U ${postgresql_user} status"
 	eend $?
 }
 
