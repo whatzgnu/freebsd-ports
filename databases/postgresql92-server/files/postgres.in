@@ -1,8 +1,7 @@
 #!/sbin/openrc-run
 
-# openrc specific overrides 
-# See: `man openrc-run`
-
+# See %%PREFIX%%/share/doc/postgresql/README-server for more info
+# For postmaster startup options, edit ${postgresql_data}/postgresql.conf
 
 # DAEMON-SPECIFIC CONFIGURATION
 # -----------------------------
@@ -12,7 +11,7 @@
 # command line. Use the conf.d files instead.
 # -----------------------------
 # Any entries that were previously in /etc/rc.conf should now be placed in:
-# /etc/conf.d/postgresql96
+# /etc/conf.d/postgres
 
 #  A minimal configuration should contain the following default values.
 
@@ -20,18 +19,18 @@
 : ${postgresql_initdb_flags:="--encoding=utf-8 --lc-collate=C"}
 : ${postgresql_class:="default"}
 : ${postgresql_profiles:=""}
-: ${postgresql_data:="/var/db/%%PG_USER%%/data96"}
+: ${postgresql_data:="/var/db/%%PG_USER%%/data"}
 : ${postgresql_user:="%%PG_USER%%"}
 
-# If you have any profiles defined in /etc/conf.d/postgresql96, e.g.:
+# If you have any profiles defined in /etc/conf.d/postgres, e.g.:
 #   postgresql_profiles="profile1"
 #
 # you will need to define associated options such as:
 #   postgresql_profile1_enable="yes"
 #   postgresql_profile1_class="class1"
-#   postgresql_profile1_data="/var/db/%%PG_USER%%/profile1/data96
+#   postgresql_profile1_data="/var/db/%%PG_USER%%/profile1/data
 
-name="postgresql96 daemon"
+name="postgresql daemon"
 command="%%PREFIX%%/bin/pg_ctl"
 
 # Returns 0 if PostgreSQL profiles are defined
