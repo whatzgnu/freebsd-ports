@@ -1,0 +1,148 @@
+#!/sbin/openrc-run
+
+# See %%PREFIX%%/share/doc/postgresql/README-server for more info
+# For postmaster startup options, edit ${postgresql_data}/postgresql.conf
+
+# DAEMON-SPECIFIC CONFIGURATION
+# -----------------------------
+# NOTE! OpenRC uses /etc/conf.d.
+#
+# This script does NOT support supplying specific profiles on the 
+# command line. Use the conf.d files instead.
+# -----------------------------
+# Any entries that were previously in /etc/rc.conf should now be placed in:
+# /etc/conf.d/postgres
+
+#  A minimal configuration should contain the following default values.
+
+: ${postgresql_flags:="-w -s -m fast"}
+: ${postgresql_initdb_flags:="--encoding=utf-8 --lc-collate=C"}
+: ${postgresql_class:="default"}
+: ${postgresql_profiles:=""}
+: ${postgresql_data:="/var/db/%%PG_USER%%/data"}
+: ${postgresql_user:="%%PG_USER%%"}
+
+# If you have any profiles defined in /etc/conf.d/postgres, e.g.:
+#   postgresql_profiles="profile1"
+#
+# you will need to define associated options such as:
+#   postgresql_profile1_enable="yes"
+#   postgresql_profile1_class="class1"
+#   postgresql_profile1_data="/var/db/%%PG_USER%%/profile1/data
+
+name="postgresql daemon"
+command="%%PREFIX%%/bin/pg_ctl"
+
+# Returns 0 if PostgreSQL profiles are defined
+profiles_available() {
+	if [ "x${postgresql_profiles}" != "x" -a "x$1" != "x" ]; then
+		return 0
+	fi
+	return 1
+}
+
+# Returns the pidfile associated with the given profile
+# Argument: name of the PostgreSQL profile.
+#           If this is "", then this returns information for
+#           the default profile.
+# Returns:  pidfile of server
+
+get_pidfile() {
+	local profile
+	profile=$1
+	if [ "x${profile}" != "x" ]; then
+		# Add trailing underscore to variable name
+		profile="${profile}_"
+	fi
+
+	eval pidfile="\${postgresql_${profile}data}/postmaster.pid"
+	echo "$pidfile"
+}
+
+# Determines if a PostgreSQL profile is enabled.
+# Argument: name of the PostgreSQL profile
+# Return: 0 if enabled, 1 otherwise
+
+profile_enabled() {
+	local profile
+	profile=$1
+	local _enable
+	eval _enable="\${postgresql_${profile}_enable}"
+	case "x${_enable:-${postgresql_enable}}" in
+	x[Yy][Ee][Ss])
+		return 0
+		;;
+	esac
+	return 1
+}
+
+command_args="-D ${postgresql_data} ${postgresql_flags}"
+extra_started_commands="reload"
+extra_stopped_commands="initdb"
+
+checkconfig() {
+	# Check for PostgreSQL's config files.
+	# Note: The Gentoo scripts check ownership of these files, but
+	# the original FreeBSD RC scripts do not.
+	local file
+	local profile
+	if profiles_available ; then
+		for profile in ${postgresql_profiles}; do
+			if profile_enabled "${profile}" ; then
+				for file in postgresql pg_hba pg_ident ; do
+					local f
+					eval f="\${postgresql_${profile}_data}/${file}.conf"
+					if [ -f ${f} ] ; then
+						checkpath -f -m 0600 -o postgres:postgres ${f}
+					else
+						eerror "${f} not found"
+						eerror "HINT: Check profile entries in /etc/conf.d and try initdb"
+						return 1
+					fi
+				done
+			fi
+		done
+	fi
+}
+
+start_pre() {
+	ebegin "Checking $name configuration"
+	checkconfig
+	eend $?
+}
+
+start() {
+	ebegin "Starting $name"
+	start-stop-daemon --start --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- start ${command_args}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping $name"
+	start-stop-daemon --stop --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- stop ${command_args}
+	eend $?
+}
+
+restart() {
+	ebegin "Restarting $name"
+	start-stop-daemon --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- restart ${command_args}
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading $name configuration"
+	start-stop-daemon --exec $command --user ${postgresql_user} -- reload ${command_args}
+	eend $?
+}
+
+status() {
+	ebegin "$name status"
+	su -l -c ${postgresql_class} ${postgresql_user} -c "exec ${command} ${command_args} -U ${postgresql_user} status"
+	eend $?
+}
+
+initdb() {
+	ebegin "Initializing $name database"
+	su -l -c ${postgresql_class} ${postgresql_user} -c "exec %%PREFIX%%/bin/initdb ${postgresql_initdb_flags} -D ${postgresql_data} -U ${postgresql_user}"
+	eend $?
+}
