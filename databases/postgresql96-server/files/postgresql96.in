@@ -34,18 +34,17 @@
 name="postgresql96 daemon"
 command="%%PREFIX%%/bin/pg_ctl"
 
-# Returns 1 if PostgreSQL profiles are defined
-
+# Returns 0 if PostgreSQL profiles are defined
 profiles_available() {
 	if [ "x${postgresql_profiles}" != "x" -a "x$1" != "x" ]; then
-		return 1
+		return 0
 	fi
-	return 0
+	return 1
 }
 
 # Determines if a PostgreSQL profile is enabled.
 # Argument: name of the PostgreSQL profile
-# Return: 1 if enabled, 0 otherwise
+# Return: 0 if enabled, 1 otherwise
 
 profile_enabled() {
 	local profile
@@ -54,25 +53,11 @@ profile_enabled() {
 	eval _enable="\${postgresql_${profile}_enable}"
 	case "x${_enable:-${postgresql_enable}}" in
 	x[Yy][Ee][Ss])
-		return 1
+		return 0
 		;;
 	esac
-	return 0
+	return 1
 }
-
-
-if [ "x${postgresql_profiles}" != "x" -a "x$1" != "x" ]; then
-	for profile in ${postgresql_profiles}; do
-		echo "===> postgresql profile: ${profile}"
-		retcode="$?"
-		if [ "0${retcode}" -ne 0 ]; then
-			failed="${profile} (${retcode}) ${failed:-}"
-		else
-			success="${profile} ${success:-}"
-		fi
-	done
-	exit 0
-fi
 
 command_args="-D ${postgresql_data} ${postgresql_flags}"
 extra_started_commands="reload"
@@ -84,19 +69,21 @@ checkconfig() {
 	# the original FreeBSD RC scripts do not.
 	local file
 	local profile
-	if [ profiles_available() -eq 1 ]; then
+	if profiles_available ; then
 		for profile in ${postgresql_profiles}; do
-			for file in postgresql pg_hba pg_ident ; do
-				local f
-				eval f="\$postgresql_${profile}_data}/${file}.conf"
-				if [ -f ${f} ] ; then
-					checkpath -f -m 0600 -o postgres:postgres ${f}
-				else
-					eerror "${f} not found"
-					eerror "HINT: Check profile entries in /etc/conf.d and try initdb"
-					return 1
-				fi
-			done
+			if profile_enabled "${profile}" ; then
+				for file in postgresql pg_hba pg_ident ; do
+					local f
+					eval f="\$postgresql_${profile}_data}/${file}.conf"
+					if [ -f ${f} ] ; then
+						checkpath -f -m 0600 -o postgres:postgres ${f}
+					else
+						eerror "${f} not found"
+						eerror "HINT: Check profile entries in /etc/conf.d and try initdb"
+						return 1
+					fi
+				done
+			fi
 		done
 	fi
 }
