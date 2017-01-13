@@ -30,13 +30,20 @@
 #   postgresql_profile1_class="class1"
 #   postgresql_profile1_data="/var/db/%%PG_USER%%/profile1/data
 
-name="postgresql daemon"
+# name="postgresql daemon"
 command="%%PREFIX%%/bin/pg_ctl"
+extra_started_commands="reload"
+extra_stopped_commands="initdb"
+
 
 depend() {
 	use network
 	use newsyslog
 }
+
+# ================================================================
+# Subroutines that test the profiles themselves.
+# ================================================================
 
 # Returns 0 if PostgreSQL profiles are defined
 profiles_available() {
@@ -44,24 +51,6 @@ profiles_available() {
 		return 0
 	fi
 	return 1
-}
-
-# Returns the pidfile associated with the given profile
-# Argument: name of the PostgreSQL profile.
-#           If this is "", then this returns information for
-#           the default profile.
-# Returns:  pidfile of server
-
-get_pidfile() {
-	local profile
-	profile=$1
-	if [ "x${profile}" != "x" ]; then
-		# Add trailing underscore to variable name
-		profile="${profile}_"
-	fi
-
-	eval pidfile="\${postgresql_${profile}data}/postmaster.pid"
-	echo "$pidfile"
 }
 
 # Determines if a PostgreSQL profile is enabled.
@@ -81,33 +70,118 @@ profile_enabled() {
 	return 1
 }
 
-command_args="-D ${postgresql_data} ${postgresql_flags}"
-extra_started_commands="reload"
-extra_stopped_commands="initdb"
+# ================================================================
+# Subroutines that return values associated with specific profiles
+# ================================================================
+
+# Argument 1: variable suffix
+# Argument 2: profile (optional, return default if none used)
+_sub_fetch_profile_data () {
+	local var_suffix
+	local profile
+	var_suffix=$1
+	profile=$2
+	if [ "x${profile}" != "x" ]; then
+		# Add trailing underscore to variable name
+		profile="${profile}_"
+	fi
+	local f
+	eval f="\${postgresql_${profile}${var_suffix}}"
+	# Use the default value if the profile-specific variable isn't defined.
+	if [ "x$( ${f} )" == "x" ]; then
+		eval f="\${postgresql_${var_suffix}}"
+	fi
+	# If a default isn't defined, then we have a problem.
+	if [ "x$( ${f} )" == "x" ]; then
+		eerror "FATAL: ${f} is not configured."
+		eerror "HINT: Add the required value to /etc/conf.d/$name ."
+	fi
+	echo "$f"
+}
+
+# Returns the data directory associated with the given profile
+# Argument (optional): name of the PostgreSQL profile.
+# Returns: data directory
+get_data_dir () {
+	echo "$( _sub_fetch_profile_data data $1 )"
+}
+
+# Returns the pidfile associated with the given profile
+# Argument (optional): name of the PostgreSQL profile.
+# Returns:  pidfile of server
+get_pidfile() {
+	echo "$( get_data_dir $1 )/postmaster.pid"
+}
+
+# Returns the class associated with the given profile
+# Argument: name of the PostgreSQL profile.
+#           If this is "", then this returns information for
+#           the default profile.
+# Returns:  class associated with profile
+
+get_class() {
+	echo "$( _sub_fetch_profile_data class $1 )"
+}
+
+# Returns flags supplied to the PostgreSQL controller.
+# Argument: name of the PostgreSQL profile.
+#           If this is "", then this returns information for
+#           the default profile.
+# Returns:  flags associated with profile
+get_pgctl_flags() {
+	echo "$( _sub_fetch_profile_data flags $1 )"
+}
+
+# Returns flags supplied to the PostgreSQL database initializer.
+# Argument: name of the PostgreSQL profile.
+#           If this is "", then this returns information for
+#           the default profile.
+# Returns:  flags associated with profile
+get_initdb_flags() {
+	echo "$( _sub_fetch_profile_data initdb_flags $1 )"
+}
+
+# ================================================================
+# Utility function to perform operations over each profile.
+# ================================================================
+# Argument 1: stuff to do for each profile
+# Executes 'stuff' with the name of the profile as the second argument
+for_each_profile () {
+	stuff=$1
+	if profiles_available ; then
+		for profile in ${postgresql_profiles}; do
+			$( stuff ${profile} )
+		done
+	else
+		$( stuff )
+	fi
+}
+
+# Subroutine helper for checkconfig()
+# Argument 1: profile
+_sub_checkconfig_checkpath() {
+	local profile
+	local f
+	profile=$1
+	for file in postgresql.conf pg_hba.conf pg_ident.conf ; do
+		f="$( get_data_dir ${profile} )/${file}.conf"
+		if -f ${f} ; then
+			checkpath -f -m 0600 -o postgres:postgres ${f}
+			return 0
+		fi
+		else
+			eerror "${f} not found"
+			eerror "HINT: Check profile entries in /etc/conf.d and try initdb"
+			return 1
+		fi
+	done
+}
 
 checkconfig() {
 	# Check for PostgreSQL's config files.
 	# Note: The Gentoo scripts check ownership of these files, but
 	# the original FreeBSD RC scripts do not.
-	local file
-	local profile
-	if profiles_available ; then
-		for profile in ${postgresql_profiles}; do
-			if profile_enabled "${profile}" ; then
-				for file in postgresql pg_hba pg_ident ; do
-					local f
-					eval f="\${postgresql_${profile}_data}/${file}.conf"
-					if [ -f ${f} ] ; then
-						checkpath -f -m 0600 -o postgres:postgres ${f}
-					else
-						eerror "${f} not found"
-						eerror "HINT: Check profile entries in /etc/conf.d and try initdb"
-						return 1
-					fi
-				done
-			fi
-		done
-	fi
+	for_each_profile _sub_checkconfig_checkpath
 }
 
 start_pre() {
@@ -116,38 +190,94 @@ start_pre() {
 	eend $?
 }
 
+# Argument #1: command sent to pg_ctl
+# e.g. start, stop, etc.
+__sub_get_pgctl_template () {
+	local todo
+	local template
+	todo=$1
+	retval="--pidfile $( get_pidfile ${profile} ) \
+		--user $( get_user ${profile} ) \
+		--exec $command \
+		-- ${todo} \
+		$( get_pgctl_flags ${profile} ) \
+		-D $( get_data_dir ${profile} )"
+	echo $template
+}
+
+_sub_start() {
+	local profile
+	profile=$1
+	start-stop-daemon --start $( __sub_get_pgctl_template start )
+	return $?
+}
 start() {
 	ebegin "Starting $name"
-	start-stop-daemon --start --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- start ${command_args}
+	for_each_profile _sub_start
 	eend $?
 }
 
+_sub_stop() {
+	local profile
+	profile=$1
+	start-stop-daemon --stop $( __sub_get_pgctl_template stop )
+	return $?
+}
 stop() {
 	ebegin "Stopping $name"
-	start-stop-daemon --stop --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- stop ${command_args}
+	for_each_profile _sub_stop
 	eend $?
 }
 
+_sub_restart() {
+	local profile
+	profile=$1
+	start-stop-daemon $( __sub_get_pgctl_template restart )
+	return $?
+}
 restart() {
 	ebegin "Restarting $name"
-	start-stop-daemon --pidfile $( get_pidfile ) --exec $command --user ${postgresql_user} -- restart ${command_args}
+	for_each_profile _sub_restart
 	eend $?
 }
 
+_sub_reload() {
+	local profile
+	profile=$1
+	start-stop-daemon $( __sub_get_pgctl_template reload )
+	return $?
+}
 reload() {
 	ebegin "Reloading $name configuration"
-	start-stop-daemon --exec $command --user ${postgresql_user} -- reload ${command_args}
+	for_each_profile _sub_reload
 	eend $?
 }
 
+_sub_status() {
+	local profile
+	profile=$1
+	su -l -c \
+		$( get_class ${profile} ) \
+		$( get_user ${profile} ) \
+		-c "exec ${command} $( get_pgctl_flags ${profile} ) -D $( get_data_dir ${profile} ) -U $( get_user ${profile} ) status"
+	return $?
+}
 status() {
 	ebegin "$name status"
-	su -l -c ${postgresql_class} ${postgresql_user} -c "exec ${command} ${command_args} -U ${postgresql_user} status"
+		for_each_profile _sub_status
 	eend $?
 }
 
+_sub_initdb() {
+	local profile
+	profile=$1
+	su -l -c \
+		$( get_class ${profile} ) \
+		$( get_user ${profile} ) \
+		-c "exec %%PREFIX%%/bin/initdb $( get_initdb_flags ${profile} ) -D $( get_data_dir ${profile} ) -U $( get_user ${profile} )"
+}
 initdb() {
 	ebegin "Initializing $name database"
-	su -l -c ${postgresql_class} ${postgresql_user} -c "exec %%PREFIX%%/bin/initdb ${postgresql_initdb_flags} -D ${postgresql_data} -U ${postgresql_user}"
+	for_each_profile _sub_initdb
 	eend $?
 }
