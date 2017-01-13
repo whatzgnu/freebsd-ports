@@ -33,6 +33,11 @@
 name="postgresql daemon"
 command="%%PREFIX%%/bin/pg_ctl"
 
+depend() {
+	use network
+	use newsyslog
+}
+
 # Returns 0 if PostgreSQL profiles are defined
 profiles_available() {
 	if [ "x${postgresql_profiles}" != "x" -a "x$1" != "x" ]; then
