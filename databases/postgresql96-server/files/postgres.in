@@ -88,12 +88,12 @@ _sub_fetch_profile_data () {
 	local f
 	eval f="\${postgresql_${profile}${var_suffix}}"
 	# Use the default value if the profile-specific variable isn't defined.
-	if [ "x$( ${f} )" == "x" ]; then
+	if [ "x${f}" == "x" ]; then
 		eval f="\${postgresql_${var_suffix}}"
 	fi
 	# If a default isn't defined, then we have a problem.
-	if [ "x$( ${f} )" == "x" ]; then
-		eerror "FATAL: ${f} is not configured."
+	if [ "x${f}" == "x" ]; then
+		eerror "FATAL: \${postgresql_${var_suffix}} is not configured."
 		eerror "HINT: Add the required value to /etc/conf.d/$name ."
 	fi
 	echo "$f"
@@ -113,7 +113,7 @@ get_pidfile() {
 	echo "$( get_data_dir $1 )/postmaster.pid"
 }
 
-# Returns the class associated with the given profile
+# Returns the login class associated with the given profile
 # Argument: name of the PostgreSQL profile.
 #           If this is "", then this returns information for
 #           the default profile.
@@ -121,6 +121,16 @@ get_pidfile() {
 
 get_class() {
 	echo "$( _sub_fetch_profile_data class $1 )"
+}
+
+# Returns the user associated with the given profile
+# Argument: name of the PostgreSQL profile.
+#           If this is "", then this returns information for
+#           the default profile.
+# Returns:  user associated with profile
+
+get_user() {
+	echo "$( _sub_fetch_profile_data user $1 )"
 }
 
 # Returns flags supplied to the PostgreSQL controller.
@@ -150,10 +160,10 @@ for_each_profile () {
 	stuff=$1
 	if profiles_available ; then
 		for profile in ${postgresql_profiles}; do
-			$( stuff ${profile} )
+			$stuff ${profile}
 		done
 	else
-		$( stuff )
+		$stuff
 	fi
 }
 
@@ -163,12 +173,11 @@ _sub_checkconfig_checkpath() {
 	local profile
 	local f
 	profile=$1
-	for file in postgresql.conf pg_hba.conf pg_ident.conf ; do
+	for file in postgresql pg_hba pg_ident ; do
 		f="$( get_data_dir ${profile} )/${file}.conf"
-		if -f ${f} ; then
+		if [ -f ${f} ] ; then
 			checkpath -f -m 0600 -o postgres:postgres ${f}
 			return 0
-		fi
 		else
 			eerror "${f} not found"
 			eerror "HINT: Check profile entries in /etc/conf.d and try initdb"
@@ -196,7 +205,7 @@ __sub_get_pgctl_template () {
 	local todo
 	local template
 	todo=$1
-	retval="--pidfile $( get_pidfile ${profile} ) \
+	template="--pidfile $( get_pidfile ${profile} ) \
 		--user $( get_user ${profile} ) \
 		--exec $command \
 		-- ${todo} \
@@ -256,10 +265,8 @@ reload() {
 _sub_status() {
 	local profile
 	profile=$1
-	su -l -c \
-		$( get_class ${profile} ) \
-		$( get_user ${profile} ) \
-		-c "exec ${command} $( get_pgctl_flags ${profile} ) -D $( get_data_dir ${profile} ) -U $( get_user ${profile} ) status"
+	su -l $( get_user ${profile} ) \
+		-c "exec ${command} -D $( get_data_dir ${profile} ) $( get_pgctl_flags ${profile} ) status"
 	return $?
 }
 status() {
@@ -274,7 +281,7 @@ _sub_initdb() {
 	su -l -c \
 		$( get_class ${profile} ) \
 		$( get_user ${profile} ) \
-		-c "exec %%PREFIX%%/bin/initdb $( get_initdb_flags ${profile} ) -D $( get_data_dir ${profile} ) -U $( get_user ${profile} )"
+		-c "exec /usr/local/bin/initdb $( get_initdb_flags ${profile} ) -D $( get_data_dir ${profile} ) -U $( get_user ${profile} )"
 }
 initdb() {
 	ebegin "Initializing $name database"
