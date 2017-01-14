@@ -13,6 +13,6 @@ PLIST_FILES=	sbin/battmond \
 		etc/rc.d/battmond \
 		man/man1/battmond.1.gz
 
-USE_OPENRC_SUBR=battmon
+USE_OPENRC_SUBR=battmond
 
 .include <bsd.port.mk>
