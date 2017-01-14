@@ -60,8 +60,7 @@ INSTALL_TARGET?=install-strip
 .if !defined(CLIENT_ONLY) && !defined(SLAVE_ONLY)
 SERVER_ONLY=	yes
 COMPONENT=	-server
-USE_RC_SUBR=	postgresql
-USE_OPENRC_SUBR=	postgres
+USE_OPENRC_SUBR=	postgresql
 USES+=		pgsql:${DISTVERSION:C/([0-9][0-9]*\.[0-9][0-9]*).*/\1/g}
 USERS=		${PG_USER}
 GROUPS=	${PG_GROUP}
