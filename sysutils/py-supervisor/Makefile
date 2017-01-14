@@ -33,7 +33,7 @@ PIDDIR?=	/var/run/supervisor
 SUB_LIST=	PYTHON_CMD=${PYTHON_CMD} \
 		PIDDIR=${PIDDIR}
 PLIST_SUB=	PIDDIR=${PIDDIR}
-USE_RC_SUBR=	supervisord
+USE_OPENRC_SUBR=	supervisord
 
 post-patch:
 	@${REINPLACE_CMD} -e 's!%%PREFIX%%!${PREFIX}!' ${WRKSRC}/supervisor/options.py
