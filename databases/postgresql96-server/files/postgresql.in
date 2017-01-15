@@ -1,43 +1,93 @@
-#!/bin/openrc-run
+#!/sbin/openrc-run
 #
 # $FreeBSD$
 #
 #  # optional
-#  postgresql_data="%%PREFIX%%/%%PG_USER%%/data"
+#  postgresql_user="%%PG_USER%%"
+#  postgresql_data="/var/db/%%PG_USER%%/data96"
 #  postgresql_flags="-w -s -m fast"
 #  postgresql_initdb_flags="--encoding=utf-8 --lc-collate=C"
 #  postgresql_class="default"
-#  postgresql_profiles=""
 #
 # See %%PREFIX%%/share/doc/postgresql/README-server for more info
 #
 # This scripts takes one of the following commands:
 #
-#   start stop restart status initdb
+#   start stop restart status reload initdb
 #
 # For postmaster startup options, edit ${postgresql_data}/postgresql.conf
 
 # set defaults
 postgresql_flags=${postgresql_flags:-"-w -s -m fast"}
 postgresql_user=${postgresql_user:-"%%PG_USER%%"}
-eval postgresql_data=${postgresql_data:-"~${postgresql_user}/data"}
+eval postgresql_data=${postgresql_data:-"/var/db/${postgresql_user}/data96"}
 postgresql_class=${postgresql_class:-"default"}
 postgresql_initdb_flags=${postgresql_initdb_flags:-"--encoding=utf-8 --lc-collate=C"}
+
+name=postgresql
+extra_commands="reload initdb"
 
 command="%%PREFIX%%/bin/pg_ctl"
 command_user="${postgresql_user}"
 command_args="-D ${postgresql_data} ${postgresql_flags}"
-name=postgresql
 
 depend()
 {
-	need localmount
-	keyword -shutdown -stop
+    need localmount
+    keyword -shutdown -stop
 }
 
-extra_commands="initdb"
+start()
+{
+    if [ ! -f ${postgresql_data}/postmaster.pid ]; then
+        ebegin "Starting $name"
+        su -l -c ${postgresql_class} ${postgresql_user} -c "exec ${command} ${postgresql_flags} -D ${postgresql_data} -U ${postgresql_user} start"
+        eend $?
+    fi
+}
+
+restart()
+{
+    if [ -f ${postgresql_data}/postmaster.pid ]; then
+        ebegin "Restarting $name"
+        su -l -c ${postgresql_class} ${postgresql_user} -c "exec ${command} ${postgresql_flags} -D ${postgresql_data} -U ${postgresql_user} restart"
+        eend $?
+    fi
+}
+
+stop()
+{
+    if [ -f ${postgresql_data}/postmaster.pid ]; then
+        ebegin "Stopping $name"
+        su -l -c ${postgresql_class} ${postgresql_user} -c "exec ${command} ${postgresql_flags} -D ${postgresql_data} -U ${postgresql_user} stop"
+        eend $?
+    fi
+}
+
+status()
+{
+    if [ -f ${postgresql_data}/postmaster.pid ]; then
+        ebegin "$name status"
+        su -l -c ${postgresql_class} ${postgresql_user} -c "exec ${command} status -D ${postgresql_data} -U ${postgresql_user}"
+        eend $?
+    fi
+}
+
+reload()
+{
+    if [ -f ${postgresql_data}/postmaster.pid ]; then
+        ebegin "Reloading $name"
+        su -l -c ${postgresql_class} ${postgresql_user} -c "exec ${command} reload -D ${postgresql_data} -s -U ${postgresql_user}"
+        eend $?
+    fi
+}
 
 initdb()
 {
-    su -l -c ${postgresql_class} ${postgresql_user} -c "exec %%PREFIX%%/bin/initdb ${postgresql_initdb_flags} -D ${postgresql_data} -U ${postgresql_user}"
+    if [ ! -f ${postgresql_data}/postmaster.pid ]; then
+        ebegin "Initializing $name"
+        su -l -c ${postgresql_class} ${postgresql_user} -c "exec /usr/local/bin/initdb ${postgresql_initdb_flags} -D ${postgresql_data} -U ${postgresql_user}"
+        eend $?
+    fi
 }
+
