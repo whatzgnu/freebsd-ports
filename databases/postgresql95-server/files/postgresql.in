@@ -37,8 +37,16 @@ extra_stopped_commands="initdb"
 
 
 depend() {
+	provide postgresql
+	need localmount
+	# Use of network is optional but not essential.
 	use network
+	# newsyslog technically isn't required if you have the daemon configured
+	# to log elsewhere. However, newsyslog is the default behavior.
 	use newsyslog
+	# Don't stop this service when shutting down, and don't stop when changing
+	# runlevels.
+	keyword -shutdown -stop
 }
 
 # ================================================================
