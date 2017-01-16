@@ -7,7 +7,7 @@
 # -----------------------------
 # NOTE! OpenRC uses /etc/conf.d.
 #
-# This script does NOT support supplying specific profiles on the 
+# This script does NOT support supplying specific profiles on the
 # command line. Use the conf.d files instead.
 # -----------------------------
 # Any entries that were previously in /etc/rc.conf should now be placed in:
