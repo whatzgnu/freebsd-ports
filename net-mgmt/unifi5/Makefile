@@ -3,7 +3,7 @@
 
 PORTNAME=	unifi5
 PORTVERSION=	5.3.8
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	net-mgmt java
 MASTER_SITES=	https://www.ubnt.com/downloads/unifi/${PORTVERSION}/ \
 		LOCAL/feld/${PORTNAME}-${PORTVERSION}/
@@ -34,7 +34,7 @@ JAVA_RUN=	yes
 NO_BUILD=	yes
 NO_ARCH=	yes
 
-USE_RC_SUBR=	unifi
+USE_OPENRC_SUBR=	unifi
 
 USERS=		unifi
 GROUPS=		unifi
