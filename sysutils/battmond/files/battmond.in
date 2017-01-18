@@ -9,21 +9,19 @@
 # This file may not be copied, modified, propagated, or distributed
 # except according to the terms contained in the LICENSE file.
 
-name="socat"
-rcvar=socat_enable
+# warn on 10% battery and halt on 5% (program defaults)
+# These can be changed by adding `battmond_flags` to /etc/rc.conf/battmon
+: ${battmond_flags:="-W 10 -H 5"}
 
-: ${socat_enable="NO"}
+command="%%PREFIX%%/sbin/battmond"
+command_args="${battmond_flags}"
+pidfile=/var/run/battmond.pid
+name="Battery Monitor Daemon"
 
-start_precmd="socat_prestart"
-pidfile=/var/run/socat.pid
-procname="/usr/local/bin/socat"
-command=/usr/sbin/daemon
-command_args=" -f -p ${pidfile} ${procname} ${socat_flags}"
-
-socat_prestart()
+depend()
 {
-        # socat_flags gets applied too early if we don't do this.
-        # I didn't want to force people to update their rc.conf files
-        # and change the socat_flags to something else.
-        rc_flags=""
+	need localmount
+	use logger
+	after bootmisc
+	keyword -jail -prefix
 }
