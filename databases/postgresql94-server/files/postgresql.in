@@ -19,8 +19,8 @@
 : ${postgresql_initdb_flags:="--encoding=utf-8 --lc-collate=C"}
 : ${postgresql_class:="default"}
 : ${postgresql_profiles:=""}
-: ${postgresql_data:="%%PREFIX%%/%%PG_USER%%/data"}
 : ${postgresql_user:="%%PG_USER%%"}
+: ${postgresql_data:="~${postgresql_user}/data"}
 
 # If you have any profiles defined in /etc/conf.d/postgres, e.g.:
 #   postgresql_profiles="profile1"
