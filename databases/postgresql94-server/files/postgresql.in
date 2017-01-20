@@ -210,9 +210,8 @@ start_pre() {
 
 # Argument #1: command sent to pg_ctl
 # e.g. start, stop, etc.
-__sub_get_pgctl_template () {
+__sub_exec_pgctl_command () {
 	local todo
-	local template
 	todo=$1
 	su  -l \
 		-c $( get_class ${profile} ) \
