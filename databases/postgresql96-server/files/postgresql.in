@@ -20,7 +20,9 @@
 : ${postgresql_class:="default"}
 : ${postgresql_profiles:=""}
 : ${postgresql_user:="%%PG_USER%%"}
-: ${postgresql_data:="~${postgresql_user}/data96"}
+
+# Performs tilde expansion for home directory
+eval : ${postgresql_data:="~${postgresql_user}/data96"}
 
 # If you have any profiles defined in /etc/conf.d/postgres, e.g.:
 #   postgresql_profiles="profile1"
@@ -213,10 +215,14 @@ start_pre() {
 __sub_exec_pgctl_command () {
 	local todo
 	todo=$1
-	su  -l \
-		-c $( get_class ${profile} ) \
+	su -l -c \
+		$( get_class ${profile} ) \
 		$( get_user ${profile} ) \
-		-c "exec ${command} -D $( get_data_dir ${profile} ) -s $( get_pgctl_flags ${profile} ) ${todo}"
+		-c "exec ${command} \
+		-D $( get_data_dir ${profile} ) \
+		-U $( get_user ${profile} ) \
+		-s $( get_pgctl_flags ${profile} ) \
+		${todo}"
 	return $?
 }
 
