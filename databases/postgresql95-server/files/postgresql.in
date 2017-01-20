@@ -19,8 +19,8 @@
 : ${postgresql_initdb_flags:="--encoding=utf-8 --lc-collate=C"}
 : ${postgresql_class:="default"}
 : ${postgresql_profiles:=""}
-: ${postgresql_data:="/var/db/%%PG_USER%%/data"}
 : ${postgresql_user:="%%PG_USER%%"}
+: ${postgresql_data:="~${postgresql_user}/data"}
 
 # If you have any profiles defined in /etc/conf.d/postgres, e.g.:
 #   postgresql_profiles="profile1"
@@ -32,6 +32,7 @@
 
 # name="postgresql daemon"
 command="%%PREFIX%%/bin/pg_ctl"
+initdb_command="%%PREFIX%%/bin/initdb"
 extra_started_commands="reload"
 extra_stopped_commands="initdb"
 
@@ -102,7 +103,7 @@ _sub_fetch_profile_data () {
 	# If a default isn't defined, then we have a problem.
 	if [ "x${f}" == "x" ]; then
 		eerror "FATAL: \${postgresql_${var_suffix}} is not configured."
-		eerror "HINT: Add the required value to /etc/conf.d/$name ."
+		eerror "HINT: Add the required value to /etc/conf.d/${name} ."
 	fi
 	echo "$f"
 }
@@ -168,10 +169,10 @@ for_each_profile () {
 	stuff=$1
 	if profiles_available ; then
 		for profile in ${postgresql_profiles}; do
-			$stuff ${profile}
+			${stuff} ${profile}
 		done
 	else
-		$stuff
+		${stuff}
 	fi
 }
 
@@ -202,7 +203,7 @@ checkconfig() {
 }
 
 start_pre() {
-	ebegin "Checking $name configuration"
+	ebegin "Checking ${name} configuration"
 	checkconfig
 	eend $?
 }
@@ -213,23 +214,21 @@ __sub_get_pgctl_template () {
 	local todo
 	local template
 	todo=$1
-	template="--pidfile $( get_pidfile ${profile} ) \
-		--user $( get_user ${profile} ) \
-		--exec $command \
-		-- ${todo} \
-		$( get_pgctl_flags ${profile} ) \
-		-D $( get_data_dir ${profile} )"
-	echo $template
+	su  -l \
+		-c $( get_class ${profile} ) \
+		$( get_user ${profile} ) \
+		-c "exec ${command} -D $( get_data_dir ${profile} ) -s $( get_pgctl_flags ${profile} ) ${todo}"
+	return $?
 }
 
 _sub_start() {
 	local profile
 	profile=$1
-	start-stop-daemon --start $( __sub_get_pgctl_template start )
+	__sub_exec_pgctl_command start
 	return $?
 }
 start() {
-	ebegin "Starting $name"
+	ebegin "Starting ${name}"
 	for_each_profile _sub_start
 	eend $?
 }
@@ -237,11 +236,11 @@ start() {
 _sub_stop() {
 	local profile
 	profile=$1
-	start-stop-daemon --stop $( __sub_get_pgctl_template stop )
+	__sub_exec_pgctl_command stop
 	return $?
 }
 stop() {
-	ebegin "Stopping $name"
+	ebegin "Stopping ${name}"
 	for_each_profile _sub_stop
 	eend $?
 }
@@ -249,11 +248,11 @@ stop() {
 _sub_restart() {
 	local profile
 	profile=$1
-	start-stop-daemon $( __sub_get_pgctl_template restart )
+	__sub_exec_pgctl_command restart
 	return $?
 }
 restart() {
-	ebegin "Restarting $name"
+	ebegin "Restarting ${name}"
 	for_each_profile _sub_restart
 	eend $?
 }
@@ -261,11 +260,11 @@ restart() {
 _sub_reload() {
 	local profile
 	profile=$1
-	start-stop-daemon $( __sub_get_pgctl_template reload )
+	__sub_exec_pgctl_command reload
 	return $?
 }
 reload() {
-	ebegin "Reloading $name configuration"
+	ebegin "Reloading ${name} configuration"
 	for_each_profile _sub_reload
 	eend $?
 }
@@ -273,12 +272,11 @@ reload() {
 _sub_status() {
 	local profile
 	profile=$1
-	su -l $( get_user ${profile} ) \
-		-c "exec ${command} -D $( get_data_dir ${profile} ) $( get_pgctl_flags ${profile} ) status"
+	__sub_exec_pgctl_command status
 	return $?
 }
 status() {
-	ebegin "$name status"
+	ebegin "${name} status"
 		for_each_profile _sub_status
 	eend $?
 }
@@ -289,10 +287,10 @@ _sub_initdb() {
 	su -l -c \
 		$( get_class ${profile} ) \
 		$( get_user ${profile} ) \
-		-c "exec /usr/local/bin/initdb $( get_initdb_flags ${profile} ) -D $( get_data_dir ${profile} ) -U $( get_user ${profile} )"
+		-c "exec ${initdb_command} -D $( get_data_dir ${profile} ) $( get_initdb_flags ${profile} ) -U $( get_user ${profile} )"
 }
 initdb() {
-	ebegin "Initializing $name database"
+	ebegin "Initializing ${name} database"
 	for_each_profile _sub_initdb
 	eend $?
 }
