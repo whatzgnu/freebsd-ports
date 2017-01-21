@@ -36,25 +36,4 @@ CPE_VENDOR=	x
 
 INSTALL_TARGET=	install-strip
 
-OPTIONS_DEFINE_amd64=	DRI3
-OPTIONS_DEFINE_i386=	DRI3
-DRI3_DESC=	Experimental: enable dri3 support
-
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MDRI3}
-USE_XORG+=	dri3proto
-CONFIGURE_ARGS+=	--enable-dri3
-.else
-CONFIGURE_ARGS+=	--disable-dri3
-.endif
-
-.if (${OSVERSION} >= 903000 && ${OSVERSION} < 1000000)
-RUN_DEPENDS+=	drm-kmod>=9:x11-drivers/drm-kmod
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|"i915kms"|"i915kms_port"|g' \
-		${WRKSRC}/src/intel_device.c
-.endif
-
 .include <bsd.port.mk>

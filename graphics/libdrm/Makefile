@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libdrm
-PORTVERSION=	2.4.70
-PORTREVISION=	2
+PORTVERSION=	2.4.74
 PORTEPOCH=	1
 CATEGORIES=	graphics x11
 MASTER_SITES=	http://dri.freedesktop.org/libdrm/
@@ -11,7 +10,9 @@ MASTER_SITES=	http://dri.freedesktop.org/libdrm/
 MAINTAINER=	x11@FreeBSD.org
 COMMENT=	Userspace interface to kernel Direct Rendering Module services
 
-BUILD_DEPENDS=	libdevq>=0.0.3:devel/libdevq
+LICENSE=	MIT
+
+BUILD_DEPENDS=	libdevq>=0.0.4:devel/libdevq
 LIB_DEPENDS=	libpciaccess.so:devel/libpciaccess \
 		libdevq.so:devel/libdevq \
 		libpthread-stubs.so:devel/libpthread-stubs
@@ -35,10 +36,10 @@ USES+=		gmake
 # KMS support in the kernel is only build on these archs, disable others
 .if ${ARCH} == "amd64" || ${ARCH} == "i386"
 CONFIGURE_ARGS+=--enable-libkms
-PLIST_SUB+=	KMS="" NOUVEAU=""
+PLIST_SUB+=	KMS=""
 .else
 CONFIGURE_ARGS+=--disable-libkms
-PLIST_SUB+=	KMS="@comment " NOUVEAU="@comment "
+PLIST_SUB+=	KMS="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MMANPAGES}
@@ -53,19 +54,24 @@ PLIST_SUB+=	MAN="@comment "
 CONFIGURE_ARGS+=--disable-vmwgfx
 
 .if ${ARCH} == amd64 || ${ARCH} == i386
+PLIST_SUB+=	ARM_DRIVERS="@comment "
 PLIST_SUB+=	INTEL_DRIVER=""
+PLIST_SUB+=	NOUVEAU_DRIVER=""
 PLIST_SUB+=	RADEON_DRIVERS=""
-PLIST_SUB+=	VC4_DRIVERS="@comment "
-.elif ${ARCH} == ia64 || ${ARCH} == powerpc || ${ARCH} == powerpc64
+.elif ${ARCH} == powerpc || ${ARCH} == powerpc64
+PLIST_SUB+=	ARM_DRIVERS="@comment "
 PLIST_SUB+=	INTEL_DRIVER="@comment "
+PLIST_SUB+=	NOUVEAU_DRIVER=""
 PLIST_SUB+=	RADEON_DRIVERS=""
-PLIST_SUB+=	VC4_DRIVERS="@comment "
-.elif ${ARCH} == arm6 || ${ARCH} == arm64
+.elif ${ARCH} == arm6 || ${ARCH} == aarch64
+PLIST_SUB+=	ARM_DRIVERS=""
 PLIST_SUB+=	INTEL_DRIVER="@comment "
-PLIST_SUB+=	READEON_DRIVERS="@comment"
-PLIST_SUB+=	VC4_DRIVERS=""
+PLIST_SUB+=	NOUVEAU_DRIVER="@comment "
+PLIST_SUB+=	RADEON_DRIVERS="@comment "
 .else
+PLIST_SUB+=	ARM_DRIVERS="@comment "
 PLIST_SUB+=	INTEL_DRIVER="@comment "
+PLIST_SUB+=	NOUVEAU_DRIVER="@comment "
 PLIST_SUB+=	RADEON_DRIVERS="@comment "
 PLIST_SUB+=	VC4_DRIVERS="@comment "
 .endif

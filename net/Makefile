@@ -88,7 +88,6 @@
     SUBDIR += ctrace
     SUBDIR += cvsup-static
     SUBDIR += cvsync
-    SUBDIR += cyphesis
     SUBDIR += czmq
     SUBDIR += daemonlogger
     SUBDIR += dante
@@ -119,6 +118,7 @@
     SUBDIR += dshell
     SUBDIR += dtcp
     SUBDIR += dtcpclient
+    SUBDIR += dual-dhclient
     SUBDIR += e169-stats
     SUBDIR += easysoap
     SUBDIR += echoping
@@ -188,7 +188,6 @@
     SUBDIR += googlecl
     SUBDIR += gopher
     SUBDIR += gotthard
-    SUBDIR += gpxe
     SUBDIR += gq
     SUBDIR += grdesktop
     SUBDIR += grilo
@@ -467,6 +466,7 @@
     SUBDIR += nos-ttb
     SUBDIR += nph
     SUBDIR += ns3
+    SUBDIR += nsq
     SUBDIR += nss-pam-ldapd
     SUBDIR += nss-pam-ldapd-sasl
     SUBDIR += nss_ldap
@@ -505,7 +505,6 @@
     SUBDIR += openmq-client
     SUBDIR += openntpd
     SUBDIR += opennx
-    SUBDIR += openospfd
     SUBDIR += openpgm
     SUBDIR += openradius
     SUBDIR += opensips
@@ -1046,6 +1045,7 @@
     SUBDIR += py-speedtest-cli
     SUBDIR += py-sshuttle
     SUBDIR += py-suds
+    SUBDIR += py-suds-jurko
     SUBDIR += py-terminado
     SUBDIR += py-tofu
     SUBDIR += py-tweepy
@@ -1208,6 +1208,7 @@
     SUBDIR += rubygem-ruby-openid
     SUBDIR += rubygem-ruby-yadis
     SUBDIR += rubygem-rubyntlm
+    SUBDIR += rubygem-rubyntlm05
     SUBDIR += rubygem-rubytter
     SUBDIR += rubygem-rudy
     SUBDIR += rubygem-rye

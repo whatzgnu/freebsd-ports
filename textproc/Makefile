@@ -26,7 +26,6 @@
     SUBDIR += aft
     SUBDIR += agrep
     SUBDIR += aiksaurus
-    SUBDIR += aiksaurus-gtk
     SUBDIR += align
     SUBDIR += am-aspell
     SUBDIR += amberfish
@@ -355,6 +354,7 @@
     SUBDIR += jaxup
     SUBDIR += jdictionary
     SUBDIR += jdictionary-int-eng
+    SUBDIR += jid
     SUBDIR += jing
     SUBDIR += jo
     SUBDIR += jq
@@ -454,6 +454,7 @@
     SUBDIR += linuxdoc-tools
     SUBDIR += localize
     SUBDIR += loook
+    SUBDIR += lowdown
     SUBDIR += lt-aspell
     SUBDIR += lt-hyphen
     SUBDIR += lttoolbox
@@ -1268,6 +1269,7 @@
     SUBDIR += py-nltk
     SUBDIR += py-numpydoc
     SUBDIR += py-openpyxl
+    SUBDIR += py-pandocfilters
     SUBDIR += py-paragrep
     SUBDIR += py-parsimonious
     SUBDIR += py-pdfminer
@@ -1315,6 +1317,7 @@
     SUBDIR += py-sphinxcontrib-httpdomain
     SUBDIR += py-sphinxcontrib-programoutput
     SUBDIR += py-syck
+    SUBDIR += py-tabletext
     SUBDIR += py-terminaltables
     SUBDIR += py-texttable
     SUBDIR += py-tinycss
@@ -1407,6 +1410,7 @@
     SUBDIR += ruby-xmlparser
     SUBDIR += ruby-xmlscan
     SUBDIR += rubygem-actionpack-xml_parser
+    SUBDIR += rubygem-actionpack-xml_parser1
     SUBDIR += rubygem-albino
     SUBDIR += rubygem-amatch
     SUBDIR += rubygem-asciidoctor

@@ -1,5 +1,5 @@
---- config.h.in.orig	2016-06-24 22:01:22.827102000 +0200
-+++ config.h.in	2016-06-24 22:01:44.000000000 +0200
+--- config.h.in.orig	2016-11-29 13:34:54 UTC
++++ config.h.in
 @@ -8,6 +8,9 @@
  /* Define to 1 if using `alloca.c'. */
  #undef C_ALLOCA
@@ -10,7 +10,7 @@
  /* Define to 1 if you have `alloca', as a function or macro. */
  #undef HAVE_ALLOCA
  
-@@ -48,6 +51,9 @@
+@@ -51,6 +54,9 @@
  /* Define to 1 if you have the <inttypes.h> header file. */
  #undef HAVE_INTTYPES_H
  

@@ -2,18 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	libdevq
-PORTVERSION=	0.0.3
-PORTREVISION=	3
+PORTVERSION=	0.0.4
 CATEGORIES=	devel
+MASTER_SITES=	https://github.com/freebsd/${PORTNAME}/releases/download/${PORTVERSION}/
 
 MAINTAINER=	x11@FreeBSD.org
 COMMENT=	Generic Device Query and Monitor interface
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	freebsd
+LICENSE=	BSD2CLAUSE
 
 GNU_CONFIGURE=	yes
-USES=		autoreconf libtool pathfix #tar:xz
+USES=		autoreconf libtool pathfix tar:xz
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 

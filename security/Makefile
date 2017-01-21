@@ -403,7 +403,6 @@
     SUBDIR += oinkmaster
     SUBDIR += op
     SUBDIR += openbsm
-    SUBDIR += openbsm-devel
     SUBDIR += openca-tools-forked
     SUBDIR += opencdk
     SUBDIR += openconnect
@@ -762,6 +761,7 @@
     SUBDIR += pecl-crack
     SUBDIR += pecl-crypto
     SUBDIR += pecl-gnupg
+    SUBDIR += pecl-krb5
     SUBDIR += pecl-libsodium
     SUBDIR += pecl-pam
     SUBDIR += pecl-scrypt
@@ -944,6 +944,7 @@
     SUBDIR += py-zope.security
     SUBDIR += py-zope.securitypolicy
     SUBDIR += py-zope.session
+    SUBDIR += py-zxcvbn-python
     SUBDIR += py3-libnacl
     SUBDIR += qtkeychain-qt4
     SUBDIR += qtkeychain-qt5
@@ -1103,7 +1104,6 @@
     SUBDIR += sqlninja
     SUBDIR += srm
     SUBDIR += ssdeep
-    SUBDIR += ssh-copy-id
     SUBDIR += ssh-multiadd
     SUBDIR += ssh_askpass_gtk2
     SUBDIR += sshblock
