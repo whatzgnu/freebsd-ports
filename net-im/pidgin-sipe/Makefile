@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pidgin-sipe
-PORTVERSION=	1.18.0
-PORTREVISION=	1
+PORTVERSION=	1.21.1
 CATEGORIES=	net-im
 MASTER_SITES=	SF/sipe/sipe/${DISTNAME}
 
@@ -18,7 +17,7 @@ LIB_DEPENDS=	libnss3.so:security/nss \
 RUN_DEPENDS=	pidgin:net-im/pidgin
 
 GNU_CONFIGURE=	yes
-USES=		gmake libtool pkgconfig tar:bzip2
+USES=		gmake libtool pkgconfig tar:xz
 USE_GNOME=	gtk20 intltool
 PORTDOCS=	AUTHORS ChangeLog HACKING NEWS README TODO
 
