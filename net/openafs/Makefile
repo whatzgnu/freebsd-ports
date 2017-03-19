@@ -24,7 +24,7 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 BROKEN_FreeBSD_11=	does not build
 BROKEN_FreeBSD_12=	does not build
 
-AFS_DISTVERSION=	1.6.18
+AFS_DISTVERSION=	1.6.20
 DBVERSION=	2016-01-01
 
 USES=		cpe kmod tar:bzip2
