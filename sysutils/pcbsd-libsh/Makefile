@@ -11,9 +11,8 @@ COMMENT=	PC-BSD Shell Library
 LICENSE=	BSD3CLAUSE
 
 WRKSRC_SUBDIR=	src-sh/libsh
-USES=		pkgconfig
+USES=		pkgconfig tar:xz
 NO_BUILD=	yes
-NO_ARCH=	yes
 MAKE_ARGS=	PREFIX=${STAGEDIR}${PREFIX}
 
 USE_GITHUB=	yes
