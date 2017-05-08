@@ -1,0 +1,11 @@
+pywinrm is a Python client for the Windows Remote Management (WinRM)
+service. It allows you to invoke commands on target Windows machines
+from any machine that can run Python.
+
+WinRM allows you to perform various management tasks remotely.
+These include, but are not limited to: running batch scripts,
+powershell scripts, and fetching WMI variables.
+
+Used by Ansible for Windows support.
+
+WWW: https://pypi.python.org/pypi/pywinrm
