@@ -62,7 +62,7 @@ do-install:
 		${MKDIR} ${STAGEDIR}${PYTHON_SITELIBDIR}/pype/plugins && \
 		${CP} -pr plugins/*.py ${STAGEDIR}${PYTHON_SITELIBDIR}/pype/plugins/ && \
 		${MKDIR} ${STAGEDIR}${PREFIX}/bin && \
-		${LN} -sf '../../${PYTHON_SITELIBDIR}/pype/pype.py' ${STAGEDIR}${PREFIX}/bin/pype && \
+		${LN} -sf '../../..${PYTHON_SITELIBDIR}/pype/pype.py' ${STAGEDIR}${PREFIX}/bin/pype && \
 		${MKDIR} ${STAGEDIR}${PREFIX}/share/applications && \
 		${INSTALL_DATA} pype.desktop ${STAGEDIR}${PREFIX}/share/applications/
 
