@@ -2,7 +2,7 @@
 
 PORTNAME=		PyPE
 PORTVERSION=		2.9.4
-PORTREVISION=		1
+PORTREVISION=		2
 CATEGORIES=		editors python
 MASTER_SITES=		SOURCEFORGE
 MASTER_SITE_SUBDIR=	pype
@@ -62,7 +62,7 @@ do-install:
 		${MKDIR} ${STAGEDIR}${PYTHON_SITELIBDIR}/pype/plugins && \
 		${CP} -pr plugins/*.py ${STAGEDIR}${PYTHON_SITELIBDIR}/pype/plugins/ && \
 		${MKDIR} ${STAGEDIR}${PREFIX}/bin && \
-		${LN} -s ${PYTHON_SITELIBDIR}/pype/pype.py ${STAGEDIR}${PREFIX}/bin/pype && \
+		${LN} -sf '../../${PYTHON_SITELIBDIR}/pype/pype.py' ${STAGEDIR}${PREFIX}/bin/pype && \
 		${MKDIR} ${STAGEDIR}${PREFIX}/share/applications && \
 		${INSTALL_DATA} pype.desktop ${STAGEDIR}${PREFIX}/share/applications/
 
