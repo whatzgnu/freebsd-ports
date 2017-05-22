@@ -2,16 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=		openvpn
-DISTVERSION=		2.3.14
+DISTVERSION=		2.3.16
 CATEGORIES=		security net
-MASTER_SITES=		http://swupdate.openvpn.net/community/releases/ \
-			http://build.openvpn.net/downloads/releases/
+MASTER_SITES=		https://swupdate.openvpn.net/community/releases/ \
+			https://build.openvpn.net/downloads/releases/
 PKGNAMESUFFIX?=		23
 
 MAINTAINER=		mandree@FreeBSD.org
 COMMENT?=		Secure IP/Ethernet tunnel daemon
 
-DEPRECATED=		Replaced by new upstream relesae 2.4.x
+DEPRECATED=		Replaced by new upstream release 2.4.x
 EXPIRATION_DATE=	2017-03-31
 
 LICENSE=		GPLv2
